@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galanga GastroBar — Cachopos, Cocina Vasca y Terraza con Vistas en Galdakao</title>
+    <meta name="description" content="Galanga GastroBar en el Campo de Golf Uraburu, Galdakao. Cachopos espectaculares, cocina vasca de calidad y terraza con vistas impresionantes. 4.9/5 en Google.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#0f1a0f',
+                    'primary-light': '#1e3a1e',
+                    gold: '#c9a84c',
+                    amber: '#d4872a',
+                    cream: '#f5f0e8',
+                    'cream-dark': '#ebe3d5',
+                },
+                fontFamily: {
+                    display: ['Playfair Display', 'serif'],
+                    body: ['Inter', 'sans-serif'],
+                }
+            }
+        }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+        html { scroll-behavior: smooth; }
+
+        /* Navbar scroll */
+        .navbar-transparent { background: transparent; }
+        .navbar-scrolled {
+            background: rgba(15, 26, 15, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 24px rgba(0,0,0,0.2);
+        }
+
+        /* Hero */
+        .hero-section {
+            background-image: url('img/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #0f1a0f;
+            min-height: 100vh;
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15,26,15,0.55) 0%, rgba(15,26,15,0.7) 60%, rgba(15,26,15,0.9) 100%);
+        }
+
+        /* CTA shine */
+        .btn-cta {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+            transform: rotate(30deg);
+            transition: 0.6s;
+        }
+        .btn-cta:hover::after {
+            left: 100%;
+        }
+
+        /* Service cards */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Star icon */
+        .star-filled { color: #c9a84c; }
+
+        /* WhatsApp floating */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            animation: pulse-wa 2s infinite;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        @keyframes pulse-wa {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 40px rgba(37,211,102,0.7); }
+        }
+
+        /* Gallery */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item .zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15,26,15,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .zoom-overlay { opacity: 1; }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            color: #fff;
+            font-size: 36px;
+            cursor: pointer;
+            z-index: 10000;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 36px;
+            cursor: pointer;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        /* Review badge */
+        .review-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-google { background: #e8f5e9; color: #2e7d32; }
+        .badge-tripadvisor { background: #e8f5e9; color: #00aa6c; }
+
+        /* About section bg */
+        .about-bg {
+            background-image: url('img/interior.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #1e3a1e;
+            min-height: 400px;
+        }
+
+        /* Featured card glow */
+        .featured-glow {
+            box-shadow: 0 0 0 2px #c9a84c, 0 12px 40px rgba(201,168,76,0.15);
+        }
+
+        /* CTA section bg */
+        .cta-bg {
+            background-image: url('img/panoramica.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #0f1a0f;
+            min-height: 350px;
+        }
+
+        /* AOS mobile fallback */
+        @media (max-width: 768px) {
+            [data-aos] { opacity: 1 !important; transform: none !important; }
+        }
+
+        /* Responsive touch targets */
+        a, button { min-height: 44px; min-width: 44px; }
+
+        /* Smooth divider */
+        .divider-gold {
+            width: 60px;
+            height: 3px;
+            background: #c9a84c;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-cream">
+
+    <!-- ========== NAVBAR ========== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transparent transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3">
+                    <span class="font-display text-2xl font-bold text-white tracking-wide">Galanga</span>
+                    <span class="text-gold text-sm font-body font-light tracking-widest uppercase hidden sm:inline">GastroBar</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#nosotros" class="text-white/80 hover:text-gold transition-colors text-sm font-medium">Nosotros</a>
+                    <a href="#carta" class="text-white/80 hover:text-gold transition-colors text-sm font-medium">Carta</a>
+                    <a href="#galeria" class="text-white/80 hover:text-gold transition-colors text-sm font-medium">Galeria</a>
+                    <a href="#resenas" class="text-white/80 hover:text-gold transition-colors text-sm font-medium">Resenas</a>
+                    <a href="#ubicacion" class="text-white/80 hover:text-gold transition-colors text-sm font-medium">Ubicacion</a>
+                    <a href="tel:944561356" class="btn-cta bg-gold text-primary font-semibold px-6 py-3 rounded-full text-sm hover:bg-amber transition-colors inline-flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        Reservar Mesa
+                    </a>
+                </div>
+
+                <!-- Mobile hamburger -->
+                <button id="menu-btn" class="md:hidden text-white p-2" aria-label="Menu">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-6">
+                <div class="flex flex-col gap-3 bg-primary/95 backdrop-blur-md rounded-2xl p-6 mt-2">
+                    <a href="#nosotros" class="text-white/90 hover:text-gold py-2 text-base font-medium mobile-link">Nosotros</a>
+                    <a href="#carta" class="text-white/90 hover:text-gold py-2 text-base font-medium mobile-link">Carta</a>
+                    <a href="#galeria" class="text-white/90 hover:text-gold py-2 text-base font-medium mobile-link">Galeria</a>
+                    <a href="#resenas" class="text-white/90 hover:text-gold py-2 text-base font-medium mobile-link">Resenas</a>
+                    <a href="#ubicacion" class="text-white/90 hover:text-gold py-2 text-base font-medium mobile-link">Ubicacion</a>
+                    <a href="tel:944561356" class="btn-cta bg-gold text-primary font-semibold px-6 py-3 rounded-full text-sm text-center mt-2 inline-flex items-center justify-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        Reservar Mesa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero" class="hero-section relative flex items-center justify-center">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8">
+                <span class="text-gold text-lg">&#9733;</span>
+                <span class="text-white text-sm font-medium">4.9/5 en Google</span>
+                <span class="text-white/40 mx-1">|</span>
+                <span class="text-white/80 text-sm">Campo de Golf Uraburu</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                Donde los <span class="text-gold italic">cachopos</span><br>
+                se sirven con vistas
+            </h1>
+
+            <p class="text-white/75 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Cocina vasca con alma, terraza con vistas al campo de golf y atardeceres que no olvidaras. Bienvenido a Galanga GastroBar.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:944561356" class="btn-cta bg-gold text-primary font-bold px-8 py-4 rounded-full text-base hover:bg-amber transition-colors inline-flex items-center justify-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Reservar Mesa
+                </a>
+                <a href="#carta" class="border-2 border-white/30 text-white font-medium px-8 py-4 rounded-full text-base hover:bg-white/10 transition-colors inline-flex items-center justify-center gap-2">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    Ver Carta
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-white/50"></i>
+        </div>
+    </section>
+
+    <!-- ========== SOBRE NOSOTROS ========== -->
+    <section id="nosotros" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Image -->
+                <div data-aos="fade-right">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="img/interior.jpg" alt="Interior de Galanga GastroBar con cristalera y techos altos" width="700" height="500" class="w-full h-auto object-cover" loading="lazy">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/60 to-transparent p-6">
+                            <span class="text-gold font-display text-lg italic">Un espacio unico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div data-aos="fade-left">
+                    <span class="text-gold font-semibold text-sm tracking-widest uppercase">Sobre Nosotros</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mt-3 mb-6 leading-tight">
+                        Cocina con vistas en el corazon de Galdakao
+                    </h2>
+                    <div class="divider-gold mb-6"></div>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        En pleno Campo de Golf Uraburu, Galanga GastroBar es mucho mas que un restaurante. Un espacio de techos altos, cristaleras que inundan de luz y una terraza con vistas impresionantes al campo de golf y los montes.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Nuestra carta gira alrededor de los cachopos artesanales con una gran variedad para todos los gustos, acompanados de cocina vasca de calidad. Un lugar ideal para comer en pareja, en familia o celebrar eventos especiales.
+                    </p>
+
+                    <!-- Counters -->
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-gold counter" data-target="4.9">0</div>
+                            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">en Google</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-gold counter" data-target="12">0</div>
+                            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">Cachopos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center gap-1">
+                                <i data-lucide="mountain" class="w-6 h-6 text-gold"></i>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-2 uppercase tracking-wide">Vistas unicas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CARTA / ESPECIALIDADES ========== -->
+    <section id="carta" class="py-20 md:py-32 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">Nuestra Carta</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+                    Sabores que conquistan
+                </h2>
+                <div class="divider-gold mx-auto mb-6"></div>
+                <p class="text-white/60 max-w-2xl mx-auto">
+                    Desde nuestros cachopos estrella hasta las delicias de la cocina vasca, cada plato esta pensado para disfrutar.
+                </p>
+            </div>
+
+            <!-- Featured: Cachopos -->
+            <div class="bg-primary-light/60 border border-gold/20 rounded-3xl p-8 md:p-12 mb-12 featured-glow" data-aos="zoom-in">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-gold/20 rounded-full px-4 py-1.5 mb-4">
+                            <i data-lucide="crown" class="w-4 h-4 text-gold"></i>
+                            <span class="text-gold text-sm font-semibold">Producto Estrella</span>
+                        </div>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Cachopos Artesanales</h3>
+                        <p class="text-white/70 leading-relaxed mb-4">
+                            Gran variedad de cachopos para todos los gustos. Nuestro plato emblematico, preparado con esmero y los mejores ingredientes.
+                        </p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> Clasico de jamon y queso</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> Variedad de rellenos creativos</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold"></i> Tamanos individual y para compartir</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden">
+                        <img src="img/comida1.jpg" alt="Cachopo artesanal de Galanga GastroBar" width="600" height="400" class="w-full h-64 md:h-80 object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="beef" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Carnes a la Brasa</h3>
+                    <p class="text-white/50 text-sm">Chuletones y cortes selectos, cocinados al punto perfecto.</p>
+                </div>
+
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="salad" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Entrantes y Ensaladas</h3>
+                    <p class="text-white/50 text-sm">Croquetas caseras, ensaladas frescas y entrantes para compartir.</p>
+                </div>
+
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="cake-slice" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Postres Caseros</h3>
+                    <p class="text-white/50 text-sm">Tarta de queso, coulant de chocolate y dulces para el broche final.</p>
+                </div>
+
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="wine" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Bodega y Vinos</h3>
+                    <p class="text-white/50 text-sm">Seleccion de vinos y cervezas artesanales para maridar cada plato.</p>
+                </div>
+
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="sun" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Terraza y Aperitivos</h3>
+                    <p class="text-white/50 text-sm">El lugar perfecto para una cana al sol con vistas al campo de golf.</p>
+                </div>
+
+                <div class="service-card bg-primary-light/40 border border-white/10 rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 bg-gold/15 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="party-popper" class="w-7 h-7 text-gold"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-white mb-2">Eventos y Celebraciones</h3>
+                    <p class="text-white/50 text-sm">Espacio para comidas familiares, cumpleanos y eventos especiales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALERIA ========== -->
+    <section id="galeria" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">Galeria</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mt-3 mb-4">
+                    Un vistazo a la experiencia
+                </h2>
+                <div class="divider-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- Terraza - large -->
+                <div class="gallery-item col-span-2 row-span-2" onclick="openLightbox(0)">
+                    <img src="img/terraza.jpg" alt="Terraza de Galanga GastroBar con vistas al campo de golf" width="800" height="600" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-8 h-8 text-white"></i></div>
+                </div>
+                <!-- Comida 2 -->
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="img/comida2.jpg" alt="Plato de cocina vasca en Galanga GastroBar" width="400" height="400" class="aspect-square" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-6 h-6 text-white"></i></div>
+                </div>
+                <!-- Comida 3 -->
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="img/comida3.jpg" alt="Plato especial de Galanga GastroBar" width="400" height="400" class="aspect-square" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-6 h-6 text-white"></i></div>
+                </div>
+                <!-- Eventos -->
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="img/eventos.jpg" alt="Salon para eventos en Galanga GastroBar" width="400" height="400" class="aspect-square" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-6 h-6 text-white"></i></div>
+                </div>
+                <!-- Panoramica -->
+                <div class="gallery-item col-span-2" onclick="openLightbox(4)">
+                    <img src="img/panoramica.jpg" alt="Vista panoramica desde Galanga GastroBar, Galdakao" width="800" height="400" class="h-48 md:h-64" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-8 h-8 text-white"></i></div>
+                </div>
+                <!-- Comida 1 -->
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="img/comida1.jpg" alt="Cachopo de Galanga GastroBar" width="400" height="400" class="aspect-square" loading="lazy">
+                    <div class="zoom-overlay"><i data-lucide="zoom-in" class="w-6 h-6 text-white"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+        <div class="lightbox-nav lightbox-prev" onclick="prevLightbox()">&#10094;</div>
+        <div class="lightbox-nav lightbox-next" onclick="nextLightbox()">&#10095;</div>
+        <img id="lightbox-img" src="" alt="Foto ampliada de Galanga GastroBar">
+    </div>
+
+    <!-- ========== RESENAS ========== -->
+    <section id="resenas" class="py-20 md:py-32 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">Resenas</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <div class="divider-gold mx-auto mb-6"></div>
+                <!-- Rating badge -->
+                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+                    <div class="flex gap-1">
+                        <span class="text-gold text-lg">&#9733;</span>
+                        <span class="text-gold text-lg">&#9733;</span>
+                        <span class="text-gold text-lg">&#9733;</span>
+                        <span class="text-gold text-lg">&#9733;</span>
+                        <span class="text-gold text-lg">&#9733;</span>
+                    </div>
+                    <span class="text-white font-bold text-lg">4.9/5</span>
+                    <span class="text-white/50 text-sm">en Google</span>
+                </div>
+            </div>
+
+            <!-- Reviews grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Review 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">IA</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Ivan Aguero</div>
+                                <div class="flex gap-0.5 mt-0.5">
+                                    <span class="text-gold text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-badge badge-google">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            Google
+                        </span>
+                    </div>
+                    <p class="text-white/65 text-sm leading-relaxed">
+                        "Una buena racion de croquetas muy buenas, el Cachopo un poco pequeno bajo mi gusto, pero exquisito, tienen una gran variedad de cachopos para todos los gustos, lo unico la tarta de queso... Se puede mejorar bastante, pero muy bien, muy buen ambiente, buen personal, y unas vistas maravillosas al campo de golf..."
+                    </p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">E</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Erlantz</div>
+                                <div class="flex gap-0.5 mt-0.5">
+                                    <span class="text-gold text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-badge badge-google">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            Google
+                        </span>
+                    </div>
+                    <p class="text-white/65 text-sm leading-relaxed">
+                        "Experiencia increible! Desde el primer momento, la atencion fue de 10! El personal es increiblemente atento y amable. Pero lo realmente increible son sus cachopos... simplemente espectaculares, de los mejores que he probado. Ademas, las vistas del campo de golf son impresionantes..."
+                    </p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">BB</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Beurko Berria</div>
+                                <div class="flex gap-0.5 mt-0.5">
+                                    <span class="text-gold text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-badge badge-google">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            Google
+                        </span>
+                    </div>
+                    <p class="text-white/65 text-sm leading-relaxed">
+                        "Vistas espectaculares!! Local muy agradable; techos altos, cristalera, mucha luz, ... Comida con buena relacion calidad precio. Espacioso para estar con ninos. En resumen que la comida del dia de la madre salio redonda!! Muchas gracias a Gastrobar por la atencion recibida."
+                    </p>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">AO</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Aitor O</div>
+                                <div class="flex gap-0.5 mt-0.5">
+                                    <span class="text-gold text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-badge badge-tripadvisor">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#00aa6c" stroke-width="2"/><circle cx="8.5" cy="12" r="2.5" fill="#00aa6c"/><circle cx="15.5" cy="12" r="2.5" fill="#00aa6c"/><path d="M12 6c-2.5 0-4.5 1-6 3h12c-1.5-2-3.5-3-6-3z" fill="#00aa6c"/></svg>
+                            TripAdvisor
+                        </span>
+                    </div>
+                    <p class="text-white/65 text-sm leading-relaxed">
+                        "Sitio con buenisima atencion, comida muy rica y sin pretensiones, grandes vistas a los montes y buena terraza con parking."
+                    </p>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">AT</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Anna T</div>
+                                <div class="flex gap-0.5 mt-0.5">
+                                    <span class="text-gold text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-badge badge-tripadvisor">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#00aa6c" stroke-width="2"/><circle cx="8.5" cy="12" r="2.5" fill="#00aa6c"/><circle cx="15.5" cy="12" r="2.5" fill="#00aa6c"/><path d="M12 6c-2.5 0-4.5 1-6 3h12c-1.5-2-3.5-3-6-3z" fill="#00aa6c"/></svg>
+                            TripAdvisor
+                        </span>
+                    </div>
+                    <p class="text-white/65 text-sm leading-relaxed">
+                        "Service food and experiences were so amazing!! Recommend to anyone that enjoys friendly customer service and cosy food"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== UBICACION Y HORARIOS ========== -->
+    <section id="ubicacion" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">Ubicacion</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mt-3 mb-4">
+                    Donde encontrarnos
+                </h2>
+                <div class="divider-gold mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                <!-- Map -->
+                <div class="rounded-2xl overflow-hidden shadow-xl" data-aos="fade-right">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Galanga+GastroBar,+Campo+de+Golf+Uraburu,+Galdakao&output=embed"
+                        width="100%"
+                        height="450"
+                        style="border:0; min-height:400px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa de Galanga GastroBar en Galdakao">
+                    </iframe>
+                </div>
+
+                <!-- Info -->
+                <div data-aos="fade-left">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-6">
+                        <h3 class="font-display text-2xl font-bold text-primary mb-6">Informacion de contacto</h3>
+
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-gold/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-primary text-sm">Direccion</div>
+                                    <div class="text-gray-600 text-sm">Campo de Golf Uraburu, Galdakao, Bizkaia</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-gold/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5 text-gold"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-primary text-sm">Telefono</div>
+                                    <a href="tel:944561356" class="text-gold hover:text-amber transition-colors text-sm font-medium">944 56 13 56</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-gold/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="car" class="w-5 h-5 text-gold"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-primary text-sm">Parking</div>
+                                    <div class="text-gray-600 text-sm">Parking gratuito junto al restaurante</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horarios -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="font-display text-2xl font-bold text-primary mb-6 flex items-center gap-2">
+                            <i data-lucide="clock" class="w-6 h-6 text-gold"></i>
+                            Horarios
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                <span class="text-gray-700 text-sm font-medium">Lunes</span>
+                                <span class="text-red-500 text-sm font-semibold">Cerrado</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                <span class="text-gray-700 text-sm font-medium">Martes - Jueves</span>
+                                <span class="text-primary text-sm font-semibold">11:00 - 19:00</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                <span class="text-gray-700 text-sm font-medium">Viernes - Sabado</span>
+                                <span class="text-gold text-sm font-bold">11:00 - 21:00</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-gray-700 text-sm font-medium">Domingo</span>
+                                <span class="text-primary text-sm font-semibold">11:00 - 19:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section class="cta-bg relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary-light/85"></div>
+        <div class="relative z-10 py-20 md:py-28 text-center px-4" data-aos="zoom-in">
+            <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Reserva tu mesa con <span class="text-gold italic">vistas</span>
+            </h2>
+            <p class="text-white/70 text-lg max-w-xl mx-auto mb-10">
+                Cachopos espectaculares, cocina vasca y los mejores atardeceres de Galdakao te esperan.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:944561356" class="btn-cta bg-gold text-primary font-bold px-10 py-4 rounded-full text-lg hover:bg-amber transition-colors inline-flex items-center justify-center gap-3">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    944 56 13 56
+                </a>
+                <a href="tel:944561356" class="border-2 border-gold text-gold font-semibold px-10 py-4 rounded-full text-lg hover:bg-gold hover:text-primary transition-colors inline-flex items-center justify-center gap-3">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    Reservar Mesa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-primary py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Brand -->
+                <div>
+                    <span class="font-display text-2xl font-bold text-white">Galanga</span>
+                    <span class="text-gold text-sm font-body font-light tracking-widest uppercase ml-2">GastroBar</span>
+                    <p class="text-white/50 text-sm mt-4 leading-relaxed">
+                        Cocina vasca, cachopos artesanales y terraza con vistas en el Campo de Golf Uraburu, Galdakao.
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Enlaces</h4>
+                    <div class="space-y-2">
+                        <a href="#nosotros" class="block text-white/50 hover:text-gold text-sm transition-colors">Nosotros</a>
+                        <a href="#carta" class="block text-white/50 hover:text-gold text-sm transition-colors">Carta</a>
+                        <a href="#galeria" class="block text-white/50 hover:text-gold text-sm transition-colors">Galeria</a>
+                        <a href="#resenas" class="block text-white/50 hover:text-gold text-sm transition-colors">Resenas</a>
+                        <a href="#ubicacion" class="block text-white/50 hover:text-gold text-sm transition-colors">Ubicacion</a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contacto</h4>
+                    <div class="space-y-3">
+                        <a href="tel:944561356" class="flex items-center gap-2 text-gold hover:text-amber text-sm transition-colors">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            944 56 13 56
+                        </a>
+                        <div class="flex items-start gap-2 text-white/50 text-sm">
+                            <i data-lucide="map-pin" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
+                            Campo de Golf Uraburu, Galdakao, Bizkaia
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/30 text-xs">&copy; <span id="year"></span> Galanga GastroBar. Todos los derechos reservados.</p>
+                <p class="text-white/20 text-xs">Demo creada por <span class="text-gold/50">G&G Elcano</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== WHATSAPP FLOAT ========== -->
+    <a href="tel:944561356" class="whatsapp-float" aria-label="Llamar a Galanga GastroBar" title="Llamar: 944 56 13 56">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </a>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // AOS init
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80,
+        });
+
+        // Lucide icons
+        lucide.createIcons();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 60) {
+                nav.classList.add('navbar-scrolled');
+                nav.classList.remove('navbar-transparent');
+            } else {
+                nav.classList.remove('navbar-scrolled');
+                nav.classList.add('navbar-transparent');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseFloat(entry.target.dataset.target);
+                    const isDecimal = target % 1 !== 0;
+                    let count = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            entry.target.textContent = isDecimal ? target.toFixed(1) : target;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = isDecimal ? count.toFixed(1) : Math.floor(count);
+                        }
+                    }, 35);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+
+        // Lightbox
+        const galleryImages = [
+            'img/terraza.jpg',
+            'img/comida2.jpg',
+            'img/comida3.jpg',
+            'img/eventos.jpg',
+            'img/panoramica.jpg',
+            'img/comida1.jpg'
+        ];
+        let currentLightbox = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentLightbox = index;
+            lightboxImg.src = galleryImages[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function nextLightbox() {
+            currentLightbox = (currentLightbox + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentLightbox];
+        }
+        function prevLightbox() {
+            currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentLightbox];
+        }
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextLightbox();
+            if (e.key === 'ArrowLeft') prevLightbox();
+        });
+    </script>
+
+</body>
+</html>

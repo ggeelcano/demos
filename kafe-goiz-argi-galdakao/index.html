@@ -3,1570 +3,937 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kafe Goiz Argi - Cafeteria y bar en Galdakao. Uno de los mejores cafes de Galdakao, pintxos, hamburguesas, rabas y combinados. Plaza Santi Bruard, Kurtzea.">
-    <title>Kafe Goiz Argi | Cafeteria Bar en Galdakao - Cafe de Especialidad, Pintxos y Hamburguesas</title>
+    <title>Kafe Goiz Argi — Cafeteria y Bar en Galdakao</title>
+    <meta name="description" content="Kafe Goiz Argi en Galdakao. El mejor cafe de Galdakao, pintxos, hamburguesas, rabas y combinados. Terraza, ambiente familiar y ocio. 4.3/5 en Google.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%98%95</text></svg>">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#c8942a',
+                    secondary: '#d4a843',
+                    accent: '#1a0e08',
+                    dark: '#1a0e08',
+                    light: '#fdf8f0',
+                    cream: '#fdf8f0',
+                    amber: '#c8942a',
+                    gold: '#d4a843',
+                    coffee: '#2e1a0d',
+                    mocha: '#3d2515',
+                },
+                fontFamily: {
+                    display: ['"DM Serif Display"', 'serif'],
+                    body: ['"Inter"', 'sans-serif'],
+                }
+            }
+        }
+    }
+    </script>
+
     <style>
-        :root {
-            --cafe-oscuro: #1a0e08;
-            --cafe-medio: #3b2314;
-            --cafe-suave: #5c3a24;
-            --ambar: #c8942a;
-            --dorado: #d4a843;
-            --crema: #fdf8f0;
-            --crema-oscuro: #f5ebe0;
-            --texto: #2c1810;
-            --texto-claro: #6b5244;
-            --blanco: #ffffff;
+        * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-display { font-family: 'DM Serif Display', serif; }
+
+        html { scroll-behavior: smooth; }
+
+        .navbar-scrolled {
+            background: rgba(26, 14, 8, 0.97) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 24px rgba(0,0,0,0.25);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--texto);
-            background-color: var(--crema);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'DM Serif Display', serif;
-            font-weight: 400;
-        }
-
-        /* ========== NAV ========== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(26, 14, 8, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0 2rem;
-            transition: box-shadow 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .nav-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            color: var(--dorado);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-brand span {
-            color: var(--crema);
-            font-weight: 300;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--crema-oscuro);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--dorado);
-        }
-
-        .nav-cta {
-            background: var(--ambar);
-            color: var(--cafe-oscuro) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            transition: background 0.3s, transform 0.2s !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--dorado);
-            transform: translateY(-1px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--crema);
-            transition: all 0.3s;
-            display: block;
-        }
-
-        /* ========== HERO ========== */
-        .hero {
+        .btn-cta {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            background-image: url('../../research/fotos-goiz-argi/fachada-terraza-tripadvisor.jpg');
-            background-size: cover;
-            background-position: center;
-            background-color: var(--cafe-oscuro);
-            padding: 0 1.5rem 4rem;
+            overflow: hidden;
         }
-
-        .hero::before {
+        .btn-cta::after {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(26, 14, 8, 0.3) 0%,
-                rgba(26, 14, 8, 0.2) 40%,
-                rgba(26, 14, 8, 0.7) 70%,
-                rgba(26, 14, 8, 0.95) 100%
-            );
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+            transform: rotate(30deg);
+            transition: 0.6s;
+        }
+        .btn-cta:hover::after {
+            left: 100%;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            text-align: center;
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(200, 148, 42, 0.15);
-            border: 1px solid rgba(200, 148, 42, 0.4);
-            color: var(--dorado);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
+        .review-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .hero-badge svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--dorado);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--crema);
-            line-height: 1.15;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 em {
-            color: var(--dorado);
-            font-style: italic;
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            color: rgba(253, 248, 240, 0.8);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-rating {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-stars {
-            color: #fbbf24;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        .hero-rating-text {
-            color: var(--crema);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .hero-rating-text strong {
-            font-size: 1rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--ambar);
-            color: var(--cafe-oscuro);
-        }
-
-        .btn-primary:hover {
-            background: var(--dorado);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(200, 148, 42, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--crema);
-            border: 2px solid rgba(253, 248, 240, 0.4);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--crema);
-            background: rgba(253, 248, 240, 0.1);
-        }
-
-        .btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* ========== SECCIONES COMUNES ========== */
-        section {
-            padding: 5rem 1.5rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--ambar);
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--cafe-oscuro);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            color: var(--texto-claro);
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        /* ========== ABOUT ========== */
-        .about {
-            background: var(--cafe-oscuro);
-            color: var(--crema);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about .section-label {
-            color: var(--dorado);
-        }
-
-        .about .section-title {
-            color: var(--crema);
-        }
-
-        .about .section-desc {
-            color: rgba(253, 248, 240, 0.75);
-            margin-bottom: 2rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-
-        .about-feature {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 1.2rem;
-            text-align: center;
-        }
-
-        .about-feature .af-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .about-feature .af-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1rem;
-            color: var(--dorado);
-            margin-bottom: 0.3rem;
-        }
-
-        .about-feature .af-text {
-            font-size: 0.8rem;
-            color: rgba(253,248,240,0.6);
-        }
-
-        .about-image {
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 4/5;
-            background-image: url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&q=80');
-            background-size: cover;
-            background-position: center;
-            background-color: var(--cafe-medio);
-            min-height: 400px;
-            position: relative;
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            border: 1px solid rgba(200,148,42,0.2);
-        }
-
-        /* ========== ESPECIALIDADES ========== */
-        .especialidades {
-            background: var(--crema);
-        }
-
-        .especialidades-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .especialidades-header .section-desc {
-            margin: 0.5rem auto 0;
-        }
-
-        .esp-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .esp-card {
-            background: var(--blanco);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .esp-card:hover {
+        .review-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.10);
         }
 
-        .esp-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            background-color: var(--crema-oscuro);
+        .hero-bg {
+            background: linear-gradient(135deg, #1a0e08 0%, #2e1a0d 25%, #3d2515 50%, #2e1a0d 75%, #1a0e08 100%);
             position: relative;
         }
-
-        .esp-img::after {
+        .hero-bg::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.2));
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(200,148,42,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212,168,67,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(200,148,42,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(60deg, transparent 40%, rgba(200,148,42,0.03) 50%, transparent 60%),
+                linear-gradient(-60deg, transparent 40%, rgba(212,168,67,0.02) 50%, transparent 60%);
+            pointer-events: none;
         }
 
-        .esp-body {
-            padding: 1.5rem;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
         }
 
-        .esp-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--ambar);
-            margin-bottom: 0.5rem;
+        @keyframes steam {
+            0% { opacity: 0; transform: translateY(0) scaleX(1); }
+            50% { opacity: 0.6; transform: translateY(-8px) scaleX(1.2); }
+            100% { opacity: 0; transform: translateY(-16px) scaleX(0.8); }
         }
+        .steam { animation: steam 2s ease-in-out infinite; }
+        .steam-delay { animation: steam 2s ease-in-out 0.6s infinite; }
+        .steam-delay2 { animation: steam 2s ease-in-out 1.2s infinite; }
 
-        .esp-card h3 {
-            font-size: 1.3rem;
-            color: var(--cafe-oscuro);
-            margin-bottom: 0.5rem;
-        }
-
-        .esp-card p {
-            font-size: 0.9rem;
-            color: var(--texto-claro);
-            line-height: 1.6;
-        }
-
-        /* Card destacada (cafe) */
-        .esp-card.destacada {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .esp-card.destacada .esp-img {
-            height: 100%;
-            min-height: 280px;
-            border-radius: 16px 0 0 16px;
-        }
-
-        .esp-card.destacada .esp-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .esp-estrella {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(200,148,42,0.1);
-            color: var(--ambar);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            margin-top: 0.8rem;
-            width: fit-content;
-        }
-
-        /* Fila inferior de 3 cards normales */
-        .esp-grid-bottom {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        /* ========== SERVICIOS EXTRA ========== */
-        .servicios-extra {
-            background: var(--crema-oscuro);
-        }
-
-        .servicios-extra-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .se-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: var(--blanco);
-            border-radius: 12px;
-            transition: transform 0.3s;
-        }
-
-        .se-item:hover {
-            transform: translateY(-3px);
-        }
-
-        .se-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(200,148,42,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.4rem;
-        }
-
-        .se-item h4 {
-            font-size: 1rem;
-            color: var(--cafe-oscuro);
-            margin-bottom: 0.3rem;
-        }
-
-        .se-item p {
-            font-size: 0.8rem;
-            color: var(--texto-claro);
-        }
-
-        .servicios-extra .section-header {
-            text-align: center;
-        }
-
-        .servicios-extra .section-desc {
-            margin: 0.5rem auto 0;
-        }
-
-        /* ========== RESENAS ========== */
-        .resenas {
-            background: var(--cafe-oscuro);
-            color: var(--crema);
-        }
-
-        .resenas-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .resenas .section-title {
-            color: var(--crema);
-        }
-
-        .resenas-overall {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            margin-top: 1rem;
-        }
-
-        .resenas-overall .ro-score {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--dorado);
-        }
-
-        .resenas-overall .ro-stars {
-            color: #fbbf24;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .resenas-overall .ro-count {
-            font-size: 0.8rem;
-            color: rgba(253,248,240,0.6);
-        }
-
-        .resenas-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-        }
-
-        .resena-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 14px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s;
-        }
-
-        .resena-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .resena-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: #34d399;
-            background: rgba(52, 211, 153, 0.1);
-            padding: 0.25rem 0.6rem;
-            border-radius: 50px;
-            margin-bottom: 0.8rem;
-            width: fit-content;
-        }
-
-        .resena-badge svg {
-            width: 10px;
-            height: 10px;
-            fill: #34d399;
-        }
-
-        .resena-stars {
-            color: #fbbf24;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-        }
-
-        .resena-text {
-            font-size: 0.88rem;
-            color: rgba(253,248,240,0.8);
-            line-height: 1.6;
-            flex: 1;
-            font-style: italic;
-        }
-
-        .resena-author {
-            margin-top: 1rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.8rem;
-            color: rgba(253,248,240,0.5);
-        }
-
-        /* ========== HORARIO + MAPA ========== */
-        .ubicacion {
-            background: var(--crema);
-        }
-
-        .ubicacion-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .horario-card {
-            background: var(--blanco);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-        }
-
-        .horario-card h3 {
-            font-size: 1.5rem;
-            color: var(--cafe-oscuro);
-            margin-bottom: 1.5rem;
-        }
-
-        .horario-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            font-size: 0.9rem;
-        }
-
-        .horario-row:last-child {
-            border-bottom: none;
-        }
-
-        .horario-dia {
-            font-weight: 500;
-            color: var(--cafe-oscuro);
-        }
-
-        .horario-hora {
-            color: var(--texto-claro);
-        }
-
-        .horario-especial {
-            color: var(--ambar);
-            font-weight: 600;
-        }
-
-        .contacto-info {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--crema-oscuro);
-        }
-
-        .contacto-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: var(--texto-claro);
-        }
-
-        .contacto-item svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--ambar);
-            flex-shrink: 0;
-        }
-
-        .contacto-item a {
-            color: var(--cafe-oscuro);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contacto-item a:hover {
-            color: var(--ambar);
-        }
-
-        .mapa-wrapper {
-            border-radius: 16px;
+        .gallery-item {
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            background: var(--crema-oscuro);
+            border-radius: 1rem;
+            min-height: 220px;
         }
-
-        .mapa-wrapper iframe {
-            width: 100%;
-            height: 450px;
-            border: 0;
-            display: block;
-        }
-
-        .transporte {
-            margin-top: 1rem;
-            background: var(--blanco);
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-
-        .transporte h4 {
-            font-size: 0.9rem;
-            color: var(--cafe-oscuro);
-            margin-bottom: 0.6rem;
-        }
-
-        .transporte p {
-            font-size: 0.8rem;
-            color: var(--texto-claro);
-            line-height: 1.6;
-        }
-
-        /* ========== CTA BANNER ========== */
-        .cta-banner {
-            background: linear-gradient(135deg, var(--cafe-medio), var(--cafe-oscuro));
-            text-align: center;
-            padding: 4rem 1.5rem;
-        }
-
-        .cta-banner h2 {
-            font-size: 2.2rem;
-            color: var(--crema);
-            margin-bottom: 0.8rem;
-        }
-
-        .cta-banner p {
-            color: rgba(253,248,240,0.7);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: #fff;
-        }
-
-        .btn-whatsapp:hover {
-            background: #20bd5a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-phone {
-            background: var(--ambar);
-            color: var(--cafe-oscuro);
-        }
-
-        .btn-phone:hover {
-            background: var(--dorado);
-            transform: translateY(-2px);
-        }
-
-        /* ========== FOOTER ========== */
-        footer {
-            background: #0f0805;
-            color: rgba(253,248,240,0.5);
-            padding: 3rem 1.5rem 1.5rem;
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .footer-brand h3 {
-            font-size: 1.3rem;
-            color: var(--dorado);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-brand p {
-            font-size: 0.85rem;
-            line-height: 1.7;
-        }
-
-        .footer-col h4 {
-            color: var(--crema);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-col a {
-            display: block;
-            color: rgba(253,248,240,0.5);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: var(--dorado);
-        }
-
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            text-align: center;
-            font-size: 0.75rem;
-        }
-
-        /* ========== WHATSAPP FLOTANTE ========== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 999;
-            width: 56px;
-            height: 56px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            animation: pulse-wa 2s infinite;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        .whatsapp-float svg {
-            width: 28px;
-            height: 28px;
-            fill: #fff;
-        }
-
-        @keyframes pulse-wa {
-            0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6); }
-        }
-
-        /* ========== ANIMACIONES ========== */
-        .fade-in {
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,14,8,0.7) 0%, transparent 50%);
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition: opacity 0.3s ease;
         }
-
-        .fade-in.visible {
+        .gallery-item:hover::after {
             opacity: 1;
-            transform: translateY(0);
         }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .esp-grid {
-                grid-template-columns: 1fr;
-            }
-            .esp-card.destacada {
-                grid-column: span 1;
-                grid-template-columns: 1fr;
-            }
-            .esp-card.destacada .esp-img {
-                min-height: 200px;
-                border-radius: 16px 16px 0 0;
-            }
-            .esp-grid-bottom {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .resenas-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #c8942a, #d4a843);
+            border-radius: 2px;
         }
 
         @media (max-width: 768px) {
-            .fade-in {
+            [data-aos] {
                 opacity: 1 !important;
                 transform: none !important;
             }
-
-            nav {
-                padding: 0 1rem;
-            }
-
-            .nav-inner {
-                height: 60px;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: rgba(26, 14, 8, 0.98);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.8rem;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-            }
-
-            .nav-links .nav-cta {
-                margin-top: 0.5rem;
-                display: inline-block;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero {
-                min-height: 90vh;
-                padding: 0 1rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-sub {
-                font-size: 0.95rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-
-            section {
-                padding: 3.5rem 1rem;
-            }
-
-            .section-title {
-                font-size: 1.9rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-image {
-                aspect-ratio: 16/10;
-                min-height: 250px;
-                order: -1;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
-            }
-
-            .esp-grid-bottom {
-                grid-template-columns: 1fr;
-            }
-
-            .servicios-extra-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .resenas-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ubicacion-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .mapa-wrapper iframe {
-                height: 300px;
-            }
-
-            .cta-banner h2 {
-                font-size: 1.7rem;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 1.5rem;
-            }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .servicios-extra-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .resenas-overall {
-                flex-direction: column;
-                gap: 0.3rem;
-                padding: 1rem;
-            }
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a0e08; }
+        ::-webkit-scrollbar-thumb { background: #c8942a; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="bg-cream text-dark font-body">
 
-    <!-- NAV -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-brand">Goiz Argi <span>Kafetegia</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#especialidades">Especialidades</a></li>
-                <li><a href="#resenas">Resenas</a></li>
-                <li><a href="#ubicacion">Ubicacion</a></li>
-                <li><a href="tel:944740826" class="nav-cta">Llamar</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+    <!-- ========== NAVBAR ========== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-2">
+                    <span class="text-2xl md:text-3xl font-display text-cream">Goiz Argi</span>
+                    <span class="text-primary text-sm font-light tracking-widest uppercase hidden sm:inline">Kafetegia</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#nosotros" class="text-cream/80 hover:text-primary transition-colors text-sm tracking-wide">Nosotros</a>
+                    <a href="#carta" class="text-cream/80 hover:text-primary transition-colors text-sm tracking-wide">Carta</a>
+                    <a href="#resenas" class="text-cream/80 hover:text-primary transition-colors text-sm tracking-wide">Opiniones</a>
+                    <a href="#ubicacion" class="text-cream/80 hover:text-primary transition-colors text-sm tracking-wide">Ubicacion</a>
+                    <a href="tel:+34944740826" class="btn-cta bg-primary hover:bg-amber text-dark font-semibold px-6 py-2.5 rounded-full text-sm transition-all">
+                        <i data-lucide="phone" class="inline w-4 h-4 mr-1 -mt-0.5"></i> Llamar
+                    </a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden text-cream p-2" aria-label="Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden pb-6">
+                <div class="flex flex-col gap-4 pt-4 border-t border-cream/10">
+                    <a href="#nosotros" class="text-cream/80 hover:text-primary transition-colors text-sm">Nosotros</a>
+                    <a href="#carta" class="text-cream/80 hover:text-primary transition-colors text-sm">Carta</a>
+                    <a href="#resenas" class="text-cream/80 hover:text-primary transition-colors text-sm">Opiniones</a>
+                    <a href="#ubicacion" class="text-cream/80 hover:text-primary transition-colors text-sm">Ubicacion</a>
+                    <div class="flex gap-3 pt-2">
+                        <a href="tel:+34944740826" class="btn-cta bg-primary text-dark font-semibold px-5 py-2.5 rounded-full text-sm flex-1 text-center">
+                            <i data-lucide="phone" class="inline w-4 h-4 mr-1"></i> Fijo
+                        </a>
+                        <a href="tel:+34665728576" class="bg-mocha text-cream font-semibold px-5 py-2.5 rounded-full text-sm flex-1 text-center border border-primary/30">
+                            <i data-lucide="smartphone" class="inline w-4 h-4 mr-1"></i> Movil
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                Cafeteria de referencia en Galdakao
+    <!-- ========== HERO ========== -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-32">
+            <div data-aos="fade-down" data-aos-delay="100" class="inline-flex items-center gap-2 bg-cream/10 backdrop-blur-sm border border-cream/20 rounded-full px-5 py-2 mb-8">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span class="text-cream/90 text-sm">4.3/5 en Google &middot; 306 resenas</span>
             </div>
-            <h1>Donde el <em>mejor cafe</em> se sirve con sonrisa</h1>
-            <p class="hero-sub">Cafe de especialidad, pintxos, hamburguesas y el mejor ambiente de Galdakao. Desde la plaza Santi Bruard, Kurtzea.</p>
-            <div class="hero-rating">
-                <span class="hero-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <span class="hero-rating-text"><strong>4.3/5</strong> en Google &middot; 306 resenas</span>
-            </div>
-            <div class="hero-buttons">
-                <a href="tel:944740826" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    Llamar ahora
+
+            <h1 data-aos="fade-up" data-aos-delay="200" class="font-display text-cream text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                Kafe Goiz Argi
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="300" class="text-cream/70 text-lg sm:text-xl md:text-2xl font-light max-w-2xl mx-auto mb-4">
+                El mejor cafe de Galdakao
+            </p>
+            <p data-aos="fade-up" data-aos-delay="350" class="text-cream/50 text-sm sm:text-base font-light max-w-xl mx-auto mb-10">
+                Cafeteria &middot; Bar &middot; Pintxos &middot; Hamburguesas &middot; Terraza
+            </p>
+
+            <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="tel:+34944740826" class="btn-cta bg-primary hover:bg-gold text-dark font-semibold px-8 py-4 rounded-full text-base transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i> Reservar mesa
                 </a>
-                <a href="https://wa.me/34665728576" class="btn btn-outline" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-                    WhatsApp
+                <a href="#carta" class="border border-cream/30 hover:border-primary text-cream hover:text-primary px-8 py-4 rounded-full text-base transition-all flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-5 h-5"></i> Ver la carta
+                </a>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="500" class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div class="text-primary font-display text-3xl mb-1">
+                        <span class="counter" data-target="306">0</span>
+                    </div>
+                    <div class="text-cream/50 text-xs uppercase tracking-wider">Resenas Google</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-display text-3xl mb-1">4.3</div>
+                    <div class="text-cream/50 text-xs uppercase tracking-wider">Puntuacion</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-display text-3xl mb-1">10/10</div>
+                    <div class="text-cream/50 text-xs uppercase tracking-wider">Su cafe</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-display text-3xl mb-1">7</div>
+                    <div class="text-cream/50 text-xs uppercase tracking-wider">Dias abierto</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-cream/30"></i>
+        </div>
+    </section>
+
+    <!-- ========== SOBRE NOSOTROS ========== -->
+    <section id="nosotros" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div data-aos="fade-right" class="relative">
+                    <div class="rounded-2xl overflow-hidden min-h-[350px] md:min-h-[450px] relative" style="background: linear-gradient(135deg, #2e1a0d 0%, #3d2515 40%, #4a2e1c 70%, #2e1a0d 100%);">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <svg class="w-32 h-32 mx-auto text-primary/20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 40 h50 v35 q0 15 -25 15 q-25 0 -25 -15 z" />
+                                    <path d="M70 48 q15 0 15 12 q0 12 -15 12" />
+                                    <path d="M15 95 h60" stroke-linecap="round"/>
+                                    <path d="M35 35 q3-8 0-12" class="steam" opacity="0.4"/>
+                                    <path d="M45 32 q3-10 0-15" class="steam-delay" opacity="0.3"/>
+                                    <path d="M55 35 q3-8 0-12" class="steam-delay2" opacity="0.4"/>
+                                </svg>
+                                <p class="text-primary/30 text-sm mt-6 tracking-widest uppercase">Desde Galdakao</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-6 right-6 w-20 h-20 rounded-full border border-primary/10"></div>
+                        <div class="absolute bottom-10 left-8 w-14 h-14 rounded-full border border-primary/10"></div>
+                    </div>
+                    <div class="absolute -bottom-4 -right-2 md:-right-6 bg-dark text-cream px-5 py-3 rounded-xl shadow-xl">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-primary"></i>
+                            <span class="text-sm font-medium">Plaza Santi Bruard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <span class="text-primary text-sm font-semibold tracking-widest uppercase">Sobre nosotros</span>
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-dark mt-3 mb-6">
+                        Mucho mas que una cafeteria
+                    </h2>
+                    <div class="section-divider mb-8"></div>
+                    <p class="text-dark/70 text-base md:text-lg leading-relaxed mb-6">
+                        Goiz Argi Kafetegia es un clasico de Galdakao situado en la plaza Santi Bruard, en el barrio de Kurtzea. Un local con encanto, decorado con instrumentos musicales, donde el cafe es el protagonista absoluto: reconocido por los vecinos como el mejor cafe de Galdakao.
+                    </p>
+                    <p class="text-dark/70 text-base md:text-lg leading-relaxed mb-8">
+                        Entre semana, ambiente relajado para disfrutar de un buen desayuno o pintxo. Los viernes y sabados, la cosa se anima. Terraza exterior, futbolin, diana de dardos y un equipo excepcional liderado por Carolina, Igor y Vanesa que haran de cada visita algo especial.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 bg-dark/5 rounded-xl px-4 py-3">
+                            <i data-lucide="coffee" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                            <span class="text-sm font-medium">Cafe de especialidad</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark/5 rounded-xl px-4 py-3">
+                            <i data-lucide="sun" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                            <span class="text-sm font-medium">Terraza exterior</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark/5 rounded-xl px-4 py-3">
+                            <i data-lucide="users" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                            <span class="text-sm font-medium">Espacio familiar</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-dark/5 rounded-xl px-4 py-3">
+                            <i data-lucide="gamepad-2" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                            <span class="text-sm font-medium">Futbolin y dardos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CARTA / SERVICIOS ========== -->
+    <section id="carta" class="py-20 md:py-32 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-0 left-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-gold/5 blur-3xl translate-x-1/3 translate-y-1/3"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-primary text-sm font-semibold tracking-widest uppercase">Nuestra carta</span>
+                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-cream mt-3 mb-4">
+                    Especialidades de la casa
+                </h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-cream/60 max-w-2xl mx-auto">
+                    Desde el cafe que nos ha hecho famosos hasta las mejores hamburguesas y rabas del barrio
+                </p>
+            </div>
+
+            <!-- Featured: Cafe -->
+            <div data-aos="fade-up" class="mb-12 bg-gradient-to-r from-coffee to-mocha rounded-2xl p-8 md:p-10 border border-primary/20 relative overflow-hidden">
+                <div class="absolute top-4 right-4 bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Estrella de la casa</div>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="coffee" class="w-10 h-10 text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-2xl md:text-3xl text-cream mb-2">Nuestro cafe: 10/10</h3>
+                        <p class="text-cream/60 text-base md:text-lg">Reconocido unanimemente como el mejor cafe de Galdakao. Nuestros clientes lo califican con un 10 sobre 10. El secreto: pasion por cada taza que preparamos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div data-aos="fade-up" data-aos-delay="100" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="utensils" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Pintxos en barra</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Variedad de pintxos caseros renovados a diario. La barra siempre surtida, perfecta para picar a cualquier hora.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="beef" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Hamburguesas</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Nuestras hamburguesas son un imprescindible. Hechas con producto de calidad, cada bocado lo confirma.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="fish" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Rabas</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Crujientes por fuera, tiernas por dentro. Nuestras rabas son otro clasico de la casa que no puedes dejar de probar.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="glass-water" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Combinados</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Amplia carta de combinados para disfrutar en el mejor ambiente, especialmente los viernes y sabados noche.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="500" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="sunrise" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Desayunos</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Empieza el dia con nuestro cafe de 10 acompanado de tostadas, bolleria y opciones variadas cada manana.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="600" class="service-card bg-coffee/80 rounded-2xl p-7 border border-cream/5">
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                        <i data-lucide="tree-palm" class="w-7 h-7 text-primary"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-cream mb-2">Terraza y ocio</h3>
+                    <p class="text-cream/50 text-sm leading-relaxed">Terraza exterior en la plaza, futbolin, diana de dardos, WiFi y un rincon con juguetes para los mas pequenos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALERIA ========== -->
+    <section id="galeria" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-primary text-sm font-semibold tracking-widest uppercase">Nuestro espacio</span>
+                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-dark mt-3 mb-4">
+                    Conoce Goiz Argi
+                </h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-dark/60 max-w-2xl mx-auto">Decoracion con instrumentos musicales, ambiente unico y un rincon para cada momento</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Item 1: Instrumentos - large -->
+                <div data-aos="fade-up" data-aos-delay="100" class="gallery-item col-span-2 row-span-2" style="background: linear-gradient(135deg, #3d2515, #2e1a0d 60%, #1a0e08); min-height: 300px;">
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="text-center">
+                            <svg class="w-24 h-24 mx-auto text-primary/25" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <ellipse cx="50" cy="65" rx="18" ry="22" />
+                                <ellipse cx="50" cy="30" rx="10" ry="12" />
+                                <line x1="50" y1="18" x2="50" y2="8" />
+                                <line x1="45" y1="8" x2="55" y2="8" />
+                                <line x1="42" y1="42" x2="42" y2="53" />
+                                <line x1="50" y1="42" x2="50" y2="53" />
+                                <line x1="58" y1="42" x2="58" y2="53" />
+                                <circle cx="50" cy="65" r="4" />
+                            </svg>
+                            <p class="text-primary/40 text-sm mt-4 tracking-widest uppercase">Decoracion musical</p>
+                            <p class="text-cream/30 text-xs mt-1">Instrumentos y ambiente unico</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="gallery-item" style="background: linear-gradient(150deg, #4a2e1c, #2e1a0d);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="coffee" class="w-12 h-12 text-primary/30 mx-auto"></i>
+                            <p class="text-primary/40 text-xs mt-3 tracking-wider uppercase">Cafe 10/10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="gallery-item" style="background: linear-gradient(150deg, #2e1a0d, #3d2515);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="utensils" class="w-12 h-12 text-primary/30 mx-auto"></i>
+                            <p class="text-primary/40 text-xs mt-3 tracking-wider uppercase">Pintxos caseros</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="gallery-item" style="background: linear-gradient(135deg, #1a3325, #2e1a0d);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="sun" class="w-12 h-12 text-primary/30 mx-auto"></i>
+                            <p class="text-primary/40 text-xs mt-3 tracking-wider uppercase">Terraza</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="500" class="gallery-item" style="background: linear-gradient(135deg, #2e1a0d, #4a2e1c);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="gamepad-2" class="w-12 h-12 text-primary/30 mx-auto"></i>
+                            <p class="text-primary/40 text-xs mt-3 tracking-wider uppercase">Futbolin y dardos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RESENAS REALES ========== -->
+    <section id="resenas" class="py-20 md:py-32 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-10 w-72 h-72 rounded-full bg-primary/5 blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gold/5 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-primary text-sm font-semibold tracking-widest uppercase">Opiniones reales</span>
+                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-cream mt-3 mb-4">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <div class="inline-flex items-center gap-3 bg-cream/5 border border-cream/10 rounded-full px-6 py-3 mt-4">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span class="text-cream font-semibold text-lg">4.3</span>
+                    <span class="text-cream/50">/5</span>
+                    <div class="flex gap-0.5">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-cream/20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-cream/40 text-sm">(306 resenas)</span>
+                </div>
+            </div>
+
+            <!-- Row 1 -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+                <div data-aos="fade-up" data-aos-delay="100" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"El mejor sitio para tomar cafe"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">TripAdvisor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"El cafe de 10, el trato de la camarera Carolina espectacular"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Buen cafe, buenos combinados, buenisimas hamburguesas y sobre todo, un trato al cliente de lo mejorcito del pueblo"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Un sitio genial, el cafe esta buenisimo ademas del pincho, tambien tienen un futbolin y tambien una diana de dardos"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div data-aos="fade-up" data-aos-delay="100" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Bonito lugar donde disfrutar de un fin de semana en familia y degustar unas buenas rabas, con trato profesional"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Lo recomendaria siempre. Para volver una y mil veces"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Acogedor local situado en la plaza Santi Bruard, con muy buen ambiente especialmente viernes y sabado"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="review-card bg-coffee/60 border border-cream/5 rounded-2xl p-6">
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-4 italic">"Los camareros Igor y Vanesa son los mas simpaticos de todo Galdakao"</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-cream/40 text-xs">Cliente verificado</span>
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34A853"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg>
+                            <span class="text-cream/30 text-xs">Google</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== UBICACION Y HORARIOS ========== -->
+    <section id="ubicacion" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-primary text-sm font-semibold tracking-widest uppercase">Visitanos</span>
+                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-dark mt-3 mb-4">
+                    Donde estamos
+                </h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                <div data-aos="fade-right" class="rounded-2xl overflow-hidden shadow-lg min-h-[350px] md:min-h-[450px]">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Kafe+Goiz+Argi,+Guridi+Kalea+3,+48960+Galdakao,+Bizkaia&output=embed"
+                        width="100%" height="450" style="border:0; min-height:350px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Ubicacion de Kafe Goiz Argi en Google Maps">
+                    </iframe>
+                </div>
+
+                <div data-aos="fade-left">
+                    <div class="flex gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-dark mb-1">Direccion</h3>
+                            <p class="text-dark/60">Guridi Kalea, 3<br>48960 Galdakao (Kurtzea), Bizkaia</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="phone" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-dark mb-1">Telefono</h3>
+                            <a href="tel:+34944740826" class="text-primary hover:text-gold transition-colors font-medium block">944 740 826</a>
+                            <a href="tel:+34665728576" class="text-dark/60 hover:text-primary transition-colors text-sm block mt-1">665 728 576 (movil)</a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="mail" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-dark mb-1">Email</h3>
+                            <a href="mailto:kafegoizargi@gmail.com" class="text-primary hover:text-gold transition-colors">kafegoizargi@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mb-10">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="train-front" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-dark mb-1">Como llegar</h3>
+                            <p class="text-dark/60 text-sm">Euskotren Zuhatzu ~870m &middot; Parking Ambulatorio ~250m</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark rounded-2xl p-6 md:p-8">
+                        <h3 class="font-display text-xl text-cream mb-5 flex items-center gap-2">
+                            <i data-lucide="clock" class="w-5 h-5 text-primary"></i>
+                            Horario
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-cream/60">Lunes - Jueves</span>
+                                <span class="text-cream font-medium">08:00 - 23:00</span>
+                            </div>
+                            <div class="border-t border-cream/5"></div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-cream/60">Viernes</span>
+                                <span class="text-primary font-medium">08:00 - 02:30</span>
+                            </div>
+                            <div class="border-t border-cream/5"></div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-cream/60">Sabado</span>
+                                <span class="text-primary font-medium">09:00 - 02:30</span>
+                            </div>
+                            <div class="border-t border-cream/5"></div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-cream/60">Domingo</span>
+                                <span class="text-cream font-medium">09:00 - 23:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(135deg, #1a0e08, #2e1a0d 40%, #3d2515 70%, #1a0e08);">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-72 h-72 rounded-full bg-gold/5 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
+            <span class="text-primary text-sm font-semibold tracking-widest uppercase mb-4 block">Te esperamos</span>
+            <h2 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-cream mb-6">
+                Ven a probar el mejor cafe de Galdakao
+            </h2>
+            <p class="text-cream/60 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Reserva tu mesa o simplemente acercate. Estamos en la plaza Santi Bruard, en el corazon de Kurtzea.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="tel:+34944740826" class="btn-cta bg-primary hover:bg-gold text-dark font-bold px-10 py-4 rounded-full text-lg transition-all shadow-lg shadow-primary/25 flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i data-lucide="phone" class="w-5 h-5"></i> 944 740 826
+                </a>
+                <a href="tel:+34665728576" class="border-2 border-cream/20 hover:border-primary text-cream hover:text-primary px-10 py-4 rounded-full text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i data-lucide="smartphone" class="w-5 h-5"></i> 665 728 576
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SOBRE NOSOTROS -->
-    <section class="about" id="nosotros">
-        <div class="container">
-            <div class="about-grid">
-                <div class="fade-in">
-                    <p class="section-label">Sobre nosotros</p>
-                    <h2 class="section-title">Mas que una cafeteria, un punto de encuentro</h2>
-                    <p class="section-desc">Goiz Argi Kafetegia es un local clasico y acogedor situado en la plaza Santi Bruard de Galdakao (Kurtzea). Decorado con instrumentos musicales y con un ambiente que invita a quedarse, somos el lugar donde los vecinos del barrio empiezan el dia con el mejor cafe y terminan la semana con los mejores combinados.</p>
-                    <p class="section-desc" style="margin-top: 1rem;">Carolina, Igor y Vanesa te atienden con el trato cercano que nos ha convertido en uno de los locales mas queridos de Galdakao. Ven con la familia, con amigos o simplemente a disfrutar de un buen momento.</p>
-                    <div class="about-features" style="margin-top: 2rem;">
-                        <div class="about-feature">
-                            <div class="af-icon">&#9749;</div>
-                            <div class="af-title">Cafe top</div>
-                            <div class="af-text">De los mejores de Galdakao</div>
-                        </div>
-                        <div class="about-feature">
-                            <div class="af-icon">&#127860;</div>
-                            <div class="af-title">Terraza</div>
-                            <div class="af-text">Terraza acristalada exterior</div>
-                        </div>
-                        <div class="about-feature">
-                            <div class="af-icon">&#127918;</div>
-                            <div class="af-title">Ocio</div>
-                            <div class="af-text">Futbolin y diana de dardos</div>
-                        </div>
-                        <div class="about-feature">
-                            <div class="af-icon">&#128118;</div>
-                            <div class="af-title">Familiar</div>
-                            <div class="af-text">Juguetes para los peques</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image fade-in"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESPECIALIDADES -->
-    <section class="especialidades" id="especialidades">
-        <div class="container">
-            <div class="especialidades-header fade-in">
-                <p class="section-label">Lo nuestro</p>
-                <h2 class="section-title">Nuestras especialidades</h2>
-                <p class="section-desc">Cafe de primera, pintxos en barra, hamburguesas que repiten y unas rabas que no dejan indiferente a nadie.</p>
-            </div>
-
-            <!-- Card destacada: Cafe -->
-            <div class="esp-grid fade-in">
-                <div class="esp-card destacada">
-                    <div class="esp-img" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80');"></div>
-                    <div class="esp-body">
-                        <span class="esp-tag">Nuestra estrella</span>
-                        <h3>Cafe de especialidad</h3>
-                        <p>Reconocido como uno de los mejores cafes de todo Galdakao. No lo decimos nosotros, lo dicen nuestros clientes en cada resena. Un cafe que marca la diferencia.</p>
-                        <div class="esp-estrella">&#9733; "El mejor sitio para tomar cafe"</div>
-                    </div>
-                </div>
-                <div class="esp-card">
-                    <div class="esp-img" style="background-image: url('https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=400&q=80');"></div>
-                    <div class="esp-body">
-                        <span class="esp-tag">Barra</span>
-                        <h3>Pintxos</h3>
-                        <p>Variedad de pintxos en barra, elaborados a diario. El complemento perfecto para tu cafe o tu cana.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="esp-grid-bottom fade-in">
-                <div class="esp-card">
-                    <div class="esp-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80');"></div>
-                    <div class="esp-body">
-                        <span class="esp-tag">Para compartir</span>
-                        <h3>Hamburguesas</h3>
-                        <p>Hamburguesas caseras que nuestros clientes describen como "buenisimas". Un clasico de la carta.</p>
-                    </div>
-                </div>
-                <div class="esp-card">
-                    <div class="esp-img" style="background-image: url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80');"></div>
-                    <div class="esp-body">
-                        <span class="esp-tag">Imprescindibles</span>
-                        <h3>Rabas</h3>
-                        <p>Rabas crujientes y en su punto, ideales para disfrutar en familia un fin de semana.</p>
-                    </div>
-                </div>
-                <div class="esp-card">
-                    <div class="esp-img" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=80');"></div>
-                    <div class="esp-body">
-                        <span class="esp-tag">Noche</span>
-                        <h3>Combinados</h3>
-                        <p>Viernes y sabado hasta las 02:30. Buenos combinados para alargar la noche en el mejor ambiente.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS EXTRA -->
-    <section class="servicios-extra">
-        <div class="container">
-            <div class="section-header fade-in" style="text-align: center;">
-                <p class="section-label">Todo lo que necesitas</p>
-                <h2 class="section-title">Mas que cafe y pintxos</h2>
-            </div>
-            <div class="servicios-extra-grid fade-in">
-                <div class="se-item">
-                    <div class="se-icon">&#9728;&#65039;</div>
-                    <h4>Desayunos</h4>
-                    <p>Desde las 8:00 (9:00 fines de semana)</p>
-                </div>
-                <div class="se-item">
-                    <div class="se-icon">&#127926;</div>
-                    <h4>Futbolin y dardos</h4>
-                    <p>Diversion para todos</p>
-                </div>
-                <div class="se-item">
-                    <div class="se-icon">&#128118;</div>
-                    <h4>Zona infantil</h4>
-                    <p>Juguetes para los peques</p>
-                </div>
-                <div class="se-item">
-                    <div class="se-icon">&#128246;</div>
-                    <h4>WiFi gratis</h4>
-                    <p>Conectado mientras disfrutas</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RESENAS -->
-    <section class="resenas" id="resenas">
-        <div class="container">
-            <div class="resenas-header fade-in">
-                <p class="section-label" style="color: var(--dorado);">Lo que dicen nuestros clientes</p>
-                <h2 class="section-title">Resenas reales, experiencias reales</h2>
-                <div class="resenas-overall">
-                    <span class="ro-score">4.3</span>
-                    <span>
-                        <span class="ro-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br>
-                        <span class="ro-count">306 resenas en Google</span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="resenas-grid fade-in">
-                <!-- Resena 1 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; TripAdvisor
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"El mejor sitio para tomar cafe"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 2 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"El cafe de 10, el trato de la camarera Carolina espectacular"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 3 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"Buen cafe, buenos combinados, buenisimas hamburguesas y sobre todo, un trato al cliente de lo mejorcito del pueblo"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 4 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"Un sitio genial, el cafe esta buenisimo ademas del pincho, tambien tienen un futbolin y tambien una diana de dardos"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 5 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"Bonito lugar donde disfrutar de un fin de semana en familia y degustar unas buenas rabas, con trato profesional"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 6 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"Lo recomendaria siempre. Para volver una y mil veces"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 7 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <div class="resena-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="resena-text">"Acogedor local situado en la plaza Santi Bruard, con muy buen ambiente especialmente viernes y sabado"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-                <!-- Resena 8 -->
-                <div class="resena-card">
-                    <div class="resena-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Resena verificada &middot; Google
-                    </div>
-                    <p class="resena-text">"Los camareros Igor y Vanesa son los mas simpaticos de todo Galdakao"</p>
-                    <p class="resena-author">Anonimo</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- UBICACION + HORARIO -->
-    <section class="ubicacion" id="ubicacion">
-        <div class="container">
-            <div class="fade-in" style="text-align: center; margin-bottom: 3rem;">
-                <p class="section-label">Donde encontrarnos</p>
-                <h2 class="section-title">Visitanos en Galdakao</h2>
-            </div>
-            <div class="ubicacion-grid fade-in">
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-dark pt-16 pb-8 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <div class="horario-card">
-                        <h3>Horario</h3>
-                        <div class="horario-row">
-                            <span class="horario-dia">Lunes</span>
-                            <span class="horario-hora">08:00 - 23:00</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Martes</span>
-                            <span class="horario-hora">08:00 - 23:00</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Miercoles</span>
-                            <span class="horario-hora">08:00 - 23:00</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Jueves</span>
-                            <span class="horario-hora">08:00 - 23:00</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Viernes</span>
-                            <span class="horario-hora horario-especial">08:00 - 02:30</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Sabado</span>
-                            <span class="horario-hora horario-especial">09:00 - 02:30</span>
-                        </div>
-                        <div class="horario-row">
-                            <span class="horario-dia">Domingo</span>
-                            <span class="horario-hora">09:00 - 23:00</span>
-                        </div>
-
-                        <div class="contacto-info">
-                            <div class="contacto-item">
-                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                                <span>Guridi Kalea, 3, 48960 Galdakao (Kurtzea), Bizkaia</span>
-                            </div>
-                            <div class="contacto-item">
-                                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                                <a href="tel:944740826">944 740 826</a>
-                            </div>
-                            <div class="contacto-item">
-                                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-                                <a href="https://wa.me/34665728576" target="_blank">665 728 576</a>
-                            </div>
-                            <div class="contacto-item">
-                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                                <a href="mailto:kafegoizargi@gmail.com">kafegoizargi@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="font-display text-2xl text-cream mb-3">Goiz Argi</h3>
+                    <p class="text-cream/40 text-sm leading-relaxed mb-6">
+                        Cafeteria, bar y pub en Galdakao. El mejor cafe del pueblo, pintxos caseros, hamburguesas, rabas y ambiente inmejorable en la plaza Santi Bruard.
+                    </p>
+                    <a href="https://www.facebook.com/people/Kafe-Goiz-argi/100063490302994/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-cream/40 hover:text-primary transition-colors text-sm">
+                        <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
+                    </a>
                 </div>
+
                 <div>
-                    <div class="mapa-wrapper">
-                        <iframe src="https://maps.google.com/maps?q=Goiz+Argi+Kafetegia,+Guridi+Kalea+3,+48960+Galdakao,+Bizkaia&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h4 class="text-cream font-semibold text-sm uppercase tracking-wider mb-4">Enlaces</h4>
+                    <nav class="flex flex-col gap-3">
+                        <a href="#nosotros" class="text-cream/40 hover:text-primary transition-colors text-sm">Sobre nosotros</a>
+                        <a href="#carta" class="text-cream/40 hover:text-primary transition-colors text-sm">Nuestra carta</a>
+                        <a href="#resenas" class="text-cream/40 hover:text-primary transition-colors text-sm">Opiniones</a>
+                        <a href="#ubicacion" class="text-cream/40 hover:text-primary transition-colors text-sm">Ubicacion y horario</a>
+                    </nav>
+                </div>
+
+                <div>
+                    <h4 class="text-cream font-semibold text-sm uppercase tracking-wider mb-4">Contacto</h4>
+                    <div class="space-y-3 text-sm">
+                        <p class="text-cream/40">
+                            <i data-lucide="map-pin" class="inline w-4 h-4 text-primary mr-2"></i>
+                            Guridi Kalea, 3 — 48960 Galdakao
+                        </p>
+                        <p>
+                            <a href="tel:+34944740826" class="text-cream/40 hover:text-primary transition-colors">
+                                <i data-lucide="phone" class="inline w-4 h-4 text-primary mr-2"></i>944 740 826
+                            </a>
+                        </p>
+                        <p>
+                            <a href="tel:+34665728576" class="text-cream/40 hover:text-primary transition-colors">
+                                <i data-lucide="smartphone" class="inline w-4 h-4 text-primary mr-2"></i>665 728 576
+                            </a>
+                        </p>
+                        <p>
+                            <a href="mailto:kafegoizargi@gmail.com" class="text-cream/40 hover:text-primary transition-colors">
+                                <i data-lucide="mail" class="inline w-4 h-4 text-primary mr-2"></i>kafegoizargi@gmail.com
+                            </a>
+                        </p>
                     </div>
-                    <div class="transporte">
-                        <h4>Como llegar</h4>
-                        <p>Euskotren: parada Zuhatzu (~870m)<br>Parking: Ambulatorio de Galdakao (~250m)</p>
+                    <div class="mt-5 pt-5 border-t border-cream/5">
+                        <p class="text-cream/30 text-xs">L-J: 08-23h &middot; V: 08-02:30h</p>
+                        <p class="text-cream/30 text-xs">S: 09-02:30h &middot; D: 09-23h</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- CTA BANNER -->
-    <section class="cta-banner">
-        <div class="container fade-in">
-            <h2>Te esperamos en Goiz Argi</h2>
-            <p>Reserva tu mesa, preguntanos lo que necesites o simplemente pasate a tomar el mejor cafe de Galdakao.</p>
-            <div class="cta-buttons">
-                <a href="tel:944740826" class="btn btn-phone">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    Llamar: 944 740 826
-                </a>
-                <a href="https://wa.me/34665728576" class="btn btn-whatsapp" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-                    WhatsApp: 665 728 576
-                </a>
+            <div class="border-t border-cream/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-cream/20 text-xs">&copy; <span id="year"></span> Kafe Goiz Argi. Todos los derechos reservados.</p>
+                <p class="text-cream/20 text-xs">Sitio demo creado por <a href="https://ggelcano.github.io/demos/" target="_blank" class="text-primary/50 hover:text-primary transition-colors">G&G Elcano</a></p>
             </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <h3>Goiz Argi Kafetegia</h3>
-                <p>Cafeteria y bar en Galdakao. Cafe de especialidad, pintxos, hamburguesas, rabas y combinados. Plaza Santi Bruard, Kurtzea.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navegacion</h4>
-                <a href="#nosotros">Sobre nosotros</a>
-                <a href="#especialidades">Especialidades</a>
-                <a href="#resenas">Resenas</a>
-                <a href="#ubicacion">Ubicacion</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <a href="tel:944740826">944 740 826</a>
-                <a href="https://wa.me/34665728576">665 728 576</a>
-                <a href="mailto:kafegoizargi@gmail.com">kafegoizargi@gmail.com</a>
-                <a href="https://www.facebook.com/people/Kafe-Goiz-argi/100063490302994/" target="_blank">Facebook</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Goiz Argi Kafetegia. Todos los derechos reservados. | Guridi Kalea, 3 — 48960 Galdakao, Bizkaia</p>
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/34665728576" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-    </a>
+    <!-- ========== FLOATING CALL BUTTON (Mobile) ========== -->
+    <div class="fixed bottom-6 right-6 z-50 md:hidden">
+        <a href="tel:+34944740826" class="bg-primary text-dark w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 relative">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+            <span class="absolute inset-0 rounded-full bg-primary/40" style="animation: pulse-ring 2s ease-out infinite;"></span>
+        </a>
+    </div>
 
-    <!-- JS: Menu hamburguesa + scroll nav + fade-in -->
+    <!-- ========== SCRIPTS ========== -->
     <script>
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const spans = hamburger.querySelectorAll('span');
-            if (navLinks.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-            } else {
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '';
-                spans[2].style.transform = '';
-            }
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80,
         });
 
-        // Close mobile menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '';
-                spans[2].style.transform = '';
-            });
-        });
+        lucide.createIcons();
 
-        // Nav shadow on scroll
         window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('navbar-scrolled', window.scrollY > 50);
         });
 
-        // Fade-in on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
-        }, { threshold: 0.1 });
+        });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
-        // Fallback: make everything visible after 3s
-        setTimeout(() => {
-            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-        }, 3000);
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const counters = document.querySelectorAll('.counter');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.dataset.target;
+                    let count = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            entry.target.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(count);
+                        }
+                    }, 30);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => observer.observe(c));
     </script>
-
 </body>
 </html>

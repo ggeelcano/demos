@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Estilistas — Peluquería en Galdakao</title>
+  <meta name="description" content="Urban Estilistas en Galdakao. Corte hombre y mujer, coloración, mechas, tratamientos capilares y servicio novias. Salón L'Oréal Professionnel. 4.6⭐ en Google. Pide tu cita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0b0a08;
+      --white: #f5f3ef;
+      --accent: #C9A66B;
+      --accent-light: #dfc08e;
+      --accent-dim: rgba(201,166,107,0.18);
+      --carbon: #131210;
+      --carbon-mid: #1a1916;
+      --carbon-light: #24221e;
+      --text-muted: #7a7468;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.88);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(201,166,107,0.1);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: rgba(245,243,239,0.6);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+
+    /* ─── HAMBURGER MOBILE ─── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0b0a08 0%, #1a1916 40%, rgba(201,166,107,0.15) 100%);
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(201,166,107,0.12);
+      border-bottom: 1px solid rgba(201,166,107,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(201,166,107,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(201,166,107,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(201,166,107,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
+    }
+
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(201,166,107,0.3);
+      white-space: nowrap;
+    }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; max-width: 1400px; margin: 0 auto;
+    }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3; cursor: pointer;
+    }
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
+    }
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
+    }
+    .project-card:hover .project-img { transform: scale(1.06); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(201,166,107,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(201,166,107,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(201,166,107,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
+    .service-card {
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(201,166,107,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(201,166,107,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(201,166,107,0.2); color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(201,166,107,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(201,166,107,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(201,166,107,0.1); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(201,166,107,0.03); line-height: 1; pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(201,166,107,0.07);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover { border-color: rgba(201,166,107,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
+    }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(201,166,107,0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+    }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+    }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--text-muted); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
+    }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.15em; color: var(--white);
+    }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Urban<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Urban<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir Cita</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Pedir Cita</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Salon L'Oreal Professionnel · Galdakao</p>
+    <h1 class="hero-title">
+      Tu estilo,<br>nuestra<br><em>firma</em>
+    </h1>
+    <p class="hero-sub">
+      Corte, coloracion, mechas, tratamientos capilares y peinados especiales. Equipo certificado L'Oreal Professionnel en Zamakoa Kalea.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:urbanestilistasgaldakao@gmail.com" class="btn-primary">
+        <span>Pedir cita</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Servicios</span>
+        <div class="btn-ghost-arrow">&nearr;</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Corte Hombre y Mujer</span>
+    <span class="marquee-item"><span class="dot"></span>Coloracion</span>
+    <span class="marquee-item"><span class="dot"></span>Mechas</span>
+    <span class="marquee-item"><span class="dot"></span>Tratamientos Capilares</span>
+    <span class="marquee-item"><span class="dot"></span>Peinados Especiales</span>
+    <span class="marquee-item"><span class="dot"></span>Servicio Novias</span>
+    <span class="marquee-item"><span class="dot"></span>Corte Hombre y Mujer</span>
+    <span class="marquee-item"><span class="dot"></span>Coloracion</span>
+    <span class="marquee-item"><span class="dot"></span>Mechas</span>
+    <span class="marquee-item"><span class="dot"></span>Tratamientos Capilares</span>
+    <span class="marquee-item"><span class="dot"></span>Peinados Especiales</span>
+    <span class="marquee-item"><span class="dot"></span>Servicio Novias</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.6</span></div>
+      <div class="stat-label">Valoracion Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="23">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas verificadas</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Servicios especializados</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="2">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Locales en Galdakao</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por si solos</em></h2>
+    </div>
+    <a href="https://www.instagram.com/urbanestilistas_galdakao/" target="_blank" class="view-all reveal">Ver en Instagram &rarr;</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(201,166,107,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Color &middot; Mechas</p>
+        <h3 class="project-name">Mechas con L'Oreal</h3>
+        <p class="project-meta">Tecnica profesional &middot; Resultados naturales</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(201,166,107,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Corte &middot; Tendencia</p>
+        <h3 class="project-name">Corte Moderno</h3>
+        <p class="project-meta">Hombre y mujer &middot; Estilo actual</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(201,166,107,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Tratamiento &middot; Capilar</p>
+        <h3 class="project-name">Tratamiento Profundo</h3>
+        <p class="project-meta">Recupera la salud de tu pelo</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(201,166,107,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Novias &middot; Eventos</p>
+        <h3 class="project-name">Peinado de Novia</h3>
+        <p class="project-meta">Servicio completo &middot; Prueba incluida</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">L'Oreal</div>
+      <div class="about-badge-text">Salon certificado Professionnel</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Tu salon de<br>confianza en <em>Galdakao</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      Urban Estilistas nacio con una mision clara: ofrecer peluqueria de calidad con un trato cercano y profesional. Con dos locales en Galdakao, somos salon certificado <strong>L'Oreal Professionnel</strong>.<br><br><strong>Escuchamos antes de cortar.</strong> Cada persona es unica, y nuestro equipo analiza tu tipo de pelo, tu rostro y tu estilo de vida antes de proponer cualquier cambio.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Certificacion L'Oreal</h4>
+          <p>Formacion continua con L'Oreal Professionnel. Tecnicas y productos de la mas alta calidad</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Dos locales en Galdakao</h4>
+          <p>Zamakoa Kalea 27 y segundo local. Mas cerca de ti, con el mismo equipo y la misma calidad</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Diagnostico personalizado</h4>
+          <p>Analisis del cabello y cuero cabelludo antes de proponer cualquier servicio o tratamiento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios profesionales para <em>resultados reales</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <h3>Corte y Coloracion</h3>
+        <p>Corte hombre y mujer, color global, mechas, balayage. Diagnostico capilar personalizado con productos L'Oreal Professionnel para el resultado perfecto.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3>Tratamientos Capilares</h3>
+        <p>Hidratacion profunda, tratamientos reparadores y cuidado del cuero cabelludo. Recupera la salud y el brillo de tu pelo con tecnologia profesional.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3>Novias y Eventos</h3>
+        <p>Peinados especiales, recogidos, ondas. Servicio completo para novias con prueba incluida. Tu dia especial merece un look impecable.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Llevo anos viniendo a Urban y nunca me han fallado. El equipo es super profesional y siempre saben lo que quiero. El mejor salon de Galdakao."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Clienta verificada</strong>
+          <span>Google Reviews &middot; Galdakao</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Las mechas que me hicieron son exactamente lo que pedi. Resultado natural y duradero. Se nota que usan productos de calidad. Muy recomendable."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Clienta verificada</strong>
+          <span>Google Reviews &middot; Galdakao</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Me hicieron el peinado para la boda de mi hija y quede encantada. Aguanto toda la noche perfecto. Servicio impecable de principio a fin."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Clienta verificada</strong>
+          <span>Google Reviews &middot; Galdakao</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Lista para un<br>cambio de look?</h2>
+    <p>Escribenos y reserva tu cita. Estamos en Zamakoa Kalea, 27 — Galdakao.</p>
+  </div>
+  <a href="mailto:urbanestilistasgaldakao@gmail.com" class="btn-dark">
+    <span>Pedir cita</span>
+    <span>&nearr;</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Urban<span>.</span></a>
+      <p class="footer-tagline">"Tu estilo, nuestra firma. Salon certificado L'Oreal Professionnel en Galdakao."</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Urban-Estilistas-Galdakao-100063714331586/" target="_blank" class="social-link">Fb</a>
+        <a href="https://www.instagram.com/urbanestilistas_galdakao/" target="_blank" class="social-link">Ig</a>
+        <a href="mailto:urbanestilistasgaldakao@gmail.com" class="social-link">Em</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#">Corte hombre y mujer</a></li>
+        <li><a href="#">Coloracion</a></li>
+        <li><a href="#">Mechas</a></li>
+        <li><a href="#">Tratamientos capilares</a></li>
+        <li><a href="#">Peinados especiales</a></li>
+        <li><a href="#">Servicio novias</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Salon</h4>
+      <ul>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#">L'Oreal Professionnel</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:urbanestilistasgaldakao@gmail.com">urbanestilistasgaldakao@gmail.com</a></li>
+        <li><a href="tel:+34946054686">946 054 686</a></li>
+        <li><a href="#">Zamakoa Kalea, 27, bajo — 48960 Galdakao</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Urban Estilistas Galdakao. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Politica de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
+    }
+  });
+</script>
+</body>
+</html>
