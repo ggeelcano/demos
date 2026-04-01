@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lencería Mariú — Tienda Ropa en Galdakao</title>
+  <meta name="description" content="Lencería Mariú en Galdakao. Lenceria y corseteria en Galdakao. Ropa interior femenina de calidad, sujetadores especializados y asesoramiento experto para encontrar tu talla perfecta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #f5f3ef; --accent: #C4956A; --accent-light: #d9ad84; --accent-dim: #C4956A30; --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222; --text-muted: #7a7268; --font-serif: 'Cormorant Garamond', serif; --font-sans: 'Jost', sans-serif; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #C4956A15; }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--accent); }
+    .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #C4956A18 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
+    .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
+    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3.2rem, 6.5vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.55); max-width: 520px; line-height: 1.7; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .marquee-bar { overflow: hidden; white-space: nowrap; padding: 22px 0; border-top: 1px solid rgba(245,243,239,0.06); border-bottom: 1px solid rgba(245,243,239,0.06); }
+    .marquee-inner { display: inline-flex; gap: 60px; animation: marquee 25s linear infinite; }
+    .marquee-inner span { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,243,239,0.25); }
+    .marquee-inner span::after { content: '✦'; margin-left: 60px; color: var(--accent); opacity: 0.4; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .stats-section { padding: 100px 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; background: var(--carbon); }
+    .stat-item { text-align: center; min-width: 160px; }
+    .stat-number { font-family: var(--font-serif); font-size: 3.8rem; font-weight: 300; color: var(--accent); line-height: 1; }
+    .stat-suffix { font-size: 2rem; }
+    .stat-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 12px; }
+    .about-section { padding: 160px 60px; position: relative; overflow: hidden; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1400px; margin: 0 auto; align-items: start; }
+    .about-left { position: relative; }
+    .about-year { font-family: var(--font-serif); font-size: 12rem; font-weight: 300; color: rgba(245,243,239,0.03); line-height: 1; position: absolute; top: -40px; left: -20px; pointer-events: none; }
+    .about-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid var(--accent-dim); border-radius: 100px; margin-bottom: 32px; }
+    .about-badge span { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .about-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 36px; }
+    .about-title em { font-style: italic; color: var(--accent); }
+    .about-body { color: rgba(245,243,239,0.55); line-height: 1.8; font-size: 0.95rem; }
+    .about-values { display: flex; flex-direction: column; gap: 40px; padding-top: 40px; }
+    .about-value { display: flex; gap: 20px; }
+    .value-num { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); opacity: 0.3; line-height: 1; min-width: 36px; }
+    .value-text h4 { font-family: var(--font-serif); font-weight: 400; font-size: 1.1rem; margin-bottom: 8px; }
+    .value-text p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 60px; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .services-section { padding: 160px 60px; background: var(--carbon); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .service-card { background: var(--carbon-mid); padding: 52px 40px; transition: background 0.5s, transform 0.4s; position: relative; overflow: hidden; }
+    .service-card:hover { background: var(--carbon-light); transform: translateY(-4px); }
+    .service-number { font-family: var(--font-serif); font-size: 4rem; font-weight: 300; color: var(--accent); opacity: 0.08; position: absolute; top: 20px; right: 30px; }
+    .service-icon { width: 48px; height: 48px; border: 1px solid var(--accent-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; color: var(--accent); }
+    .service-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; margin-bottom: 16px; }
+    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+    .service-link { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: gap 0.3s; display: inline-flex; gap: 8px; }
+    .service-link:hover { gap: 14px; }
+    .testimonials-section { padding: 160px 60px; background: var(--black); }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .testimonial-card { background: var(--carbon); padding: 48px 36px; border: 1px solid rgba(245,243,239,0.04); transition: border-color 0.4s; }
+    .testimonial-card:hover { border-color: var(--accent-dim); }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 24px; }
+    .star { width: 16px; height: 16px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+    .testimonial-quote { font-size: 0.95rem; line-height: 1.8; color: rgba(245,243,239,0.7); margin-bottom: 24px; font-style: italic; }
+    .testimonial-divider { width: 40px; height: 1px; background: var(--accent-dim); margin-bottom: 20px; }
+    .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; }
+    .testimonial-author span { font-size: 0.72rem; color: var(--text-muted); }
+    .cta-section { padding: 140px 60px; display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 40px; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; line-height: 1.1; }
+    .cta-text p { color: var(--text-muted); margin-top: 16px; font-size: 0.95rem; }
+    .btn-dark { display: inline-flex; align-items: center; gap: 16px; background: var(--accent); color: var(--black); padding: 22px 48px; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: gap 0.4s, background 0.3s; }
+    .btn-dark:hover { gap: 24px; background: var(--accent-light); }
+    footer { background: var(--carbon); padding: 80px 60px 40px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
+    .footer-tagline { color: var(--text-muted); font-style: italic; margin-top: 12px; font-size: 0.9rem; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .social-link { width: 40px; height: 40px; border: 1px solid rgba(245,243,239,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--white); font-size: 0.7rem; transition: border-color 0.3s, color 0.3s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 { font-family: var(--font-serif); font-weight: 400; margin-bottom: 24px; font-size: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; transition: color 0.3s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(245,243,239,0.06); max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a { font-size: 0.72rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--accent); }
+    .loader { position: fixed; inset: 0; background: var(--black); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s, visibility 0.6s; }
+    .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-bar { width: 60px; height: 2px; background: var(--accent-dim); position: relative; overflow: hidden; }
+    .loader-bar::after { content: ''; position: absolute; top: 0; left: -60px; width: 60px; height: 100%; background: var(--accent); animation: loading 1s ease-in-out infinite; }
+    @keyframes loading { to { left: 60px; } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { padding: 0 24px 60px; }
+      .stats-section { padding: 60px 24px; gap: 32px; }
+      .stat-number { font-size: 2.8rem; }
+      .about-section { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 60px; }
+      .about-year { font-size: 6rem; }
+      .services-section { padding: 80px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-section { padding: 80px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; }
+      footer { padding: 60px 24px 30px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-bar"></div></div>
+<nav id="navbar">
+  <a href="#" class="nav-logo">Lencería Mariú<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contactar</a>
+</div>
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div><div class="hero-overlay"></div><div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Lenceria · Corseteria · Galdakao</div>
+    <h1 class="hero-title">Comodidad<br>y<br><em>elegancia</em></h1>
+    <p class="hero-sub">Lenceria y corseteria en Galdakao. Ropa interior femenina de calidad, sujetadores especializados y asesoramiento experto para encontrar tu talla perfecta.</p>
+  </div>
+</section>
+<div class="marquee-bar"><div class="marquee-inner">
+  <span>Lenceria</span>
+  <span>Corseteria</span>
+  <span>Sujetadores</span>
+  <span>Pijamas</span>
+  <span>Bañadores</span>
+  <span>Asesoramiento</span>
+  <span>Lenceria</span>
+  <span>Corseteria</span>
+  <span>Sujetadores</span>
+  <span>Pijamas</span>
+  <span>Bañadores</span>
+  <span>Asesoramiento</span>
+</div></div>
+<section class="stats-section">
+  <div class="stat-item"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
+  <div class="stat-item"><div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix"></span></div><div class="stat-label">Opiniones 5 estrellas</div></div>
+  <div class="stat-item"><div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Anos de experiencia</div></div>
+  <div class="stat-item"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Asesoramiento experto</div></div>
+</section>
+<section class="about-section" id="nosotros"><div class="about-grid"><div class="about-left"><div class="about-year">LM</div>
+    <div class="about-badge"><span>Tu lenceria de confianza</span></div>
+    <h2 class="about-title">Lo que llevas<br>debajo <em>importa</em></h2>
+    <p class="about-body">Lencería Mariú es una tienda especializada con decadas de experiencia en Galdakao. Aqui no vendes sola — te asesoramos para encontrar la lenceria perfecta para tu cuerpo.<br><br><strong>La base de todo look.</strong> Un buen sujetador cambia tu silueta, tu postura y tu confianza. Trabajamos con marcas especializadas que no encontraras en grandes superficies.</p></div>
+    <div class="about-values">
+      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Asesoramiento de talla</h4><p>Medimos, probamos y encontramos tu talla real. La mayoria de mujeres no lleva la suya</p></div></div>
+      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Marcas especializadas</h4><p>Firmas europeas de calidad. Desde la A hasta copas grandes. Lenceria que se adapta a ti</p></div></div>
+      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Trato personalizado</h4><p>Servicio cercano y discreto. Te ayudamos a elegir con paciencia y profesionalidad</p></div></div>
+    </div></div></div>
+<section class="services-section" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="section-label reveal">Lo que ofrecemos</p><h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Corseteria y Sujetadores</h3><p>Sujetadores de todas las tallas y copas. Especializacion en copas grandes y necesidades especiales. Tallaje profesional.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
+      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Lenceria y Pijamas</h3><p>Ropa interior, pijamas, camisones y ropa de estar. Comodidad y calidad para el dia a dia y ocasiones especiales.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
+      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Bañadores y Complementos</h3><p>Bañadores, bikinis y fajas. Coleccion de verano con asesoramiento para encontrar tu modelo ideal.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
+    </div></div></section>
+<section class="testimonials-section"><div class="testimonials-inner"><p class="section-label reveal">Testimonios</p><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Por fin encontré mi talla real. Llevo años comprando sujetadores que no me quedaban bien. En Mariú me cambiaron la vida."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
+      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"El asesoramiento es lo mejor. Te ayudan con paciencia, te prueban opciones y sales con la lencería perfecta."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
+      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Tienda de toda la vida con un trato excepcional. Calidad, variedad y un servicio que ya no se encuentra."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
+    </div></div></section>
+<div class="cta-section" id="contacto"><div class="cta-text"><h2>¿Buscas tu<br>talla perfecta?</h2><p>Visitanos. Araba Kalea — Galdakao.</p></div><a href="mailto:info@lenceriamariu.com" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a></div>
+<footer><div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo">Lencería Mariú<span>.</span></a><p class="footer-tagline">"Comodidad y elegancia."</p><div class="footer-social"><a href="mailto:info@lenceriamariu.com" class="social-link">Em</a><a href="tel:944563303" class="social-link">Tl</a></div></div>
+    <div class="footer-col"><h4>Servicios</h4><ul>
+      <li><a href="#servicios">Sujetadores</a></li>
+      <li><a href="#servicios">Lenceria</a></li>
+      <li><a href="#servicios">Pijamas</a></li>
+      <li><a href="#servicios">Bañadores</a></li>
+      <li><a href="#servicios">Copas grandes</a></li>
+      <li><a href="#servicios">Fajas</a></li>
+    </ul></div><div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:info@lenceriamariu.com">info@lenceriamariu.com</a></li><li><a href="tel:944563303">944 56 33 03</a></li><li><a href="#">Araba Kalea, 48960 Galdakao</a></li></ul></div></div>
+  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 Lencería Mariú. Todos los derechos reservados.</p><div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer>
+<script>
+  window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
+  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+  const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
+  function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+  window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
+</script>
+</body>
+</html>
