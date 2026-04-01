@@ -3,1665 +3,1122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Fontaneria y electricidad en {{CIUDAD}}. Urgencias 24h, reparaciones, instalaciones, calderas, desatascos y electricistas autorizados. Presupuesto sin compromiso.">
-  <title>{{NOMBRE_NEGOCIO}} — Fontaneria y Electricidad en {{CIUDAD}}</title>
+  <title>Fontaneros García 24h — Fontanería</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:        #1565c0;
-      --blue-l:      #1e88e5;
-      --blue-dark:   #0d47a1;
-      --blue-glow:   #42a5f5;
-      --orange:      #e65100;
-      --orange-l:    #ef6c00;
-      --orange-glow: #ff9800;
-      --dark:        #1a2332;
-      --dark-mid:    #243044;
-      --dark-deep:   #0f1720;
-      --gray-light:  #f0f4f8;
-      --gray-mid:    #bdc3c7;
-      --gray-steel:  #7f8c8d;
-      --white:       #ffffff;
-      --text-dark:   #1a2332;
-      --text-light:  #ecf0f1;
-      --text-muted:  #95a5a6;
-      --red:         #e74c3c;
-      --radius:      10px;
-      --shadow:      0 8px 32px rgba(0,0,0,0.22);
-      --shadow-sm:   0 4px 16px rgba(0,0,0,0.10);
+      --black: #080c14;
+      --white: #f5f3ef;
+      --accent: #0284C7;
+      --accent-light: #38bdf8;
+      --carbon: #0f1520;
+      --carbon-mid: #162030;
+      --carbon-light: #1e2d40;
+      --text-muted: #7a8899;
+      --font-serif: 'Oswald', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--gray-light);
-      color: var(--text-dark);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
       line-height: 1.6;
       overflow-x: hidden;
+      cursor: none;
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(2,132,199,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+    }
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(2,132,199,0.7);
+      background: rgba(2,132,199,0.05);
+    }
 
-    /* ══════════════════════════════════
-       NAVBAR
-    ══════════════════════════════════ */
-    .navbar {
+    /* ─── NAVBAR ─── */
+    nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(26,35,50,0.97);
-      backdrop-filter: blur(14px);
-      padding: 0 32px;
       display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-      border-bottom: 1px solid rgba(21,101,192,0.25);
-      transition: box-shadow 0.3s;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
-    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
-
-    .nav-brand {
-      display: flex; align-items: center; gap: 12px;
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.85);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(2,132,199,0.08);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
       text-decoration: none;
-    }
-    .nav-logo-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-l));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
-    }
-    .nav-brand-text {
-      display: flex; flex-direction: column; line-height: 1.2;
-    }
-    .nav-brand-name {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 17px; font-weight: 700;
       color: var(--white);
-      letter-spacing: 0.5px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .nav-brand-sub {
-      font-size: 10px; font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 2.5px; text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 28px;
-      list-style: none;
-    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: color 0.25s;
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
     }
-    .nav-links a:hover { color: var(--blue-glow); }
-
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: var(--orange);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      font-size: 13px !important;
-      transition: background 0.3s, transform 0.2s;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover { background: var(--orange-l); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
+    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
-      display: none;
-      flex-direction: column; gap: 5px;
+      display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
     }
     .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white);
-      border-radius: 2px;
+      width: 24px; height: 2px; background: var(--white);
       transition: transform 0.3s, opacity 0.3s;
     }
-    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu {
-      display: none;
-      position: fixed; top: 68px; left: 0; right: 0;
-      background: rgba(26,35,50,0.98);
-      backdrop-filter: blur(14px);
-      padding: 20px 24px 28px;
-      flex-direction: column; gap: 4px;
-      border-bottom: 2px solid var(--blue);
-      z-index: 999;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 15px; font-weight: 500;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: color 0.2s;
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
     }
-    .mobile-menu a:hover { color: var(--blue-glow); }
-    .mobile-menu .nav-cta-m {
-      display: inline-block; text-align: center;
-      background: var(--orange);
-      color: var(--white) !important;
-      padding: 14px 0;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 8px;
-      border-bottom: none;
-    }
+    .mobile-menu a:hover { color: var(--accent); }
 
-    /* ══════════════════════════════════
-       HERO
-    ══════════════════════════════════ */
+    /* ─── HERO ─── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 120px 32px 80px;
-      background: linear-gradient(165deg, var(--dark-deep) 0%, var(--dark) 40%, var(--dark-mid) 100%);
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; right: 0;
-      width: 55%; height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&q=80');
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #080c14 0%, #162030 40%, #0284C722 100%);
       background-size: cover; background-position: center;
-      opacity: 0.2;
-      mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
     }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -2px; left: 0; right: 0;
-      height: 120px;
-      background: linear-gradient(to top, var(--gray-light), transparent);
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
     }
-
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+    .hero-content {
       position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-      align-items: center;
+      padding: 0 60px 100px;
+      max-width: 900px;
     }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(230,81,0,0.15);
-      border: 1px solid rgba(230,81,0,0.3);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 12px; font-weight: 600;
-      color: var(--orange-glow);
-      letter-spacing: 1px; text-transform: uppercase;
-      margin-bottom: 20px;
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
     }
-    .hero-badge svg { width: 14px; height: 14px; fill: var(--orange-glow); }
-
-    .hero-urgent {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(231,76,60,0.15);
-      border: 1px solid rgba(231,76,60,0.35);
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-size: 13px; font-weight: 700;
-      color: #ff6b6b;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
-      animation: pulse-urgent 2s infinite;
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
     }
-    @keyframes pulse-urgent {
-      0%, 100% { border-color: rgba(231,76,60,0.35); }
-      50% { border-color: rgba(231,76,60,0.7); box-shadow: 0 0 12px rgba(231,76,60,0.15); }
-    }
-
-    .hero h1 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero h1 .accent-blue { color: var(--blue-glow); }
-    .hero h1 .accent-orange { color: var(--orange-glow); }
-
-    .hero-desc {
-      font-size: 17px;
-      color: var(--gray-mid);
-      line-height: 1.7;
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       margin-bottom: 32px;
-      max-width: 480px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
     }
-
-    .hero-btns {
-      display: flex; gap: 14px; flex-wrap: wrap;
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
     }
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange);
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600; font-size: 15px;
-      transition: background 0.3s, transform 0.2s;
-      border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
     }
-    .btn-primary:hover { background: var(--orange-l); transform: translateY(-2px); }
-    .btn-primary svg { width: 18px; height: 18px; fill: currentColor; }
-
-    .btn-primary-blue {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue);
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600; font-size: 15px;
-      transition: background 0.3s, transform 0.2s;
-      border: none; cursor: pointer;
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
     }
-    .btn-primary-blue:hover { background: var(--blue-l); transform: translateY(-2px); }
-    .btn-primary-blue svg { width: 18px; height: 18px; fill: currentColor; }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent;
-      color: var(--white);
-      padding: 16px 32px;
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600; font-size: 15px;
-      transition: all 0.3s;
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
     }
-    .btn-secondary:hover { border-color: var(--blue-glow); color: var(--blue-glow); }
-    .btn-secondary svg { width: 18px; height: 18px; fill: currentColor; }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
 
-    .hero-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(2,132,199,0.12);
+      border-bottom: 1px solid rgba(2,132,199,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(2,132,199,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
     }
     .stat-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-align: center;
-      backdrop-filter: blur(8px);
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(2,132,199,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
     }
-    .stat-card .stat-icon {
-      width: 44px; height: 44px;
-      background: rgba(21,101,192,0.15);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
-    .stat-card .stat-icon svg { width: 22px; height: 22px; fill: var(--blue-glow); }
-    .stat-card .stat-num {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 28px; font-weight: 800;
-      color: var(--white);
-      margin-bottom: 4px;
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(2,132,199,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
     }
-    .stat-card .stat-label {
-      font-size: 12px; color: var(--text-muted);
-      letter-spacing: 0.5px;
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
     }
 
-    /* ══════════════════════════════════
-       SECTION UTILS
-    ══════════════════════════════════ */
-    .section { padding: 90px 32px; }
-    .section-dark { background: var(--dark); color: var(--text-light); }
-    .section-mid { background: var(--dark-mid); color: var(--text-light); }
-    .section-blue { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); color: var(--white); }
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .section-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 600;
-      color: var(--blue);
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: 12px;
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
     }
-    .section-label::before {
-      content: '';
-      width: 32px; height: 2px;
-      background: var(--blue);
-      border-radius: 1px;
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(2,132,199,0.3);
+      white-space: nowrap;
     }
-    .section-dark .section-label { color: var(--blue-glow); }
-    .section-dark .section-label::before { background: var(--blue-glow); }
-
-    .section-title {
-      font-family: 'Exo 2', sans-serif;
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 16px;
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
     }
-    .section-title .hl-blue { color: var(--blue); }
-    .section-title .hl-orange { color: var(--orange); }
-    .section-dark .section-title .hl-blue { color: var(--blue-glow); }
-    .section-dark .section-title .hl-orange { color: var(--orange-glow); }
-
-    .section-desc {
-      font-size: 16px;
-      color: var(--gray-steel);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    /* ══════════════════════════════════
-       ABOUT
-    ══════════════════════════════════ */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      margin-top: 50px;
-    }
-    .about-img {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
+    .project-card {
+      position: relative; overflow: hidden;
       aspect-ratio: 4/3;
-      background: var(--dark-mid);
+      cursor: none;
     }
-    .about-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
     }
-    .about-img-badge {
-      position: absolute; bottom: 16px; left: 16px;
-      background: var(--blue);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-family: 'Exo 2', sans-serif;
-      font-weight: 700; font-size: 14px;
-      box-shadow: var(--shadow);
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+    }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(2,132,199,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(2,132,199,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(2,132,199,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    .about-text h3 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 24px; font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--text-dark);
-    }
-    .about-text p {
-      font-size: 15px;
-      color: var(--gray-steel);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .about-features {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-    }
-    .about-feat {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 14px;
-      background: var(--white);
-      border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-    .about-feat-icon {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: rgba(21,101,192,0.1);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-feat-icon svg { width: 18px; height: 18px; fill: var(--blue); }
-    .about-feat-icon.orange { background: rgba(230,81,0,0.1); }
-    .about-feat-icon.orange svg { fill: var(--orange); }
-    .about-feat span {
-      font-size: 13px; font-weight: 600;
-      color: var(--text-dark);
-      line-height: 1.4;
-    }
-
-    /* ══════════════════════════════════
-       SERVICES
-    ══════════════════════════════════ */
-    .services-tabs {
-      display: flex; gap: 8px; margin-bottom: 40px; margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .services-tab {
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-size: 14px; font-weight: 600;
-      cursor: default;
-      border: 2px solid transparent;
-      transition: all 0.3s;
-    }
-    .services-tab.tab-blue {
-      background: rgba(21,101,192,0.15);
-      border-color: rgba(21,101,192,0.3);
-      color: var(--blue-glow);
-    }
-    .services-tab.tab-orange {
-      background: rgba(230,81,0,0.15);
-      border-color: rgba(230,81,0,0.3);
-      color: var(--orange-glow);
-    }
-
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
     }
     .service-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      transition: transform 0.3s, border-color 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(2,132,199,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(21,101,192,0.3);
-    }
-    .service-card.card-orange:hover {
-      border-color: rgba(230,81,0,0.3);
-    }
-    .service-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-l));
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card.card-orange::before {
-      background: linear-gradient(90deg, var(--orange), var(--orange-l));
-    }
-
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(2,132,199,0.2); }
     .service-icon {
-      width: 52px; height: 52px;
-      background: rgba(21,101,192,0.12);
-      border-radius: 12px;
+      width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
+      border: 1px solid rgba(2,132,199,0.2); color: var(--accent);
     }
-    .service-icon svg { width: 26px; height: 26px; fill: var(--blue-glow); }
-    .service-icon.icon-orange { background: rgba(230,81,0,0.12); }
-    .service-icon.icon-orange svg { fill: var(--orange-glow); }
-
     .service-card h3 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 18px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
     }
     .service-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
     }
-    .service-tag {
-      display: inline-block;
-      font-size: 11px; font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(2,132,199,0.5); transition: color 0.3s, gap 0.3s;
     }
-    .service-tag.tag-blue {
-      background: rgba(21,101,192,0.15);
-      color: var(--blue-glow);
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(2,132,199,0.05);
+      line-height: 1; transition: color 0.5s;
     }
-    .service-tag.tag-orange {
-      background: rgba(230,81,0,0.15);
-      color: var(--orange-glow);
-    }
+    .service-card:hover .service-number { color: rgba(2,132,199,0.1); }
 
-    .services-cta {
-      text-align: center;
-      margin-top: 40px;
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
     }
-
-    /* Featured service — urgencias */
-    .service-featured {
-      grid-column: 1 / -1;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0;
-      background: linear-gradient(135deg, rgba(231,76,60,0.12), rgba(230,81,0,0.06));
-      border: 1px solid rgba(231,76,60,0.25);
-      border-radius: var(--radius);
-      overflow: hidden;
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(2,132,199,0.03); line-height: 1; pointer-events: none;
     }
-    .service-featured:hover { transform: none; }
-    .service-featured::before { display: none; }
-    .service-featured-img {
-      background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80');
-      background-size: cover; background-position: center;
-      min-height: 220px;
-      background-color: var(--dark-mid);
-    }
-    .service-featured-content {
-      padding: 36px 32px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .service-featured-content .featured-label {
-      font-size: 11px; font-weight: 600;
-      color: #ff6b6b;
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .service-featured-content h3 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 22px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .service-featured-content p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-    .service-featured-content .featured-phone {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 20px; font-weight: 800;
-      color: var(--orange-glow);
-    }
-
-    /* ══════════════════════════════════
-       WHY US
-    ══════════════════════════════════ */
-    .why-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 24px; margin-top: 50px;
-    }
-    .why-card {
-      text-align: center;
-      padding: 36px 20px;
-      background: var(--white);
-      border-radius: var(--radius);
-      border: 1px solid rgba(0,0,0,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .why-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-    }
-    .why-icon {
-      width: 64px; height: 64px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-l));
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .why-icon.icon-orange { background: linear-gradient(135deg, var(--orange), var(--orange-l)); }
-    .why-icon svg { width: 30px; height: 30px; fill: var(--white); }
-    .why-card h3 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 16px; font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-    .why-card p {
-      font-size: 13px;
-      color: var(--gray-steel);
-      line-height: 1.6;
-    }
-
-    /* ══════════════════════════════════
-       COVERAGE ZONE
-    ══════════════════════════════════ */
-    .coverage-list {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      margin-top: 24px;
-    }
-    .coverage-tag {
-      background: rgba(21,101,192,0.1);
-      color: var(--blue);
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-size: 13px; font-weight: 600;
-      border: 1px solid rgba(21,101,192,0.15);
-    }
-
-    /* ══════════════════════════════════
-       REVIEWS
-    ══════════════════════════════════ */
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    .reviews-overall {
-      display: inline-flex; align-items: center; gap: 16px;
-      background: var(--white);
-      padding: 16px 28px;
-      border-radius: 60px;
-      box-shadow: var(--shadow-sm);
-      margin-top: 20px;
-    }
-    .reviews-overall .overall-score {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 32px; font-weight: 800;
-      color: var(--text-dark);
-    }
-    .reviews-overall .overall-stars { display: flex; gap: 2px; }
-    .reviews-overall .overall-stars svg { width: 20px; height: 20px; fill: #f39c12; }
-    .reviews-overall .overall-text {
-      font-size: 13px; color: var(--gray-steel);
-    }
-
-    .reviews-grid {
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 2px; margin-top: 70px;
     }
-    .review-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(2,132,199,0.07);
+      transition: border-color 0.4s, background 0.4s;
     }
-    .review-card:hover { transform: translateY(-3px); }
+    .testimonial-card:hover { border-color: rgba(2,132,199,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+    }
 
-    .review-top {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 14px;
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
     }
-    .review-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(2,132,199,0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+    }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Exo 2', sans-serif;
-      font-weight: 700; font-size: 16px;
-      color: var(--white);
-      flex-shrink: 0;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
     }
-    .review-avatar.av-1 { background: #1565c0; }
-    .review-avatar.av-2 { background: #e65100; }
-    .review-avatar.av-3 { background: #2ecc71; }
-    .review-avatar.av-4 { background: #8e24aa; }
-
-    .review-info { flex: 1; }
-    .review-name {
-      font-weight: 600; font-size: 14px;
-      color: var(--text-dark);
-    }
-    .review-date {
-      font-size: 12px; color: var(--text-muted);
-    }
-    .review-stars { display: flex; gap: 1px; margin-bottom: 12px; }
-    .review-stars svg { width: 16px; height: 16px; fill: #f39c12; }
-
-    .review-text {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-
-    .review-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 600;
-      color: #1a73e8;
-      background: rgba(26,115,232,0.08);
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    .review-badge svg { width: 14px; height: 14px; }
-
-    /* ══════════════════════════════════
-       SCHEDULE + MAP
-    ══════════════════════════════════ */
-    .schedule-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 40px; margin-top: 50px;
-      align-items: start;
-    }
-    .schedule-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 36px;
-    }
-    .schedule-card h3 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 24px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .schedule-card h3 svg { width: 22px; height: 22px; fill: var(--blue-glow); }
-
-    .schedule-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .schedule-row:last-child { border-bottom: none; }
-    .schedule-day {
-      font-size: 14px; font-weight: 500;
-      color: var(--text-light);
-    }
-    .schedule-time {
-      font-size: 14px; font-weight: 600;
-      color: var(--blue-glow);
-    }
-    .schedule-urgent {
-      font-size: 12px; font-weight: 600;
-      color: var(--orange-glow);
-      margin-top: 16px;
-      padding: 10px 16px;
-      background: rgba(230,81,0,0.1);
-      border-radius: 8px;
-      border: 1px solid rgba(230,81,0,0.2);
-    }
-
-    .contact-info {
-      margin-top: 24px;
-      display: flex; flex-direction: column; gap: 14px;
-    }
-    .contact-item {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; color: var(--text-light);
-    }
-    .contact-item a {
-      color: var(--blue-glow);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .contact-item a:hover { color: var(--orange-glow); }
-    .contact-item svg { width: 18px; height: 18px; fill: var(--blue-glow); flex-shrink: 0; }
-
-    .map-wrapper {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      min-height: 380px;
-      background: var(--dark-mid);
-    }
-    .map-wrapper iframe {
-      width: 100%; height: 380px; border: 0;
-      display: block;
-    }
-
-    /* ══════════════════════════════════
-       CTA BANNER — URGENCIAS
-    ══════════════════════════════════ */
-    .cta-banner {
-      padding: 80px 32px;
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, var(--orange) 100%);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-banner::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80') center/cover no-repeat;
-      opacity: 0.08;
-    }
-    .cta-banner .container { position: relative; z-index: 2; }
-    .cta-banner h2 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .cta-banner p {
-      font-size: 17px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 32px;
-      max-width: 520px;
-      margin-left: auto; margin-right: auto;
-    }
-    .cta-banner-btns {
-      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
-    }
-    .btn-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white);
-      color: var(--blue);
-      padding: 16px 36px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700; font-size: 16px;
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .btn-white svg { width: 20px; height: 20px; fill: var(--blue); }
-
-    .btn-outline-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent;
-      color: var(--white);
-      padding: 16px 36px;
-      border: 2px solid rgba(255,255,255,0.4);
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700; font-size: 16px;
-      transition: all 0.3s;
-    }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
-    .btn-outline-white svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
-    .footer {
-      background: var(--dark-deep);
-      color: var(--text-muted);
-      padding: 60px 32px 30px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      max-width: 1200px; margin: 0 auto;
-      padding-bottom: 30px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-brand-name {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .footer-brand p {
-      font-size: 14px; line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 360px;
-    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
     .footer-col h4 {
-      font-family: 'Exo 2', sans-serif;
-      font-size: 14px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
     }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
-    .footer-col a:hover { color: var(--blue-glow); }
-
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      max-width: 1200px; margin: 0 auto;
-      padding-top: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 12px;
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
-    .footer-bottom a { color: var(--blue-glow); text-decoration: none; }
-
-    /* ══════════════════════════════════
-       WHATSAPP FLOAT
-    ══════════════════════════════════ */
-    .whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px;
-      width: 60px; height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 999;
-      transition: transform 0.3s;
-      animation: wa-pulse 2s infinite;
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
     }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    .whatsapp-float svg { width: 32px; height: 32px; fill: var(--white); }
-
-    @keyframes wa-pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0.12); }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
+    .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ══════════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════════ */
-    .fade-in {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
     }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ══════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════ */
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
+    }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
+    }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
     }
-
     @media (max-width: 768px) {
-      .navbar { padding: 0 20px; }
-      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
       .hamburger { display: flex; }
-
-      .hero { padding: 100px 20px 60px; min-height: auto; }
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-      }
-      .hero-desc { margin: 0 auto 28px; }
-      .hero-btns { justify-content: center; }
-      .hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .hero-badge, .hero-urgent { margin: 0 auto 16px; }
-
-      .section { padding: 60px 20px; }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .about-features { grid-template-columns: 1fr; }
-
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-      .service-featured {
-        grid-template-columns: 1fr;
-      }
-      .service-featured-img { min-height: 180px; }
-
-      .why-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .why-card { padding: 24px 14px; }
-      .why-icon { width: 50px; height: 50px; border-radius: 12px; }
-      .why-icon svg { width: 24px; height: 24px; }
-
-      .reviews-grid { grid-template-columns: 1fr; }
-
-      .schedule-grid { grid-template-columns: 1fr; }
-
-      .cta-banner { padding: 60px 20px; }
-
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-      .fade-in { opacity: 1 !important; transform: none !important; }
-
-      .whatsapp-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
-      .whatsapp-float svg { width: 28px; height: 28px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
     }
-
-    @media (max-width: 480px) {
-      .hero-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
-      .stat-card { padding: 16px 12px; }
-      .stat-card .stat-num { font-size: 22px; }
-      .why-grid { grid-template-columns: 1fr; }
-      .btn-primary, .btn-primary-blue, .btn-secondary { width: 100%; justify-content: center; }
-      .cta-banner-btns { flex-direction: column; align-items: center; }
-      .btn-white, .btn-outline-white { width: 100%; justify-content: center; }
-      .services-tabs { justify-content: center; }
-    }
-  
-    /* ══════════════════════════════════
-       MOBILE IMAGE FIX (universal)
-    ══════════════════════════════════ */
-    img {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        min-height: 180px;
-        overflow: hidden;
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        min-height: 180px;
-        object-fit: cover;
-        display: block;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img,
-      .studio-img img,
-      .space-img img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .featured-dish-img,
-      .featured-item-img,
-      .highlight-img,
-      .featured-product-img {
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .menu-card-img,
-      .service-card-img,
-      .treatment-img,
-      .program-img,
-      .product-card-img,
-      .course-img,
-      .class-img {
-        width: 100%;
-        height: auto;
-        min-height: 140px;
-        object-fit: cover;
-        display: block;
-      }
-      [style*="background-image"],
-      .program-card-img,
-      .coach-img,
-      .team-member-img,
-      .trainer-img,
-      .specialist-img,
-      .staff-img {
-        background-size: cover !important;
-        background-position: center !important;
-        min-height: 180px;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        min-height: 160px;
-      }
-      .gallery-item img {
-        min-height: 160px;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img {
-        min-height: 160px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-<!-- ═══════ NAVBAR ═══════ -->
-<nav class="navbar" id="navbar">
-  <a href="#" class="nav-brand">
-    <div class="nav-logo-icon">
-      <!-- Wrench/Pipe icon -->
-      <svg viewBox="0 0 24 24" fill="white"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-    </div>
-    <div class="nav-brand-text">
-      <span class="nav-brand-name">{{NOMBRE_NEGOCIO}}</span>
-      <span class="nav-brand-sub">Fontaneria y Electricidad</span>
-    </div>
-  </a>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">FONTANEROS <span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Fontaneros<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#resenas">Resenas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="tel:{{TELEFONO}}" class="nav-cta">Urgencias 24h</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile Menu -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#servicios">Servicios</a>
-  <a href="#nosotros">Nosotros</a>
-  <a href="#resenas">Resenas</a>
-  <a href="#contacto">Contacto</a>
-  <a href="tel:{{TELEFONO}}" class="nav-cta-m">Urgencias 24h</a>
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
-<!-- ═══════ HERO ═══════ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fontanería · Urgencias · 24h</p>
+    <h1 class="hero-title">
+      Tu fontanero<br>de <em>confianza</em><br>siempre disponible
+    </h1>
+    <p class="hero-sub">
+      Reparación de averías, instalaciones, calderas y desatascos. Servicio urgente 24 horas con presupuesto previo sin compromiso.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:+34611222333" class="btn-primary">
+        <span>Llamar ahora</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Servicios</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Averías Urgentes</span>
+    <span class="marquee-item"><span class="dot"></span>Instalaciones</span>
+    <span class="marquee-item"><span class="dot"></span>Calderas y Calentadores</span>
+    <span class="marquee-item"><span class="dot"></span>Desatascos</span>
+    <span class="marquee-item"><span class="dot"></span>Griferías</span>
+    <span class="marquee-item"><span class="dot"></span>Reparación General</span>
+    <span class="marquee-item"><span class="dot"></span>Averías Urgentes</span>
+    <span class="marquee-item"><span class="dot"></span>Instalaciones</span>
+    <span class="marquee-item"><span class="dot"></span>Calderas y Calentadores</span>
+    <span class="marquee-item"><span class="dot"></span>Desatascos</span>
+    <span class="marquee-item"><span class="dot"></span>Griferías</span>
+    <span class="marquee-item"><span class="dot"></span>Reparación General</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="25">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años de oficio</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">min</span></div>
+      <div class="stat-label">Tiempo de llegada</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="24">0</span><span class="stat-suffix">/7</span></div>
+      <div class="stat-label">Disponibilidad total</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="4000">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Reparaciones al año</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
     <div>
-      <div class="hero-urgent">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="#ff6b6b"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-        Servicio de urgencias 24 horas
-      </div>
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Profesionales autorizados
-      </div>
-      <h1>Fontaneros y electricistas <span class="accent-blue">de confianza</span> en <span class="accent-orange">{{CIUDAD}}</span></h1>
-      <p class="hero-desc">Reparaciones urgentes, instalaciones y mantenimiento. En <strong>{{NOMBRE_NEGOCIO}}</strong> solucionamos cualquier averia de fontaneria o electricidad con rapidez y garantia. Presupuesto sin compromiso.</p>
-      <div class="hero-btns">
-        <a href="tel:{{TELEFONO}}" class="btn-primary">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Llamar Ahora
-        </a>
-        <a href="#servicios" class="btn-secondary">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-          Ver Servicios
-        </a>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+    </div>
+    <a href="#" class="view-all reveal">Ver todo →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Urgencia · Fuga</p>
+        <h3 class="project-name">Reparación Express</h3>
+        <p class="project-meta">Media de 25 min · 24h</p>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <div class="stat-num">4.8/5</div>
-        <div class="stat-label">Valoracion Google</div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Instalación · Baño</p>
+        <h3 class="project-name">Reforma Baño Completa</h3>
+        <p class="project-meta">Llave en mano · 2024</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-        </div>
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Urgencias disponibles</div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Calderas · Aerotermia</p>
+        <h3 class="project-name">Instalación Aerotermia</h3>
+        <p class="project-meta">Ahorro 60% · Eficiencia A++</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        </div>
-        <div class="stat-num">+15</div>
-        <div class="stat-label">Anos de experiencia</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-        </div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Trabajos garantizados</div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Desatascos · Pro</p>
+        <h3 class="project-name">Desatasco con Cámara</h3>
+        <p class="project-meta">Inspección + Limpieza</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ ABOUT ═══════ -->
-<section class="section" id="nosotros">
-  <div class="container">
-    <div class="section-label">Sobre nosotros</div>
-    <div class="section-title">Tu fontanero y electricista de confianza en <span class="hl-blue">{{CIUDAD}}</span></div>
-    <div class="about-grid">
-      <div class="about-img">
-        <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=80" alt="Fontanero profesional trabajando" loading="lazy">
-        <div class="about-img-badge">Profesionales Autorizados</div>
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">1999</div>
+      <div class="about-badge-text">Dos generaciones de fontaneros de verdad</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Fontaneros<br><em>como los de antes</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      Fontaneros García es un negocio familiar con dos generaciones de oficio. Trabajamos como nos enseñó nuestro padre: bien y a precio justo.<br><br><strong>Sin sorpresas.</strong> Presupuesto cerrado antes de empezar. Si no lo apruebas, no se empieza. Y si el problema es menor de lo esperado, te cobramos menos.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Precio cerrado</h4>
+          <p>Presupuesto previo siempre. El precio que aceptas es el precio que pagas</p>
+        </div>
       </div>
-      <div class="about-text">
-        <h3>Solucionamos tus averias con rapidez y garantia</h3>
-        <p>En <strong>{{NOMBRE_NEGOCIO}}</strong> llevamos anos ofreciendo servicios de fontaneria y electricidad en {{CIUDAD}} y alrededores. Nuestro equipo de profesionales autorizados resuelve cualquier problema, desde una fuga urgente hasta una instalacion completa.</p>
-        <p>Trabajamos con total transparencia: te explicamos el problema, te damos un presupuesto cerrado y tu decides. Sin sorpresas ni costes ocultos.</p>
-        <div class="about-features">
-          <div class="about-feat">
-            <div class="about-feat-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            </div>
-            <span>Presupuesto sin compromiso</span>
-          </div>
-          <div class="about-feat">
-            <div class="about-feat-icon orange">
-              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-            </div>
-            <span>Urgencias 24 horas</span>
-          </div>
-          <div class="about-feat">
-            <div class="about-feat-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-            </div>
-            <span>Garantia en todos los trabajos</span>
-          </div>
-          <div class="about-feat">
-            <div class="about-feat-icon orange">
-              <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-            </div>
-            <span>Precios transparentes</span>
-          </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Fontaneros de oficio</h4>
+          <p>Instaladores autorizados con carnet profesional y seguro de responsabilidad civil</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Garantía por escrito</h4>
+          <p>Mínimo 2 años de garantía en todos nuestros trabajos con factura incluida</p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══════ SERVICES ═══════ -->
-<section class="section section-dark" id="servicios">
-  <div class="container">
-    <div class="section-label">Nuestros servicios</div>
-    <div class="section-title">Fontaneria y electricidad: <span class="hl-blue">todo lo que necesitas</span></div>
-    <p class="section-desc">Desde reparaciones urgentes hasta instalaciones completas. Profesionales autorizados con materiales de primera calidad y garantia en cada trabajo.</p>
-
-    <div class="services-tabs">
-      <span class="services-tab tab-blue">Fontaneria</span>
-      <span class="services-tab tab-orange">Electricidad</span>
-    </div>
-
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>resultados reales</em>
+    </h2>
     <div class="services-grid">
-      <!-- Featured: Urgencias -->
-      <div class="service-featured">
-        <div class="service-featured-img"></div>
-        <div class="service-featured-content">
-          <div class="featured-label">Servicio de Urgencias 24h</div>
-          <h3>Averias urgentes? Estamos en camino</h3>
-          <p>Fugas de agua, roturas de tuberias, cortocircuitos, apagones electricos... Nuestro equipo de guardia acude a tu domicilio en el menor tiempo posible, cualquier dia del ano, incluidos festivos.</p>
-          <div class="featured-phone">
-            <a href="tel:{{TELEFONO}}" style="color: var(--orange-glow); text-decoration: none;">{{TELEFONO}}</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 1: Reparacion de fugas -->
-      <div class="service-card">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
         <div class="service-icon">
-          <!-- Water drop -->
-          <svg viewBox="0 0 24 24"><path d="M17.66 8L12 2.35 6.34 8A8.02 8.02 0 004 13.64c0 2 .78 4.11 2.34 5.67a7.99 7.99 0 0011.32 0c1.56-1.56 2.34-3.67 2.34-5.67C20 10.78 19.22 9.56 17.66 8zM6 14c.01-2 .62-3.27 1.76-4.4L12 5.27l4.24 4.38C17.38 10.77 17.99 12 18 14H6z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
         </div>
-        <h3>Reparacion de Fugas</h3>
-        <p>Deteccion y reparacion de fugas de agua en tuberias, grifos, cisternas y calentadores. Localizacion exacta con equipo profesional para minimizar danos.</p>
-        <span class="service-tag tag-blue">Fontaneria</span>
+        <h3>Urgencias 24h</h3>
+        <p>Fugas, roturas de tubería, atascos graves, problemas de caldera. Llegamos en menos de 30 minutos con presupuesto cerrado.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
       </div>
-
-      <!-- Card 2: Desatascos -->
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
         <div class="service-icon">
-          <!-- Pipe/drain icon -->
-          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
         </div>
-        <h3>Desatascos</h3>
-        <p>Desatasco de tuberias, bajantes, arquetas y desagues con maquinaria profesional. Solucion rapida para fregaderos, banos y conducciones generales.</p>
-        <span class="service-tag tag-blue">Fontaneria</span>
+        <h3>Instalaciones Nuevas</h3>
+        <p>Baños completos, cocinas, sistemas de calefacción, descalcificadores. Proyecto llave en mano con materiales de primera.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
       </div>
-
-      <!-- Card 3: Calderas y calentadores -->
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
         <div class="service-icon">
-          <!-- Fire/heat -->
-          <svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
         </div>
         <h3>Calderas y Calentadores</h3>
-        <p>Instalacion, reparacion y mantenimiento de calderas de gas, calentadores y termos electricos. Revisiones anuales obligatorias y puestas a punto.</p>
-        <span class="service-tag tag-blue">Fontaneria</span>
-      </div>
-
-      <!-- Card 4: Instalacion electrica -->
-      <div class="service-card card-orange">
-        <div class="service-icon icon-orange">
-          <!-- Lightning bolt -->
-          <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-        </div>
-        <h3>Instalaciones Electricas</h3>
-        <p>Instalacion y reforma de cuadros electricos, cableado, enchufes, interruptores y puntos de luz. Boletines electricos y certificados de instalacion.</p>
-        <span class="service-tag tag-orange">Electricidad</span>
-      </div>
-
-      <!-- Card 5: Averias electricas -->
-      <div class="service-card card-orange">
-        <div class="service-icon icon-orange">
-          <!-- Warning/electric -->
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-        </div>
-        <h3>Averias Electricas</h3>
-        <p>Localizacion y reparacion de cortocircuitos, caidas de tension, diferenciales que saltan y fallos en la instalacion. Diagnostico rapido y solucion definitiva.</p>
-        <span class="service-tag tag-orange">Electricidad</span>
-      </div>
-
-      <!-- Card 6: Griferia y sanitarios -->
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-        </div>
-        <h3>Griferia y Sanitarios</h3>
-        <p>Instalacion y reparacion de grifos, inodoros, duchas, baneras y mampara. Cambio de mecanismos, juntas y elementos de fontaneria del bano y cocina.</p>
-        <span class="service-tag tag-blue">Fontaneria</span>
-      </div>
-
-      <!-- Card 7: Iluminacion -->
-      <div class="service-card card-orange">
-        <div class="service-icon icon-orange">
-          <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
-        </div>
-        <h3>Iluminacion LED</h3>
-        <p>Diseno e instalacion de iluminacion interior y exterior. Cambio a tecnologia LED para ahorrar hasta un 80% en consumo electrico. Focos, downlights y tiras LED.</p>
-        <span class="service-tag tag-orange">Electricidad</span>
-      </div>
-
-      <!-- Card 8: Tuberias -->
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
-        <h3>Tuberias y Canalizaciones</h3>
-        <p>Sustitucion de tuberias antiguas de plomo o hierro por cobre o polietileno. Canalizaciones de agua, gas y calefaccion con materiales homologados.</p>
-        <span class="service-tag tag-blue">Fontaneria</span>
-      </div>
-    </div>
-
-    <div class="services-cta">
-      <a href="tel:{{TELEFONO}}" class="btn-primary" style="background: var(--blue-l);">
-        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        Pide tu presupuesto gratis
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ WHY US ═══════ -->
-<section class="section" id="por-que">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-label" style="justify-content:center;">Por que elegirnos</div>
-      <div class="section-title">La diferencia de un servicio <span class="hl-blue">profesional</span></div>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-        </div>
-        <h3>Respuesta Rapida</h3>
-        <p>En urgencias acudimos en el menor tiempo posible. Para el resto de servicios, nos adaptamos a tu horario.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon icon-orange">
-          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-        </div>
-        <h3>Precio Cerrado</h3>
-        <p>Presupuesto detallado antes de empezar. Sin sorpresas en la factura ni costes ocultos de ninguna clase.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-        </div>
-        <h3>Garantia Total</h3>
-        <p>Todos nuestros trabajos tienen garantia por escrito. Materiales de primera calidad y mano de obra cualificada.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon icon-orange">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-        </div>
-        <h3>Profesionales Autorizados</h3>
-        <p>Electricistas con carnet oficial e instaladores autorizados. Boletines, certificados y cumplimiento normativo.</p>
+        <p>Instalación, reparación y mantenimiento de calderas de gas, eléctricas y aerotermia. Servicio técnico oficial de las principales marcas.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ REVIEWS ═══════ -->
-<section class="section section-dark" id="resenas">
-  <div class="container">
-    <div class="reviews-header">
-      <div class="section-label" style="justify-content:center;">Lo que dicen nuestros clientes</div>
-      <div class="section-title">Resenas de <span class="hl-blue">clientes reales</span></div>
-      <div class="reviews-overall">
-        <div class="overall-score">4.8</div>
-        <div>
-          <div class="overall-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <div class="overall-text">en Google (+90 resenas)</div>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Se me reventó una tubería un domingo a las 8 de la mañana. Llegaron en 25 minutos, arreglaron todo y el precio fue el que me dijeron por teléfono. 10/10."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Elena Martínez</strong>
+          <span>Urgencia · Madrid</span>
         </div>
       </div>
-    </div>
-
-    <div class="reviews-grid">
-      <!-- Review 1 -->
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar av-1">CR</div>
-          <div class="review-info">
-            <div class="review-name">Carlos R.</div>
-            <div class="review-date">Hace 1 semana</div>
-          </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="review-text">Se nos revento una tuberia un sabado por la noche y vinieron en menos de una hora. Solucionaron el problema rapidamente y el precio fue muy razonable para ser una urgencia. Totalmente recomendables.</p>
-        <div class="review-badge">
-          <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Resena verificada de Google
+        <p class="testimonial-quote">"Me instalaron la aerotermia y la diferencia en la factura es brutal. De 200€ al mes a 80€. Y el servicio fue impecable de principio a fin."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Roberto Sánchez</strong>
+          <span>Instalación · Pozuelo</span>
         </div>
       </div>
-
-      <!-- Review 2 -->
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar av-2">AM</div>
-          <div class="review-info">
-            <div class="review-name">Ana M.</div>
-            <div class="review-date">Hace 3 semanas</div>
-          </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="review-text">Nos hicieron toda la instalacion electrica del piso nuevo. Trabajo impecable, muy limpios y cumplieron con el plazo que nos dieron. El electricista nos asesoro muy bien con la iluminacion LED.</p>
-        <div class="review-badge">
-          <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Resena verificada de Google
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar av-3">PG</div>
-          <div class="review-info">
-            <div class="review-name">Pedro G.</div>
-            <div class="review-date">Hace 1 mes</div>
-          </div>
-        </div>
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="review-text">Llamamos porque la caldera no arrancaba en pleno invierno. Vinieron al dia siguiente, la diagnosticaron y repararon en el momento. Ademas nos explicaron como hacer el mantenimiento basico. Muy profesionales.</p>
-        <div class="review-badge">
-          <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Resena verificada de Google
-        </div>
-      </div>
-
-      <!-- Review 4 -->
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar av-4">LS</div>
-          <div class="review-info">
-            <div class="review-name">Laura S.</div>
-            <div class="review-date">Hace 2 meses</div>
-          </div>
-        </div>
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="review-text">Necesitabamos cambiar toda la griferia del bano y nos dieron un presupuesto muy competitivo. El fontanero fue puntual, limpio y dejo todo perfecto. Repetiremos seguro para la cocina.</p>
-        <div class="review-badge">
-          <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Resena verificada de Google
+        <p class="testimonial-quote">"Les llamo para todos mis pisos de alquiler. Siempre cumplen con los plazos, siempre factura y siempre calidad. Los mejores fontaneros que he encontrado."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Javier López</strong>
+          <span>Propietario · Madrid</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ SCHEDULE + MAP ═══════ -->
-<section class="section section-mid" id="contacto">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-label">Donde estamos</div>
-      <div class="section-title">Zona de cobertura en <span class="hl-blue">{{CIUDAD}}</span></div>
-    </div>
-    <div class="schedule-grid">
-      <div>
-        <div class="schedule-card">
-          <h3>
-            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-            Horario
-          </h3>
-          <div class="schedule-row">
-            <span class="schedule-day">Lunes - Viernes</span>
-            <span class="schedule-time">{{HORARIO}}</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-day">Sabado</span>
-            <span class="schedule-time">09:00 - 14:00</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-day">Domingo</span>
-            <span class="schedule-time" style="color: var(--text-muted);">Solo urgencias</span>
-          </div>
-          <div class="schedule-urgent">
-            Servicio de urgencias disponible 24 horas, 365 dias al ano. Llama al <a href="tel:{{TELEFONO}}" style="color: var(--orange-glow); text-decoration: none; font-weight: 700;">{{TELEFONO}}</a>
-          </div>
-        </div>
-
-        <div class="schedule-card" style="margin-top: 20px;">
-          <h3>
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Contacto
-          </h3>
-          <div class="contact-info">
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              <span>{{DIRECCION}}, {{CIUDAD}}</span>
-            </div>
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              <a href="tel:{{TELEFONO}}">{{TELEFONO}}</a>
-            </div>
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="map-wrapper">
-        <iframe src="https://maps.google.com/maps?q={{GOOGLE_MAPS_QUERY}}&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Tienes una avería<br>o un proyecto?</h2>
+    <p>Llámanos ahora. Presupuesto gratuito en el acto.</p>
   </div>
-</section>
+  <a href="mailto:info@fontanerosgarcia.es" class="btn-dark">
+    <span>Llamar ahora</span>
+    <span>↗</span>
+  </a>
+</div>
 
-<!-- ═══════ CTA BANNER ═══════ -->
-<section class="cta-banner">
-  <div class="container">
-    <h2>Averia? Llamanos ahora</h2>
-    <p>Fontaneros y electricistas disponibles para urgencias las 24 horas. Presupuesto sin compromiso para instalaciones y reformas.</p>
-    <div class="cta-banner-btns">
-      <a href="tel:{{TELEFONO}}" class="btn-white">
-        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        Llamar: {{TELEFONO}}
-      </a>
-      <a href="https://wa.me/34{{TELEFONO}}" target="_blank" class="btn-outline-white">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ FOOTER ═══════ -->
-<footer class="footer">
-  <div class="footer-grid">
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-brand-name">{{NOMBRE_NEGOCIO}}</div>
-      <p>Fontaneria y electricidad en {{CIUDAD}}. Urgencias 24h, instalaciones, reparaciones y mantenimiento con la garantia de profesionales autorizados.</p>
+      <a href="#" class="nav-logo">Fontaneros<span>.</span></a>
+      <p class="footer-tagline">"El agua bien canalizada es bienestar en tu hogar."<br>— Fontaneros García</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="#" class="social-link">Gm</a>
+        <a href="#" class="social-link">Wa</a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="#servicios">Urgencias 24h</a></li>
-        <li><a href="#servicios">Reparacion de Fugas</a></li>
-        <li><a href="#servicios">Desatascos</a></li>
-        <li><a href="#servicios">Calderas y Calentadores</a></li>
-        <li><a href="#servicios">Instalaciones Electricas</a></li>
-        <li><a href="#servicios">Averias Electricas</a></li>
+        <li><a href="#">Urgencias</a></li>
+        <li><a href="#">Instalaciones</a></li>
+        <li><a href="#">Calderas</a></li>
+        <li><a href="#">Desatascos</a></li>
+        <li><a href="#">Reformas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Equipo</a></li>
+        <li><a href="#">Cobertura</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Empleo</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></li>
-        <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
-        <li><a href="#contacto">{{DIRECCION}}</a></li>
-        <li><a href="#contacto">{{CIUDAD}}</a></li>
+        <li><a href="mailto:info@fontanerosgarcia.es">info@fontanerosgarcia.es</a></li>
+        <li><a href="tel:+34611222333">+34 611 222 333</a></li>
+        <li><a href="#">Cobertura en toda la<br>Comunidad de Madrid</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</span>
-    <span>Diseno web por <a href="#">G&amp;G Elcano</a></span>
+    <p class="footer-copy">© 2026 Fontaneros García 24h. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
   </div>
 </footer>
 
-<!-- ═══════ WHATSAPP FLOAT ═══════ -->
-<a href="https://wa.me/34{{TELEFONO}}" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- ═══════ JS ═══════ -->
 <script>
-  // Hamburger menu
+  // ── LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('open');
   });
-  // Close on link click
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('open');
-    });
-  });
-
-  // Navbar scroll shadow
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('.fade-in');
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    faders.forEach(f => obs.observe(f));
-  } else {
-    faders.forEach(f => f.classList.add('visible'));
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
   }
-  // Fallback timer for mobile
-  setTimeout(() => { faders.forEach(f => f.classList.add('visible')); }, 3000);
-</script>
 
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+    }
+  });
+</script>
 </body>
 </html>

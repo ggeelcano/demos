@@ -3,1635 +3,1122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Bar de tapas y pintxos en {{CIUDAD}}. Barra variada, cañas bien tiradas y ambiente auténtico. Ven a probar nuestras especialidades.">
-  <title>{{NOMBRE_NEGOCIO}} | Bar de Tapas en {{CIUDAD}}</title>
+  <title>Bar La Esquina de Pablo — Bar de Tapas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* =========================================================
-       RESET & BASE
-    ========================================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --madera:     #1e120a;
-      --madera-md:  #3b2415;
-      --ambar:      #c8872a;
-      --ambar-lt:   #daa04a;
-      --dorado:     #d4a843;
-      --crema:      #fdf6ed;
-      --crema-dk:   #f0e4d0;
-      --barro:      #8a6340;
-      --gris:       #6b6b6b;
-      --blanco:     #ffffff;
-      --texto:      #2a1a0e;
-      --overlay:    rgba(30, 18, 10, 0.72);
+      --black: #100c08;
+      --white: #f5f3ef;
+      --accent: #C0623A;
+      --accent-light: #d88860;
+      --carbon: #1a1510;
+      --carbon-mid: #241e16;
+      --carbon-light: #332a1e;
+      --text-muted: #9a8a78;
+      --font-serif: 'Libre Baskerville', serif;
+      --font-sans: 'Source Sans 3', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--texto);
-      background: var(--crema);
-      line-height: 1.65;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
     }
 
-    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
-
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-    section { padding: 80px 20px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    /* =========================================================
-       ANIMACIONES FADE-IN
-    ========================================================= */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================================================
-       HEADER / NAV
-    ========================================================= */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(30, 18, 10, 0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(200, 135, 42, 0.25);
-      padding: 0 24px;
-    }
-
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-logo .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--ambar), var(--dorado));
+    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-      color: var(--madera);
-      font-weight: 700;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(192,98,58,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+    }
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(192,98,58,0.7);
+      background: rgba(192,98,58,0.05);
     }
 
-    .nav-logo span {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--crema);
-      letter-spacing: 0.5px;
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.85);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(192,98,58,0.08);
     }
-
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      color: rgba(253, 246, 237, 0.8);
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+
+    /* ─── HAMBURGER MOBILE ─── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #100c08 0%, #241e16 40%, #C0623A22 100%);
+      background-size: cover; background-position: center;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
       transition: color 0.3s;
     }
-
-    .nav-links a:hover { color: var(--ambar-lt); }
-
-    .nav-cta {
-      background: linear-gradient(135deg, var(--ambar), var(--dorado));
-      color: var(--madera) !important;
-      padding: 10px 22px;
-      border-radius: 25px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: transform 0.2s, box-shadow 0.2s;
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(200, 135, 42, 0.4);
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(192,98,58,0.12);
+      border-bottom: 1px solid rgba(192,98,58,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
-
-    /* Hamburguesa */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
     }
-
-    .hamburger span {
-      display: block;
-      width: 26px;
-      height: 2.5px;
-      background: var(--crema);
-      border-radius: 2px;
-      transition: 0.3s;
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
     }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 68px;
-      left: 0; right: 0;
-      background: rgba(30, 18, 10, 0.98);
-      padding: 20px;
-      z-index: 999;
-      border-bottom: 1px solid rgba(200, 135, 42, 0.25);
-    }
-
-    .mobile-menu.active { display: block; }
-
-    .mobile-menu a {
-      display: block;
-      padding: 14px 0;
-      color: var(--crema);
-      font-size: 1rem;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--ambar-lt); }
-
-    .mobile-menu a:last-child { border-bottom: none; }
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: var(--madera) url('https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=1400&q=80') center/cover no-repeat;
-      padding: 140px 20px 100px;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(30,18,10,0.6) 0%, rgba(30,18,10,0.75) 60%, rgba(30,18,10,0.9) 100%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(200, 135, 42, 0.15);
-      border: 1px solid rgba(200, 135, 42, 0.4);
-      color: var(--ambar-lt);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      border-radius: 25px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      color: var(--crema);
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 em {
-      color: var(--ambar-lt);
-      font-style: italic;
-    }
-
-    .hero-sub {
-      font-size: 1.15rem;
-      color: rgba(253, 246, 237, 0.75);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      font-weight: 300;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 36px;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat .value {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      color: var(--ambar-lt);
-      display: block;
-    }
-
-    .hero-stat .label {
-      font-size: 0.78rem;
-      color: rgba(253,246,237,0.55);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--ambar), var(--dorado));
-      color: var(--madera);
-      padding: 15px 36px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(200, 135, 42, 0.35);
-    }
-
-    .btn-outline {
-      border: 2px solid rgba(253,246,237,0.3);
-      color: var(--crema);
-      padding: 13px 34px;
-      border-radius: 30px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: border-color 0.3s, background 0.3s;
-      cursor: pointer;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--ambar-lt);
-      background: rgba(200,135,42,0.1);
-    }
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================= */
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
     .section-label {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--ambar);
-      margin-bottom: 12px;
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
     }
-
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title {
-      font-size: 2.4rem;
-      color: var(--madera);
-      line-height: 1.2;
-      margin-bottom: 16px;
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(192,98,58,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(192,98,58,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(192,98,58,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
     }
 
-    .section-title em {
-      color: var(--ambar);
-      font-style: italic;
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
     }
-
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--gris);
-      line-height: 1.7;
-      max-width: 600px;
-    }
-
-    /* =========================================================
-       SOBRE NOSOTROS
-    ========================================================= */
-    .about {
-      background: var(--madera);
-      color: var(--crema);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about .section-label { color: var(--ambar-lt); }
-    .about .section-title { color: var(--crema); }
-    .about .section-title em { color: var(--ambar-lt); }
-    .about .section-desc { color: rgba(253,246,237,0.7); }
-
-    .about-text p {
-      margin-top: 20px;
-      font-size: 0.98rem;
-      color: rgba(253,246,237,0.65);
-      line-height: 1.75;
-    }
-
-    .about-image {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      min-height: 400px;
-      background: var(--madera-md) url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=700&q=80') center/cover no-repeat;
-    }
-
-    .about-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      border: 1px solid rgba(200,135,42,0.2);
-    }
-
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .about-feature {
-      background: rgba(200, 135, 42, 0.08);
-      border: 1px solid rgba(200, 135, 42, 0.15);
-      border-radius: 12px;
-      padding: 18px 16px;
-      text-align: center;
-    }
-
-    .about-feature .feat-icon {
-      font-size: 1.5rem;
-      margin-bottom: 6px;
-    }
-
-    .about-feature .feat-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      color: var(--ambar-lt);
-      margin-bottom: 2px;
-    }
-
-    .about-feature .feat-sub {
-      font-size: 0.78rem;
-      color: rgba(253,246,237,0.5);
-    }
-
-    /* =========================================================
-       ESPECIALIDADES
-    ========================================================= */
-    .specialties { background: var(--crema); }
-
-    .specialties-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .specialties-header .section-desc {
-      margin: 0 auto;
-    }
-
-    /* Tarjeta destacada — producto estrella */
-    .star-product {
-      background: linear-gradient(135deg, var(--madera), var(--madera-md));
-      border-radius: 20px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: 40px;
-      min-height: 320px;
-    }
-
-    .star-product-img {
-      background: var(--madera-md) url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=80') center/cover no-repeat;
-      min-height: 320px;
-    }
-
-    .star-product-text {
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .star-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(200,135,42,0.15);
-      border: 1px solid rgba(200,135,42,0.3);
-      color: var(--ambar-lt);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 20px;
-      width: fit-content;
-      margin-bottom: 16px;
-    }
-
-    .star-product-text h3 {
-      font-size: 1.9rem;
-      color: var(--crema);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .star-product-text p {
-      font-size: 0.95rem;
-      color: rgba(253,246,237,0.65);
-      line-height: 1.7;
-    }
-
-    /* Grid de especialidades */
-    .spec-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .spec-card {
-      background: var(--blanco);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(30,18,10,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .spec-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(30,18,10,0.1);
-    }
-
-    .spec-card-img {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--crema-dk);
-      position: relative;
-    }
-
-    .spec-card-body {
-      padding: 24px;
-    }
-
-    .spec-card-body h4 {
-      font-size: 1.2rem;
-      color: var(--madera);
-      margin-bottom: 8px;
-    }
-
-    .spec-card-body p {
-      font-size: 0.88rem;
-      color: var(--gris);
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-
-    .spec-card-body ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .spec-card-body ul li {
-      font-size: 0.82rem;
-      color: var(--barro);
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(30,18,10,0.05);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .spec-card-body ul li:last-child { border-bottom: none; }
-
-    .spec-card-body ul li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      background: var(--ambar);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* =========================================================
-       GALERIA
-    ========================================================= */
-    .gallery {
-      background: var(--madera);
-      padding: 80px 20px;
-    }
-
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .gallery .section-label { color: var(--ambar-lt); }
-    .gallery .section-title { color: var(--crema); }
-    .gallery .section-desc { color: rgba(253,246,237,0.6); margin: 0 auto; }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 260px 260px;
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      border-radius: 12px;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--madera-md);
-      position: relative;
-      min-height: 200px;
-      transition: transform 0.3s;
-    }
-
-    .gallery-item:hover { transform: scale(1.02); }
-
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(30,18,10,0.4) 100%);
-    }
-
-    .gallery-item.span-2 {
-      grid-column: span 2;
-    }
-
-    /* =========================================================
-       RESENAS
-    ========================================================= */
-    .reviews { background: var(--crema); }
-
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .reviews-header .section-desc { margin: 0 auto; }
-
-    .rating-summary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--blanco);
-      border-radius: 30px;
-      padding: 12px 24px;
-      box-shadow: 0 2px 10px rgba(30,18,10,0.06);
-      margin-top: 20px;
-    }
-
-    .rating-summary .big-score {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--madera);
-    }
-
-    .rating-summary .stars {
-      color: #f5a623;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-
-    .rating-summary .review-count {
-      font-size: 0.82rem;
-      color: var(--gris);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .review-card {
-      background: var(--blanco);
-      border-radius: 14px;
-      padding: 28px 24px;
-      box-shadow: 0 2px 12px rgba(30,18,10,0.05);
-      border: 1px solid rgba(30,18,10,0.04);
-      transition: transform 0.3s;
-    }
-
-    .review-card:hover { transform: translateY(-3px); }
-
-    .review-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .reviewer-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--ambar), var(--dorado));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--madera);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .reviewer-info .reviewer-name {
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--madera);
-    }
-
-    .reviewer-info .reviewer-date {
-      font-size: 0.75rem;
-      color: var(--gris);
-    }
-
-    .review-platform {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #f1f8f1;
-      border: 1px solid #d4edd4;
-      color: #2d7a2d;
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 12px;
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(192,98,58,0.3);
       white-space: nowrap;
     }
-
-    .review-platform.tripadvisor {
-      background: #f1f8f1;
-      border-color: #c4e5c4;
-      color: #34a853;
-    }
-
-    .review-stars {
-      color: #f5a623;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-
-    .review-text {
-      font-size: 0.9rem;
-      color: #4a4a4a;
-      line-height: 1.65;
-    }
-
-    /* =========================================================
-       HORARIO + MAPA
-    ========================================================= */
-    .location {
-      background: var(--madera);
-      color: var(--crema);
-    }
-
-    .location .section-label { color: var(--ambar-lt); }
-    .location .section-title { color: var(--crema); }
-
-    .location-grid {
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: start;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
+    }
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
+    }
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+    }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(192,98,58,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(192,98,58,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(192,98,58,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    .location-info h3 {
-      font-size: 1.3rem;
-      color: var(--crema);
-      margin-bottom: 20px;
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
+    .service-card {
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(192,98,58,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(192,98,58,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(192,98,58,0.2); color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(192,98,58,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(192,98,58,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(192,98,58,0.1); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(192,98,58,0.03); line-height: 1; pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(192,98,58,0.07);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover { border-color: rgba(192,98,58,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    .info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .info-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(200,135,42,0.12);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      color: var(--ambar-lt);
-    }
-
-    .info-text .info-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(253,246,237,0.45);
-      margin-bottom: 4px;
-    }
-
-    .info-text .info-value {
-      font-size: 0.95rem;
-      color: var(--crema);
-      font-weight: 500;
-    }
-
-    .info-text .info-value a {
-      color: var(--ambar-lt);
-      transition: color 0.2s;
-    }
-
-    .info-text .info-value a:hover { color: var(--dorado); }
-
-    .schedule-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 24px;
-    }
-
-    .schedule-table td {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(253,246,237,0.08);
-      font-size: 0.9rem;
-    }
-
-    .schedule-table td:first-child {
-      color: rgba(253,246,237,0.6);
-      width: 40%;
-    }
-
-    .schedule-table td:last-child {
-      color: var(--crema);
-      font-weight: 500;
-    }
-
-    .schedule-table tr:last-child td { border-bottom: none; }
-
-    .map-wrapper {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .map-wrapper iframe {
-      width: 100%;
-      height: 420px;
-      border: none;
-    }
-
-    /* =========================================================
-       CTA CONTACTO
-    ========================================================= */
+    /* ─── CTA BANNER ─── */
     .cta-section {
-      background: linear-gradient(135deg, var(--ambar), var(--dorado));
-      text-align: center;
-      padding: 70px 20px;
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
     }
-
-    .cta-section h2 {
-      font-size: 2.2rem;
-      color: var(--madera);
-      margin-bottom: 14px;
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
     }
-
-    .cta-section p {
-      font-size: 1.05rem;
-      color: rgba(30, 18, 10, 0.65);
-      margin-bottom: 32px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
     }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
     .btn-dark {
-      background: var(--madera);
-      color: var(--crema);
-      padding: 15px 36px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
     }
-
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(30, 18, 10, 0.3);
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
     }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
 
-    .btn-white {
-      background: var(--blanco);
-      color: var(--madera);
-      padding: 15px 36px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+    /* ─── FOOTER ─── */
     footer {
-      background: #0f0a06;
-      color: rgba(253,246,237,0.6);
-      padding: 50px 20px 30px;
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(192,98,58,0.08);
     }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
     }
-
-    .footer-brand .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--crema);
-      margin-bottom: 12px;
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
     }
-
-    .footer-brand p {
-      font-size: 0.88rem;
-      line-height: 1.65;
-      max-width: 300px;
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
-
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
     .footer-col h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--ambar);
-      margin-bottom: 18px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
     }
-
-    .footer-col a {
-      display: block;
-      font-size: 0.88rem;
-      color: rgba(253,246,237,0.5);
-      margin-bottom: 10px;
-      transition: color 0.2s;
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
-
-    .footer-col a:hover { color: var(--ambar-lt); }
-
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      max-width: 1100px;
-      margin: 0 auto;
-      border-top: 1px solid rgba(253,246,237,0.08);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(253,246,237,0.35);
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
-
-    .footer-bottom a {
-      color: var(--ambar);
-      font-weight: 500;
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
     }
-
-    /* =========================================================
-       WHATSAPP FLOTANTE
-    ========================================================= */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 999;
-      width: 62px;
-      height: 62px;
-      background: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: transform 0.3s;
-      animation: wa-pulse 2s infinite;
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
+    .footer-legal a:hover { color: var(--text-muted); }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      animation: none;
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
     }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
 
-    .whatsapp-float svg {
-      width: 32px;
-      height: 32px;
-      fill: #fff;
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
     }
-
-    @keyframes wa-pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7), 0 0 0 12px rgba(37,211,102,0.12); }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
     }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* =========================================================
-       RESPONSIVE — MOBILE FIRST
-    ========================================================= */
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
     @media (max-width: 768px) {
-      /* Fade-in fallback mobile */
-      .fade-in { opacity: 1 !important; transform: none !important; }
-
-      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
       .hamburger { display: flex; }
-
-      .hero { min-height: 90vh; padding: 120px 20px 70px; }
-      .hero h1 { font-size: 2rem; }
-      .hero-sub { font-size: 0.98rem; }
-      .hero-stats { gap: 24px; }
-      .hero-stat .value { font-size: 1.3rem; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 30px; }
-      .about-image { min-height: 280px; order: -1; }
-
-      .star-product { grid-template-columns: 1fr; }
-      .star-product-img { min-height: 220px; }
-      .star-product-text { padding: 30px 24px; }
-      .star-product-text h3 { font-size: 1.5rem; }
-
-      .spec-grid { grid-template-columns: 1fr; gap: 20px; }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 180px 180px;
-      }
-      .gallery-item.span-2 { grid-column: span 2; }
-
-      .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
-
-      .location-grid { grid-template-columns: 1fr; gap: 30px; }
-      .map-wrapper iframe { height: 300px; }
-
-      section { padding: 60px 16px; }
-      .section-title { font-size: 1.8rem; }
-
-      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-
-      .cta-section h2 { font-size: 1.7rem; }
-      .cta-buttons { flex-direction: column; align-items: center; }
-
-      .whatsapp-float { bottom: 20px; right: 20px; width: 56px; height: 56px; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
     }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 1.7rem; }
-      .hero-stats { flex-direction: column; gap: 14px; }
-      .about-features { grid-template-columns: 1fr; }
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 200px);
-      }
-      .gallery-item.span-2 { grid-column: span 1; }
-    }
-  
-    /* ══════════════════════════════════
-       MOBILE IMAGE FIX (universal)
-    ══════════════════════════════════ */
-    img {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        min-height: 180px;
-        overflow: hidden;
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        min-height: 180px;
-        object-fit: cover;
-        display: block;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img,
-      .studio-img img,
-      .space-img img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .featured-dish-img,
-      .featured-item-img,
-      .highlight-img,
-      .featured-product-img {
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .menu-card-img,
-      .service-card-img,
-      .treatment-img,
-      .program-img,
-      .product-card-img,
-      .course-img,
-      .class-img {
-        width: 100%;
-        height: auto;
-        min-height: 140px;
-        object-fit: cover;
-        display: block;
-      }
-      [style*="background-image"],
-      .program-card-img,
-      .coach-img,
-      .team-member-img,
-      .trainer-img,
-      .specialist-img,
-      .staff-img {
-        background-size: cover !important;
-        background-position: center !important;
-        min-height: 180px;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        min-height: 160px;
-      }
-      .gallery-item img {
-        min-height: 160px;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img {
-        min-height: 160px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER / NAV ===== -->
-  <header>
-    <nav class="nav-inner">
-      <a href="#" class="nav-logo">
-        <div class="logo-icon">T</div>
-        <span>{{NOMBRE_NEGOCIO}}</span>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">BAR <span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Bar<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Tapas · Raciones · Buen Ambiente</p>
+    <h1 class="hero-title">
+      Donde las<br><em>tapas</em><br>cuentan historias
+    </h1>
+    <p class="hero-sub">
+      Cocina de mercado, raciones generosas y un ambiente que te hace sentir como en casa. Tradición con un toque actual.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span>Reservar mesa</span>
+        <span>→</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#especialidades">Carta</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#resenas">Opiniones</a></li>
-        <li><a href="#ubicacion">Ubicacion</a></li>
-        <li><a href="tel:{{TELEFONO}}" class="nav-cta">Llamar</a></li>
-      </ul>
-      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </header>
-
-  <div class="mobile-menu">
-    <a href="#about" onclick="this.parentElement.classList.remove('active')">Nosotros</a>
-    <a href="#especialidades" onclick="this.parentElement.classList.remove('active')">Carta</a>
-    <a href="#galeria" onclick="this.parentElement.classList.remove('active')">Galeria</a>
-    <a href="#resenas" onclick="this.parentElement.classList.remove('active')">Opiniones</a>
-    <a href="#ubicacion" onclick="this.parentElement.classList.remove('active')">Ubicacion</a>
-    <a href="tel:{{TELEFONO}}" style="color: var(--ambar-lt); font-weight: 600;">Llamar ahora</a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Ver carta</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
   </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <div class="hero-badge">Bar de tapas en {{CIUDAD}}</div>
-      <h1>Donde cada tapa<br>cuenta una <em>historia</em></h1>
-      <p class="hero-sub">En {{NOMBRE_NEGOCIO}} servimos lo de siempre con el sabor de siempre. Barra variada, canas bien tiradas y el ambiente que solo un bar de barrio sabe dar.</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="value">4.5/5</span>
-          <span class="label">Google</span>
-        </div>
-        <div class="hero-stat">
-          <span class="value">+50</span>
-          <span class="label">Resenas</span>
-        </div>
-        <div class="hero-stat">
-          <span class="value">Diario</span>
-          <span class="label">Pintxos frescos</span>
-        </div>
-      </div>
-      <div class="hero-buttons">
-        <a href="tel:{{TELEFONO}}" class="btn-primary">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-          Llamar ahora
-        </a>
-        <a href="#especialidades" class="btn-outline">Ver la carta</a>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Montaditos</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Tostas Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Cañas y Vinos</span>
+    <span class="marquee-item"><span class="dot"></span>Vermut Artesano</span>
+    <span class="marquee-item"><span class="dot"></span>Postres de la Abuela</span>
+    <span class="marquee-item"><span class="dot"></span>Montaditos</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Tostas Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Cañas y Vinos</span>
+    <span class="marquee-item"><span class="dot"></span>Vermut Artesano</span>
+    <span class="marquee-item"><span class="dot"></span>Postres de la Abuela</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="12">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años en el barrio</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="35">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Tapas en carta</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-label">Nota en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Producto de mercado</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+    </div>
+    <a href="#" class="view-all reveal">Ver todo →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(192,98,58,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Especialidad · Casa</p>
+        <h3 class="project-name">Croquetas de Jamón Ibérico</h3>
+        <p class="project-meta">Receta de la abuela · Caseras</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== SOBRE NOSOTROS ===== -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid fade-in">
-        <div class="about-text">
-          <span class="section-label">Sobre nosotros</span>
-          <h2 class="section-title">Tradicion en barra,<br><em>sabor de verdad</em></h2>
-          <p class="section-desc">{{NOMBRE_NEGOCIO}} es ese bar de toda la vida donde entras a por una cana y te quedas a cenar. Un lugar donde la barra habla por si sola: pintxos recien hechos, raciones generosas y un trato cercano que te hace volver.</p>
-          <p>Aqui no hay modas pasajeras. Hay buen genero, manos que saben cocinarlo y una barra donde cada dia encuentras algo nuevo que probar. Eso si, las canas siempre estan igual de frias.</p>
-          <div class="about-features">
-            <div class="about-feature">
-              <div class="feat-icon">&#127860;</div>
-              <div class="feat-title">Pintxos diarios</div>
-              <div class="feat-sub">Elaboracion propia</div>
-            </div>
-            <div class="about-feature">
-              <div class="feat-icon">&#127866;</div>
-              <div class="feat-title">Canas perfectas</div>
-              <div class="feat-sub">Siempre bien tiradas</div>
-            </div>
-            <div class="about-feature">
-              <div class="feat-icon">&#128293;</div>
-              <div class="feat-title">Buen genero</div>
-              <div class="feat-sub">Producto fresco</div>
-            </div>
-            <div class="about-feature">
-              <div class="feat-icon">&#129309;</div>
-              <div class="feat-title">Trato cercano</div>
-              <div class="feat-sub">Bar de barrio</div>
-            </div>
-          </div>
-        </div>
-        <div class="about-image" role="img" aria-label="Interior del bar con barra de pintxos"></div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(192,98,58,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Raciones · Mercado</p>
+        <h3 class="project-name">Pulpo a la Gallega</h3>
+        <p class="project-meta">Producto gallego · Premium</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== ESPECIALIDADES ===== -->
-  <section class="specialties" id="especialidades">
-    <div class="container">
-      <div class="specialties-header fade-in">
-        <span class="section-label">Nuestra carta</span>
-        <h2 class="section-title">Lo que sale de <em>nuestra barra</em></h2>
-        <p class="section-desc">Una barra generosa con lo mejor de la cocina de siempre. Pintxos elaborados a diario, raciones para compartir y tostas que no dejan indiferente.</p>
-      </div>
-
-      <!-- Producto estrella -->
-      <div class="star-product fade-in">
-        <div class="star-product-img" role="img" aria-label="Pintxos variados en la barra"></div>
-        <div class="star-product-text">
-          <div class="star-badge">&#9733; Nuestra especialidad</div>
-          <h3>Barra de pintxos</h3>
-          <p>Cada dia renovamos nuestra barra con pintxos elaborados en el momento. Desde los clasicos de tortilla, anchoa y gilda hasta creaciones de temporada. Ven, elige con los ojos y disfruta con el paladar.</p>
-        </div>
-      </div>
-
-      <!-- Grid de categorias -->
-      <div class="spec-grid fade-in">
-        <div class="spec-card">
-          <div class="spec-card-img" style="background-image: url('https://images.unsplash.com/photo-1535400255456-984241443b29?w=500&q=80');" role="img" aria-label="Raciones"></div>
-          <div class="spec-card-body">
-            <h4>Raciones</h4>
-            <p>Para compartir y repetir. Producto fresco y porciones que no escatiman.</p>
-            <ul>
-              <li>Rabas caseras</li>
-              <li>Croquetas de jamon</li>
-              <li>Pimientos de padron</li>
-              <li>Pulpo a la gallega</li>
-              <li>Oreja a la plancha</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-card-img" style="background-image: url('https://images.unsplash.com/photo-1550507992-eb63ffee0847?w=500&q=80');" role="img" aria-label="Tostas y montaditos"></div>
-          <div class="spec-card-body">
-            <h4>Tostas y montaditos</h4>
-            <p>Sobre pan crujiente, combinaciones que siempre funcionan.</p>
-            <ul>
-              <li>Tosta de salmon ahumado</li>
-              <li>Montadito de anchoa</li>
-              <li>Tosta de txistorra con queso</li>
-              <li>Montadito de lomo con piquillo</li>
-              <li>Tosta de jamon con tomate</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-card-img" style="background-image: url('https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=500&q=80');" role="img" aria-label="Bebidas"></div>
-          <div class="spec-card-body">
-            <h4>Para beber</h4>
-            <p>Canas bien tiradas, vinos de la tierra y vermut de grifo.</p>
-            <ul>
-              <li>Cana / Zurito</li>
-              <li>Vermut de grifo</li>
-              <li>Vino tinto Rioja</li>
-              <li>Txakoli</li>
-              <li>Refrescos y cafes</li>
-            </ul>
-          </div>
-        </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(192,98,58,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Ambiente · Terraza</p>
+        <h3 class="project-name">Terraza de Verano</h3>
+        <p class="project-meta">40 comensales · Petanca</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== GALERIA ===== -->
-  <section class="gallery" id="galeria">
-    <div class="container">
-      <div class="gallery-header fade-in">
-        <span class="section-label">Galeria</span>
-        <h2 class="section-title">Asi se vive <em>en nuestra barra</em></h2>
-        <p class="section-desc">El ambiente, los pintxos, la barra... imagenes que hablan mejor que las palabras.</p>
-      </div>
-      <div class="gallery-grid fade-in">
-        <div class="gallery-item span-2" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80');" role="img" aria-label="Ambiente del bar"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80');" role="img" aria-label="Pintxos en la barra"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&q=80');" role="img" aria-label="Canas de cerveza"></div>
-        <div class="gallery-item span-2" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80');" role="img" aria-label="Interior del bar"></div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(192,98,58,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Vermut · Artesano</p>
+        <h3 class="project-name">Hora del Vermut</h3>
+        <p class="project-meta">Domingos · 12:00-15:00</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== RESENAS ===== -->
-  <section class="reviews" id="resenas">
-    <div class="container">
-      <div class="reviews-header fade-in">
-        <span class="section-label">Opiniones</span>
-        <h2 class="section-title">Lo que dicen <em>nuestros clientes</em></h2>
-        <p class="section-desc">La mejor publicidad es la que hacen quienes ya nos han visitado.</p>
-        <div class="rating-summary">
-          <span class="big-score">4.5</span>
-          <div>
-            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-            <div class="review-count">+50 resenas en Google</div>
-          </div>
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">2012</div>
+      <div class="about-badge-text">Un rincón con alma en el barrio</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Más que un bar,<br>un <em>punto de encuentro</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      La Esquina de Pablo nació con una idea sencilla: un bar donde la gente del barrio se sienta como en casa y la comida sepa a verdad.<br><br><strong>Producto fresco cada mañana.</strong> Compramos en el mercado del barrio y cocinamos con las recetas que nos enseñaron nuestras madres.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Producto de mercado</h4>
+          <p>Compra diaria en mercado local, sin intermediarios ni congelados</p>
         </div>
       </div>
-
-      <div class="reviews-grid fade-in">
-        <!-- Resena 1 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">MG</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Maria Garcia</div>
-                <div class="reviewer-date">Hace 2 semanas</div>
-              </div>
-            </div>
-            <span class="review-platform">
-              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Fuimos a tomar unas canas y al final nos quedamos a cenar. La barra de pintxos estaba espectacular, todo fresco y recien hecho. Las croquetas de jamon son de las mejores que he probado. Volveremos seguro.</p>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Recetas con historia</h4>
+          <p>Croquetas de la abuela Carmen, tortilla jugosa del abuelo Pablo</p>
         </div>
-
-        <!-- Resena 2 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">JL</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Javier Lopez</div>
-                <div class="reviewer-date">Hace 1 mes</div>
-              </div>
-            </div>
-            <span class="review-platform">
-              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Bar de tapas de verdad, sin pretensiones. Rabas brutales, cana perfecta y el camarero te atiende como si te conociera de toda la vida. Relacion calidad-precio inmejorable.</p>
-        </div>
-
-        <!-- Resena 3 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">AL</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Ana Larreategi</div>
-                <div class="reviewer-date">Hace 3 semanas</div>
-              </div>
-            </div>
-            <span class="review-platform">
-              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Lo mejor del barrio para ir de pintxos. Tienen una barra increible con variedad cada dia. La tortilla de patata esta jugosita y las gildas picantes, como tienen que ser. Ambiente muy agradable.</p>
-        </div>
-
-        <!-- Resena 4 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">PR</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Pablo Ruiz</div>
-                <div class="reviewer-date">Hace 2 meses</div>
-              </div>
-            </div>
-            <span class="review-platform tripadvisor">
-              <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#34a853" stroke-width="2"/><circle cx="8.5" cy="11" r="2" fill="#34a853"/><circle cx="15.5" cy="11" r="2" fill="#34a853"/><path d="M12 3 L12 6 M6 6 L8 8 M18 6 L16 8" stroke="#34a853" stroke-width="1.5" fill="none"/></svg>
-              TripAdvisor
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-          <p class="review-text">Entramos por casualidad y fue un acierto total. Muy buen surtido de pintxos, raciones abundantes y precios razonables. El pulpo a la gallega estaba buenisimo. Sitio recomendable al 100%.</p>
-        </div>
-
-        <!-- Resena 5 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">LE</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Laura Etxebarria</div>
-                <div class="reviewer-date">Hace 1 mes</div>
-              </div>
-            </div>
-            <span class="review-platform">
-              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Nuestro bar de cabecera. Los viernes la barra es una locura de buena. El vermut de grifo esta increible y los champiñones a la plancha con ajillo son un vicio. Trato 10, muy majos.</p>
-        </div>
-
-        <!-- Resena 6 -->
-        <div class="review-card">
-          <div class="review-top">
-            <div class="reviewer">
-              <div class="reviewer-avatar">IM</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Iñaki Mendoza</div>
-                <div class="reviewer-date">Hace 3 meses</div>
-              </div>
-            </div>
-            <span class="review-platform tripadvisor">
-              <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#34a853" stroke-width="2"/><circle cx="8.5" cy="11" r="2" fill="#34a853"/><circle cx="15.5" cy="11" r="2" fill="#34a853"/><path d="M12 3 L12 6 M6 6 L8 8 M18 6 L16 8" stroke="#34a853" stroke-width="1.5" fill="none"/></svg>
-              TripAdvisor
-            </span>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">De lo mejor para ir de poteo. Pintxos variados y bien hechos, sobre todo la tortilla que esta de escandalo. El ambiente es muy autentico, bar de barrio de los de verdad. Precios muy correctos.</p>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Ambiente auténtico</h4>
+          <p>Sin pretensiones, con cariño. Un sitio donde repetir cada semana</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ===== UBICACION + HORARIO ===== -->
-  <section class="location" id="ubicacion">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 50px;" class="fade-in">
-        <span class="section-label">Donde estamos</span>
-        <h2 class="section-title">Ven a <em>conocernos</em></h2>
-      </div>
-      <div class="location-grid fade-in">
-        <div class="location-info">
-          <div class="info-row">
-            <div class="info-icon">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Direccion</div>
-              <div class="info-value">{{DIRECCION}}</div>
-            </div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-icon">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Telefono</div>
-              <div class="info-value"><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></div>
-            </div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-icon">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Email</div>
-              <div class="info-value"><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></div>
-            </div>
-          </div>
-
-          <h3 style="margin-top: 32px;">Horario</h3>
-          <table class="schedule-table">
-            <tr><td>Horario</td><td>{{HORARIO}}</td></tr>
-          </table>
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>resultados reales</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
         </div>
+        <h3>Tapas y Montaditos</h3>
+        <p>Tortilla jugosa, croquetas caseras, patatas bravas, calamares, jamón ibérico. Las tapas de toda la vida hechas con mimo.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Raciones para Compartir</h3>
+        <p>Pulpo a la gallega, carrilleras al vino, gambas al ajillo, ensaladilla rusa. Platos generosos para disfrutar en grupo.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+        </div>
+        <h3>Eventos y Grupos</h3>
+        <p>Menús para grupos, celebraciones y eventos privados. Terraza con capacidad para 40 comensales.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="map-wrapper">
-          <iframe src="https://maps.google.com/maps?q={{GOOGLE_MAPS_QUERY}}&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Las mejores croquetas de Madrid. Caseras, cremosas y con un sabor increíble. Es mi bar de referencia los domingos."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Antonio Ruiz</strong>
+          <span>Vecino del barrio · Madrid</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Celebré mi cumple aquí con 20 amigos y fue perfecto. El menú de raciones, el trato cercano y el precio. Volveremos seguro."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Marta Jiménez</strong>
+          <span>Celebración · Madrid</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Llevo 8 años viniendo cada viernes a tomar cañas y tortilla. Es como una segunda casa. Pablo y su equipo son geniales."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>José Manuel Pérez</strong>
+          <span>Cliente habitual · Madrid</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== CTA CONTACTO ===== -->
-  <section class="cta-section">
-    <div class="container fade-in">
-      <h2>Nos vemos en la barra</h2>
-      <p>Reserva tu mesa o acercate cuando quieras. Siempre hay sitio para uno mas.</p>
-      <div class="cta-buttons">
-        <a href="tel:{{TELEFONO}}" class="btn-dark">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-          Llamar para reservar
-        </a>
-        <a href="https://wa.me/34{{TELEFONO}}" class="btn-white" target="_blank">
-          <svg width="18" height="18" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.988l6.272-1.426A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.964 0-3.832-.53-5.47-1.491l-.392-.233-4.065.924.966-3.955-.256-.406A9.78 9.78 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">{{NOMBRE_NEGOCIO}}</div>
-        <p>Bar de tapas y pintxos en {{CIUDAD}}. Barra variada, canas bien tiradas y el sabor de siempre. Te esperamos.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navegacion</h4>
-        <a href="#about">Nosotros</a>
-        <a href="#especialidades">Carta</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#resenas">Opiniones</a>
-        <a href="#ubicacion">Donde estamos</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <a href="tel:{{TELEFONO}}">{{TELEFONO}}</a>
-        <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
-        <a href="#">{{DIRECCION}}</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</span>
-      <span>Web creada por <a href="#">G&amp;G Elcano</a></span>
-    </div>
-  </footer>
-
-  <!-- ===== WHATSAPP FLOTANTE ===== -->
-  <a href="https://wa.me/34{{TELEFONO}}" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.988l6.272-1.426A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.964 0-3.832-.53-5.47-1.491l-.392-.233-4.065.924.966-3.955-.256-.406A9.78 9.78 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Nos vemos en<br>la barra?</h2>
+    <p>Reserva mesa o ven sin avisar. Siempre hay sitio para uno más.</p>
+  </div>
+  <a href="mailto:reservas@laesquinadepablo.es" class="btn-dark">
+    <span>Reservar mesa</span>
+    <span>↗</span>
   </a>
+</div>
 
-  <!-- ===== JS — FADE IN + HAMBURGUESA ===== -->
-  <script>
-    // Intersection Observer para fade-in
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.15 });
-      faders.forEach(f => obs.observe(f));
-    } else {
-      // Fallback: mostrar todo
-      faders.forEach(f => f.classList.add('visible'));
-    }
-
-    // Fallback timer para mobile (por si IntersectionObserver falla)
-    setTimeout(() => {
-      faders.forEach(f => f.classList.add('visible'));
-    }, 3000);
-  </script>
-
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Bar<span>.</span></a>
+      <p class="footer-tagline">"La mejor conversación siempre empieza con una buena tapa."<br>— La Esquina de Pablo</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="#" class="social-link">Gm</a>
+        <a href="#" class="social-link">Wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Carta</h4>
+      <ul>
+        <li><a href="#">Tapas</a></li>
+        <li><a href="#">Raciones</a></li>
+        <li><a href="#">Tostas</a></li>
+        <li><a href="#">Postres</a></li>
+        <li><a href="#">Bodega</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>El Bar</h4>
+      <ul>
+        <li><a href="#">Nuestra historia</a></li>
+        <li><a href="#">Equipo</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Empleo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:reservas@laesquinadepablo.es">reservas@laesquinadepablo.es</a></li>
+        <li><a href="tel:+34912876543">+34 912 876 543</a></li>
+        <li><a href="#">Calle de la Cava Baja, 18<br>28005 Madrid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Bar La Esquina de Pablo. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-// Fallback for background images that fail to load
-document.addEventListener('DOMContentLoaded', function() {
-  var elements = document.querySelectorAll('[style*="background-image"], [style*="background"]');
-  var allBgElements = document.querySelectorAll('*');
-  allBgElements.forEach(function(el) {
-    var bg = window.getComputedStyle(el).backgroundImage;
-    if (bg && bg !== 'none' && bg.indexOf('url(') !== -1) {
-      var match = bg.match(/url\(["']?(https?:\/\/[^"')]+)["']?\)/);
-      if (match) {
-        var img = new Image();
-        img.onerror = function() {
-          el.style.backgroundImage = "none";
-          el.style.backgroundColor = "#333";
-          if (!el.querySelector('.img-fallback-text')) {
-            var span = document.createElement('span');
-            span.className = 'img-fallback-text';
-            span.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#999;font-size:14px;position:absolute;top:0;left:0;';
-            span.textContent = 'Imagen no disponible';
-            if (window.getComputedStyle(el).position === 'static') {
-              el.style.position = 'relative';
-            }
-            el.appendChild(span);
-          }
-        };
-        img.src = match[1];
+  // ── LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
       }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
     }
   });
-});
 </script>
-
 </body>
 </html>

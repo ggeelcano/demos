@@ -3,1696 +3,1122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Food truck de comida callejera gourmet en {{CIUDAD}}. Hamburguesas de autor, street food, eventos y festivales. Sabor sin fronteras.">
-  <title>{{NOMBRE_NEGOCIO}} — Food Truck Gourmet en {{CIUDAD}}</title>
+  <title>El Rodante — Street Food — Food Truck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:       #1a1a1a;
-      --black-mid:   #2a2a2a;
-      --mustard:     #e8a917;
-      --mustard-deep:#c4900f;
-      --mustard-light:#f5c542;
-      --red:         #d93025;
-      --red-dark:    #b71c1c;
-      --turquoise:   #1abc9c;
-      --turquoise-dk:#16a085;
-      --cream:       #faf8f4;
-      --cream-dark:  #f0ece4;
-      --warm-gray:   #7a7a7a;
-      --text-dark:   #1a1a1a;
-      --text-light:  #f5f1e8;
-      --text-muted:  #999;
-      --white:       #ffffff;
-      --radius:      12px;
-      --shadow:      0 8px 32px rgba(0,0,0,0.25);
-      --shadow-sm:   0 4px 16px rgba(0,0,0,0.12);
+      --black: #0e0a06;
+      --white: #f5f3ef;
+      --accent: #EAB308;
+      --accent-light: #facc15;
+      --carbon: #181410;
+      --carbon-mid: #221e16;
+      --carbon-light: #33281e;
+      --text-muted: #9a8a70;
+      --font-serif: 'Fredoka', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
       line-height: 1.6;
       overflow-x: hidden;
+      cursor: none;
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--mustard); border-radius: 3px; }
-
-    /* ══════════════════════════════════
-       NAVBAR
-    ══════════════════════════════════ */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(26,26,26,0.95);
-      backdrop-filter: blur(14px);
-      padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-      border-bottom: 1px solid rgba(232,169,23,0.2);
-      transition: box-shadow 0.3s;
-    }
-    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
-
-    .nav-brand {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none;
-    }
-    .nav-logo-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
+    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
     }
-    .nav-brand-text {
-      display: flex; flex-direction: column; line-height: 1.2;
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(234,179,8,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
     }
-    .nav-brand-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; font-weight: 400;
-      color: var(--cream);
-      letter-spacing: 1.5px;
-    }
-    .nav-brand-sub {
-      font-size: 10px; font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: 2px; text-transform: uppercase;
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(234,179,8,0.7);
+      background: rgba(234,179,8,0.05);
     }
 
-    .nav-links {
-      display: flex; align-items: center; gap: 28px;
-      list-style: none;
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
-    .nav-links a {
-      color: var(--text-light);
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.85);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(234,179,8,0.08);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
       text-decoration: none;
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: color 0.25s;
+      color: var(--white);
+      display: flex; align-items: center; gap: 10px;
     }
-    .nav-links a:hover { color: var(--mustard-light); }
-
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-      color: var(--black) !important;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: 700 !important;
-      font-size: 13px !important;
-      letter-spacing: 0.3px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(232,169,23,0.4);
-    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
+    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
-      display: none;
-      flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer;
-      padding: 8px;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
     }
     .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--cream);
-      border-radius: 2px;
+      width: 24px; height: 2px; background: var(--white);
       transition: transform 0.3s, opacity 0.3s;
     }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
     .mobile-menu {
-      display: none;
-      position: fixed; top: 68px; left: 0; right: 0;
-      background: rgba(26,26,26,0.98);
-      backdrop-filter: blur(14px);
-      padding: 24px 32px;
-      flex-direction: column; gap: 20px;
-      border-bottom: 1px solid rgba(232,169,23,0.2);
-      z-index: 999;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
     }
-    .mobile-menu.active { display: flex; }
+    .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 16px; font-weight: 500;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: color 0.2s;
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
     }
-    .mobile-menu a:hover { color: var(--mustard-light); }
+    .mobile-menu a:hover { color: var(--accent); }
 
-    /* ══════════════════════════════════
-       HERO
-    ══════════════════════════════════ */
+    /* ─── HERO ─── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(180deg, rgba(26,26,26,0.45) 0%, rgba(26,26,26,0.65) 40%, rgba(26,26,26,0.92) 100%),
-                  url('https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=1600&q=80') center/cover no-repeat;
-      background-color: var(--black);
-      padding: 120px 24px 80px;
-      text-align: center;
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      overflow: hidden;
     }
-    .hero-content { max-width: 860px; }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(232,169,23,0.15);
-      border: 1px solid rgba(232,169,23,0.3);
-      padding: 8px 20px;
-      border-radius: 40px;
-      font-size: 12px; font-weight: 600;
-      color: var(--cream);
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: 28px;
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0e0a06 0%, #221e16 40%, #EAB30822 100%);
+      background-size: cover; background-position: center;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
     }
-    .hero-badge svg { width: 16px; height: 16px; fill: var(--mustard-light); }
-
-    .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.0;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
     }
-    .hero h1 span {
-      display: block;
-      color: var(--mustard-light);
-      font-family: 'Inter', sans-serif;
-      font-style: italic;
-      font-size: 0.22em;
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
       font-weight: 300;
-      margin-top: 10px;
-      letter-spacing: 0;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
     }
-
+    .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
-      color: rgba(245,241,232,0.75);
-      max-width: 600px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
     }
-
-    .hero-buttons {
-      display: flex; gap: 16px;
-      justify-content: center; flex-wrap: wrap;
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
     }
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-      color: var(--black);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 700; font-size: 15px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none; cursor: pointer;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(232,169,23,0.4);
-    }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--cream);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 600; font-size: 15px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-2px);
-    }
-    .btn-green {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dk));
-      color: var(--white);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 600; font-size: 15px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none; cursor: pointer;
-    }
-    .btn-green:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(26,188,156,0.4);
-    }
-    .btn-icon { width: 18px; height: 18px; }
-
-    .hero-stats {
-      display: flex; justify-content: center; gap: 48px;
-      margin-top: 56px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .hero-stat { text-align: center; }
-    .hero-stat-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px; font-weight: 400;
-      color: var(--mustard-light);
-      letter-spacing: 1px;
-    }
-    .hero-stat-label {
-      font-size: 12px; color: var(--text-muted);
-      letter-spacing: 1px; text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    /* ══════════════════════════════════
-       SECTIONS BASE
-    ══════════════════════════════════ */
-    .section {
-      padding: 96px 24px;
-    }
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-label {
-      display: inline-block;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--mustard);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-    .section-desc {
-      font-size: 17px;
-      color: var(--warm-gray);
-      max-width: 600px;
-      line-height: 1.7;
-    }
-
-    .section-dark {
-      background: var(--black);
-      color: var(--text-light);
-    }
-    .section-dark .section-label { color: var(--mustard-light); }
-    .section-dark .section-title { color: var(--white); }
-    .section-dark .section-desc { color: var(--text-muted); }
-
-    .section-accent {
-      background: linear-gradient(135deg, var(--black-mid), var(--black));
-      color: var(--text-light);
-    }
-    .section-accent .section-label { color: var(--mustard-light); }
-    .section-accent .section-title { color: var(--white); }
-    .section-accent .section-desc { color: var(--text-muted); }
-
-    /* ══════════════════════════════════
-       CONCEPTO / ABOUT
-    ══════════════════════════════════ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    .about-img {
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-    }
-    .about-img img {
-      width: 100%; height: 420px;
-      object-fit: cover;
-      display: block;
-      border-radius: var(--radius);
-    }
-    .about-img-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(26,26,26,0.85));
-      padding: 24px;
-      border-radius: 0 0 var(--radius) var(--radius);
-    }
-    .about-img-overlay span {
-      font-family: 'Inter', sans-serif;
-      font-style: italic;
-      color: var(--cream);
-      font-size: 15px;
-    }
-    .about-text p {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .about-features {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; margin-top: 32px;
-    }
-    .about-feature {
-      display: flex; align-items: center; gap: 12px;
-      background: rgba(232,169,23,0.08);
-      border: 1px solid rgba(232,169,23,0.15);
-      padding: 14px 18px;
-      border-radius: 10px;
-    }
-    .about-feature-icon {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .about-feature span {
-      font-size: 13px; font-weight: 500;
-      color: var(--text-light);
-      line-height: 1.3;
-    }
-
-    /* ══════════════════════════════════
-       CARTA / ESPECIALIDADES
-    ══════════════════════════════════ */
-    .menu-intro {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .menu-intro .section-desc {
-      margin: 0 auto;
-    }
-
-    .menu-categories {
-      display: flex; justify-content: center; gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .menu-cat-tab {
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: 13px; font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      border: 2px solid var(--mustard);
-      color: var(--mustard);
-      background: transparent;
-      cursor: default;
-      transition: all 0.2s;
-    }
-    .menu-cat-tab.active,
-    .menu-cat-tab:first-child {
-      background: var(--mustard);
-      color: var(--black);
-    }
-
-    .menu-section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px; font-weight: 400;
-      color: var(--text-dark);
-      text-align: center;
-      margin: 48px 0 8px;
-      padding-top: 32px;
-      border-top: 2px solid rgba(232,169,23,0.15);
-      letter-spacing: 1px;
-    }
-    .menu-section-title:first-of-type {
-      margin-top: 0;
-      border-top: none;
-      padding-top: 0;
-    }
-    .menu-section-sub {
-      text-align: center;
-      font-size: 14px;
-      color: var(--warm-gray);
-      font-style: italic;
-      margin-bottom: 28px;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .menu-item {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: 16px 20px;
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border: 1px solid rgba(0,0,0,0.04);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .menu-item:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-    .menu-item-info { flex: 1; padding-right: 16px; }
-    .menu-item-name {
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-    }
-    .menu-item-desc {
-      font-size: 13px;
-      color: var(--warm-gray);
-      line-height: 1.5;
-    }
-    .menu-item-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--red);
-      white-space: nowrap;
-      letter-spacing: 0.5px;
-    }
-    .menu-item-badge {
-      display: inline-block;
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 1px; text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-    .badge-popular {
-      background: rgba(217,48,37,0.1);
-      color: var(--red);
-    }
-    .badge-new {
-      background: rgba(26,188,156,0.1);
-      color: var(--turquoise);
-    }
-
-    /* Featured dish */
-    .featured-dish {
-      margin-top: 48px;
-      background: linear-gradient(135deg, var(--black), var(--black-mid));
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .featured-dish-img {
-      width: 100%; height: 100%;
-      min-height: 320px;
-      object-fit: cover;
-      display: block;
-    }
-    .featured-dish-content {
-      padding: 48px 40px;
-      display: flex; flex-direction: column;
-      justify-content: center;
-    }
-    .featured-dish-label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--mustard-light);
-      margin-bottom: 12px;
-    }
-    .featured-dish-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px; font-weight: 400;
-      color: var(--white);
-      margin-bottom: 16px;
-      line-height: 1.1;
-      letter-spacing: 1px;
-    }
-    .featured-dish-desc {
-      font-size: 15px;
-      color: rgba(245,241,232,0.75);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-    .featured-dish-cta {
-      display: inline-flex;
-      align-self: flex-start;
-    }
-
-    /* ══════════════════════════════════
-       GALERIA / DONDE ENCONTRARNOS
-    ══════════════════════════════════ */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 260px 260px;
-      gap: 12px;
-      margin-top: 48px;
-    }
-    .gallery-item {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s;
-    }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-item.span-2 { grid-column: span 2; }
-    .gallery-item.span-row { grid-row: span 2; }
-    .gallery-label {
-      position: absolute; bottom: 12px; left: 12px;
-      background: rgba(26,26,26,0.8);
-      backdrop-filter: blur(6px);
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 12px; font-weight: 500;
-      color: var(--cream);
-      letter-spacing: 0.5px;
-    }
-
-    /* ══════════════════════════════════
-       RESENAS
-    ══════════════════════════════════ */
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .reviews-overall {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: rgba(232,169,23,0.08);
-      border: 1px solid rgba(232,169,23,0.15);
-      padding: 14px 28px;
-      border-radius: 40px;
-      margin-top: 20px;
-    }
-    .reviews-overall-score {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px; font-weight: 400;
-      color: var(--mustard);
-      letter-spacing: 0.5px;
-    }
-    .reviews-overall-stars {
-      color: #f59e0b;
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-    .reviews-overall-count {
-      font-size: 13px;
-      color: var(--warm-gray);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .review-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.04);
-      position: relative;
-      transition: transform 0.3s;
-    }
-    .review-card:hover { transform: translateY(-2px); }
-
-    .review-platform {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #4285f4;
-      background: rgba(66,133,244,0.08);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-    }
-    .review-platform.tripadvisor {
-      color: #00aa6c;
-      background: rgba(0,170,108,0.08);
-    }
-    .review-platform svg {
-      width: 14px; height: 14px;
-    }
-
-    .review-stars {
-      color: #f59e0b;
-      font-size: 15px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-    .review-text {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 16px;
-      font-style: italic;
-    }
-    .review-author {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
     }
-    .review-avatar {
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
       width: 36px; height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-      display: flex; align-items: center; justify-content: center;
-      color: var(--black);
-      font-size: 14px; font-weight: 700;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
     }
-    .review-author-info { display: flex; flex-direction: column; }
-    .review-author-name {
-      font-size: 14px; font-weight: 600;
-      color: var(--text-dark);
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
     }
-    .review-author-date {
-      font-size: 12px;
-      color: var(--warm-gray);
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
     }
-
-    /* ══════════════════════════════════
-       EVENTOS / CONTACTO
-    ══════════════════════════════════ */
-    .events-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-top: 48px;
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
     }
-    .event-card {
-      background: rgba(232,169,23,0.06);
-      border: 1px solid rgba(232,169,23,0.12);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
     }
-    .event-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-    }
-    .event-icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .event-icon svg { width: 26px; height: 26px; fill: var(--black); }
-    .event-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--white);
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-    .event-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ══════════════════════════════════
-       HORARIO + MAPA + CONTACTO
-    ══════════════════════════════════ */
-    .info-grid {
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(234,179,8,0.12);
+      border-bottom: 1px solid rgba(234,179,8,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(234,179,8,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(234,179,8,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(234,179,8,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
+    }
+
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(234,179,8,0.3);
+      white-space: nowrap;
+    }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-top: 48px;
-      align-items: start;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
     }
-    .info-card {
-      background: rgba(232,169,23,0.06);
-      border: 1px solid rgba(232,169,23,0.12);
-      border-radius: var(--radius);
-      padding: 36px;
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
     }
-    .info-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px; font-weight: 400;
-      color: var(--white);
-      margin-bottom: 24px;
-      letter-spacing: 1px;
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
     }
-    .info-schedule-row {
-      display: flex; justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-size: 14px;
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
     }
-    .info-schedule-day { color: var(--text-muted); }
-    .info-schedule-time { color: var(--text-light); font-weight: 500; }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    .info-contact-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
     }
-    .info-contact-icon {
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(234,179,8,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(234,179,8,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(234,179,8,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
+    .service-card {
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(234,179,8,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(234,179,8,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(234,179,8,0.2); color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(234,179,8,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(234,179,8,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(234,179,8,0.1); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(234,179,8,0.03); line-height: 1; pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(234,179,8,0.07);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover { border-color: rgba(234,179,8,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
+    }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(234,179,8,0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+    }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
       width: 40px; height: 40px;
-      background: rgba(232,169,23,0.15);
-      border-radius: 10px;
+      border: 1px solid rgba(245,243,239,0.1);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
     }
-    .info-contact-icon svg {
-      width: 18px; height: 18px;
-      fill: var(--mustard-light);
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
     }
-    .info-contact-text {
-      font-size: 14px;
-      color: var(--text-light);
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
-    .info-contact-text a {
-      color: var(--mustard-light);
-      text-decoration: none;
-    }
-    .info-contact-text a:hover { text-decoration: underline; }
-
-    .map-container {
-      margin-top: 48px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(232,169,23,0.12);
-    }
-    .map-container iframe {
-      width: 100%; height: 350px;
-      border: none; display: block;
-    }
-
-    /* ══════════════════════════════════
-       CTA BANNER
-    ══════════════════════════════════ */
-    .cta-banner {
-      text-align: center;
-      padding: 80px 24px;
-      background: linear-gradient(135deg, var(--mustard-deep), var(--black-mid));
-    }
-    .cta-banner .section-title {
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .cta-banner p {
-      color: rgba(245,241,232,0.7);
-      font-size: 17px;
-      max-width: 560px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
-    }
-    .cta-banner-buttons {
-      display: flex; gap: 16px;
-      justify-content: center; flex-wrap: wrap;
-    }
-    .btn-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white);
-      color: var(--black);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 700; font-size: 15px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(255,255,255,0.2);
-    }
-
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
-    .footer {
-      background: var(--black);
-      padding: 64px 24px 32px;
-      color: var(--text-muted);
-    }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-    }
-    .footer-brand-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px; font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-    .footer-brand-desc {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 320px;
-    }
-    .footer h4 {
-      font-size: 13px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li { margin-bottom: 12px; }
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--mustard-light); }
-
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      max-width: 1100px; margin: 40px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 12px;
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
-    .footer-credits {
-      color: var(--text-muted);
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
     }
-    .footer-credits a {
-      color: var(--mustard-light);
-      text-decoration: none;
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
+    .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ══════════════════════════════════
-       WHATSAPP FLOTANTE
-    ══════════════════════════════════ */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      z-index: 999;
-      width: 60px; height: 60px;
-      background: #25d366;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      text-decoration: none;
-      transition: transform 0.2s;
-      animation: wp-pulse 2.5s infinite;
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
     }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    .whatsapp-float svg {
-      width: 32px; height: 32px;
-      fill: white;
-    }
-    @keyframes wp-pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0.15); }
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ══════════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════════ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
     }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ══════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════ */
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
     @media (max-width: 768px) {
-      .fade-in { opacity: 1 !important; transform: none !important; }
-
-      .navbar { padding: 0 16px; }
-      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
       .hamburger { display: flex; }
-
-      .hero { min-height: 90vh; padding: 100px 20px 60px; }
-      .hero h1 { font-size: 44px; }
-      .hero-sub { font-size: 15px; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-secondary, .btn-white, .btn-green { width: 100%; max-width: 300px; justify-content: center; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-      .hero-stat-number { font-size: 26px; }
-
-      .section { padding: 64px 20px; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .about-img img { height: 260px; }
-      .about-features { grid-template-columns: 1fr; }
-
-      .menu-grid { grid-template-columns: 1fr; }
-      .menu-categories { gap: 8px; }
-      .menu-cat-tab { padding: 8px 16px; font-size: 11px; }
-      .featured-dish { grid-template-columns: 1fr; }
-      .featured-dish-img { min-height: 220px; }
-      .featured-dish-content { padding: 32px 24px; }
-      .featured-dish-title { font-size: 28px; }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 180px 180px;
-      }
-      .gallery-item.span-2 { grid-column: span 1; }
-      .gallery-item.span-row { grid-row: span 1; }
-
-      .reviews-grid { grid-template-columns: 1fr; }
-
-      .events-grid { grid-template-columns: 1fr; gap: 16px; }
-
-      .info-grid { grid-template-columns: 1fr; gap: 24px; }
-
-      .cta-banner { padding: 60px 20px; }
-      .cta-banner-buttons { flex-direction: column; align-items: center; }
-
-      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
-      .whatsapp-float svg { width: 28px; height: 28px; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
     }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 36px; }
-      .hero-stats { gap: 16px; }
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 200px);
-      }
-    }
-  
-    /* ══════════════════════════════════
-       MOBILE IMAGE FIX (universal)
-    ══════════════════════════════════ */
-    img {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        min-height: 180px;
-        overflow: hidden;
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        min-height: 180px;
-        object-fit: cover;
-        display: block;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img,
-      .studio-img img,
-      .space-img img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .featured-dish-img,
-      .featured-item-img,
-      .highlight-img,
-      .featured-product-img {
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .menu-card-img,
-      .service-card-img,
-      .treatment-img,
-      .program-img,
-      .product-card-img,
-      .course-img,
-      .class-img {
-        width: 100%;
-        height: auto;
-        min-height: 140px;
-        object-fit: cover;
-        display: block;
-      }
-      [style*="background-image"],
-      .program-card-img,
-      .coach-img,
-      .team-member-img,
-      .trainer-img,
-      .specialist-img,
-      .staff-img {
-        background-size: cover !important;
-        background-position: center !important;
-        min-height: 180px;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        min-height: 160px;
-      }
-      .gallery-item img {
-        min-height: 160px;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img {
-        min-height: 160px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <a href="#" class="nav-brand">
-      <div class="nav-logo-icon">
-        <!-- Truck icon -->
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="#1a1a1a"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H15V3H9v2H6.5c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-      </div>
-      <div class="nav-brand-text">
-        <span class="nav-brand-name">{{NOMBRE_NEGOCIO}}</span>
-        <span class="nav-brand-sub">Food Truck &middot; {{CIUDAD}}</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#carta">Carta</a></li>
-      <li><a href="#galeria">Galeria</a></li>
-      <li><a href="#opiniones">Opiniones</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="tel:{{TELEFONO}}" class="nav-cta">Reservar Evento</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">EL <span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#inicio">Inicio</a>
-    <a href="#concepto">Concepto</a>
-    <a href="#carta">Carta</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#opiniones">Opiniones</a>
-    <a href="#contacto">Contacto</a>
-    <a href="tel:{{TELEFONO}}" class="btn-primary" style="text-align:center;">Reservar Evento</a>
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">El<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Street Food · Eventos · Catering</p>
+    <h1 class="hero-title">
+      Comida<br><em>callejera</em><br>de autor
+    </h1>
+    <p class="hero-sub">
+      Smash burgers, tacos, loaded fries y más. Nos movemos por toda la ciudad. Encuéntranos en festivales, mercados y eventos privados.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span>Dónde estamos hoy</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Ver menú</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
   </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
-        Street food gourmet en {{CIUDAD}}
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Smash Burgers</span>
+    <span class="marquee-item"><span class="dot"></span>Tacos Mexicanos</span>
+    <span class="marquee-item"><span class="dot"></span>Loaded Fries</span>
+    <span class="marquee-item"><span class="dot"></span>Hot Dogs Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Burritos XXL</span>
+    <span class="marquee-item"><span class="dot"></span>Lemonade Artesanal</span>
+    <span class="marquee-item"><span class="dot"></span>Smash Burgers</span>
+    <span class="marquee-item"><span class="dot"></span>Tacos Mexicanos</span>
+    <span class="marquee-item"><span class="dot"></span>Loaded Fries</span>
+    <span class="marquee-item"><span class="dot"></span>Hot Dogs Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Burritos XXL</span>
+    <span class="marquee-item"><span class="dot"></span>Lemonade Artesanal</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años en la calle</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Eventos al año</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.9</span></div>
+      <div class="stat-label">Nota en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="50000">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Platos servidos/año</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+    </div>
+    <a href="#" class="view-all reveal">Ver todo →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(234,179,8,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Burger · Smash</p>
+        <h3 class="project-name">Triple Smash Premium</h3>
+        <p class="project-meta">Ternera gallega · Cheddar · Bacon</p>
       </div>
-      <h1>
-        {{NOMBRE_NEGOCIO}}
-        <span>Comida callejera gourmet. Sabor sin fronteras.</span>
-      </h1>
-      <p class="hero-sub">
-        Recetas de autor sobre ruedas. Hamburguesas gourmet, street food creativo y sabores del mundo elaborados con productos frescos y locales. Te llevamos el sabor donde estes.
-      </p>
-      <div class="hero-buttons">
-        <a href="tel:{{TELEFONO}}" class="btn-primary">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Reservar para tu evento
-        </a>
-        <a href="#carta" class="btn-secondary">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
-          Ver la carta
-        </a>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(234,179,8,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Tacos · Birria</p>
+        <h3 class="project-name">Tacos de Birria</h3>
+        <p class="project-meta">Consomé para dipping · Trend 2024</p>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-number">4.8/5</div>
-          <div class="hero-stat-label">Google Reviews</div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(234,179,8,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Eventos · Privados</p>
+        <h3 class="project-name">Boda en Finca</h3>
+        <p class="project-meta">200 invitados · Menú custom</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(234,179,8,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Food Truck · Nuestro</p>
+        <h3 class="project-name">El Rodante en Acción</h3>
+        <p class="project-meta">Vintage Citroën · Equipado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">2019</div>
+      <div class="about-badge-text">Nacimos en la calle y aquí seguimos</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Street food<br>con <em>alma y sabor</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      El Rodante nació de las ganas de hacer comida honesta y deliciosa sin las restricciones de un restaurante convencional.<br><br><strong>Producto de primera, siempre.</strong> Ternera gallega, pan artesanal, salsas caseras. Comida callejera no significa comida mediocre.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Ingredientes reales</h4>
+          <p>Carne de ganadería, pan de obrador, verdura de huerta. Sin congelados, sin atajos</p>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">+200</div>
-          <div class="hero-stat-label">Eventos servidos</div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Food truck equipado</h4>
+          <p>Citroën vintage con cocina profesional completa. Plancha, freidora, grill y más</p>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">100%</div>
-          <div class="hero-stat-label">Producto fresco</div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Nos adaptamos</h4>
+          <p>Menús veganos, sin gluten y personalizados. Tu evento, tus reglas</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- CONCEPTO / SOBRE NOSOTROS -->
-  <section class="section section-dark" id="concepto">
-    <div class="section-inner">
-      <span class="section-label">Nuestro concepto</span>
-      <h2 class="section-title">Cocina de autor sobre ruedas</h2>
-      <div class="about-grid">
-        <div class="about-img">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1567129937968-cdad8f07e2f8?w=800&q=80" alt="Food truck {{NOMBRE_NEGOCIO}}">
-          <div class="about-img-overlay">
-            <span>"La calle es nuestra cocina, el mundo nuestra inspiracion"</span>
-          </div>
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>resultados reales</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
         </div>
-        <div>
-          <div class="about-text">
-            <p>
-              En <strong style="color:var(--mustard-light)">{{NOMBRE_NEGOCIO}}</strong> creemos que la mejor comida no necesita paredes. Nuestro food truck lleva recetas de autor a mercados, festivales, bodas y eventos privados, con el sabor y la calidad de un restaurante gourmet pero con el espiritu libre de la calle.
-            </p>
-            <p>
-              Cada plato esta elaborado al momento con ingredientes frescos y de proximidad. Desde nuestras hamburguesas smash de carne madurada hasta nuestros tacos de autor y bocados del mundo, cada bocado es una experiencia unica.
-            </p>
-          </div>
-          <div class="about-features">
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#1a1a1a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              </div>
-              <span>Ingredientes frescos y locales</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#1a1a1a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              </div>
-              <span>Elaboracion al momento</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#1a1a1a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              </div>
-              <span>Disponible para eventos privados</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#1a1a1a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              </div>
-              <span>Recetas de autor originales</span>
-            </div>
-          </div>
+        <h3>Smash Burgers y Tacos</h3>
+        <p>Carne 100% ternera gallega smash en plancha, tacos de cochinita pibil, carnitas y birria. Salsas caseras y pan brioche artesanal.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Catering Privado</h3>
+        <p>Tu food truck privado para bodas, cumpleaños, fiestas de empresa. Menú a medida, servicio completo desde 30 hasta 500 personas.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+        </div>
+        <h3>Festivales y Mercados</h3>
+        <p>Nos encontrarás en los mejores street food markets, festivales de música y ferias gastronómicas de Madrid y alrededores.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"La mejor burger que he comido en un food truck. La smash con cheddar y bacon es adictiva. Los busco cada fin de semana."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Pablo Herrero</strong>
+          <span>Foodie · Madrid</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Contratamos El Rodante para nuestra boda y fue EL ÉXITO de la noche. 200 invitados comiendo burgers y tacos. Todos flipando."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Ana y Marcos</strong>
+          <span>Boda · Aranjuez</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Los tacos de birria con consomé para dipping son de otro planeta. He probado muchos food trucks y este está en otro nivel."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Cristina Molina</strong>
+          <span>Street food fan · Madrid</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CARTA / ESPECIALIDADES -->
-  <section class="section" id="carta">
-    <div class="section-inner">
-      <div class="menu-intro">
-        <span class="section-label">Nuestra carta</span>
-        <h2 class="section-title">Street food con alma gourmet</h2>
-        <p class="section-desc">
-          Platos pensados para comer en la calle sin renunciar a la calidad. Todo elaborado al momento, con productos frescos y mucho sabor.
-        </p>
-      </div>
-
-      <!-- Smash Burgers -->
-      <h3 class="menu-section-title" style="margin-top:0; border-top:none; padding-top:0;">Smash Burgers</h3>
-      <p class="menu-section-sub">Carne madurada 100%, smash a la plancha</p>
-      <div class="menu-grid">
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Classic Smash <span class="menu-item-badge badge-popular">Popular</span></div>
-            <div class="menu-item-desc">Doble smash de ternera, cheddar fundido, cebolla caramelizada, pepinillos y salsa secreta</div>
-          </div>
-          <div class="menu-item-price">9,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Truffle Smash <span class="menu-item-badge badge-new">Novedad</span></div>
-            <div class="menu-item-desc">Doble smash, queso brie fundido, rucola, cebolla crujiente y mayo de trufa negra</div>
-          </div>
-          <div class="menu-item-price">11,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">BBQ Bacon</div>
-            <div class="menu-item-desc">Doble smash, bacon crujiente, cheddar ahumado, aros de cebolla y BBQ casera</div>
-          </div>
-          <div class="menu-item-price">10,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Veggie Smash</div>
-            <div class="menu-item-desc">Doble beyond meat, queso vegano, tomate, lechuga, encurtidos y mayo vegana</div>
-          </div>
-          <div class="menu-item-price">10,00</div>
-        </div>
-      </div>
-
-      <!-- Tacos & Burritos -->
-      <h3 class="menu-section-title">Tacos & Burritos</h3>
-      <p class="menu-section-sub">Sabores latinos con toque de autor</p>
-      <div class="menu-grid">
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Tacos de Cochinita Pibil (x3) <span class="menu-item-badge badge-popular">Popular</span></div>
-            <div class="menu-item-desc">Cerdo marinado 12h, cebolla morada encurtida, habanero y cilantro</div>
-          </div>
-          <div class="menu-item-price">9,00</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Tacos de Pollo Teriyaki (x3)</div>
-            <div class="menu-item-desc">Pollo marinado en teriyaki casero, mango, aguacate y sriracha</div>
-          </div>
-          <div class="menu-item-price">8,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Burrito XXL</div>
-            <div class="menu-item-desc">Arroz, frijoles, carne o pollo, pico de gallo, guacamole y crema agria</div>
-          </div>
-          <div class="menu-item-price">10,00</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Quesadilla Pulled Pork</div>
-            <div class="menu-item-desc">Tortilla de trigo con cerdo desmechado, tres quesos y jalape&ntilde;os</div>
-          </div>
-          <div class="menu-item-price">8,50</div>
-        </div>
-      </div>
-
-      <!-- Loaded Fries & Sides -->
-      <h3 class="menu-section-title">Loaded Fries & Sides</h3>
-      <p class="menu-section-sub">Para compartir (o no)</p>
-      <div class="menu-grid">
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Loaded Fries Cheese & Bacon</div>
-            <div class="menu-item-desc">Patatas crujientes con cheddar fundido, bacon bits y cebollino</div>
-          </div>
-          <div class="menu-item-price">6,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Loaded Fries Tex-Mex</div>
-            <div class="menu-item-desc">Patatas con chili con carne, guacamole, crema agria y jalape&ntilde;os</div>
-          </div>
-          <div class="menu-item-price">7,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Aros de Cebolla Crispy</div>
-            <div class="menu-item-desc">Rebozados artesanales con salsa BBQ o ranch casera</div>
-          </div>
-          <div class="menu-item-price">5,00</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Nachos Supreme</div>
-            <div class="menu-item-desc">Nachos con queso fundido, guacamole, pico de gallo, crema agria y jalape&ntilde;os</div>
-          </div>
-          <div class="menu-item-price">7,00</div>
-        </div>
-      </div>
-
-      <!-- Dulce & Bebidas -->
-      <h3 class="menu-section-title">Dulce & Bebidas</h3>
-      <p class="menu-section-sub">El broche perfecto</p>
-      <div class="menu-grid">
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Churros rellenos de Nutella</div>
-            <div class="menu-item-desc">Churros artesanales rellenos de Nutella con azucar y canela</div>
-          </div>
-          <div class="menu-item-price">5,00</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Cookie Monster Shake</div>
-            <div class="menu-item-desc">Batido con helado de vainilla, Oreo, nata y sirope de chocolate</div>
-          </div>
-          <div class="menu-item-price">5,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Limonada de la casa</div>
-            <div class="menu-item-desc">Limon fresco, hierbabuena, jengibre y un toque de miel</div>
-          </div>
-          <div class="menu-item-price">3,50</div>
-        </div>
-        <div class="menu-item fade-in">
-          <div class="menu-item-info">
-            <div class="menu-item-name">Cerveza artesanal</div>
-            <div class="menu-item-desc">Lager, IPA o de temporada - pregunta por la seleccion del dia</div>
-          </div>
-          <div class="menu-item-price">3,50</div>
-        </div>
-      </div>
-
-      <!-- Featured: La experiencia -->
-      <div class="featured-dish fade-in">
-        <img class="featured-dish-img" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80" alt="Hamburguesa gourmet de {{NOMBRE_NEGOCIO}}">
-        <div class="featured-dish-content">
-          <span class="featured-dish-label">Nuestra estrella</span>
-          <h3 class="featured-dish-title">La Smash Burger definitiva</h3>
-          <p class="featured-dish-desc">
-            Carne de ternera madurada aplastada a alta temperatura para conseguir esa costra crujiente irresistible. Pan brioche tostado, queso fundido en cascada y salsas caseras. Asi hacemos las cosas.
-          </p>
-          <a href="tel:{{TELEFONO}}" class="btn-primary featured-dish-cta" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dk)); color: var(--white);">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            Encarganos para tu evento
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIA / DONDE NOS ENCUENTRAS -->
-  <section class="section section-dark" id="galeria">
-    <div class="section-inner">
-      <div style="text-align:center;">
-        <span class="section-label">Galeria</span>
-        <h2 class="section-title">Street food en imagenes</h2>
-        <p class="section-desc" style="margin:0 auto;">
-          Festivales, mercados, bodas, fiestas... Llevamos el sabor donde haga falta. Asi se vive la experiencia food truck.
-        </p>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item span-2">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1567129937968-cdad8f07e2f8?w=900&q=80" alt="Food truck en festival">
-          <span class="gallery-label">En ruta por festivales</span>
-        </div>
-        <div class="gallery-item span-row">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Hamburguesa gourmet">
-          <span class="gallery-label">Smash burger gourmet</span>
-        </div>
-        <div class="gallery-item">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80" alt="Street food preparacion">
-          <span class="gallery-label">Elaboracion en vivo</span>
-        </div>
-        <div class="gallery-item">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&q=80" alt="Tacos gourmet">
-          <span class="gallery-label">Tacos de autor</span>
-        </div>
-        <div class="gallery-item">
-          <img onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22%3E%3Crect fill=%22%23222%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Ambiente food truck">
-          <span class="gallery-label">Ambiente urbano</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESENAS -->
-  <section class="section" id="opiniones">
-    <div class="section-inner">
-      <div class="reviews-header">
-        <span class="section-label">Opiniones</span>
-        <h2 class="section-title">Lo que dice la gente</h2>
-        <div class="reviews-overall">
-          <span class="reviews-overall-score">4.8</span>
-          <span class="reviews-overall-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="reviews-overall-count">en Google (+200 resenas)</span>
-        </div>
-      </div>
-
-      <div class="reviews-grid">
-        <!-- Resena 1 - Google -->
-        <div class="review-card fade-in">
-          <div class="review-platform">
-            <svg viewBox="0 0 24 24" fill="#4285f4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34a853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#fbbc05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#ea4335"/></svg>
-            Resena verificada de Google
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Nos los trajimos para la boda y fue un exitazo total. Los invitados no paraban de repetir. Las smash burgers estaban espectaculares y el servicio fue impecable."</p>
-          <div class="review-author">
-            <div class="review-avatar">MC</div>
-            <div class="review-author-info">
-              <span class="review-author-name">Marta C.</span>
-              <span class="review-author-date">Hace 2 semanas</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resena 2 - Google -->
-        <div class="review-card fade-in">
-          <div class="review-platform">
-            <svg viewBox="0 0 24 24" fill="#4285f4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34a853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#fbbc05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#ea4335"/></svg>
-            Resena verificada de Google
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Los encontramos en el mercado del sabado y desde entonces no nos hemos perdido ni uno. Los tacos de cochinita son adictivos y las patatas loaded estan increibles."</p>
-          <div class="review-author">
-            <div class="review-avatar">DL</div>
-            <div class="review-author-info">
-              <span class="review-author-name">David L.</span>
-              <span class="review-author-date">Hace 1 mes</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resena 3 - TripAdvisor -->
-        <div class="review-card fade-in">
-          <div class="review-platform tripadvisor">
-            <svg viewBox="0 0 24 24" fill="#00aa6c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            Resena verificada de TripAdvisor
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"La mejor comida callejera que hemos probado en la zona. Se nota que usan productos de calidad. La hamburguesa de trufa es una pasada. Precio-calidad excelente."</p>
-          <div class="review-author">
-            <div class="review-avatar">AL</div>
-            <div class="review-author-info">
-              <span class="review-author-name">Ana L.</span>
-              <span class="review-author-date">Hace 3 semanas</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Resena 4 - Google -->
-        <div class="review-card fade-in">
-          <div class="review-platform">
-            <svg viewBox="0 0 24 24" fill="#4285f4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34a853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#fbbc05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#ea4335"/></svg>
-            Resena verificada de Google
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-          <p class="review-text">"Muy buena comida y ambiente genial. Los burritos son enormes y estan rellenos de sabor. Unico pero: a veces hay bastante cola en las ferias, pero merece la pena esperar."</p>
-          <div class="review-author">
-            <div class="review-avatar">RG</div>
-            <div class="review-author-info">
-              <span class="review-author-name">Roberto G.</span>
-              <span class="review-author-date">Hace 1 mes</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTOS / DONDE NOS ENCUENTRAS -->
-  <section class="section section-accent" id="eventos">
-    <div class="section-inner">
-      <div style="text-align:center;">
-        <span class="section-label">Eventos</span>
-        <h2 class="section-title">Llevamos el sabor a tu evento</h2>
-        <p class="section-desc" style="margin:0 auto;">
-          Bodas, cumpleanos, fiestas corporativas, festivales, mercados... Donde haya gente con hambre, ahi estaremos nosotros.
-        </p>
-      </div>
-      <div class="events-grid">
-        <div class="event-card">
-          <div class="event-icon">
-            <!-- Heart / Wedding -->
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </div>
-          <h3>Bodas & Celebraciones</h3>
-          <p>Servicio completo de catering food truck para tu boda o celebracion. Menu personalizado, decoracion tematica y servicio profesional.</p>
-        </div>
-        <div class="event-card">
-          <div class="event-icon">
-            <!-- Corporate / Building -->
-            <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
-          </div>
-          <h3>Eventos Corporativos</h3>
-          <p>Team building, inauguraciones, fiestas de empresa... Dale un toque diferente a tu evento corporativo con nuestro food truck.</p>
-        </div>
-        <div class="event-card">
-          <div class="event-icon">
-            <!-- Festival / Music -->
-            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-          </div>
-          <h3>Festivales & Mercados</h3>
-          <p>Nos encontraras en los principales festivales, ferias gastronomicas y mercados callejeros de {{CIUDAD}} y alrededores.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO + HORARIO + MAPA -->
-  <section class="section section-dark" id="contacto">
-    <div class="section-inner">
-      <div style="text-align:center;">
-        <span class="section-label">Contacto</span>
-        <h2 class="section-title">Donde encontrarnos</h2>
-        <p class="section-desc" style="margin:0 auto;">
-          Consultanos para contratar nuestro food truck para tu evento o descubre donde estaremos esta semana.
-        </p>
-      </div>
-      <div class="info-grid">
-        <!-- Horario -->
-        <div class="info-card">
-          <h3>Horario habitual</h3>
-          <div class="info-schedule-row">
-            <span class="info-schedule-day">{{HORARIO}}</span>
-          </div>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:16px; line-height:1.6;">
-            Horarios sujetos a ubicacion y eventos. Consultanos por WhatsApp para saber donde estamos hoy.
-          </p>
-        </div>
-
-        <!-- Contacto -->
-        <div class="info-card">
-          <h3>Contacto</h3>
-          <div class="info-contact-item">
-            <div class="info-contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div class="info-contact-text">
-              {{DIRECCION}}, {{CIUDAD}}
-            </div>
-          </div>
-          <div class="info-contact-item">
-            <div class="info-contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            </div>
-            <div class="info-contact-text">
-              <a href="tel:{{TELEFONO}}">{{TELEFONO}}</a>
-            </div>
-          </div>
-          <div class="info-contact-item">
-            <div class="info-contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </div>
-            <div class="info-contact-text">
-              <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mapa -->
-      <div class="map-container">
-        <iframe src="https://maps.google.com/maps?q={{GOOGLE_MAPS_QUERY}}&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="section-inner">
-      <h2 class="section-title">Sabor sin fronteras</h2>
-      <p>
-        Contrata nuestro food truck para tu proximo evento o descubre donde estaremos esta semana. La calle es nuestra cocina, el mundo nuestra mesa.
-      </p>
-      <div class="cta-banner-buttons">
-        <a href="tel:{{TELEFONO}}" class="btn-white">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Llamar ahora
-        </a>
-        <a href="https://wa.me/34{{TELEFONO}}" class="btn-green">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-          Escribenos por WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand-name">{{NOMBRE_NEGOCIO}}</div>
-        <p class="footer-brand-desc">
-          Food truck gourmet en {{CIUDAD}}. Hamburguesas smash, tacos de autor, loaded fries y mucho mas. Disponible para eventos, bodas, festivales y mercados.
-        </p>
-      </div>
-      <div>
-        <h4>Navegacion</h4>
-        <ul class="footer-links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#concepto">Concepto</a></li>
-          <li><a href="#carta">Carta</a></li>
-          <li><a href="#galeria">Galeria</a></li>
-          <li><a href="#opiniones">Opiniones</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul class="footer-links">
-          <li><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></li>
-          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
-          <li>{{DIRECCION}}</li>
-          <li>{{CIUDAD}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-credits">&copy; 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</span>
-      <span class="footer-credits">Disenado por <a href="#">G&amp;G Elcano</a></span>
-    </div>
-  </footer>
-
-  <!-- WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/34{{TELEFONO}}" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Dónde estamos<br>esta semana?</h2>
+    <p>Síguenos en Instagram para saber nuestra ubicación diaria.</p>
+  </div>
+  <a href="mailto:hola@elrodante.es" class="btn-dark">
+    <span>Ver ubicación</span>
+    <span>↗</span>
   </a>
+</div>
 
-  <!-- JS: Hamburger + Scroll + Fade-in -->
-  <script>
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">El<span>.</span></a>
+      <p class="footer-tagline">"La mejor comida se sirve con las manos."<br>— El Rodante</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="#" class="social-link">Gm</a>
+        <a href="#" class="social-link">Wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menú</h4>
+      <ul>
+        <li><a href="#">Burgers</a></li>
+        <li><a href="#">Tacos</a></li>
+        <li><a href="#">Loaded Fries</a></li>
+        <li><a href="#">Hot Dogs</a></li>
+        <li><a href="#">Bebidas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>El Rodante</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Catering</a></li>
+        <li><a href="#">Calendario</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Colaboraciones</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:hola@elrodante.es">hola@elrodante.es</a></li>
+        <li><a href="tel:+34644555666">+34 644 555 666</a></li>
+        <li><a href="#">Ubicación variable — Consulta<br>Instagram @elrodante</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 El Rodante — Street Food. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
 
-    // Navbar scroll shadow
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // Fade-in on scroll (Intersection Observer)
-    if (window.innerWidth > 768) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    }
-
-    // Fallback: ensure all fade-in elements are visible after 3s
+<script>
+  // ── LOADER
+  window.addEventListener('load', () => {
     setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-    }, 3000);
-  </script>
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+    }
+  });
+</script>
 </body>
 </html>

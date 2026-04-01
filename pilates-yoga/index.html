@@ -3,1639 +3,1122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} en {{CIUDAD}} — Centro de Pilates, Yoga y bienestar. Clases reducidas, instructores cualificados y un espacio pensado para ti. Llámanos: {{TELEFONO}}">
-  <meta name="keywords" content="pilates {{CIUDAD}}, yoga {{CIUDAD}}, centro de bienestar, meditación, flexibilidad, core, clases reducidas, {{NOMBRE_NEGOCIO}}">
-  <meta property="og:title" content="{{NOMBRE_NEGOCIO}} — Pilates y Yoga en {{CIUDAD}}">
-  <meta property="og:description" content="Equilibrio, fuerza y serenidad en {{CIUDAD}}. Clases de Pilates, Yoga y bienestar con grupos reducidos. {{TELEFONO}}">
-  <meta property="og:type" content="website">
-  <title>{{NOMBRE_NEGOCIO}} — Pilates y Yoga en {{CIUDAD}}</title>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
-    "name": "{{NOMBRE_NEGOCIO}}",
-    "telephone": "{{TELEFONO}}",
-    "email": "{{EMAIL}}",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "{{DIRECCION}}",
-      "addressLocality": "{{CIUDAD}}",
-      "addressCountry": "ES"
-    },
-    "priceRange": "$$"
-  }
-  </script>
-
+  <title>Studio Om — Pilates & Yoga — Pilates / Yoga</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ===========================================
-       RESET & BASE
-    =========================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Nunito Sans', sans-serif;
-      color: #4a4a4a;
-      background: #faf9f6;
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
 
-    /* ===========================================
-       VARIABLES — PALETA PILATES/YOGA (SERENIDAD)
-    =========================================== */
     :root {
-      --sage:         #8faa8c;
-      --sage-dark:    #6b8a68;
-      --sage-light:   #a8c4a5;
-      --sage-pale:    #dce8da;
-      --terracotta:   #c4836a;
-      --terracotta-light: #d9a08c;
-      --sand:         #f0e6d6;
-      --sand-light:   #f7f1e8;
-      --cream:        #faf9f6;
-      --white:        #ffffff;
-      --dark:         #2c2c2c;
-      --dark-soft:    #3d3d3d;
-      --text:         #4a4a4a;
-      --text-light:   #7a7a7a;
-      --text-muted:   #a0a0a0;
-      --border:       rgba(143,170,140,0.2);
-      --shadow-soft:   0 4px 24px rgba(0,0,0,0.06);
-      --shadow-card:   0 2px 16px rgba(0,0,0,0.05);
-      --shadow-hover:  0 8px 32px rgba(143,170,140,0.18);
-      --shadow-glow:   0 0 40px rgba(143,170,140,0.12);
-      --radius:       12px;
-      --radius-sm:    8px;
-      --radius-lg:    20px;
-      --radius-xl:    28px;
-      --transition:   all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --black: #080c0e;
+      --white: #f5f3ef;
+      --accent: #06B6D4;
+      --accent-light: #22d3ee;
+      --carbon: #0f1618;
+      --carbon-mid: #162022;
+      --carbon-light: #1e2c30;
+      --text-muted: #7a9098;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ===========================================
-       TIPOGRAFIA
-    =========================================== */
-    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', serif; color: var(--dark); }
-    .section-label {
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.6rem;
-      font-weight: 600;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      color: var(--dark);
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-light);
-      line-height: 1.7;
-      max-width: 600px;
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
     }
 
-    /* ===========================================
-       LAYOUT
-    =========================================== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
     }
-    section { padding: 80px 0; }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(6,182,212,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+    }
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(6,182,212,0.7);
+      background: rgba(6,182,212,0.05);
+    }
 
-    /* ===========================================
-       HEADER / NAV
-    =========================================== */
-    .header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(250,249,246,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      transition: var(--transition);
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 70px;
-      max-width: 1200px;
-      margin: 0 auto;
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.85);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(6,182,212,0.08);
     }
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.5px;
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; align-items: center; gap: 10px;
     }
-    .logo span { color: var(--sage-dark); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-light);
-      transition: var(--transition);
-      letter-spacing: 0.3px;
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
     }
-    .nav-links a:hover { color: var(--sage-dark); }
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: var(--sage);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: var(--transition);
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover {
-      background: var(--sage-dark);
-      box-shadow: 0 4px 20px rgba(143,170,140,0.35);
-    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* Hamburguesa */
+    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
     }
     .hamburger span {
-      width: 26px; height: 2.5px;
-      background: var(--dark);
-      border-radius: 2px;
-      transition: var(--transition);
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
     }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 70px; left: 0; right: 0; bottom: 0;
-      background: rgba(250,249,246,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
     }
-    .mobile-menu.active { display: flex; }
+    .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--dark);
-      transition: var(--transition);
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
     }
-    .mobile-menu a:hover { color: var(--sage-dark); }
+    .mobile-menu a:hover { color: var(--accent); }
 
-    /* ===========================================
-       HERO
-    =========================================== */
+    /* ─── HERO ─── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
-      padding: 120px 0 80px;
-      background: var(--cream);
     }
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1600&q=80') center/cover no-repeat;
-      background-color: var(--sand);
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #080c0e 0%, #162022 40%, #06B6D422 100%);
+      background-size: cover; background-position: center;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
     }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(250,249,246,0.88) 0%, rgba(240,230,214,0.65) 50%, rgba(250,249,246,0.82) 100%);
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
     }
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 650px;
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(143,170,140,0.12);
-      border: 1px solid rgba(143,170,140,0.3);
-      color: var(--sage-dark);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
     }
-    .hero-badge svg { width: 16px; height: 16px; }
-    .hero h1 {
-      font-size: 3.8rem;
-      font-weight: 600;
-      line-height: 1.08;
-      color: var(--dark);
-      margin-bottom: 20px;
-      letter-spacing: -1px;
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
     }
-    .hero h1 .accent-text {
-      color: var(--sage-dark);
-      font-style: italic;
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
     }
-    .hero-desc {
-      font-size: 1.12rem;
-      color: var(--text-light);
-      line-height: 1.75;
-      margin-bottom: 36px;
-      max-width: 500px;
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
     }
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
     }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--sage);
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: var(--sage-dark);
-      box-shadow: 0 8px 30px rgba(143,170,140,0.35);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--dark);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid rgba(143,170,140,0.4);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    .btn-secondary:hover {
-      border-color: var(--sage);
-      color: var(--sage-dark);
-      background: rgba(143,170,140,0.06);
-    }
-    .btn-icon { width: 18px; height: 18px; }
-
-    /* Hero Stats */
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-    .hero-stat .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1;
-    }
-    .hero-stat .stat-number span { color: var(--sage-dark); }
-    .hero-stat .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-      letter-spacing: 0.5px;
-    }
-
-    /* Decorative element */
-    .hero-deco {
-      position: absolute;
-      right: -80px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(143,170,140,0.08) 0%, transparent 70%);
-      z-index: 1;
-    }
-
-    /* ===========================================
-       FILOSOFIA (ABOUT)
-    =========================================== */
-    .philosophy {
-      background: var(--white);
-      position: relative;
-    }
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .philosophy-image {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      min-height: 440px;
-      background: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80') center/cover no-repeat;
-      background-color: var(--sand);
-    }
-    .philosophy-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(44,44,44,0.15) 100%);
-    }
-    .philosophy-image-badge {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 2;
-      background: var(--sage);
-      color: var(--white);
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      font-family: 'Nunito Sans', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.5px;
-    }
-    .philosophy-text .section-subtitle {
-      margin-bottom: 32px;
-    }
-    .philosophy-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .philosophy-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: var(--sand-light);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-    }
-    .philosophy-feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(143,170,140,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .philosophy-feature-icon svg { width: 20px; height: 20px; color: var(--sage-dark); }
-    .philosophy-feature-text {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--dark-soft);
-    }
-
-    /* ===========================================
-       CLASES / DISCIPLINAS
-    =========================================== */
-    .classes {
-      background: var(--cream);
-      position: relative;
-    }
-    .classes-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .classes-header .section-subtitle {
-      margin: 0 auto;
-    }
-    .classes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .class-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: var(--transition);
-      position: relative;
-    }
-    .class-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(143,170,140,0.4);
-      box-shadow: var(--shadow-hover);
-    }
-    .class-card-img {
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--sand);
-      position: relative;
-    }
-    .class-card-img::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 60px;
-      background: linear-gradient(transparent, var(--white));
-    }
-    .class-card-level {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
-      padding: 5px 14px;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      z-index: 2;
-    }
-    .class-card-body {
-      padding: 20px 24px 28px;
-    }
-    .class-card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(143,170,140,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      margin-top: -36px;
-      position: relative;
-      z-index: 2;
-      border: 3px solid var(--white);
-    }
-    .class-card-icon svg { width: 22px; height: 22px; color: var(--sage-dark); }
-    .class-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 8px;
-    }
-    .class-card p {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.65;
-    }
-    .class-card-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-    .class-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 50px;
-      background: var(--sage-pale);
-      color: var(--sage-dark);
-      letter-spacing: 0.3px;
-    }
-
-    /* ===========================================
-       INSTRUCTORES
-    =========================================== */
-    .instructors {
-      background: var(--white);
-      position: relative;
-    }
-    .instructors-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .instructors-header .section-subtitle { margin: 0 auto; }
-    .instructors-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .instructor-card {
-      text-align: center;
-      padding: 32px 24px;
-      background: var(--sand-light);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      transition: var(--transition);
-    }
-    .instructor-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card);
-    }
-    .instructor-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      background-size: cover;
-      background-position: center top;
-      background-color: var(--sage-pale);
-      border: 4px solid var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-    .instructor-card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 4px;
-    }
-    .instructor-role {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--sage-dark);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-    .instructor-desc {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* ===========================================
-       RESENAS
-    =========================================== */
-    .reviews {
-      background: var(--cream);
-    }
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .reviews-header .section-subtitle { margin: 0 auto; }
-    .reviews-score {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    .reviews-score-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--dark);
-    }
-    .reviews-score-detail {
-      text-align: left;
-    }
-    .reviews-stars {
-      color: #f59e0b;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-    .reviews-count {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .review-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: var(--transition);
-    }
-    .review-card:hover {
-      border-color: rgba(143,170,140,0.35);
-      box-shadow: var(--shadow-card);
-    }
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .review-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--sage), var(--terracotta-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-    .review-info { flex: 1; }
-    .review-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--dark);
-    }
-    .review-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.68rem;
-      color: #059669;
-      font-weight: 500;
-      margin-top: 2px;
-    }
-    .review-badge svg { width: 12px; height: 12px; }
-    .review-stars {
-      color: #f59e0b;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-    .review-text {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.65;
-    }
-    .google-icon {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* ===========================================
-       UBICACION + MAPA
-    =========================================== */
-    .location {
-      background: var(--white);
-    }
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .location-info { padding-right: 20px; }
-    .location-address {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .location-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(143,170,140,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .location-icon svg { width: 20px; height: 20px; color: var(--sage-dark); }
-    .location-address h4 {
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 4px;
-    }
-    .location-address p {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.5;
-    }
-    .schedule-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 16px;
-    }
-    .schedule-list { list-style: none; }
-    .schedule-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-    .schedule-list li:last-child { border-bottom: none; }
-    .schedule-day { color: var(--dark-soft); font-weight: 500; }
-    .schedule-hours { color: var(--text-muted); }
-    .schedule-hours.open { color: var(--sage-dark); font-weight: 600; }
-    .location-map {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      min-height: 420px;
-      border: 1px solid var(--border);
-    }
-    .location-map iframe {
-      width: 100%;
-      height: 420px;
-      border: 0;
-    }
-
-    /* ===========================================
-       CTA — PRIMERA CLASE GRATIS
-    =========================================== */
-    .cta-banner {
-      padding: 80px 0;
-      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 50%, var(--sage-dark) 100%);
-      position: relative;
-      text-align: center;
-      overflow: hidden;
-    }
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1400&q=60') center/cover no-repeat;
-      opacity: 0.1;
-    }
-    .cta-banner .container { position: relative; z-index: 2; }
-    .cta-banner h2 {
-      font-size: 2.6rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .cta-banner p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-    .cta-btns {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      color: var(--sage-dark);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255,255,255,0.25);
-    }
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid rgba(255,255,255,0.4);
-      transition: var(--transition);
-      cursor: pointer;
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
     }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--white);
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ===========================================
-       FOOTER
-    =========================================== */
-    .footer {
-      background: var(--dark);
-      padding: 48px 0 24px;
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(6,182,212,0.12);
+      border-bottom: 1px solid rgba(6,182,212,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(6,182,212,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(6,182,212,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(6,182,212,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
+    }
+
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(6,182,212,0.3);
+      white-space: nowrap;
+    }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
+    }
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
+    }
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+    }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(6,182,212,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(6,182,212,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(6,182,212,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
+    .service-card {
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(6,182,212,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(6,182,212,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(6,182,212,0.2); color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(6,182,212,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(6,182,212,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(6,182,212,0.1); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(6,182,212,0.03); line-height: 1; pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(6,182,212,0.07);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover { border-color: rgba(6,182,212,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
+    }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(6,182,212,0.08);
     }
     .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
     }
-    .footer-brand .logo {
-      color: var(--white);
-      margin-bottom: 12px;
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
     }
-    .footer-desc {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.65;
-      max-width: 320px;
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
     .footer-col h4 {
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 16px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
     }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 8px; }
-    .footer-col a {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.4);
-      transition: var(--transition);
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
-    .footer-col a:hover { color: var(--sage-light); }
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+    }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ===========================================
-       WHATSAPP FLOTANTE
-    =========================================== */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 900;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: var(--transition);
-      animation: whatsapp-pulse 2s infinite;
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
-    }
-    .whatsapp-float svg { width: 32px; height: 32px; color: white; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
 
-    @keyframes whatsapp-pulse {
-      0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0.1); }
-      100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
     }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
+    }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ===========================================
-       ANIMACIONES SCROLL
-    =========================================== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===========================================
-       RESPONSIVE
-    =========================================== */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .classes-grid { grid-template-columns: repeat(2, 1fr); }
-      .instructors-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
     }
-
     @media (max-width: 768px) {
-      /* Mobile fallback */
-      .fade-in { opacity: 1 !important; transform: none !important; }
-
-      section { padding: 56px 0; }
-      .container { padding: 0 18px; }
-      .section-title { font-size: 1.9rem; }
-
-      /* Nav */
-      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
       .hamburger { display: flex; }
-
-      /* Hero */
-      .hero { min-height: auto; padding: 110px 0 60px; }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-desc { font-size: 1rem; }
-      .hero-ctas { flex-direction: column; }
-      .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-      .hero-stat .stat-number { font-size: 1.6rem; }
-      .hero-deco { display: none; }
-
-      /* Philosophy */
-      .philosophy-grid { grid-template-columns: 1fr; gap: 32px; }
-      .philosophy-image { min-height: 280px; }
-      .philosophy-features { grid-template-columns: 1fr; }
-
-      /* Classes */
-      .classes-grid { grid-template-columns: 1fr; }
-
-      /* Instructors */
-      .instructors-grid { grid-template-columns: 1fr; max-width: 360px; }
-
-      /* Reviews */
-      .reviews-grid { grid-template-columns: 1fr; }
-      .reviews-score-number { font-size: 2.2rem; }
-
-      /* Location */
-      .location-grid { grid-template-columns: 1fr; }
-      .location-map { min-height: 300px; }
-      .location-map iframe { height: 300px; }
-      .location-info { padding-right: 0; }
-
-      /* CTA */
-      .cta-banner h2 { font-size: 1.85rem; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .btn-white, .btn-ghost { width: 100%; justify-content: center; max-width: 320px; }
-
-      /* Footer */
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-      /* WhatsApp */
-      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
-      .whatsapp-float svg { width: 28px; height: 28px; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
     }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2rem; }
-      .hero-stats { gap: 16px; }
-      .hero-stat .stat-number { font-size: 1.4rem; }
-      .section-title { font-size: 1.6rem; }
-    }
-  
-    /* ══════════════════════════════════
-       MOBILE IMAGE FIX (universal)
-    ══════════════════════════════════ */
-    img {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        min-height: 180px;
-        overflow: hidden;
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        min-height: 180px;
-        object-fit: cover;
-        display: block;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img,
-      .studio-img img,
-      .space-img img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .featured-dish-img,
-      .featured-item-img,
-      .highlight-img,
-      .featured-product-img {
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .menu-card-img,
-      .service-card-img,
-      .treatment-img,
-      .program-img,
-      .product-card-img,
-      .course-img,
-      .class-img {
-        width: 100%;
-        height: auto;
-        min-height: 140px;
-        object-fit: cover;
-        display: block;
-      }
-      [style*="background-image"],
-      .program-card-img,
-      .coach-img,
-      .team-member-img,
-      .trainer-img,
-      .specialist-img,
-      .staff-img {
-        background-size: cover !important;
-        background-position: center !important;
-        min-height: 180px;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        min-height: 160px;
-      }
-      .gallery-item img {
-        min-height: 160px;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img {
-        min-height: 160px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="#" class="logo">{{NOMBRE_NEGOCIO}}</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#philosophy">Filosofia</a></li>
-          <li><a href="#classes">Clases</a></li>
-          <li><a href="#instructors">Equipo</a></li>
-          <li><a href="#reviews">Opiniones</a></li>
-          <li><a href="#location">Ubicacion</a></li>
-          <li><a href="tel:{{TELEFONO}}" class="nav-cta">Reservar clase</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">STUDIO <span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Studio<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Pilates · Yoga · Bienestar</p>
+    <h1 class="hero-title">
+      Encuentra tu<br><em>equilibrio</em>
+    </h1>
+    <p class="hero-sub">
+      Pilates con máquinas, yoga dinámico y meditación. Grupos reducidos en un espacio diseñado para tu bienestar integral.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span>Clase de prueba</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Clases</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
     </div>
-    <div class="mobile-menu">
-      <a href="#philosophy" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Filosofia</a>
-      <a href="#classes" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Clases</a>
-      <a href="#instructors" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Equipo</a>
-      <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Opiniones</a>
-      <a href="#location" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Ubicacion</a>
-      <a href="tel:{{TELEFONO}}" style="color: var(--sage-dark); font-weight: 700;">Reservar clase</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Pilates Reformer</span>
+    <span class="marquee-item"><span class="dot"></span>Hatha Yoga</span>
+    <span class="marquee-item"><span class="dot"></span>Vinyasa Flow</span>
+    <span class="marquee-item"><span class="dot"></span>Pilates Suelo</span>
+    <span class="marquee-item"><span class="dot"></span>Yoga Restaurativo</span>
+    <span class="marquee-item"><span class="dot"></span>Meditación</span>
+    <span class="marquee-item"><span class="dot"></span>Pilates Reformer</span>
+    <span class="marquee-item"><span class="dot"></span>Hatha Yoga</span>
+    <span class="marquee-item"><span class="dot"></span>Vinyasa Flow</span>
+    <span class="marquee-item"><span class="dot"></span>Pilates Suelo</span>
+    <span class="marquee-item"><span class="dot"></span>Yoga Restaurativo</span>
+    <span class="marquee-item"><span class="dot"></span>Meditación</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="10">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años de bienestar</div>
     </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-deco"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l2 2 4-4"/></svg>
-          PILATES Y YOGA EN {{CIUDAD}}
-        </div>
-        <h1>Encuentra tu<br><span class="accent-text">equilibrio</span> interior</h1>
-        <p class="hero-desc">En {{NOMBRE_NEGOCIO}} te ofrecemos un espacio de calma y bienestar donde fortalecer tu cuerpo, mejorar tu flexibilidad y conectar con tu respiracion. Grupos reducidos y atencion personalizada.</p>
-        <div class="hero-ctas">
-          <a href="tel:{{TELEFONO}}" class="btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            Primera clase gratis
-          </a>
-          <a href="#classes" class="btn-secondary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Ver disciplinas
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="stat-number">+10</div>
-            <div class="stat-label">disciplinas</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-number">Max 12</div>
-            <div class="stat-label">alumnos por clase</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-number">4.9<span>/5</span></div>
-            <div class="stat-label">en Google</div>
-          </div>
-        </div>
-      </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="600">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Alumnos activos</div>
     </div>
-  </section>
-
-  <!-- ===== FILOSOFIA ===== -->
-  <section class="philosophy" id="philosophy">
-    <div class="container">
-      <div class="philosophy-grid fade-in">
-        <div class="philosophy-image">
-          <div class="philosophy-image-badge">Bienestar integral</div>
-        </div>
-        <div class="philosophy-text">
-          <div class="section-label">Nuestra filosofia</div>
-          <h2 class="section-title">Cuerpo, mente<br>y respiracion</h2>
-          <p class="section-subtitle">En {{NOMBRE_NEGOCIO}} entendemos el bienestar como un camino. Nuestras clases combinan movimiento consciente, trabajo de core profundo y tecnicas de respiracion para que salgas de cada sesion sintiendote renovado. Con grupos reducidos, cada alumno recibe la atencion que merece.</p>
-          <div class="philosophy-features" style="margin-top: 28px;">
-            <div class="philosophy-feature">
-              <div class="philosophy-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-              </div>
-              <span class="philosophy-feature-text">Grupos reducidos</span>
-            </div>
-            <div class="philosophy-feature">
-              <div class="philosophy-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <span class="philosophy-feature-text">Atencion personalizada</span>
-            </div>
-            <div class="philosophy-feature">
-              <div class="philosophy-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              </div>
-              <span class="philosophy-feature-text">Bienestar integral</span>
-            </div>
-            <div class="philosophy-feature">
-              <div class="philosophy-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <span class="philosophy-feature-text">Instructores titulados</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Reformers Balanced Body</div>
     </div>
-  </section>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Clases semanales</div>
+    </div>
+  </div>
+</div>
 
-  <!-- ===== CLASES / DISCIPLINAS ===== -->
-  <section class="classes" id="classes">
-    <div class="container">
-      <div class="classes-header fade-in">
-        <div class="section-label">Nuestras disciplinas</div>
-        <h2 class="section-title">Encuentra la clase<br>perfecta para ti</h2>
-        <p class="section-subtitle">Desde pilates con reformer hasta meditacion guiada. Adaptamos cada sesion a tu nivel y objetivos personales.</p>
-      </div>
-      <div class="classes-grid">
-
-        <!-- Pilates Mat -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80');">
-            <span class="class-card-level">Todos los niveles</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="18" width="20" height="4" rx="1"/><path d="M6 18V8a2 2 0 012-2h8a2 2 0 012 2v10"/></svg>
-            </div>
-            <h3>Pilates Mat</h3>
-            <p>Trabajo de suelo enfocado en el core, la postura y la estabilidad. Ejercicios controlados con tu propio peso corporal que transforman tu cuerpo desde dentro.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Core</span>
-              <span class="class-tag">Postura</span>
-              <span class="class-tag">Flexibilidad</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pilates Reformer -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=600&q=80');">
-            <span class="class-card-level">Intermedio</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="1" y1="12" x2="23" y2="12"/></svg>
-            </div>
-            <h3>Pilates Reformer</h3>
-            <p>La maquina reformer permite un trabajo mas intenso y preciso. Resistencia variable, correccion postural y fortalecimiento profundo en cada movimiento.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Reformer</span>
-              <span class="class-tag">Fuerza</span>
-              <span class="class-tag">Precision</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hatha Yoga -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80');">
-            <span class="class-card-level">Todos los niveles</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            </div>
-            <h3>Hatha Yoga</h3>
-            <p>Posturas clasicas (asanas) combinadas con tecnicas de respiracion (pranayama). Ideal para iniciarse en el yoga y mejorar la flexibilidad global del cuerpo.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Asanas</span>
-              <span class="class-tag">Respiracion</span>
-              <span class="class-tag">Calma</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Vinyasa Flow -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&q=80');">
-            <span class="class-card-level">Intermedio - Avanzado</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <h3>Vinyasa Flow</h3>
-            <p>Secuencias dinamicas que unen movimiento y respiracion en un flujo continuo. Mayor intensidad cardiovascular mientras trabajas fuerza y equilibrio.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Dinamico</span>
-              <span class="class-tag">Fuerza</span>
-              <span class="class-tag">Equilibrio</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Yoga Restaurativo -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80');">
-            <span class="class-card-level">Todos los niveles</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            </div>
-            <h3>Yoga Restaurativo</h3>
-            <p>Posturas suaves mantenidas con soportes y accesorios. Diseñado para la recuperacion profunda, reducir el estres y liberar tensiones acumuladas.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Relajacion</span>
-              <span class="class-tag">Antiestrés</span>
-              <span class="class-tag">Recuperacion</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Meditacion -->
-        <div class="class-card fade-in">
-          <div class="class-card-img" style="background-image: url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=600&q=80');">
-            <span class="class-card-level">Todos los niveles</span>
-          </div>
-          <div class="class-card-body">
-            <div class="class-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <h3>Meditacion y Mindfulness</h3>
-            <p>Sesiones guiadas de meditacion, respiracion consciente y mindfulness. Aprende tecnicas que puedes aplicar en tu dia a dia para vivir con mayor serenidad.</p>
-            <div class="class-card-tags">
-              <span class="class-tag">Mindfulness</span>
-              <span class="class-tag">Respiracion</span>
-              <span class="class-tag">Consciencia</span>
-            </div>
-          </div>
-        </div>
-
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+    </div>
+    <a href="#" class="view-all reveal">Ver todo →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(6,182,212,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Pilates · Reformer</p>
+        <h3 class="project-name">Sala de Reformer</h3>
+        <p class="project-meta">8 máquinas · Grupos de 6</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== INSTRUCTORES ===== -->
-  <section class="instructors" id="instructors">
-    <div class="container">
-      <div class="instructors-header fade-in">
-        <div class="section-label">Nuestro equipo</div>
-        <h2 class="section-title">Instructores que<br>te inspiran</h2>
-        <p class="section-subtitle">Profesionales certificados con años de experiencia y una pasion genuina por el bienestar de cada alumno.</p>
-      </div>
-      <div class="instructors-grid fade-in">
-
-        <div class="instructor-card">
-          <div class="instructor-avatar" style="background-image: url('https://images.unsplash.com/photo-1594381898411-846e7d193883?w=300&q=80');"></div>
-          <h3>Nombre Instructor/a</h3>
-          <div class="instructor-role">Pilates Mat y Reformer</div>
-          <p class="instructor-desc">Formacion en Pilates clasico y contemporaneo. Especialista en correccion postural y rehabilitacion funcional.</p>
-        </div>
-
-        <div class="instructor-card">
-          <div class="instructor-avatar" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=80');"></div>
-          <h3>Nombre Instructor/a</h3>
-          <div class="instructor-role">Hatha y Vinyasa Yoga</div>
-          <p class="instructor-desc">Certificacion internacional RYT-500. Combina la tradicion del yoga clasico con un enfoque moderno y accesible para todos.</p>
-        </div>
-
-        <div class="instructor-card">
-          <div class="instructor-avatar" style="background-image: url('https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=300&q=80');"></div>
-          <h3>Nombre Instructor/a</h3>
-          <div class="instructor-role">Meditacion y Mindfulness</div>
-          <p class="instructor-desc">Experto en tecnicas de meditacion y respiracion consciente. Formacion en mindfulness aplicado al bienestar cotidiano.</p>
-        </div>
-
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(6,182,212,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Yoga · Vinyasa</p>
+        <h3 class="project-name">Clase de Vinyasa Flow</h3>
+        <p class="project-meta">Luz natural · Espacio zen</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== RESENAS ===== -->
-  <section class="reviews" id="reviews">
-    <div class="container">
-      <div class="reviews-header fade-in">
-        <div class="section-label">Opiniones reales</div>
-        <h2 class="section-title">Lo que dicen<br>nuestros alumnos</h2>
-        <p class="section-subtitle">Experiencias reales de personas que han encontrado su equilibrio con nosotros.</p>
-      </div>
-      <div class="reviews-score fade-in">
-        <div class="reviews-score-number">4.9</div>
-        <div class="reviews-score-detail">
-          <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="reviews-count">Basado en resenas de Google</div>
-        </div>
-      </div>
-      <div class="reviews-grid fade-in">
-
-        <!-- Resena 1 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">ML</div>
-            <div class="review-info">
-              <div class="review-name">Maria L.</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Llevo meses viniendo a clases de pilates reformer y el cambio en mi postura y en mis dolores de espalda ha sido increible. Las clases son reducidas y la atencion es maravillosa."</p>
-        </div>
-
-        <!-- Resena 2 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">CR</div>
-            <div class="review-info">
-              <div class="review-name">Carlos R.</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Empece con yoga sin haber hecho nada parecido y me sorprendio lo bien que te guian. El estudio es precioso, muy limpio y tranquilo. Se nota que cuidan cada detalle."</p>
-        </div>
-
-        <!-- Resena 3 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">AS</div>
-            <div class="review-info">
-              <div class="review-name">Ana S.</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"El mejor centro de pilates y yoga de la zona. Las profesoras son excepcionales y el ambiente es muy acogedor. Mi momento favorito de la semana es cuando vengo aqui."</p>
-        </div>
-
-        <!-- Resena 4 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">PG</div>
-            <div class="review-info">
-              <div class="review-name">Pablo G.</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Despues de una lesion de rodilla, el pilates terapeutico me ayudo muchisimo en la recuperacion. Atencion completamente personalizada y profesionales de primer nivel."</p>
-        </div>
-
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(6,182,212,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Meditación · Sala</p>
+        <h3 class="project-name">Sala de Meditación</h3>
+        <p class="project-meta">Silencio · Aromaterapia</p>
       </div>
     </div>
-  </section>
-
-  <!-- ===== UBICACION + MAPA ===== -->
-  <section class="location" id="location">
-    <div class="container">
-      <div style="margin-bottom: 48px;" class="fade-in">
-        <div class="section-label">Donde encontrarnos</div>
-        <h2 class="section-title">Tu oasis de<br>bienestar te espera</h2>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(6,182,212,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Espacio · Studio</p>
+        <h3 class="project-name">Nuestro Studio</h3>
+        <p class="project-meta">200m² · Diseño biofílico</p>
       </div>
-      <div class="location-grid fade-in">
-        <div class="location-info">
-          <!-- Direccion -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h4>Direccion</h4>
-              <p>{{DIRECCION}}<br>{{CIUDAD}}</p>
-            </div>
-          </div>
-          <!-- Telefono -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </div>
-            <div>
-              <h4>Telefono</h4>
-              <p>{{TELEFONO}}</p>
-            </div>
-          </div>
-          <!-- Email -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <p>{{EMAIL}}</p>
-            </div>
-          </div>
-          <!-- Horario -->
-          <h3 class="schedule-title">Horario</h3>
-          <ul class="schedule-list">
-            <li>
-              <span class="schedule-day">Lunes - Viernes</span>
-              <span class="schedule-hours open">{{HORARIO}}</span>
-            </li>
-            <li>
-              <span class="schedule-day">Sabados</span>
-              <span class="schedule-hours open">{{HORARIO}}</span>
-            </li>
-            <li>
-              <span class="schedule-day">Domingos</span>
-              <span class="schedule-hours">Cerrado</span>
-            </li>
-          </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">2014</div>
+      <div class="about-badge-text">Un espacio de paz en la ciudad</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Tu cuerpo y mente<br>en <em>armonía</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      Studio Om nació como un refugio de bienestar en el corazón de la ciudad. Un espacio donde desconectar del ruido y reconectar contigo.<br><br><strong>Grupos reducidos, atención real.</strong> Máximo 6 personas en Pilates Reformer y 12 en yoga. Porque tu práctica importa.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Profesores certificados</h4>
+          <p>Formación internacional en Pilates (BASI, Polestar) y yoga (RYT 500+)</p>
         </div>
-        <div class="location-map">
-          <iframe src="https://www.google.com/maps?q={{GOOGLE_MAPS_QUERY}}&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Grupos reducidos</h4>
+          <p>Máximo 6 en Reformer, 12 en yoga. Correcciones individuales en cada clase</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Espacio biofílico</h4>
+          <p>Diseño con materiales naturales, luz natural, plantas y aromaterapia</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ===== CTA — PRIMERA CLASE GRATIS ===== -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Tu primera clase es gratis</h2>
-      <p>Ven a conocernos sin compromiso. Prueba cualquiera de nuestras disciplinas y descubre por que nuestros alumnos no dejan de venir.</p>
-      <div class="cta-btns">
-        <a href="tel:{{TELEFONO}}" class="btn-white">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Reservar clase gratis
-        </a>
-        <a href="#classes" class="btn-ghost">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          Explorar clases
-        </a>
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>resultados reales</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <h3>Pilates Reformer</h3>
+        <p>Clases en máquina Balanced Body con grupos de máximo 6 personas. Tonificación, flexibilidad y corrección postural con atención individualizada.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Yoga y Vinyasa</h3>
+        <p>Hatha yoga, vinyasa flow, yin yoga y yoga restaurativo. Prácticas adaptadas a tu nivel, desde principiantes hasta avanzados.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+        </div>
+        <h3>Meditación y Mindfulness</h3>
+        <p>Sesiones guiadas de meditación y técnicas de respiración. Reduce el estrés y mejora tu bienestar mental y emocional.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo" style="color: #fff;">{{NOMBRE_NEGOCIO}}</div>
-          <p class="footer-desc">Tu espacio de pilates, yoga y bienestar en {{CIUDAD}}. Equilibrio, fuerza y serenidad en cada sesion.</p>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <div class="footer-col">
-          <h4>Secciones</h4>
-          <ul>
-            <li><a href="#philosophy">Filosofia</a></li>
-            <li><a href="#classes">Clases</a></li>
-            <li><a href="#instructors">Equipo</a></li>
-            <li><a href="#reviews">Opiniones</a></li>
-            <li><a href="#location">Ubicacion</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></li>
-            <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
-            <li><a href="#">{{DIRECCION}}</a></li>
-            <li><a href="#">{{CIUDAD}}</a></li>
-          </ul>
+        <p class="testimonial-quote">"Llevo un año con Pilates Reformer y el cambio en mi postura y mi espalda es increíble. Los profesores corrigen constantemente y eso marca la diferencia."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Elena Martínez</strong>
+          <span>Alumna de Pilates · Madrid</span>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</span>
-        <span>Disenado con cuidado para tu bienestar</span>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"El yoga restaurativo de los viernes es sagrado para mí. Sales flotando. El espacio, la profesora, la música... todo está cuidado al detalle."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Marta Sánchez</strong>
+          <span>Alumna de yoga · Madrid</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Venía de un centro masificado y la diferencia es abismal. Aquí te conocen por tu nombre y adaptan los ejercicios a tus necesidades."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Pilar Gómez</strong>
+          <span>Alumna · 2 años · Madrid</span>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- ===== WHATSAPP FLOTANTE ===== -->
-  <a href="https://wa.me/{{TELEFONO}}" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 0C7.165 0 0 7.163 0 16.001c0 2.82.736 5.573 2.136 7.998L.072 32l8.211-2.033A15.94 15.94 0 0016.004 32C24.838 32 32 24.837 32 16.001 32 7.163 24.838 0 16.004 0zm0 29.29a13.26 13.26 0 01-7.108-2.063l-.51-.302-4.87 1.205 1.228-4.742-.332-.527A13.24 13.24 0 012.71 16C2.71 8.65 8.654 2.708 16.004 2.708c3.565 0 6.914 1.39 9.432 3.908a13.24 13.24 0 013.856 9.385c0 7.35-5.944 13.29-13.288 13.29zm7.29-9.95c-.4-.2-2.366-1.167-2.732-1.3-.367-.134-.634-.2-.9.2-.268.4-1.034 1.3-1.268 1.567-.234.268-.467.3-.867.1-.4-.2-1.69-.623-3.22-1.987-1.19-1.062-1.993-2.374-2.227-2.774-.234-.4-.025-.616.176-.815.18-.18.4-.467.6-.7.2-.234.267-.4.4-.668.134-.268.067-.5-.033-.7-.1-.2-.9-2.167-1.234-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.867 1.634 4.134.2.267 2.822 4.31 6.838 6.043.955.413 1.7.659 2.282.844.959.305 1.832.262 2.522.159.77-.115 2.367-.968 2.7-1.902.334-.934.334-1.734.234-1.902-.1-.167-.367-.267-.767-.467z"/></svg>
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Buscas equilibrio<br>cuerpo y mente?</h2>
+    <p>Prueba una clase gratis y descubre el Studio Om.</p>
+  </div>
+  <a href="mailto:info@studioommadrid.es" class="btn-dark">
+    <span>Clase de prueba gratis</span>
+    <span>↗</span>
   </a>
+</div>
 
-  <!-- ===== SCROLL ANIMATION ===== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var els = document.querySelectorAll('.fade-in');
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(function(el) { el.classList.add('visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      els.forEach(function(el) { observer.observe(el); });
-    });
-  </script>
-
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Studio<span>.</span></a>
+      <p class="footer-tagline">"El movimiento consciente es la mejor medicina."<br>— Studio Om</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="#" class="social-link">Gm</a>
+        <a href="#" class="social-link">Wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Clases</h4>
+      <ul>
+        <li><a href="#">Pilates Reformer</a></li>
+        <li><a href="#">Hatha Yoga</a></li>
+        <li><a href="#">Vinyasa</a></li>
+        <li><a href="#">Restaurativo</a></li>
+        <li><a href="#">Meditación</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Profesores</a></li>
+        <li><a href="#">Horarios</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:info@studioommadrid.es">info@studioommadrid.es</a></li>
+        <li><a href="tel:+34910234567">+34 910 234 567</a></li>
+        <li><a href="#">Calle de Lagasca, 60<br>28001 Madrid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Studio Om — Pilates & Yoga. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-// Fallback for background images that fail to load
-document.addEventListener('DOMContentLoaded', function() {
-  var elements = document.querySelectorAll('[style*="background-image"], [style*="background"]');
-  var allBgElements = document.querySelectorAll('*');
-  allBgElements.forEach(function(el) {
-    var bg = window.getComputedStyle(el).backgroundImage;
-    if (bg && bg !== 'none' && bg.indexOf('url(') !== -1) {
-      var match = bg.match(/url\(["']?(https?:\/\/[^"')]+)["']?\)/);
-      if (match) {
-        var img = new Image();
-        img.onerror = function() {
-          el.style.backgroundImage = "none";
-          el.style.backgroundColor = "#333";
-          if (!el.querySelector('.img-fallback-text')) {
-            var span = document.createElement('span');
-            span.className = 'img-fallback-text';
-            span.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#999;font-size:14px;position:absolute;top:0;left:0;';
-            span.textContent = 'Imagen no disponible';
-            if (window.getComputedStyle(el).position === 'static') {
-              el.style.position = 'relative';
-            }
-            el.appendChild(span);
-          }
-        };
-        img.src = match[1];
+  // ── LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
       }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
     }
   });
-});
 </script>
-
 </body>
 </html>

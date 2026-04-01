@@ -3,1791 +3,1122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} en {{CIUDAD}} — Tu autoescuela de confianza. Carné B, moto A2, teórico online, prácticas intensivas. Alta tasa de aprobados. Llámanos: {{TELEFONO}}">
-  <meta name="keywords" content="autoescuela {{CIUDAD}}, carné de conducir, permiso B, permiso A2, teórico online, prácticas intensivas, {{NOMBRE_NEGOCIO}}">
-  <meta property="og:title" content="{{NOMBRE_NEGOCIO}} — Autoescuela en {{CIUDAD}}">
-  <meta property="og:description" content="{{NOMBRE_NEGOCIO}} — Carné B, moto A2, teórico online y prácticas intensivas en {{CIUDAD}}. Alta tasa de aprobados. Llámanos: {{TELEFONO}}">
-  <meta property="og:type" content="website">
-  <title>{{NOMBRE_NEGOCIO}} — Autoescuela en {{CIUDAD}}</title>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "DrivingSchool",
-    "name": "{{NOMBRE_NEGOCIO}}",
-    "telephone": "{{TELEFONO}}",
-    "email": "{{EMAIL}}",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "{{DIRECCION}}",
-      "addressLocality": "{{CIUDAD}}",
-      "addressCountry": "ES"
-    },
-    "priceRange": "€€"
-  }
-  </script>
-
+  <title>Autoescuela Ruta 10 — Autoescuela</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
-    /* ===========================================
-       RESET & BASE
-    =========================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #334155;
-      background: #f8fafc;
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
 
-    /* ===========================================
-       VARIABLES — PALETA AUTOESCUELA (VIAL)
-    =========================================== */
     :root {
-      --blue:        #1e3a5f;
-      --blue-dark:   #0f2440;
-      --blue-light:  #2d5a8e;
-      --blue-bright: #3b82f6;
-      --blue-soft:   #dbeafe;
-      --red:         #dc2626;
-      --red-light:   #ef4444;
-      --red-dark:    #b91c1c;
-      --red-soft:    #fef2f2;
-      --white:       #ffffff;
-      --gray-50:     #f8fafc;
-      --gray-100:    #f1f5f9;
-      --gray-200:    #e2e8f0;
-      --gray-300:    #cbd5e1;
-      --gray-400:    #94a3b8;
-      --gray-500:    #64748b;
-      --gray-600:    #475569;
-      --gray-700:    #334155;
-      --gray-800:    #1e293b;
-      --gray-900:    #0f172a;
-      --asphalt:     #374151;
-      --success:     #16a34a;
-      --amber:       #f59e0b;
-      --shadow-soft:  0 4px 24px rgba(0,0,0,0.08);
-      --shadow-card:  0 2px 16px rgba(0,0,0,0.06);
-      --shadow-hover: 0 8px 32px rgba(30,58,95,0.15);
-      --shadow-glow:  0 0 40px rgba(59,130,246,0.12);
-      --radius:      12px;
-      --radius-sm:   8px;
-      --radius-lg:   20px;
-      --transition:  all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --black: #080f14;
+      --white: #f5f3ef;
+      --accent: #16A34A;
+      --accent-light: #4ade80;
+      --carbon: #0f1820;
+      --carbon-mid: #162130;
+      --carbon-light: #1e2d40;
+      --text-muted: #7a8f99;
+      --font-serif: 'DM Serif Display', serif;
+      --font-sans: 'Outfit', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ===========================================
-       TIPOGRAFIA
-    =========================================== */
-    h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; }
-    .section-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--blue-bright);
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      color: var(--blue-dark);
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--gray-500);
-      line-height: 1.7;
-      max-width: 640px;
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
     }
 
-    /* ===========================================
-       LAYOUT
-    =========================================== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
     }
-    section { padding: 80px 0; }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(22,163,74,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+    }
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(22,163,74,0.7);
+      background: rgba(22,163,74,0.05);
+    }
 
-    /* ===========================================
-       HEADER / NAV
-    =========================================== */
-    .header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gray-200);
-      transition: var(--transition);
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 70px;
-      max-width: 1200px;
-      margin: 0 auto;
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.85);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(22,163,74,0.08);
     }
-    .logo {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--blue-dark);
-      letter-spacing: -0.5px;
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; align-items: center; gap: 10px;
     }
-    .logo span { color: var(--red); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--gray-500);
-      transition: var(--transition);
-      letter-spacing: 0.3px;
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
     }
-    .nav-links a:hover { color: var(--blue-bright); }
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: var(--blue);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: var(--transition);
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover {
-      background: var(--blue-light);
-      box-shadow: 0 4px 20px rgba(30,58,95,0.3);
-    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* Hamburguesa */
+    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
     }
     .hamburger span {
-      width: 26px; height: 2.5px;
-      background: var(--blue-dark);
-      border-radius: 2px;
-      transition: var(--transition);
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
     }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 70px; left: 0; right: 0; bottom: 0;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
     }
-    .mobile-menu.active { display: flex; }
+    .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      transition: var(--transition);
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
     }
-    .mobile-menu a:hover { color: var(--blue-bright); }
+    .mobile-menu a:hover { color: var(--accent); }
 
-    /* ===========================================
-       HERO
-    =========================================== */
+    /* ─── HERO ─── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
-      padding: 120px 0 80px;
-      background: var(--blue-dark);
     }
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1600&q=80') center/cover no-repeat;
-      background-color: var(--blue-dark);
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #080f14 0%, #162130 40%, #16A34A22 100%);
+      background-size: cover; background-position: center;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
     }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(15,36,64,0.93) 0%, rgba(30,58,95,0.78) 50%, rgba(15,36,64,0.90) 100%);
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
     }
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(59,130,246,0.3);
-      color: var(--blue-soft);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
     }
-    .hero-badge svg { width: 16px; height: 16px; }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 300;
       line-height: 1.05;
-      color: var(--white);
-      margin-bottom: 20px;
-      letter-spacing: -1px;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
     }
-    .hero h1 .accent-text {
-      background: linear-gradient(135deg, var(--blue-bright), #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
     }
-    .hero-desc {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.75;
-      margin-bottom: 36px;
-      max-width: 520px;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
     }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(59,130,246,0.4);
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
     }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid rgba(255,255,255,0.25);
-      transition: var(--transition);
-      cursor: pointer;
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
     }
-    .btn-secondary:hover {
-      border-color: var(--blue-bright);
-      color: var(--blue-soft);
-      background: rgba(59,130,246,0.08);
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
     }
-    .btn-icon { width: 18px; height: 18px; }
-
-    /* Hero Stats */
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
     }
-    .hero-stat .stat-number {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
     }
-    .hero-stat .stat-number span { color: var(--blue-bright); }
-    .hero-stat .stat-label {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 4px;
-      letter-spacing: 0.5px;
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* Decorative element */
-    .hero-deco {
-      position: absolute;
-      right: -100px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
-      z-index: 1;
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(22,163,74,0.12);
+      border-bottom: 1px solid rgba(22,163,74,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(22,163,74,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(22,163,74,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(22,163,74,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
     }
 
-    /* ===========================================
-       ABOUT
-    =========================================== */
-    .about {
-      background: var(--white);
-      position: relative;
+    /* ─── GALLERY / PROJECTS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
     }
-    .about-grid {
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(22,163,74,0.3);
+      white-space: nowrap;
+    }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
     }
-    .about-image {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 420px;
-      background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80') center/cover no-repeat;
-      background-color: var(--gray-100);
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
     }
-    .about-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(15,36,64,0.4) 100%);
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
     }
-    .about-image-badge {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 2;
-      background: var(--blue);
-      color: var(--white);
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
     }
-    .about-text .section-subtitle {
-      margin-bottom: 32px;
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
     }
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
     }
-    .about-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: var(--gray-50);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--gray-200);
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
     }
-    .about-feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--blue-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
     }
-    .about-feature-icon svg { width: 20px; height: 20px; color: var(--blue-bright); }
-    .about-feature-text {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--gray-700);
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(22,163,74,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(22,163,74,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(22,163,74,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ===========================================
-       PERMISOS / SERVICIOS
-    =========================================== */
-    .services {
-      background: var(--gray-50);
-      position: relative;
-    }
-    .services-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .services-header .section-subtitle {
-      margin: 0 auto;
-    }
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
     }
     .service-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: var(--transition);
-      position: relative;
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(22,163,74,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--blue-bright);
-      box-shadow: var(--shadow-hover);
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(22,163,74,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(22,163,74,0.2); color: var(--accent);
     }
-    .service-card-img {
-      height: 180px;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--gray-100);
-      position: relative;
-    }
-    .service-card-img::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 60px;
-      background: linear-gradient(transparent, var(--white));
-    }
-    .service-card-body {
-      padding: 20px 24px 24px;
-    }
-    .service-card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--blue-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      margin-top: -40px;
-      position: relative;
-      z-index: 2;
-      border: 2px solid var(--white);
-    }
-    .service-card-icon svg { width: 22px; height: 22px; color: var(--blue-bright); }
-    .service-card-icon.red-icon { background: var(--red-soft); }
-    .service-card-icon.red-icon svg { color: var(--red); }
     .service-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--blue-dark);
-      margin-bottom: 8px;
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
     }
     .service-card p {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      line-height: 1.6;
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
     }
-    .service-badge {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--blue);
-      color: var(--white);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      z-index: 2;
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(22,163,74,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(22,163,74,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(22,163,74,0.1); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
+    .testimonials-section::before {
+      content: '"'; position: absolute; top: -60px; left: 40px;
+      font-family: var(--font-serif); font-size: 30rem;
+      color: rgba(22,163,74,0.03); line-height: 1; pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
+    .testimonial-card {
+      padding: 56px 44px; background: rgba(8,8,8,0.4);
+      border: 1px solid rgba(22,163,74,0.07);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover { border-color: rgba(22,163,74,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ===========================================
-       VENTAJAS
-    =========================================== */
-    .advantages {
-      background: var(--blue-dark);
-      position: relative;
-      overflow: hidden;
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
     }
-    .advantages .section-label { color: #60a5fa; }
-    .advantages .section-title { color: var(--white); }
-    .advantages .section-subtitle { color: rgba(255,255,255,0.6); }
-    .advantages-header {
-      text-align: center;
-      margin-bottom: 56px;
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
     }
-    .advantages-header .section-subtitle { margin: 0 auto; }
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+    .cta-text p {
+      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
     }
-    .advantage-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      text-align: center;
-      transition: var(--transition);
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
     }
-    .advantage-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(59,130,246,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
     }
-    .advantage-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: rgba(59,130,246,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .advantage-icon svg { width: 28px; height: 28px; color: #60a5fa; }
-    .advantage-icon.red-glow { background: rgba(220,38,38,0.15); }
-    .advantage-icon.red-glow svg { color: var(--red-light); }
-    .advantage-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .advantage-card p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.65;
-    }
-    .advantage-stat {
-      display: inline-block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--blue-bright);
-      margin-bottom: 6px;
-    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
 
-    /* ===========================================
-       PRICING / MATRICULA
-    =========================================== */
-    .pricing {
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .pricing-header .section-subtitle { margin: 0 auto; }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      text-align: center;
-      transition: var(--transition);
-      position: relative;
-    }
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-soft);
-    }
-    .pricing-card.featured {
-      border-color: var(--blue-bright);
-      background: linear-gradient(180deg, var(--blue-soft) 0%, var(--white) 40%);
-      box-shadow: var(--shadow-glow);
-      transform: scale(1.04);
-    }
-    .pricing-card.featured:hover {
-      transform: scale(1.04) translateY(-4px);
-    }
-    .pricing-popular {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
-      color: var(--white);
-      padding: 6px 20px;
-      border-radius: 50px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-    .pricing-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--blue-dark);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .pricing-period {
-      font-size: 0.8rem;
-      color: var(--gray-400);
-      margin-bottom: 20px;
-    }
-    .pricing-price {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--blue-dark);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .pricing-price .currency { font-size: 1.6rem; vertical-align: super; }
-    .pricing-price .from {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--gray-400);
-      margin-bottom: 4px;
-    }
-    .pricing-card.featured .pricing-price { color: var(--blue-bright); }
-    .pricing-subtitle {
-      font-size: 0.82rem;
-      color: var(--gray-400);
-      margin-bottom: 24px;
-    }
-    .pricing-features {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 28px;
-    }
-    .pricing-features li {
-      font-size: 0.88rem;
-      color: var(--gray-700);
-      padding: 8px 0;
-      border-bottom: 1px solid var(--gray-200);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .pricing-features li:last-child { border-bottom: none; }
-    .pricing-check {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--blue-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .pricing-check svg { width: 11px; height: 11px; color: var(--blue-bright); }
-    .pricing-btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-align: center;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-    }
-    .pricing-btn-outline {
-      background: transparent;
-      color: var(--gray-600);
-      border: 2px solid var(--gray-300);
-    }
-    .pricing-btn-outline:hover {
-      border-color: var(--blue-bright);
-      color: var(--blue-bright);
-    }
-    .pricing-btn-fill {
-      background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
-      color: var(--white);
-    }
-    .pricing-btn-fill:hover {
-      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
-      transform: translateY(-1px);
-    }
-
-    /* ===========================================
-       RESENAS
-    =========================================== */
-    .reviews {
-      background: var(--gray-50);
-    }
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .reviews-header .section-subtitle { margin: 0 auto; }
-    .reviews-score {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    .reviews-score-number {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--blue-dark);
-    }
-    .reviews-score-detail {
-      text-align: left;
-    }
-    .reviews-stars {
-      color: #f59e0b;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-    }
-    .reviews-count {
-      font-size: 0.85rem;
-      color: var(--gray-400);
-      margin-top: 2px;
-    }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .review-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: var(--transition);
-    }
-    .review-card:hover {
-      border-color: var(--blue-bright);
-      box-shadow: var(--shadow-card);
-    }
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .review-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--blue-bright));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-    .review-info { flex: 1; }
-    .review-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--gray-800);
-    }
-    .review-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.68rem;
-      color: var(--success);
-      font-weight: 500;
-      margin-top: 2px;
-    }
-    .review-badge svg { width: 12px; height: 12px; }
-    .review-stars {
-      color: #f59e0b;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-    .review-text {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      line-height: 1.65;
-    }
-
-    /* ===========================================
-       HORARIO + MAPA
-    =========================================== */
-    .location {
-      background: var(--white);
-    }
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .location-info { padding-right: 20px; }
-    .location-address {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .location-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--blue-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .location-icon svg { width: 20px; height: 20px; color: var(--blue-bright); }
-    .location-address h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--blue-dark);
-      margin-bottom: 4px;
-    }
-    .location-address p {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      line-height: 1.5;
-    }
-    .schedule-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--blue-dark);
-      margin-bottom: 16px;
-    }
-    .schedule-list { list-style: none; }
-    .schedule-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-200);
-      font-size: 0.9rem;
-    }
-    .schedule-list li:last-child { border-bottom: none; }
-    .schedule-day { color: var(--gray-700); font-weight: 500; }
-    .schedule-hours { color: var(--gray-400); }
-    .schedule-hours.open { color: var(--success); font-weight: 600; }
-    .location-map {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 420px;
-      border: 1px solid var(--gray-200);
-    }
-    .location-map iframe {
-      width: 100%;
-      height: 420px;
-      border: 0;
-    }
-
-    /* ===========================================
-       CTA BANNER
-    =========================================== */
-    .cta-banner {
-      padding: 80px 0;
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, var(--blue-dark) 100%);
-      position: relative;
-      text-align: center;
-      overflow: hidden;
-    }
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1400&q=60') center/cover no-repeat;
-      opacity: 0.08;
-    }
-    .cta-banner .container { position: relative; z-index: 2; }
-    .cta-banner h2 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .cta-banner p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.75);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-    .cta-btns {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      color: var(--blue-dark);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255,255,255,0.25);
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid rgba(255,255,255,0.4);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--white);
-    }
-
-    /* ===========================================
-       FOOTER
-    =========================================== */
-    .footer {
-      background: var(--gray-900);
-      padding: 48px 0 24px;
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(22,163,74,0.08);
     }
     .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
     }
-    .footer-brand .logo {
-      color: var(--white);
-      margin-bottom: 12px;
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
     }
-    .footer-desc {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      line-height: 1.65;
-      max-width: 320px;
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
     .footer-col h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--gray-200);
-      margin-bottom: 16px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
     }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 8px; }
-    .footer-col a {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      transition: var(--transition);
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
-    .footer-col a:hover { color: var(--blue-bright); }
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: var(--gray-500);
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+    }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ===========================================
-       WHATSAPP FLOTANTE
-    =========================================== */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 900;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: var(--transition);
-      animation: whatsapp-pulse 2s infinite;
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
-    }
-    .whatsapp-float svg { width: 32px; height: 32px; color: white; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
 
-    @keyframes whatsapp-pulse {
-      0% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0.12); }
-      100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
     }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
+    }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ===========================================
-       ANIMACIONES SCROLL
-    =========================================== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===========================================
-       RESPONSIVE
-    =========================================== */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
     }
-
     @media (max-width: 768px) {
-      /* Mobile fallback */
-      .fade-in { opacity: 1 !important; transform: none !important; }
-
-      section { padding: 56px 0; }
-      .container { padding: 0 18px; }
-      .section-title { font-size: 1.75rem; }
-
-      /* Nav */
-      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
       .hamburger { display: flex; }
-
-      /* Hero */
-      .hero { min-height: auto; padding: 110px 0 60px; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero-desc { font-size: 1rem; }
-      .hero-ctas { flex-direction: column; }
-      .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-      .hero-stat .stat-number { font-size: 1.6rem; }
-      .hero-deco { display: none; }
-
-      /* About */
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .about-image { min-height: 280px; }
-      .about-features { grid-template-columns: 1fr; }
-
-      /* Services */
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-
-      /* Advantages */
-      .advantages-grid { grid-template-columns: 1fr; }
-
-      /* Pricing */
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .pricing-card.featured { transform: none; }
-      .pricing-card.featured:hover { transform: translateY(-4px); }
-
-      /* Reviews */
-      .reviews-grid { grid-template-columns: 1fr; }
-      .reviews-score-number { font-size: 2.2rem; }
-
-      /* Location */
-      .location-grid { grid-template-columns: 1fr; }
-      .location-map { min-height: 300px; }
-      .location-map iframe { height: 300px; }
-      .location-info { padding-right: 0; }
-
-      /* CTA */
-      .cta-banner h2 { font-size: 1.75rem; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .btn-white, .btn-ghost { width: 100%; justify-content: center; max-width: 320px; }
-
-      /* Footer */
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-      /* WhatsApp */
-      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
-      .whatsapp-float svg { width: 28px; height: 28px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
     }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 1.85rem; }
-      .hero-stats { gap: 16px; }
-      .hero-stat .stat-number { font-size: 1.4rem; }
-      .section-title { font-size: 1.5rem; }
-      .pricing-price { font-size: 2.4rem; }
-    }
-  
-    /* ══════════════════════════════════
-       MOBILE IMAGE FIX (universal)
-    ══════════════════════════════════ */
-    img {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        min-height: 180px;
-        overflow: hidden;
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        min-height: 180px;
-        object-fit: cover;
-        display: block;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img,
-      .studio-img img,
-      .space-img img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .featured-dish-img,
-      .featured-item-img,
-      .highlight-img,
-      .featured-product-img {
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-      .menu-card-img,
-      .service-card-img,
-      .treatment-img,
-      .program-img,
-      .product-card-img,
-      .course-img,
-      .class-img {
-        width: 100%;
-        height: auto;
-        min-height: 140px;
-        object-fit: cover;
-        display: block;
-      }
-      [style*="background-image"],
-      .program-card-img,
-      .coach-img,
-      .team-member-img,
-      .trainer-img,
-      .specialist-img,
-      .staff-img {
-        background-size: cover !important;
-        background-position: center !important;
-        min-height: 180px;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        min-height: 160px;
-      }
-      .gallery-item img {
-        min-height: 160px;
-      }
-      .about-img img,
-      .philosophy-image img,
-      .team-img img,
-      .intro-img img {
-        min-height: 160px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="#" class="logo">{{NOMBRE_NEGOCIO}}</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#about">Nosotros</a></li>
-          <li><a href="#services">Permisos</a></li>
-          <li><a href="#advantages">Ventajas</a></li>
-          <li><a href="#pricing">Matricula</a></li>
-          <li><a href="#reviews">Opiniones</a></li>
-          <li><a href="#location">Ubicacion</a></li>
-          <li><a href="tel:{{TELEFONO}}" class="nav-cta">Llamar</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu">
-      <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Nosotros</a>
-      <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Permisos</a>
-      <a href="#advantages" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Ventajas</a>
-      <a href="#pricing" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Matricula</a>
-      <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Opiniones</a>
-      <a href="#location" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Ubicacion</a>
-      <a href="tel:{{TELEFONO}}" style="color: var(--blue-bright); font-weight: 700;">Llamar ahora</a>
-    </div>
-  </header>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">AUTOESCUELA <span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-deco"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          AUTOESCUELA EN {{CIUDAD}}
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Autoescuela<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Tu Carnet · Tu Libertad</p>
+    <h1 class="hero-title">
+      Tu carnet,<br><em>a la primera</em>
+    </h1>
+    <p class="hero-sub">
+      Formación vial de calidad con los mejores profesores. Permisos B, A, C y más. Alta tasa de aprobados desde el primer examen.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span>Pide información</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Ver permisos</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Permiso B (Coche)</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso A (Moto)</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso C (Camión)</span>
+    <span class="marquee-item"><span class="dot"></span>CAP Profesional</span>
+    <span class="marquee-item"><span class="dot"></span>Teórico Online</span>
+    <span class="marquee-item"><span class="dot"></span>Prácticas Intensivas</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso B (Coche)</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso A (Moto)</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso C (Camión)</span>
+    <span class="marquee-item"><span class="dot"></span>CAP Profesional</span>
+    <span class="marquee-item"><span class="dot"></span>Teórico Online</span>
+    <span class="marquee-item"><span class="dot"></span>Prácticas Intensivas</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años formando conductores</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="12000">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Carnets expedidos</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="92">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Aprobados a la primera</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Profesores titulados</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+    </div>
+    <a href="#" class="view-all reveal">Ver todo →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(22,163,74,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Permiso B · Coche</p>
+        <h3 class="project-name">Programa Intensivo 30 días</h3>
+        <p class="project-meta">Teórico + 20 prácticas · 2024</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(22,163,74,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Permiso A · Moto</p>
+        <h3 class="project-name">Curso A2 Completo</h3>
+        <p class="project-meta">Circuito + vía · 2024</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(22,163,74,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Teórico · Online</p>
+        <h3 class="project-name">Plataforma Test Online</h3>
+        <p class="project-meta">+3000 preguntas actualizadas</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(22,163,74,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Profesional · CAP</p>
+        <h3 class="project-name">Formación CAP Continua</h3>
+        <p class="project-meta">35h · Válido 5 años</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">1994</div>
+      <div class="about-badge-text">Tres décadas formando conductores seguros</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Conducir bien es<br><em>conducir seguro</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      No somos la autoescuela más barata, somos la que más aprobados tiene. Nuestra filosofía: enseñar a conducir de verdad, no solo a aprobar un examen.<br><br><strong>Cada alumno es único.</strong> Adaptamos el ritmo de las clases a tus necesidades y tu disponibilidad horaria.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Alta tasa de aprobados</h4>
+          <p>92% de nuestros alumnos aprueban en el primer intento</p>
         </div>
-        <h1>Tu carnet de conducir<br>empieza <span class="accent-text">aqui</span></h1>
-        <p class="hero-desc">En {{NOMBRE_NEGOCIO}} te preparamos para aprobar a la primera. Profesores con experiencia, vehiculos modernos y la mejor formacion teorica y practica de {{CIUDAD}}.</p>
-        <div class="hero-ctas">
-          <a href="tel:{{TELEFONO}}" class="btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            Informate sin compromiso
-          </a>
-          <a href="#pricing" class="btn-secondary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Ver precios
-          </a>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Horarios flexibles</h4>
+          <p>Prácticas de 7:00 a 21:00, incluidos sábados por la mañana</p>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="stat-number">+90<span>%</span></div>
-            <div class="stat-label">tasa de aprobados</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-number">+20</div>
-            <div class="stat-label">anos de experiencia</div>
-          </div>
-          <div class="hero-stat">
-            <div class="stat-number">4.8<span>/5</span></div>
-            <div class="stat-label">en Google</div>
-          </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Financiación</h4>
+          <p>Paga tu carnet en cómodas cuotas sin intereses</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ===== ABOUT ===== -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid fade-in">
-        <div class="about-image">
-          <div class="about-image-badge">Formando conductores en {{CIUDAD}}</div>
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>resultados reales</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
         </div>
-        <div class="about-text">
-          <div class="section-label">Sobre nosotros</div>
-          <h2 class="section-title">Tu autoescuela<br>de confianza</h2>
-          <p class="section-subtitle">En {{NOMBRE_NEGOCIO}} llevamos anos formando conductores responsables y seguros. Nuestro equipo de profesores titulados combina experiencia docente con pasion por la ensenanza vial, para que obtengas tu permiso con la mejor preparacion posible.</p>
-          <div class="about-features" style="margin-top: 28px;">
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              </div>
-              <span class="about-feature-text">Alta tasa de aprobados</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-              </div>
-              <span class="about-feature-text">Profesores con experiencia</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              </div>
-              <span class="about-feature-text">Teorico online 24h</span>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <span class="about-feature-text">Horarios flexibles</span>
-            </div>
-          </div>
+        <h3>Permiso B — Coche</h3>
+        <p>Curso completo con clases teóricas presenciales u online + prácticas con vehículo de doble mando. Horarios flexibles y prácticas intensivas.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Permiso A — Moto</h3>
+        <p>AM, A1, A2 y A. Clases en circuito privado y en vía pública. Moto propia o de la autoescuela para el examen.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+        </div>
+        <h3>Permisos Profesionales</h3>
+        <p>Permisos C, D, E y CAP. Formación para profesionales del transporte con prácticas en vehículo real.</p>
+        <a href="#contacto" class="service-link">Más info →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Aprobé el teórico y el práctico a la primera. Mi profesor Marcos fue muy paciente y me dio mucha confianza. La recomiendo al 100%."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Laura Sánchez</strong>
+          <span>Permiso B · Madrid</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Saqué el A2 en un mes con el curso intensivo. Las prácticas en circuito te quitan los nervios para el examen. Muy profesionales."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Dani Rodríguez</strong>
+          <span>Permiso A2 · Getafe</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Después de suspender 2 veces en otra autoescuela, aquí aprobé a la primera. La diferencia es que te enseñan de verdad, no solo para el examen."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Carmen Iglesias</strong>
+          <span>Permiso B · Alcorcón</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== PERMISOS DISPONIBLES ===== -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="services-header fade-in">
-        <div class="section-label">Permisos disponibles</div>
-        <h2 class="section-title">Todos los permisos<br>que necesitas</h2>
-        <p class="section-subtitle">Desde el ciclomotor hasta el coche. Preparamos todos los permisos de conduccion con la formacion mas completa.</p>
-      </div>
-      <div class="services-grid">
-        <!-- Permiso B -->
-        <div class="service-card fade-in">
-          <div class="service-badge">MAS POPULAR</div>
-          <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80');"></div>
-          <div class="service-card-body">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <h3>Permiso B — Coche</h3>
-            <p>Formacion teorica y practica completa para el permiso de conducir turismos. Vehiculos de doble mando modernos y seguros.</p>
-          </div>
-        </div>
-        <!-- Permiso A2 -->
-        <div class="service-card fade-in">
-          <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&q=80');"></div>
-          <div class="service-card-body">
-            <div class="service-card-icon red-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M9 12l2 2 4-4"/></svg>
-            </div>
-            <h3>Permiso A2 — Moto</h3>
-            <p>Conduccion de motocicletas de hasta 35 kW. Practicas en circuito cerrado y en vias abiertas con profesor especializado.</p>
-          </div>
-        </div>
-        <!-- Permiso AM -->
-        <div class="service-card fade-in">
-          <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&q=80');"></div>
-          <div class="service-card-body">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6l-4 8h6l-1 3"/><path d="M5.5 14L8 6h4"/></svg>
-            </div>
-            <h3>Permiso AM — Ciclomotor</h3>
-            <p>Para jovenes desde 15 anos. Formacion especifica para ciclomotores y cuadriciclos ligeros. Teorico y practico incluido.</p>
-          </div>
-        </div>
-        <!-- Teorico Online -->
-        <div class="service-card fade-in">
-          <div class="service-card-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80');"></div>
-          <div class="service-card-body">
-            <div class="service-card-icon red-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            </div>
-            <h3>Teorico Online</h3>
-            <p>Plataforma de tests online disponible 24 horas. Estudia a tu ritmo desde cualquier dispositivo con tests actualizados de la DGT.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VENTAJAS ===== -->
-  <section class="advantages" id="advantages">
-    <div class="container">
-      <div class="advantages-header fade-in">
-        <div class="section-label">Por que elegirnos</div>
-        <h2 class="section-title">Ventajas de formarte<br>con nosotros</h2>
-        <p class="section-subtitle">Miles de alumnos ya han conseguido su permiso con nosotros. Estas son las razones por las que nos eligen.</p>
-      </div>
-      <div class="advantages-grid">
-        <!-- Tasa aprobados -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div class="advantage-stat">+90%</div>
-          <h3>Tasa de aprobados</h3>
-          <p>Nuestros alumnos aprueban muy por encima de la media nacional gracias a una preparacion exhaustiva y personalizada.</p>
-        </div>
-        <!-- Horarios flexibles -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3>Horarios flexibles</h3>
-          <p>Adapta tus clases practicas a tu horario. Manana, tarde o fines de semana. Tu eliges cuando practicar.</p>
-        </div>
-        <!-- Vehiculos modernos -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon red-glow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <h3>Vehiculos modernos</h3>
-          <p>Flota de vehiculos nuevos con doble mando, aire acondicionado y las mismas caracteristicas que encontraras en el examen.</p>
-        </div>
-        <!-- Practicas intensivas -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Practicas intensivas</h3>
-          <p>Si tienes prisa, ofrecemos cursos intensivos para que consigas tu carnet en el menor tiempo posible sin perder calidad.</p>
-        </div>
-        <!-- Profesores titulados -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon red-glow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <h3>Profesores titulados</h3>
-          <p>Todo nuestro equipo docente cuenta con titulo oficial y anos de experiencia. Paciencia, profesionalidad y cercania.</p>
-        </div>
-        <!-- Acompanamiento examen -->
-        <div class="advantage-card fade-in">
-          <div class="advantage-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Te acompanamos al examen</h3>
-          <p>No vas solo. Te acompanamos el dia del examen practico para que vayas tranquilo y con confianza. Estamos contigo hasta el final.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TARIFAS / MATRICULA ===== -->
-  <section class="pricing" id="pricing">
-    <div class="container">
-      <div class="pricing-header fade-in">
-        <div class="section-label">Matricula</div>
-        <h2 class="section-title">Precios claros,<br>sin sorpresas</h2>
-        <p class="section-subtitle">Elige el permiso que necesitas. Todos los packs incluyen matricula, tasas de la DGT, teoria y practicas.</p>
-      </div>
-      <div class="pricing-grid">
-        <!-- Permiso AM -->
-        <div class="pricing-card fade-in">
-          <h3>Permiso AM</h3>
-          <p class="pricing-period">Ciclomotor</p>
-          <div class="pricing-price">
-            <span class="from">desde</span>
-            199<span class="currency">&euro;</span>
-          </div>
-          <p class="pricing-subtitle">precio completo</p>
-          <ul class="pricing-features">
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Matricula incluida</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Teorico + tests online</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Practicas en circuito</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Tasas DGT incluidas</li>
-          </ul>
-          <a href="tel:{{TELEFONO}}" class="pricing-btn pricing-btn-outline">Informacion</a>
-        </div>
-        <!-- Permiso B — Featured -->
-        <div class="pricing-card featured fade-in">
-          <div class="pricing-popular">MAS POPULAR</div>
-          <h3>Permiso B</h3>
-          <p class="pricing-period">Coche</p>
-          <div class="pricing-price">
-            <span class="from">desde</span>
-            599<span class="currency">&euro;</span>
-          </div>
-          <p class="pricing-subtitle">precio completo</p>
-          <ul class="pricing-features">
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Matricula incluida</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Teorico online 24h</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Clases practicas incluidas</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Tasas DGT incluidas</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Acompanamiento a examen</li>
-          </ul>
-          <a href="tel:{{TELEFONO}}" class="pricing-btn pricing-btn-fill">Matriculate ahora</a>
-        </div>
-        <!-- Permiso A2 -->
-        <div class="pricing-card fade-in">
-          <h3>Permiso A2</h3>
-          <p class="pricing-period">Moto</p>
-          <div class="pricing-price">
-            <span class="from">desde</span>
-            449<span class="currency">&euro;</span>
-          </div>
-          <p class="pricing-subtitle">precio completo</p>
-          <ul class="pricing-features">
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Matricula incluida</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Teorico online 24h</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Practicas circuito + via</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Tasas DGT incluidas</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Moto de practicas incluida</li>
-          </ul>
-          <a href="tel:{{TELEFONO}}" class="pricing-btn pricing-btn-outline">Informacion</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RESENAS ===== -->
-  <section class="reviews" id="reviews">
-    <div class="container">
-      <div class="reviews-header fade-in">
-        <div class="section-label">Opiniones</div>
-        <h2 class="section-title">Lo que dicen<br>nuestros alumnos</h2>
-      </div>
-      <div class="reviews-score fade-in">
-        <div class="reviews-score-number">4.8</div>
-        <div class="reviews-score-detail">
-          <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="reviews-count">Basado en +150 resenas en Google</div>
-        </div>
-      </div>
-      <div class="reviews-grid">
-        <!-- Resena 1 -->
-        <div class="review-card fade-in">
-          <div class="review-header">
-            <div class="review-avatar">MG</div>
-            <div class="review-info">
-              <div class="review-name">Maria Garcia</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Aprobe el teorico y el practico a la primera. Los profesores tienen mucha paciencia y te explican todo de forma clara. La plataforma de tests online es muy completa y me ayudo muchisimo a prepararme.</p>
-        </div>
-        <!-- Resena 2 -->
-        <div class="review-card fade-in">
-          <div class="review-header">
-            <div class="review-avatar">CR</div>
-            <div class="review-info">
-              <div class="review-name">Carlos Rodriguez</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Me saque el carnet de moto A2 aqui y fue una experiencia genial. El profesor de motos es un crack, te da mucha confianza en el circuito. Los horarios se adaptaron perfecto a mi trabajo.</p>
-        </div>
-        <!-- Resena 3 -->
-        <div class="review-card fade-in">
-          <div class="review-header">
-            <div class="review-avatar">LS</div>
-            <div class="review-info">
-              <div class="review-name">Laura Sanchez</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-          <p class="review-text">Muy buena autoescuela. Lo mejor es que el precio es cerrado, sin sorpresas ni costes extra. Los coches estan nuevos y limpios. El unico pero es que a veces cuesta coger hora en las horas punta.</p>
-        </div>
-        <!-- Resena 4 -->
-        <div class="review-card fade-in">
-          <div class="review-header">
-            <div class="review-avatar">PF</div>
-            <div class="review-info">
-              <div class="review-name">Pablo Fernandez</div>
-              <div class="review-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Resena verificada de Google
-              </div>
-            </div>
-          </div>
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Hice el intensivo de verano para el B y en mes y medio tenia el carnet. Desde recepcion hasta los profes, un trato diez. Recomendado al cien por cien, sobre todo si quieres sacartelo rapido.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== UBICACION + HORARIO ===== -->
-  <section class="location" id="location">
-    <div class="container">
-      <div class="section-label fade-in">Encuentranos</div>
-      <h2 class="section-title fade-in" style="margin-bottom: 40px;">Donde estamos<br>y cuando abrimos</h2>
-      <div class="location-grid">
-        <div class="location-info fade-in">
-          <!-- Direccion -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h4>Direccion</h4>
-              <p>{{DIRECCION}}<br>{{CIUDAD}}</p>
-            </div>
-          </div>
-          <!-- Telefono -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </div>
-            <div>
-              <h4>Telefono</h4>
-              <p><a href="tel:{{TELEFONO}}" style="color: var(--blue-bright);">{{TELEFONO}}</a></p>
-            </div>
-          </div>
-          <!-- Email -->
-          <div class="location-address">
-            <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <p><a href="mailto:{{EMAIL}}" style="color: var(--blue-bright);">{{EMAIL}}</a></p>
-            </div>
-          </div>
-          <!-- Horario -->
-          <h4 class="schedule-title">Horario</h4>
-          <ul class="schedule-list">
-            <li><span class="schedule-day">{{HORARIO}}</span></li>
-          </ul>
-        </div>
-        <div class="location-map fade-in">
-          <iframe src="https://maps.google.com/maps?q={{GOOGLE_MAPS_QUERY}}&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA BANNER ===== -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2 class="fade-in">Empieza hoy.<br>Tu carnet te espera.</h2>
-      <p class="fade-in">Primera clase de teoria gratuita y sin compromiso. Ven a conocernos, resuelvemos tus dudas y empezamos cuando tu quieras.</p>
-      <div class="cta-btns fade-in">
-        <a href="tel:{{TELEFONO}}" class="btn-white">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Llamanos: {{TELEFONO}}
-        </a>
-        <a href="https://wa.me/34{{TELEFONO}}" class="btn-ghost" target="_blank">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo">{{NOMBRE_NEGOCIO}}</div>
-          <p class="footer-desc">Tu autoescuela de confianza en {{CIUDAD}}. Formacion teorica y practica de calidad para todos los permisos de conduccion. Alta tasa de aprobados.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navegacion</h4>
-          <ul>
-            <li><a href="#about">Nosotros</a></li>
-            <li><a href="#services">Permisos</a></li>
-            <li><a href="#advantages">Ventajas</a></li>
-            <li><a href="#pricing">Matricula</a></li>
-            <li><a href="#reviews">Opiniones</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></li>
-            <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
-            <li>{{DIRECCION}}</li>
-            <li>{{CIUDAD}}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2025 {{NOMBRE_NEGOCIO}} — Todos los derechos reservados</span>
-        <span>Autoescuela autorizada por la DGT</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== WHATSAPP FLOTANTE ===== -->
-  <a href="https://wa.me/34{{TELEFONO}}" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Quieres tu carnet<br>de conducir?</h2>
+    <p>Infórmate sin compromiso. Te hacemos un plan a tu medida.</p>
+  </div>
+  <a href="mailto:info@autoescuelaruta10.es" class="btn-dark">
+    <span>Pedir información</span>
+    <span>↗</span>
   </a>
+</div>
 
-  <!-- ===== SCROLL ANIMATION ===== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in').forEach(function(el) {
-        observer.observe(el);
-      });
-    });
-  </script>
-
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Autoescuela<span>.</span></a>
+      <p class="footer-tagline">"El destino no está en el mapa, está en el volante."<br>— Autoescuela Ruta 10</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="#" class="social-link">Gm</a>
+        <a href="#" class="social-link">Wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Permisos</h4>
+      <ul>
+        <li><a href="#">Coche (B)</a></li>
+        <li><a href="#">Moto (A)</a></li>
+        <li><a href="#">Camión (C)</a></li>
+        <li><a href="#">Autobús (D)</a></li>
+        <li><a href="#">CAP</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Autoescuela</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Profesorado</a></li>
+        <li><a href="#">Instalaciones</a></li>
+        <li><a href="#">Blog vial</a></li>
+        <li><a href="#">Empleo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:info@autoescuelaruta10.es">info@autoescuelaruta10.es</a></li>
+        <li><a href="tel:+34914567890">+34 914 567 890</a></li>
+        <li><a href="#">Avenida de la Constitución, 22<br>28850 Torrejón de Ardoz, Madrid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Autoescuela Ruta 10. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-// Fallback for background images that fail to load
-document.addEventListener('DOMContentLoaded', function() {
-  var elements = document.querySelectorAll('[style*="background-image"], [style*="background"]');
-  var allBgElements = document.querySelectorAll('*');
-  allBgElements.forEach(function(el) {
-    var bg = window.getComputedStyle(el).backgroundImage;
-    if (bg && bg !== 'none' && bg.indexOf('url(') !== -1) {
-      var match = bg.match(/url\(["']?(https?:\/\/[^"')]+)["']?\)/);
-      if (match) {
-        var img = new Image();
-        img.onerror = function() {
-          el.style.backgroundImage = "none";
-          el.style.backgroundColor = "#333";
-          if (!el.querySelector('.img-fallback-text')) {
-            var span = document.createElement('span');
-            span.className = 'img-fallback-text';
-            span.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#999;font-size:14px;position:absolute;top:0;left:0;';
-            span.textContent = 'Imagen no disponible';
-            if (window.getComputedStyle(el).position === 'static') {
-              el.style.position = 'relative';
-            }
-            el.appendChild(span);
-          }
-        };
-        img.src = match[1];
+  // ── LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
       }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
     }
   });
-});
 </script>
-
 </body>
 </html>
