@@ -3,25 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elexalde — Cerrajeria en Galdakao</title>
-  <meta name="description" content="Elexalde en Galdakao. Cerrajeria profesional en Galdakao. Aperturas urgentes, cambio de cerraduras, instalacion de seguridad y copias de llaves. Servicio rapido y garantizado.">
+  <title>Cerrajería Elexalde — Cerrajero en Galdakao 24h</title>
+  <meta name="description" content="Cerrajería Elexalde en Galdakao. Más de 10 años de experiencia. Aperturas urgentes 24h, cambio de cerraduras, copias de llaves e instalación de seguridad. Tel: 688 89 47 17.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0a0a0a; --white: #f5f3ef; --accent: #D4A017; --accent-light: #e8b830; --accent-dim: #D4A01730; --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222; --text-muted: #7a7268; --font-serif: 'Oswald', serif; --font-sans: 'Inter', sans-serif; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #b03737;
+      --accent-light: #cc4444;
+      --accent-dim: #b0373730;
+      --carbon: #111111;
+      --carbon-mid: #181818;
+      --carbon-light: #222222;
+      --text-muted: #7a7268;
+      --font-serif: 'Oswald', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #D4A01715; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #b0373715; }
     .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
     .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -31,11 +49,17 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #D4A01718 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0f0808 0%, #1a1010 40%, #b0373718 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    /* Steel/key texture overlay */
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(176,55,55,0.02) 2px, rgba(176,55,55,0.02) 4px); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,4,4,0.92) 0%, rgba(8,4,4,0.5) 50%, rgba(8,4,4,0.2) 100%); }
     .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
+    /* Decorative key outline */
+    .hero-deco { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); opacity: 0.04; }
     .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
     .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
@@ -43,10 +67,9 @@
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
     .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--black); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
-    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--white); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--white); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--accent-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost { color: rgba(245,243,239,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
     .btn-ghost:hover { color: var(--accent); }
@@ -56,72 +79,97 @@
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
     .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
-    .marquee-section { border-top: 1px solid #D4A01720; border-bottom: 1px solid #D4A01720; overflow: hidden; padding: 20px 0; background: var(--carbon); }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+
+    /* URGENT BADGE */
+    .hero-urgent { position: absolute; top: 120px; right: 60px; z-index: 3; border: 1px solid var(--accent); padding: 20px 28px; background: rgba(8,4,4,0.85); backdrop-filter: blur(10px); opacity: 0; animation: fadeIn 1s 1.2s ease forwards; }
+    .hero-urgent-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .hero-urgent-number { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; color: var(--white); letter-spacing: 0.05em; }
+    .hero-urgent-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #b0373720; border-bottom: 1px solid #b0373720; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
     .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
     section { padding: 130px 60px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #D4A01715; }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #b0373715; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
-    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #D4A01715; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #b0373715; position: relative; overflow: hidden; transition: border-color 0.4s; }
     .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: #D4A01750; }
+    .stat-card:hover { border-color: #b0373750; }
     .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
     .stat-number .stat-suffix { color: var(--accent); }
     .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
     .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
-    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light)); }
-    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #D4A01740; padding: 24px 30px; max-width: 240px; }
-    .about-badge-year { font-family: var(--font-serif); font-size: 3rem; color: var(--accent); line-height: 1; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(160deg, #1a0d0d 0%, #2a1515 50%, #1a0d0d 100%); }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,4,4,0.2) 0%, rgba(10,4,4,0.05) 100%); }
+    /* Key icon decoration inside about visual */
+    .about-visual-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.06; }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #b0373740; padding: 24px 30px; max-width: 260px; z-index: 2; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2.2rem; color: var(--accent); line-height: 1; }
     .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
     .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
     .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
     .about-body strong { color: var(--white); font-weight: 400; }
     .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #D4A01710; transition: border-color 0.4s; }
-    .about-value:hover { border-color: #D4A01735; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #b0373710; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #b0373735; }
     .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
     .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
     .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
-    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #D4A01712; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
-    .service-card:hover { background: var(--carbon-mid); border-color: #D4A01735; }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #D4A01735; color: var(--accent); }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #b0373712; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #b0373735; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #b0373735; color: var(--accent); }
     .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
     .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
-    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #D4A01780; transition: color 0.3s, gap 0.3s; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #b0373780; transition: color 0.3s, gap 0.3s; }
     .service-link:hover { color: var(--accent); gap: 16px; }
-    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #D4A0170d; line-height: 1; transition: color 0.5s; }
-    .service-card:hover .service-number { color: #D4A0171a; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #b037370d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #b037371a; }
+
+    /* TESTIMONIALS */
     .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
-    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #D4A01708; line-height: 1; pointer-events: none; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #b0373708; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
-    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #D4A01712; transition: border-color 0.4s, background 0.4s; }
-    .testimonial-card:hover { border-color: #D4A01735; background: rgba(8,8,8,0.7); }
+    .testimonial-card { padding: 56px 44px; background: rgba(8,4,4,0.4); border: 1px solid #b0373712; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #b0373735; background: rgba(8,4,4,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
     .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
     .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
     .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
     .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
     .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
     .cta-text { flex: 1; min-width: 300px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
-    .cta-text p { font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 16px; font-weight: 300; }
     .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
     .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #D4A01715; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #b0373715; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
     .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
     .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
@@ -137,11 +185,29 @@
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--text-muted); }
+
+    /* CURSOR — 3 circles */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.15s; } .reveal-delay-2 { transition-delay: 0.3s; } .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* LOADER */
     .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
@@ -149,77 +215,391 @@
     .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
     .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
     @keyframes loadBar { to { transform: translateX(0); } }
-    @media (max-width: 1024px) { nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; } section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; } .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; } }
-    @media (max-width: 768px) { .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } section { padding: 80px 24px; } .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; } .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; } .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .cta-section { padding: 80px 24px; flex-direction: column; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .hero-urgent { right: 36px; top: 100px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-urgent { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 350px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+    }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-logo">Elexalde<span>.</span></div><div class="loader-bar"></div></div>
-<nav id="navbar"><a href="#" class="nav-logo">Elexalde<span>.</span></a><ul class="nav-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#contacto" class="nav-cta">Contacto</a></li></ul><button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mobile-menu" id="mobileMenu"><a href="#nosotros" onclick="closeMobile()">Nosotros</a><a href="#servicios" onclick="closeMobile()">Servicios</a><a href="#contacto" onclick="closeMobile()">Contacto</a></div>
-<section class="hero"><div class="hero-bg" id="heroBg"></div><div class="hero-overlay"></div><div class="hero-overlay-bottom"></div>
-  <div class="hero-content"><p class="hero-eyebrow">Cerrajeria · Seguridad · Galdakao</p><h1 class="hero-title">Tu seguridad,<br>nuestra<br><em>prioridad</em></h1><p class="hero-sub">Cerrajeria profesional en Galdakao. Aperturas urgentes, cambio de cerraduras, instalacion de seguridad y copias de llaves. Servicio rapido y garantizado.</p>
-    <div class="hero-actions"><a href="mailto:cerrajeriaelexalde@gmail.com" class="btn-primary"><span>Contactar</span><span>&rarr;</span></a><a href="#servicios" class="btn-ghost"><span>Servicios</span><div class="btn-ghost-arrow">&nearr;</div></a></div>
-  </div><div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Elexalde<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Elexalde<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Llamar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Llamar ahora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+
+  <!-- Decorative SVG key -->
+  <div class="hero-deco">
+    <svg width="420" height="420" viewBox="0 0 24 24" fill="none" stroke="#b03737" stroke-width="0.5">
+      <circle cx="7.5" cy="7.5" r="4.5"/>
+      <path d="M10.5 10.5l8.5 8.5"/>
+      <path d="M19 16l-2 2"/>
+      <path d="M17 18l-2 2"/>
+    </svg>
+  </div>
+
+  <!-- Urgency badge top-right -->
+  <div class="hero-urgent">
+    <div class="hero-urgent-label">Servicio urgente</div>
+    <div class="hero-urgent-number">688 89 47 17</div>
+    <div class="hero-urgent-sub">Disponible 24h · Sáb y Dom</div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Cerrajería · Galdakao · Urgencias 24h</p>
+    <h1 class="hero-title">Tu cerradura<br>en <em>buenas manos</em></h1>
+    <p class="hero-sub">Más de 10 años abriendo puertas en Galdakao y Bizkaia. Rápidos, profesionales y con presupuesto sin compromiso.</p>
+    <div class="hero-actions">
+      <a href="tel:+34688894717" class="btn-primary"><span>688 89 47 17</span><span>&rarr;</span></a>
+      <a href="#servicios" class="btn-ghost"><span>Ver servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
 <div class="marquee-section"><div class="marquee-track">
-  <span class="marquee-item"><span class="dot"></span>Aperturas 24h</span>
-  <span class="marquee-item"><span class="dot"></span>Cerraduras</span>
-  <span class="marquee-item"><span class="dot"></span>Seguridad</span>
-  <span class="marquee-item"><span class="dot"></span>Llaves</span>
-  <span class="marquee-item"><span class="dot"></span>Motorizaciones</span>
-  <span class="marquee-item"><span class="dot"></span>Urgencias</span>
-  <span class="marquee-item"><span class="dot"></span>Aperturas 24h</span>
-  <span class="marquee-item"><span class="dot"></span>Cerraduras</span>
-  <span class="marquee-item"><span class="dot"></span>Seguridad</span>
-  <span class="marquee-item"><span class="dot"></span>Llaves</span>
-  <span class="marquee-item"><span class="dot"></span>Motorizaciones</span>
-  <span class="marquee-item"><span class="dot"></span>Urgencias</span>
+  <span class="marquee-item"><span class="dot"></span>Aperturas urgentes</span>
+  <span class="marquee-item"><span class="dot"></span>Cambio de cerraduras</span>
+  <span class="marquee-item"><span class="dot"></span>Copias de llaves</span>
+  <span class="marquee-item"><span class="dot"></span>Instalación de seguridad</span>
+  <span class="marquee-item"><span class="dot"></span>Reparaciones</span>
+  <span class="marquee-item"><span class="dot"></span>Servicio 24 horas</span>
+  <span class="marquee-item"><span class="dot"></span>Galdakao · Bizkaia</span>
+  <span class="marquee-item"><span class="dot"></span>Aperturas urgentes</span>
+  <span class="marquee-item"><span class="dot"></span>Cambio de cerraduras</span>
+  <span class="marquee-item"><span class="dot"></span>Copias de llaves</span>
+  <span class="marquee-item"><span class="dot"></span>Instalación de seguridad</span>
+  <span class="marquee-item"><span class="dot"></span>Reparaciones</span>
+  <span class="marquee-item"><span class="dot"></span>Servicio 24 horas</span>
+  <span class="marquee-item"><span class="dot"></span>Galdakao · Bizkaia</span>
 </div></div>
+
+<!-- STATS -->
 <div class="stats-section"><div class="stats-grid">
-  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="24">0</span><span class="stat-suffix">h</span></div><div class="stat-label">Disponibilidad</div></div>
-  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">min</span></div><div class="stat-label">Tiempo de llegada</div></div>
-  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Sin daños</div></div>
-  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
+  <div class="stat-card reveal">
+    <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+    <div class="stat-label">Valoración Google</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-1">
+    <div class="stat-number"><span class="count" data-target="17">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Reseñas verificadas</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-2">
+    <div class="stat-number"><span class="count" data-target="10">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Años de experiencia</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-3">
+    <div class="stat-number"><span class="count" data-target="24">0</span><span class="stat-suffix">h</span></div>
+    <div class="stat-label">Urgencias sáb y dom</div>
+  </div>
 </div></div>
-<div class="about-section" id="nosotros"><div class="about-visual"><div class="about-badge"><div class="about-badge-year">ELX</div><div class="about-badge-text">Cerrajeros de confianza</div></div></div>
-  <div class="about-content"><p class="section-label reveal">Sobre nosotros</p><h2 class="section-title reveal reveal-delay-1">Cerrajeria<br>profesional y <em>rapida</em></h2><div class="about-divider reveal"></div><p class="about-body reveal reveal-delay-2">Cerrajería Elexalde es el servicio de cerrajeria de referencia en Galdakao. Aperturas sin daños, cerraduras de seguridad y un servicio rapido cuando mas lo necesitas.<br><br><strong>Confianza y profesionalidad.</strong> Presupuesto antes de actuar, factura detallada y garantia por escrito en todos los trabajos.</p>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <!-- Large key SVG as texture -->
+    <div class="about-visual-icon">
+      <svg width="500" height="500" viewBox="0 0 100 100" fill="none" stroke="#b03737" stroke-width="1">
+        <circle cx="30" cy="30" r="22"/>
+        <circle cx="30" cy="30" r="10"/>
+        <line x1="52" y1="52" x2="90" y2="90"/>
+        <line x1="78" y1="68" x2="68" y2="78"/>
+        <line x1="84" y1="74" x2="74" y2="84"/>
+      </svg>
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-year">+10 años</div>
+      <div class="about-badge-text">Bernart Etxepare Kalea, 14 — Galdakao</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">Cerrajería con<br><em>experiencia real</em></h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">Cerrajería Elexalde lleva más de una década resolviendo problemas de seguridad en Galdakao y el resto de Bizkaia.<br><br><strong>Rápidos, serios y sin sorpresas.</strong> Trabajamos con todo tipo de cerraduras — desde aperturas de emergencia hasta instalaciones de sistemas de alta seguridad. Presupuesto siempre sin compromiso.</p>
     <div class="about-values reveal reveal-delay-3">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Respuesta rapida</h4><p>En tu puerta en 30 minutos o menos. Disponibilidad para urgencias las 24 horas</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Sin daños</h4><p>Tecnicas de apertura no destructivas. Abrimos sin romper tu puerta ni tu cerradura</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Precio cerrado</h4><p>Te damos presupuesto antes de empezar. Sin sorpresas, sin costes ocultos al final</p></div></div>
-    </div></div></div>
-<section class="services-section" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="section-label reveal">Lo que ofrecemos</p><h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text"><h4>Respuesta rápida</h4><p>Llegamos al lugar lo antes posible. Sabemos que cuando llamas, no puedes esperar.</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text"><h4>Presupuesto sin compromiso</h4><p>Te decimos el precio antes de empezar. Sin letra pequeña ni cargos sorpresa.</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text"><h4>Accesible para todos</h4><p>Instalaciones adaptadas y atención para personas con movilidad reducida.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Nuestros servicios</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Todo lo que necesita<br>tu <em>seguridad</em></h2>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Aperturas Urgentes</h3><p>Apertura de puertas sin daños. Coches, casas, locales y comunidades. Disponibilidad 24 horas los 365 dias del año.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Cerraduras de Seguridad</h3><p>Instalacion y cambio de cerraduras antibumping, antipalanca y de alta seguridad. Marcas de primer nivel.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Copias y Amaestramiento</h3><p>Copias de llaves de todos los tipos, incluyendo llaves de seguridad. Amaestramiento de comunidades y oficinas.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-    </div></div></section>
-<section class="testimonials-section"><div class="testimonials-inner"><p class="section-label reveal">Testimonios</p><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="8" cy="8" r="5"/>
+            <path d="M13 13l8 8"/>
+            <path d="M20 18l-2 2"/>
+            <path d="M18 20l-2 2"/>
+          </svg>
+        </div>
+        <h3>Aperturas urgentes</h3>
+        <p>¿Te has quedado sin llaves o tienes la cerradura bloqueada? Abrimos todo tipo de puertas y cerraduras sin dañar la estructura. Servicio rápido en Galdakao.</p>
+        <a href="tel:+34688894717" class="service-link">Llamar ahora &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3>Cambio de cerraduras</h3>
+        <p>Sustituimos tu cerradura antigua por una nueva con mayor seguridad. Instalamos cerraduras de alta protección, antibumping y antipicking para puertas de entrada y locales.</p>
+        <a href="tel:+34688894717" class="service-link">Pedir presupuesto &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+          </svg>
+        </div>
+        <h3>Copias de llaves</h3>
+        <p>Duplicamos llaves de todo tipo: planas, de seguridad, llaves de coche, tarjetas chip y llaves maestras. Rapidez y precisión garantizada en el servicio.</p>
+        <a href="tel:+34688894717" class="service-link">Más información &rarr;</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Instalación de seguridad</h3>
+        <p>Asesoramos y montamos sistemas completos de seguridad: cerrojos, rejas, puertas blindadas y sistemas de control de acceso para viviendas y negocios.</p>
+        <a href="tel:+34688894717" class="service-link">Solicitar visita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Reparaciones</h3>
+        <p>Reparamos cerraduras averiadas, manillas rotas, puertas que no cierran bien y bombines dañados. Diagnóstico rápido y solución en la misma visita siempre que sea posible.</p>
+        <a href="tel:+34688894717" class="service-link">Consultar &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Urgencias 24h</h3>
+        <p>Los sábados y domingos estamos disponibles las 24 horas. Si tienes una emergencia fuera del horario habitual, llama al 688 89 47 17 y gestionamos tu caso.</p>
+        <a href="tel:+34688894717" class="service-link">Llamar ahora &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Reseñas de Google</p>
+    <h2 class="section-title reveal reveal-delay-1">4.8 estrellas en<br><em>17 reseñas</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Me quede fuera de casa a las 11 de la noche y en 20 minutos estaban aqui. Abrieron sin ningun daño. Profesionales de verdad."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Cliente verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Me cambiaron la cerradura por una antibumping. Trabajo limpio, rapido y a precio razonable. Muy recomendable."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Los llame para amaestrar las cerraduras de la comunidad. Todo perfecto y al precio presupuestado. Serios y formales."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Administrador verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-    </div></div></section>
-<div class="cta-section" id="contacto"><div class="cta-text"><h2>¿Necesitas un<br>cerrajero?</h2><p>Llamanos. Bernart Etxepare Kalea, 14 — Galdakao. Urgencias 24h.</p></div><a href="mailto:cerrajeriaelexalde@gmail.com" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a></div>
-<footer><div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo">Elexalde<span>.</span></a><p class="footer-tagline">"Tu seguridad en buenas manos."</p><div class="footer-social"><a href="mailto:cerrajeriaelexalde@gmail.com" class="social-link">Em</a><a href="tel:688894717" class="social-link">Tl</a></div></div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Rápidos y eficientes. Totalmente satisfecha con el servicio. Llegaron enseguida y resolvieron el problema sin complicaciones."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Galdakao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Profesionales de los pies a la cabeza. Me explicaron todo antes de empezar, sin sorpresas en el precio. Muy recomendables."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Galdakao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Rapidez y seriedad. Llamé un sábado y vinieron sin problema. Más serviciales, imposible. Los llamaré sin duda si vuelvo a necesitarlos."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Bizkaia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Necesitas un<br>cerrajero ahora?</h2>
+    <p>Bernart Etxepare Kalea, 14 · 48960 Galdakao · L-V: 9:30–13:30 / 16:00–20:00 · Sáb–Dom: 24h</p>
+  </div>
+  <a href="tel:+34688894717" class="btn-dark"><span>688 89 47 17</span><span>&nearr;</span></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Elexalde<span>.</span></a>
+      <p class="footer-tagline">"Cerrajería profesional en Galdakao. Más de 10 años a tu servicio."</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/cerrajeriaelexalde/" target="_blank" class="social-link">FB</a>
+        <a href="tel:+34688894717" class="social-link">📞</a>
+      </div>
+    </div>
     <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Aperturas</a></li>
-      <li><a href="#servicios">Cerraduras</a></li>
-      <li><a href="#servicios">Seguridad</a></li>
-      <li><a href="#servicios">Llaves</a></li>
-      <li><a href="#servicios">Comunidades</a></li>
-      <li><a href="#servicios">Urgencias</a></li>
-    </ul></div><div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:cerrajeriaelexalde@gmail.com">cerrajeriaelexalde@gmail.com</a></li><li><a href="tel:688894717">688 89 47 17</a></li><li><a href="#">Bernart Etxepare Kalea, 14, 48960 Galdakao</a></li></ul></div></div>
-  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 Elexalde. Todos los derechos reservados.</p><div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer>
+      <li><a href="#servicios">Aperturas urgentes</a></li>
+      <li><a href="#servicios">Cambio de cerraduras</a></li>
+      <li><a href="#servicios">Copias de llaves</a></li>
+      <li><a href="#servicios">Instalación de seguridad</a></li>
+      <li><a href="#servicios">Reparaciones</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Horario</h4><ul>
+      <li><a href="#">L, X-V: 9:30–13:30 / 16:00–20:00</a></li>
+      <li><a href="#">Martes: 16:00–20:00</a></li>
+      <li><a href="#">Sáb–Dom: 24 horas</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul>
+      <li><a href="tel:+34688894717">688 89 47 17</a></li>
+      <li><a href="https://wa.me/34688894717" target="_blank">WhatsApp</a></li>
+      <li><a href="https://maps.google.com/?q=Bernart+Etxepare+Kalea+14+Galdakao" target="_blank">Bernart Etxepare, 14<br>48960 Galdakao</a></li>
+      <li><a href="http://www.cerrajeriaelexalde.com" target="_blank">cerrajeriaelexalde.com</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Cerrajería Elexalde. Todos los derechos reservados.</p>
+    <div class="footer-legal"><a href="#">Política de Privacidad</a><a href="#">Aviso Legal</a></div>
+  </div>
+</footer>
+
 <script>
-  window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
-  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
-  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
-  const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
-  function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
-  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
-  window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
+  // Cursor — 3 circles
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),outer=document.getElementById('cursorRingOuter');
+  let mx=0,my=0,rx=0,ry=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function moveCursor(){rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';ox+=(mx-ox)*0.08;oy+=(my-oy)*0.08;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(moveCursor);}
+  moveCursor();
+  document.querySelectorAll('a,button,.btn-primary,.btn-dark,.btn-ghost,.service-card,.testimonial-card,.stat-card,.social-link,.nav-cta').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+  // Loader
+  window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1600);});
+
+  // Navbar scroll
+  const navbar=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  // Mobile menu
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});
+  function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+
+  // Reveal on scroll
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+  reveals.forEach(el=>observer.observe(el));
+
+  // Animated counters
+  function animateCount(el){
+    const target=parseInt(el.dataset.target);
+    const duration=1800;
+    const start=performance.now();
+    function step(now){
+      const progress=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-progress,4);
+      el.textContent=Math.round(ease*target);
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});
+  document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+
+  // Hero parallax
+  window.addEventListener('scroll',()=>{
+    const heroBg=document.getElementById('heroBg');
+    if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}
+  });
 </script>
 </body>
 </html>

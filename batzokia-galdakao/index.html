@@ -3,26 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Batzokia — Bar De Tapas en Galdakao</title>
-  <meta name="description" content="Batzokia en Galdakao. Bar de referencia en Galdakao. Pintxos caseros, buen ambiente y ese espíritu de cuadrilla que hace de un bar algo mas que un sitio para tomar algo.">
+  <title>Batzoki Galdakao — Bar · Pintxos · Jatetxea</title>
+  <meta name="description" content="Batzoki Galdakao. Bar, pintxos y restaurante en el corazon de Galdakao. Cocina vasca de mercado, pintxos caseros, cazuelitas y postres artesanos. Iturrondo Plaza, Sollube 6.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Barlow:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0a0a0a; --white: #f5f3ef; --accent: #B8860B; --accent-light: #d4a017; --accent-dim: #B8860B30; --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222; --text-muted: #7a7268; --font-serif: 'DM Serif Display', serif; --font-sans: 'Raleway', sans-serif; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); }
+
+    :root {
+      --black: #0d0b09;
+      --white: #f5f1eb;
+      --accent: #8B1A1A;
+      --accent-light: #a82020;
+      --accent-dim: #8B1A1A30;
+      --carbon: #131009;
+      --carbon-mid: #1a1510;
+      --carbon-light: #242018;
+      --text-muted: #7a7060;
+      --font-slab: 'Zilla Slab', serif;
+      --font-sans: 'Barlow', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #B8860B15; }
-    .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(13,11,9,0.90); padding: 18px 60px; border-bottom: 1px solid #8B1A1A18; }
+    .nav-logo { font-family: var(--font-slab); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
-    .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
+    .nav-links a { text-decoration: none; color: rgba(245,241,235,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 8px; }
     .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -31,199 +49,468 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #B8860B18 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1800&q=80') center/cover no-repeat; transform: scale(1.08); transition: transform 8s var(--ease-out); filter: brightness(0.55) saturate(0.9); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
-    .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,11,9,0.92) 0%, rgba(13,11,9,0.5) 50%, rgba(13,11,9,0.2) 100%); }
+    .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to top, var(--black), transparent); }
     .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
     .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
-    .hero-title { font-family: var(--font-serif); font-size: clamp(3.2rem, 6.5vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
+    .hero-title { font-family: var(--font-slab); font-size: clamp(3.2rem, 6.5vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
     .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.55); max-width: 520px; line-height: 1.7; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    .marquee-bar { overflow: hidden; white-space: nowrap; padding: 22px 0; border-top: 1px solid rgba(245,243,239,0.06); border-bottom: 1px solid rgba(245,243,239,0.06); }
-    .marquee-inner { display: inline-flex; gap: 60px; animation: marquee 25s linear infinite; }
-    .marquee-inner span { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,243,239,0.25); }
-    .marquee-inner span::after { content: '✦'; margin-left: 60px; color: var(--accent); opacity: 0.4; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .stats-section { padding: 100px 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; background: var(--carbon); }
-    .stat-item { text-align: center; min-width: 160px; }
-    .stat-number { font-family: var(--font-serif); font-size: 3.8rem; font-weight: 300; color: var(--accent); line-height: 1; }
-    .stat-suffix { font-size: 2rem; }
-    .stat-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 12px; }
-    .about-section { padding: 160px 60px; position: relative; overflow: hidden; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1400px; margin: 0 auto; align-items: start; }
-    .about-left { position: relative; }
-    .about-year { font-family: var(--font-serif); font-size: 12rem; font-weight: 300; color: rgba(245,243,239,0.03); line-height: 1; position: absolute; top: -40px; left: -20px; pointer-events: none; }
-    .about-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid var(--accent-dim); border-radius: 100px; margin-bottom: 32px; }
-    .about-badge span { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-    .about-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 36px; }
-    .about-title em { font-style: italic; color: var(--accent); }
-    .about-body { color: rgba(245,243,239,0.55); line-height: 1.8; font-size: 0.95rem; }
-    .about-values { display: flex; flex-direction: column; gap: 40px; padding-top: 40px; }
-    .about-value { display: flex; gap: 20px; }
-    .value-num { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); opacity: 0.3; line-height: 1; min-width: 36px; }
-    .value-text h4 { font-family: var(--font-serif); font-weight: 400; font-size: 1.1rem; margin-bottom: 8px; }
-    .value-text p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-    .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 60px; }
+    .hero-sub { font-size: 1.05rem; color: rgba(245,241,235,0.6); max-width: 500px; line-height: 1.75; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
+    .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--white); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--accent-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost { color: rgba(245,241,235,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow { width: 36px; height: 36px; border: 1px solid rgba(245,241,235,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, transform 0.3s; }
+    .btn-ghost:hover .btn-ghost-arrow { border-color: var(--accent); transform: rotate(45deg); }
+    .hero-scroll { position: absolute; right: 60px; bottom: 100px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; animation: fadeIn 1s 1.5s ease forwards; }
+    .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
+    .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #8B1A1A20; border-bottom: 1px solid #8B1A1A20; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-slab); font-size: 1.1rem; font-style: italic; color: rgba(245,241,235,0.25); letter-spacing: 0.05em; }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #8B1A1A15; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #8B1A1A15; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: #8B1A1A50; }
+    .stat-number { font-family: var(--font-slab); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
+    .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80') center/cover no-repeat; }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,11,9,0.25) 0%, rgba(13,11,9,0.05) 100%); }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #8B1A1A40; padding: 24px 30px; max-width: 270px; z-index: 2; }
+    .about-badge-name { font-family: var(--font-slab); font-size: 1.4rem; color: var(--accent); line-height: 1.2; font-style: italic; }
+    .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,241,235,0.5); margin-top: 8px; line-height: 1.5; }
+    .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+    .about-body { font-size: 1.05rem; line-height: 1.85; color: rgba(245,241,235,0.65); margin: 32px 0 52px; font-weight: 300; }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #8B1A1A10; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #8B1A1A35; }
+    .value-num { font-family: var(--font-slab); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
+    .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
+    .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* SECTION SHARED */
+    section { padding: 130px 60px; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title { font-family: var(--font-slab); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .services-section { padding: 160px 60px; background: var(--carbon); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .service-card { background: var(--carbon-mid); padding: 52px 40px; transition: background 0.5s, transform 0.4s; position: relative; overflow: hidden; }
-    .service-card:hover { background: var(--carbon-light); transform: translateY(-4px); }
-    .service-number { font-family: var(--font-serif); font-size: 4rem; font-weight: 300; color: var(--accent); opacity: 0.08; position: absolute; top: 20px; right: 30px; }
-    .service-icon { width: 48px; height: 48px; border: 1px solid var(--accent-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; color: var(--accent); }
-    .service-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; margin-bottom: 16px; }
-    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
-    .service-link { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: gap 0.3s; display: inline-flex; gap: 8px; }
-    .service-link:hover { gap: 14px; }
-    .testimonials-section { padding: 160px 60px; background: var(--black); }
+
+    /* CARTA / SERVICES */
+    .services-section { background: var(--black); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #8B1A1A12; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #8B1A1A35; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #8B1A1A35; color: var(--accent); }
+    .service-card h3 { font-family: var(--font-slab); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
+    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8B1A1A80; transition: color 0.3s, gap 0.3s; }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-slab); font-size: 5rem; font-weight: 300; color: #8B1A1A0d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #8B1A1A1a; }
+    .menu-highlights { max-width: 1400px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+    .menu-item { padding: 28px 36px; background: var(--carbon); border: 1px solid #8B1A1A10; transition: border-color 0.3s; }
+    .menu-item:hover { border-color: #8B1A1A30; }
+    .menu-item-price { font-family: var(--font-slab); font-size: 1.4rem; color: var(--accent); font-weight: 300; margin-bottom: 6px; }
+    .menu-item-name { font-size: 0.9rem; font-weight: 400; margin-bottom: 4px; }
+    .menu-item-desc { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-slab); font-size: 30rem; color: #8B1A1A08; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .testimonial-card { background: var(--carbon); padding: 48px 36px; border: 1px solid rgba(245,243,239,0.04); transition: border-color 0.4s; }
-    .testimonial-card:hover { border-color: var(--accent-dim); }
-    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 24px; }
-    .star { width: 16px; height: 16px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-    .testimonial-quote { font-size: 0.95rem; line-height: 1.8; color: rgba(245,243,239,0.7); margin-bottom: 24px; font-style: italic; }
-    .testimonial-divider { width: 40px; height: 1px; background: var(--accent-dim); margin-bottom: 20px; }
-    .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; }
-    .testimonial-author span { font-size: 0.72rem; color: var(--text-muted); }
-    .cta-section { padding: 140px 60px; display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 40px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; line-height: 1.1; }
-    .cta-text p { color: var(--text-muted); margin-top: 16px; font-size: 0.95rem; }
-    .btn-dark { display: inline-flex; align-items: center; gap: 16px; background: var(--accent); color: var(--black); padding: 22px 48px; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: gap 0.4s, background 0.3s; }
-    .btn-dark:hover { gap: 24px; background: var(--accent-light); }
-    footer { background: var(--carbon); padding: 80px 60px 40px; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
-    .footer-tagline { color: var(--text-muted); font-style: italic; margin-top: 12px; font-size: 0.9rem; }
-    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
-    .social-link { width: 40px; height: 40px; border: 1px solid rgba(245,243,239,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--white); font-size: 0.7rem; transition: border-color 0.3s, color 0.3s; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
+    .testimonial-card { padding: 56px 44px; background: rgba(13,11,9,0.4); border: 1px solid #8B1A1A12; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #8B1A1A35; background: rgba(13,11,9,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+    .testimonial-quote { font-family: var(--font-slab); font-size: 1.15rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,241,235,0.8); margin-bottom: 36px; }
+    .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
+    .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
+    .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 { font-family: var(--font-slab); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 16px; font-weight: 300; }
+    .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
+    .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #8B1A1A15; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
+    .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
+    .footer-tagline { font-family: var(--font-slab); font-style: italic; font-size: 1.05rem; color: rgba(245,241,235,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link { width: 40px; height: 40px; border: 1px solid rgba(245,241,235,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(245,241,235,0.4); font-size: 0.75rem; letter-spacing: 0.1em; transition: border-color 0.3s, color 0.3s; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
-    .footer-col h4 { font-family: var(--font-serif); font-weight: 400; margin-bottom: 24px; font-size: 1rem; }
+    .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; font-weight: 500; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; transition: color 0.3s; }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(245,243,239,0.06); max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-col ul a { text-decoration: none; color: rgba(245,241,235,0.4); font-size: 0.85rem; transition: color 0.3s; font-weight: 300; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(245,241,235,0.06); padding-top: 36px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.75rem; color: rgba(245,241,235,0.25); letter-spacing: 0.05em; }
     .footer-legal { display: flex; gap: 28px; }
-    .footer-legal a { font-size: 0.72rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
-    .footer-legal a:hover { color: var(--accent); }
-    .loader { position: fixed; inset: 0; background: var(--black); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s, visibility 0.6s; }
-    .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-bar { width: 60px; height: 2px; background: var(--accent-dim); position: relative; overflow: hidden; }
-    .loader-bar::after { content: ''; position: absolute; top: 0; left: -60px; width: 60px; height: 100%; background: var(--accent); animation: loading 1s ease-in-out infinite; }
-    @keyframes loading { to { left: 60px; } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+    .footer-legal a { font-size: 0.72rem; color: rgba(245,241,235,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--text-muted); }
+
+    /* CURSOR — 3 circles */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* LOADER */
+    .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: var(--font-slab); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar { width: 200px; height: 1px; background: rgba(245,241,235,0.1); position: relative; overflow: hidden; }
+    .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
+    @keyframes loadBar { to { transform: translateX(0); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .menu-highlights { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      nav.scrolled { padding: 14px 24px; }
-      .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero-content { padding: 0 24px 60px; }
-      .stats-section { padding: 60px 24px; gap: 32px; }
-      .stat-number { font-size: 2.8rem; }
-      .about-section { padding: 80px 24px; }
-      .about-grid { grid-template-columns: 1fr; gap: 60px; }
-      .about-year { font-size: 6rem; }
-      .services-section { padding: 80px 24px; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 380px; }
+      .about-content { padding: 60px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-      .testimonials-section { padding: 80px 24px; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .cta-section { padding: 80px 24px; }
-      footer { padding: 60px 24px 30px; }
-      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+      .menu-highlights { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-bar"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Batzoki<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Batzokia<span>.</span></a>
+  <a href="#" class="nav-logo">Batzoki<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contactar</a>
+  <a href="#carta" onclick="closeMobile()">Carta</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar</a>
 </div>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div><div class="hero-overlay"></div><div class="hero-overlay-bottom"></div>
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Bar · Sociedad · Galdakao</div>
-    <h1 class="hero-title">El bar<br>de<br><em>siempre</em></h1>
-    <p class="hero-sub">Bar de referencia en Galdakao. Pintxos caseros, buen ambiente y ese espíritu de cuadrilla que hace de un bar algo mas que un sitio para tomar algo.</p>
+    <p class="hero-eyebrow">Bar · Pintxos · Jatetxea · Galdakao</p>
+    <h1 class="hero-title">Cocina vasca<br>de <em>verdad</em></h1>
+    <p class="hero-sub">Pintxos caseros, cazuelitas de toda la vida y la Tarta de Queso Batzokia que te va a conquistar. Javi y Marije te esperan en Iturrondo Plaza.</p>
+    <div class="hero-actions">
+      <a href="tel:944568312" class="btn-primary"><span>Llamar ahora</span><span>&rarr;</span></a>
+      <a href="#carta" class="btn-ghost"><span>Ver la carta</span><div class="btn-ghost-arrow">&nearr;</div></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section"><div class="marquee-track">
+  <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+  <span class="marquee-item"><span class="dot"></span>Cazuelitas</span>
+  <span class="marquee-item"><span class="dot"></span>Kokotxas</span>
+  <span class="marquee-item"><span class="dot"></span>Croquetas</span>
+  <span class="marquee-item"><span class="dot"></span>Tarta de Queso</span>
+  <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+  <span class="marquee-item"><span class="dot"></span>Postres Caseros</span>
+  <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+  <span class="marquee-item"><span class="dot"></span>Cazuelitas</span>
+  <span class="marquee-item"><span class="dot"></span>Kokotxas</span>
+  <span class="marquee-item"><span class="dot"></span>Croquetas</span>
+  <span class="marquee-item"><span class="dot"></span>Tarta de Queso</span>
+  <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+  <span class="marquee-item"><span class="dot"></span>Postres Caseros</span>
+</div></div>
+
+<!-- STATS -->
+<div class="stats-section"><div class="stats-grid">
+  <div class="stat-card reveal">
+    <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div>
+    <div class="stat-label">Valoracion TripAdvisor</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-1">
+    <div class="stat-number"><span class="count" data-target="60">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Personas de aforo</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-2">
+    <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">€</span></div>
+    <div class="stat-label">Menu de fin de semana</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-3">
+    <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+    <div class="stat-label">Postres artesanos</div>
+  </div>
+</div></div>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <div class="about-badge">
+      <div class="about-badge-name">Javi y Marije</div>
+      <div class="about-badge-text">Iturrondo Plaza · Sollube 6<br>48960 Galdakao</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">El sabor de<br><em>Galdakao</em></h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">Batzoki Galdakao es el bar y restaurante que Galdakao necesitaba. Javi y Marije lideran una cocina donde la tradicion vasca y el producto de mercado mandan.<br><br><strong>Todo casero, sin concesiones.</strong> Desde las croquetas de jamon hasta la tarta de queso Batzokia, cada plato se elabora con mimo. El ambiente es el de siempre: cuadrilla, conversacion y txikito bien tirado.</p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Cocina de mercado</h4><p>Producto fresco cada dia. Cazuelitas, raciones y pintxos que cambian con la temporada</p></div></div>
+      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Postres artesanos</h4><p>Todos los postres son de elaboracion propia. La Tarta de Queso Batzokia es ya un clasico del barrio</p></div></div>
+      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Menu fin de semana</h4><p>Menu especial sabados y domingos por 30€. Capacidad para grupos y celebraciones de hasta 60 personas</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARTA -->
+<section class="services-section" id="carta">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Nuestra carta</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Cocina vasca en<br><em>todo su esplendor</em></h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><circle cx="18" cy="5" r="3"/></svg>
+        </div>
+        <h3>Cazuelitas</h3>
+        <p>Carrillera en salsa, callos, manitas de cerdo, albondigas, chipirones en su tinta y kokotxas de bacalao. Guisos de siempre, cocinados a fuego lento.</p>
+        <a href="tel:944568312" class="service-link">Reservar &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        </div>
+        <h3>Raciones y Pintxos</h3>
+        <p>Croquetas de jamon, patatas bravas, quesos, embutidos y montaditos de elaboracion propia. La barra del Batzoki, siempre con algo rico.</p>
+        <a href="tel:944568312" class="service-link">Reservar &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22c4.97 0 9-2.69 9-6V8H3v8c0 3.31 4.03 6 9 6z"/><path d="M3 8c0-3.31 4.03-6 9-6s9 2.69 9 6"/></svg>
+        </div>
+        <h3>Postres Caseros</h3>
+        <p>Todos los postres son de elaboracion propia. La estrella: la Tarta de Queso Batzokia, que ya tiene fans declarados en todo Galdakao.</p>
+        <a href="tel:944568312" class="service-link">Reservar &rarr;</a>
+      </div>
+    </div>
+
+    <!-- MENU HIGHLIGHTS -->
+    <div class="menu-highlights">
+      <div class="menu-item reveal">
+        <div class="menu-item-price">9€</div>
+        <div class="menu-item-name">Carrillera en Salsa</div>
+        <div class="menu-item-desc">Cazuelita</div>
+      </div>
+      <div class="menu-item reveal reveal-delay-1">
+        <div class="menu-item-price">20€</div>
+        <div class="menu-item-name">Kokotxas de Bacalao</div>
+        <div class="menu-item-desc">Cazuelita</div>
+      </div>
+      <div class="menu-item reveal reveal-delay-2">
+        <div class="menu-item-price">18€</div>
+        <div class="menu-item-name">Chipirones en su Tinta</div>
+        <div class="menu-item-desc">Cazuelita</div>
+      </div>
+      <div class="menu-item reveal reveal-delay-3">
+        <div class="menu-item-price">30€</div>
+        <div class="menu-item-name">Menu Fin de Semana</div>
+        <div class="menu-item-desc">Sab &amp; Dom</div>
+      </div>
+    </div>
   </div>
 </section>
-<div class="marquee-bar"><div class="marquee-inner">
-  <span>Pintxos</span>
-  <span>Cafes</span>
-  <span>Vinos</span>
-  <span>Cuadrilla</span>
-  <span>Ambiente</span>
-  <span>Tradicion</span>
-  <span>Pintxos</span>
-  <span>Cafes</span>
-  <span>Vinos</span>
-  <span>Cuadrilla</span>
-  <span>Ambiente</span>
-  <span>Tradicion</span>
-</div></div>
-<section class="stats-section">
-  <div class="stat-item"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
-  <div class="stat-item"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Ambiente de cuadrilla</div></div>
-  <div class="stat-item"><div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix">d</span></div><div class="stat-label">Abierto cada semana</div></div>
-  <div class="stat-item"><div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div><div class="stat-label">Punto de encuentro</div></div>
-</section>
-<section class="about-section" id="nosotros"><div class="about-grid"><div class="about-left"><div class="about-year">BZ</div>
-    <div class="about-badge"><span>Tu punto de encuentro</span></div>
-    <h2 class="about-title">Mas que<br>un <em>bar</em></h2>
-    <p class="about-body">Batzokia es uno de esos bares que definen un barrio. Un punto de encuentro donde las cuadrillas quedan, los vecinos se saludan y siempre hay buena conversacion.<br><br><strong>Pintxos con alma.</strong> Elaboracion casera, producto del dia y esa receta de siempre que no falla. El complemento perfecto para un buen vino o un cafe con los amigos.</p></div>
-    <div class="about-values">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Pintxos caseros</h4><p>Elaboracion propia cada dia. Recetas de siempre y creaciones nuevas que siempre sorprenden</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Ambiente autentico</h4><p>Un bar de barrio de verdad. Sin pretensiones, con buena gente y mejor ambiente</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Punto de encuentro</h4><p>El sitio donde siempre hay alguien conocido. Tu bar para quedar, celebrar o simplemente estar</p></div></div>
-    </div></div></div>
-<section class="services-section" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="section-label reveal">Lo que ofrecemos</p><h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
-    <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Barra de Pintxos</h3><p>Pintxos variados elaborados cada dia. Tortilla, croquetas, montaditos y especialidades de temporada.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Cafeteria</h3><p>Cafes, infusiones y meriendas. El sitio perfecto para tu café de media mañana o tu merienda de la tarde.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Eventos y Cuadrilla</h3><p>Espacio para quedar con la cuadrilla, ver partidos, celebrar cumpleaños o simplemente pasar un buen rato.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-    </div></div></section>
-<section class="testimonials-section"><div class="testimonials-inner"><p class="section-label reveal">Testimonios</p><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Resenas verificadas</p>
+    <h2 class="section-title reveal reveal-delay-1">5.0 estrellas en<br><em>TripAdvisor</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"El Batzokia es mi bar de siempre. Pintxos buenos, gente maja y un ambiente que no encuentras en otro sitio."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Parroquiano verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Las croquetas son de las mejores de Galdakao. Y el trato es familiar. Mi sitio fijo para el poteo."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Parroquiano verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Un clasico de Galdakao. Siempre hay buen ambiente y los pintxos nunca fallan. Recomendadisimo."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Parroquiano verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-    </div></div></section>
-<div class="cta-section" id="contacto"><div class="cta-text"><h2>¿Quedamos en<br>el Batzokia?</h2><p>Te esperamos. Sollube Kalea, 6 — Galdakao.</p></div><a href="mailto:info@batzokia.com" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a></div>
-<footer><div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo">Batzokia<span>.</span></a><p class="footer-tagline">"El bar de siempre."</p><div class="footer-social"><a href="mailto:info@batzokia.com" class="social-link">Em</a><a href="tel:944568312" class="social-link">Tl</a></div></div>
-    <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Pintxos</a></li>
-      <li><a href="#servicios">Cafes</a></li>
-      <li><a href="#servicios">Vinos</a></li>
-      <li><a href="#servicios">Cervezas</a></li>
-      <li><a href="#servicios">Cuadrilla</a></li>
-      <li><a href="#servicios">Eventos</a></li>
-    </ul></div><div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:info@batzokia.com">info@batzokia.com</a></li><li><a href="tel:944568312">944 56 83 12</a></li><li><a href="#">Sollube Kalea, 6, 48960 Galdakao</a></li></ul></div></div>
-  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 Batzokia. Todos los derechos reservados.</p><div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"El bar, restaurante y ambiente son muy buenos. La comida esta rica, menu de fin de semana a 30 euros y el personal muy bueno."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Josu C.</strong><span>TripAdvisor · Bergara</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Sin duda de lo mejorcito de Galdakao. Atencion espectacular, sitio muy agradable. Han conseguido tener un cliente fijo."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Resena verificada</strong><span>Google Reviews · Galdakao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Variedad increible y calidad brutal. La tarta de queso Batzokia es de otro nivel. Un sitio que Galdakao necesitaba."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Resena verificada</strong><span>Google Reviews · Bizkaia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>Ven a comer<br>al Batzoki</h2>
+    <p>Iturrondo Plaza (Sollube 6) · 48960 Galdakao · Grupos hasta 60 personas</p>
+  </div>
+  <a href="tel:944568312" class="btn-dark"><span>944 568 312</span><span>&nearr;</span></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Batzoki<span>.</span></a>
+      <p class="footer-tagline">"Cocina vasca de verdad en Galdakao."</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/batzokigaldakao/" target="_blank" class="social-link">IG</a>
+        <a href="https://www.facebook.com/GaldakaokoBatzokia" target="_blank" class="social-link">FB</a>
+        <a href="tel:944568312" class="social-link">Tl</a>
+        <a href="tel:665739376" class="social-link">M</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Carta</h4><ul>
+      <li><a href="#carta">Cazuelitas</a></li>
+      <li><a href="#carta">Raciones</a></li>
+      <li><a href="#carta">Pintxos</a></li>
+      <li><a href="#carta">Hamburguesas</a></li>
+      <li><a href="#carta">Postres Caseros</a></li>
+      <li><a href="#carta">Menu Fin de Semana</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Horario</h4><ul>
+      <li><a href="#">Lun – Vie: Bar y Pintxos</a></li>
+      <li><a href="#">Sabado: Menu especial</a></li>
+      <li><a href="#">Domingo: Menu especial</a></li>
+      <li><a href="#">Reservas para grupos</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul>
+      <li><a href="tel:944568312">944 568 312</a></li>
+      <li><a href="tel:665739376">665 739 376</a></li>
+      <li><a href="https://maps.google.com/?q=Batzoki+Galdakao" target="_blank">Iturrondo Plaza<br>Sollube 6, 48960 Galdakao</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Batzoki Galdakao. Todos los derechos reservados.</p>
+    <div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
 <script>
+  // Cursor — 3 circles
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),outer=document.getElementById('cursorRingOuter');
+  let mx=0,my=0,rx=0,ry=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function moveCursor(){rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';ox+=(mx-ox)*0.08;oy+=(my-oy)*0.08;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(moveCursor);}
+  moveCursor();
+  document.querySelectorAll('a,button,.btn-primary,.btn-dark,.btn-ghost,.service-card,.testimonial-card,.stat-card,.social-link,.nav-cta,.menu-item').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+  // Loader + hero parallax
   window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
+
+  // Nav scroll
   const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  // Mobile menu
   const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+
+  // Reveal on scroll
   const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
+
+  // Animated counters
   function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+
+  // Hero parallax
   window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
 </script>
 </body>

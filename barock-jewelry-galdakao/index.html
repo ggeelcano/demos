@@ -3,25 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BaRock — Tienda Ropa en Galdakao</title>
-  <meta name="description" content="BaRock en Galdakao. Joyeria de diseño, bisuteria artesanal y pendientes unicos. Piezas con personalidad para quienes no siguen tendencias, las crean.">
+  <title>BaRock Jewelry — Joyería paramétrica impresa en 3D · Galdakao</title>
+  <meta name="description" content="BaRock Jewelry — Pendientes de diseño paramétrico inspirados en la naturaleza vasca. Fabricados en Bilbao, ultraligeros, acabados en plata. Juan Bautista Uriarte 6, Galdakao.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0a0a0a; --white: #f5f3ef; --accent: #C4956A; --accent-light: #d9ad84; --accent-dim: #C4956A30; --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222; --text-muted: #7a7268; --font-serif: 'Cormorant Garamond', serif; --font-sans: 'Jost', sans-serif; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #3972b8;
+      --accent-light: #4f8dd4;
+      --accent-dim: #3972b825;
+      --accent-rose: #fbcbcb;
+      --carbon: #111111;
+      --carbon-mid: #181818;
+      --carbon-light: #222222;
+      --text-muted: #7a7268;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #C4956A15; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #3972b815; }
     .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
     .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -31,10 +50,33 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* CURSOR */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* LOADER */
+    .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
+    .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
+    @keyframes loadBar { to { transform: translateX(0); } }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #C4956A18 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: url('https://barockjewelry.com/wp-content/uploads/2025/03/barock-jewelry-pendientes-hechos-en-bilbao-super-ligeros-de-inspiracion-natural-MOVIL3.jpg') center/cover no-repeat; transform: scale(1.08); transition: transform 8s var(--ease-out); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.25) 100%); }
     .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
     .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
@@ -43,10 +85,9 @@
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
     .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--black); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
-    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--white); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--white); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--accent-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost { color: rgba(245,243,239,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
     .btn-ghost:hover { color: var(--accent); }
@@ -56,72 +97,110 @@
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
     .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
-    .marquee-section { border-top: 1px solid #C4956A20; border-bottom: 1px solid #C4956A20; overflow: hidden; padding: 20px 0; background: var(--carbon); }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #3972b820; border-bottom: 1px solid #3972b820; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 30s linear infinite; }
     .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
     section { padding: 130px 60px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #C4956A15; }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #3972b815; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
-    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #C4956A15; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #3972b815; position: relative; overflow: hidden; transition: border-color 0.4s; }
     .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: #C4956A50; }
+    .stat-card:hover { border-color: #3972b850; }
     .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
     .stat-number .stat-suffix { color: var(--accent); }
     .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
     .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
-    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light)); }
-    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #C4956A40; padding: 24px 30px; max-width: 240px; }
-    .about-badge-year { font-family: var(--font-serif); font-size: 3rem; color: var(--accent); line-height: 1; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: url('https://barockjewelry.com/wp-content/uploads/2025/02/barock-jewelry-pendientes-inspirados-en-la-naturaleza-11b-1.jpg') center/cover no-repeat; }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.05) 100%); }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #3972b840; padding: 24px 30px; max-width: 270px; z-index: 2; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); line-height: 1; }
     .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
     .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
     .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
     .about-body strong { color: var(--white); font-weight: 400; }
     .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #C4956A10; transition: border-color 0.4s; }
-    .about-value:hover { border-color: #C4956A35; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #3972b810; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #3972b835; }
     .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
     .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
     .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* COLLECTIONS */
     .services-section { background: var(--black); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
-    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #C4956A12; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
-    .service-card:hover { background: var(--carbon-mid); border-color: #C4956A35; }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #C4956A35; color: var(--accent); }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #3972b812; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #3972b835; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #3972b835; color: var(--accent); }
     .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
     .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
-    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C4956A80; transition: color 0.3s, gap 0.3s; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #3972b880; transition: color 0.3s, gap 0.3s; }
     .service-link:hover { color: var(--accent); gap: 16px; }
-    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #C4956A0d; line-height: 1; transition: color 0.5s; }
-    .service-card:hover .service-number { color: #C4956A1a; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #3972b70d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #3972b71a; }
+
+    /* PRESS */
+    .press-section { background: var(--carbon); padding: 80px 60px; border-top: 1px solid #3972b815; }
+    .press-inner { max-width: 1400px; margin: 0 auto; }
+    .press-label { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; }
+    .press-label::before { content: ''; width: 30px; height: 1px; background: var(--text-muted); }
+    .press-logos { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+    .press-logo { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: rgba(245,243,239,0.18); letter-spacing: 0.05em; transition: color 0.3s; }
+    .press-logo:hover { color: rgba(245,243,239,0.45); }
+
+    /* PRODUCTS / FEATURED */
+    .products-section { background: var(--black); }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 60px auto 0; }
+    .product-card { background: var(--carbon); border: 1px solid #3972b710; overflow: hidden; transition: border-color 0.4s; position: relative; }
+    .product-card:hover { border-color: #3972b730; }
+    .product-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform 0.7s var(--ease-out); }
+    .product-card:hover .product-img { transform: scale(1.04); }
+    .product-info { padding: 24px 28px; }
+    .product-name { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
+    .product-price { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; }
+    .product-tag { position: absolute; top: 16px; left: 16px; background: var(--accent); color: var(--white); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; font-weight: 500; }
+
+    /* TESTIMONIALS */
     .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
-    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #C4956A08; line-height: 1; pointer-events: none; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #3972b708; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
-    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #C4956A12; transition: border-color 0.4s, background 0.4s; }
-    .testimonial-card:hover { border-color: #C4956A35; background: rgba(8,8,8,0.7); }
+    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #3972b712; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #3972b735; background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
     .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
     .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
     .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
     .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
     .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
     .cta-text { flex: 1; min-width: 300px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
-    .cta-text p { font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 16px; font-weight: 300; }
     .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
     .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #C4956A15; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #3972b815; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
     .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
     .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
@@ -137,88 +216,347 @@
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--text-muted); }
+
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.15s; } .reveal-delay-2 { transition-delay: 0.3s; } .reveal-delay-3 { transition-delay: 0.45s; }
-    .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
-    .loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
-    .loader-logo span { color: var(--accent); }
-    .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
-    .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
-    @keyframes loadBar { to { transform: translateX(0); } }
-    @media (max-width: 1024px) { nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; } section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; } .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; } }
-    @media (max-width: 768px) { .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } section { padding: 80px 24px; } .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; } .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; } .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .cta-section { padding: 80px 24px; flex-direction: column; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; } }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 350px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+      .press-section { padding: 60px 24px; }
+      .press-logos { gap: 32px; }
+    }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-logo">BaRock<span>.</span></div><div class="loader-bar"></div></div>
-<nav id="navbar"><a href="#" class="nav-logo">BaRock<span>.</span></a><ul class="nav-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#contacto" class="nav-cta">Contacto</a></li></ul><button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mobile-menu" id="mobileMenu"><a href="#nosotros" onclick="closeMobile()">Nosotros</a><a href="#servicios" onclick="closeMobile()">Servicios</a><a href="#contacto" onclick="closeMobile()">Contacto</a></div>
-<section class="hero"><div class="hero-bg" id="heroBg"></div><div class="hero-overlay"></div><div class="hero-overlay-bottom"></div>
-  <div class="hero-content"><p class="hero-eyebrow">Joyeria de Diseño · Bisuteria · Galdakao</p><h1 class="hero-title">Joyas con<br><em>caracter</em></h1><p class="hero-sub">Joyeria de diseño, bisuteria artesanal y pendientes unicos. Piezas con personalidad para quienes no siguen tendencias, las crean.</p>
-    <div class="hero-actions"><a href="mailto:info@barockjewelry.com" class="btn-primary"><span>Contactar</span><span>&rarr;</span></a><a href="#servicios" class="btn-ghost"><span>Servicios</span><div class="btn-ghost-arrow">&nearr;</div></a></div>
-  </div><div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">BaRock<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">BaRock<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#colecciones">Colecciones</a></li>
+    <li><a href="#tienda">Tienda</a></li>
+    <li><a href="#contacto" class="nav-cta">Comprar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#colecciones" onclick="closeMobile()">Colecciones</a>
+  <a href="#tienda" onclick="closeMobile()">Tienda</a>
+  <a href="#contacto" onclick="closeMobile()">Comprar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Joyería 3D · Naturaleza · Galdakao</p>
+    <h1 class="hero-title">Pendientes que<br><em>nacen de la naturaleza</em></h1>
+    <p class="hero-sub">Diseño paramétrico impreso en 3D. Ultraligeros, acabados en plata, fabricados en Bilbao. Cada pieza captura un instante de la naturaleza vasca.</p>
+    <div class="hero-actions">
+      <a href="https://barockjewelry.com/tienda/" target="_blank" class="btn-primary"><span>Ver tienda online</span><span>&rarr;</span></a>
+      <a href="#colecciones" class="btn-ghost"><span>Descubrir colecciones</span><div class="btn-ghost-arrow">&nearr;</div></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
 <div class="marquee-section"><div class="marquee-track">
-  <span class="marquee-item"><span class="dot"></span>Pendientes</span>
-  <span class="marquee-item"><span class="dot"></span>Collares</span>
-  <span class="marquee-item"><span class="dot"></span>Pulseras</span>
-  <span class="marquee-item"><span class="dot"></span>Anillos</span>
-  <span class="marquee-item"><span class="dot"></span>Diseño Propio</span>
-  <span class="marquee-item"><span class="dot"></span>Artesanal</span>
-  <span class="marquee-item"><span class="dot"></span>Pendientes</span>
-  <span class="marquee-item"><span class="dot"></span>Collares</span>
-  <span class="marquee-item"><span class="dot"></span>Pulseras</span>
-  <span class="marquee-item"><span class="dot"></span>Anillos</span>
-  <span class="marquee-item"><span class="dot"></span>Diseño Propio</span>
-  <span class="marquee-item"><span class="dot"></span>Artesanal</span>
+  <span class="marquee-item"><span class="dot"></span>Amapola</span>
+  <span class="marquee-item"><span class="dot"></span>Coral</span>
+  <span class="marquee-item"><span class="dot"></span>Tilo</span>
+  <span class="marquee-item"><span class="dot"></span>Trébol</span>
+  <span class="marquee-item"><span class="dot"></span>Espina</span>
+  <span class="marquee-item"><span class="dot"></span>Rosa del Desierto</span>
+  <span class="marquee-item"><span class="dot"></span>Estrella de Mar</span>
+  <span class="marquee-item"><span class="dot"></span>Maskorra</span>
+  <span class="marquee-item"><span class="dot"></span>Amapola</span>
+  <span class="marquee-item"><span class="dot"></span>Coral</span>
+  <span class="marquee-item"><span class="dot"></span>Tilo</span>
+  <span class="marquee-item"><span class="dot"></span>Trébol</span>
+  <span class="marquee-item"><span class="dot"></span>Espina</span>
+  <span class="marquee-item"><span class="dot"></span>Rosa del Desierto</span>
+  <span class="marquee-item"><span class="dot"></span>Estrella de Mar</span>
+  <span class="marquee-item"><span class="dot"></span>Maskorra</span>
 </div></div>
+
+<!-- STATS -->
 <div class="stats-section"><div class="stats-grid">
-  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Diseño propio</div></div>
-  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="500">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Piezas unicas</div></div>
-  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
-  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div><div class="stat-label">Estilo inconfundible</div></div>
+  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4</span></div><div class="stat-label">Valoración Google</div></div>
+  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="34">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Reseñas verificadas</div></div>
+  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="89">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Piezas en catálogo</div></div>
+  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="70">0</span><span class="stat-suffix">€</span></div><div class="stat-label">Y el envío es gratis</div></div>
 </div></div>
-<div class="about-section" id="nosotros"><div class="about-visual"><div class="about-badge"><div class="about-badge-year">BR</div><div class="about-badge-text">Rock your style</div></div></div>
-  <div class="about-content"><p class="section-label reveal">Sobre nosotros</p><h2 class="section-title reveal reveal-delay-1">Joyeria con<br><em>actitud</em></h2><div class="about-divider reveal"></div><p class="about-body reveal reveal-delay-2">BaRock nacio de la pasion por crear joyas diferentes. Cada pieza se diseña con personalidad propia, mezclando rock, elegancia y artesania.<br><br><strong>No encontraras nada igual.</strong> Diseño propio, materiales de calidad y esa chispa rebelde que hace que una joya deje de ser un complemento para convertirse en una declaracion.</p>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <div class="about-badge">
+      <div class="about-badge-year">BaRock Jewelry</div>
+      <div class="about-badge-text">Juan Bautista Uriarte, 6 — Galdakao</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">Joyería que<br><em>respira naturaleza</em></h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">"Disfruto observando la naturaleza e intentando conectar con ella. Transmito a mis joyas esa emoción, como el momento en que hueles las primeras flores del tilo: esa felicidad absoluta al descubrir algo bello."<br><br><strong>Diseño paramétrico + impresión 3D.</strong> Cada pieza nace en ordenador, se imprime en resina ultraligera y recibe el acabado a mano en plata. Fabricadas en Bilbao, disponibles en todo el mundo.</p>
     <div class="about-values reveal reveal-delay-3">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Diseño original</h4><p>Cada pieza es creacion propia. No copias, no tendencias pasajeras. Estilo autentico</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Hecho con mimo</h4><p>Materiales seleccionados y acabados cuidados. Joyas que duran y que enamoran</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Para ti</h4><p>Piezas personalizables y atencion directa. Tu joya, tu estilo, tu historia</p></div></div>
-    </div></div></div>
-<section class="services-section" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="section-label reveal">Lo que ofrecemos</p><h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Ultraligeras</h4><p>Resina 3D + plata. Tan ligeras que apenas las notas, tan vistosas que no pasan desapercibidas</p></div></div>
+      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Envío gratis +70€</h4><p>Envío gratuito en pedidos superiores a 70€. Entrega en toda España y Europa</p></div></div>
+      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Hechas en Bilbao</h4><p>Producción local en Bizkaia. Presentes en EITB, El Correo y Telebilbao</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRESS -->
+<div class="press-section">
+  <div class="press-inner">
+    <p class="press-label">Presencia en medios</p>
+    <div class="press-logos">
+      <span class="press-logo">EITB</span>
+      <span class="press-logo">El Correo</span>
+      <span class="press-logo">Telebilbao</span>
+      <span class="press-logo">Binke.eus</span>
+      <span class="press-logo">Noticias de Gipuzkoa</span>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="services-section" id="colecciones">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Nuestras colecciones</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">La naturaleza vasca<br>convertida en <em>joya</em></h2>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Pendientes de Diseño</h3><p>Nuestra especialidad. Pendientes unicos que van desde lo minimal hasta lo mas atrevido. Hechos para destacar.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Collares y Pulseras</h3><p>Piezas de diseño propio en plata, acero y materiales premium. Complementos que cuentan una historia.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Joyas Personalizadas</h3><p>Creamos piezas a medida. Cuentanos tu idea y la hacemos realidad. Regalos unicos e irrepetibles.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-    </div></div></section>
-<section class="testimonials-section"><div class="testimonials-inner"><p class="section-label reveal">Testimonios</p><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6c-1.5 2-2.5 4-2.5 6s1 4 2.5 6M12 6c1.5 2 2.5 4 2.5 6s-1 4-2.5 6M2 12h20"/></svg>
+        </div>
+        <h3>Naturaleza</h3>
+        <p>Amapola, Tilo, Trébol, Espina, Rosa del Desierto, Coral... Cada colección captura la esencia de una planta o elemento natural con precisión paramétrica.</p>
+        <a href="https://barockjewelry.com/tienda/" target="_blank" class="service-link">Ver colección &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Mar y Costa</h3>
+        <p>Estrella de mar, Coral, Maskorra (erizo de mar)... La costa vasca hecha joya. Piezas en rosa flúor, azul marino y coral rojo para quienes llevan el mar encima.</p>
+        <a href="https://barockjewelry.com/tienda/" target="_blank" class="service-link">Ver colección &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Edición Limitada</h3>
+        <p>Hosto y otras piezas únicas disponibles por tiempo limitado. Modelos exclusivos con tiradas cortas para quienes buscan algo genuinamente irrepetible.</p>
+        <a href="https://barockjewelry.com/tienda/" target="_blank" class="service-link">Ver edición limitada &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section" id="tienda">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Productos destacados</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Piezas más <em>populares</em></h2>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <img class="product-img" src="https://barockjewelry.com/wp-content/uploads/2025/05/20250218152450-Barock-2025-630-682x1024.jpg" alt="Pendientes Amapola pequeños rojos" loading="lazy">
+        <div class="product-info">
+          <p class="product-name">Pendientes Amapola</p>
+          <p class="product-price">desde 20,90€</p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <span class="product-tag">Limitada</span>
+        <img class="product-img" src="https://barockjewelry.com/wp-content/uploads/2026/02/barock-jewelry-pendientes-inpirados-en-la-naturaleza-coleccion-hosto-edicion-limitada5.jpg" alt="Pendientes Hosto edición limitada" loading="lazy">
+        <div class="product-info">
+          <p class="product-name">Pendientes Hosto</p>
+          <p class="product-price">35,90€</p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <img class="product-img" src="https://barockjewelry.com/wp-content/uploads/2026/03/barock-jewelry-pendientes-ligeros-inspirados-en-la-naturaleza-caracola-negra-grande-4-765x1024.jpg" alt="Pendientes Maskorra" loading="lazy">
+        <div class="product-info">
+          <p class="product-name">Pendientes Maskorra</p>
+          <p class="product-price">35,90€</p>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <img class="product-img" src="https://barockjewelry.com/wp-content/uploads/2025/03/barock-jewelry-pendientes-hechos-en-bilbao-super-ligeros-de-inspiracion-natural-MOVIL4.jpg" alt="Pendientes BaRock colección natural" loading="lazy">
+        <div class="product-info">
+          <p class="product-name">Pendientes Tilo XL</p>
+          <p class="product-price">39,90€</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:52px;">
+      <a href="https://barockjewelry.com/tienda/" target="_blank" class="btn-primary" style="display:inline-flex;"><span>Ver los 89 modelos</span><span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Reseñas de Google</p>
+    <h2 class="section-title reveal reveal-delay-1">4.4 estrellas en<br><em>34 reseñas</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Los pendientes de BaRock son espectaculares. Cada vez que los llevo me preguntan donde los he comprado. Piezas unicas de verdad."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Me encargaron un collar personalizado para un regalo y quedo increible. Atencion directa y resultado perfecto."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"La tienda es una joya en si misma. Cada pieza tiene personalidad y el trato es excepcional. Mi sitio favorito."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Clienta verificada</strong><span>Google Reviews · Galdakao</span></div></div>
-    </div></div></section>
-<div class="cta-section" id="contacto"><div class="cta-text"><h2>¿Buscas algo<br>unico?</h2><p>Visitanos. C. Juan Bautista Uriarte, 6 — Galdakao.</p></div><a href="mailto:info@barockjewelry.com" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a></div>
-<footer><div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo">BaRock<span>.</span></a><p class="footer-tagline">"Rock your style."</p><div class="footer-social"><a href="mailto:info@barockjewelry.com" class="social-link">Em</a><a href="tel:659212167" class="social-link">Tl</a></div></div>
-    <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Pendientes</a></li>
-      <li><a href="#servicios">Collares</a></li>
-      <li><a href="#servicios">Pulseras</a></li>
-      <li><a href="#servicios">Anillos</a></li>
-      <li><a href="#servicios">Personalizado</a></li>
-      <li><a href="#servicios">Regalos</a></li>
-    </ul></div><div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:info@barockjewelry.com">info@barockjewelry.com</a></li><li><a href="tel:659212167">659 21 21 67</a></li><li><a href="#">C. Juan Bautista Uriarte, 6, 48960 Galdakao</a></li></ul></div></div>
-  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 BaRock. Todos los derechos reservados.</p><div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Los pendientes son preciosos, súper ligeros y con un diseño muy original. Se nota que hay mucho trabajo detrás. Volveré a comprar seguro."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Galdakao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Qué joya de tienda, valga la redundancia. Los pendientes Amapola son espectaculares y al recibirlos te das cuenta de la calidad del acabado a mano."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Bilbao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Compré los pendientes Coral como regalo y mi madre me preguntó en qué joyería los había comprado. Diseño único, precio muy razonable y envío rapidísimo."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Reseña verificada</strong><span>Google Reviews · Bizkaia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>Visítanos o compra<br>online</h2>
+    <p>Juan Bautista Uriarte Kalea, 6 · 48960 Galdakao · +34 659 212 167 · info@barockjewelry.com</p>
+  </div>
+  <a href="https://barockjewelry.com/tienda/" target="_blank" class="btn-dark"><span>Ir a la tienda</span><span>&nearr;</span></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">BaRock<span>.</span></a>
+      <p class="footer-tagline">"Joyería paramétrica inspirada en la naturaleza vasca, hecha en Bilbao."</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/barock_jewelry/" target="_blank" class="social-link">IG</a>
+        <a href="https://www.facebook.com/BaRock-jewelry" target="_blank" class="social-link">FB</a>
+        <a href="https://www.tiktok.com/@barock_jewelry" target="_blank" class="social-link">TK</a>
+        <a href="https://www.pinterest.com/barockjewelry/" target="_blank" class="social-link">PT</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Colecciones</h4><ul>
+      <li><a href="https://barockjewelry.com/tienda/" target="_blank">Naturaleza</a></li>
+      <li><a href="https://barockjewelry.com/tienda/" target="_blank">Mar y Costa</a></li>
+      <li><a href="https://barockjewelry.com/tienda/" target="_blank">Edición Limitada</a></li>
+      <li><a href="https://barockjewelry.com/tienda/" target="_blank">Ver todo</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Envíos</h4><ul>
+      <li><a href="#">Gratis desde 70€</a></li>
+      <li><a href="#">Entrega en 48–72h</a></li>
+      <li><a href="#">España y Europa</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul>
+      <li><a href="mailto:info@barockjewelry.com">info@barockjewelry.com</a></li>
+      <li><a href="tel:+34659212167">659 21 21 67</a></li>
+      <li><a href="https://maps.google.com/?q=Juan+Bautista+Uriarte+6+Galdakao" target="_blank">Juan Bautista Uriarte, 6<br>48960 Galdakao</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 BaRock Jewelry. Todos los derechos reservados.</p>
+    <div class="footer-legal"><a href="#">Política de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
 <script>
+  // Cursor (3 circles)
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),outer=document.getElementById('cursorRingOuter');
+  let mx=0,my=0,rx=0,ry=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function moveCursor(){rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';ox+=(mx-ox)*0.08;oy+=(my-oy)*0.08;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(moveCursor);}
+  moveCursor();
+  document.querySelectorAll('a,button,.btn-primary,.btn-dark,.btn-ghost,.service-card,.testimonial-card,.stat-card,.product-card,.social-link,.nav-cta').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+  // Loader
   window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
-  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
-  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
-  const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
+
+  // Nav scroll
+  const navbar=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  // Mobile menu
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});
+  function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+
+  // Reveal on scroll
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+  reveals.forEach(el=>observer.observe(el));
+
+  // Animated counters
   function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
-  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});
+  document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+
+  // Parallax hero
   window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
 </script>
 </body>
