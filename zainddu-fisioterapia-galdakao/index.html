@@ -3,18 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zainddu — Fisioterapia en Galdakao</title>
-  <meta name="description" content="Zainddu en Galdakao. Fisioterapia y osteopatia avanzada en Galdakao. Tratamientos manuales personalizados para dolores, lesiones y bienestar general.">
+  <title>Zainddu — Fisioterapia &amp; Osteopatia en Galdakao</title>
+  <meta name="description" content="Zainddu Fisioterapia &amp; Osteopatia Kontsulta en Galdakao. Gorka Urkullu Mugika — fisioterapeuta y osteópata colegiado desde 2006. Sesiones individuales de una hora. Sin listas de espera.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0a0a0a; --white: #f5f3ef; --accent: #2EC4B6; --accent-light: #52d9cd; --accent-dim: #2EC4B630; --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222; --text-muted: #7a7268; --font-serif: 'Lora', serif; --font-sans: 'Nunito Sans', sans-serif; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1); }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #1b97cc;
+      --accent-light: #2db0e8;
+      --accent-dim: #1b97cc30;
+      --carbon: #111111;
+      --carbon-mid: #181818;
+      --carbon-light: #222222;
+      --text-muted: #7a7268;
+      --font-serif: 'Lora', serif;
+      --font-sans: 'Nunito Sans', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* CURSOR */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #2EC4B615; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #1b97cc15; }
     .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
@@ -31,10 +61,12 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #2EC4B618 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1800&q=80') center/cover no-repeat; transform: scale(1.08); transition: transform 8s var(--ease-out); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.3) 100%); }
     .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
     .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
@@ -56,63 +88,78 @@
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
     .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
-    .marquee-section { border-top: 1px solid #2EC4B620; border-bottom: 1px solid #2EC4B620; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #1b97cc20; border-bottom: 1px solid #1b97cc20; overflow: hidden; padding: 20px 0; background: var(--carbon); }
     .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
     .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
     section { padding: 130px 60px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #2EC4B615; }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #1b97cc15; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
-    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #2EC4B615; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #1b97cc15; position: relative; overflow: hidden; transition: border-color 0.4s; }
     .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: #2EC4B650; }
+    .stat-card:hover { border-color: #1b97cc50; }
     .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
     .stat-number .stat-suffix { color: var(--accent); }
     .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
     .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
-    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light)); }
-    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #2EC4B640; padding: 24px 30px; max-width: 240px; }
-    .about-badge-year { font-family: var(--font-serif); font-size: 3rem; color: var(--accent); line-height: 1; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1000&q=80') center/cover no-repeat; }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.1) 100%); }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #1b97cc40; padding: 24px 30px; max-width: 260px; z-index: 2; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); line-height: 1; }
     .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
     .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
     .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
     .about-body strong { color: var(--white); font-weight: 400; }
     .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #2EC4B610; transition: border-color 0.4s; }
-    .about-value:hover { border-color: #2EC4B635; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #1b97cc10; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #1b97cc35; }
     .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
     .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
     .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
-    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #2EC4B612; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
-    .service-card:hover { background: var(--carbon-mid); border-color: #2EC4B635; }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #2EC4B635; color: var(--accent); }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #1b97cc12; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #1b97cc35; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #1b97cc35; color: var(--accent); }
     .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
     .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
-    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #2EC4B680; transition: color 0.3s, gap 0.3s; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1b97cc80; transition: color 0.3s, gap 0.3s; }
     .service-link:hover { color: var(--accent); gap: 16px; }
-    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #2EC4B60d; line-height: 1; transition: color 0.5s; }
-    .service-card:hover .service-number { color: #2EC4B61a; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #1b97cc0d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #1b97cc1a; }
+
+    /* TESTIMONIALS */
     .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
-    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #2EC4B608; line-height: 1; pointer-events: none; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #1b97cc08; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
-    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #2EC4B612; transition: border-color 0.4s, background 0.4s; }
-    .testimonial-card:hover { border-color: #2EC4B635; background: rgba(8,8,8,0.7); }
+    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #1b97cc12; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #1b97cc35; background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
     .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
     .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
     .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
     .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
     .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
@@ -121,7 +168,9 @@
     .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #2EC4B615; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #1b97cc15; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
     .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
     .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
@@ -137,11 +186,17 @@
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--text-muted); }
+
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.15s; } .reveal-delay-2 { transition-delay: 0.3s; } .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* LOADER */
     .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
@@ -149,77 +204,426 @@
     .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
     .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
     @keyframes loadBar { to { transform: translateX(0); } }
-    @media (max-width: 1024px) { nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; } section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; } .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; } }
-    @media (max-width: 768px) { .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } section { padding: 80px 24px; } .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; } .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; } .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .cta-section { padding: 80px 24px; flex-direction: column; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 350px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+    }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-logo">Zainddu<span>.</span></div><div class="loader-bar"></div></div>
-<nav id="navbar"><a href="#" class="nav-logo">Zainddu<span>.</span></a><ul class="nav-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#contacto" class="nav-cta">Contacto</a></li></ul><button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mobile-menu" id="mobileMenu"><a href="#nosotros" onclick="closeMobile()">Nosotros</a><a href="#servicios" onclick="closeMobile()">Servicios</a><a href="#contacto" onclick="closeMobile()">Contacto</a></div>
-<section class="hero"><div class="hero-bg" id="heroBg"></div><div class="hero-overlay"></div><div class="hero-overlay-bottom"></div>
-  <div class="hero-content"><p class="hero-eyebrow">Fisioterapia · Osteopatia · Galdakao</p><h1 class="hero-title">Cuida tu<br>cuerpo,<br><em>cuida tu vida</em></h1><p class="hero-sub">Fisioterapia y osteopatia avanzada en Galdakao. Tratamientos manuales personalizados para dolores, lesiones y bienestar general.</p>
-    <div class="hero-actions"><a href="mailto:contacto@zainddu.es" class="btn-primary"><span>Contactar</span><span>&rarr;</span></a><a href="#servicios" class="btn-ghost"><span>Servicios</span><div class="btn-ghost-arrow">&nearr;</div></a></div>
-  </div><div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Zainddu<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Zainddu<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir cita</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Pedir cita</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fisioterapia &middot; Osteopatia &middot; Galdakao</p>
+    <h1 class="hero-title">Tu cuerpo<br>merece una<br><em>hora entera</em></h1>
+    <p class="hero-sub">Sesiones individuales de 60 minutos sin interrupciones. Fisioterapia y osteopatia avanzada desde 2006. Gorka Urkullu Mugika — colegiado n.&ordm; 442.</p>
+    <div class="hero-actions">
+      <a href="tel:688666685" class="btn-primary"><span>Llamar ahora</span><span>&rarr;</span></a>
+      <a href="#servicios" class="btn-ghost"><span>Ver servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
 <div class="marquee-section"><div class="marquee-track">
-  <span class="marquee-item"><span class="dot"></span>Fisioterapia</span>
+  <span class="marquee-item"><span class="dot"></span>Fisioterapia Manual</span>
   <span class="marquee-item"><span class="dot"></span>Osteopatia</span>
-  <span class="marquee-item"><span class="dot"></span>Manual</span>
-  <span class="marquee-item"><span class="dot"></span>Deportiva</span>
-  <span class="marquee-item"><span class="dot"></span>Puncion Seca</span>
+  <span class="marquee-item"><span class="dot"></span>Fisio Deportiva</span>
   <span class="marquee-item"><span class="dot"></span>Suelo Pelvico</span>
-  <span class="marquee-item"><span class="dot"></span>Fisioterapia</span>
+  <span class="marquee-item"><span class="dot"></span>Puncion Seca</span>
+  <span class="marquee-item"><span class="dot"></span>ATM</span>
+  <span class="marquee-item"><span class="dot"></span>Kinesiotaping</span>
+  <span class="marquee-item"><span class="dot"></span>Drenaje Linfatico</span>
+  <span class="marquee-item"><span class="dot"></span>Fisioterapia Manual</span>
   <span class="marquee-item"><span class="dot"></span>Osteopatia</span>
-  <span class="marquee-item"><span class="dot"></span>Manual</span>
-  <span class="marquee-item"><span class="dot"></span>Deportiva</span>
-  <span class="marquee-item"><span class="dot"></span>Puncion Seca</span>
+  <span class="marquee-item"><span class="dot"></span>Fisio Deportiva</span>
   <span class="marquee-item"><span class="dot"></span>Suelo Pelvico</span>
+  <span class="marquee-item"><span class="dot"></span>Puncion Seca</span>
+  <span class="marquee-item"><span class="dot"></span>ATM</span>
+  <span class="marquee-item"><span class="dot"></span>Kinesiotaping</span>
+  <span class="marquee-item"><span class="dot"></span>Drenaje Linfatico</span>
 </div></div>
-<div class="stats-section"><div class="stats-grid">
-  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Atencion individualizada</div></div>
-  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
-  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix">h</span></div><div class="stat-label">Sesion completa</div></div>
-  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="0">0</span><span class="stat-suffix"></span></div><div class="stat-label">Listas de espera</div></div>
-</div></div>
-<div class="about-section" id="nosotros"><div class="about-visual"><div class="about-badge"><div class="about-badge-year">Z</div><div class="about-badge-text">Zaindu zure gorputza — Cuida tu cuerpo</div></div></div>
-  <div class="about-content"><p class="section-label reveal">Sobre nosotros</p><h2 class="section-title reveal reveal-delay-1">Terapia manual<br><em>avanzada</em></h2><div class="about-divider reveal"></div><p class="about-body reveal reveal-delay-2">Zainddu es un centro de fisioterapia y osteopatia en Galdakao donde cada tratamiento se diseña para ti. Sesiones individuales de una hora completa, sin prisas ni interrupciones.<br><br><strong>Tu cuerpo tiene la respuesta.</strong> Combinamos fisioterapia, osteopatia y tecnicas avanzadas para encontrar y tratar la causa real de tu dolor.</p>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="2006">0</span></div>
+      <div class="stat-label">Ano de apertura</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="60">0</span><span class="stat-suffix">min</span></div>
+      <div class="stat-label">Sesion completa, solo para ti</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4&#9733;</span></div>
+      <div class="stat-label">Valoracion en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="0">0</span></div>
+      <div class="stat-label">Listas de espera</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <div class="about-badge">
+      <div class="about-badge-year">Desde 2006</div>
+      <div class="about-badge-text">Errekalde bidea, 5 &mdash; Galdakao</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">Fisioterapeuta<br>y <em>osteópata</em></h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      Zainddu es el centro de fisioterapia y osteopatia de <strong>Gorka Urkullu Mugika</strong>, fisioterapeuta colegiado n.&ordm;&nbsp;442 y osteópata diplomado por la Escuela Internacional EOM. Reconocido por el Colegio de Fisioterapeutas del Pais Vasco.<br><br>
+      <strong>Tratamientos personalizados de calidad.</strong> Desde 2006, cada sesion se adapta a ti: una hora completa, sin interrupciones, buscando la causa real del problema y no solo el sintoma.
+    </p>
     <div class="about-values reveal reveal-delay-3">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Sesion completa</h4><p>Una hora exclusiva para ti. Sin compartir espacio, sin interrupciones, sin maquinas que te dejan solo</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Diagnostico preciso</h4><p>Evaluacion integral antes de tratar. Entendemos la causa real del dolor, no solo el sintoma</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Enfoque global</h4><p>Fisioterapia + osteopatia. Tratamos el cuerpo como un todo, no como partes aisladas</p></div></div>
-    </div></div></div>
-<section class="services-section" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="section-label reveal">Lo que ofrecemos</p><h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text"><h4>Calidad</h4><p>Tratamientos individualizados con las tecnicas mas eficaces. Sin prisa, sin protocolo generico</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text"><h4>Formacion continua</h4><p>Gorka se actualiza permanentemente. Tecnicas de fisio, osteopatia estructural, visceral y craneal</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text"><h4>Confianza</h4><p>Mas de 18 anos de experiencia en Galdakao. Pacientes que repiten y que nos recomiendan</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:580px">Tratamientos para <em>cada necesidad</em></h2>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Fisioterapia Manual</h3><p>Terapia manual, movilizacion articular, estiramientos y tecnicas de tejido blando. Para dolores musculares, articulares y cronicos.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Osteopatia</h3><p>Tratamiento osteopatico integral. Estructural, visceral y craneal. Restauramos el equilibrio natural de tu cuerpo.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Especialidades</h3><p>Fisioterapia deportiva, suelo pelvico, puncion seca y ATM. Tratamientos especializados para necesidades concretas.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-    </div></div></section>
-<section class="testimonials-section"><div class="testimonials-inner"><p class="section-label reveal">Testimonios</p><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 12h8M12 8v8"/>
+          </svg>
+        </div>
+        <h3>Fisioterapia Manual</h3>
+        <p>Terapia manual, movilizacion articular, estiramientos y tecnicas de tejido blando. Dolores musculares, articulares, cervicales, lumbares y cronicos. Tratamiento traumatologico y reumatologico.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <ellipse cx="12" cy="12" rx="10" ry="6"/>
+            <ellipse cx="12" cy="12" rx="10" ry="10" transform="rotate(60 12 12)"/>
+            <ellipse cx="12" cy="12" rx="10" ry="10" transform="rotate(120 12 12)"/>
+          </svg>
+        </div>
+        <h3>Osteopatia</h3>
+        <p>Tratamiento osteopatico integral: estructural, visceral y craneal. Gorka, diplomado por la Escuela Internacional EOM, restaura el equilibrio natural del cuerpo abordando las causas profundas.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Fisioterapia Deportiva</h3>
+        <p>Recuperacion de lesiones deportivas, prevencion y optimizacion del rendimiento. Tratamiento de tendinopatias, esguinces, roturas musculares y sobrecargas en deportistas de todos los niveles.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M12 12v10M8 16l4 4 4-4"/>
+          </svg>
+        </div>
+        <h3>Suelo Pelvico</h3>
+        <p>Evaluacion y tratamiento del suelo pelvico. Incontinencia, disfunciones postparto, dolor pelvico cronico y preparacion al parto. Abordaje especializado con tecnicas manuales y ejercicio terapeutico.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <line x1="12" y1="2" x2="12" y2="22"/>
+            <path d="M5 9c1.5-1 3-1.5 7-1.5s5.5.5 7 1.5"/>
+            <path d="M5 15c1.5 1 3 1.5 7 1.5s5.5-.5 7-1.5"/>
+          </svg>
+        </div>
+        <h3>Puncion Seca &amp; ATM</h3>
+        <p>Puncion seca para puntos gatillo miofasciales. Tratamiento de la articulacion temporomandibular (ATM): bruxismo, dolor de mandibula, bloqueos y limitacion de apertura bucal.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 12h18M3 6c3 3 6 4.5 9 4.5S18 9 21 6M3 18c3-3 6-4.5 9-4.5s6 1.5 9 4.5"/>
+          </svg>
+        </div>
+        <h3>Otras Tecnicas</h3>
+        <p>Drenaje linfatico manual, kinesiotaping (vendaje neuromuscular), electroterapia, evaluacion postural y cadenas musculares. Un abanico completo para adaptarse a tu caso concreto.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Reseñas de pacientes</p>
+    <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>quienes nos <em>eligen</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Despues de meses con dolor lumbar, en Zainddu encontraron la causa real y me lo solucionaron en pocas sesiones. Increible."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Las sesiones de una hora completa marcan la diferencia. Te dedican todo el tiempo del mundo y el resultado se nota."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificada</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"La combinacion de fisio y osteopatia funciona genial. Me trataron un problema de cervicales que arrastraba años."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-    </div></div></section>
-<div class="cta-section" id="contacto"><div class="cta-text"><h2>¿Dolor o<br>molestias?</h2><p>Pidenos cita. Cam. de Rekalde, 5 — Galdakao.</p></div><a href="mailto:contacto@zainddu.es" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a></div>
-<footer><div class="footer-top"><div class="footer-brand"><a href="#" class="nav-logo">Zainddu<span>.</span></a><p class="footer-tagline">"Zaindu zure gorputza."</p><div class="footer-social"><a href="mailto:contacto@zainddu.es" class="social-link">Em</a><a href="tel:944367014" class="social-link">Tl</a></div></div>
-    <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Fisioterapia</a></li>
-      <li><a href="#servicios">Osteopatia</a></li>
-      <li><a href="#servicios">Deportiva</a></li>
-      <li><a href="#servicios">Suelo pelvico</a></li>
-      <li><a href="#servicios">Puncion seca</a></li>
-      <li><a href="#servicios">ATM</a></li>
-    </ul></div><div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:contacto@zainddu.es">contacto@zainddu.es</a></li><li><a href="tel:944367014">944 36 70 14</a></li><li><a href="#">Cam. de Rekalde, 5, 48960 Galdakao</a></li></ul></div></div>
-  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 Zainddu. Todos los derechos reservados.</p><div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Llevo anos con dolores de espalda y Gorka fue el primero que encontro la causa real. Sesiones de una hora completa, sin prisas. Un profesional como hay pocos."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews &middot; Galdakao</span></div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Me trato una lesion de rodilla que arrastraba desde hace tiempo. Combina fisio y osteopatia de forma magistral. Totalmente recomendable para cualquier lesion deportiva."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Paciente verificada</strong><span>Google Reviews &middot; Galdakao</span></div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"La diferencia con otras clinicas es enorme. Aqui te tratan como persona, no como numero. Me explico todo lo que iba haciendo y por que. Me fui sintiendome mucho mejor."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews &middot; Bizkaia</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>Pide tu cita<br>hoy mismo</h2>
+    <p>Errekalde bidea, 5 (trasera) &mdash; 48960 Galdakao &middot; L–V 9:00–20:00</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
+    <a href="tel:688666685" class="btn-dark"><span>688 666 685</span><span>&nearr;</span></a>
+    <a href="tel:944367014" class="btn-dark" style="background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2);"><span>944 36 70 14</span><span>&nearr;</span></a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Zainddu<span>.</span></a>
+      <p class="footer-tagline">"Zaindu zure gorputza."</p>
+      <div class="footer-social">
+        <a href="mailto:contacto@zainddu.es" class="social-link">Em</a>
+        <a href="tel:688666685" class="social-link">Tel</a>
+        <a href="https://www.facebook.com/zainddu/" target="_blank" rel="noopener" class="social-link">FB</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Fisioterapia Manual</a></li>
+        <li><a href="#servicios">Osteopatia</a></li>
+        <li><a href="#servicios">Fisio Deportiva</a></li>
+        <li><a href="#servicios">Suelo Pelvico</a></li>
+        <li><a href="#servicios">Puncion Seca</a></li>
+        <li><a href="#servicios">ATM</a></li>
+        <li><a href="#servicios">Kinesiotaping</a></li>
+        <li><a href="#servicios">Drenaje Linfatico</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <ul>
+        <li><a href="#">Lun &ndash; Vie: 9:00 &ndash; 20:00</a></li>
+        <li><a href="#">Sabado: Consultar</a></li>
+        <li><a href="#">Dom: Cerrado</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:contacto@zainddu.es">contacto@zainddu.es</a></li>
+        <li><a href="tel:688666685">688 666 685</a></li>
+        <li><a href="tel:944367014">944 36 70 14</a></li>
+        <li><a href="https://maps.google.com/?q=Errekalde+bidea+5+Galdakao" target="_blank" rel="noopener">Errekalde bidea, 5 (trasera)<br>48960 Galdakao, Bizkaia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Zainddu Fisioterapia &amp; Osteopatia Kontsulta. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Politica de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-  window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
-  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
-  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
-  const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
-  function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
-  const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
-  window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
+  // Cursor — 3 circles
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  const outer = document.getElementById('cursorRingOuter');
+  let mx = 0, my = 0, rx = 0, ry = 0, ox = 0, oy = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  });
+  function moveCursor() {
+    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    ox += (mx - ox) * 0.08; oy += (my - oy) * 0.08;
+    outer.style.left = ox + 'px'; outer.style.top = oy + 'px';
+    requestAnimationFrame(moveCursor);
+  }
+  moveCursor();
+  document.querySelectorAll('a, button, .btn-primary, .btn-dark, .btn-ghost, .service-card, .testimonial-card, .stat-card, .social-link, .nav-cta').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Animated counters
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCount(e.target); countObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // Parallax hero
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) { heroBg.style.transform = 'scale(1) translateY(' + (window.scrollY * 0.25) + 'px)'; }
+  });
 </script>
 </body>
 </html>

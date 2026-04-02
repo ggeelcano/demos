@@ -3,36 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casas a Punto — Inmobiliaria en Galdakao</title>
-  <meta name="description" content="Casas a Punto en Galdakao. Home staging profesional en Bizkaia. Preparamos tu vivienda para venderla antes y a mejor precio. Transforma espacios, multiplica compradores.">
+  <title>Casas a Punto — Home Staging en Bizkaia</title>
+  <meta name="description" content="Casas a Punto Home Staging Bizkaia. Pioneros del home staging en el norte de España. Vendemos o alquilamos tu vivienda antes y a mejor precio con fotografía profesional y marketing inmobiliario.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --black: #0a0a0a; --white: #f5f3ef;
-      --accent: #1B4965; --accent-light: #2d6a8f;
-      --accent-dim: #1B496530;
-      --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222;
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #77ae42;
+      --accent-light: #8ec953;
+      --accent-dim: #77ae4230;
+      --carbon: #111111;
+      --carbon-mid: #181818;
+      --carbon-light: #222222;
       --text-muted: #7a7268;
       --font-serif: 'DM Serif Display', serif;
       --font-sans: 'DM Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #1B496515; }
-    .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #77ae4215; }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; letter-spacing: 0.05em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 8px; }
     .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -41,22 +49,23 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #1B496518 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: url('https://casasapunto.com/wp-content/uploads/2021/11/3AR2020-HDR.jpg') center/cover no-repeat; transform: scale(1.08); transition: transform 8s var(--ease-out); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.25) 100%); }
     .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
-    .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
+    .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 920px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
     .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
-    .hero-title { font-family: var(--font-serif); font-size: clamp(3.2rem, 6.5vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3.2rem, 6.5vw, 6.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
     .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
+    .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 500px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
     .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
     .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--black); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
     .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--white); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost { color: rgba(245,243,239,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
     .btn-ghost:hover { color: var(--accent); }
@@ -66,72 +75,98 @@
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
     .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
-    .marquee-section { border-top: 1px solid #1B496520; border-bottom: 1px solid #1B496520; overflow: hidden; padding: 20px 0; background: var(--carbon); }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #77ae4220; border-bottom: 1px solid #77ae4220; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
     .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
     section { padding: 130px 60px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
-    .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #1B496515; }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #77ae4215; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
-    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #1B496515; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #77ae4215; position: relative; overflow: hidden; transition: border-color 0.4s; }
     .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: #1B496550; }
-    .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .stat-card:hover { border-color: #77ae4250; }
+    .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 400; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
     .stat-number .stat-suffix { color: var(--accent); }
     .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
     .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
-    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light)); }
-    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #1B496540; padding: 24px 30px; max-width: 240px; }
-    .about-badge-year { font-family: var(--font-serif); font-size: 3rem; color: var(--accent); line-height: 1; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: url('https://casasapunto.com/wp-content/uploads/2021/04/Artica11_66589BajaHD-scaled.jpg') center/cover no-repeat; }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.05) 100%); }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #77ae4240; padding: 24px 30px; max-width: 270px; z-index: 2; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); line-height: 1; }
     .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
     .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
     .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
     .about-body strong { color: var(--white); font-weight: 400; }
     .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #1B496510; transition: border-color 0.4s; }
-    .about-value:hover { border-color: #1B496535; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #77ae4210; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #77ae4235; }
     .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
     .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
     .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* BEFORE/AFTER GALLERY */
+    .gallery-section { background: var(--black); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; max-width: 1400px; margin: 60px auto 0; }
+    .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out); filter: brightness(0.9); }
+    .gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+    .gallery-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 22px 18px; background: linear-gradient(to top, rgba(8,8,8,0.85), transparent); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,243,239,0.7); }
+    .gallery-label span { color: var(--accent); }
+
+    /* SERVICES */
     .services-section { background: var(--black); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
-    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #1B496512; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
-    .service-card:hover { background: var(--carbon-mid); border-color: #1B496535; }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #1B496535; color: var(--accent); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
+    .service-card { padding: 60px 52px; background: var(--black); border: 1px solid #77ae4212; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #77ae4235; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #77ae4235; color: var(--accent); }
     .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
     .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
-    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1B496580; transition: color 0.3s, gap 0.3s; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #77ae4280; transition: color 0.3s, gap 0.3s; }
     .service-link:hover { color: var(--accent); gap: 16px; }
-    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #1B49650d; line-height: 1; transition: color 0.5s; }
-    .service-card:hover .service-number { color: #1B49651a; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 400; color: #77ae420d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #77ae421a; }
+
+    /* TESTIMONIALS */
     .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
-    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #1B496508; line-height: 1; pointer-events: none; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #77ae4208; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
-    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #1B496512; transition: border-color 0.4s, background 0.4s; }
-    .testimonial-card:hover { border-color: #1B496535; background: rgba(8,8,8,0.7); }
+    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #77ae4212; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #77ae4235; background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-    .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
+    .testimonial-quote { font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; font-weight: 400; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
     .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
     .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
     .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
     .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
     .cta-text { flex: 1; min-width: 300px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 400; color: var(--black); line-height: 1.1; }
     .cta-text p { font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300; }
     .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
     .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #1B496515; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #77ae4215; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
     .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
     .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
@@ -147,6 +182,20 @@
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--text-muted); }
+
+    /* CURSOR */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
@@ -154,144 +203,326 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* LOADER */
     .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
     .loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
+    .loader-logo { font-family: var(--font-serif); font-size: 2rem; letter-spacing: 0.12em; color: var(--white); }
     .loader-logo span { color: var(--accent); }
     .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
     .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
     @keyframes loadBar { to { transform: translateX(0); } }
-    @media (max-width: 1024px) { nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; } section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; } .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; } }
-    @media (max-width: 768px) { .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } section { padding: 80px 24px; } .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; } .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; } .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .cta-section { padding: 80px 24px; flex-direction: column; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 350px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+    }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-logo">Casas a Punto<span>.</span></div><div class="loader-bar"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Casas a Punto<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Casas a Punto<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contacto" class="nav-cta">Contactar</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#contacto" onclick="closeMobile()">Contactar</a>
 </div>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Home Staging · Interiorismo · Bizkaia</p>
-    <h1 class="hero-title">Vende tu<br>casa<br><em>mas rapido</em></h1>
-    <p class="hero-sub">Home staging profesional en Bizkaia. Preparamos tu vivienda para venderla antes y a mejor precio. Transforma espacios, multiplica compradores.</p>
+    <p class="hero-eyebrow">Home Staging · Bizkaia · Desde 2011</p>
+    <h1 class="hero-title">Vende o alquila tu casa<br><em>antes y mejor</em></h1>
+    <p class="hero-sub">Pioneros del home staging en el norte de España. Transformamos tu vivienda con marketing inmobiliario profesional, fotografía y staging estratégico.</p>
     <div class="hero-actions">
-      <a href="mailto:joanaaranda77@gmail.com" class="btn-primary"><span>Contactar</span><span>&rarr;</span></a>
-      <a href="#servicios" class="btn-ghost"><span>Servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
+      <a href="https://wa.me/34680529546" class="btn-primary"><span>Pedir valoración gratuita</span><span>&rarr;</span></a>
+      <a href="#servicios" class="btn-ghost"><span>Ver servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
 <div class="marquee-section"><div class="marquee-track">
   <span class="marquee-item"><span class="dot"></span>Home Staging</span>
-  <span class="marquee-item"><span class="dot"></span>Interiorismo</span>
-  <span class="marquee-item"><span class="dot"></span>Fotografia</span>
-  <span class="marquee-item"><span class="dot"></span>Preparacion Venta</span>
-  <span class="marquee-item"><span class="dot"></span>Decoracion</span>
-  <span class="marquee-item"><span class="dot"></span>Transformacion</span>
+  <span class="marquee-item"><span class="dot"></span>Fotografía Profesional</span>
+  <span class="marquee-item"><span class="dot"></span>Venta Rápida</span>
+  <span class="marquee-item"><span class="dot"></span>Alquiler Premium</span>
+  <span class="marquee-item"><span class="dot"></span>Marketing Inmobiliario</span>
+  <span class="marquee-item"><span class="dot"></span>Asesoramiento Inversión</span>
+  <span class="marquee-item"><span class="dot"></span>Servicios Empresa</span>
   <span class="marquee-item"><span class="dot"></span>Home Staging</span>
-  <span class="marquee-item"><span class="dot"></span>Interiorismo</span>
-  <span class="marquee-item"><span class="dot"></span>Fotografia</span>
-  <span class="marquee-item"><span class="dot"></span>Preparacion Venta</span>
-  <span class="marquee-item"><span class="dot"></span>Decoracion</span>
-  <span class="marquee-item"><span class="dot"></span>Transformacion</span>
+  <span class="marquee-item"><span class="dot"></span>Fotografía Profesional</span>
+  <span class="marquee-item"><span class="dot"></span>Venta Rápida</span>
+  <span class="marquee-item"><span class="dot"></span>Alquiler Premium</span>
+  <span class="marquee-item"><span class="dot"></span>Marketing Inmobiliario</span>
+  <span class="marquee-item"><span class="dot"></span>Asesoramiento Inversión</span>
+  <span class="marquee-item"><span class="dot"></span>Servicios Empresa</span>
 </div></div>
+
+<!-- STATS -->
 <div class="stats-section"><div class="stats-grid">
-  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="70">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Mas rapido en venta</div></div>
-  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Mejor precio obtenido</div></div>
-  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Viviendas transformadas</div></div>
-  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
+  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="2011">0</span></div><div class="stat-label">Año de fundación</div></div>
+  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Años de experiencia</div></div>
+  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Municipios en Bizkaia</div></div>
+  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix">ª vista</span></div><div class="stat-label">Propiedades alquiladas</div></div>
 </div></div>
+
+<!-- ABOUT -->
 <div class="about-section" id="nosotros">
-  <div class="about-visual"><div class="about-badge"><div class="about-badge-year">CaP</div><div class="about-badge-text">Tu casa, lista para enamorar</div></div></div>
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <div class="about-badge">
+      <div class="about-badge-year">Casas a Punto</div>
+      <div class="about-badge-text">Home Staging · Bilbao, Bizkaia</div>
+    </div>
+  </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
-    <h2 class="section-title reveal reveal-delay-1">El arte de<br>presentar <em>espacios</em></h2>
+    <h2 class="section-title reveal reveal-delay-1">No vivimos<br>como <em>vendemos</em></h2>
     <div class="about-divider reveal"></div>
-    <p class="about-body reveal reveal-delay-2">Casas a Punto es el estudio de home staging de referencia en Bizkaia. Transformamos viviendas para que se vendan mas rapido y a mejor precio.<br><br><strong>No decoramos, vendemos.</strong> Cada decision de diseño tiene un objetivo: que el comprador se imagine viviendo ahi. Y funciona.</p>
+    <p class="about-body reveal reveal-delay-2">Nacimos en 2011 con una misión clara: ofrecer una alternativa real a la agencia inmobiliaria tradicional. <strong>Somos pioneras del home staging en el norte de España.</strong><br><br>No trabajamos con miles de inmuebles a comisiones altas. Trabajamos contigo, de forma cercana, rigurosa y profesional, para que tu vivienda se venda o alquile antes y a mejor precio.</p>
     <div class="about-values reveal reveal-delay-3">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Venta mas rapida</h4><p>Las casas con home staging se venden hasta un 70% mas rapido que sin preparar</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Mejor precio</h4><p>Una presentacion profesional justifica el precio y reduce las negociaciones a la baja</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Retorno garantizado</h4><p>La inversion en home staging se recupera con creces en el precio final de venta</p></div></div>
+      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Cercanas y profesionales</h4><p>Atención personalizada en cada etapa del proceso. Nosotras te llamamos.</p></div></div>
+      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Sin comisiones abusivas</h4><p>Sin el modelo tradicional de miles de inmuebles y altas comisiones. Una fórmula diferente.</p></div></div>
+      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Marketing inmobiliario real</h4><p>Fotografía profesional, análisis de mercado y staging estratégico para maximizar tu precio.</p></div></div>
     </div>
   </div>
 </div>
+
+<!-- PORTFOLIO / GALLERY -->
+<section class="gallery-section" id="portfolio">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Portfolio</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">Transformaciones <em>reales</em></h2>
+  </div>
+  <div class="gallery-grid" style="max-width:1403px; margin:60px auto 0">
+    <div class="gallery-item reveal">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/11/3AR2020-HDR.jpg" alt="Home staging Bilbao — salon transformado" loading="lazy">
+      <div class="gallery-label">Bilbao <span>· Vendido</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/07/PHOTO-2021-06-28-16-30-20-4.jpg" alt="Home staging Bizkaia — dormitorio" loading="lazy">
+      <div class="gallery-label">Bizkaia <span>· Alquilado</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/04/Artica11_66589BajaHD-scaled.jpg" alt="Home staging Artica — vivienda vendida" loading="lazy">
+      <div class="gallery-label">Artica <span>· Vendido</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/02/PALACIO-EGUZKIALDE-1.jpg" alt="Palacio Eguzkialde — home staging" loading="lazy">
+      <div class="gallery-label">Eguzkialde <span>· Vendido</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/06/0_vendido_web.jpg" alt="Vivienda vendida con home staging" loading="lazy">
+      <div class="gallery-label">Bizkaia <span>· Vendido</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://casasapunto.com/wp-content/uploads/2021/04/GabrielCelaya_vendida_Web.jpg" alt="Gabriel Celaya — vivienda vendida" loading="lazy">
+      <div class="gallery-label">Gabriel Celaya <span>· Vendido</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Lo que ofrecemos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+    <p class="section-label reveal">Servicios</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:580px">Todo lo que necesitas para <em>vender mejor</em></h2>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Home Staging Completo</h3><p>Transformacion integral de la vivienda. Vaciado, amueblamiento, decoracion y ambientacion profesional para maximizar el atractivo.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Home Staging Virtual</h3><p>Renderizado 3D de espacios vacios o anticuados. El comprador ve el potencial real de la vivienda sin mover un mueble.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Asesoria + Fotografia</h3><p>Consultoria de presentacion y sesion de fotografia profesional inmobiliaria. Tu anuncio con aspecto de revista.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>Vender o alquilar</h3>
+        <p>Análisis de mercado, staging profesional, fotografía, difusión estratégica y seguimiento personalizado. Sin las comisiones abusivas de las agencias tradicionales.</p>
+        <a href="https://wa.me/34680529546" class="service-link">Solicitar información &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Home Staging</h3>
+        <p>La herramienta favorita de los inversores profesionales. Repositionamos creativamente los elementos existentes de tu vivienda para maximizar su atractivo al mínimo coste.</p>
+        <a href="https://wa.me/34680529546" class="service-link">Solicitar información &rarr;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Asesoramiento e Inversión</h3>
+        <p>Te acompañamos en la compra de una vivienda habitual o de inversión. Revisamos contratos, documentación y negociamos el precio para que tomes la mejor decisión.</p>
+        <a href="https://wa.me/34680529546" class="service-link">Solicitar información &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Servicios para Empresas</h3>
+        <p>Búsqueda de oficinas y locales, soluciones de vivienda para empleados y acompañamiento profesional para empresas con necesidades inmobiliarias en Bizkaia.</p>
+        <a href="mailto:info@casasapunto.com" class="service-link">Contactar &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
-    <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    <p class="section-label reveal">Clientes</p>
+    <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br><em>nuestros clientes</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Vendimos el piso en 2 semanas despues de que Casas a Punto lo preparo. Llevabamos 6 meses sin visitas. Magia."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Propietario verificado</strong><span>Google Reviews · Bizkaia</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"La transformacion fue brutal. El mismo piso parecia otro. Las fotos eran espectaculares y las visitas se multiplicaron."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Propietaria verificada</strong><span>Google Reviews · Bizkaia</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"La mejor inversion que hicimos antes de vender. Recuperamos el coste del home staging con creces en el precio final."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Propietario verificado</strong><span>Google Reviews · Bizkaia</span></div></div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Muy profesional. El cambio conseguido fue increíble. Estoy encantada con el resultado y con cómo gestionaron todo el proceso."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Cliente verificada</strong><span>Houzz · Bizkaia</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Muy satisfecha con el resultado. Se encargaron de todo sin que yo tuviese que preocuparme de los detalles. Totalmente recomendable."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Cliente verificada</strong><span>Houzz · Bilbao</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Mi piso se alquiló en la primera visita y a mejor precio del que yo esperaba. El home staging marcó una diferencia enorme."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Cliente verificada</strong><span>Houzz · Getxo</span></div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- CTA -->
 <div class="cta-section" id="contacto">
-  <div class="cta-text"><h2>¿Quieres vender<br>tu casa rapido?</h2><p>Consultanos sin compromiso. Ergoien Auzoa, Nº7 — Galdakao.</p></div>
-  <a href="mailto:joanaaranda77@gmail.com" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a>
+  <div class="cta-text">
+    <h2>Pide tu valoración<br>gratuita hoy</h2>
+    <p>Respondemos siempre en menos de 48h en días laborables. Llama, escribe o manda un WhatsApp.</p>
+  </div>
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+    <a href="https://wa.me/34680529546" class="btn-dark"><span>WhatsApp</span><span>&nearr;</span></a>
+    <a href="mailto:carmen@casasapunto.com" class="btn-dark" style="background:rgba(0,0,0,0.15); border:1px solid rgba(0,0,0,0.3);"><span>Email</span><span>&rarr;</span></a>
+  </div>
 </div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Casas a Punto<span>.</span></a>
-      <p class="footer-tagline">"Tu casa, lista para enamorar."</p>
+      <p class="footer-tagline">"Otra manera diferente de vender o alquilar tu vivienda."</p>
       <div class="footer-social">
-        <a href="mailto:joanaaranda77@gmail.com" class="social-link">Em</a>
-        <a href="tel:944683845" class="social-link">Tl</a>
+        <a href="https://www.instagram.com/casasapuntobizkaia/" target="_blank" class="social-link">IG</a>
+        <a href="https://www.facebook.com/casasapuntohomestagingbizkaia/" target="_blank" class="social-link">FB</a>
+        <a href="https://wa.me/34680529546" class="social-link">WA</a>
       </div>
     </div>
     <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Home staging</a></li>
-      <li><a href="#servicios">Staging virtual</a></li>
-      <li><a href="#servicios">Fotografia</a></li>
-      <li><a href="#servicios">Consultoria</a></li>
-      <li><a href="#servicios">Decoracion</a></li>
-      <li><a href="#servicios">Interiorismo</a></li>
+      <li><a href="#servicios">Vender o alquilar</a></li>
+      <li><a href="#servicios">Home Staging</a></li>
+      <li><a href="#servicios">Asesoramiento</a></li>
+      <li><a href="#servicios">Empresas</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Zona de actuación</h4><ul>
+      <li><a href="#">Bilbao</a></li>
+      <li><a href="#">Barakaldo</a></li>
+      <li><a href="#">Getxo</a></li>
+      <li><a href="#">Santurtzi y más de 20 municipios</a></li>
     </ul></div>
     <div class="footer-col"><h4>Contacto</h4><ul>
-      <li><a href="mailto:joanaaranda77@gmail.com">joanaaranda77@gmail.com</a></li>
-      <li><a href="tel:944683845">944 68 38 45</a></li>
-      <li><a href="#">Ergoien Auzoa, Nº7, 48960 Galdakao</a></li>
+      <li><a href="mailto:carmen@casasapunto.com">carmen@casasapunto.com</a></li>
+      <li><a href="mailto:info@casasapunto.com">info@casasapunto.com</a></li>
+      <li><a href="tel:+34661786459">661 78 64 59</a></li>
+      <li><a href="https://maps.google.com/?q=Casas+a+Punto+Bilbao+Bizkaia" target="_blank">48001 Bilbao, Bizkaia</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Casas a Punto. Todos los derechos reservados.</p>
-    <div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
+    <p class="footer-copy">&copy; 2026 Casas a Punto Home Staging. Todos los derechos reservados.</p>
+    <div class="footer-legal"><a href="#">Política de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
   </div>
 </footer>
+
 <script>
+  // Cursor (3 circles)
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),outer=document.getElementById('cursorRingOuter');
+  let mx=0,my=0,rx=0,ry=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function moveCursor(){rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';ox+=(mx-ox)*0.08;oy+=(my-oy)*0.08;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(moveCursor);}
+  moveCursor();
+  document.querySelectorAll('a,button,.btn-primary,.btn-dark,.btn-ghost,.service-card,.testimonial-card,.stat-card,.social-link,.nav-cta,.gallery-item').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+  // Loader + hero parallax init
   window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
+
+  // Nav scroll
   const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  // Mobile menu
   const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+
+  // Reveal on scroll
   const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
+
+  // Animated counters
   function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+
+  // Hero parallax
   window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
 </script>
 </body>

@@ -3,35 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Casa del Dentista — Clinica Dental en Galdakao</title>
-  <meta name="description" content="La Casa del Dentista en Galdakao. Clinica dental completa en Galdakao. Implantes, ortodoncia, estetica dental y odontologia general. Tecnología avanzada y trato cercano.">
+  <title>La Casa del Dentista — Suministro Dental y Servicio Técnico · Galdakao</title>
+  <meta name="description" content="La Casa del Dentista en Galdakao. Suministro de equipamiento, aparatología dental y asistencia técnica. +30 años de experiencia. 8 técnicos especializados.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --black: #0a0a0a; --white: #f5f3ef;
-      --accent: #0D9488; --accent-light: #14b8a6;
-      --accent-dim: #0D948830;
-      --carbon: #111111; --carbon-mid: #181818; --carbon-light: #222222;
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #1a8fc1;
+      --accent-light: #239cd3;
+      --accent-dim: #1a8fc130;
+      --carbon: #111111;
+      --carbon-mid: #181818;
+      --carbon-light: #222222;
       --text-muted: #7a7268;
       --font-serif: 'Lora', serif;
       --font-sans: 'Nunito Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
-    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #0D948815; }
-    .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.88); padding: 18px 60px; border-bottom: 1px solid #1a8fc115; }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 6px; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a { text-decoration: none; color: rgba(245,243,239,0.6); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
     .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -41,10 +49,13 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #181818 40%, #0D948818 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0c10 0%, #0d1520 40%, #1a2d3d 70%, #1a8fc118 100%); transform: scale(1.08); transition: transform 8s var(--ease-out); }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(26,143,193,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,143,193,0.04) 1px, transparent 1px); background-size: 80px 80px; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.2) 100%); }
     .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
     .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
@@ -53,10 +64,9 @@
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
     .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--black); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
-    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--white); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--white); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--accent-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost { color: rgba(245,243,239,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
     .btn-ghost:hover { color: var(--accent); }
@@ -66,75 +76,105 @@
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
     .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
-    .marquee-section { border-top: 1px solid #0D948820; border-bottom: 1px solid #0D948820; overflow: hidden; padding: 20px 0; background: var(--carbon); }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+
+    /* MARQUEE */
+    .marquee-section { border-top: 1px solid #1a8fc120; border-bottom: 1px solid #1a8fc120; overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
     .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
     section { padding: 130px 60px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #0D948815; }
+
+    /* STATS */
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid #1a8fc115; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
-    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #0D948815; position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid #1a8fc115; position: relative; overflow: hidden; transition: border-color 0.4s; }
     .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: #0D948850; }
+    .stat-card:hover { border-color: #1a8fc150; }
     .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
     .stat-number .stat-suffix { color: var(--accent); }
     .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+
+    /* ABOUT */
     .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
-    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light)); }
-    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #0D948840; padding: 24px 30px; max-width: 240px; }
-    .about-badge-year { font-family: var(--font-serif); font-size: 3rem; color: var(--accent); line-height: 1; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; background: linear-gradient(160deg, #0d1520 0%, #1a2d3d 50%, #0d2233 100%); }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.05) 100%); }
+    /* Showroom graphic */
+    .about-visual-graphic { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .showroom-icon { opacity: 0.06; }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid #1a8fc140; padding: 24px 30px; max-width: 260px; z-index: 2; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2.8rem; color: var(--accent); line-height: 1; }
     .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
     .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
     .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
     .about-body strong { color: var(--white); font-weight: 400; }
     .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #0D948810; transition: border-color 0.4s; }
-    .about-value:hover { border-color: #0D948835; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #1a8fc110; transition: border-color 0.4s; }
+    .about-value:hover { border-color: #1a8fc135; }
     .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
     .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
     .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
-    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #0D948812; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
-    .service-card:hover { background: var(--carbon-mid); border-color: #0D948835; }
-    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #0D948835; color: var(--accent); }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid #1a8fc112; position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: #1a8fc135; }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid #1a8fc135; color: var(--accent); }
     .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
     .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
-    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #0D948880; transition: color 0.3s, gap 0.3s; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1a8fc180; transition: color 0.3s, gap 0.3s; }
     .service-link:hover { color: var(--accent); gap: 16px; }
-    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #0D94880d; line-height: 1; transition: color 0.5s; }
-    .service-card:hover .service-number { color: #0D94881a; }
-    .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
-    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #0D948808; line-height: 1; pointer-events: none; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: #1a8fc10d; line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: #1a8fc11a; }
+
+    /* BRANDS */
+    .brands-section { background: var(--carbon); padding: 80px 60px; border-top: 1px solid #1a8fc112; border-bottom: 1px solid #1a8fc112; }
+    .brands-inner { max-width: 1400px; margin: 0 auto; }
+    .brands-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 48px; }
+    .brands-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .brand-card { padding: 40px 32px; background: rgba(8,8,8,0.3); border: 1px solid #1a8fc10a; display: flex; align-items: center; justify-content: center; transition: border-color 0.4s, background 0.4s; }
+    .brand-card:hover { border-color: #1a8fc125; background: rgba(8,8,8,0.6); }
+    .brand-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.08em; color: rgba(245,243,239,0.2); transition: color 0.4s; }
+    .brand-card:hover .brand-name { color: rgba(245,243,239,0.5); }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--black); position: relative; overflow: hidden; }
+    .testimonials-section::before { content: '\201C'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: #1a8fc108; line-height: 1; pointer-events: none; }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
-    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid #0D948812; transition: border-color 0.4s, background 0.4s; }
-    .testimonial-card:hover { border-color: #0D948835; background: rgba(8,8,8,0.7); }
+    .testimonial-card { padding: 56px 44px; background: rgba(17,17,17,0.6); border: 1px solid #1a8fc112; transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: #1a8fc135; background: rgba(17,17,17,0.9); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
     .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
     .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
     .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
     .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+    /* CTA */
     .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
     .cta-text { flex: 1; min-width: 300px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
-    .cta-text p { font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 16px; font-weight: 300; }
     .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
     .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #0D948815; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid #1a8fc115; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
-    .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
-    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
+    .footer-brand .nav-logo { font-size: 1.6rem; margin-bottom: 22px; display: inline-flex; }
+    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
     .footer-social { display: flex; gap: 14px; }
     .social-link { width: 40px; height: 40px; border: 1px solid rgba(245,243,239,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(245,243,239,0.4); font-size: 0.75rem; letter-spacing: 0.1em; transition: border-color 0.3s, color 0.3s; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
@@ -147,6 +187,20 @@
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--text-muted); }
+
+    /* CURSOR — 3 circles */
+    .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.25s; opacity: 0.5; }
+    .cursor-ring-outer { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.35s, opacity 0.35s; opacity: 0.2; }
+    .cursor-hover .cursor-dot { width: 14px; height: 14px; background: var(--accent-light); }
+    .cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: var(--accent-light); opacity: 0.3; }
+    .cursor-hover .cursor-ring-outer { width: 76px; height: 76px; opacity: 0.1; }
+    @media (max-width: 768px) { .cursor-dot, .cursor-ring, .cursor-ring-outer { display: none; } }
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (max-width: 768px) { body, a, button { cursor: auto; } }
+
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
@@ -154,19 +208,63 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* LOADER */
     .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
     .loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.15em; color: var(--white); }
+    .loader-logo { font-family: var(--font-serif); font-size: 2rem; letter-spacing: 0.12em; color: var(--white); }
     .loader-logo span { color: var(--accent); }
     .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
     .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
     @keyframes loadBar { to { transform: translateX(0); } }
-    @media (max-width: 1024px) { nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; } section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; } .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; } }
-    @media (max-width: 768px) { .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } section { padding: 80px 24px; } .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; } .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; } .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .cta-section { padding: 80px 24px; flex-direction: column; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 350px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+      .brands-section { padding: 60px 24px; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="loader-logo">La Casa del Dentista<span>.</span></div><div class="loader-bar"></div></div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring-outer" id="cursorRingOuter"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">La Casa del Dentista<span>.</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">La Casa del Dentista<span>.</span></a>
   <ul class="nav-links">
@@ -181,117 +279,305 @@
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grid"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Clinica Dental · Galdakao</p>
-    <h1 class="hero-title">Tu sonrisa<br>en buenas<br><em>manos</em></h1>
-    <p class="hero-sub">Clinica dental completa en Galdakao. Implantes, ortodoncia, estetica dental y odontologia general. Tecnología avanzada y trato cercano.</p>
+    <p class="hero-eyebrow">Suministro Dental · Servicio Técnico · Galdakao</p>
+    <h1 class="hero-title">Equipamiento dental<br>para <em>profesionales</em></h1>
+    <p class="hero-sub">Suministro, instalación y mantenimiento de aparatología dental. Más de 30 años de experiencia con 8 técnicos especializados en Galdakao, Bizkaia.</p>
     <div class="hero-actions">
-      <a href="mailto:info@lacasadeldentista.es" class="btn-primary"><span>Contactar</span><span>&rarr;</span></a>
-      <a href="#servicios" class="btn-ghost"><span>Servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
+      <a href="https://wa.me/34680199349" class="btn-primary"><span>WhatsApp</span><span>&rarr;</span></a>
+      <a href="#servicios" class="btn-ghost"><span>Ver servicios</span><div class="btn-ghost-arrow">&nearr;</div></a>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
 <div class="marquee-section"><div class="marquee-track">
-  <span class="marquee-item"><span class="dot"></span>Implantes</span>
-  <span class="marquee-item"><span class="dot"></span>Ortodoncia</span>
-  <span class="marquee-item"><span class="dot"></span>Estetica Dental</span>
-  <span class="marquee-item"><span class="dot"></span>Limpieza</span>
-  <span class="marquee-item"><span class="dot"></span>Endodoncia</span>
-  <span class="marquee-item"><span class="dot"></span>Odontopediatria</span>
-  <span class="marquee-item"><span class="dot"></span>Implantes</span>
-  <span class="marquee-item"><span class="dot"></span>Ortodoncia</span>
-  <span class="marquee-item"><span class="dot"></span>Estetica Dental</span>
-  <span class="marquee-item"><span class="dot"></span>Limpieza</span>
-  <span class="marquee-item"><span class="dot"></span>Endodoncia</span>
-  <span class="marquee-item"><span class="dot"></span>Odontopediatria</span>
+  <span class="marquee-item"><span class="dot"></span>Suministro dental</span>
+  <span class="marquee-item"><span class="dot"></span>Servicio técnico</span>
+  <span class="marquee-item"><span class="dot"></span>Montaje de clínicas</span>
+  <span class="marquee-item"><span class="dot"></span>Reparación de equipos</span>
+  <span class="marquee-item"><span class="dot"></span>Radiología dental</span>
+  <span class="marquee-item"><span class="dot"></span>Material podológico</span>
+  <span class="marquee-item"><span class="dot"></span>Formación</span>
+  <span class="marquee-item"><span class="dot"></span>Suministro dental</span>
+  <span class="marquee-item"><span class="dot"></span>Servicio técnico</span>
+  <span class="marquee-item"><span class="dot"></span>Montaje de clínicas</span>
+  <span class="marquee-item"><span class="dot"></span>Reparación de equipos</span>
+  <span class="marquee-item"><span class="dot"></span>Radiología dental</span>
+  <span class="marquee-item"><span class="dot"></span>Material podológico</span>
+  <span class="marquee-item"><span class="dot"></span>Formación</span>
 </div></div>
+
+<!-- STATS -->
 <div class="stats-section"><div class="stats-grid">
-  <div class="stat-card reveal"><div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div><div class="stat-label">Atencion personalizada</div></div>
-  <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Especialidades</div></div>
-  <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div><div class="stat-label">Valoracion Google</div></div>
-  <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix">a</span></div><div class="stat-label">Revision gratuita</div></div>
+  <div class="stat-card reveal">
+    <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Años de experiencia</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-1">
+    <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix"></span></div>
+    <div class="stat-label">Técnicos especializados</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-2">
+    <div class="stat-number"><span class="count" data-target="350">0</span><span class="stat-suffix">m²</span></div>
+    <div class="stat-label">Showroom en Galdakao</div>
+  </div>
+  <div class="stat-card reveal reveal-delay-3">
+    <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix"></span></div>
+    <div class="stat-label">Marcas certificadas</div>
+  </div>
 </div></div>
+
+<!-- ABOUT -->
 <div class="about-section" id="nosotros">
-  <div class="about-visual"><div class="about-badge"><div class="about-badge-year">LCD</div><div class="about-badge-text">Tu dentista de confianza en Galdakao</div></div></div>
+  <div class="about-visual">
+    <div class="about-visual-overlay"></div>
+    <div class="about-visual-graphic">
+      <svg class="showroom-icon" width="420" height="420" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="30" width="80" height="50" rx="2" stroke="white" stroke-width="1.5"/>
+        <path d="M10 42 L50 30 L90 42" stroke="white" stroke-width="1.5"/>
+        <rect x="30" y="50" width="18" height="30" rx="1" stroke="white" stroke-width="1.2"/>
+        <rect x="55" y="52" width="25" height="18" rx="1" stroke="white" stroke-width="1.2"/>
+        <circle cx="71" cy="61" r="5" stroke="white" stroke-width="1.2"/>
+        <line x1="50" y1="80" x2="50" y2="92" stroke="white" stroke-width="1.2"/>
+        <line x1="38" y1="92" x2="62" y2="92" stroke="white" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-year">+30 años</div>
+      <div class="about-badge-text">Polígono Irubide, 3 — Galdakao</div>
+    </div>
+  </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
-    <h2 class="section-title reveal reveal-delay-1">Odontologia<br>con <em>cercania</em></h2>
+    <h2 class="section-title reveal reveal-delay-1">Especialistas en<br><em>aparatología dental</em></h2>
     <div class="about-divider reveal"></div>
-    <p class="about-body reveal reveal-delay-2">La Casa del Dentista es una clinica dental en Galdakao donde la confianza y la transparencia son la base de todo tratamiento.<br><br><strong>Sin letra pequeña.</strong> Te explicamos el diagnostico, las opciones y el presupuesto antes de empezar. Tu decides con toda la informacion.</p>
+    <p class="about-body reveal reveal-delay-2">La Casa del Dentista es la referencia en Bizkaia para el <strong>suministro, instalación y mantenimiento de equipamiento odontológico y podológico</strong>.<br><br>Desde nuestro showroom de <strong>350 m²</strong> en Galdakao, los profesionales pueden ver y probar en directo sillones dentales, equipos de radiología, sistemas de esterilización y toda la aparatología de las principales marcas del mercado.</p>
     <div class="about-values reveal reveal-delay-3">
-      <div class="about-value"><div class="value-num">01</div><div class="value-text"><h4>Diagnostico transparente</h4><p>Te mostramos en pantalla el estado real de tu boca y te explicamos las opciones sin presion</p></div></div>
-      <div class="about-value"><div class="value-num">02</div><div class="value-text"><h4>Tecnologia digital</h4><p>Radiografia digital, escaner 3D y planificacion computerizada para tratamientos precisos y predecibles</p></div></div>
-      <div class="about-value"><div class="value-num">03</div><div class="value-text"><h4>Financiacion sin intereses</h4><p>Todos los tratamientos se pueden financiar. Sin intereses y adaptados a tu presupuesto</p></div></div>
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text"><h4>Técnicos certificados</h4><p>8 especialistas certificados por los principales fabricantes para instalar, reparar e impartir formación</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text"><h4>Aula de formación</h4><p>Sala con 9 puestos de trabajo para 18 personas, WiFi y pantallas de 80" para formación presencial</p></div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text"><h4>Showroom abierto</h4><p>350 m² con exposición de sillones, radiología, esterilización y aspiración. Visítanos sin cita</p></div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Lo que ofrecemos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Servicios profesionales para <em>resultados reales</em></h2>
+    <p class="section-label reveal">Nuestros servicios</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:580px">Todo lo que necesita<br>tu <em>clínica dental</em></h2>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-number">01</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Implantes Dentales</h3><p>Implantes de titanio de primeras marcas con cirugia guiada por ordenador. Maxima precision y minima invasion.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-1"><div class="service-number">02</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Ortodoncia</h3><p>Brackets convencionales, esteticos y ortodoncia invisible. Tratamientos para adultos y niños con resultados predecibles.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-number">03</div><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/></svg></div><h3>Estetica y General</h3><p>Blanqueamiento dental, carillas, coronas y odontologia conservadora. Tu sonrisa perfecta con los tratamientos mas avanzados.</p><a href="#contacto" class="service-link">Mas info &rarr;</a></div>
+
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3>Suministro dental</h3>
+        <p>Distribución de equipamiento, aparatología y material odontológico de las mejores marcas. Sillones, unidades dentales, sistemas de aspiración y esterilización.</p>
+        <a href="mailto:info@lacasadeldentista.es" class="service-link">Solicitar catálogo &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Reparación y mantenimiento</h3>
+        <p>8 técnicos especializados en todo tipo de reparaciones de aparatos odontológicos y podológicos. Respuesta rápida para minimizar el tiempo de inactividad de tu clínica.</p>
+        <a href="https://wa.me/34680199349" class="service-link">Pedir asistencia &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 9h6M9 12h6M9 15h4"/>
+          </svg>
+        </div>
+        <h3>Radiología dental</h3>
+        <p>Distribuidor autorizado de equipos de radiología. Venta, instalación y mantenimiento de sistemas de rayos X digitales e intraorales para clínicas dentales.</p>
+        <a href="mailto:info@lacasadeldentista.es" class="service-link">Consultar &rarr;</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Montaje integral de clínicas</h3>
+        <p>Diseño arquitectural, planificación, mobiliario, iluminación y aparatología. Construimos y equipamos tu clínica dental o podológica de principio a fin.</p>
+        <a href="tel:+34680199349" class="service-link">Hablar con un experto &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <h3>Material podológico</h3>
+        <p>Suministro y mantenimiento de equipamiento para profesionales de la podología. Catálogo completo con aparatología especializada y consumibles.</p>
+        <a href="mailto:info@lacasadeldentista.es" class="service-link">Ver catálogo &rarr;</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <h3>Informática y web</h3>
+        <p>Instalación de equipos informáticos y audiovisuales para clínicas. Diseño de páginas web y gestión de redes sociales para profesionales del sector dental.</p>
+        <a href="mailto:info@lacasadeldentista.es" class="service-link">Más información &rarr;</a>
+      </div>
+
     </div>
   </div>
 </section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-inner">
+    <p class="brands-label reveal">Distribuidores oficiales y servicio técnico autorizado</p>
+    <div class="brands-grid">
+      <div class="brand-card reveal"><span class="brand-name">Vatech</span></div>
+      <div class="brand-card reveal reveal-delay-1"><span class="brand-name">Eurodent</span></div>
+      <div class="brand-card reveal reveal-delay-2"><span class="brand-name">Planmeca</span></div>
+      <div class="brand-card reveal reveal-delay-3"><span class="brand-name">Castellini</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
-    <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    <p class="section-label reveal">Lo que dicen los profesionales</p>
+    <h2 class="section-title reveal reveal-delay-1">Referencia en<br><em>Bizkaia</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"La mejor clinica dental que he encontrado. Te explican todo con calma, sin presiones y con mucha profesionalidad."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Me pusieron 2 implantes y el resultado es increible. Cero dolor y una recuperacion rapidisima. Muy recomendable."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificado</strong><span>Google Reviews · Galdakao</span></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testimonial-quote">"Llevo a toda la familia. Tanto adultos como niños salen encantados. El trato es excepcional."</p><div class="testimonial-divider"></div><div class="testimonial-author"><strong>Paciente verificada</strong><span>Google Reviews · Galdakao</span></div></div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"Llevamos años trabajando con La Casa del Dentista para el mantenimiento de todos nuestros equipos. Respuesta rápida y técnicos muy cualificados."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Clínica dental</strong><span>Bizkaia</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"El showroom de 350 m² es impresionante. Pudimos ver y probar los equipos en directo antes de equipar nuestra nueva clínica. Un servicio excelente."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Centro odontológico</strong><span>Galdakao, Bizkaia</span></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-quote">"El montaje integral de nuestra clínica fue perfecto. Se encargaron de todo, desde el diseño hasta la instalación final del equipo de radiología."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author"><strong>Clínica de podología</strong><span>Bizkaia</span></div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- CTA -->
 <div class="cta-section" id="contacto">
-  <div class="cta-text"><h2>¿Necesitas<br>un dentista?</h2><p>Primera revision gratuita. Iru-Bide Kalea, 3, Bajo 10 — Galdakao.</p></div>
-  <a href="mailto:info@lacasadeldentista.es" class="btn-dark"><span>Contactar</span><span>&nearr;</span></a>
+  <div class="cta-text">
+    <h2>Visítanos en<br>Galdakao</h2>
+    <p>Polígono Irubide 3, Bajo 10 · 48960 Galdakao, Bizkaia<br>Showroom abierto al público · 680 19 93 49</p>
+  </div>
+  <a href="https://wa.me/34680199349" class="btn-dark"><span>WhatsApp</span><span>&nearr;</span></a>
 </div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">La Casa del Dentista<span>.</span></a>
-      <p class="footer-tagline">"Tu sonrisa, nuestro compromiso."</p>
+      <p class="footer-tagline">"Suministro dental y servicio técnico especializado en Galdakao."</p>
       <div class="footer-social">
-        <a href="mailto:info@lacasadeldentista.es" class="social-link">Em</a>
-        <a href="tel:680199349" class="social-link">Tl</a>
+        <a href="https://www.instagram.com/lacasadeldentista/" target="_blank" class="social-link">IG</a>
+        <a href="https://www.facebook.com/profile.php?id=100086343977450" target="_blank" class="social-link">FB</a>
+        <a href="https://wa.me/34680199349" class="social-link">WA</a>
       </div>
     </div>
     <div class="footer-col"><h4>Servicios</h4><ul>
-      <li><a href="#servicios">Implantes</a></li>
-      <li><a href="#servicios">Ortodoncia</a></li>
-      <li><a href="#servicios">Blanqueamiento</a></li>
-      <li><a href="#servicios">Limpieza</a></li>
-      <li><a href="#servicios">Endodoncia</a></li>
-      <li><a href="#servicios">Odontopediatria</a></li>
+      <li><a href="#servicios">Suministro dental</a></li>
+      <li><a href="#servicios">Reparación y mantenimiento</a></li>
+      <li><a href="#servicios">Montaje de clínicas</a></li>
+      <li><a href="#servicios">Radiología dental</a></li>
+      <li><a href="https://www.lacasadeldentista.es/" target="_blank">Web oficial</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Showroom</h4><ul>
+      <li><a href="#">350 m² abiertos al público</a></li>
+      <li><a href="#">Sillones en exposición</a></li>
+      <li><a href="#">Equipos de radiología</a></li>
+      <li><a href="#">Aula de formación</a></li>
     </ul></div>
     <div class="footer-col"><h4>Contacto</h4><ul>
       <li><a href="mailto:info@lacasadeldentista.es">info@lacasadeldentista.es</a></li>
-      <li><a href="tel:680199349">680 19 93 49</a></li>
-      <li><a href="#">Iru-Bide Kalea, 3, Bajo 10, 48960 Galdakao</a></li>
+      <li><a href="tel:+34680199349">680 19 93 49</a></li>
+      <li><a href="https://maps.google.com/?q=La+Casa+del+Dentista+Galdakao" target="_blank">Polígono Irubide 3, Bajo 10<br>48960 Galdakao, Bizkaia</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">&copy; 2026 La Casa del Dentista. Todos los derechos reservados.</p>
-    <div class="footer-legal"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
+    <div class="footer-legal"><a href="#">Política de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div>
   </div>
 </footer>
+
 <script>
+  // CURSOR — 3 circles
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),outer=document.getElementById('cursorRingOuter');
+  let mx=0,my=0,rx=0,ry=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function moveCursor(){rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';ox+=(mx-ox)*0.08;oy+=(my-oy)*0.08;outer.style.left=ox+'px';outer.style.top=oy+'px';requestAnimationFrame(moveCursor);}
+  moveCursor();
+  document.querySelectorAll('a,button,.btn-primary,.btn-dark,.btn-ghost,.service-card,.testimonial-card,.stat-card,.social-link,.nav-cta,.brand-card').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+  // LOADER
   window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');document.getElementById('heroBg').classList.add('loaded');},1800);});
+
+  // NAV SCROLL
   const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  // MOBILE MENU
   const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');});function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');}
+
+  // REVEAL ON SCROLL
   const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});reveals.forEach(el=>observer.observe(el));
+
+  // COUNTER ANIMATION
   function animateCount(el){const target=parseInt(el.dataset.target);const duration=1800;const start=performance.now();function step(now){const progress=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-progress,4);el.textContent=Math.round(ease*target);if(progress<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
   const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:0.5});document.querySelectorAll('.count').forEach(el=>countObserver.observe(el));
+
+  // HERO PARALLAX
   window.addEventListener('scroll',()=>{const heroBg=document.getElementById('heroBg');if(heroBg){heroBg.style.transform='scale(1) translateY('+(window.scrollY*0.25)+'px)';}});
 </script>
 </body>
