@@ -1,0 +1,874 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Rio-Oja Restaurante — Cocina Tradicional Vasca en Bilbao</title><meta name="description" content="Rio-Oja Restaurante en el Casco Viejo de Bilbao. Cazuelitas, bacalao al pil-pil, pintxos y cocina vasca tradicional. Txakur Kalea 4, Bilbao."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--black: #0c0806;
+--white: #f5f3ef;
+--accent: #8B2500;
+--accent-light: #A0522D;
+--carbon: #161210;
+--carbon-mid: #201a16;
+--carbon-light: #2e2620;
+--text-muted: #9a8a7a;
+--font-serif: 'Playfair Display', serif;
+--font-sans: 'Source Sans 3', sans-serif;
+--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+--ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+html { scroll-behavior: smooth; }
+body {
+background: var(--black);
+color: var(--white);
+font-family: var(--font-sans);
+font-weight: 300;
+line-height: 1.6;
+overflow-x: hidden;
+cursor: none;
+}
+/* CUSTOM CURSOR */
+._d {
+width: 8px; height: 8px;
+background: var(--accent);
+border-radius: 50%;
+position: fixed; top: 0; left: 0;
+pointer-events: none; z-index: 9999;
+transition: transform 0.1s;
+transform: translate(-50%, -50%);
+box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
+}
+._e {
+width: 40px; height: 40px;
+border: 1px solid rgba(139,37,0,0.4);
+border-radius: 50%;
+position: fixed; top: 0; left: 0;
+pointer-events: none; z-index: 9998;
+transform: translate(-50%, -50%);
+transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+}
+._e.expanded {
+width: 70px; height: 70px;
+border-color: rgba(139,37,0,0.7);
+background: rgba(139,37,0,0.05);
+}
+/* NAVBAR */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+display: flex; align-items: center; justify-content: space-between;
+padding: 28px 60px;
+backdrop-filter: blur(0px);
+transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
+}
+nav.scrolled {
+backdrop-filter: blur(20px);
+background: rgba(8,8,8,0.85);
+padding: 18px 60px;
+border-bottom: 1px solid rgba(139,37,0,0.08);
+}
+._f {
+font-family: var(--font-serif);
+font-size: 1.6rem;
+font-weight: 400;
+letter-spacing: 0.08em;
+text-decoration: none;
+color: var(--white);
+display: flex; align-items: center; gap: 10px;
+}
+._f span { color: var(--accent); }
+._g { display: flex; gap: 44px; list-style: none; align-items: center; }
+._g a {
+text-decoration: none; color: rgba(245,243,239,0.65);
+font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+transition: color 0.3s; font-weight: 400;
+}
+._g a:hover { color: var(--accent); }
+._h {
+background: transparent;
+border: 1px solid var(--accent);
+color: var(--accent) !important;
+padding: 10px 28px !important;
+font-size: 0.72rem !important;
+letter-spacing: 0.25em !important;
+transition: background 0.3s, color 0.3s !important;
+}
+._h:hover { background: var(--accent) !important; color: var(--black) !important; }
+/* HAMBURGER MOBILE */
+._i {
+display: none; flex-direction: column; gap: 5px;
+background: none; border: none; cursor: pointer; padding: 8px;
+}
+._i span {
+width: 24px; height: 2px; background: var(--white);
+transition: transform 0.3s, opacity 0.3s;
+}
+._i.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+._i.active span:nth-child(2) { opacity: 0; }
+._i.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+._j {
+display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+background: var(--black); z-index: 999;
+flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+}
+._j.open { display: flex; }
+._j a {
+text-decoration: none; color: var(--white); font-size: 1.2rem;
+letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
+}
+._j a:hover { color: var(--accent); }
+/* HERO */
+._k {
+position: relative; height: 100vh; min-height: 700px;
+display: flex; align-items: flex-end; justify-content: flex-start;
+overflow: hidden;
+}
+._l {
+position: absolute; inset: 0;
+background: url('https://www.macarfi.com/storage/restaurants/2782/restaurante-3117-image.jpg') center/cover no-repeat, linear-gradient(135deg, #0c0806 0%, #201a16 40%, #8B250022 100%);
+background-size: cover; background-position: center;
+transform: scale(1.08);
+transition: transform 8s var(--ease-out);
+}
+._l.loaded { transform: scale(1); }
+._m {
+position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+}
+._n {
+position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+background: linear-gradient(to top, var(--black), transparent);
+}
+._o {
+position: relative; z-index: 2;
+padding: 0 60px 100px;
+max-width: 900px;
+}
+._p {
+font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+color: var(--accent); margin-bottom: 28px;
+display: flex; align-items: center; gap: 16px;
+opacity: 0; transform: translateY(20px);
+animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
+}
+._p::before {
+content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+}
+._q {
+font-family: var(--font-serif);
+font-size: clamp(3.5rem, 7vw, 7rem);
+font-weight: 300;
+line-height: 1.05;
+letter-spacing: -0.02em;
+margin-bottom: 32px;
+opacity: 0; transform: translateY(30px);
+animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
+}
+._q em { font-style: italic; color: var(--accent); }
+._r {
+font-size: 1.05rem; color: rgba(245,243,239,0.6);
+max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+font-weight: 300;
+opacity: 0; transform: translateY(20px);
+animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+}
+._s {
+display: flex; align-items: center; gap: 40px;
+opacity: 0; transform: translateY(20px);
+animation: fadeUp 1s 1s var(--ease-out) forwards;
+}
+._t {
+display: inline-flex; align-items: center; gap: 14px;
+background: var(--accent); color: var(--white);
+text-decoration: none; padding: 18px 40px;
+font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 500; transition: all 0.35s var(--ease-smooth);
+position: relative; overflow: hidden;
+}
+._t::before {
+content: ''; position: absolute; inset: 0;
+background: var(--accent-light); transform: translateX(-102%);
+transition: transform 0.4s var(--ease-out);
+}
+._t:hover::before { transform: translateX(0); }
+._t span { position: relative; z-index: 1; }
+._u {
+color: rgba(245,243,239,0.6); text-decoration: none;
+font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+display: flex; align-items: center; gap: 10px;
+transition: color 0.3s;
+}
+._u:hover { color: var(--accent); }
+._v {
+width: 36px; height: 36px;
+border: 1px solid rgba(245,243,239,0.2);
+border-radius: 50%; display: flex; align-items: center; justify-content: center;
+transition: border-color 0.3s, transform 0.3s;
+}
+._u:hover ._v {
+border-color: var(--accent); transform: rotate(45deg);
+}
+._w {
+position: absolute; right: 60px; bottom: 100px; z-index: 2;
+display: flex; flex-direction: column; align-items: center; gap: 16px;
+opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+}
+._w span {
+font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+color: var(--text-muted); writing-mode: vertical-rl;
+}
+._x {
+width: 1px; height: 70px;
+background: linear-gradient(to bottom, var(--accent), transparent);
+animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+0%, 100% { opacity: 0.4; transform: scaleY(1); }
+50% { opacity: 1; transform: scaleY(1.1); }
+}
+/* MARQUEE */
+._y {
+border-top: 1px solid rgba(139,37,0,0.12);
+border-bottom: 1px solid rgba(139,37,0,0.12);
+overflow: hidden; padding: 20px 0; background: var(--carbon);
+}
+._z {
+display: flex; gap: 0; white-space: nowrap;
+animation: marquee 22s linear infinite;
+}
+._ab {
+display: inline-flex; align-items: center; gap: 30px;
+padding: 0 40px;
+font-family: var(--font-serif); font-size: 1.1rem;
+font-style: italic; color: rgba(245,243,239,0.25);
+letter-spacing: 0.05em;
+}
+._ab ._bb { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* SECTION COMMONS */
+section { padding: 130px 60px; }
+._kb {
+font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+color: var(--accent); margin-bottom: 20px;
+display: flex; align-items: center; gap: 14px;
+}
+._kb::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+._lb {
+font-family: var(--font-serif);
+font-size: clamp(2.4rem, 4vw, 4.2rem);
+font-weight: 300; line-height: 1.1;
+letter-spacing: -0.01em;
+}
+._lb em { font-style: italic; color: var(--accent); }
+/* STATS */
+._cb {
+background: var(--carbon);
+padding: 100px 60px;
+border-top: 1px solid rgba(139,37,0,0.08);
+}
+._db {
+display: grid; grid-template-columns: repeat(4, 1fr);
+gap: 2px; max-width: 1400px; margin: 0 auto;
+}
+._eb {
+padding: 60px 50px; background: var(--carbon);
+border: 1px solid rgba(139,37,0,0.08);
+position: relative; overflow: hidden;
+transition: border-color 0.4s;
+}
+._eb::before {
+content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+height: 3px; background: var(--accent); transform: scaleX(0);
+transition: transform 0.5s var(--ease-out); transform-origin: left;
+}
+._eb:hover::before { transform: scaleX(1); }
+._eb:hover { border-color: rgba(139,37,0,0.3); }
+._fb {
+font-family: var(--font-serif); font-size: 4.5rem;
+font-weight: 300; line-height: 1; color: var(--white);
+margin-bottom: 12px; letter-spacing: -0.02em;
+}
+._fb ._gb { color: var(--accent); }
+._hb {
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: var(--text-muted); font-weight: 400;
+}
+/* GALLERY */
+._ib { background: var(--black); }
+._jb {
+display: flex; justify-content: space-between; align-items: flex-end;
+margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
+}
+._jb ._lb { max-width: 500px; }
+._mb {
+display: flex; align-items: center; gap: 12px;
+text-decoration: none; color: var(--accent);
+font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+transition: gap 0.3s; padding-bottom: 4px;
+border-bottom: 1px solid rgba(139,37,0,0.3);
+white-space: nowrap;
+}
+._mb:hover { gap: 20px; border-color: var(--accent); }
+._nb {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3px;
+max-width: 1400px; margin: 0 auto;
+}
+._ob {
+position: relative; overflow: hidden;
+aspect-ratio: 4/3;
+cursor: none;
+}
+._ob:first-child {
+grid-column: span 2; aspect-ratio: 21/8;
+}
+._pb {
+width: 100%; height: 100%; object-fit: cover;
+background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+}
+._ob:hover ._pb { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+._qb {
+position: absolute; inset: 0;
+background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+opacity: 0.6; transition: opacity 0.5s;
+}
+._ob:hover ._qb { opacity: 0.85; }
+._sb {
+position: absolute; bottom: 0; left: 0; right: 0;
+padding: 40px; transform: translateY(15px);
+transition: transform 0.5s var(--ease-out);
+}
+._ob:hover ._sb { transform: translateY(0); }
+._tb {
+font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+color: var(--accent); margin-bottom: 10px; font-weight: 400;
+}
+._ub {
+font-family: var(--font-serif); font-size: 1.9rem;
+font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+}
+._vb {
+font-size: 0.73rem; color: rgba(245,243,239,0.45);
+letter-spacing: 0.1em; opacity: 0;
+transition: opacity 0.5s 0.1s;
+}
+._ob:hover ._vb { opacity: 1; }
+._rb {
+position: absolute; top: 36px; right: 36px;
+width: 50px; height: 50px;
+border: 1px solid rgba(245,243,239,0.15);
+border-radius: 50%; display: flex; align-items: center; justify-content: center;
+opacity: 0; transform: translate(10px, -10px);
+transition: all 0.4s var(--ease-out);
+}
+._ob:hover ._rb { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+/* ABOUT */
+._wb {
+background: var(--carbon);
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 0; padding: 0; max-width: none;
+}
+._xb {
+position: relative; overflow: hidden; min-height: 700px;
+background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/DSC05998.jpg') center/cover no-repeat, linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+}
+._yb {
+position: absolute; bottom: 48px; left: 48px;
+background: var(--black); border: 1px solid rgba(139,37,0,0.25);
+padding: 24px 30px; max-width: 240px;
+}
+._zb {
+font-family: var(--font-serif); font-size: 3rem;
+color: var(--accent); line-height: 1;
+}
+._ac {
+font-size: 0.72rem; letter-spacing: 0.1em;
+color: rgba(245,243,239,0.5); margin-top: 6px;
+}
+._bc {
+padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+}
+._dc {
+font-size: 1.05rem; line-height: 1.8;
+color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+font-weight: 300;
+}
+._dc strong { color: var(--white); font-weight: 400; }
+._cc {
+width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+}
+._ec { display: flex; flex-direction: column; gap: 20px; }
+._fc {
+display: flex; gap: 20px; align-items: flex-start;
+padding: 20px; border: 1px solid rgba(139,37,0,0.06);
+transition: border-color 0.4s;
+}
+._fc:hover { border-color: rgba(139,37,0,0.2); }
+._gc {
+font-family: var(--font-serif); font-size: 1.4rem;
+color: var(--accent); opacity: 0.5; flex-shrink: 0;
+line-height: 1.2;
+}
+._hc h4 {
+font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+font-weight: 400; margin-bottom: 4px;
+}
+._hc p {
+font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+}
+/* SERVICES */
+._ic { background: var(--black); }
+._jc {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1px; max-width: 1400px; margin: 60px auto 0;
+}
+._kc {
+padding: 60px 48px; background: var(--black);
+border: 1px solid rgba(139,37,0,0.07);
+position: relative; overflow: hidden;
+transition: background 0.5s, border-color 0.5s;
+background-size: cover; background-position: center;
+}
+._kc::after {
+content: ''; position: absolute; inset: 0;
+background: linear-gradient(180deg, rgba(12,8,6,0.92) 0%, rgba(12,8,6,0.85) 100%);
+z-index: 0; transition: background 0.5s;
+}
+._kc:hover::after { background: linear-gradient(180deg, rgba(32,26,22,0.88) 0%, rgba(32,26,22,0.8) 100%); }
+._kc > * { position: relative; z-index: 1; }
+._kc:hover { border-color: rgba(139,37,0,0.2); }
+._mc {
+width: 52px; height: 52px; margin-bottom: 36px;
+display: flex; align-items: center; justify-content: center;
+border: 1px solid rgba(139,37,0,0.2); color: var(--accent);
+}
+._kc h3 {
+font-family: var(--font-serif); font-size: 1.7rem;
+font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+}
+._kc p {
+font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+font-weight: 300;
+}
+._nc {
+display: inline-flex; align-items: center; gap: 10px;
+margin-top: 32px; text-decoration: none;
+font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: rgba(139,37,0,0.5); transition: color 0.3s, gap 0.3s;
+}
+._nc:hover { color: var(--accent); gap: 16px; }
+._lc {
+position: absolute; top: 30px; right: 36px;
+font-family: var(--font-serif); font-size: 5rem;
+font-weight: 300; color: rgba(139,37,0,0.05);
+line-height: 1; transition: color 0.5s;
+}
+._kc:hover ._lc { color: rgba(139,37,0,0.1); }
+/* CARTA SECTIONS */
+._oc {
+padding: 140px 60px;
+background: var(--carbon);
+border-top: 1px solid rgba(139,37,0,0.08);
+}
+._oc:nth-child(even) { background: var(--black); }
+._oc ._pc {
+max-width: 1200px; margin: 0 auto;
+}
+._qc {
+display: inline-flex; align-items: center; gap: 8px;
+text-decoration: none; color: var(--accent);
+font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+margin-bottom: 40px; transition: gap 0.3s;
+}
+._qc:hover { gap: 14px; }
+._rc {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 80px; margin-top: 60px;
+}
+._sc { margin-bottom: 48px; }
+._sc h4 {
+font-family: var(--font-serif); font-size: 1.3rem;
+font-weight: 400; color: var(--white);
+padding-bottom: 16px; margin-bottom: 24px;
+border-bottom: 1px solid rgba(139,37,0,0.15);
+}
+._tc {
+display: flex; justify-content: space-between;
+align-items: baseline; padding: 12px 0;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+._tc:last-child { border-bottom: none; }
+._uc {
+font-size: 0.92rem; font-weight: 400; color: var(--white);
+flex: 1;
+}
+._vc {
+font-size: 0.78rem; color: var(--text-muted);
+font-weight: 300; margin-top: 2px;
+}
+._wc {
+font-family: var(--font-serif); font-size: 1rem;
+color: var(--accent); white-space: nowrap;
+margin-left: 20px; font-weight: 400;
+}
+._xc {
+background: var(--carbon-mid); border: 1px solid rgba(139,37,0,0.1);
+padding: 40px; margin-top: 40px;
+}
+._xc h4 {
+font-family: var(--font-serif); font-size: 1.1rem;
+font-weight: 400; color: var(--accent); margin-bottom: 16px;
+}
+._xc p {
+font-size: 0.88rem; color: var(--text-muted);
+line-height: 1.75; font-weight: 300;
+}
+._yc {
+display: inline-flex; align-items: center; gap: 12px;
+margin-top: 48px; text-decoration: none;
+padding: 18px 40px; border: 1px solid var(--accent);
+color: var(--white); font-size: 0.72rem;
+letter-spacing: 0.2em; text-transform: uppercase;
+transition: background 0.4s, gap 0.3s;
+}
+._yc:hover { background: var(--accent); gap: 18px; }
+@media (max-width: 768px) {
+._oc { padding: 80px 24px; }
+._rc { grid-template-columns: 1fr; gap: 40px; }
+}
+/* TESTIMONIALS */
+._zc {
+background: var(--carbon); position: relative; overflow: hidden;
+}
+._zc::before {
+content: '"'; position: absolute; top: -60px; left: 40px;
+font-family: var(--font-serif); font-size: 30rem;
+color: rgba(139,37,0,0.03); line-height: 1; pointer-events: none;
+}
+._ad { max-width: 1400px; margin: 0 auto; }
+._bd {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 2px; margin-top: 70px;
+}
+._cd {
+padding: 56px 44px; background: rgba(8,8,8,0.4);
+border: 1px solid rgba(139,37,0,0.07);
+transition: border-color 0.4s, background 0.4s;
+}
+._cd:hover { border-color: rgba(139,37,0,0.2); background: rgba(8,8,8,0.7); }
+._dd { display: flex; gap: 5px; margin-bottom: 28px; }
+.star {
+width: 12px; height: 12px; background: var(--accent);
+clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.star.empty { background: rgba(139,37,0,0.2); }
+._ed {
+font-family: var(--font-serif); font-size: 1.2rem;
+font-style: italic; font-weight: 300;
+line-height: 1.7; color: rgba(245,243,239,0.8);
+margin-bottom: 36px;
+}
+._fd {
+width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+}
+._gd strong {
+display: block; font-size: 0.82rem; font-weight: 500;
+letter-spacing: 0.08em; margin-bottom: 4px;
+}
+._gd span {
+font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+}
+/* HORARIO */
+._hd {
+background: var(--black);
+padding: 100px 60px;
+}
+._id {
+max-width: 900px; margin: 0 auto;
+display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+}
+._jd { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+._kd {
+display: flex; justify-content: space-between; align-items: center;
+padding: 14px 0;
+border-bottom: 1px solid rgba(139,37,0,0.08);
+font-size: 0.9rem;
+}
+._kd ._md { color: var(--white); font-weight: 400; }
+._kd ._nd { color: var(--text-muted); font-weight: 300; }
+._kd._ld ._md { color: var(--text-muted); }
+._kd._ld ._nd { color: rgba(139,37,0,0.5); font-style: italic; }
+/* CTA BANNER */
+._pd {
+background: var(--accent); padding: 110px 60px;
+display: flex; align-items: center; justify-content: space-between;
+gap: 60px; flex-wrap: wrap;
+}
+._qd { flex: 1; min-width: 300px; }
+._qd h2 {
+font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+font-weight: 300; color: var(--white); line-height: 1.1;
+}
+._qd p {
+font-size: 1rem; color: rgba(245,243,239,0.7); margin-top: 16px; font-weight: 300;
+}
+._rd {
+display: inline-flex; align-items: center; gap: 14px;
+background: var(--black); color: var(--white);
+text-decoration: none; padding: 20px 48px;
+font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 500; transition: all 0.35s var(--ease-smooth);
+white-space: nowrap; position: relative; overflow: hidden;
+}
+._rd::before {
+content: ''; position: absolute; inset: 0;
+background: var(--carbon-light); transform: translateX(-102%);
+transition: transform 0.4s var(--ease-out);
+}
+._rd:hover::before { transform: translateX(0); }
+._rd span { position: relative; z-index: 1; }
+/* MAPA */
+._od {
+width: 100%; height: 400px; position: relative;
+filter: grayscale(0.7) contrast(1.1);
+}
+._od iframe {
+width: 100%; height: 100%; border: 0;
+}
+/* FOOTER */
+footer {
+background: var(--black); padding: 90px 60px 50px;
+border-top: 1px solid rgba(139,37,0,0.08);
+}
+._sd {
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 60px; margin-bottom: 70px;
+}
+._td ._f {
+font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+}
+._ud {
+font-family: var(--font-serif); font-style: italic;
+font-size: 1.05rem; color: rgba(245,243,239,0.35);
+line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+}
+._vd { display: flex; gap: 14px; }
+._wd {
+width: 40px; height: 40px;
+border: 1px solid rgba(245,243,239,0.1);
+display: flex; align-items: center; justify-content: center;
+text-decoration: none; color: rgba(245,243,239,0.4);
+font-size: 0.75rem; letter-spacing: 0.1em;
+transition: border-color 0.3s, color 0.3s;
+}
+._wd:hover { border-color: var(--accent); color: var(--accent); }
+._xd h4 {
+font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+color: var(--accent); margin-bottom: 24px; font-weight: 500;
+}
+._xd ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+._xd ul a {
+text-decoration: none; color: rgba(245,243,239,0.4);
+font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
+}
+._xd ul a:hover { color: var(--white); }
+._yd {
+border-top: 1px solid rgba(245,243,239,0.06);
+padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
+}
+._zd {
+font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+}
+._ae { display: flex; gap: 28px; }
+._ae a {
+font-size: 0.72rem; color: rgba(245,243,239,0.2);
+text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+}
+._ae a:hover { color: var(--text-muted); }
+/* ANIMATIONS */
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+.reveal {
+opacity: 0; transform: translateY(36px);
+transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+/* LOADER */
+._a {
+position: fixed; inset: 0; z-index: 10000;
+background: var(--black); display: flex;
+align-items: center; justify-content: center;
+flex-direction: column; gap: 28px;
+transition: opacity 0.8s, visibility 0.8s;
+}
+._a.hidden { opacity: 0; visibility: hidden; }
+._b {
+font-family: var(--font-serif); font-size: 2.5rem;
+letter-spacing: 0.3em; color: var(--white);
+}
+._b span { color: var(--accent); }
+._c {
+width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+position: relative; overflow: hidden;
+}
+._c::after {
+content: ''; position: absolute; inset: 0;
+background: var(--accent); transform: translateX(-100%);
+animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+}
+@keyframes loadBar { to { transform: translateX(0); } }
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+nav { padding: 24px 36px; }
+nav.scrolled { padding: 16px 36px; }
+section { padding: 100px 36px; }
+._o { padding: 0 36px 80px; }
+._w { right: 36px; }
+._db { grid-template-columns: repeat(2, 1fr); }
+._sd { grid-template-columns: 1fr 1fr; gap: 48px; }
+._id { gap: 40px; }
+}
+@media (max-width: 768px) {
+body { cursor: auto; }
+._d, ._e { display: none; }
+._i { display: flex; }
+nav { padding: 20px 24px; }
+nav.scrolled { padding: 14px 24px; }
+._g { display: none; }
+section { padding: 80px 24px; }
+._o { padding: 0 24px 70px; }
+._w { display: none; }
+._s { flex-direction: column; align-items: flex-start; gap: 24px; }
+._jb { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+._nb { grid-template-columns: 1fr; }
+._ob:first-child { grid-column: 1; aspect-ratio: 4/3; }
+._wb { grid-template-columns: 1fr; }
+._xb { min-height: 300px; }
+._bc { padding: 60px 24px; }
+._jc { grid-template-columns: 1fr; }
+._bd { grid-template-columns: 1fr; }
+._pd { padding: 80px 24px; flex-direction: column; }
+._sd { grid-template-columns: 1fr; }
+._yd { flex-direction: column; gap: 20px; text-align: center; }
+._db { grid-template-columns: 1fr 1fr; }
+._cb { padding: 70px 24px; }
+._id { grid-template-columns: 1fr; gap: 40px; }
+._hd { padding: 70px 24px; }
+}
+</style><style>*{-webkit-user-select:none!important;-moz-user-select:none!important;-ms-user-select:none!important;user-select:none!important;}</style></head><body><div class="_a" id="loader"><div class="_b">Rio-Oja<span>.</span></div><div class="_c"></div></div><div class="_d" id="cursorDot"></div><div class="_e" id="cursorRing"></div><nav id="navbar"><a href="#" class="_f">Rio-Oja<span>.</span></a><ul class="_g"><li><a href="#servicios">Carta</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#opiniones">Opiniones</a></li><li><a href="#horario">Horario</a></li><li><a href="#contacto" class="_h">Reservar</a></li></ul><button class="_i" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav><div class="_j" id="mobileMenu"><a href="#servicios" onclick="closeMobile()">Carta</a><a href="#nosotros" onclick="closeMobile()">Nosotros</a><a href="#opiniones" onclick="closeMobile()">Opiniones</a><a href="#horario" onclick="closeMobile()">Horario</a><a href="#contacto" onclick="closeMobile()">Reservar</a></div><section class="_k"><div class="_l" id="heroBg"></div><div class="_m"></div><div class="_n"></div><div class="_o"><p class="_p">Casco Viejo de Bilbao · Desde siempre</p><h1 class="_q">
+Cocina vasca<br>de <em>toda</em><br>la vida
+</h1><p class="_r">
+Cazuelitas, bacalao al pil-pil, anchoas de Cantabria y los mejores pintxos del Casco Viejo. Producto fresco, porciones generosas y precios honestos.
+</p><div class="_s"><a href="tel:+34944150871" class="_t"><span>Reservar mesa</span><span>→</span></a><a href="#carta" class="_u"><span>Ver especialidades</span><div class="_v">↗</div></a></div></div><div class="_w"><span>Scroll</span><div class="_x"></div></div></section><div class="_y"><div class="_z"><span class="_ab"><span class="_bb"></span>Bacalao al Pil-Pil</span><span class="_ab"><span class="_bb"></span>Cazuelitas</span><span class="_ab"><span class="_bb"></span>Anchoas de Cantabria</span><span class="_ab"><span class="_bb"></span>Paella</span><span class="_ab"><span class="_bb"></span>Pintxos</span><span class="_ab"><span class="_bb"></span>Gambas a la Plancha</span><span class="_ab"><span class="_bb"></span>Bacalao al Pil-Pil</span><span class="_ab"><span class="_bb"></span>Cazuelitas</span><span class="_ab"><span class="_bb"></span>Anchoas de Cantabria</span><span class="_ab"><span class="_bb"></span>Paella</span><span class="_ab"><span class="_bb"></span>Pintxos</span><span class="_ab"><span class="_bb"></span>Gambas a la Plancha</span></div></div><div class="_cb"><div class="_db"><div class="_eb reveal"><div class="_fb"><span class="count" data-target="4734">0</span><span class="_gb">+</span></div><div class="_hb">Opiniones en Google</div></div><div class="_eb reveal reveal-delay-1"><div class="_fb"><span class="count" data-target="4">0</span><span class="_gb">.2</span></div><div class="_hb">Nota en Google</div></div><div class="_eb reveal reveal-delay-2"><div class="_fb"><span class="count" data-target="823">0</span><span class="_gb">+</span></div><div class="_hb">Opiniones en TripAdvisor</div></div><div class="_eb reveal reveal-delay-3"><div class="_fb"><span class="count" data-target="65">0</span><span class="_gb">+</span></div><div class="_hb">Años de historia</div></div></div></div><section class="_ib" id="carta"><div class="_jb"><div><p class="_kb reveal">Nuestras especialidades</p><h2 class="_lb reveal reveal-delay-1">Sabores que<br><em>enamoran</em></h2></div><a href="#contacto" class="_mb reveal">Reservar mesa →</a></div><div class="_nb"><div class="_ob"><div class="_pb" style="background: url('https://www.macarfi.com/storage/restaurants/2782/rio-oja-1.jpg') center/cover no-repeat, linear-gradient(135deg, #1a1210, #2e1f18);"></div><div class="_qb"></div><div class="_rb">↗</div><div class="_sb"><p class="_tb">Estrella · Tradicion</p><h3 class="_ub">Bacalao al Pil-Pil</h3><p class="_vb">Receta tradicional vasca · Producto de lonja</p></div></div><div class="_ob"><div class="_pb" style="background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/DSC05986.jpg') center/cover no-repeat, linear-gradient(165deg, #1a1210, #2e1f18);"></div><div class="_qb"></div><div class="_rb">↗</div><div class="_sb"><p class="_tb">Cazuelitas · Pintxos</p><h3 class="_ub">Cazuelitas del dia</h3><p class="_vb">Elaboracion diaria · Producto fresco de mercado</p></div></div><div class="_ob"><div class="_pb" style="background: url('https://www.macarfi.com/storage/restaurants/2782/rio-oja-2.jpg') center/cover no-repeat, linear-gradient(195deg, #1a1210, #2e1f18);"></div><div class="_qb"></div><div class="_rb">↗</div><div class="_sb"><p class="_tb">Premium · Cantabria</p><h3 class="_ub">Anchoas de Cantabria</h3><p class="_vb">Seleccion artesanal · Aceite de oliva virgen</p></div></div><div class="_ob"><div class="_pb" style="background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/DSC05993.jpg') center/cover no-repeat, linear-gradient(225deg, #1a1210, #2e1f18);"></div><div class="_qb"></div><div class="_rb">↗</div><div class="_sb"><p class="_tb">Mar · Plancha</p><h3 class="_ub">Gambas y Rodaballo</h3><p class="_vb">Pescado fresco del dia · Cocinado a la perfeccion</p></div></div></div></section><div class="_wb" id="nosotros"><div class="_xb"><div class="_yb"><div class="_zb">1959</div><div class="_ac">Cocina vasca con alma desde hace mas de 65 años</div></div></div><div class="_bc"><p class="_kb reveal">Sobre Rio-Oja</p><h2 class="_lb reveal reveal-delay-1">
+Donde comen<br>los <em>bilbainos</em></h2><div class="_cc reveal"></div><p class="_dc reveal reveal-delay-2">
+Todo empezo en 1959, cuando <strong>Jose Mari y Carmen</strong> abrieron un pequeno bar en la calle Txakur del Casco Viejo. El no sabia de negocios, pero ella cocinaba un bacalao al pil-pil que dejaba sin palabras a cualquiera. Empezaron sirviendo cazuelitas en la barra a los trabajadores del muelle, y poco a poco el boca a boca hizo el resto.<br><br>En los anos 70, su hijo <strong>Patxi</strong> tomo el relevo. Mantuvo las recetas de su madre y anadio las anchoas de Cantabria y el rodaballo a la plancha que hoy son clasicos de la casa. Nunca quiso cambiar la esencia: <strong>producto fresco del mercado, porciones generosas y precios honestos</strong>.<br><br>Hoy, tres generaciones despues, Rio-Oja sigue siendo lo que siempre fue: el sitio donde los bilbainos van a comer de verdad. Sin modas, sin artificios. <strong>Solo buena cocina vasca con alma.</strong>
+</p><div class="_ec reveal reveal-delay-3"><div class="_fc"><div class="_gc">01</div><div class="_hc"><h4>Producto fresco del dia</h4><p>Pescado de lonja, carne de caserio y verduras de temporada. Cada dia, lo mejor del mercado</p></div></div><div class="_fc"><div class="_gc">02</div><div class="_hc"><h4>Recetas tradicionales</h4><p>Bacalao al pil-pil, tortilla de bacalao, cazuelitas... La cocina que ha hecho grande a Euskadi</p></div></div><div class="_fc"><div class="_gc">03</div><div class="_hc"><h4>Precios honestos</h4><p>Porciones generosas a precios razonables. Calidad sin sorpresas en la cuenta</p></div></div></div></div></div><section class="_ic" id="servicios"><div style="max-width:1400px; margin:0 auto"><p class="_kb reveal">Lo que ofrecemos</p><h2 class="_lb reveal reveal-delay-1" style="max-width:560px">
+Cocina vasca para <em>disfrutar</em></h2><div class="_jc"><div class="_kc reveal" style="background-image: url('https://www.macarfi.com/storage/restaurants/2782/rio-oja-3.jpg');"><div class="_lc">01</div><div class="_mc"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></div><h3>Menu del Dia</h3><p>Primer plato, segundo, postre y bebida. Elaborado con producto fresco de temporada. La mejor relacion calidad-precio del Casco Viejo.</p><a href="#carta-cazuelitas" class="_nc">Ver cazuelitas →</a></div><div class="_kc reveal reveal-delay-1" style="background-image: url('https://www.macarfi.com/storage/restaurants/2782/rio-oja-4.jpg');"><div class="_lc">02</div><div class="_mc"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Carta de Especialidades</h3><p>Bacalao al pil-pil, cazuelitas, gambas a la plancha, rodaballo, anchoas de Cantabria. Lo mejor de la cocina vasca y cantabrica.</p><a href="#carta-especialidades" class="_nc">Ver carta →</a></div><div class="_kc reveal reveal-delay-2" style="background-image: url('https://www.macarfi.com/storage/restaurants/2782/rio-oja-5.jpg');"><div class="_lc">03</div><div class="_mc"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div><h3>Grupos y Celebraciones</h3><p>Comidas de empresa, celebraciones familiares, grupos de amigos. Menus cerrados adaptados a tus necesidades y presupuesto.</p><a href="#carta-grupos" class="_nc">Mas info →</a></div></div></div></section><section class="_oc" id="carta-cazuelitas"><div class="_pc"><a href="#servicios" class="_qc reveal">← Volver a carta</a><p class="_kb reveal">Nuestras cazuelitas</p><h2 class="_lb reveal reveal-delay-1" style="max-width:600px">
+Platos de cuchara<br>con <em>alma vasca</em></h2><div class="_rc"><div><div class="_sc reveal"><h4>Pescados y mariscos</h4><div class="_tc"><div><div class="_uc">Bacalao al Pil-Pil</div><div class="_vc">En las cuatro salsas tradicionales vascas</div></div><div class="_wc">12,00 €</div></div><div class="_tc"><div><div class="_uc">Chipirones en su tinta</div></div><div class="_wc">11,00 €</div></div><div class="_tc"><div><div class="_uc">Anchoas a la cazuela</div></div><div class="_wc">9,00 €</div></div><div class="_tc"><div><div class="_uc">Mejillones con tomate</div></div><div class="_wc">7,50 €</div></div><div class="_tc"><div><div class="_uc">Caracoles</div></div><div class="_wc">10,00 €</div></div></div></div><div><div class="_sc reveal reveal-delay-1"><h4>Carnes y guisos</h4><div class="_tc"><div><div class="_uc">Carrilleras de cerdo iberico</div></div><div class="_wc">12,00 €</div></div><div class="_tc"><div><div class="_uc">Cordero guisado</div></div><div class="_wc">9,00 €</div></div><div class="_tc"><div><div class="_uc">Ternera guisada</div></div><div class="_wc">8,50 €</div></div><div class="_tc"><div><div class="_uc">Albondigas</div></div><div class="_wc">8,50 €</div></div><div class="_tc"><div><div class="_uc">Conejo</div></div><div class="_wc">8,50 €</div></div><div class="_tc"><div><div class="_uc">Codornices (2 ud.)</div></div><div class="_wc">12,00 €</div></div></div></div></div><div class="_rc" style="margin-top: 0"><div><div class="_sc reveal"><h4>Casqueria tradicional</h4><div class="_tc"><div><div class="_uc">Callos</div></div><div class="_wc">9,00 €</div></div><div class="_tc"><div><div class="_uc">Morros</div></div><div class="_wc">9,00 €</div></div><div class="_tc"><div><div class="_uc">Patas</div></div><div class="_wc">9,00 €</div></div><div class="_tc"><div><div class="_uc">Asadurilla</div></div><div class="_wc">9,00 €</div></div></div></div><div><div class="_sc reveal reveal-delay-1"><h4>Vegetales</h4><div class="_tc"><div><div class="_uc">Champinones en salsa</div></div><div class="_wc">7,00 €</div></div><div class="_tc"><div><div class="_uc">Pimientos rellenos de carne</div></div><div class="_wc">—</div></div></div><div class="_xc reveal reveal-delay-2"><h4>Las cuatro salsas vascas</h4><p>Pil-pil, negra (tinta), vizcaina y verde. Nuestro bacalao se prepara en cualquiera de las cuatro salsas tradicionales de la cocina vasca.</p></div></div></div><a href="tel:+34944150871" class="_yc reveal"><span>Reservar mesa</span><span>→</span></a></div></section><section class="_oc" id="carta-especialidades"><div class="_pc"><a href="#servicios" class="_qc reveal">← Volver a carta</a><p class="_kb reveal">Carta completa</p><h2 class="_lb reveal reveal-delay-1" style="max-width:600px">
+Especialidades de la <em>casa</em></h2><div class="_rc"><div><div class="_sc reveal"><h4>Entrantes</h4><div class="_tc"><div><div class="_uc">Croquetas caseras de jamon</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Ensalada rusa</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Ensalada de bonito con tomate</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Tortilla de bacalao</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Pimientos de padron</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Esparragos blancos</div></div><div class="_wc">—</div></div></div><div class="_sc reveal"><h4>Pescados</h4><div class="_tc"><div><div class="_uc">Sopa de pescado</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Pastel de cabracho</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Gambas a la plancha</div></div><div class="_wc">~14,00 €</div></div><div class="_tc"><div><div class="_uc">Almejas en salsa verde</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Sardinas en aceite y ajo</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Lubina</div></div><div class="_wc">—</div></div></div></div><div><div class="_sc reveal reveal-delay-1"><h4>Carnes</h4><div class="_tc"><div><div class="_uc">Entrecot con patatas y pimientos</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Rabo de toro</div></div><div class="_wc">—</div></div></div><div class="_sc reveal reveal-delay-1"><h4>Postres caseros</h4><div class="_tc"><div><div class="_uc">Tarta de queso</div><div class="_vc">Nuestra especialidad — favorita de los clientes</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Arroz con leche</div></div><div class="_wc">—</div></div><div class="_tc"><div><div class="_uc">Natillas caseras</div></div><div class="_wc">—</div></div></div><div class="_xc reveal reveal-delay-2"><h4>Precios orientativos</h4><p>Comida media por persona: ~25 € sin bebidas. Vino por copa desde 1,00 €. Botella desde ~10 €. Cubierto de pan: 0,80 €/persona. Precios sujetos a temporada y disponibilidad.</p></div></div></div><a href="tel:+34944150871" class="_yc reveal"><span>Reservar mesa</span><span>→</span></a></div></section><section class="_oc" id="carta-grupos"><div class="_pc"><a href="#servicios" class="_qc reveal">← Volver a carta</a><p class="_kb reveal">Eventos y grupos</p><h2 class="_lb reveal reveal-delay-1" style="max-width:600px">
+Celebra con <em>nosotros</em></h2><div class="_rc"><div><div class="_sc reveal"><h4>Nuestro espacio</h4><div class="_tc"><div><div class="_uc">Barra con cazuelitas</div><div class="_vc">El corazon del restaurante, donde se ven los platos del dia</div></div></div><div class="_tc"><div><div class="_uc">Comedor principal</div><div class="_vc">Ambiente clasico y acogedor, ideal para grupos medianos</div></div></div><div class="_tc"><div><div class="_uc">Reservado privado</div><div class="_vc">Sala independiente para celebraciones e intimidad</div></div></div></div><div class="_xc reveal reveal-delay-1"><h4>Menus cerrados bajo peticion</h4><p>Adaptamos nuestro menu a las necesidades de tu grupo. Comidas de empresa, cumpleanos, reuniones familiares, comuniones. Desde 20 €/persona con bebidas incluidas. Consulta disponibilidad llamando al restaurante.</p></div></div><div><div class="_sc reveal reveal-delay-1"><h4>Tipo de eventos</h4><div class="_tc"><div><div class="_uc">Comidas de empresa</div><div class="_vc">Menu cerrado con opciones personalizables</div></div></div><div class="_tc"><div><div class="_uc">Celebraciones familiares</div><div class="_vc">Comuniones, bautizos, aniversarios</div></div></div><div class="_tc"><div><div class="_uc">Grupos de amigos</div><div class="_vc">Cazuelitas para compartir con ambiente autentico</div></div></div><div class="_tc"><div><div class="_uc">Bodas intimas</div><div class="_vc">Reservado completo para celebraciones reducidas</div></div></div></div><div class="_xc reveal reveal-delay-2"><h4>Reserva con antelacion</h4><p>Para grupos de mas de 8 personas recomendamos reservar con al menos 3 dias de antelacion. Podemos adaptar el menu a alergias e intolerancias.</p></div></div></div><a href="tel:+34944150871" class="_yc reveal"><span>Llamar para reservar</span><span>→</span></a></div></section><section class="_zc" id="opiniones"><div class="_ad"><p class="_kb reveal">Opiniones reales</p><h2 class="_lb reveal reveal-delay-1">
+Lo que dicen<br>nuestros <em>clientes</em></h2><div class="_bd"><div class="_cd reveal"><div class="_dd"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="_ed">"Las gambas a la plancha fueron las mejores que he probado en mi vida. El rodaballo cocinado a la perfeccion. Sitio imprescindible en Bilbao."</p><div class="_fd"></div><div class="_gd"><strong>Julio B.</strong><span>TripAdvisor · Marzo 2026</span></div></div><div class="_cd reveal reveal-delay-1"><div class="_dd"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star empty"></div></div><p class="_ed">"Lugar simple frecuentado por locales. La sopa de pescado, las sardinas con pimiento rojo y el arroz con leche estaban deliciosos. Muy autentico."</p><div class="_fd"></div><div class="_gd"><strong>OBKB</strong><span>TripAdvisor · Febrero 2026</span></div></div><div class="_cd reveal reveal-delay-2"><div class="_dd"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="_ed">"Lugar tipico con comida bien elaborada de maxima calidad. La tortilla de bacalao y la ensalada de bonito son una maravilla. Repetiremos seguro."</p><div class="_fd"></div><div class="_gd"><strong>Patricia</strong><span>TripAdvisor · Noviembre 2025</span></div></div></div></div></section><section class="_hd" id="horario"><div class="_id"><div><p class="_kb reveal">Horario</p><h2 class="_lb reveal reveal-delay-1">Cuando<br><em>visitarnos</em></h2><div class="_jd reveal reveal-delay-2"><div class="_kd _ld"><span class="_md">Lunes</span><span class="_nd">Cerrado</span></div><div class="_kd"><span class="_md">Martes</span><span class="_nd">09:00 — 23:00</span></div><div class="_kd"><span class="_md">Miercoles</span><span class="_nd">09:00 — 23:00</span></div><div class="_kd"><span class="_md">Jueves</span><span class="_nd">09:00 — 23:00</span></div><div class="_kd"><span class="_md">Viernes</span><span class="_nd">09:00 — 23:00</span></div><div class="_kd"><span class="_md">Sabado</span><span class="_nd">09:00 — 23:00</span></div><div class="_kd"><span class="_md">Domingo</span><span class="_nd">09:00 — 23:00</span></div></div></div><div><p class="_kb reveal">Ubicacion</p><h2 class="_lb reveal reveal-delay-1">Como<br><em>llegar</em></h2><p class="_dc reveal reveal-delay-2" style="margin: 24px 0"><strong>Txakur Kalea, 4</strong><br>
+48005 Bilbao, Bizkaia<br><br>
+En pleno Casco Viejo, a pocos pasos de la Catedral de Santiago y las Siete Calles. Facil acceso en metro (parada Casco Viejo) y tranvia.
+</p><a href="tel:+34944150871" class="_t reveal reveal-delay-3" style="margin-top: 20px;"><span>944 15 08 71</span><span>→</span></a></div></div></section><div class="_od"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.123!2d-2.9234!3d43.2569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDE1JzI0LjgiTiAywrA1NScyNC4wIlc!5e0!3m2!1ses!2ses" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><div class="_pd" id="contacto"><div class="_qd"><h2>Ven a probar la mejor<br>cocina vasca del Casco Viejo</h2><p>Reserva tu mesa y disfruta de producto fresco, porciones generosas y precios honestos.</p></div><a href="tel:+34944150871" class="_rd"><span>Llamar al 944 15 08 71</span><span>↗</span></a></div><footer><div class="_sd"><div class="_td"><a href="#" class="_f">Rio-Oja<span>.</span></a><p class="_ud">"Cocina vasca de toda la vida en el corazon del Casco Viejo de Bilbao."</p><div class="_vd"><a href="#" class="_wd">Fb</a><a href="#" class="_wd">Ig</a><a href="#" class="_wd">Gm</a><a href="#" class="_wd">Wa</a></div></div><div class="_xd"><h4>Carta</h4><ul><li><a href="#carta-cazuelitas">Cazuelitas</a></li><li><a href="#carta-especialidades">Especialidades</a></li><li><a href="#carta-especialidades">Postres</a></li><li><a href="#carta-grupos">Grupos</a></li></ul></div><div class="_xd"><h4>Restaurante</h4><ul><li><a href="#nosotros">Sobre nosotros</a></li><li><a href="#opiniones">Opiniones</a></li><li><a href="#horario">Horario</a></li><li><a href="#contacto">Reservas</a></li></ul></div><div class="_xd"><h4>Contacto</h4><ul><li><a href="tel:+34944150871">944 15 08 71</a></li><li><a href="#">Txakur Kalea, 4</a></li><li><a href="#">48005 Bilbao</a></li></ul></div></div><div class="_yd"><p class="_zd">&copy; 2026 Rio-Oja Restaurante. Todos los derechos reservados.</p><div class="_ae"><a href="#">Politica de Privacidad</a><a href="#">Aviso Legal</a><a href="#">Cookies</a></div></div></footer><script>
+// LOADER
+window.addEventListener('load', () => {
+setTimeout(() => {
+document.getElementById('loader').classList.add('hidden');
+document.getElementById('heroBg').classList.add('loaded');
+}, 1800);
+});
+// CUSTOM CURSOR
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+mouseX = e.clientX; mouseY = e.clientY;
+dot.style.left = mouseX + 'px';
+dot.style.top = mouseY + 'px';
+});
+function animateRing() {
+ringX += (mouseX - ringX) * 0.7;
+ringY += (mouseY - ringY) * 0.7;
+ring.style.left = ringX + 'px';
+ring.style.top = ringY + 'px';
+requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, ._ob, ._kc, .stat-card').forEach(el => {
+el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+});
+// NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+// HAMBURGER MENU
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+});
+function closeMobile() {
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('open');
+}
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(el => observer.observe(el));
+// COUNTER ANIMATION
+function animateCount(el) {
+const target = parseInt(el.dataset.target);
+const duration = 1800;
+const start = performance.now();
+function step(now) {
+const progress = Math.min((now - start) / duration, 1);
+const ease = 1 - Math.pow(1 - progress, 4);
+el.textContent = Math.round(ease * target);
+if (progress < 1) requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+}
+const countObserver = new IntersectionObserver(entries => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+animateCount(e.target);
+countObserver.unobserve(e.target);
+}
+});
+}, { threshold: 0.5 });
+document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+// HERO PARALLAX
+window.addEventListener('scroll', () => {
+const heroBg = document.getElementById('heroBg');
+if (heroBg) {
+const scrolled = window.scrollY;
+heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
+}
+});
+</script><script>
+(function(){
+// Disable right-click
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+// Disable text selection
+document.addEventListener('selectstart',function(e){e.preventDefault();});
+// Disable copy
+document.addEventListener('copy',function(e){e.preventDefault();});
+// Disable keyboard shortcuts (Ctrl+U, Ctrl+S, Ctrl+Shift+I, F12)
+document.addEventListener('keydown',function(e){
+if(e.key==='F12'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.key==='s')||(e.ctrlKey&&e.shiftKey&&e.key==='I')){
+e.preventDefault();
+}
+});
+// Watermark
+var w=document.createElement('div');
+w.style.cssText='position:fixed;bottom:-100px;right:-100px;opacity:0.001;font-size:1px;pointer-events:none;z-index:-1;';
+w.textContent='rio-oja-bilbao';
+document.body.appendChild(w);
+})();
+</script></body></html>
