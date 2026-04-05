@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galdakao Autoeskola — Tu carnet, nuestra pasión</title>
+  <meta name="description" content="Autoescuela en Galdakao. Permisos B, A1, A2, C, D, ADR, CAP, carretillas y grúas. Más de 25 años formando conductores en Bizkaia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0c1525;
+      --white: #f5f3ef;
+      --accent: #c4a067;
+      --accent-light: #d4b580;
+      --carbon: #101d30;
+      --carbon-mid: #152542;
+      --carbon-light: #1a2d4d;
+      --text-muted: #8899aa;
+      --font-serif: 'Oswald', sans-serif;
+      --font-sans: 'Barlow', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(196,160,103,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
+    }
+    .cursor-ring.expanded {
+      width: 70px; height: 70px;
+      border-color: rgba(196,160,103,0.7);
+      background: rgba(196,160,103,0.05);
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(12,21,37,0.9);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(196,160,103,0.12);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo img {
+      height: 42px; width: auto;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: rgba(245,243,239,0.65);
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: color 0.3s; font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+
+    /* ─── HAMBURGER MOBILE ─── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--black); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--white); font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0c1525 0%, #152542 40%, rgba(196,160,103,0.15) 100%);
+      background-size: cover; background-position: center;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(12,21,37,0.88) 0%, rgba(12,21,37,0.4) 50%, rgba(12,21,37,0.15) 100%);
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent); color: var(--black);
+      text-decoration: none; padding: 18px 40px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--white); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--black); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 100px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 70px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      border-top: 1px solid rgba(196,160,103,0.12);
+      border-bottom: 1px solid rgba(196,160,103,0.12);
+      overflow: hidden; padding: 20px 0; background: var(--carbon);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
+    }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 130px 60px; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(196,160,103,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
+    .stat-card {
+      padding: 60px 50px; background: var(--carbon);
+      border: 1px solid rgba(196,160,103,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.5s var(--ease-out); transform-origin: left;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(196,160,103,0.3); }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
+    }
+
+    /* ─── GALLERY / PERMISOS ─── */
+    .projects-section { background: var(--black); }
+    .projects-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .projects-header .section-title { max-width: 500px; }
+    .view-all {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(196,160,103,0.3);
+      white-space: nowrap;
+    }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
+    }
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
+    }
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+    }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,21,37,0.9) 0%, rgba(12,21,37,0.1) 60%, transparent 100%);
+      opacity: 0.6; transition: opacity 0.5s;
+    }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow {
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
+    }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+    .project-icon {
+      font-size: 3rem; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); opacity: 0.15;
+      z-index: 1;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0; max-width: none;
+    }
+    .about-visual {
+      position: relative; overflow: hidden; min-height: 700px;
+      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-badge {
+      position: absolute; bottom: 48px; left: 48px;
+      background: var(--black); border: 1px solid rgba(196,160,103,0.25);
+      padding: 24px 30px; max-width: 240px;
+    }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(196,160,103,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(196,160,103,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
+    .service-card {
+      padding: 60px 48px; background: var(--black);
+      border: 1px solid rgba(196,160,103,0.07);
+      position: relative; overflow: hidden;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(196,160,103,0.2); }
+    .service-icon {
+      width: 52px; height: 52px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(196,160,103,0.2); color: var(--accent);
+      font-size: 1.5rem;
+    }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.7rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(196,160,103,0.5); transition: color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number {
+      position: absolute; top: 30px; right: 36px;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(196,160,103,0.05);
+      line-height: 1; transition: color 0.5s;
+    }
+    .service-card:hover .service-number { color: rgba(196,160,103,0.1); }
+
+    /* ─── GOOGLE REVIEWS BADGE ─── */
+    .reviews-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+      padding: 100px 60px;
+    }
+    .reviews-section::before {
+      content: '★'; position: absolute; top: -40px; right: 60px;
+      font-size: 20rem; color: rgba(196,160,103,0.03); line-height: 1; pointer-events: none;
+    }
+    .reviews-inner { max-width: 1400px; margin: 0 auto; }
+    .google-badge {
+      display: flex; align-items: center; gap: 60px;
+      margin-top: 60px; padding: 60px;
+      background: rgba(12,21,37,0.6); border: 1px solid rgba(196,160,103,0.12);
+    }
+    .google-badge-score {
+      text-align: center; flex-shrink: 0;
+    }
+    .google-badge-number {
+      font-family: var(--font-serif); font-size: 5rem;
+      color: var(--accent); line-height: 1;
+    }
+    .google-badge-stars {
+      display: flex; gap: 6px; margin-top: 12px; justify-content: center;
+    }
+    .google-badge-stars .star {
+      width: 16px; height: 16px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .google-badge-count {
+      font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;
+      letter-spacing: 0.1em;
+    }
+    .google-badge-text {
+      flex: 1;
+    }
+    .google-badge-text h3 {
+      font-family: var(--font-serif); font-size: 2rem;
+      font-weight: 300; margin-bottom: 16px;
+    }
+    .google-badge-text p {
+      font-size: 1rem; color: rgba(245,243,239,0.55); line-height: 1.7;
+      font-weight: 300;
+    }
+    .google-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 24px; text-decoration: none;
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); transition: gap 0.3s;
+    }
+    .google-link:hover { gap: 18px; }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--accent); padding: 110px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
+    }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--black); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(12,21,37,0.65); margin-top: 16px; font-weight: 300;
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      white-space: nowrap; position: relative; overflow: hidden;
+    }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── MAP SECTION ─── */
+    .map-section {
+      background: var(--black); padding: 0;
+    }
+    .map-container {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+    .map-info {
+      padding: 80px 60px; display: flex; flex-direction: column; justify-content: center;
+      background: var(--carbon);
+    }
+    .map-info-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid rgba(196,160,103,0.08);
+    }
+    .map-info-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border: 1px solid rgba(196,160,103,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1.1rem;
+    }
+    .map-info-text h4 {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px; font-weight: 400;
+    }
+    .map-info-text p {
+      font-size: 0.92rem; color: rgba(245,243,239,0.6); font-weight: 300;
+    }
+    .map-info-text a {
+      color: rgba(245,243,239,0.6); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .map-info-text a:hover { color: var(--accent); }
+    .map-embed {
+      position: relative; min-height: 500px;
+    }
+    .map-embed iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(0.5) contrast(1.1);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(196,160,103,0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+    }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+    }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--text-muted); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
+    }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2rem;
+      letter-spacing: 0.2em; color: var(--white);
+    }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
+    @keyframes loadBar { to { transform: translateX(0); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .map-container { grid-template-columns: 1fr; }
+      .map-embed { min-height: 350px; }
+      .google-badge { flex-direction: column; text-align: center; gap: 30px; }
+    }
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+      .reviews-section { padding: 70px 24px; }
+      .google-badge { padding: 40px 24px; }
+      .map-info { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">GALDAKAO <span>AUTOESKOLA</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="https://galdakaoautoeskola.eus/wp-content/uploads/2020/09/galdakao-logo.png" alt="Galdakao Autoeskola" onerror="this.style.display='none'; this.parentElement.innerHTML='GALDAKAO<span>.</span>'">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#permisos">Permisos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#permisos" onclick="closeMobile()">Permisos</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Autoescuela en Galdakao · Desde 1998</p>
+    <h1 class="hero-title">
+      Tu carnet,<br>nuestra<br><em>pasion</em>
+    </h1>
+    <p class="hero-sub">
+      Permisos de coche, moto, camion, autobus, ADR y CAP. Formacion profesional y personalizada en el corazon de Galdakao.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:944561125" class="btn-primary">
+        <span>Llamar ahora</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Ver permisos</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Permiso B</span>
+    <span class="marquee-item"><span class="dot"></span>Moto A1 / A2 / A</span>
+    <span class="marquee-item"><span class="dot"></span>Camion C / C+E</span>
+    <span class="marquee-item"><span class="dot"></span>Autobus D / D+E</span>
+    <span class="marquee-item"><span class="dot"></span>ADR / CAP</span>
+    <span class="marquee-item"><span class="dot"></span>Carretillas</span>
+    <span class="marquee-item"><span class="dot"></span>Conduccion Segura</span>
+    <span class="marquee-item"><span class="dot"></span>Permiso B</span>
+    <span class="marquee-item"><span class="dot"></span>Moto A1 / A2 / A</span>
+    <span class="marquee-item"><span class="dot"></span>Camion C / C+E</span>
+    <span class="marquee-item"><span class="dot"></span>Autobus D / D+E</span>
+    <span class="marquee-item"><span class="dot"></span>ADR / CAP</span>
+    <span class="marquee-item"><span class="dot"></span>Carretillas</span>
+    <span class="marquee-item"><span class="dot"></span>Conduccion Segura</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="25">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="12">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Tipos de permiso</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div>
+      <div class="stat-label">Nota en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="25">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Resenas Google</div>
+    </div>
+  </div>
+</div>
+
+<!-- PERMISOS / GALLERY -->
+<section class="projects-section" id="permisos">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestros permisos</p>
+      <h2 class="section-title reveal reveal-delay-1">Todos los carnets<br>que <em>necesitas</em></h2>
+    </div>
+    <a href="#contacto" class="view-all reveal">Informate →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(196,160,103,0.15));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-icon">🚗</div>
+      <div class="project-info">
+        <p class="project-cat">Permiso · Coche</p>
+        <h3 class="project-name">Permiso B / B+E</h3>
+        <p class="project-meta">Coche · Remolque · Practicas incluidas</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(196,160,103,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-icon">🏍</div>
+      <div class="project-info">
+        <p class="project-cat">Permiso · Moto</p>
+        <h3 class="project-name">A1 / A2 / A / AM</h3>
+        <p class="project-meta">Ciclomotor · Moto ligera · Moto sin limites</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(196,160,103,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-icon">🚛</div>
+      <div class="project-info">
+        <p class="project-cat">Permiso · Profesional</p>
+        <h3 class="project-name">C / C+E / D / D+E</h3>
+        <p class="project-meta">Camion · Trailer · Autobus</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(196,160,103,0.12));"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-icon">⚠️</div>
+      <div class="project-info">
+        <p class="project-cat">Especial · Profesional</p>
+        <h3 class="project-name">ADR / CAP</h3>
+        <p class="project-meta">Mercancias peligrosas · Aptitud profesional</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <div class="about-badge">
+      <div class="about-badge-year">1998</div>
+      <div class="about-badge-text">Mas de 25 anos formando conductores en Galdakao</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Tu autoescuela<br>de <em>confianza</em>
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      Galdakao Autoeskola es una autoescuela de referencia en Bizkaia, con mas de 25 anos formando conductores.<br><br><strong>No somos una fabrica de carnets.</strong> Aqui cada alumno recibe atencion personalizada, con profesores que conocen cada rotonda, cada calle y cada reto del examen. Tu aprobado es nuestro compromiso.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Formacion personalizada</h4>
+          <p>Adaptamos las clases a tu ritmo. No avanzamos hasta que domines cada maniobra</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Profesores con experiencia</h4>
+          <p>Equipo de profesionales titulados que conocen las rutas de examen al detalle</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Todos los permisos</h4>
+          <p>Coche, moto, camion, autobus, ADR, CAP, carretillas y gruas. Todo en un solo centro</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios para <em>cada conductor</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">🚗</div>
+        <h3>Permiso de coche</h3>
+        <p>Permiso B y B+E. Clases teoricas y practicas con vehiculos modernos. Horarios flexibles adaptados a tu disponibilidad.</p>
+        <a href="#contacto" class="service-link">Informate →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">🏍</div>
+        <h3>Permisos de moto</h3>
+        <p>AM, A1, A2 y A. Desde ciclomotor hasta moto sin limitacion de potencia. Formacion practica en circuito y en via.</p>
+        <a href="#contacto" class="service-link">Informate →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">🚛</div>
+        <h3>Profesionales</h3>
+        <p>Permisos C, C+E, D, D+E para camion y autobus. Cursos ADR (mercancias peligrosas) y CAP (aptitud profesional).</p>
+        <a href="#contacto" class="service-link">Informate →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">🏗</div>
+        <h3>Carretillas y gruas</h3>
+        <p>Formacion para operadores de carretillas elevadoras y gruas. Certificacion oficial para entornos laborales e industriales.</p>
+        <a href="#contacto" class="service-link">Informate →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">🎯</div>
+        <h3>Conduccion segura</h3>
+        <p>Cursos especializados de conduccion segura y eficiente. Perfecciona tu tecnica y reduce el consumo de combustible.</p>
+        <a href="#contacto" class="service-link">Informate →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">📋</div>
+        <h3>Tests y resultados DGT</h3>
+        <p>Acceso a tests online para practicar el examen teorico. Consulta de resultados DGT y tests CAP desde nuestra plataforma.</p>
+        <a href="https://galdakaoautoeskola.eus/" class="service-link" target="_blank">Acceder →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-inner">
+    <p class="section-label reveal">Nuestros alumnos</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Puntuacion <em>perfecta</em><br>en Google
+    </h2>
+    <div class="google-badge reveal reveal-delay-2">
+      <div class="google-badge-score">
+        <div class="google-badge-number">5.0</div>
+        <div class="google-badge-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <div class="google-badge-count">25 resenas</div>
+      </div>
+      <div class="google-badge-text">
+        <h3>25 alumnos nos han dado la nota maxima</h3>
+        <p>No inventamos testimonios. Nuestra mejor publicidad son las 25 resenas con 5 estrellas que nuestros alumnos han dejado en Google Maps. Lee lo que opinan de nosotros directamente en Google.</p>
+        <a href="https://maps.google.com/?cid=1210901454778293652&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" class="google-link" target="_blank" rel="noopener">Ver resenas en Google →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <div class="cta-text">
+    <h2>¿Listo para<br>sacarte el carnet?</h2>
+    <p>Llamanos o escribenos. Primera consulta informativa gratuita.</p>
+  </div>
+  <a href="tel:944561125" class="btn-dark">
+    <span>944 56 11 25</span>
+    <span>↗</span>
+  </a>
+</div>
+
+<!-- MAP + CONTACT -->
+<div class="map-section">
+  <div class="map-container">
+    <div class="map-info">
+      <p class="section-label reveal">Donde estamos</p>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+      <div class="map-info-item reveal">
+        <div class="map-info-icon">📍</div>
+        <div class="map-info-text">
+          <h4>Direccion</h4>
+          <p>Santi Brouard Enparantza, 2<br>48960 Galdakao, Bizkaia</p>
+        </div>
+      </div>
+      <div class="map-info-item reveal reveal-delay-1">
+        <div class="map-info-icon">📞</div>
+        <div class="map-info-text">
+          <h4>Telefono</h4>
+          <p><a href="tel:944561125">944 56 11 25</a></p>
+        </div>
+      </div>
+      <div class="map-info-item reveal reveal-delay-2">
+        <div class="map-info-icon">✉</div>
+        <div class="map-info-text">
+          <h4>Email</h4>
+          <p><a href="mailto:info@galdakaoautoeskola.eus">info@galdakaoautoeskola.eus</a></p>
+        </div>
+      </div>
+      <div class="map-info-item reveal reveal-delay-3">
+        <div class="map-info-icon">🌐</div>
+        <div class="map-info-text">
+          <h4>Web</h4>
+          <p><a href="https://galdakaoautoeskola.eus/" target="_blank" rel="noopener">galdakaoautoeskola.eus</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2900.5!2d-2.8416!3d43.2316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x10cc7f8e4e3c7594!2sGaldakao%20Autoeskola!5e0!3m2!1ses!2ses!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">GALDAKAO<span>.</span></a>
+      <p class="footer-tagline">"Mas de 25 anos formando conductores seguros en Bizkaia."<br>— Galdakao Autoeskola</p>
+      <div class="footer-social">
+        <a href="https://maps.google.com/?cid=1210901454778293652" class="social-link" target="_blank" rel="noopener" title="Google Maps">Gm</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Permisos</h4>
+      <ul>
+        <li><a href="#permisos">Coche B / B+E</a></li>
+        <li><a href="#permisos">Moto A1 / A2 / A</a></li>
+        <li><a href="#permisos">Camion C / C+E</a></li>
+        <li><a href="#permisos">Autobus D / D+E</a></li>
+        <li><a href="#permisos">ADR / CAP</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Autoescuela</h4>
+      <ul>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="https://galdakaoautoeskola.eus/" target="_blank">Tests online</a></li>
+        <li><a href="https://galdakaoautoeskola.eus/" target="_blank">Resultados DGT</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:info@galdakaoautoeskola.eus">info@galdakaoautoeskola.eus</a></li>
+        <li><a href="tel:944561125">944 56 11 25</a></li>
+        <li><a href="https://maps.google.com/?cid=1210901454778293652" target="_blank">Santi Brouard Enparantza, 2<br>48960 Galdakao, Bizkaia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Galdakao Autoeskola. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Politica de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  // ── CUSTOM CURSOR
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
+    }
+  });
+</script>
+</body>
+</html>
