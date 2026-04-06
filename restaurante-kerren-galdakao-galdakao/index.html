@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurante Kerren Galdakao — Restaurante</title>
+  <title>Kerren — Restaurante en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
+      --black: #1a1a2e;
       --white: #f5f3ef;
-      --accent: #B45309;
-      --accent-light: #d97706;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
-      --text-muted: #9a8a7a;
+      --accent: #d4a373;
+      --accent-light: #e0b68a;
+      --carbon: #1e1e34;
+      --carbon-mid: #24243c;
+      --carbon-light: #2e2e48;
+      --text-muted: #9a95a8;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +37,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +50,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(180,83,9,0.4);
+      border: 1px solid rgba(212,163,115,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +59,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(180,83,9,0.7);
-      background: rgba(180,83,9,0.05);
+      border-color: rgba(212,163,115,0.7);
+      background: rgba(212,163,115,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,9 +73,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(26,26,46,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(180,83,9,0.08);
+      border-bottom: 1px solid rgba(212,163,115,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -105,7 +105,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* HAMBURGER MOBILE */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +129,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,7 +137,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0c0806 0%, #201a16 40%, #B4530922 100%);
+      background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400');
       background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
@@ -145,7 +145,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(26,26,46,0.92) 0%, rgba(26,26,46,0.5) 50%, rgba(26,26,46,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -240,10 +240,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* MARQUEE */
     .marquee-section {
-      border-top: 1px solid rgba(180,83,9,0.12);
-      border-bottom: 1px solid rgba(180,83,9,0.12);
+      border-top: 1px solid rgba(212,163,115,0.12);
+      border-bottom: 1px solid rgba(212,163,115,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -260,7 +260,7 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +276,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(212,163,115,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +288,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(180,83,9,0.08);
+      border: 1px solid rgba(212,163,115,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +298,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(180,83,9,0.3); }
+    .stat-card:hover { border-color: rgba(212,163,115,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +310,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
+    /* GALLERY */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +322,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(180,83,9,0.3);
+      border-bottom: 1px solid rgba(212,163,115,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,12 +342,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      background-size: cover; background-position: center;
     }
     .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(26,26,46,0.9) 0%, rgba(26,26,46,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -381,7 +381,7 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,11 +389,12 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+      background-image: url('https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800');
+      background-size: cover; background-position: center;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(180,83,9,0.25);
+      background: var(--black); border: 1px solid rgba(212,163,115,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -419,10 +420,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(180,83,9,0.06);
+      padding: 20px; border: 1px solid rgba(212,163,115,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(180,83,9,0.2); }
+    .about-value:hover { border-color: rgba(212,163,115,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +437,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +445,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(212,163,115,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(180,83,9,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(212,163,115,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(180,83,9,0.2); color: var(--accent);
+      border: 1px solid rgba(212,163,115,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,22 +467,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(180,83,9,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(212,163,115,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(180,83,9,0.05);
+      font-weight: 300; color: rgba(212,163,115,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(180,83,9,0.1); }
+    .service-card:hover .service-number { color: rgba(212,163,115,0.1); }
 
-    /* ─── CARTA SECTIONS ─── */
+    /* CARTA SECTIONS */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(212,163,115,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -503,7 +504,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(180,83,9,0.15);
+      border-bottom: 1px solid rgba(212,163,115,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -525,7 +526,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(180,83,9,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(212,163,115,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -550,14 +551,14 @@
       .carta-columns { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* ─── TESTIMONIALS ─── */
+    /* TESTIMONIALS */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
       content: '"'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
+      color: rgba(212,163,115,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -565,11 +566,11 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(180,83,9,0.07);
+      padding: 56px 44px; background: rgba(26,26,46,0.4);
+      border: 1px solid rgba(212,163,115,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(180,83,9,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(212,163,115,0.2); background: rgba(26,26,46,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -592,7 +593,7 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA BANNER */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -604,7 +605,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(26,26,46,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -622,10 +623,18 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* GOOGLE MAP */
+    .map-section {
+      width: 100%; height: 400px;
+      filter: grayscale(0.8) contrast(1.1);
+      border-top: 1px solid rgba(212,163,115,0.08);
+    }
+    .map-section iframe { width: 100%; height: 100%; border: 0; }
+
+    /* FOOTER */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(212,163,115,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -673,7 +682,7 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -685,7 +694,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* LOADER */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -710,7 +719,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -744,6 +753,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .map-section { height: 280px; }
     }
   </style>
 </head>
@@ -751,7 +761,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">RESTAURANTE KERREN G <span>.</span></div>
+  <div class="loader-logo">Kerren<span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -761,24 +771,24 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Restaurante Kerren Galdakao<span>.</span></a>
+  <a href="#" class="nav-logo">Kerren<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar</a>
 </div>
 
 <!-- HERO -->
@@ -787,15 +797,15 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Cocina Vasca · Parrilla · Galdakao</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      Sabor<br><em>vasco</em><br>de siempre
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Cocina vasca tradicional con producto de mercado, parrilla de brasa y pescados frescos. Mas de 20 anos haciendo de cada comida un momento especial en Galdakao.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
+      <a href="tel:+34944568814" class="btn-primary">
         <span>Reservar mesa</span>
         <span>→</span>
       </a>
@@ -814,18 +824,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Parrilla de Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Pescados Frescos</span>
+    <span class="marquee-item"><span class="dot"></span>Eventos y Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Bodega Seleccionada</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Parrilla de Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Pescados Frescos</span>
+    <span class="marquee-item"><span class="dot"></span>Eventos y Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Bodega Seleccionada</span>
   </div>
 </div>
 
@@ -833,20 +843,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
+      <div class="stat-number"><span class="count" data-target="321">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.2★</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos en Galdakao</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="6">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Especialidades</div>
     </div>
   </div>
 </div>
@@ -855,50 +865,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestro restaurante</p>
+      <h2 class="section-title reveal reveal-delay-1">Donde cada plato<br><em>cuenta una historia</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34944568814" class="view-all reveal">Reservar mesa →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Especialidad · Kerren</p>
+        <h3 class="project-name">Cocina vasca de autor</h3>
+        <p class="project-meta">Producto de mercado · Galdakao</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Parrilla · Brasa</p>
+        <h3 class="project-name">Carnes a la parrilla</h3>
+        <p class="project-meta">Txuleta · Chuleton · Entrecot</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Pescado · Fresco</p>
+        <h3 class="project-name">Pescados del dia</h3>
+        <p class="project-meta">Merluza · Rodaballo · Besugo</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Espacio · Ambiente</p>
+        <h3 class="project-name">Nuestro comedor</h3>
+        <p class="project-meta">Celebraciones · Grupos · Galdakao</p>
       </div>
     </div>
   </div>
@@ -908,39 +918,39 @@
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">+20</div>
+      <div class="about-badge-text">Anos de cocina vasca honesta en Galdakao</div>
     </div>
   </div>
   <div class="about-content">
-    <p class="section-label reveal">Sobre nosotros</p>
+    <p class="section-label reveal">Sobre Kerren</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Cocina vasca con<br><em>alma de siempre</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      Kerren es un restaurante de referencia en Galdakao donde la cocina vasca se vive con pasion por el producto y respeto a la tradicion. Mas de dos decadas cocinando para los nuestros.<br><br><strong>Del mercado a tu mesa.</strong> Trabajamos con proveedores locales para ofrecer siempre la mejor materia prima. Pescado fresco, carnes de primera y verduras de temporada.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Producto de calidad</h4>
+          <p>Materia prima seleccionada cada dia. Pescado de lonja, carne de proveedores de confianza</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Parrilla de brasa</h4>
+          <p>Nuestra parrilla es el corazon de la cocina. Txuletas, chuletas y pescados a la brasa</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
           <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <p>Seleccion de vinos para acompanar cada plato. Txakoli, Rioja y referencias nacionales</p>
         </div>
       </div>
     </div>
@@ -952,7 +962,7 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Cocina vasca para <em>cada ocasion</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -962,8 +972,8 @@
             <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
+        <h3>Cocina Vasca</h3>
+        <p>Platos tradicionales de la gastronomia vasca elaborados con producto fresco de mercado. Menu del dia completo con primero, segundo, postre y bebida.</p>
         <a href="#carta-principal" class="service-link">Ver carta →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
@@ -973,8 +983,8 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
+        <h3>Parrilla y Pescados</h3>
+        <p>Carnes a la brasa y pescados frescos del dia. Txuleta, chuleton, merluza a la plancha, rodaballo... La parrilla como protagonista.</p>
         <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
@@ -984,50 +994,75 @@
             <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Eventos y Bodega</h3>
+        <p>Celebraciones, comidas de empresa y reuniones familiares. Menus cerrados a medida y una bodega seleccionada para cada ocasion.</p>
+        <a href="#carta-grupos" class="service-link">Mas info →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
+<!-- CARTA: PRINCIPAL -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">Menu del dia</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Cocina vasca de <em>mercado</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Primeros platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Sopa de pescado casera</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pimientos del piquillo rellenos</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada de temporada</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Alubias rojas de Gernika</div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Segundos platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Merluza en salsa verde</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chuleton a la brasa</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Bacalao al pil-pil</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Carrilleras estofadas</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
+    <a href="tel:+34944568814" class="carta-cta reveal">
       <span>Reservar mesa</span><span>→</span>
     </a>
   </div>
@@ -1036,34 +1071,84 @@
 <!-- CARTA: ESPECIALIDADES -->
 <section class="carta-section" id="carta-especialidades">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">Parrilla y pescados</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Lo mejor de la <em>brasa</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Parrilla</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Txuleta de vaca vieja</div>
+              <div class="carta-item-desc">Minimo 2 personas · A la brasa</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chuleton de buey</div>
+              <div class="carta-item-desc">Punto al gusto · Pimientos de Gernika</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Entrecot a la brasa</div>
+              <div class="carta-item-desc">Con patatas fritas caseras</div>
+            </div>
+          </div>
         </div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Pescados del dia</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Merluza a la plancha</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Rodaballo al horno</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Besugo a la espalda</div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Postres caseros</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tarta de queso</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Arroz con leche</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pantxineta</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Goxua</div>
+            </div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Precios segun mercado</h4>
+          <p>Los precios de pescados y carnes a la brasa varian segun el peso y la disponibilidad del dia. Consultanos sin compromiso llamando al 944 568 814.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
+    <a href="tel:+34944568814" class="carta-cta reveal">
       <span>Reservar mesa</span><span>→</span>
     </a>
   </div>
@@ -1072,10 +1157,10 @@
 <!-- CARTA: GRUPOS -->
 <section class="carta-section" id="carta-grupos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
     <p class="section-label reveal">Eventos y grupos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
+      Celebra con <em>Kerren</em>
     </h2>
     <div class="carta-columns">
       <div>
@@ -1083,31 +1168,47 @@
           <h4>Nuestro espacio</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
+              <div class="carta-item-name">Comedor principal</div>
+              <div class="carta-item-desc">Ambiente acogedor para grupos y familias</div>
             </div>
           </div>
-          <!-- Repetir por cada espacio -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Zona de comedor privado</div>
+              <div class="carta-item-desc">Ideal para celebraciones y reuniones</div>
+            </div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <h4>Menus cerrados bajo peticion</h4>
+          <p>Preparamos menus a medida para tu evento. Comuniones, cumpleanos, comidas de empresa... Llamanos y lo organizamos juntos.</p>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
+          <h4>Tipos de eventos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menus adaptados a presupuesto</div>
             </div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Celebraciones familiares</div>
+              <div class="carta-item-desc">Comuniones, bautizos, cumpleanos</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Reuniones y cuadrillas</div>
+              <div class="carta-item-desc">Grupos con menu cerrado o carta</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
+    <a href="tel:+34944568814" class="carta-cta reveal">
       <span>Llamar para reservar</span><span>→</span>
     </a>
   </div>
@@ -1116,7 +1217,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones de Google</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1125,33 +1226,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"Un restaurante de toda la vida en Galdakao. La merluza en salsa verde esta espectacular y el trato es inmejorable. Siempre repetimos."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Inaki S.</strong>
+          <span>Google Reviews · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Las carnes a la parrilla son de las mejores de la zona. Producto de primera calidad y un ambiente muy agradable. Ideal para comer en familia."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Maite A.</strong>
+          <span>Google Reviews · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"Celebramos una comida de cuadrilla y todo perfecto. Menu abundante, buena calidad y precio razonable. El postre casero de 10. Volveremos seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Jon G.</strong>
+          <span>Google Reviews · Galdakao</span>
         </div>
       </div>
     </div>
@@ -1161,78 +1262,60 @@
 <!-- CTA -->
 <div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>Reserva tu mesa<br>en Kerren</h2>
+    <p>Llamanos y disfruta de la mejor cocina vasca en Galdakao.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
+  <a href="tel:+34944568814" class="btn-dark">
+    <span>944 568 814</span>
     <span>↗</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Santi Brouard Enparantza, 4, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34944568814" style="color: var(--accent,#0284C7);">944 56 88 14</a></p>
-      </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restaurante+Kerren+Galdakao,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- MAP -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Kerren+Restaurante,Galdakao&zoom=16" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Restaurante Kerren Galdakao<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <a href="#" class="nav-logo">Kerren<span>.</span></a>
+      <p class="footer-tagline">"Cocina vasca con alma de siempre. Mas de 20 anos en Galdakao."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.google.com/maps/search/Kerren+Restaurante,Galdakao" target="_blank" class="social-link">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-principal">Menu del dia</a></li>
+        <li><a href="#carta-especialidades">Parrilla</a></li>
+        <li><a href="#carta-especialidades">Pescados</a></li>
+        <li><a href="#carta-grupos">Eventos</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#carta-grupos">Eventos</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
-        <li><a href="tel:+34944568814">944 56 88 14</a></li>
-        <li><a href="#">Santi Brouard Enparantza, Galdakao</a></li>
+        <li><a href="tel:+34944568814">944 568 814</a></li>
+        <li><a href="https://www.google.com/maps/search/Kerren+Restaurante,Galdakao" target="_blank">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Restaurante Kerren Galdakao. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Kerren Restaurante. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1240,7 +1323,7 @@
 </footer>
 
 <script>
-  // ── LOADER
+  // LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1248,7 +1331,7 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
+  // CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1273,13 +1356,13 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
+  // NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
+  // HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1291,14 +1374,14 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
+  // REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
+  // COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1322,7 +1405,7 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
+  // HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
