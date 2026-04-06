@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arrien Taberna — Bar de Pintxos en Galdakao</title>
+  <title>Bar Arrien — Bar de Tapas en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #100c08;
+      --black: #0d1117;
       --white: #f5f3ef;
-      --accent: #C0623A;
-      --accent-light: #d88860;
-      --carbon: #1a1510;
-      --carbon-mid: #241e16;
-      --carbon-light: #332a1e;
-      --text-muted: #9a8a78;
+      --accent: #27ae60;
+      --accent-light: #2ecc71;
+      --carbon: #131a22;
+      --carbon-mid: #1a2332;
+      --carbon-light: #243040;
+      --text-muted: #7a8a98;
       --font-serif: 'Libre Baskerville', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,7 +50,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(192,98,58,0.4);
+      border: 1px solid rgba(39,174,96,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,8 +59,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(192,98,58,0.7);
-      background: rgba(192,98,58,0.05);
+      border-color: rgba(39,174,96,0.7);
+      background: rgba(39,174,96,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -73,9 +73,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(13,17,23,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(192,98,58,0.08);
+      border-bottom: 1px solid rgba(39,174,96,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -137,15 +137,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://img02.restaurantguru.com/ca98-Pub-and-bar-Arrien-taberna-interior.jpg');
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1400') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(13,17,23,0.88) 0%, rgba(13,17,23,0.4) 50%, rgba(13,17,23,0.15) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -240,32 +239,15 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── LOCATION BADGE (HERO) ─── */
-    .hero-location {
-      position: absolute; top: 40px; right: 60px; z-index: 3;
-      display: flex; align-items: center; gap: 8px;
-      opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
-    }
-    .location-badge {
-      background: rgba(8,8,8,0.7);
-      border: 1px solid rgba(192,98,58,0.3);
-      backdrop-filter: blur(12px);
-      padding: 10px 20px;
-      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(245,243,239,0.7);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .location-badge svg { color: var(--accent); flex-shrink: 0; }
-
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(192,98,58,0.12);
-      border-bottom: 1px solid rgba(192,98,58,0.12);
+      border-top: 1px solid rgba(39,174,96,0.12);
+      border-bottom: 1px solid rgba(39,174,96,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
       display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 24s linear infinite;
+      animation: marquee 22s linear infinite;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 30px;
@@ -297,15 +279,15 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(39,174,96,0.08);
     }
     .stats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(192,98,58,0.08);
+      border: 1px solid rgba(39,174,96,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -315,7 +297,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(192,98,58,0.3); }
+    .stat-card:hover { border-color: rgba(39,174,96,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -327,7 +309,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY ─── */
+    /* ─── GALLERY / PROJECTS ─── */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -339,7 +321,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(192,98,58,0.3);
+      border-bottom: 1px solid rgba(39,174,96,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -359,13 +341,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.8s var(--ease-out);
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      background-size: cover; background-position: center;
     }
-    .project-card:hover .project-img { transform: scale(1.06); }
+    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(13,17,23,0.9) 0%, rgba(13,17,23,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -399,26 +380,6 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── GALLERY PLACEHOLDER ─── */
-    .gallery-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 60%, rgba(192,98,58,0.12) 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 14px;
-    }
-    .gallery-placeholder-icon {
-      width: 48px; height: 48px;
-      border: 1px solid rgba(192,98,58,0.3);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); opacity: 0.6;
-    }
-    .gallery-placeholder-text {
-      font-family: var(--font-serif); font-style: italic;
-      font-size: 1.1rem; color: rgba(245,243,239,0.3);
-      letter-spacing: 0.05em; text-align: center; padding: 0 20px;
-    }
-
     /* ─── ABOUT ─── */
     .about-section {
       background: var(--carbon);
@@ -427,14 +388,11 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-    }
-    .about-visual img {
-      width: 100%; height: 100%; object-fit: cover;
-      display: block;
+      background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(192,98,58,0.25);
+      background: var(--black); border: 1px solid rgba(39,174,96,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -460,10 +418,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(192,98,58,0.06);
+      padding: 20px; border: 1px solid rgba(39,174,96,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(192,98,58,0.2); }
+    .about-value:hover { border-color: rgba(39,174,96,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -485,15 +443,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(192,98,58,0.07);
+      border: 1px solid rgba(39,174,96,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(192,98,58,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(39,174,96,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(192,98,58,0.2); color: var(--accent);
+      border: 1px solid rgba(39,174,96,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -507,25 +465,27 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(192,98,58,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(39,174,96,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(192,98,58,0.05);
+      font-weight: 300; color: rgba(39,174,96,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(192,98,58,0.1); }
+    .service-card:hover .service-number { color: rgba(39,174,96,0.1); }
 
-    /* ─── CARTA ─── */
+    /* ─── CARTA SECTIONS ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(39,174,96,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
-    .carta-section .section-inner { max-width: 1200px; margin: 0 auto; }
+    .carta-section .section-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
     .carta-back {
       display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none; color: var(--accent);
@@ -542,7 +502,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(192,98,58,0.15);
+      border-bottom: 1px solid rgba(39,174,96,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -564,7 +524,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(192,98,58,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(39,174,96,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -584,6 +544,10 @@
       transition: background 0.4s, gap 0.3s;
     }
     .carta-cta:hover { background: var(--accent); gap: 18px; }
+    @media (max-width: 768px) {
+      .carta-section { padding: 80px 24px; }
+      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
+    }
 
     /* ─── TESTIMONIALS ─── */
     .testimonials-section {
@@ -592,7 +556,7 @@
     .testimonials-section::before {
       content: '"'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(192,98,58,0.03); line-height: 1; pointer-events: none;
+      color: rgba(39,174,96,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -600,18 +564,14 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(192,98,58,0.07);
+      padding: 56px 44px; background: rgba(13,17,23,0.4);
+      border: 1px solid rgba(39,174,96,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(192,98,58,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(39,174,96,0.2); background: rgba(13,17,23,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    }
-    .star-half {
-      width: 12px; height: 12px; background: linear-gradient(to right, var(--accent) 60%, rgba(192,98,58,0.2) 60%);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .testimonial-quote {
@@ -631,47 +591,6 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── MAP SECTION ─── */
-    .map-section {
-      background: var(--black);
-      padding: 130px 60px;
-    }
-    .map-inner {
-      max-width: 1400px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.6fr;
-      gap: 80px; align-items: center;
-    }
-    .map-info { }
-    .map-detail {
-      display: flex; gap: 20px; align-items: flex-start;
-      padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .map-detail:last-child { border-bottom: none; }
-    .map-detail-icon {
-      width: 42px; height: 42px; flex-shrink: 0;
-      border: 1px solid rgba(192,98,58,0.2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent);
-    }
-    .map-detail-text h4 {
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 4px; font-weight: 500;
-    }
-    .map-detail-text p, .map-detail-text a {
-      font-size: 0.92rem; color: rgba(245,243,239,0.65);
-      font-weight: 300; text-decoration: none;
-      transition: color 0.3s;
-    }
-    .map-detail-text a:hover { color: var(--accent); }
-    .map-embed {
-      aspect-ratio: 16/10; overflow: hidden;
-      border: 1px solid rgba(192,98,58,0.1);
-      filter: grayscale(30%) contrast(1.05);
-    }
-    .map-embed iframe {
-      width: 100%; height: 100%; border: none; display: block;
-    }
-
     /* ─── CTA BANNER ─── */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
@@ -684,7 +603,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(13,17,23,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -702,10 +621,21 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── MAP ─── */
+    .map-section {
+      width: 100%; height: 400px;
+      filter: grayscale(1) brightness(0.7) contrast(1.1);
+      transition: filter 0.5s;
+    }
+    .map-section:hover { filter: grayscale(0.3) brightness(0.85); }
+    .map-section iframe {
+      width: 100%; height: 100%; border: none;
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(39,174,96,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -797,12 +727,8 @@
       section { padding: 100px 36px; }
       .hero-content { padding: 0 36px 80px; }
       .hero-scroll { right: 36px; }
-      .hero-location { right: 36px; top: 30px; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
-      .map-inner { grid-template-columns: 1fr; gap: 60px; }
-      .map-section { padding: 100px 36px; }
-      .carta-section { padding: 100px 36px; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -814,7 +740,6 @@
       section { padding: 80px 24px; }
       .hero-content { padding: 0 24px 70px; }
       .hero-scroll { display: none; }
-      .hero-location { display: none; }
       .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
       .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -827,10 +752,8 @@
       .cta-section { padding: 80px 24px; flex-direction: column; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-      .stats-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-      .carta-section { padding: 80px 24px; }
     }
   </style>
 </head>
@@ -850,22 +773,22 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Arrien<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#carta-principal">Carta</a></li>
-    <li><a href="#contacto" class="nav-cta">Llamar</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
-  <a href="#contacto" onclick="closeMobile()">Llamar</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
 <!-- HERO -->
@@ -873,33 +796,21 @@
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
-
-  <!-- Location badge -->
-  <div class="hero-location">
-    <div class="location-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-        <circle cx="12" cy="9" r="2.5"/>
-      </svg>
-      Galdakao
-    </div>
-  </div>
-
   <div class="hero-content">
-    <p class="hero-eyebrow">Pintxos · Tapas · Taberna</p>
+    <p class="hero-eyebrow">Pintxos · Raciones · Galdakao</p>
     <h1 class="hero-title">
-      Siempre recién<br>hechos, siempre<br><em>variados</em>
+      El bar de<br><em>toda la vida</em><br>en Galdakao
     </h1>
     <p class="hero-sub">
-      La taberna de barrio donde los pintxos se hacen al momento y la caña sabe mejor. Más de 25 años en el corazón de Galdakao.
+      Pintxos variados, raciones caseras y el mejor ambiente para disfrutar con los tuyos. Bar Arrien, donde cada visita sabe a casa.
     </p>
     <div class="hero-actions">
-      <a href="tel:944561076" class="btn-primary">
+      <a href="tel:+34944561076" class="btn-primary">
         <span>Llamar ahora</span>
         <span>→</span>
       </a>
-      <a href="#carta-principal" class="btn-ghost">
-        <span>Ver carta</span>
+      <a href="#servicios" class="btn-ghost">
+        <span>Ver servicios</span>
         <div class="btn-ghost-arrow">↗</div>
       </a>
     </div>
@@ -913,18 +824,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Pintxos Frescos</span>
-    <span class="marquee-item"><span class="dot"></span>Raciones de Temporada</span>
-    <span class="marquee-item"><span class="dot"></span>Tortilla Jugosa</span>
-    <span class="marquee-item"><span class="dot"></span>Cañas y Txakoli</span>
-    <span class="marquee-item"><span class="dot"></span>Bacalao al Pil-pil</span>
-    <span class="marquee-item"><span class="dot"></span>Ambiente de Taberna</span>
-    <span class="marquee-item"><span class="dot"></span>Pintxos Frescos</span>
-    <span class="marquee-item"><span class="dot"></span>Raciones de Temporada</span>
-    <span class="marquee-item"><span class="dot"></span>Tortilla Jugosa</span>
-    <span class="marquee-item"><span class="dot"></span>Cañas y Txakoli</span>
-    <span class="marquee-item"><span class="dot"></span>Bacalao al Pil-pil</span>
-    <span class="marquee-item"><span class="dot"></span>Ambiente de Taberna</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos Variados</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Txakoli</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
+    <span class="marquee-item"><span class="dot"></span>Deportes en Directo</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos Variados</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Txakoli</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
+    <span class="marquee-item"><span class="dot"></span>Deportes en Directo</span>
   </div>
 </div>
 
@@ -933,15 +844,19 @@
   <div class="stats-grid">
     <div class="stat-card reveal">
       <div class="stat-number"><span class="count" data-target="438">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reseñas en Google</div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count-decimal" data-target="4.3">0</span><span class="stat-suffix">★</span></div>
-      <div class="stat-label">Valoración media</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.3★</span></div>
+      <div class="stat-label">Nota en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="25">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de tradición</div>
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Pintxos en barra</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Ambiente Galdakao</div>
     </div>
   </div>
 </div>
@@ -950,57 +865,60 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestra taberna</p>
-      <h2 class="section-title reveal reveal-delay-1">Pintxos que te hacen<br><em>repetir siempre</em></h2>
+      <p class="section-label reveal">Nuestro espacio</p>
+      <h2 class="section-title reveal reveal-delay-1">Descubre<br><em>Bar Arrien</em></h2>
     </div>
-    <a href="tel:944561076" class="view-all reveal">Llamar →</a>
+    <a href="tel:+34944561076" class="view-all reveal">Reservar →</a>
   </div>
   <div class="projects-grid">
-    <!-- Card 1: wide — real food photo -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/c70c-Pub-and-bar-Arrien-taberna-food.jpg" alt="Comida en Arrien Taberna" loading="lazy">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Casa</p>
-        <h3 class="project-name">Pintxos de la Casa</h3>
-        <p class="project-meta">Recién hechos · Variados cada día</p>
+        <p class="project-cat">Ambiente · Interior</p>
+        <h3 class="project-name">Barra y Salon</h3>
+        <p class="project-meta">El corazon de Bar Arrien</p>
       </div>
     </div>
-    <!-- Card 2: placeholder -->
     <div class="project-card">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-          </svg>
-        </div>
-        <p class="gallery-placeholder-text">Ven a descubrirnos</p>
-      </div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1485686531765-ba63b07845a7?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Ambiente · Taberna</p>
-        <h3 class="project-name">El Bar de Siempre</h3>
-        <p class="project-meta">Ibaizabal Kalea, 52 · Galdakao</p>
+        <p class="project-cat">Especialidad · Pintxos</p>
+        <h3 class="project-name">Pintxos del Dia</h3>
+        <p class="project-meta">Variedad diaria en barra</p>
       </div>
     </div>
-    <!-- Card 3: placeholder -->
     <div class="project-card">
-      <div class="gallery-placeholder">
-        <div class="gallery-placeholder-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-          </svg>
-        </div>
-        <p class="gallery-placeholder-text">Tu mesa te espera</p>
-      </div>
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800');"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Grupo · Celebración</p>
-        <h3 class="project-name">Reserva tu espacio</h3>
-        <p class="project-meta">Llamar al 944 56 10 76</p>
+        <p class="project-cat">Raciones · Caseras</p>
+        <h3 class="project-name">Cocina de Siempre</h3>
+        <p class="project-meta">Raciones generosas y caseras</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800');"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Bebidas · Txakoli</p>
+        <h3 class="project-name">Txakoli y Canas</h3>
+        <p class="project-meta">Lo mejor para acompanar</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800');"></div>
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Terraza · Exterior</p>
+        <h3 class="project-name">Terraza al Aire Libre</h3>
+        <p class="project-meta">Disfruta del buen tiempo</p>
       </div>
     </div>
   </div>
@@ -1009,41 +927,40 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://img02.restaurantguru.com/cd4e-Pub-and-bar-Arrien-taberna-meals.jpg" alt="Pintxos frescos en Arrien Taberna" loading="lazy">
     <div class="about-badge">
       <div class="about-badge-year">4.3★</div>
-      <div class="about-badge-text">Valorado por más de 438 clientes</div>
+      <div class="about-badge-text">438 opiniones en Google</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que una barra,<br>un <em>trozo de Galdakao</em>
+      Mas que un bar,<br>un <em>punto de encuentro</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Arrien Taberna lleva más de 25 años siendo el punto de encuentro de Galdakao. Un local donde los pintxos siempre están recién hechos y la gente viene a quedarse.<br><br><strong>Sin prisas, sin pretensiones.</strong> Solo buena comida, buen ambiente y esa caña que sabe mejor cuando la acompañas con un pintxo de la casa.
+      Bar Arrien es el bar de referencia en Galdakao. Un lugar donde los pintxos saben a tradicion y el ambiente te hace sentir como en casa.<br><br><strong>Barra llena cada dia.</strong> Pintxos variados, raciones caseras, menu del dia y el mejor txakoli para acompanar. Ven a ver el futbol con los tuyos o disfruta de nuestra terraza.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Pintxos al momento</h4>
-          <p>Siempre recién hechos, variados cada día según mercado</p>
+          <h4>Pintxos de calidad</h4>
+          <p>Barra surtida cada dia con pintxos variados y recien hechos</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Producto de Bizkaia</h4>
-          <p>Txakoli, bacalao, verduras de temporada. Lo mejor de aquí</p>
+          <h4>Cocina casera</h4>
+          <p>Raciones generosas, menu del dia completo y platos de siempre</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>25 años de confianza</h4>
-          <p>Tres generaciones de clientes. El bar de toda la vida en Galdakao</p>
+          <h4>Ambiente de barrio</h4>
+          <p>Terraza, deportes en directo y el mejor ambiente de Galdakao</p>
         </div>
       </div>
     </div>
@@ -1055,19 +972,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Pintxos, raciones y mucho<br><em>ambiente de taberna</em>
+      Todo lo que necesitas en <em>un solo bar</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/>
           </svg>
         </div>
-        <h3>Pintxos y Tapas</h3>
-        <p>Tortilla jugosa, croquetas de bacalao, patatas con ali-oli, pintxos de la barra variados cada día. Lo más auténtico del norte.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Pintxos Variados</h3>
+        <p>Barra surtida cada dia con los clasicos y las novedades de temporada. Tortilla, croquetas, gildas y mucho mas.</p>
+        <a href="#carta-principal" class="service-link">Ver pintxos →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -1076,20 +993,53 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Raciones para Compartir</h3>
-        <p>Bacalao al pil-pil, almejas en salsa verde, gambas al ajillo, chipirones. Raciones generosas para disfrutar en buena compañía.</p>
+        <h3>Raciones Caseras</h3>
+        <p>Platos de siempre hechos como en casa. Raciones generosas para compartir con los tuyos en un ambiente inmejorable.</p>
         <a href="#carta-especialidades" class="service-link">Ver raciones →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <h3>Menu del Dia</h3>
+        <p>Menu completo con primero, segundo, postre y bebida. Cocina casera a precio de barrio, ideal para el almuerzo.</p>
+        <a href="#carta-menu" class="service-link">Ver menu →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+          </svg>
+        </div>
+        <h3>Txakoli y Bebidas</h3>
+        <p>Txakoli bien tirado, canas, vinos y combinados. La mejor seleccion de bebidas para acompanar tus pintxos.</p>
+        <a href="tel:+34944561076" class="service-link">Llamar →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
             <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
           </svg>
         </div>
-        <h3>Bebidas y Vinos</h3>
-        <p>Txakoli de Bizkaia, vinos de Rioja y Ribera, cañas bien tiradas. La combinación perfecta para acompañar cada pintxo.</p>
-        <a href="#carta-bebidas" class="service-link">Ver bodega →</a>
+        <h3>Terraza</h3>
+        <p>Disfruta al aire libre en nuestra terraza. El lugar perfecto para una cana despues del trabajo o un vermut de fin de semana.</p>
+        <a href="#contacto" class="service-link">Ven a vernos →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>
+          </svg>
+        </div>
+        <h3>Deportes en Directo</h3>
+        <p>Todos los partidos en pantalla grande. El ambiente perfecto para vivir el futbol, la Liga, Champions y Athletic con los amigos.</p>
+        <a href="tel:+34944561076" class="service-link">Mas info →</a>
       </div>
     </div>
   </div>
@@ -1098,49 +1048,41 @@
 <!-- CARTA: PINTXOS -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
     <p class="section-label reveal">Nuestra barra</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Pintxos <em>de siempre</em>
+      Pintxos con <em>sabor a Galdakao</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Pintxos Fríos</h4>
+          <h4>Pintxos Clasicos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de tortilla</div>
-              <div class="carta-item-desc">Jugosa, con cebolla pochada</div>
+              <div class="carta-item-name">Gilda</div>
+              <div class="carta-item-desc">Guindilla, aceituna y anchoa</div>
             </div>
-            <div class="carta-item-price">1.80 €</div>
+            <div class="carta-item-price">2,50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de jamón ibérico</div>
-              <div class="carta-item-desc">Con pimiento asado</div>
+              <div class="carta-item-name">Tortilla de patata</div>
+              <div class="carta-item-desc">Jugosa, recien hecha</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
+            <div class="carta-item-price">2,80 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de anchoa</div>
-              <div class="carta-item-desc">Anchoas del Cantábrico con oliva</div>
+              <div class="carta-item-name">Croquetas caseras</div>
+              <div class="carta-item-desc">Jamon iberico o bacalao</div>
             </div>
-            <div class="carta-item-price">2.20 €</div>
+            <div class="carta-item-price">2,50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de queso azul</div>
-              <div class="carta-item-desc">Con nuez y miel de castaño</div>
+              <div class="carta-item-name">Anchoas del Cantabrico</div>
             </div>
-            <div class="carta-item-price">2.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pintxo de txangurro</div>
-              <div class="carta-item-desc">Centollo gratinado al horno</div>
-            </div>
-            <div class="carta-item-price">3.20 €</div>
+            <div class="carta-item-price">3,50 €</div>
           </div>
         </div>
       </div>
@@ -1149,48 +1091,37 @@
           <h4>Pintxos Calientes</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Croqueta de bacalao</div>
-              <div class="carta-item-desc">Receta de la casa, crujiente por fuera</div>
+              <div class="carta-item-name">Champi con gamba</div>
+              <div class="carta-item-desc">A la plancha con alioli</div>
             </div>
-            <div class="carta-item-price">1.90 €</div>
+            <div class="carta-item-price">3,00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Champiñón relleno</div>
-              <div class="carta-item-desc">Con foie y reducción de pedro ximénez</div>
+              <div class="carta-item-name">Txistorra</div>
+              <div class="carta-item-desc">Con pan de la casa</div>
             </div>
-            <div class="carta-item-price">2.80 €</div>
+            <div class="carta-item-price">2,80 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Huevo con morcilla</div>
-              <div class="carta-item-desc">Huevo de caserío con morcilla de Burgos</div>
+              <div class="carta-item-name">Pimiento relleno</div>
+              <div class="carta-item-desc">De bacalao, gratinado</div>
             </div>
-            <div class="carta-item-price">3.00 €</div>
+            <div class="carta-item-price">3,20 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de bacalao al pil-pil</div>
-              <div class="carta-item-desc">Miniplato sobre pan de masa madre</div>
+              <div class="carta-item-name">Rabas</div>
+              <div class="carta-item-desc">Calamares a la andaluza</div>
             </div>
-            <div class="carta-item-price">3.50 €</div>
+            <div class="carta-item-price">3,50 €</div>
           </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gilda clásica</div>
-              <div class="carta-item-desc">Guindilla, oliva, anchoa. La original</div>
-            </div>
-            <div class="carta-item-price">1.60 €</div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Pintxo del día</h4>
-          <p>Cada mañana renovamos la barra con pintxos de temporada. Pregunte en barra por las novedades del día. El bacalao y la tortilla son fijos de lunes a domingo.</p>
         </div>
       </div>
     </div>
-    <a href="tel:944561076" class="carta-cta reveal">
-      <span>Llamar — 944 56 10 76</span><span>→</span>
+    <a href="tel:+34944561076" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>→</span>
     </a>
   </div>
 </section>
@@ -1198,165 +1129,123 @@
 <!-- CARTA: RACIONES -->
 <section class="carta-section" id="carta-especialidades">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
     <p class="section-label reveal">Para compartir</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Raciones con <em>sabor a mar</em>
+      Raciones <em>de toda la vida</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Del Mar</h4>
+          <h4>Raciones</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Bacalao al pil-pil</div>
-              <div class="carta-item-desc">Receta tradicional vizcaína</div>
-            </div>
-            <div class="carta-item-price">14.00 €</div>
+            <div><div class="carta-item-name">Patatas bravas</div></div>
+            <div class="carta-item-price">6,50 €</div>
           </div>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Almejas en salsa verde</div>
-              <div class="carta-item-desc">Con perejil y txakoli</div>
-            </div>
-            <div class="carta-item-price">16.00 €</div>
+            <div><div class="carta-item-name">Oreja a la plancha</div></div>
+            <div class="carta-item-price">9,00 €</div>
           </div>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gambas al ajillo</div>
-              <div class="carta-item-desc">Gambas blancas en aceite de guindilla</div>
-            </div>
-            <div class="carta-item-price">13.00 €</div>
+            <div><div class="carta-item-name">Chipirones encebollados</div></div>
+            <div class="carta-item-price">12,00 €</div>
           </div>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Chipirones en su tinta</div>
-              <div class="carta-item-desc">Con arroz blanco</div>
-            </div>
-            <div class="carta-item-price">15.00 €</div>
+            <div><div class="carta-item-name">Ensaladilla rusa</div></div>
+            <div class="carta-item-price">7,50 €</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>De la Tierra</h4>
+          <h4>Platos del dia</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Patatas bravas con ali-oli</div>
-            </div>
-            <div class="carta-item-price">6.50 €</div>
+            <div><div class="carta-item-name">Alubias rojas</div></div>
+            <div class="carta-item-price">10,00 €</div>
           </div>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Croquetas de la casa (6 uds)</div>
-              <div class="carta-item-desc">De bacalao o jamón, según el día</div>
-            </div>
-            <div class="carta-item-price">9.00 €</div>
+            <div><div class="carta-item-name">Bacalao al pil-pil</div></div>
+            <div class="carta-item-price">14,00 €</div>
           </div>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pimientos de Padrón</div>
-              <div class="carta-item-desc">Con sal en escamas</div>
-            </div>
-            <div class="carta-item-price">7.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Tortilla entera (6-8 pers.)</div>
-              <div class="carta-item-desc">Por encargo con 1 hora de antelación</div>
-            </div>
-            <div class="carta-item-price">18.00 €</div>
+            <div><div class="carta-item-name">Chuleton a la brasa</div></div>
+            <div class="carta-item-price">18,00 €</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Precios orientativos</h4>
-          <p>La carta varía según mercado y temporada. Consulte disponibilidad en barra. Precio medio por persona con bebida: 18–25 €.</p>
+          <h4>Menu del Dia</h4>
+          <p>Primero + segundo + postre + bebida. Consultar disponibilidad y platos del dia llamando al 944 561 076.</p>
         </div>
       </div>
     </div>
-    <a href="tel:944561076" class="carta-cta reveal">
+    <a href="tel:+34944561076" class="carta-cta reveal">
       <span>Reservar mesa</span><span>→</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: BEBIDAS -->
-<section class="carta-section" id="carta-bebidas">
+<!-- CARTA: MENU Y EVENTOS -->
+<section class="carta-section" id="carta-menu">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Para beber</p>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">Espacios y eventos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Txakoli, vinos y <em>cañas bien tiradas</em>
+      Disfruta de <em>nuestro espacio</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Vinos y Txakoli</h4>
+          <h4>Nuestro espacio</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Txakoli Doniene Gorrondona</div>
-              <div class="carta-item-desc">D.O. Bizkaiko Txakolina</div>
+              <div class="carta-item-name">Salon interior</div>
+              <div class="carta-item-desc">Ambiente acogedor, pantallas para deportes</div>
             </div>
-            <div class="carta-item-price">3.00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Rioja crianza</div>
-              <div class="carta-item-desc">Copa — tinto o rosado</div>
+              <div class="carta-item-name">Barra</div>
+              <div class="carta-item-desc">Pintxos a la vista, servicio rapido</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Cava brut nature</div>
+              <div class="carta-item-name">Terraza</div>
+              <div class="carta-item-desc">Al aire libre, ideal para vermut</div>
             </div>
-            <div class="carta-item-price">4.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Sidra natural asturiana</div>
-              <div class="carta-item-desc">Botella con escanciado</div>
-            </div>
-            <div class="carta-item-price">5.00 €</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Cañas y Refrescos</h4>
+          <h4>Eventos y grupos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Caña de cerveza</div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menus cerrados bajo peticion</div>
             </div>
-            <div class="carta-item-price">1.80 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Zumo de naranja natural</div>
+              <div class="carta-item-name">Celebraciones</div>
+              <div class="carta-item-desc">Cumpleanos, jubilaciones, quedadas</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Café solo o con leche</div>
+              <div class="carta-item-name">Partidos y eventos</div>
+              <div class="carta-item-desc">Pantalla grande, ambiente garantizado</div>
             </div>
-            <div class="carta-item-price">1.40 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Refresco</div>
-            </div>
-            <div class="carta-item-price">2.20 €</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Txakoli y pintxos</h4>
-          <p>El txakoli bien frío con un pintxo de bacalao es la combinación perfecta del norte. Nuestra recomendación de la casa.</p>
+          <h4>Reservas para grupos</h4>
+          <p>Llama al 944 561 076 para consultar disponibilidad y menus especiales para grupos.</p>
         </div>
       </div>
     </div>
-    <a href="tel:944561076" class="carta-cta reveal">
-      <span>Llamar — 944 56 10 76</span><span>→</span>
+    <a href="tel:+34944561076" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>→</span>
     </a>
   </div>
 </section>
@@ -1364,124 +1253,63 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Opiniones</p>
+    <p class="section-label reveal">Opiniones de Google</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Lo que dicen<br>los de <em>Galdakao</em>
+      Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Siempre recién hechos y variados pinchos, repetimos."</p>
+        <p class="testimonial-quote">"Los pintxos de la barra son espectaculares. Siempre hay variedad y todo recien hecho. Un clasico de Galdakao que nunca falla."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Dragomir Angeloff</strong>
-          <span>Reseña verificada · Google Maps</span>
+          <strong>Iker L.</strong>
+          <span>Cliente habitual · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El mejor bar de pintxos de Galdakao. Ambiente de taberna auténtica, trato cercano y una tortilla que da envidia."</p>
+        <p class="testimonial-quote">"Vinimos a ver el partido y nos quedamos por las raciones. La ensaladilla rusa y los chipirones son una pasada. Volveremos seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Vecino de Galdakao</strong>
-          <span>Cliente habitual · Google Maps</span>
+          <strong>Miren Z.</strong>
+          <span>Valoracion Google · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
-          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star-half"></div>
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Llevamos años yendo los domingos a tomar el aperitivo. El bacalao al pil-pil y el txakoli son imprescindibles. Una joya de barrio."</p>
+        <p class="testimonial-quote">"El menu del dia esta muy bien de precio y la comida es casera de verdad. La terraza en verano es lo mejor. Trato inmejorable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Cliente de Bizkaia</strong>
-          <span>4.3 estrellas · Google Maps</span>
+          <strong>Gorka S.</strong>
+          <span>Valoracion Google · Galdakao</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- MAP + CONTACT -->
-<section class="map-section" id="contacto">
-  <div class="map-inner">
-    <div class="map-info">
-      <p class="section-label reveal">Encuéntranos</p>
-      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 52px;">
-        En el centro<br>de <em>Galdakao</em>
-      </h2>
-      <div class="map-detail reveal">
-        <div class="map-detail-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            <circle cx="12" cy="9" r="2.5"/>
-          </svg>
-        </div>
-        <div class="map-detail-text">
-          <h4>Dirección</h4>
-          <p>Ibaizabal Kalea, 52<br>Galdakao, Bizkaia</p>
-        </div>
-      </div>
-      <div class="map-detail reveal reveal-delay-1">
-        <div class="map-detail-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.64 3.44 2 2 0 013.62 1.26h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.96a16 16 0 006.13 6.13l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-          </svg>
-        </div>
-        <div class="map-detail-text">
-          <h4>Teléfono</h4>
-          <a href="tel:944561076">944 56 10 76</a>
-        </div>
-      </div>
-      <div class="map-detail reveal reveal-delay-2">
-        <div class="map-detail-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <div class="map-detail-text">
-          <h4>Horario habitual</h4>
-          <p>Lun–Vie: 7:00–22:00<br>Sáb–Dom: 9:00–22:00</p>
-        </div>
-      </div>
-      <div class="map-detail reveal reveal-delay-3">
-        <div class="map-detail-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-          </svg>
-        </div>
-        <div class="map-detail-text">
-          <h4>Redes sociales</h4>
-          <a href="https://www.facebook.com/people/Arrien-Barri-Taberna/100055061633129/" target="_blank" rel="noopener">Facebook — Arrien Barri Taberna</a>
-        </div>
-      </div>
-    </div>
-    <div class="map-embed reveal reveal-delay-1">
-      <iframe
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Bar+Arrien+Galdakao&zoom=17"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa Arrien Taberna Galdakao">
-      </iframe>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<div class="cta-section">
+<div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>¿Nos vemos<br>en la barra?</h2>
-    <p>Ven sin reserva o llama para asegurarte mesa. Siempre hay un pintxo recién hecho esperándote.</p>
+    <h2>¿Quedamos en<br>Bar Arrien?</h2>
+    <p>Llama para reservar mesa o pasate cuando quieras. Siempre hay hueco para uno mas.</p>
   </div>
-  <a href="tel:944561076" class="btn-dark">
-    <span>Llamar — 944 56 10 76</span>
+  <a href="tel:+34944561076" class="btn-dark">
+    <span>Llamar al 944 561 076</span>
     <span>↗</span>
   </a>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Bar+Arrien,Galdakao&zoom=16" allowfullscreen loading="lazy"></iframe>
 </div>
 
 <!-- FOOTER -->
@@ -1489,11 +1317,11 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Arrien<span>.</span></a>
-      <p class="footer-tagline">"La mejor conversación siempre empieza con un buen pintxo."<br>— Arrien Taberna</p>
+      <p class="footer-tagline">"El bar de toda la vida en Galdakao. Pintxos, raciones y buen ambiente."</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com/people/Arrien-Barri-Taberna/100055061633129/" target="_blank" rel="noopener" class="social-link">Fb</a>
-        <a href="https://maps.google.com/?q=Arrien+Taberna+Galdakao" target="_blank" rel="noopener" class="social-link">Gm</a>
-        <a href="tel:944561076" class="social-link">☎</a>
+        <a href="#" class="social-link">Fb</a>
+        <a href="#" class="social-link">Ig</a>
+        <a href="https://www.google.com/maps/search/Bar+Arrien,Galdakao" class="social-link" target="_blank">Gm</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1501,32 +1329,31 @@
       <ul>
         <li><a href="#carta-principal">Pintxos</a></li>
         <li><a href="#carta-especialidades">Raciones</a></li>
-        <li><a href="#carta-bebidas">Bebidas</a></li>
-        <li><a href="#carta-bebidas">Txakoli</a></li>
+        <li><a href="#carta-menu">Menu del Dia</a></li>
+        <li><a href="#servicios">Todos los servicios</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>La Taberna</h4>
+      <h4>El Bar</h4>
       <ul>
-        <li><a href="#nosotros">Nuestra historia</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#carta-menu">Eventos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="tel:944561076">944 56 10 76</a></li>
-        <li><a href="#contacto">Ibaizabal Kalea, 52</a></li>
-        <li><a href="#contacto">Galdakao, Bizkaia</a></li>
-        <li><a href="https://www.facebook.com/people/Arrien-Barri-Taberna/100055061633129/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="tel:+34944561076">944 561 076</a></li>
+        <li><a href="https://www.google.com/maps/search/Bar+Arrien,Galdakao" target="_blank">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Arrien Taberna · Galdakao. Todos los derechos reservados.</p>
+    <p class="footer-copy">© 2026 Bar Arrien. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1588,16 +1415,14 @@
   // ── REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION (integer)
+  // ── COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
-    const duration = 2000;
+    const duration = 1800;
     const start = performance.now();
     function step(now) {
       const progress = Math.min((now - start) / duration, 1);
@@ -1608,36 +1433,22 @@
     requestAnimationFrame(step);
   }
 
-  // ── COUNTER ANIMATION (decimal — for 4.3★)
-  function animateCountDecimal(el) {
-    const target = parseFloat(el.dataset.target);
-    const duration = 2000;
-    const start = performance.now();
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 4);
-      el.textContent = (ease * target).toFixed(1);
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
   const countObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        if (e.target.classList.contains('count')) animateCount(e.target);
-        if (e.target.classList.contains('count-decimal')) animateCountDecimal(e.target);
+        animateCount(e.target);
         countObserver.unobserve(e.target);
       }
     });
   }, { threshold: 0.5 });
-  document.querySelectorAll('.count, .count-decimal').forEach(el => countObserver.observe(el));
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
   // ── HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
-      heroBg.style.transform = `scale(1) translateY(${window.scrollY * 0.25}px)`;
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
     }
   });
 </script>
