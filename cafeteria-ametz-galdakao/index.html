@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cafeteria Ametz — Cafetería</title>
+  <title>Cafetería Ametz — El sabor de lo auténtico en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -137,8 +137,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0e0a07 0%, #221b14 40%, #8B5E3C22 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1400&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
@@ -342,9 +341,9 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -389,7 +388,9 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -477,7 +478,6 @@
     }
     .service-card:hover .service-number { color: rgba(139,94,60,0.1); }
 
-
     /* ─── CARTA SECTIONS ─── */
     .carta-section {
       padding: 140px 60px;
@@ -550,12 +550,13 @@
       .carta-section { padding: 80px 24px; }
       .carta-columns { grid-template-columns: 1fr; gap: 40px; }
     }
+
     /* ─── TESTIMONIALS ─── */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
       color: rgba(139,94,60,0.03); line-height: 1; pointer-events: none;
     }
@@ -621,6 +622,27 @@
     }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
+
+    /* ─── CONTACT SECTION ─── */
+    .contact-section {
+      padding: 100px 8%; background: var(--carbon);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .contact-info p {
+      color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;
+    }
+    .contact-info a {
+      color: var(--accent); text-decoration: none; transition: color 0.3s;
+    }
+    .contact-info a:hover { color: var(--accent-light); }
+    .contact-map {
+      border-radius: 16px; overflow: hidden; height: 300px;
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -744,6 +766,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -763,21 +786,23 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Cafeteria Ametz<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
@@ -787,21 +812,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Café · Brunch · Momentos</p>
+    <p class="hero-eyebrow">Cafeteria · Menu del Dia · Pintxos</p>
     <h1 class="hero-title">
-      Cada taza<br>cuenta una<br><em>historia</em>
+      El sabor de<br>lo <em>autentico</em><br>en Galdakao
     </h1>
     <p class="hero-sub">
-      Café de especialidad, bollería artesanal y un espacio acogedor para trabajar, leer o simplemente disfrutar.
+      Cocina casera de toda la vida, pintxos variados y el mejor cafe para empezar el dia. Tu rincon de confianza en Urki Kalea.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Visítanos</span>
-        <span>→</span>
+      <a href="tel:+34944073133" class="btn-primary">
+        <span>Llamar ahora</span>
+        <span>&#8594;</span>
       </a>
       <a href="#servicios" class="btn-ghost">
         <span>Nuestra carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&#8599;</div>
       </a>
     </div>
   </div>
@@ -814,18 +839,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Cafes</span>
+    <span class="marquee-item"><span class="dot"></span>Meriendas</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Cafes</span>
+    <span class="marquee-item"><span class="dot"></span>Meriendas</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones</span>
   </div>
 </div>
 
@@ -833,20 +858,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años abiertos</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Orígenes de café</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.5</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="128">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas de clientes</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Menu casero</div>
+    </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="200">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Clientes diarios</div>
+      <div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix"> dias</span></div>
+      <div class="stat-label">Abiertos a la semana</div>
     </div>
   </div>
 </div>
@@ -855,50 +880,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestro espacio</p>
+      <h2 class="section-title reveal reveal-delay-1">Un rincon con<br><em>encanto propio</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34944073133" class="view-all reveal">Reservar &#8594;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80" alt="Interior acogedor de Cafeteria Ametz en Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Café · Especialidad</p>
-        <h3 class="project-name">Latte Art Competition</h3>
-        <p class="project-meta">Barista champion · 2024</p>
+        <p class="project-cat">Ambiente · Acogedor</p>
+        <h3 class="project-name">Nuestro Rincon en Galdakao</h3>
+        <p class="project-meta">Urki Kalea, 7 · Galdakao</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&q=80" alt="Desayunos en Cafeteria Ametz" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Brunch · Fin de Semana</p>
-        <h3 class="project-name">Brunch Premium</h3>
-        <p class="project-meta">Sábados y domingos · 10-14h</p>
+        <p class="project-cat">Desayunos · Cada manana</p>
+        <h3 class="project-name">Desayunos Completos</h3>
+        <p class="project-meta">Tostadas, bolleria y cafe recien hecho</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Pintxos y raciones en Cafeteria Ametz" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Bollería · Artesanal</p>
-        <h3 class="project-name">Nuestros Croissants</h3>
-        <p class="project-meta">Masa madre · Horneados hoy</p>
+        <p class="project-cat">Pintxos · Raciones</p>
+        <h3 class="project-name">Pintxos y Raciones</h3>
+        <p class="project-meta">Variedad casera · Producto fresco</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=900&q=80" alt="Menu del dia casero en Cafeteria Ametz" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Coworking</p>
-        <h3 class="project-name">Zona de Trabajo</h3>
-        <p class="project-meta">WiFi · Enchufes · Silencio</p>
+        <p class="project-cat">Menu del dia · Casero</p>
+        <h3 class="project-name">Menu del Dia</h3>
+        <p class="project-meta">Primero, segundo, postre y cafe</p>
       </div>
     </div>
   </div>
@@ -907,40 +932,41 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=900&q=80" alt="Interior de Cafeteria Ametz Galdakao" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">2016</div>
-      <div class="about-badge-text">Tostando con pasión desde entonces</div>
+      <div class="about-badge-year">Ametz</div>
+      <div class="about-badge-text">Tu cafeteria de confianza en Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que café,<br><em>una experiencia</em>
+      Mas que una cafeteria,<br><em>tu segunda casa</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Café Molino nació de la pasión por el café bien hecho. Tostamos nuestros propios granos y cuidamos cada detalle del proceso.<br><br><strong>Cada taza importa.</strong> Desde la selección del grano hasta el latte art final, buscamos la excelencia en cada servicio.
+      Cafeteria Ametz es un referente en Galdakao para quienes buscan cocina casera de verdad. Ubicados en Urki Kalea, ofrecemos desayunos completos, un menu del dia elaborado con producto fresco y una barra de pintxos que es parada obligatoria en el barrio.<br><br><strong>Aqui se viene a comer bien, sin prisas y como en casa.</strong> Llevamos anos siendo el punto de encuentro de vecinos, familias y trabajadores de la zona que confian en nosotros cada dia.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Café de origen</h4>
-          <p>Granos seleccionados directamente de fincas en Colombia, Etiopía y Guatemala</p>
+          <h4>Cocina casera</h4>
+          <p>Platos elaborados cada dia con ingredientes frescos y recetas de siempre</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Tostado propio</h4>
-          <p>Tostamos en pequeños lotes cada semana para garantizar frescura máxima</p>
+          <h4>Producto local</h4>
+          <p>Proveedores de confianza de Bizkaia para garantizar la mejor calidad</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Sostenibilidad</h4>
-          <p>Vasos compostables, leches vegetales y acuerdo con productores de comercio justo</p>
+          <h4>Trato cercano</h4>
+          <p>Conocemos a nuestros clientes por su nombre. Aqui eres parte de la familia</p>
         </div>
       </div>
     </div>
@@ -952,19 +978,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas para <em>disfrutar el dia</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <h3>Café de Especialidad</h3>
-        <p>Granos seleccionados de origen único. Espresso, V60, Chemex, AeroPress. Cada método resalta matices diferentes del café.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Desayunos</h3>
+        <p>Empieza el dia con energia: cafe recien hecho, tostadas, bolleria variada y zumos naturales. El desayuno de siempre, como tiene que ser.</p>
+        <a href="#carta-desayunos" class="service-link">Ver carta &#8594;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -973,151 +999,206 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Bollería y Brunch</h3>
-        <p>Croissants, cookies, carrot cake, banana bread. Todo horneado cada mañana. Brunch los fines de semana de 10 a 14h.</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Menu del Dia Casero</h3>
+        <p>Primero, segundo, postre y cafe. Cocinado cada dia con producto fresco. El menu que los de Galdakao eligen para comer bien a diario.</p>
+        <a href="#carta-menu" class="service-link">Ver menu &#8594;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
           </svg>
         </div>
-        <h3>Espacio de Trabajo</h3>
-        <p>WiFi de alta velocidad, enchufes en cada mesa, ambiente tranquilo. Tu oficina favorita con el mejor café de la ciudad.</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Pintxos y Raciones</h3>
+        <p>Barra de pintxos variados y raciones generosas para compartir. Tortilla, croquetas, rabas, chopitos y mucho mas. Ideales para picar algo o hacer sobremesa.</p>
+        <a href="#carta-pintxos" class="service-link">Ver pintxos &#8594;</a>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
-<section class="carta-section" id="carta-principal">
+<!-- CARTA: DESAYUNOS -->
+<section class="carta-section" id="carta-desayunos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver a servicios</a>
+    <p class="section-label reveal">Cada manana</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Desayunos para empezar <em>con fuerza</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Cafes y bebidas</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
-            </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div><div class="carta-item-name">Cafe solo / Cortado</div></div>
+            <div class="carta-item-price">1,40 &#8364;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div><div class="carta-item-name">Cafe con leche</div></div>
+            <div class="carta-item-price">1,60 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Cafe con leche grande</div></div>
+            <div class="carta-item-price">2,00 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Zumo natural de naranja</div></div>
+            <div class="carta-item-price">2,50 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Colacao / Infusion</div></div>
+            <div class="carta-item-price">1,80 &#8364;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Tostadas y bolleria</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Plato]</div>
-            </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div><div class="carta-item-name">Tostada con tomate y aceite</div></div>
+            <div class="carta-item-price">2,20 &#8364;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
-        </div>
-      </div>
-    </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tostada con mantequilla y mermelada</div></div>
+            <div class="carta-item-price">2,00 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Croissant a la plancha</div></div>
+            <div class="carta-item-price">2,50 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Txapata mixta (jamon y queso)</div></div>
+            <div class="carta-item-price">3,50 &#8364;</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Desayuno completo</h4>
+          <p>Cafe con leche + tostada con tomate + zumo natural. La mejor manera de empezar la manana.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:+34944073133" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>&#8594;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
+<!-- CARTA: MENU DEL DIA -->
+<section class="carta-section" id="carta-menu">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver a servicios</a>
+    <p class="section-label reveal">De lunes a viernes</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
+      Menu del dia <em>casero</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
+          <h4>Primeros (ejemplo del dia)</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
-            </div>
+            <div><div class="carta-item-name">Sopa de verduras</div></div>
           </div>
-          <!-- Repetir por cada espacio -->
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Alubias rojas estofadas</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Ensalada mixta</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Macarrones a la bolonesa</div></div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
+          <h4>Segundos (ejemplo del dia)</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
-            </div>
+            <div><div class="carta-item-name">Merluza en salsa verde</div></div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div><div class="carta-item-name">Chuleta de cerdo a la plancha</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pollo asado con patatas</div></div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Menu completo</h4>
+          <p>Primero + segundo + postre casero + pan + bebida + cafe. El menu cambia cada dia. Preguntanos llamando al 944 07 31 33.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+    <a href="tel:+34944073133" class="carta-cta reveal">
+      <span>Llamar para consultar menu</span><span>&#8594;</span>
+    </a>
+  </div>
+</section>
+
+<!-- CARTA: PINTXOS -->
+<section class="carta-section" id="carta-pintxos">
+  <div class="section-inner">
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver a servicios</a>
+    <p class="section-label reveal">En barra y mesa</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Pintxos y raciones <em>de verdad</em>
+    </h2>
+    <div class="carta-columns">
+      <div>
+        <div class="carta-category reveal">
+          <h4>Pintxos de barra</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tortilla de patata</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Croquetas caseras</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pintxo de txistorra</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Gilda</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pintxo de jamon</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Raciones para compartir</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Rabas</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Chopitos</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Patatas bravas</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tabla de quesos</div></div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Jamon iberico</div></div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Barra siempre llena</h4>
+          <p>Nuestra barra de pintxos se renueva constantemente. Pasa a echar un vistazo y elige el que mas te apetezca.</p>
+        </div>
+      </div>
+    </div>
+    <a href="tel:+34944073133" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>&#8594;</span>
     </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones reales</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1126,33 +1207,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El mejor café de especialidad que he probado en Madrid. El flat white es perfecto y el carrot cake está increíble."</p>
+        <p class="testimonial-quote">"El menu del dia esta espectacular. Comida casera de verdad, con raciones generosas y un trato muy cercano. Venimos casi todos los dias del trabajo."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena Torres</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Iker Etxebarria</strong>
+          <span>Cliente habitual · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo a trabajar aquí casi todos los días. WiFi rápido, enchufes, ambiente tranquilo y un café espectacular. Mi oficina favorita."</p>
+        <p class="testimonial-quote">"Los desayunos son geniales. Cafe buenisimo, tostadas recien hechas y un ambiente tranquilo para empezar la manana. Los pintxos de la barra tambien merecen mucho la pena."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Pablo García</strong>
-          <span>Freelance · Madrid</span>
+          <strong>Miren Aguirre</strong>
+          <span>Vecina del barrio · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Los brunch del sábado son un planazo. Tostadas de aguacate, huevos benedict y zumo natural. Siempre lleno, hay que reservar."</p>
+        <p class="testimonial-quote">"Sitio de toda la vida en Galdakao. La tortilla de patata es de las mejores que he probado. Siempre hay buen ambiente y te atienden fenomenal."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Cristina López</strong>
-          <span>Foodie · Madrid</span>
+          <strong>Aitor Uriarte</strong>
+          <span>Resena en Google · Bizkaia</span>
         </div>
       </div>
     </div>
@@ -1160,28 +1241,33 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece un<br>buen café?</h2>
-    <p>Ven a conocernos. El primer café invita la casa.</p>
+    <h2>Ven a disfrutar<br>de lo bueno</h2>
+    <p>Desayunos, menu del dia, pintxos... Te esperamos en Urki Kalea 7, Galdakao.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Cómo llegar</span>
-    <span>↗</span>
+  <a href="tel:+34944073133" class="btn-dark">
+    <span>Llamar al 944 07 31 33</span>
+    <span>&#8599;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Urki Kalea, 7, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34944073133" style="color: var(--accent,#0284C7);">944 07 31 33</a></p>
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p><strong style="color: var(--white);">Direccion:</strong><br>Urki Kalea, 7, Galdakao, Bizkaia</p>
+        <p><strong style="color: var(--white);">Telefono:</strong><br><a href="tel:+34944073133">944 07 31 33</a></p>
+        <p><strong style="color: var(--white);">Horario orientativo:</strong><br>Lunes a Domingo<br>Desayunos, comidas y meriendas</p>
+        <a href="tel:+34944073133" class="btn-primary" style="margin-top: 20px; display: inline-flex;">
+          <span>Llamar ahora</span>
+          <span>&#8594;</span>
+        </a>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
+      <div class="contact-map reveal reveal-delay-1">
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Cafeteria+Ametz,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
@@ -1193,47 +1279,42 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Cafeteria Ametz<span>.</span></a>
-      <p class="footer-tagline">"El café es un abrazo en forma de taza."<br>— Café Molino</p>
+      <p class="footer-tagline">El sabor de lo autentico en Galdakao. Tu cafeteria de siempre.</p>
       <div class="footer-social">
         <a href="#" class="social-link">Fb</a>
         <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.google.com/maps/place/Cafeteria+Ametz" class="social-link" target="_blank" rel="noopener">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Cafés</a></li>
-        <li><a href="#">Tés</a></li>
-        <li><a href="#">Bollería</a></li>
-        <li><a href="#">Brunch</a></li>
-        <li><a href="#">Bebidas</a></li>
+        <li><a href="#carta-desayunos">Desayunos</a></li>
+        <li><a href="#carta-menu">Menu del dia</a></li>
+        <li><a href="#carta-pintxos">Pintxos</a></li>
+        <li><a href="#servicios">Raciones</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Cafetería</h4>
+      <h4>Cafeteria</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Baristas</a></li>
-        <li><a href="#">Nuestro café</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34944073133">944 07 31 33</a></li>
-        <li><a href="#">Urki Kalea, Galdakao</a></li>
+        <li><a href="#contacto">Urki Kalea 7, Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Cafeteria Ametz. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Cafeteria Ametz. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1328,7 +1409,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

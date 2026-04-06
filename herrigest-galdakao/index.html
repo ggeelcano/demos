@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Herrigest — Inmobiliaria</title>
+  <title>Herrigest — Inmobiliaria en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    /* --- CUSTOM CURSOR (DUAL COLOR) --- */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -63,7 +63,7 @@
       background: rgba(15,118,110,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* --- NAVBAR --- */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -105,7 +105,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* --- HAMBURGER MOBILE --- */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +129,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* --- HERO --- */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,8 +137,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #080c0c 0%, #162222 40%, #0F766E22 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
@@ -179,7 +178,7 @@
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
       font-size: 1.05rem; color: rgba(245,243,239,0.6);
-      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      max-width: 520px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
       animation: fadeUp 1s 0.8s var(--ease-out) forwards;
@@ -240,7 +239,7 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* --- MARQUEE --- */
     .marquee-section {
       border-top: 1px solid rgba(15,118,110,0.12);
       border-bottom: 1px solid rgba(15,118,110,0.12);
@@ -260,7 +259,7 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* --- SECTION COMMONS --- */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,7 +275,7 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* --- STATS --- */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
@@ -310,7 +309,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
+    /* --- GALLERY / PROJECTS --- */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -342,9 +341,9 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -381,7 +380,7 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* --- ABOUT --- */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,7 +388,9 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -436,7 +437,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* --- SERVICES --- */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -477,12 +478,12 @@
     }
     .service-card:hover .service-number { color: rgba(15,118,110,0.1); }
 
-    /* ─── TESTIMONIALS ─── */
+    /* --- TESTIMONIALS --- */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
       color: rgba(15,118,110,0.03); line-height: 1; pointer-events: none;
     }
@@ -519,7 +520,7 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* --- CTA BANNER --- */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -549,7 +550,42 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* --- CONTACT --- */
+    .contact-section {
+      background: var(--carbon);
+      padding: 100px 8%;
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;
+    }
+    .contact-info p {
+      color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;
+    }
+    .contact-info a {
+      color: var(--accent); text-decoration: none; transition: opacity 0.3s;
+    }
+    .contact-info a:hover { opacity: 0.8; }
+    .contact-hours {
+      margin-top: 24px; padding: 20px; border: 1px solid rgba(15,118,110,0.12);
+    }
+    .contact-hours h4 {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px; font-weight: 500;
+    }
+    .contact-hours p {
+      color: var(--text-muted); font-size: 0.88rem; line-height: 1.8;
+    }
+    .contact-map {
+      border-radius: 16px; overflow: hidden; height: 100%; min-height: 300px;
+    }
+    .contact-map iframe {
+      width: 100%; height: 100%; border: 0;
+    }
+
+    /* --- FOOTER --- */
     footer {
       background: var(--black); padding: 90px 60px 50px;
       border-top: 1px solid rgba(15,118,110,0.08);
@@ -600,7 +636,7 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
+    /* --- ANIMATIONS --- */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -612,7 +648,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* --- LOADER --- */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -637,7 +673,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* --- RESPONSIVE --- */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -646,6 +682,7 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -671,6 +708,8 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-section { padding: 80px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -690,19 +729,19 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Herrigest<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Propiedades</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Propiedades</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
@@ -714,21 +753,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Venta · Alquiler · Inversión</p>
+    <p class="hero-eyebrow">Compra &middot; Venta &middot; Alquiler &middot; Gesti&oacute;n</p>
     <h1 class="hero-title">
-      Tu hogar<br><em>ideal</em><br>te espera
+      Tu inmobiliaria<br>de <em>referencia</em><br>en Galdakao
     </h1>
     <p class="hero-sub">
-      Compra, venta y alquiler de propiedades premium. Asesoramiento personalizado y gestión integral para que solo te preocupes de elegir.
+      Compra, venta y alquiler de pisos, casas y locales comerciales. Gesti&oacute;n integral personalizada con m&aacute;s de 15 a&ntilde;os en el sector.
     </p>
     <div class="hero-actions">
-      <a href="#galeria" class="btn-primary">
-        <span>Ver propiedades</span>
-        <span>→</span>
+      <a href="tel:+34944053101" class="btn-primary">
+        <span>Ll&aacute;manos</span>
+        <span>&rarr;</span>
       </a>
       <a href="#servicios" class="btn-ghost">
         <span>Servicios</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -742,17 +781,17 @@
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-item"><span class="dot"></span>Pisos en Venta</span>
-    <span class="marquee-item"><span class="dot"></span>Chalets Exclusivos</span>
-    <span class="marquee-item"><span class="dot"></span>Alquiler Premium</span>
-    <span class="marquee-item"><span class="dot"></span>Inversión</span>
-    <span class="marquee-item"><span class="dot"></span>Obra Nueva</span>
+    <span class="marquee-item"><span class="dot"></span>Alquiler de Viviendas</span>
+    <span class="marquee-item"><span class="dot"></span>Administraci&oacute;n de Fincas</span>
+    <span class="marquee-item"><span class="dot"></span>Asesor&iacute;a Jur&iacute;dica</span>
     <span class="marquee-item"><span class="dot"></span>Locales Comerciales</span>
+    <span class="marquee-item"><span class="dot"></span>Garajes y Trasteros</span>
     <span class="marquee-item"><span class="dot"></span>Pisos en Venta</span>
-    <span class="marquee-item"><span class="dot"></span>Chalets Exclusivos</span>
-    <span class="marquee-item"><span class="dot"></span>Alquiler Premium</span>
-    <span class="marquee-item"><span class="dot"></span>Inversión</span>
-    <span class="marquee-item"><span class="dot"></span>Obra Nueva</span>
+    <span class="marquee-item"><span class="dot"></span>Alquiler de Viviendas</span>
+    <span class="marquee-item"><span class="dot"></span>Administraci&oacute;n de Fincas</span>
+    <span class="marquee-item"><span class="dot"></span>Asesor&iacute;a Jur&iacute;dica</span>
     <span class="marquee-item"><span class="dot"></span>Locales Comerciales</span>
+    <span class="marquee-item"><span class="dot"></span>Garajes y Trasteros</span>
   </div>
 </div>
 
@@ -760,20 +799,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de experiencia</div>
+      <div class="stat-number"><span class="count" data-target="4.7" data-decimals="1">0</span><span class="stat-suffix">&#9733;</span></div>
+      <div class="stat-label">Valoraci&oacute;n en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="3000">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Propiedades vendidas</div>
+      <div class="stat-number"><span class="count" data-target="132">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones de clientes</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="98">0</span><span class="stat-suffix">%</span></div>
-      <div class="stat-label">Ventas exitosas</div>
+      <div class="stat-number"><span class="count" data-target="500">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Propiedades gestionadas</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="45">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Días media de venta</div>
+      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">A&ntilde;os de experiencia</div>
     </div>
   </div>
 </div>
@@ -782,50 +821,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestras propiedades</p>
+      <h2 class="section-title reveal reveal-delay-1">Encuentra tu<br><em>hogar ideal</em> en Galdakao</h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34944053101" class="view-all reveal">Consultar disponibilidad &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(15,118,110,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=80" alt="Viviendas en venta en Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Venta · Ático</p>
-        <h3 class="project-name">Ático Salamanca 180m²</h3>
-        <p class="project-meta">Terraza 40m² · 1.2M€</p>
+        <p class="project-cat">Venta &middot; Residencial</p>
+        <h3 class="project-name">Viviendas en venta</h3>
+        <p class="project-meta">Pisos, &aacute;ticos y d&uacute;plex en Galdakao y alrededores</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(15,118,110,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1560185127-6a293b2a8e52?w=800&q=80" alt="Pisos reformados" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Chalet · Exclusivo</p>
-        <h3 class="project-name">Chalet La Moraleja</h3>
-        <p class="project-meta">Parcela 1200m² · Piscina</p>
+        <p class="project-cat">Reformado &middot; Listo para entrar</p>
+        <h3 class="project-name">Pisos reformados</h3>
+        <p class="project-meta">Viviendas totalmente renovadas y equipadas</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(15,118,110,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Casas unifamiliares" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Alquiler · Premium</p>
-        <h3 class="project-name">Loft Chamberí Reformado</h3>
-        <p class="project-meta">85m² · 1.800€/mes</p>
+        <p class="project-cat">Unifamiliar &middot; Exclusivo</p>
+        <h3 class="project-name">Casas unifamiliares</h3>
+        <p class="project-meta">Chalets y casas con terreno en entornos privilegiados</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(15,118,110,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Locales comerciales" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Obra Nueva · Inversión</p>
-        <h3 class="project-name">Residencial Verde</h3>
-        <p class="project-meta">2-3 dormitorios · Desde 320K€</p>
+        <p class="project-cat">Comercial &middot; Inversi&oacute;n</p>
+        <h3 class="project-name">Locales comerciales</h3>
+        <p class="project-meta">Espacios comerciales en ubicaciones estrat&eacute;gicas</p>
       </div>
     </div>
   </div>
@@ -834,40 +873,42 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Oficina Herrigest en Galdakao" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">2004</div>
-      <div class="about-badge-text">Conectando personas con hogares</div>
+      <div class="about-badge-year">15+</div>
+      <div class="about-badge-text">A&ntilde;os al servicio de Galdakao</div>
     </div>
   </div>
   <div class="about-content">
-    <p class="section-label reveal">Sobre nosotros</p>
+    <p class="section-label reveal">Sobre Herrigest</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Inmobiliaria<br>de <em>confianza</em>
+      Tu inmobiliaria<br>de <em>confianza</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Ática Premium nació con una filosofía clara: las personas antes que los metros cuadrados. Encontrar tu hogar ideal es una de las decisiones más importantes de tu vida.<br><br><strong>No somos intermediarios, somos asesores.</strong> Te acompañamos en todo el proceso: desde la búsqueda hasta la firma en notaría.
+      En Herrigest llevamos m&aacute;s de 15 a&ntilde;os ayudando a familias y empresas de Galdakao y alrededores a encontrar la propiedad perfecta. <strong>Conocemos cada calle, cada barrio y cada oportunidad</strong> del mercado inmobiliario local.<br><br>
+      Somos m&aacute;s que una inmobiliaria: ofrecemos un <strong>servicio integral</strong> que incluye compraventa, alquiler, administraci&oacute;n de fincas y asesor&iacute;a jur&iacute;dica. Un solo interlocutor para todas tus necesidades inmobiliarias.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Asesoramiento real</h4>
-          <p>Te decimos la verdad sobre cada propiedad. Si no encaja contigo, te lo decimos</p>
+          <h4>Conocimiento local profundo</h4>
+          <p>Expertos en el mercado de Galdakao, Usansolo, Larrabetzu y toda la comarca</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Marketing premium</h4>
-          <p>Fotografía profesional, vídeo drone, tours virtuales 3D y home staging en cada vivienda</p>
+          <h4>Servicio integral</h4>
+          <p>Compraventa, alquiler, administraci&oacute;n de comunidades y asesor&iacute;a legal en un solo lugar</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Gestión integral</h4>
-          <p>Hipotecas, seguros, reformas, mudanzas. Un solo interlocutor para todo</p>
+          <h4>Trato personalizado</h4>
+          <p>Cada cliente es &uacute;nico. Te escuchamos, entendemos tus necesidades y buscamos la mejor soluci&oacute;n</p>
         </div>
       </div>
     </div>
@@ -879,41 +920,41 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Servicios dise&ntilde;ados para <em>resultados reales</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Compra y Venta</h3>
-        <p>Valoración profesional, fotografía HD, home staging, marketing digital. Tu propiedad en los principales portales con máxima visibilidad.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Compraventa</h3>
+        <p>Valoraci&oacute;n profesional de tu propiedad, difusi&oacute;n en los principales portales inmobiliarios y acompa&ntilde;amiento completo hasta la firma en notar&iacute;a.</p>
+        <a href="#contacto" class="service-link">M&aacute;s info &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3h-8l-2 4h12z"/><circle cx="12" cy="15" r="3"/>
           </svg>
         </div>
-        <h3>Alquiler Premium</h3>
-        <p>Gestión integral de alquiler: búsqueda de inquilinos, contratos, cobros y mantenimiento. Protección de impagos incluida.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Alquiler y Gesti&oacute;n</h3>
+        <p>Buscamos inquilinos solventes, redactamos contratos, gestionamos cobros y mantenimiento. Administraci&oacute;n de fincas y comunidades incluida.</p>
+        <a href="#contacto" class="service-link">M&aacute;s info &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <h3>Inversión Inmobiliaria</h3>
-        <p>Asesoramiento para inversores: rentabilidad, zonas con potencial, reformas estratégicas. Maximiza tu patrimonio inmobiliario.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Asesor&iacute;a Jur&iacute;dica</h3>
+        <p>Asesoramiento legal especializado en compraventas, alquileres, comunidades de propietarios y herencias. Tranquilidad en cada operaci&oacute;n.</p>
+        <a href="#contacto" class="service-link">M&aacute;s info &rarr;</a>
       </div>
     </div>
   </div>
@@ -931,33 +972,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vendieron mi piso en 3 semanas y por encima del precio que esperaba. El home staging y las fotos profesionales fueron clave. Totalmente recomendable."</p>
+        <p class="testimonial-quote">&ldquo;Vendimos nuestro piso en Galdakao en tiempo r&eacute;cord. Herrigest se encarg&oacute; de todo: valoraci&oacute;n, visitas, negociaci&oacute;n y papeleos. Profesionalidad total.&rdquo;</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Miguel Ángel López</strong>
-          <span>Vendedor · Salamanca</span>
+          <strong>Mikel A.</strong>
+          <span>Vendedor &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Nos encontraron el chalet perfecto después de meses buscando sin éxito por nuestra cuenta. Entendieron exactamente lo que necesitábamos."</p>
+        <p class="testimonial-quote">&ldquo;Buscamos piso durante meses sin &eacute;xito hasta que contactamos con Herrigest. Entendieron lo que necesit&aacute;bamos y en dos semanas ten&iacute;amos las llaves de nuestro nuevo hogar.&rdquo;</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Compradores · La Moraleja</span>
+          <strong>Ainhoa y Jon</strong>
+          <span>Compradores &middot; Usansolo</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Como inversor tengo 8 pisos gestionados por ellos. Inquilinos solventes, cobros puntuales y cero problemas. Profesionales de los pies a la cabeza."</p>
+        <p class="testimonial-quote">&ldquo;Llevan la administraci&oacute;n de nuestra comunidad y el cambio ha sido enorme. Transparencia en las cuentas, respuesta r&aacute;pida y gesti&oacute;n impecable. Muy recomendable.&rdquo;</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Inversor · Madrid</span>
+          <strong>Marta E.</strong>
+          <span>Presidenta de comunidad &middot; Galdakao</span>
         </div>
       </div>
     </div>
@@ -965,29 +1006,37 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Buscas tu próximo<br>hogar o inversión?</h2>
-    <p>Cuéntanos qué necesitas. Te asesoramos sin compromiso.</p>
+    <h2>&iquest;Buscas comprar, vender<br>o alquilar en Galdakao?</h2>
+    <p>Cu&eacute;ntanos qu&eacute; necesitas. Te asesoramos sin compromiso.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Contactar</span>
-    <span>↗</span>
+  <a href="tel:+34944053101" class="btn-dark">
+    <span>Llamar ahora</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encu&eacute;ntranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Vis&iacute;tanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
       <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Juan Bautista Uriarte Kalea, 30, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34944053101" style="color: var(--accent,#0284C7);">944 05 31 01</a></p>
+        <div class="contact-info">
+          <p><strong style="color:var(--white);font-weight:400;">Direcci&oacute;n:</strong><br>Juan Bautista Uriarte Kalea, 30, Galdakao, Bizkaia</p>
+          <p><strong style="color:var(--white);font-weight:400;">Tel&eacute;fono:</strong><br><a href="tel:+34944053101">944 05 31 01</a></p>
+          <p><strong style="color:var(--white);font-weight:400;">M&oacute;vil:</strong><br><a href="tel:+34688690144">688 690 144</a></p>
+          <p><strong style="color:var(--white);font-weight:400;">Email:</strong><br><a href="mailto:info@herrigest.net">info@herrigest.net</a></p>
+        </div>
+        <div class="contact-hours">
+          <h4>Horario de atenci&oacute;n</h4>
+          <p>Lunes a Viernes: 9:30 &ndash; 13:30 / 16:30 &ndash; 20:00<br>S&aacute;bados y Domingos: Cerrado</p>
+        </div>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Herrigest,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="reveal reveal-delay-1 contact-map">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Herrigest,Galdakao&zoom=17" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -998,12 +1047,12 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Herrigest<span>.</span></a>
-      <p class="footer-tagline">"El hogar es donde empieza nuestra historia."<br>— Ática Premium</p>
+      <p class="footer-tagline">&ldquo;Tu inmobiliaria de confianza en Galdakao.&rdquo;</p>
       <div class="footer-social">
         <a href="#" class="social-link">Fb</a>
         <a href="#" class="social-link">Ig</a>
         <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://wa.me/34688690144" class="social-link">Wa</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1011,34 +1060,34 @@
       <ul>
         <li><a href="#">Venta</a></li>
         <li><a href="#">Alquiler</a></li>
-        <li><a href="#">Obra nueva</a></li>
-        <li><a href="#">Inversión</a></li>
+        <li><a href="#">Garajes</a></li>
+        <li><a href="#">Trasteros</a></li>
         <li><a href="#">Locales</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Inmobiliaria</h4>
+      <h4>Servicios</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Equipo</a></li>
-        <li><a href="#">Valoración gratis</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#servicios">Compraventa</a></li>
+        <li><a href="#servicios">Alquiler</a></li>
+        <li><a href="#servicios">Administraci&oacute;n de fincas</a></li>
+        <li><a href="#servicios">Asesor&iacute;a jur&iacute;dica</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
+        <li><a href="mailto:info@herrigest.net">info@herrigest.net</a></li>
         <li><a href="tel:+34944053101">944 05 31 01</a></li>
-        <li><a href="#">Juan Bautista Uriarte Kalea, Galdakao</a></li>
+        <li><a href="tel:+34688690144">688 690 144</a></li>
+        <li><a href="#contacto">Juan Bautista Uriarte 30, Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Herrigest. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Herrigest. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Pol&iacute;tica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1046,7 +1095,7 @@
 </footer>
 
 <script>
-  // ── LOADER
+  // -- LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1054,7 +1103,7 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
+  // -- CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1079,13 +1128,13 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
+  // -- NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
+  // -- HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1097,22 +1146,24 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
+  // -- REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
+  // -- COUNTER ANIMATION
   function animateCount(el) {
-    const target = parseInt(el.dataset.target);
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals) || 0;
     const duration = 1800;
     const start = performance.now();
     function step(now) {
       const progress = Math.min((now - start) / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 4);
-      el.textContent = Math.round(ease * target);
+      const current = ease * target;
+      el.textContent = decimals > 0 ? current.toFixed(decimals) : Math.round(current);
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -1128,12 +1179,12 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
+  // -- HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

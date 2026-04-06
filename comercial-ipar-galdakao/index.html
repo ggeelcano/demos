@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comercial Ipar — Fontanería y Calefacción en Galdakao</title>
-  <meta name="description" content="Comercial Ipar: tu tienda de fontanería, calefacción, climatización y energías renovables en Galdakao. 43 años de experiencia. 108 reseñas · 4.4★ en Google.">
+  <meta name="description" content="Comercial Ipar: tu almacén de fontanería, calefacción, climatización y energías renovables en Galdakao. Más de 30 años de experiencia. 108 reseñas · 4.4★ en Google.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -138,15 +138,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #080c14 0%, #162030 40%, #0284C722 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1400&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.25) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -343,9 +342,9 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -390,7 +389,9 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -483,7 +484,7 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
       color: rgba(2,132,199,0.03); line-height: 1; pointer-events: none;
     }
@@ -672,6 +673,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .location-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -691,19 +693,19 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Comercial Ipar<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Productos</a></li>
+    <li><a href="#productos">Productos</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Productos</a>
+  <a href="#productos" onclick="closeMobile()">Productos</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
@@ -715,21 +717,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Fontanería · Calefacción · Galdakao</p>
+    <p class="hero-eyebrow">Fontaneria · Calefaccion · Banos</p>
     <h1 class="hero-title">
-      Tu tienda de<br><em>fontanería</em><br>desde 1983
+      Expertos en<br><em>fontaneria</em><br>y calefaccion
     </h1>
     <p class="hero-sub">
-      Fontanería, calefacción, climatización y energías renovables. 43 años asesorando a profesionales y particulares en Galdakao y toda Bizkaia.
+      Todo lo que necesitas para tu instalacion de fontaneria, calefaccion, climatizacion y energia solar. Mas de 30 anos asesorando a profesionales y particulares en Galdakao.
     </p>
     <div class="hero-actions">
       <a href="tel:+34944576047" class="btn-primary">
         <span>944 57 60 47</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
-        <span>Servicios</span>
-        <div class="btn-ghost-arrow">↗</div>
+      <a href="#productos" class="btn-ghost">
+        <span>Ver productos</span>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -742,18 +744,22 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Averías Urgentes</span>
-    <span class="marquee-item"><span class="dot"></span>Instalaciones</span>
-    <span class="marquee-item"><span class="dot"></span>Calderas y Calentadores</span>
-    <span class="marquee-item"><span class="dot"></span>Desatascos</span>
-    <span class="marquee-item"><span class="dot"></span>Griferías</span>
-    <span class="marquee-item"><span class="dot"></span>Reparación General</span>
-    <span class="marquee-item"><span class="dot"></span>Averías Urgentes</span>
-    <span class="marquee-item"><span class="dot"></span>Instalaciones</span>
-    <span class="marquee-item"><span class="dot"></span>Calderas y Calentadores</span>
-    <span class="marquee-item"><span class="dot"></span>Desatascos</span>
-    <span class="marquee-item"><span class="dot"></span>Griferías</span>
-    <span class="marquee-item"><span class="dot"></span>Reparación General</span>
+    <span class="marquee-item"><span class="dot"></span>Calderas</span>
+    <span class="marquee-item"><span class="dot"></span>Radiadores</span>
+    <span class="marquee-item"><span class="dot"></span>Griferias</span>
+    <span class="marquee-item"><span class="dot"></span>Mamparas</span>
+    <span class="marquee-item"><span class="dot"></span>Aerotermia</span>
+    <span class="marquee-item"><span class="dot"></span>Tuberias</span>
+    <span class="marquee-item"><span class="dot"></span>Roca</span>
+    <span class="marquee-item"><span class="dot"></span>Energia Solar</span>
+    <span class="marquee-item"><span class="dot"></span>Calderas</span>
+    <span class="marquee-item"><span class="dot"></span>Radiadores</span>
+    <span class="marquee-item"><span class="dot"></span>Griferias</span>
+    <span class="marquee-item"><span class="dot"></span>Mamparas</span>
+    <span class="marquee-item"><span class="dot"></span>Aerotermia</span>
+    <span class="marquee-item"><span class="dot"></span>Tuberias</span>
+    <span class="marquee-item"><span class="dot"></span>Roca</span>
+    <span class="marquee-item"><span class="dot"></span>Energia Solar</span>
   </div>
 </div>
 
@@ -761,72 +767,72 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="43">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de oficio</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4&#9733;</span></div>
+      <div class="stat-label">Valoracion en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
       <div class="stat-number"><span class="count" data-target="108">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Tiempo de llegada</div>
+      <div class="stat-label">Clientes satisfechos</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4★</span></div>
-      <div class="stat-label">Valoración media total</div>
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="5000">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reparaciones al año</div>
+      <div class="stat-number"><span class="count" data-target="50">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Marcas disponibles</div>
     </div>
   </div>
 </div>
 
 <!-- GALLERY -->
-<section class="projects-section" id="galeria">
+<section class="projects-section" id="productos">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestros productos</p>
+      <h2 class="section-title reveal reveal-delay-1">Soluciones para<br><em>tu hogar</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34944576047" class="view-all reveal">Pide presupuesto &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Bano moderno completo" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Urgencia · Fuga</p>
-        <h3 class="project-name">Reparación Express</h3>
-        <p class="project-meta">Media de 25 min · 24h</p>
+        <p class="project-cat">Exposicion · Banos</p>
+        <h3 class="project-name">Banos Completos</h3>
+        <p class="project-meta">Sanitarios · Griferias · Mamparas</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=80" alt="Ducha moderna" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Instalación · Baño</p>
-        <h3 class="project-name">Reforma Baño Completa</h3>
-        <p class="project-meta">Llave en mano · 2024</p>
+        <p class="project-cat">Griferias · Duchas</p>
+        <h3 class="project-name">Columnas de Ducha</h3>
+        <p class="project-meta">Roca · Imex · Galindo</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80" alt="Bano de diseno" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Calderas · Aerotermia</p>
-        <h3 class="project-name">Instalación Aerotermia</h3>
-        <p class="project-meta">Ahorro 60% · Eficiencia A++</p>
+        <p class="project-cat">Diseno · Reforma</p>
+        <h3 class="project-name">Reformas de Bano</h3>
+        <p class="project-meta">Asesoramiento personalizado</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(2,132,199,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=80" alt="Instalacion de fontaneria" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Desatascos · Pro</p>
-        <h3 class="project-name">Desatasco con Cámara</h3>
-        <p class="project-meta">Inspección + Limpieza</p>
+        <p class="project-cat">Material · Profesional</p>
+        <h3 class="project-name">Material de Fontaneria</h3>
+        <p class="project-meta">Tuberias · Valvulas · Accesorios</p>
       </div>
     </div>
   </div>
@@ -835,40 +841,41 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&q=80" alt="Almacen de fontaneria Comercial Ipar" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">1999</div>
-      <div class="about-badge-text">Dos generaciones de fontaneros de verdad</div>
+      <div class="about-badge-year">30+</div>
+      <div class="about-badge-text">Anos suministrando a profesionales y particulares</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Fontaneros<br><em>como los de antes</em>
+      Tu almacen de<br><em>confianza</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Fontaneros García es un negocio familiar con dos generaciones de oficio. Trabajamos como nos enseñó nuestro padre: bien y a precio justo.<br><br><strong>Sin sorpresas.</strong> Presupuesto cerrado antes de empezar. Si no lo apruebas, no se empieza. Y si el problema es menor de lo esperado, te cobramos menos.
+      Comercial Ipar es referencia en Galdakao para materiales de fontaneria, calefaccion y bano. Con mas de 30 anos de experiencia, ofrecemos un <strong>catalogo completo</strong> de las mejores marcas del sector.<br><br><strong>Asesoramiento experto.</strong> Nuestro equipo conoce cada producto y te ayuda a encontrar la solucion perfecta para tu proyecto, seas profesional o particular.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Precio cerrado</h4>
-          <p>Presupuesto previo siempre. El precio que aceptas es el precio que pagas</p>
+          <h4>Stock permanente</h4>
+          <p>Miles de referencias disponibles en almacen para entrega inmediata</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Fontaneros de oficio</h4>
-          <p>Instaladores autorizados con carnet profesional y seguro de responsabilidad civil</p>
+          <h4>Primeras marcas</h4>
+          <p>Roca, Imex, Buades, Galindo, Ramon Soler y muchas mas</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Garantía por escrito</h4>
-          <p>Mínimo 2 años de garantía en todos nuestros trabajos con factura incluida</p>
+          <h4>Exposicion de banos</h4>
+          <p>Showroom con las ultimas tendencias en griferias, sanitarios y mamparas</p>
         </div>
       </div>
     </div>
@@ -880,19 +887,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo para tu <em>instalacion</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l2-6h4l2 6"/><path d="M6 16h12"/>
           </svg>
         </div>
-        <h3>Urgencias 24h</h3>
-        <p>Fugas, roturas de tubería, atascos graves, problemas de caldera. Llegamos en menos de 30 minutos con presupuesto cerrado.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Fontaneria</h3>
+        <p>Tuberias, valvulas, racores, llaves de paso, desagues, sifones y todo el material necesario para instalaciones de agua y saneamiento.</p>
+        <a href="tel:+34944576047" class="service-link">Consultar &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -901,20 +908,20 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Instalaciones Nuevas</h3>
-        <p>Baños completos, cocinas, sistemas de calefacción, descalcificadores. Proyecto llave en mano con materiales de primera.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Calefaccion</h3>
+        <p>Calderas de gas, radiadores, termostatos, suelo radiante, aerotermia y bombas de calor. Las mejores marcas con asesoramiento tecnico especializado.</p>
+        <a href="tel:+34944576047" class="service-link">Consultar &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/>
           </svg>
         </div>
-        <h3>Calderas y Calentadores</h3>
-        <p>Calderas de gas, eléctricas y aerotermia. Las mejores marcas: Junkers, Vaillant, Saunier Duval. Asesoramiento para la mejor opción.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Banos y Cocinas</h3>
+        <p>Exposicion con griferias, sanitarios, mamparas, platos de ducha y muebles de bano. Diseno y asesoramiento para tu reforma integral.</p>
+        <a href="tel:+34944576047" class="service-link">Consultar &rarr;</a>
       </div>
     </div>
   </div>
@@ -923,7 +930,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -932,33 +939,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Ferretería en el centro de Galdakao, muy buena atención al cliente. Si les pides algo que no tienen, te lo consiguen en poco tiempo. Excelentes productos, primeras marcas."</p>
+        <p class="testimonial-quote">"Tienen un surtido impresionante. Lo que no tienen en tienda, te lo consiguen en pocos dias. Atencion de 10 y precios muy competitivos."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena Martínez</strong>
-          <span>Urgencia · Madrid</span>
+          <strong>Mikel Arrieta</strong>
+          <span>Instalador profesional · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Trato muy cercano y amable. Buen asesoramiento. Un claro ejemplo de por qué siempre merece la pena comprar en el pequeño comercio."</p>
+        <p class="testimonial-quote">"Trato cercano y buen asesoramiento. Fuimos a reformar el bano y nos ayudaron a elegir todo: mampara, griferia y sanitarios. Muy contentos con el resultado."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Roberto Sánchez</strong>
-          <span>Instalación · Pozuelo</span>
+          <strong>Laura Etxebarria</strong>
+          <span>Reforma de bano · Usansolo</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Tienen de todo y puedes preguntarles todas tus dudas. Te atienden estupendamente. Muy profesionales."</p>
+        <p class="testimonial-quote">"Almacen de toda la vida en Galdakao. Llevan anos y se nota la experiencia. Te asesoran bien y tienen primeras marcas a buen precio."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Javier López</strong>
-          <span>Propietario · Madrid</span>
+          <strong>Joseba Uriarte</strong>
+          <span>Cliente habitual · Galdakao</span>
         </div>
       </div>
     </div>
@@ -966,28 +973,30 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Tienes una avería<br>o un proyecto?</h2>
-    <p>Llámanos ahora. Presupuesto gratuito en el acto.</p>
+    <h2>Necesitas material<br>o asesoramiento?</h2>
+    <p>Llamanos o visitanos en nuestra exposicion. Te ayudamos con tu proyecto.</p>
   </div>
-  <a href="mailto:info@comercialipar.com" class="btn-dark">
+  <a href="tel:+34944576047" class="btn-dark">
     <span>944 57 60 47</span>
-    <span>↗</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
 <!-- LOCATION -->
-<section class="location-section" id="contacto" style="padding: 100px 8%; background: var(--carbon);">
+<section id="contacto" style="padding: 100px 8%; background: var(--carbon);">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="location-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
       <div class="reveal">
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Txomin Egileor Kalea, 54<br>48960 Galdakao, Bizkaia</p>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Teléfono: <a href="tel:+34944576047" style="color: var(--accent);">944 57 60 47</a></p>
-        <p style="color: var(--text-muted);">Lunes a Viernes: 9:00 - 13:30 / 16:30 - 19:30<br>Sábado: 9:30 - 13:00</p>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Txomin Egileor Kalea, 54<br>Galdakao, Bizkaia</p>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Telefono: <a href="tel:+34944576047" style="color: var(--accent);">944 57 60 47</a></p>
+        <p style="color: var(--text-muted); margin-bottom: 8px; font-weight: 500; color: var(--white);">Almacen Fontaneria / Calefaccion</p>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Lunes a Viernes: 8:00 - 13:30 / 14:30 - 18:30</p>
+        <p style="color: var(--text-muted); margin-bottom: 8px; font-weight: 500; color: var(--white);">Exposicion de Banos</p>
+        <p style="color: var(--text-muted);">Lunes a Viernes: 9:00 - 13:00 / 16:00 - 19:00</p>
       </div>
       <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Comercial+Ipar,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
@@ -1001,47 +1010,44 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Comercial Ipar<span>.</span></a>
-      <p class="footer-tagline">"El agua bien canalizada es bienestar en tu hogar."<br>— Fontaneros García</p>
+      <p class="footer-tagline">Tu almacen de fontaneria, calefaccion y banos en Galdakao desde hace mas de 30 anos.</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.facebook.com/comercialipar" class="social-link" target="_blank" rel="noopener">Fb</a>
+        <a href="https://g.co/kgs/comercialipar" class="social-link" target="_blank" rel="noopener">Gm</a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Servicios</h4>
+      <h4>Productos</h4>
       <ul>
-        <li><a href="#">Urgencias</a></li>
-        <li><a href="#">Instalaciones</a></li>
-        <li><a href="#">Calderas</a></li>
-        <li><a href="#">Desatascos</a></li>
-        <li><a href="#">Reformas</a></li>
+        <li><a href="#productos">Fontaneria</a></li>
+        <li><a href="#productos">Calefaccion</a></li>
+        <li><a href="#productos">Banos</a></li>
+        <li><a href="#productos">Energia Solar</a></li>
+        <li><a href="#productos">Herramientas</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Empresa</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Equipo</a></li>
-        <li><a href="#">Cobertura</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#productos">Exposicion</a></li>
+        <li><a href="https://comercialipar.com" target="_blank" rel="noopener">Web oficial</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@comercialipar.com">info@comercialipar.com</a></li>
         <li><a href="tel:+34944576047">944 57 60 47</a></li>
-        <li><a href="#">Txomin Egileor Kalea, 54, Galdakao</a></li>
+        <li><a href="#contacto">Txomin Egileor Kalea, 54</a></li>
+        <li><a href="#contacto">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Comercial Ipar. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Comercial Ipar. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1136,7 +1142,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

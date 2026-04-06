@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamburguesería Ziripot Berria — Restaurante</title>
+  <title>Hamburguesería Ziripot Berria — Las mejores hamburguesas de Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -79,9 +79,9 @@
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -137,15 +137,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0c0806 0%, #201a16 40%, #B4530922 100%);
-      background-size: cover; background-position: center;
+      background: url('https://media-cdn.tripadvisor.com/media/photo-w/16/7d/b9/63/photo4jpg.jpg') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.25) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +167,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -342,9 +341,9 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -389,7 +388,7 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+      background: url('https://img.carta.menu/storage/media/company_gallery/24547715/conversions/contribution_gallery.jpg') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -555,7 +554,7 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
       color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
     }
@@ -622,6 +621,28 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── CONTACT SECTION ─── */
+    .contact-section {
+      padding: 100px 8%;
+      background: var(--carbon);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;
+    }
+    .contact-info p {
+      color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;
+    }
+    .contact-info a {
+      color: var(--accent); text-decoration: none; transition: color 0.3s;
+    }
+    .contact-info a:hover { color: var(--accent-light); }
+    .contact-map {
+      border-radius: 16px; overflow: hidden; height: 300px;
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
@@ -632,7 +653,7 @@
       gap: 60px; margin-bottom: 70px;
     }
     .footer-brand .nav-logo {
-      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+      font-size: 1.4rem; margin-bottom: 22px; display: inline-flex;
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
@@ -695,8 +716,8 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2.2rem;
+      letter-spacing: 0.2em; color: var(--white);
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
@@ -744,6 +765,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -751,7 +773,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">HAMBURGUESERÍA ZIRIPOT BE <span>.</span></div>
+  <div class="loader-logo">ZIRIPOT BERRIA <span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -761,23 +783,23 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Hamburguesería Ziripot Berria<span>.</span></a>
+  <a href="#" class="nav-logo">Ziripot Berria<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#carta-principal">Carta</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
@@ -787,21 +809,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Hamburguesas &middot; Artesanales &middot; Galdakao</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      Las mejores<br><em>hamburguesas</em><br>de Galdakao
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Hamburguesas artesanales, ingredientes frescos y sabor casero desde nuestro corazon a tu mesa.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Reservar mesa</span>
-        <span>→</span>
+      <a href="tel:+34946527173" class="btn-primary">
+        <span>Llamar para pedir</span>
+        <span>&rarr;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
+      <a href="#carta-principal" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -814,18 +836,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesas Artesanales</span>
+    <span class="marquee-item"><span class="dot"></span>Ingredientes Frescos</span>
+    <span class="marquee-item"><span class="dot"></span>Para Llevar</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Infantil</span>
+    <span class="marquee-item"><span class="dot"></span>Cervezas Artesanas</span>
+    <span class="marquee-item"><span class="dot"></span>Galdakao</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesas Artesanales</span>
+    <span class="marquee-item"><span class="dot"></span>Ingredientes Frescos</span>
+    <span class="marquee-item"><span class="dot"></span>Para Llevar</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Infantil</span>
+    <span class="marquee-item"><span class="dot"></span>Cervezas Artesanas</span>
+    <span class="marquee-item"><span class="dot"></span>Galdakao</span>
   </div>
 </div>
 
@@ -833,20 +855,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.6</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="153">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones de clientes</div>
+    </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Ingredientes frescos</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="7">0</span></div>
+      <div class="stat-label">Dias a la semana</div>
     </div>
   </div>
 </div>
@@ -855,50 +877,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestras hamburguesas</p>
+      <h2 class="section-title reveal reveal-delay-1">Sabor que<br><em>habla por si solo</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#carta-principal" class="view-all reveal">Ver carta &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80" alt="Hamburguesa gourmet Ziripot Berria" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Clasica &middot; Favorita</p>
+        <h3 class="project-name">Burger clasica</h3>
+        <p class="project-meta">Pan brioche &middot; Ternera 180g &middot; Cheddar</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://foto1.sluurpy.com/locali/es/1929359/67346716.jpg" alt="Hamburguesa con bacon Ziripot Berria" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Especial &middot; Premium</p>
+        <h3 class="project-name">Burger especial</h3>
+        <p class="project-meta">Ingredientes premium &middot; Trufa &middot; Foie</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://foto1.sluurpy.com/locali/es/1929359/47290175.jpg" alt="Bocapizza gratinada Ziripot Berria" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Acompanamiento &middot; Casero</p>
+        <h3 class="project-name">Patatas caseras</h3>
+        <p class="project-meta">Cortadas a mano &middot; Crujientes</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://foto1.sluurpy.com/locali/es/1929359/67346720.jpg" alt="Terraza exterior Ziripot Berria" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Espacio &middot; Ambiente</p>
+        <h3 class="project-name">Ambiente del local</h3>
+        <p class="project-meta">Galdakao &middot; Gipuzkoa Kalea</p>
       </div>
     </div>
   </div>
@@ -908,39 +930,39 @@
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">4.6</div>
+      <div class="about-badge-text">Valoracion media en Google con mas de 153 opiniones</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Donde la hamburguesa<br>es <em>artesanal</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      En Ziripot Berria creemos que una buena hamburguesa empieza por <strong>ingredientes de calidad</strong>. Carne de ternera seleccionada, pan brioche recien horneado y salsas caseras que marcan la diferencia.<br><br><strong>Un referente en Galdakao.</strong> Llevamos anos siendo el lugar favorito de los vecinos para disfrutar de hamburguesas generosas, con sabor casero y a precios honestos. Ven a comprobarlo.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Carne de calidad</h4>
+          <p>Ternera seleccionada, smash burgers hechas al momento en plancha de alta temperatura</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Todo casero</h4>
+          <p>Salsas, pan brioche y patatas cortadas a mano. Sin procesados, sin atajos</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <h4>Para todos los gustos</h4>
+          <p>Desde la clasica hasta creaciones con trufa, foie o queso idiazabal. Menu infantil disponible</p>
         </div>
       </div>
     </div>
@@ -952,163 +974,146 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Hamburguesas para <em>todos los momentos</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M3 11h18M3 11c0 4.97 4.03 9 9 9s9-4.03 9-9M3 11c0-1 .5-2 1.5-2.5C5.5 8 7 7 12 7s6.5 1 7.5 1.5c1 .5 1.5 1.5 1.5 2.5M8 20v1M16 20v1M5 7V4M19 7V4"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Hamburguesas Artesanales</h3>
+        <p>Carne de ternera seleccionada, pan brioche artesano y salsas caseras. Desde la clasica hasta creaciones gourmet con ingredientes premium.</p>
+        <a href="#carta-principal" class="service-link">Ver carta &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M21 10H3M21 10V18a2 2 0 01-2 2H5a2 2 0 01-2-2V10M21 10l-2-7H5L3 10"/>
+            <path d="M9 14h6"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Para Llevar</h3>
+        <p>Preparamos tu pedido para que lo disfrutes donde quieras. Llama al 946 52 71 73 y lo tenemos listo cuando llegues. Rapido, fresco y con el mismo sabor.</p>
+        <a href="tel:+34946527173" class="service-link">Llamar ahora &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Menu Infantil</h3>
+        <p>Hamburguesa mini, patatas y bebida pensadas para los mas pequenos. Raciones generosas a un precio justo para que toda la familia disfrute.</p>
+        <a href="#carta-principal" class="service-link">Ver opciones &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
+<!-- CARTA: HAMBURGUESAS -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">&larr; Volver a servicios</a>
+    <p class="section-label reveal">Nuestra carta</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Hamburguesas con <em>caracter</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Hamburguesas Clasicas</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Ziripot Classic</div>
+              <div class="carta-item-desc">Pan brioche, ternera 180g, lechuga, tomate, queso cheddar</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">9,50 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Bacon Lover</div>
+              <div class="carta-item-desc">Doble bacon crujiente, queso, salsa BBQ</div>
+            </div>
+            <div class="carta-item-price">10,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal">
+          <h4>Hamburguesas Especiales</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ziripot Berria</div>
+              <div class="carta-item-desc">Ingredientes premium, trufa, foie</div>
+            </div>
+            <div class="carta-item-price">13,90 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Txuleta Burger</div>
+              <div class="carta-item-desc">Carne de txuleta, pimientos, queso idiazabal</div>
+            </div>
+            <div class="carta-item-price">12,50 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Acompanamientos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Patatas caseras</div>
+              <div class="carta-item-desc">Cortadas a mano, crujientes por fuera</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">3,50 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Aros de cebolla</div>
+              <div class="carta-item-desc">Rebozados y crujientes</div>
+            </div>
+            <div class="carta-item-price">4,00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada</div>
+              <div class="carta-item-desc">Mixta con vinagreta casera</div>
+            </div>
+            <div class="carta-item-price">4,50 &euro;</div>
+          </div>
         </div>
-      </div>
-    </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+        <div class="carta-category reveal reveal-delay-2">
+          <h4>Bebidas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Refrescos</div>
+            </div>
+            <div class="carta-item-price">2,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cerveza tirador</div>
+            </div>
+            <div class="carta-item-price">2,80 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Agua</div>
+            </div>
+            <div class="carta-item-price">1,50 &euro;</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Precios orientativos</h4>
+          <p>Los precios pueden variar. Consulta en el local para confirmar las opciones del dia y promociones especiales. Pregunta por nuestras combinaciones y ofertas de menu completo.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada espacio -->
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada tipo -->
-        </div>
-      </div>
-    </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+    <a href="tel:+34946527173" class="carta-cta reveal">
+      <span>Llamar para pedir</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1116,7 +1121,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1125,33 +1130,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"Las hamburguesas mas generosas y sabrosas de Galdakao. La Ziripot Berria con trufa es una pasada. Raciones enormes y precios muy buenos."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Josin Ruiz</strong>
+          <span>Google &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Llevamos a los ninos y les encanto el menu infantil. El trato del personal es genial, muy cercano y amable. Repetiremos seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Carlos Martin Avellaneda</strong>
+          <span>Google &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"La Txuleta Burger con idiazabal es de lo mejor que he probado. Las patatas caseras estan increibles. Siempre pido para llevar y llega perfecto."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Judith Ruiz</strong>
+          <span>Google &middot; Galdakao</span>
         </div>
       </div>
     </div>
@@ -1159,29 +1164,36 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>Te apetece una<br>buena hamburguesa?</h2>
+    <p>Llamanos y reserva tu mesa o haz tu pedido para llevar.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
-    <span>↗</span>
+  <a href="tel:+34946527173" class="btn-dark">
+    <span>Llamar ahora</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Gipuzkoa Kalea, 9, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34946527173" style="color: var(--accent,#0284C7);">946 52 71 73</a></p>
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p><strong style="color: var(--white);">Direccion:</strong><br>Gipuzkoa Kalea, 9, Galdakao, Bizkaia</p>
+        <p><strong style="color: var(--white);">Telefono:</strong><br><a href="tel:+34946527173">946 52 71 73</a></p>
+        <p><strong style="color: var(--white);">Siguenos:</strong><br><a href="https://m.facebook.com/hamburgueseriaziripotberria" target="_blank" rel="noopener">Facebook</a></p>
+        <p style="margin-top: 16px;"><strong style="color: var(--white);">Horario:</strong><br>
+          L-M: 17:00 - 23:00<br>
+          X: Cerrado<br>
+          J: 12:00 - 23:30<br>
+          V-S: 12:00 - 1:00<br>
+          D: 12:00 - 22:30</p>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Hamburguesería+Ziripot+Berria,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="contact-map reveal reveal-delay-1">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Hamburguesar%C3%ADa+Ziripot+Berria,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1191,48 +1203,43 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Hamburguesería Ziripot Berria<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <a href="#" class="nav-logo">Ziripot Berria<span>.</span></a>
+      <p class="footer-tagline">"Hamburguesas artesanales con alma y sabor de Galdakao."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://m.facebook.com/hamburgueseriaziripotberria" target="_blank" rel="noopener" class="social-link">Fb</a>
+        <a href="https://www.google.com/maps/place/Hamburguesar%C3%ADa+Ziripot+Berria" target="_blank" rel="noopener" class="social-link">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-principal">Clasicas</a></li>
+        <li><a href="#carta-principal">Especiales</a></li>
+        <li><a href="#carta-principal">Acompanamientos</a></li>
+        <li><a href="#carta-principal">Bebidas</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galeria</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34946527173">946 52 71 73</a></li>
-        <li><a href="#">Gipuzkoa Kalea, Galdakao</a></li>
+        <li><a href="#contacto">Gipuzkoa Kalea, 9, Galdakao</a></li>
+        <li><a href="https://m.facebook.com/hamburgueseriaziripotberria" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Hamburguesería Ziripot Berria. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Hamburgueseria Ziripot Berria. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
@@ -1327,7 +1334,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

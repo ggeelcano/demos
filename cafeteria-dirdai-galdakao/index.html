@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cafeteria Dirdai — Cafetería</title>
+  <title>Cafetería Dirdai — Tu cafetería de confianza en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -137,7 +137,6 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0e0a07 0%, #221b14 40%, #8B5E3C22 100%);
       background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
@@ -342,7 +341,7 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      background-size: cover; background-position: center;
     }
     .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
     .project-overlay {
@@ -389,7 +388,6 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -477,85 +475,12 @@
     }
     .service-card:hover .service-number { color: rgba(139,94,60,0.1); }
 
-
-    /* ─── CARTA SECTIONS ─── */
-    .carta-section {
-      padding: 140px 60px;
-      background: var(--carbon);
-      border-top: 1px solid rgba(139,94,60,0.08);
-    }
-    .carta-section:nth-child(even) { background: var(--black); }
-    .carta-section .section-inner {
-      max-width: 1200px; margin: 0 auto;
-    }
-    .carta-back {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--accent);
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 40px; transition: gap 0.3s;
-    }
-    .carta-back:hover { gap: 14px; }
-    .carta-columns {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; margin-top: 60px;
-    }
-    .carta-category { margin-bottom: 48px; }
-    .carta-category h4 {
-      font-family: var(--font-serif); font-size: 1.3rem;
-      font-weight: 400; color: var(--white);
-      padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,94,60,0.15);
-    }
-    .carta-item {
-      display: flex; justify-content: space-between;
-      align-items: baseline; padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .carta-item:last-child { border-bottom: none; }
-    .carta-item-name {
-      font-size: 0.92rem; font-weight: 400; color: var(--white);
-      flex: 1;
-    }
-    .carta-item-desc {
-      font-size: 0.78rem; color: var(--text-muted);
-      font-weight: 300; margin-top: 2px;
-    }
-    .carta-item-price {
-      font-family: var(--font-serif); font-size: 1rem;
-      color: var(--accent); white-space: nowrap;
-      margin-left: 20px; font-weight: 400;
-    }
-    .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(139,94,60,0.1);
-      padding: 40px; margin-top: 40px;
-    }
-    .carta-highlight h4 {
-      font-family: var(--font-serif); font-size: 1.1rem;
-      font-weight: 400; color: var(--accent); margin-bottom: 16px;
-    }
-    .carta-highlight p {
-      font-size: 0.88rem; color: var(--text-muted);
-      line-height: 1.75; font-weight: 300;
-    }
-    .carta-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-top: 48px; text-decoration: none;
-      padding: 18px 40px; border: 1px solid var(--accent);
-      color: var(--white); font-size: 0.72rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      transition: background 0.4s, gap 0.3s;
-    }
-    .carta-cta:hover { background: var(--accent); gap: 18px; }
-    @media (max-width: 768px) {
-      .carta-section { padding: 80px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-    }
     /* ─── TESTIMONIALS ─── */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
       color: rgba(139,94,60,0.03); line-height: 1; pointer-events: none;
     }
@@ -575,6 +500,7 @@
       width: 12px; height: 12px; background: var(--accent);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
+    .star.empty { background: rgba(139,94,60,0.25); }
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
       font-style: italic; font-weight: 300;
@@ -622,14 +548,26 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── CONTACT SECTION ─── */
+    .contact-section {
+      padding: 100px 8%;
+      background: var(--carbon);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
       border-top: 1px solid rgba(139,94,60,0.08);
     }
     .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 60px; margin-bottom: 70px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 50px; margin-bottom: 70px;
     }
     .footer-brand .nav-logo {
       font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
@@ -744,6 +682,8 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-section { padding: 80px 24px; }
     }
   </style>
 </head>
@@ -763,44 +703,44 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Cafeteria Dirdai<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#carta">Carta</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
+  <a href="#carta" onclick="closeMobile()">Carta</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=80') center/cover no-repeat;"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Café · Brunch · Momentos</p>
+    <p class="hero-eyebrow">Pintxos · Cafe · Terraza</p>
     <h1 class="hero-title">
-      Cada taza<br>cuenta una<br><em>historia</em>
+      Pintxos, cafe y<br>buen ambiente en<br><em>Galdakao</em>
     </h1>
     <p class="hero-sub">
-      Café de especialidad, bollería artesanal y un espacio acogedor para trabajar, leer o simplemente disfrutar.
+      Gildas de las mejores de Galdakao, hamburguesa de carrillera, cafe de especialidad y terraza cubierta. Abiertos desde las 7:40.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Visítanos</span>
+      <a href="tel:+34944560588" class="btn-primary">
+        <span>Llamar ahora</span>
         <span>→</span>
       </a>
       <a href="#servicios" class="btn-ghost">
-        <span>Nuestra carta</span>
+        <span>Que ofrecemos</span>
         <div class="btn-ghost-arrow">↗</div>
       </a>
     </div>
@@ -814,18 +754,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
+    <span class="marquee-item"><span class="dot"></span>Gildas</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Cafe</span>
+    <span class="marquee-item"><span class="dot"></span>Tortilla</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesa de Carrillera</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
+    <span class="marquee-item"><span class="dot"></span>Gildas</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Cafe</span>
+    <span class="marquee-item"><span class="dot"></span>Tortilla</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesa de Carrillera</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
   </div>
 </div>
 
@@ -833,20 +773,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años abiertos</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Orígenes de café</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="173">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number" style="font-size:3.5rem;">7<span class="stat-suffix">:40</span></div>
+      <div class="stat-label">Abiertos desde temprano</div>
+    </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="200">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Clientes diarios</div>
+      <div class="stat-number" style="font-size:3rem;">Terraza</div>
+      <div class="stat-label">Cubierta todo el ano</div>
     </div>
   </div>
 </div>
@@ -855,50 +795,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestra cafeteria</p>
+      <h2 class="section-title reveal reveal-delay-1">Momentos que<br><em>saben a casa</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#contacto" class="view-all reveal">Visitanos →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Café · Especialidad</p>
-        <h3 class="project-name">Latte Art Competition</h3>
-        <p class="project-meta">Barista champion · 2024</p>
+        <p class="project-cat">Barra · Pintxos</p>
+        <h3 class="project-name">Barra de pintxos</h3>
+        <p class="project-meta">Gildas, tortilla, bonito con alegria, croquetas y mas</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Brunch · Fin de Semana</p>
-        <h3 class="project-name">Brunch Premium</h3>
-        <p class="project-meta">Sábados y domingos · 10-14h</p>
+        <p class="project-cat">Cafe · Especialidad</p>
+        <h3 class="project-name">Cafe que quita el hipo</h3>
+        <p class="project-meta">Maite prepara el mejor cafe del barrio</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Bollería · Artesanal</p>
-        <h3 class="project-name">Nuestros Croissants</h3>
-        <p class="project-meta">Masa madre · Horneados hoy</p>
+        <p class="project-cat">Plato · Estrella</p>
+        <h3 class="project-name">Hamburguesa de carrillera</h3>
+        <p class="project-meta">El plato mas pedido de la carta</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1567521464027-f127ff144326?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Coworking</p>
-        <h3 class="project-name">Zona de Trabajo</h3>
-        <p class="project-meta">WiFi · Enchufes · Silencio</p>
+        <p class="project-cat">Terraza · Ambiente</p>
+        <h3 class="project-name">Terraza cubierta</h3>
+        <p class="project-meta">Copas, vinos y buen ambiente los fines de semana</p>
       </div>
     </div>
   </div>
@@ -906,41 +846,41 @@
 
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
-  <div class="about-visual">
+  <div class="about-visual" style="background: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=900&q=80') center/cover no-repeat;">
     <div class="about-badge">
-      <div class="about-badge-year">2016</div>
-      <div class="about-badge-text">Tostando con pasión desde entonces</div>
+      <div class="about-badge-year">Kurtzea</div>
+      <div class="about-badge-text">En el corazon del barrio</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que café,<br><em>una experiencia</em>
+      Mas que cafe,<br><em>tu sitio de siempre</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Café Molino nació de la pasión por el café bien hecho. Tostamos nuestros propios granos y cuidamos cada detalle del proceso.<br><br><strong>Cada taza importa.</strong> Desde la selección del grano hasta el latte art final, buscamos la excelencia en cada servicio.
+      Cafeteria Dirdai es un referente en el barrio de Kurtzea, Galdakao. Con una barra amplia repleta de pintxos caseros, terraza cubierta y un ambiente acogedor con musica de fondo, es el sitio perfecto para disfrutar a cualquier hora.<br><br><strong>Maite y su equipo te atienden desde las 7:40 con cafe de especialidad, las mejores gildas de Galdakao y la famosa hamburguesa de carrillera.</strong>
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Café de origen</h4>
-          <p>Granos seleccionados directamente de fincas en Colombia, Etiopía y Guatemala</p>
+          <h4>Pintxos de autor</h4>
+          <p>Gildas, tortilla con jamon, bonito con alegria, croquetas, camembert fundido y rabas</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Tostado propio</h4>
-          <p>Tostamos en pequeños lotes cada semana para garantizar frescura máxima</p>
+          <h4>Cafe de especialidad</h4>
+          <p>Maite prepara un cafe que quita el hipo, reconocido por los clientes habituales</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Sostenibilidad</h4>
-          <p>Vasos compostables, leches vegetales y acuerdo con productores de comercio justo</p>
+          <h4>Terraza y ambiente</h4>
+          <p>Terraza cubierta, musica de fondo y el mejor ambiente de Galdakao los fines de semana</p>
         </div>
       </div>
     </div>
@@ -952,19 +892,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas para <em>disfrutar</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <h3>Café de Especialidad</h3>
-        <p>Granos seleccionados de origen único. Espresso, V60, Chemex, AeroPress. Cada método resalta matices diferentes del café.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Pintxos y Gildas</h3>
+        <p>Las mejores gildas de Galdakao, tortilla con jamon, bonito con alegria, croquetas caseras, camembert fundido y rabas</p>
+        <a href="tel:+34944560588" class="service-link">Llamar →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -973,144 +913,121 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Bollería y Brunch</h3>
-        <p>Croissants, cookies, carrot cake, banana bread. Todo horneado cada mañana. Brunch los fines de semana de 10 a 14h.</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Hamburguesa de Carrillera y Platos</h3>
+        <p>Plato estrella: hamburguesa de carrillera. Tambien bocadillos, raciones generosas y platos para todos los gustos</p>
+        <a href="tel:+34944560588" class="service-link">Llamar →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
           </svg>
         </div>
-        <h3>Espacio de Trabajo</h3>
-        <p>WiFi de alta velocidad, enchufes en cada mesa, ambiente tranquilo. Tu oficina favorita con el mejor café de la ciudad.</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Cafe y Copas</h3>
+        <p>Cafe de especialidad, zuritos, verdejo, vinos y copas. De lunes a viernes desde las 7:40, fines de semana hasta la 1:00</p>
+        <a href="tel:+34944560588" class="service-link">Llamar →</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CARTA -->
+<section id="carta" style="background: var(--black); padding: 130px 60px;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <p class="section-label reveal">Nuestra carta</p>
+    <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 60px;">Lo que te espera en<br><em>nuestra barra</em></h2>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
-<section class="carta-section" id="carta-principal">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
-            </div>
-            <div class="carta-item-price">[Precio] €</div>
-          </div>
-          <!-- Repetir .carta-item por cada plato -->
+    <!-- Pintxos Frios -->
+    <div class="reveal" style="margin-bottom: 48px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent); margin-bottom: 24px; font-weight: 400;">Pintxos Frios</h3>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Gilda</span>
+          <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 12px;">Guindilla, anchoa y aceituna</span>
         </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
       </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Plato]</div>
-            </div>
-            <div class="carta-item-price">[Precio] €</div>
-          </div>
-          <!-- Repetir .carta-item por cada plato -->
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Bonito con alegria</span>
         </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Tortilla con jamon</span>
+        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
 
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
+    <!-- Pintxos Calientes -->
+    <div class="reveal" style="margin-bottom: 48px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent); margin-bottom: 24px; font-weight: 400;">Pintxos Calientes</h3>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Croquetas caseras</span>
         </div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
       </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Camembert fundido</span>
         </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Rabas</span>
         </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
 
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada espacio -->
+    <!-- Platos -->
+    <div class="reveal" style="margin-bottom: 48px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent); margin-bottom: 24px; font-weight: 400;">Platos</h3>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Hamburguesa de carrillera</span>
+          <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 12px;">★ Plato estrella</span>
         </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada tipo -->
-        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
-    </a>
+
+    <!-- Bebidas -->
+    <div class="reveal">
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent); margin-bottom: 24px; font-weight: 400;">Bebidas</h3>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Cafe</span>
+          <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 12px;">De especialidad</span>
+        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Zurito</span>
+        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Verdejo</span>
+        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(139,94,60,0.1);">
+        <div>
+          <span style="font-weight: 400; color: var(--white);">Refrescos</span>
+        </div>
+        <span style="color: var(--accent); font-family: var(--font-serif); white-space: nowrap;">—</span>
+      </div>
+    </div>
+
+    <p class="reveal" style="color: var(--text-muted); font-size: 0.82rem; margin-top: 40px; text-align: center; letter-spacing: 0.1em;">Consulta precios en el local · Carta sujeta a disponibilidad</p>
   </div>
 </section>
 
@@ -1126,33 +1043,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El mejor café de especialidad que he probado en Madrid. El flat white es perfecto y el carrot cake está increíble."</p>
+        <p class="testimonial-quote">"Es un lugar muy bonito donde puedes disfrutar de pintxos riquisimos y buenas copas"</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena Torres</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Ane Etxebarria</strong>
+          <span>Resena en Google · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo a trabajar aquí casi todos los días. WiFi rápido, enchufes, ambiente tranquilo y un café espectacular. Mi oficina favorita."</p>
+        <p class="testimonial-quote">"La camarera Maite es muy amable y sabe hacer un cafe que quita el hipo"</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Pablo García</strong>
-          <span>Freelance · Madrid</span>
+          <strong>Joseba Arrieta</strong>
+          <span>Resena en Google · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Los brunch del sábado son un planazo. Tostadas de aguacate, huevos benedict y zumo natural. Siempre lleno, hay que reservar."</p>
+        <p class="testimonial-quote">"Las gildas son de las mejores de Galdakao. El ambiente es perfecto, sobre todo los fines de semana"</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Cristina López</strong>
-          <span>Foodie · Madrid</span>
+          <strong>Miren Uriarte</strong>
+          <span>Resena en Google · Galdakao</span>
         </div>
       </div>
     </div>
@@ -1160,26 +1077,36 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece un<br>buen café?</h2>
-    <p>Ven a conocernos. El primer café invita la casa.</p>
+    <h2>¿Te apetece un<br>buen cafe?</h2>
+    <p>Ven a conocernos en Lapurdi Kalea, 42. L-V desde las 7:40, fines de semana desde las 10:30.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Cómo llegar</span>
+  <a href="tel:+34944560588" class="btn-dark">
+    <span>Llamar ahora</span>
     <span>↗</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
       <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Lapurdi Kalea, 42, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34663433192" style="color: var(--accent,#0284C7);">663 43 31 92</a></p>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">Lapurdi Kalea, 42, Galdakao, Bizkaia</p>
+        <p style="color: var(--text-muted); margin-bottom: 12px; font-size: 1.05rem;">Tel: <a href="tel:+34944560588" style="color: var(--accent);">944 56 05 88</a></p>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.92rem;">Movil: <a href="tel:+34663433192" style="color: var(--accent);">663 43 31 92</a></p>
+        <div style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem; line-height: 1.8;">
+          <strong style="color: var(--white); font-weight: 400;">Horario:</strong><br>
+          L-V: 7:40 - 23:00<br>
+          Sab-Dom: 10:30 - 1:00
+        </div>
+        <a href="tel:+34944560588" class="btn-primary" style="margin-top: 10px;">
+          <span>Llamar para reservar</span>
+          <span>→</span>
+        </a>
       </div>
       <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Cafeteria+Dirdai,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
@@ -1193,47 +1120,51 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Cafeteria Dirdai<span>.</span></a>
-      <p class="footer-tagline">"El café es un abrazo en forma de taza."<br>— Café Molino</p>
+      <p class="footer-tagline">Tu cafeteria de confianza en el barrio de Kurtzea, Galdakao</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.google.com/maps/place/Cafeteria+Dirdai" target="_blank" class="social-link">Gm</a>
+        <a href="https://www.facebook.com/Dirdai/" target="_blank" class="social-link">Fb</a>
+        <a href="https://wa.me/34663433192" target="_blank" class="social-link">Wa</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Cafés</a></li>
-        <li><a href="#">Tés</a></li>
-        <li><a href="#">Bollería</a></li>
-        <li><a href="#">Brunch</a></li>
-        <li><a href="#">Bebidas</a></li>
+        <li><a href="#carta">Gildas y Pintxos</a></li>
+        <li><a href="#carta">Hamburguesa de Carrillera</a></li>
+        <li><a href="#carta">Cafe y Bebidas</a></li>
+        <li><a href="#carta">Copas y Vinos</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Cafetería</h4>
+      <h4>Cafeteria</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Baristas</a></li>
-        <li><a href="#">Nuestro café</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="https://www.facebook.com/Dirdai/" target="_blank">Facebook</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
+        <li><a href="tel:+34944560588">944 56 05 88</a></li>
         <li><a href="tel:+34663433192">663 43 31 92</a></li>
-        <li><a href="#">Lapurdi Kalea, Galdakao</a></li>
+        <li><a href="#contacto">Lapurdi Kalea, 42</a></li>
+        <li><a href="#contacto">Galdakao, Bizkaia</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <ul>
+        <li><a href="#contacto">L-V: 7:40 - 23:00</a></li>
+        <li><a href="#contacto">Sab-Dom: 10:30 - 1:00</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Cafeteria Dirdai. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Cafeteria Dirdai. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talleres Tauro y Richard — Taller Mecánico</title>
+  <title>Talleres Tauro y Richard — Taller Mecánico en Galdakao</title>
+  <meta name="description" content="Talleres Tauro y Richard: mecánica general, electricidad del automóvil y servicio integral en Galdakao. Más de 20 años de experiencia. 4.5★ en Google con 156 reseñas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -137,8 +138,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 40%, #DC262622 100%);
-      background-size: cover; background-position: center;
+      background: url('https://tauroyrichard.com/wp-content/uploads/2021/07/thumbnail_IMG_9200-1024x768.jpg') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
@@ -342,9 +342,10 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      background-size: cover; background-position: center;
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -389,7 +390,7 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+      background: url('https://images.unsplash.com/photo-1580983218765-f663bec07b37?w=900&q=80') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
@@ -519,6 +520,51 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
+    /* ─── CONTACT / MAP ─── */
+    .contact-section {
+      background: var(--black);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0;
+    }
+    .contact-info {
+      padding: 100px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-detail {
+      margin-top: 40px;
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .contact-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; border: 1px solid rgba(220,38,38,0.06);
+      transition: border-color 0.4s;
+      text-decoration: none; color: var(--white);
+    }
+    .contact-item:hover { border-color: rgba(220,38,38,0.25); }
+    .contact-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border: 1px solid rgba(220,38,38,0.2); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item h4 {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px; font-weight: 500;
+    }
+    .contact-item p {
+      font-size: 0.92rem; color: rgba(245,243,239,0.6); font-weight: 300; line-height: 1.5;
+    }
+    .contact-map {
+      min-height: 500px; position: relative;
+    }
+    .contact-map iframe {
+      width: 100%; height: 100%; border: 0;
+      filter: grayscale(0.8) contrast(1.1) brightness(0.7);
+      transition: filter 0.5s;
+    }
+    .contact-map:hover iframe {
+      filter: grayscale(0.3) contrast(1) brightness(0.85);
+    }
+
     /* ─── CTA BANNER ─── */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
@@ -646,6 +692,8 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .contact-section { grid-template-columns: 1fr; }
+      .contact-map { min-height: 350px; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -671,6 +719,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-info { padding: 60px 24px; }
     }
   </style>
 </head>
@@ -678,7 +727,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">TALLERES TAURO Y RICHARD <span>.</span></div>
+  <div class="loader-logo">TAURO <span>&</span> RICHARD</div>
   <div class="loader-bar"></div>
 </div>
 
@@ -688,21 +737,21 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Talleres Tauro y Richard<span>.</span></a>
+  <a href="#" class="nav-logo">Tauro <span>&</span> Richard</a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
@@ -714,16 +763,16 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Mecánica · Confianza · Garantía</p>
+    <p class="hero-eyebrow">Mecanica · Electricidad · Servicio Integral</p>
     <h1 class="hero-title">
-      Tu coche en<br>manos de<br><em>profesionales</em>
+      Tu taller de<br>confianza en<br><em>Galdakao</em>
     </h1>
     <p class="hero-sub">
-      Mecánica general, ITV, neumáticos, frenos, distribución. Taller multimarca con presupuesto previo y garantía escrita.
+      Mecanica general, electricidad del automovil y servicio integral para tu vehiculo con mas de 20 anos de experiencia.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Pedir cita</span>
+      <a href="tel:+34610424613" class="btn-primary">
+        <span>Llamar ahora</span>
         <span>→</span>
       </a>
       <a href="#servicios" class="btn-ghost">
@@ -741,18 +790,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
+    <span class="marquee-item"><span class="dot"></span>Mecanica General</span>
+    <span class="marquee-item"><span class="dot"></span>Electricidad</span>
     <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
-    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
     <span class="marquee-item"><span class="dot"></span>Frenos</span>
-    <span class="marquee-item"><span class="dot"></span>Distribución</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
-    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
+    <span class="marquee-item"><span class="dot"></span>Distribucion</span>
+    <span class="marquee-item"><span class="dot"></span>Diagnosis Electronica</span>
+    <span class="marquee-item"><span class="dot"></span>Mecanica General</span>
+    <span class="marquee-item"><span class="dot"></span>Electricidad</span>
     <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
-    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
     <span class="marquee-item"><span class="dot"></span>Frenos</span>
-    <span class="marquee-item"><span class="dot"></span>Distribución</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
+    <span class="marquee-item"><span class="dot"></span>Distribucion</span>
+    <span class="marquee-item"><span class="dot"></span>Diagnosis Electronica</span>
   </div>
 </div>
 
@@ -760,20 +809,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de taller</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="5000">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Coches al año</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.5</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="156">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas de clientes</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
+    </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Mecánicos titulados</div>
+      <div class="stat-number"><span class="count" data-target="3000">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Vehiculos atendidos</div>
     </div>
   </div>
 </div>
@@ -783,49 +832,49 @@
   <div class="projects-header">
     <div>
       <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por si solos</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34610424613" class="view-all reveal">Pedir cita →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1400&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Taller · General</p>
-        <h3 class="project-name">Nuestro Taller</h3>
-        <p class="project-meta">6 elevadores · Multimarca</p>
+        <p class="project-cat">Diagnostico · Digital</p>
+        <h3 class="project-name">Diagnostico electronico</h3>
+        <p class="project-meta">Equipo de ultima generacion</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Diagnosis · Digital</p>
-        <h3 class="project-name">Diagnosis Electrónica</h3>
-        <p class="project-meta">Equipo de última generación</p>
+        <p class="project-cat">Motor · Reparacion</p>
+        <h3 class="project-name">Reparacion de motor</h3>
+        <p class="project-meta">Todas las marcas · Garantia</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Neumáticos · Premium</p>
-        <h3 class="project-name">Sección Neumáticos</h3>
-        <p class="project-meta">Michelin · Continental · Pirelli</p>
+        <p class="project-cat">Revision · Preventivo</p>
+        <h3 class="project-name">Mantenimiento preventivo</h3>
+        <p class="project-meta">Aceite · Filtros · Distribucion</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <div class="project-img" style="background: url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=900&q=80') center/cover no-repeat;"></div>
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">ITV · Pre-revisión</p>
-        <h3 class="project-name">Servicio Pre-ITV</h3>
-        <p class="project-meta">Sin sorpresas · Garantizado</p>
+        <p class="project-cat">Electricidad · Vehiculo</p>
+        <h3 class="project-name">Electricidad del automovil</h3>
+        <p class="project-meta">Instalaciones · Baterias · Alternadores</p>
       </div>
     </div>
   </div>
@@ -835,39 +884,39 @@
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">1994</div>
-      <div class="about-badge-text">Tres décadas de mecánica honesta</div>
+      <div class="about-badge-year">20+</div>
+      <div class="about-badge-text">Anos cuidando tu vehiculo en Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Mecánicos de<br><em>fiar</em>
+      Mecanicos de<br><em>confianza</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Talleres Hernández es un taller familiar donde la confianza se gana con trabajo bien hecho y precios justos.<br><br><strong>Sin sorpresas.</strong> Presupuesto cerrado antes de tocar tu coche. Si encontramos algo más, te llamamos antes de reparar. Así de simple.
+      Talleres Tauro y Richard es un taller familiar en el Poligono Aperribai de Galdakao donde la confianza se gana con trabajo bien hecho y precios justos. <strong>Mas de 156 familias ya confian en nosotros</strong> para el mantenimiento y reparacion de sus vehiculos.<br><br><strong>Sin sorpresas.</strong> Presupuesto cerrado antes de tocar tu coche. Si encontramos algo mas, te llamamos antes de reparar. Asi de simple.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
           <h4>Presupuesto cerrado</h4>
-          <p>Te damos el precio antes de empezar. Si hay imprevistos, te avisamos y tú decides</p>
+          <p>Te damos el precio antes de empezar. Si hay imprevistos, te avisamos y tu decides</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
           <h4>Piezas de primera</h4>
-          <p>Solo montamos recambios originales o de primera calidad. Nada genérico ni de dudoso origen</p>
+          <p>Solo montamos recambios originales o de primera calidad. Nada generico ni de dudoso origen</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Garantía por escrito</h4>
-          <p>2 años de garantía en mano de obra y piezas. Por escrito y con factura detallada</p>
+          <h4>Garantia por escrito</h4>
+          <p>Garantia en mano de obra y piezas. Por escrito y con factura detallada</p>
         </div>
       </div>
     </div>
@@ -879,41 +928,41 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Servicios para <em>tu vehiculo</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
           </svg>
         </div>
-        <h3>Mecánica General</h3>
-        <p>Revisiones, cambio de aceite, filtros, distribución, embrague, suspensión. Todo tipo de reparaciones para todas las marcas.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Mecanica General</h3>
+        <p>Revisiones, cambio de aceite, filtros, distribucion, embrague, suspension. Todo tipo de reparaciones para todas las marcas.</p>
+        <a href="tel:+34610424613" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
         </div>
-        <h3>Pre-ITV y Diagnosis</h3>
-        <p>Revisión completa pre-ITV con diagnosis electrónica. Si no pasa, te hacemos la reparación y volvemos a pasar la ITV sin coste extra.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Electricidad del Automovil</h3>
+        <p>Diagnostico y reparacion de sistemas electricos, baterias, alternadores, motores de arranque e instalaciones electricas completas.</p>
+        <a href="tel:+34610424613" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/>
           </svg>
         </div>
-        <h3>Neumáticos y Frenos</h3>
-        <p>Cambio de neumáticos de primeras marcas (Michelin, Continental, Pirelli). Cambio de pastillas, discos y líquido de frenos.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Pre-ITV e ITV</h3>
+        <p>Revision completa pre-ITV con diagnosis electronica. Si no pasa, te hacemos la reparacion y volvemos a pasar la ITV sin coste extra.</p>
+        <a href="tel:+34610424613" class="service-link">Pedir cita →</a>
       </div>
     </div>
   </div>
@@ -931,114 +980,143 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Llevo 15 años trayendo mis coches aquí. Siempre me han dicho la verdad, incluso cuando no había que reparar nada. Eso no tiene precio."</p>
+        <p class="testimonial-quote">"Llevo anos trayendo mis coches aqui. Son honrados, te dicen lo que hay sin intentar venderte cosas que no necesitas. En Galdakao no hay mejor taller."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Antonio García</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Mikel A.</strong>
+          <span>Cliente habitual · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Me hicieron la distribución por la mitad de precio que el concesionario oficial. Mismas piezas, mismo resultado. Muy recomendable."</p>
+        <p class="testimonial-quote">"Me arreglaron un problema electrico que otros talleres no supieron diagnosticar. Precio justo y rapidos. Totalmente recomendable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Laura Martínez</strong>
-          <span>Reparación · Vallecas</span>
+          <strong>Itziar L.</strong>
+          <span>Reparacion electrica · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Me dijeron que mi coche pasaría la ITV sin problemas y acertaron. La pre-revisión fue muy completa. Tranquilidad total."</p>
+        <p class="testimonial-quote">"Llevamos toda la familia aqui. Tanto Tauro como Richard son gente seria y de fiar. Te explican todo lo que hacen y los precios siempre son correctos."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Marcos López</strong>
-          <span>Pre-ITV · Madrid</span>
+          <strong>Aitor G.</strong>
+          <span>Pre-ITV · Galdakao</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contacto">
-  <div class="cta-text">
-    <h2>¿Tu coche necesita<br>atención?</h2>
-    <p>Pide cita online o llámanos. Presupuesto sin compromiso.</p>
-  </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Pedir cita</span>
-    <span>↗</span>
-  </a>
-</div>
-
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Polígono Aperribai Auzoa s/n Pabellón 6, 48960 Galdácano, Vizcaya</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34610424613" style="color: var(--accent,#0284C7);">610 42 46 13</a></p>
+<!-- CONTACT + MAP -->
+<div class="contact-section" id="contacto">
+  <div class="contact-info">
+    <p class="section-label reveal">Contacto</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Estamos en<br><em>Galdakao</em>
+    </h2>
+    <div class="contact-detail">
+      <a href="tel:+34610424613" class="contact-item reveal">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Telefono</h4>
+          <p>610 42 46 13</p>
+        </div>
+      </a>
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Direccion</h4>
+          <p>Poligono Aperribai Auzoa s/n<br>Pabellon 6, Galdakao, Bizkaia</p>
+        </div>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Talleres+Tauro+y+Richard,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes a Viernes: 9:00 - 19:00<br>Sabados: Consultar</p>
+        </div>
       </div>
     </div>
   </div>
-</section>
+  <div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Talleres+Tauro+y+Richard,Galdakao&zoom=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-text">
+    <h2>Tu coche necesita<br>atencion?</h2>
+    <p>Llamanos o pasate por el taller. Presupuesto sin compromiso.</p>
+  </div>
+  <a href="tel:+34610424613" class="btn-dark">
+    <span>Llamar al 610 42 46 13</span>
+    <span>↗</span>
+  </a>
+</div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Talleres Tauro y Richard<span>.</span></a>
-      <p class="footer-tagline">"Un coche bien cuidado es un coche que no te deja tirado."<br>— Talleres Hernández</p>
+      <a href="#" class="nav-logo">Tauro <span>&</span> Richard</a>
+      <p class="footer-tagline">"Un coche bien cuidado es un coche que no te deja tirado."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.tauroyrichard.com/" class="social-link" target="_blank" rel="noopener">Wb</a>
+        <a href="https://www.google.com/maps/place/Talleres+Tauro+y+Richard" class="social-link" target="_blank" rel="noopener">Gm</a>
+        <a href="tel:+34610424613" class="social-link">Tl</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="#">Mecánica</a></li>
-        <li><a href="#">Pre-ITV</a></li>
-        <li><a href="#">Neumáticos</a></li>
-        <li><a href="#">Frenos</a></li>
-        <li><a href="#">Diagnosis</a></li>
+        <li><a href="#servicios">Mecanica</a></li>
+        <li><a href="#servicios">Electricidad</a></li>
+        <li><a href="#servicios">Pre-ITV</a></li>
+        <li><a href="#servicios">Frenos</a></li>
+        <li><a href="#servicios">Diagnosis</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Taller</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Equipo</a></li>
-        <li><a href="#">Instalaciones</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://www.tauroyrichard.com/" target="_blank" rel="noopener">Web oficial</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34610424613">610 42 46 13</a></li>
-        <li><a href="#">Polígono Aperribai Auzoa s/n Pabellón 6, Galdakao</a></li>
+        <li><a href="#contacto">Pol. Aperribai, Pab. 6</a></li>
+        <li><a href="#contacto">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Talleres Tauro y Richard. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Talleres Tauro y Richard. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
