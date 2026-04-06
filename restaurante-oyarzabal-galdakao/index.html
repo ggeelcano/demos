@@ -343,6 +343,7 @@
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
       background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      display: block;
     }
     .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
     .project-overlay {
@@ -751,7 +752,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">RESTAURANTE OYARZABA <span>.</span></div>
+  <div class="loader-logo">OYARZABAL <span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -763,9 +764,9 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Restaurante Oyarzabal<span>.</span></a>
   <ul class="nav-links">
+    <li><a href="#carta-principal">Carta</a></li>
     <li><a href="#galeria">Galería</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -775,31 +776,31 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
   <a href="#galeria" onclick="closeMobile()">Galería</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://weur-cdn.carta.menu/storage/media/company_gallery/88716081/conversions/contribution_gallery.jpg'); background-size: cover; background-position: center;"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Cocina casera · Gumuzio · Desde 1990</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      Sabor de<br><em>siempre</em><br>en casa
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Cocina casera de toda la vida en el corazón de Gumuzio. Menú del día, platos de cuchara y el trato cercano que nos define desde hace más de 30 años.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Reservar mesa</span>
+      <a href="tel:+34944560029" class="btn-primary">
+        <span>Llamar — 944 56 00 29</span>
         <span>→</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
+      <a href="#carta-principal" class="btn-ghost">
         <span>Ver carta</span>
         <div class="btn-ghost-arrow">↗</div>
       </a>
@@ -814,18 +815,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Casera</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Comidas de Empresa</span>
+    <span class="marquee-item"><span class="dot"></span>Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Txipirones en su Tinta</span>
+    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Casera</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Comidas de Empresa</span>
+    <span class="marquee-item"><span class="dot"></span>Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Txipirones en su Tinta</span>
   </div>
 </div>
 
@@ -833,20 +834,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años en Gumuzio</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="210">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Reseñas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="12">0</span><span class="stat-suffix">€</span></div>
+      <div class="stat-label">Menú del día</div>
     </div>
   </div>
 </div>
@@ -855,50 +856,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestra cocina</p>
+      <h2 class="section-title reveal reveal-delay-1">Platos que<br><em>saben a casa</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#carta-principal" class="view-all reveal">Ver carta completa →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://weur-cdn.carta.menu/storage/media/company_gallery/88716083/conversions/contribution_gallery.jpg" alt="Restaurante Oyarzabal - Comedor" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Espacio · Comedor</p>
+        <h3 class="project-name">Nuestro comedor</h3>
+        <p class="project-meta">Ambiente familiar · Gumuzio</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://weur-cdn.carta.menu/storage/media/company_gallery/88716080/conversions/contribution_gallery.jpg" alt="Txipirones en su tinta" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Especialidad · Mar</p>
+        <h3 class="project-name">Txipirones en su tinta</h3>
+        <p class="project-meta">Receta tradicional vasca</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://weur-cdn.carta.menu/storage/media/company_gallery/88716070/conversions/contribution_gallery.jpg" alt="Carrilleras al vino tinto" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Especialidad · Carne</p>
+        <h3 class="project-name">Carrilleras al vino tinto</h3>
+        <p class="project-meta">Guiso lento · Tiernas</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://weur-cdn.carta.menu/storage/media/company_gallery/88716073/conversions/contribution_gallery.jpg" alt="Paella de pollo" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Arroces · Tradición</p>
+        <h3 class="project-name">Paella de pollo</h3>
+        <p class="project-meta">Hecha al momento</p>
       </div>
     </div>
   </div>
@@ -906,41 +907,41 @@
 
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
-  <div class="about-visual">
+  <div class="about-visual" style="background-image: url('https://weur-cdn.carta.menu/storage/media/company_gallery/88716084/conversions/contribution_gallery.jpg'); background-size: cover; background-position: center;">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">1990</div>
+      <div class="about-badge-text">Cocina casera en el barrio de Gumuzio</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Como comer<br>en <em>casa</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      Restaurante Oyarzabal es un restaurante familiar en el barrio de Gumuzio, Galdakao. Llevamos más de 30 años ofreciendo cocina casera de toda la vida con el trato cercano que nos caracteriza.<br><br><strong>Comida como la de casa.</strong> Nuestros clientes dicen que comer aquí es como comer en casa de su madre. Eso es el mejor halago que podemos recibir.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Cocina casera de verdad</h4>
+          <p>Platos de cuchara, guisos tradicionales y recetas vascas elaboradas cada día con producto fresco</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Menú del día completo</h4>
+          <p>Primero, segundo, postre, pan y bebida desde 12€. Variedad diaria con opciones de pescado y carne</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <h4>Trato familiar</h4>
+          <p>Alaitz, Jone y el equipo te atienden como en casa. Servicio rápido, cercano y siempre con una sonrisa</p>
         </div>
       </div>
     </div>
@@ -950,9 +951,9 @@
 <!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Lo que ofrecemos</p>
+    <p class="section-label reveal">Nuestra oferta</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas para <em>comer bien</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -962,9 +963,9 @@
             <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Menú del día</h3>
+        <p>Primero, segundo, postre, pan y bebida desde 12€. Cocinado cada mañana con producto fresco. De lunes a viernes, el menú que te hace volver.</p>
+        <a href="#carta-principal" class="service-link">Ver menú →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -973,8 +974,8 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
+        <h3>Especialidades de la casa</h3>
+        <p>Txipirones en su tinta, carrilleras al vino tinto, paella de pollo, secreto ibérico a la plancha... Platos que llevan años siendo los favoritos de nuestros clientes.</p>
         <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
@@ -984,51 +985,88 @@
             <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
+        <h3>Comidas de grupo y celebraciones</h3>
+        <p>Comidas de empresa, cumpleaños, comuniones y reuniones familiares. Menús cerrados bajo petición adaptados a tu presupuesto y gustos.</p>
         <a href="#carta-grupos" class="service-link">Más info →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
+<!-- CARTA: MENÚ DEL DÍA -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">De lunes a viernes</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Menú del <em>día</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Primeros platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Ensalada mixta</div>
+              <div class="carta-item-desc">Lechuga, tomate, cebolla, atún y aceitunas</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada rusa</div>
+              <div class="carta-item-desc">Receta casera con patata, zanahoria y mayonesa</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Sopa de pescado</div>
+              <div class="carta-item-desc">Caldo casero con pescado fresco del día</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Judías verdes con jamón</div>
+              <div class="carta-item-desc">Salteadas con jamón serrano</div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Segundos platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Merluza a la plancha</div>
+              <div class="carta-item-desc">Con guarnición del día</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Paella de pollo</div>
+              <div class="carta-item-desc">Arroz tradicional con pollo de caserío</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pechugas con bacon y queso</div>
+              <div class="carta-item-desc">Gratinadas al horno</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Postre casero, pan y bebida</div>
+              <div class="carta-item-desc">Incluido en el menú</div>
+            </div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Menú completo — 12 €</h4>
+          <p>Primero + segundo + postre + pan + bebida. De lunes a viernes de 12:00 a 15:30. El menú varía cada día con opciones de pescado y carne.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:+34944560029" class="carta-cta reveal">
+      <span>Reservar mesa — 944 56 00 29</span><span>→</span>
     </a>
   </div>
 </section>
@@ -1036,35 +1074,86 @@
 <!-- CARTA: ESPECIALIDADES -->
 <section class="carta-section" id="carta-especialidades">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">Los platos que nos definen</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Especialidades de la <em>casa</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Pescados y mariscos</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Txipirones en su tinta</div>
+              <div class="carta-item-desc">Receta tradicional vasca, cocinados a fuego lento</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Merluza a la plancha</div>
+              <div class="carta-item-desc">Pescado fresco con guarnición de temporada</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Arroz con almejas y sepia</div>
+              <div class="carta-item-desc">Arroz meloso con marisco fresco</div>
+            </div>
+          </div>
         </div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Carnes y guisos</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Carrilleras al vino tinto</div>
+              <div class="carta-item-desc">Guisadas a fuego lento hasta quedar tiernas</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Secreto ibérico a la plancha</div>
+              <div class="carta-item-desc">Pieza jugosa con patatas panaderas</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pechugas con bacon y queso</div>
+              <div class="carta-item-desc">Gratinadas al horno, crujientes por fuera</div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Postres caseros</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Profiteroles</div>
+              <div class="carta-item-desc">Rellenos de nata con chocolate caliente</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Flan casero</div>
+              <div class="carta-item-desc">Receta tradicional con caramelo</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Arroz con leche</div>
+              <div class="carta-item-desc">Cremoso, con canela y limón</div>
+            </div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Precios orientativos</h4>
+          <p>Precio medio por persona: 10-20€. Menú del día desde 12€ (incluye primero, segundo, postre, pan y bebida). Consulta nuestra carta completa llamando al 944 56 00 29.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:+34944560029" class="carta-cta reveal">
+      <span>Reservar mesa — 944 56 00 29</span><span>→</span>
     </a>
   </div>
 </section>
@@ -1072,7 +1161,7 @@
 <!-- CARTA: GRUPOS -->
 <section class="carta-section" id="carta-grupos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
     <p class="section-label reveal">Eventos y grupos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
       Celebra con <em>nosotros</em>
@@ -1083,15 +1172,20 @@
           <h4>Nuestro espacio</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
+              <div class="carta-item-name">Comedor principal</div>
+              <div class="carta-item-desc">Espacio amplio y luminoso, ideal para grupos</div>
             </div>
           </div>
-          <!-- Repetir por cada espacio -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ambiente familiar</div>
+              <div class="carta-item-desc">Decoración cálida y acogedora en el barrio de Gumuzio</div>
+            </div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-1">
           <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <p>Diseñamos menús a medida para tu evento. Llámanos y te preparamos una propuesta adaptada a tu presupuesto y número de comensales. Precio desde 15€/persona.</p>
         </div>
       </div>
       <div>
@@ -1099,16 +1193,33 @@
           <h4>Tipo de eventos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menús cerrados con opciones variadas para equipos</div>
             </div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cumpleaños y celebraciones</div>
+              <div class="carta-item-desc">Ambiente familiar perfecto para reuniones especiales</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Comuniones y bautizos</div>
+              <div class="carta-item-desc">Menús especiales para grandes celebraciones familiares</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Reuniones familiares</div>
+              <div class="carta-item-desc">Como comer en casa pero sin cocinar ni recoger</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+    <a href="tel:+34944560029" class="carta-cta reveal">
+      <span>Llamar para reservar — 944 56 00 29</span><span>→</span>
     </a>
   </div>
 </section>
@@ -1125,33 +1236,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"La comida estaba muy rica y sabrosa, con un servicio rápido y atento. El comedor muy limpio. Por 11,50€ el menú, la calidad y atención lo merecen con creces."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Ainhoa Etxebarria</strong>
+          <span>Menú del día · Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Comer aquí es como comer en casa de mi madre. Cocina casera de verdad, raciones generosas y las chicas del servicio — Alaitz y Jone — son un encanto. Vuelvo cada semana."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Mikel Aguirre</strong>
+          <span>Cliente habitual · Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"Las carrilleras al vino tinto y los txipirones en su tinta son espectaculares. Ambiente acogedor, trato familiar y precios muy honestos. Un referente en Gumuzio."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Itziar Goikoetxea</strong>
+          <span>Carta de especialidades · Google</span>
         </div>
       </div>
     </div>
@@ -1159,13 +1270,13 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>¿Te apetece comer<br>como en casa?</h2>
+    <p>Llámanos y reserva tu mesa. De lunes a viernes, cocina casera de toda la vida.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
+  <a href="tel:+34944560029" class="btn-dark">
+    <span>Llamar — 944 56 00 29</span>
     <span>↗</span>
   </a>
 </div>
@@ -1174,11 +1285,15 @@
 <section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
   <div style="max-width: 1200px; margin: 0 auto;">
     <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Gumuzio, Galdakao</em></h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
       <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Gumuzio Auzoa, 10, 48960 Gumuzio, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34944560029" style="color: var(--accent,#0284C7);">944 56 00 29</a></p>
+        <p style="color: var(--text-muted,#9a8a7a); margin-bottom: 20px; font-size: 1.05rem;">Gumuzio Auzoa, 10, Galdakao, Bizkaia</p>
+        <p style="color: var(--text-muted,#9a8a7a); margin-bottom: 20px; font-size: 1.05rem;">Tel: <a href="tel:+34944560029" style="color: var(--accent);">944 56 00 29</a></p>
+        <p style="color: var(--text-muted,#9a8a7a); margin-bottom: 8px; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Horario</p>
+        <p style="color: var(--text-muted,#9a8a7a); margin-bottom: 6px;">Lunes a Viernes: 06:30 — 17:00</p>
+        <p style="color: var(--text-muted,#9a8a7a); margin-bottom: 20px;">Sábado y Domingo: Cerrado</p>
+        <a href="https://www.facebook.com/pages/Restaurante-Oyarzabal/1616487585239376" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em;">Síguenos en Facebook →</a>
       </div>
       <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restaurante+Oyarzabal,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
@@ -1192,40 +1307,35 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Restaurante Oyarzabal<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <p class="footer-tagline">Cocina casera de toda la vida en el corazón de Gumuzio, Galdakao.</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.facebook.com/pages/Restaurante-Oyarzabal/1616487585239376" target="_blank" rel="noopener" class="social-link">Fb</a>
+        <a href="https://maps.google.com/?cid=11687754667459957559" target="_blank" rel="noopener" class="social-link">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-principal">Menú del día</a></li>
+        <li><a href="#carta-especialidades">Especialidades</a></li>
+        <li><a href="#carta-especialidades">Postres caseros</a></li>
+        <li><a href="#carta-grupos">Eventos y grupos</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#carta-grupos">Celebraciones</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34944560029">944 56 00 29</a></li>
-        <li><a href="#">Gumuzio Auzoa, Galdakao</a></li>
+        <li><a href="https://www.google.com/maps/search/Restaurante+Oyarzabal,+Galdakao" target="_blank" rel="noopener">Gumuzio Auzoa, 10, Galdakao</a></li>
+        <li><a href="#contacto">L-V: 06:30 — 17:00</a></li>
       </ul>
     </div>
   </div>
