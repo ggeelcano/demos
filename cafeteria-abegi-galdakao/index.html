@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cafetería Abegi — Restaurante</title>
+  <title>Cafetería Abegi — Cafetería y Restaurante en Galdakao</title>
+  <meta name="description" content="Cafetería Abegi en Galdakao. Pintxos, desayunos, menú del día y terraza. Ganekogorta Kalea, 18. Tel: 946 00 06 62">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
-      --white: #f5f3ef;
-      --accent: #B45309;
-      --accent-light: #d97706;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
-      --text-muted: #9a8a7a;
+      --black: #0e0a06;
+      --white: #f5f2ec;
+      --accent: #A0522D;
+      --accent-light: #c4845c;
+      --cream: #f0e6d6;
+      --carbon: #16120c;
+      --carbon-mid: #1e1810;
+      --carbon-light: #2c2318;
+      --text-muted: #9a8a78;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +39,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    /* ─── CUSTOM CURSOR ─── */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +52,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(180,83,9,0.4);
+      border: 1px solid rgba(160,82,45,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,8 +61,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(180,83,9,0.7);
-      background: rgba(180,83,9,0.05);
+      border-color: rgba(160,82,45,0.7);
+      background: rgba(160,82,45,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -73,15 +75,15 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(14,10,6,0.9);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(180,83,9,0.08);
+      border-bottom: 1px solid rgba(160,82,45,0.1);
     }
     .nav-logo {
       font-family: var(--font-serif);
       font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -89,7 +91,7 @@
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(245,243,239,0.65);
+      text-decoration: none; color: rgba(245,242,236,0.65);
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       transition: color 0.3s; font-weight: 400;
     }
@@ -137,15 +139,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0c0806 0%, #201a16 40%, #B4530922 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(14,10,6,0.92) 0%, rgba(14,10,6,0.55) 50%, rgba(14,10,6,0.25) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +169,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -178,7 +179,7 @@
     }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      font-size: 1.05rem; color: rgba(245,242,236,0.6);
       max-width: 480px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
@@ -191,7 +192,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -199,14 +200,14 @@
     }
     .btn-primary::before {
       content: ''; position: absolute; inset: 0;
-      background: var(--white); transform: translateX(-102%);
+      background: var(--accent-light); transform: translateX(-102%);
       transition: transform 0.4s var(--ease-out);
     }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
+    .btn-primary:hover { color: var(--white); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      color: rgba(245,243,239,0.6); text-decoration: none;
+      color: rgba(245,242,236,0.6); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
       transition: color 0.3s;
@@ -214,7 +215,7 @@
     .btn-ghost:hover { color: var(--accent); }
     .btn-ghost-arrow {
       width: 36px; height: 36px;
-      border: 1px solid rgba(245,243,239,0.2);
+      border: 1px solid rgba(245,242,236,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, transform 0.3s;
     }
@@ -242,8 +243,8 @@
 
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(180,83,9,0.12);
-      border-bottom: 1px solid rgba(180,83,9,0.12);
+      border-top: 1px solid rgba(160,82,45,0.12);
+      border-bottom: 1px solid rgba(160,82,45,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -254,7 +255,7 @@
       display: inline-flex; align-items: center; gap: 30px;
       padding: 0 40px;
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: rgba(245,243,239,0.25);
+      font-style: italic; color: rgba(245,242,236,0.25);
       letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
@@ -280,7 +281,7 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +289,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(180,83,9,0.08);
+      border: 1px solid rgba(160,82,45,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +299,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(180,83,9,0.3); }
+    .stat-card:hover { border-color: rgba(160,82,45,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -322,7 +323,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(180,83,9,0.3);
+      border-bottom: 1px solid rgba(160,82,45,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,12 +343,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(14,10,6,0.9) 0%, rgba(14,10,6,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -366,7 +367,7 @@
       font-weight: 300; line-height: 1.15; margin-bottom: 14px;
     }
     .project-meta {
-      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      font-size: 0.73rem; color: rgba(245,242,236,0.45);
       letter-spacing: 0.1em; opacity: 0;
       transition: opacity 0.5s 0.1s;
     }
@@ -374,7 +375,7 @@
     .project-arrow {
       position: absolute; top: 36px; right: 36px;
       width: 50px; height: 50px;
-      border: 1px solid rgba(245,243,239,0.15);
+      border: 1px solid rgba(245,242,236,0.15);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       opacity: 0; transform: translate(10px, -10px);
       transition: all 0.4s var(--ease-out);
@@ -389,11 +390,13 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(180,83,9,0.25);
+      background: var(--black); border: 1px solid rgba(160,82,45,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -402,14 +405,14 @@
     }
     .about-badge-text {
       font-size: 0.72rem; letter-spacing: 0.1em;
-      color: rgba(245,243,239,0.5); margin-top: 6px;
+      color: rgba(245,242,236,0.5); margin-top: 6px;
     }
     .about-content {
       padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
     }
     .about-body {
       font-size: 1.05rem; line-height: 1.8;
-      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      color: rgba(245,242,236,0.65); margin: 32px 0 52px;
       font-weight: 300;
     }
     .about-body strong { color: var(--white); font-weight: 400; }
@@ -419,10 +422,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(180,83,9,0.06);
+      padding: 20px; border: 1px solid rgba(160,82,45,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(180,83,9,0.2); }
+    .about-value:hover { border-color: rgba(160,82,45,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -444,15 +447,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(160,82,45,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(180,83,9,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(160,82,45,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(180,83,9,0.2); color: var(--accent);
+      border: 1px solid rgba(160,82,45,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,22 +469,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(180,83,9,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(160,82,45,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(180,83,9,0.05);
+      font-weight: 300; color: rgba(160,82,45,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(180,83,9,0.1); }
+    .service-card:hover .service-number { color: rgba(160,82,45,0.1); }
 
     /* ─── CARTA SECTIONS ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -503,7 +506,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(180,83,9,0.15);
+      border-bottom: 1px solid rgba(160,82,45,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -525,7 +528,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(180,83,9,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(160,82,45,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -555,9 +558,9 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
+      color: rgba(160,82,45,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -565,11 +568,11 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(180,83,9,0.07);
+      padding: 56px 44px; background: rgba(14,10,6,0.4);
+      border: 1px solid rgba(160,82,45,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(180,83,9,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(160,82,45,0.2); background: rgba(14,10,6,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -578,7 +581,7 @@
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
       font-style: italic; font-weight: 300;
-      line-height: 1.7; color: rgba(245,243,239,0.8);
+      line-height: 1.7; color: rgba(245,242,236,0.8);
       margin-bottom: 36px;
     }
     .testimonial-divider {
@@ -601,10 +604,10 @@
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 {
       font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300; color: var(--black); line-height: 1.1;
+      font-weight: 300; color: var(--white); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -622,10 +625,42 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── CONTACT ─── */
+    .contact-section { background: var(--carbon); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      max-width: 1200px; margin: 40px auto 0;
+    }
+    .contact-info p {
+      color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem;
+    }
+    .contact-info a { color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
+    .contact-info a:hover { opacity: 0.8; }
+    .contact-hours { margin-top: 24px; }
+    .contact-hours h4 {
+      font-family: var(--font-serif); font-size: 1.1rem; color: var(--white);
+      margin-bottom: 12px;
+    }
+    .contact-hours p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.8; }
+    .contact-map { border-radius: 12px; overflow: hidden; min-height: 350px; }
+    .contact-map iframe { width: 100%; height: 100%; border: 0; min-height: 350px; }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -636,15 +671,15 @@
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      font-size: 1.05rem; color: rgba(245,242,236,0.35);
       line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
     .footer-social { display: flex; gap: 14px; }
     .social-link {
       width: 40px; height: 40px;
-      border: 1px solid rgba(245,243,239,0.1);
+      border: 1px solid rgba(245,242,236,0.1);
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(245,242,236,0.4);
       font-size: 0.75rem; letter-spacing: 0.1em;
       transition: border-color 0.3s, color 0.3s;
     }
@@ -655,20 +690,20 @@
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col ul a {
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(245,242,236,0.4);
       font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
     .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      border-top: 1px solid rgba(245,243,239,0.06);
+      border-top: 1px solid rgba(245,242,236,0.06);
       padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
     .footer-copy {
-      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+      font-size: 0.75rem; color: rgba(245,242,236,0.25); letter-spacing: 0.05em;
     }
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a {
-      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      font-size: 0.72rem; color: rgba(245,242,236,0.2);
       text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
     .footer-legal a:hover { color: var(--text-muted); }
@@ -700,7 +735,7 @@
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
-      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      width: 200px; height: 1px; background: rgba(245,242,236,0.1);
       position: relative; overflow: hidden;
     }
     .loader-bar::after {
@@ -719,6 +754,7 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -751,7 +787,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">CAFETERÍA ABEGI <span>.</span></div>
+  <div class="loader-logo">ABEGI <span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -761,24 +797,26 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Cafetería Abegi<span>.</span></a>
+  <a href="#" class="nav-logo">Abegi<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#carta-pintxos">Carta</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="tel:+34946000662" class="nav-cta">Llamar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#carta-pintxos" onclick="closeMobile()">Carta</a>
+  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
+  <a href="tel:+34946000662" onclick="closeMobile()">Llamar</a>
 </div>
 
 <!-- HERO -->
@@ -787,21 +825,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Cafeteria &middot; Pintxos &middot; Galdakao</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      Tu rincon de<br><em>siempre</em><br>en Galdakao
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Desayunos, pintxos variados a 1 euro, raciones generosas y la mejor terraza del barrio de Kurtzea. Ambiente familiar desde primera hora.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Reservar mesa</span>
-        <span>→</span>
+      <a href="tel:+34946000662" class="btn-primary">
+        <span>Llamar ahora</span>
+        <span>&rarr;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
+      <a href="#carta-pintxos" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -814,18 +852,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos a 1 &euro;</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Rabas los Fines de Semana</span>
     <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
+    <span class="marquee-item"><span class="dot"></span>Futbol en Directo</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos a 1 &euro;</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Rabas los Fines de Semana</span>
     <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Futbol en Directo</span>
   </div>
 </div>
 
@@ -833,20 +871,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.1 &#9733;</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="271">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones</div>
+    </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">h</span></div>
+      <div class="stat-label">Abierto cada dia</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"> &euro;</span></div>
+      <div class="stat-label">Pintxos desde</div>
     </div>
   </div>
 </div>
@@ -855,50 +893,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestros espacios</p>
+      <h2 class="section-title reveal reveal-delay-1">Un ambiente que<br><em>invita a quedarse</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="tel:+34946000662" class="view-all reveal">Reservar &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80" alt="Terraza de Cafeteria Abegi en Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Espacio &middot; Exterior</p>
+        <h3 class="project-name">Nuestra Terraza</h3>
+        <p class="project-meta">Junto al parque infantil &middot; Ideal para familias</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Cafe y desayuno en Abegi" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Desayunos &middot; Cafe</p>
+        <h3 class="project-name">Desayunos y Cafes</h3>
+        <p class="project-meta">Desde las 8:00 &middot; Bolleria fresca</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1515669097368-22e68427d265?w=800&q=80" alt="Pintxos variados en barra" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Barra &middot; Pintxos</p>
+        <h3 class="project-name">Barra de Pintxos</h3>
+        <p class="project-meta">Gran variedad &middot; Desde 1 &euro;</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80" alt="Interior acogedor de Abegi" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Interior &middot; Salon</p>
+        <h3 class="project-name">Salon Interior</h3>
+        <p class="project-meta">Amplio y luminoso &middot; Ambiente familiar</p>
       </div>
     </div>
   </div>
@@ -907,40 +945,41 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=80" alt="Ambiente acogedor cafeteria" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">Abegi</div>
+      <div class="about-badge-text">Cafeteria-restaurante de referencia en Kurtzea, Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Donde Galdakao<br>se siente <em>como en casa</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      Abegi es mucho mas que una cafeteria. Es el punto de encuentro del barrio de Kurtzea, donde vecinos y familias comparten <strong>desayunos, pintxos y buenos momentos</strong> desde hace anos.<br><br><strong>Dos entradas, un mismo espiritu.</strong> Con acceso desde la calle principal y la plaza, ofrecemos un espacio amplio con terraza junto al parque infantil. Perfecto para venir con ninos.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Pintxos artesanales</h4>
+          <p>Gran variedad de pintxos frescos en barra, renovados cada dia, a solo 1 euro la unidad</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Ambiente familiar</h4>
+          <p>Terraza con parque infantil al lado, interior amplio y personal atento. Ideal para familias</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <h4>Abierto todo el dia</h4>
+          <p>De 8:00 a 23:00, los 7 dias de la semana. Desayunos, comidas, meriendas y cenas</p>
         </div>
       </div>
     </div>
@@ -952,206 +991,252 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas,<br><em>a cualquier hora</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Desayunos y Cafes</h3>
+        <p>Arrancamos a las 8 de la manana con cafe recien hecho, bolleria del dia, tostadas y zumos naturales. El mejor comienzo para tu jornada.</p>
+        <a href="#carta-pintxos" class="service-link">Ver opciones &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Pintxos y Raciones</h3>
+        <p>Barra de pintxos variados a 1 euro. Rabas los sabados, domingos y festivos. Raciones generosas para compartir con los tuyos.</p>
+        <a href="#carta-pintxos" class="service-link">Ver carta &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Terraza y Futbol</h3>
+        <p>Terraza amplia junto al parque infantil para disfrutar al aire libre. Todos los partidos en pantalla. El plan perfecto para el fin de semana.</p>
+        <a href="#contacto" class="service-link">Como llegar &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
-<section class="carta-section" id="carta-principal">
+<!-- CARTA: PINTXOS Y BARRA -->
+<section class="carta-section" id="carta-pintxos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">&larr; Volver</a>
+    <p class="section-label reveal">Nuestra barra</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Pintxos y <em>raciones</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Pintxos de barra</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Pintxo de tortilla</div>
+              <div class="carta-item-desc">Clasico, jugoso, recien hecho</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">1 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pintxo de jamon</div>
+              <div class="carta-item-desc">Jamon serrano con tomate</div>
+            </div>
+            <div class="carta-item-price">1 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gilda</div>
+              <div class="carta-item-desc">Aceituna, guindilla y anchoa</div>
+            </div>
+            <div class="carta-item-price">1 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pintxo de txaka</div>
+              <div class="carta-item-desc">Ensaladilla con surimi y mayonesa</div>
+            </div>
+            <div class="carta-item-price">1 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Croqueta casera</div>
+              <div class="carta-item-desc">De jamon o de bacalao</div>
+            </div>
+            <div class="carta-item-price">1,50 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Raciones para compartir</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Rabas</div>
+              <div class="carta-item-desc">Sabados, domingos y festivos</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">Consultar</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
-        </div>
-      </div>
-    </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Patatas bravas</div>
+              <div class="carta-item-desc">Con salsa brava casera</div>
+            </div>
+            <div class="carta-item-price">Consultar</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tabla de quesos</div>
+              <div class="carta-item-desc">Seleccion vasca con membrillo</div>
+            </div>
+            <div class="carta-item-price">Consultar</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada mixta</div>
+              <div class="carta-item-desc">Con atun, huevo y aceitunas</div>
+            </div>
+            <div class="carta-item-price">Consultar</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Pintxos renovados cada dia</h4>
+          <p>Nuestra barra se renueva a diario con pintxos frescos y de temporada. Ven y descubre la seleccion del dia. Precio medio por persona: 10-15 euros.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:+34946000662" class="carta-cta reveal">
+      <span>Llamar para consultar</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
+<!-- CARTA: DESAYUNOS Y CAFES -->
+<section class="carta-section" id="carta-desayunos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
+    <a href="#servicios" class="carta-back reveal">&larr; Volver</a>
+    <p class="section-label reveal">Cada manana</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
+      Desayunos y <em>meriendas</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
+          <h4>Cafes y bebidas</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
-            </div>
+            <div><div class="carta-item-name">Cafe solo</div></div>
+            <div class="carta-item-price">1,30 &euro;</div>
           </div>
-          <!-- Repetir por cada espacio -->
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Cafe con leche</div></div>
+            <div class="carta-item-price">1,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Cortado</div></div>
+            <div class="carta-item-price">1,30 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Zumo natural de naranja</div></div>
+            <div class="carta-item-price">2,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Colacao / Chocolate</div></div>
+            <div class="carta-item-price">1,80 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
+          <h4>Desayunos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
+              <div class="carta-item-name">Tostada con tomate</div>
+              <div class="carta-item-desc">Pan de pueblo con aceite y tomate</div>
             </div>
+            <div class="carta-item-price">2,00 &euro;</div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tostada con mantequilla y mermelada</div>
+            </div>
+            <div class="carta-item-price">2,00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Croissant plancha</div>
+              <div class="carta-item-desc">Con jamon y queso</div>
+            </div>
+            <div class="carta-item-price">2,80 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Bolleria variada</div>
+              <div class="carta-item-desc">Napolitana, palmera, donut</div>
+            </div>
+            <div class="carta-item-price">1,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Abiertos desde las 8:00</h4>
+          <p>Todos los dias de la semana. Ven a desayunar tranquilamente antes de ir al trabajo o disfruta de un brunch relajado el fin de semana.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
-    </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones reales</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Lo que dicen<br>nuestros <em>clientes</em>
+      Lo que dicen<br>nuestros <em>vecinos</em>
     </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"Venimos cada sabado con los ninos. La terraza es perfecta porque el parque esta al lado y los pintxos estan buenisimos. Trato muy cercano."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Itziar Goikoetxea</strong>
+          <span>Vecina de Kurtzea &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Los mejores pintxos de Galdakao a ese precio. La barra siempre llena de variedad y las rabas del fin de semana son espectaculares. Personal muy amable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Jokin Arrieta</strong>
+          <span>Cliente habitual &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"Ideal para el vermut del domingo. Ambiente acogedor, buen servicio y precios muy razonables. Ingrid siempre atenta. Un 10."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Amaia Etxeberria</strong>
+          <span>Galdakao &middot; Google</span>
         </div>
       </div>
     </div>
@@ -1159,29 +1244,38 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>Te esperamos<br>en Abegi</h2>
+    <p>Pasa a tomar un cafe, unos pintxos o simplemente a disfrutar del ambiente. Ganekogorta Kalea, 18.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
-    <span>↗</span>
+  <a href="https://wa.me/34946000662?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="btn-dark" target="_blank" rel="noopener">
+    <span>Escribenos por WhatsApp</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
+<!-- CONTACT / MAP -->
+<section class="contact-section" id="contacto">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Ganekogorta Kalea, 18, 48960 Kurtzea, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34946000662" style="color: var(--accent,#0284C7);">946 00 06 62</a></p>
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p><strong style="color:var(--white)">Direccion:</strong><br>Ganekogorta Kalea, 18, 48960 Kurtzea, Galdakao, Bizkaia</p>
+        <p><strong style="color:var(--white)">Telefono:</strong><br><a href="tel:+34946000662">946 00 06 62</a></p>
+        <div class="contact-hours">
+          <h4>Horario</h4>
+          <p>Lunes a domingo: 8:00 &ndash; 23:00<br>Abierto todos los dias del ano</p>
+        </div>
+        <div style="margin-top:32px">
+          <a href="https://wa.me/34946000662?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex">
+            <span>WhatsApp</span><span>&rarr;</span>
+          </a>
+        </div>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Cafeteria+Abegi,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="contact-map reveal reveal-delay-1">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.5!2d-2.8435!3d43.2305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e50a5b0f2e9a1%3A0x0!2sGanekogorta+Kalea+18+Galdakao!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -1191,53 +1285,56 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Cafetería Abegi<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <a href="#" class="nav-logo">Abegi<span>.</span></a>
+      <p class="footer-tagline">"El punto de encuentro de Kurtzea, donde todo sabe a casa."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="#" class="social-link" title="Facebook">Fb</a>
+        <a href="#" class="social-link" title="Google">Gm</a>
+        <a href="https://wa.me/34946000662" class="social-link" title="WhatsApp" target="_blank" rel="noopener">Wa</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-pintxos">Pintxos</a></li>
+        <li><a href="#carta-pintxos">Raciones</a></li>
+        <li><a href="#carta-desayunos">Desayunos</a></li>
+        <li><a href="#carta-desayunos">Cafes</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Restaurante</h4>
+      <h4>Cafeteria</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34946000662">946 00 06 62</a></li>
-        <li><a href="#">Ganekogorta Kalea, Galdakao</a></li>
+        <li><a href="https://wa.me/34946000662" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="#contacto">Ganekogorta Kalea, 18</a></li>
+        <li><a href="#contacto">48960 Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Cafetería Abegi. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Cafeteria Abegi. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34946000662?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
   // ── LOADER
@@ -1327,7 +1424,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>On Kafe — Cafetería Galdakao</title>
+  <title>On Kafe — Cafetería, Heladería y Coctelería en Galdakao</title>
+  <meta name="description" content="On Kafe Galdakao: cafetería moderna con 15 tipos de café, 50 tés, helados artesanales, cócteles y vinos. Bizkai Kalea 1, junto al Ayuntamiento.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0e0a07;
-      --white: #f5f3ef;
-      --accent: #8B5E3C;
-      --accent-light: #b8845c;
-      --carbon: #18130e;
-      --carbon-mid: #221b14;
-      --carbon-light: #302518;
-      --text-muted: #9a8878;
+      --black: #0a0c0e;
+      --white: #f0f0ec;
+      --accent: #c17f4e;
+      --accent-light: #d9a06f;
+      --accent-dark: #a06435;
+      --carbon: #111418;
+      --carbon-mid: #181c21;
+      --carbon-light: #1f252c;
+      --text-muted: #8a919a;
+      --teal: #5a9e9e;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Nunito Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,7 +53,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(139,94,60,0.4);
+      border: 1px solid rgba(193,127,78,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,8 +62,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(139,94,60,0.7);
-      background: rgba(139,94,60,0.05);
+      border-color: rgba(193,127,78,0.7);
+      background: rgba(193,127,78,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -73,9 +76,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(10,12,14,0.88);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(139,94,60,0.08);
+      border-bottom: 1px solid rgba(193,127,78,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -89,7 +92,7 @@
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(245,243,239,0.65);
+      text-decoration: none; color: rgba(240,240,236,0.65);
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       transition: color 0.3s; font-weight: 400;
     }
@@ -137,14 +140,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-size: cover; background-position: center top;
+      background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.45) 50%, rgba(8,8,8,0.2) 100%);
+      background: linear-gradient(135deg, rgba(10,12,14,0.92) 0%, rgba(10,12,14,0.5) 50%, rgba(10,12,14,0.25) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -177,7 +180,7 @@
     }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      font-size: 1.05rem; color: rgba(240,240,236,0.6);
       max-width: 480px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
@@ -205,7 +208,7 @@
     .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      color: rgba(245,243,239,0.6); text-decoration: none;
+      color: rgba(240,240,236,0.6); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
       transition: color 0.3s;
@@ -213,7 +216,7 @@
     .btn-ghost:hover { color: var(--accent); }
     .btn-ghost-arrow {
       width: 36px; height: 36px;
-      border: 1px solid rgba(245,243,239,0.2);
+      border: 1px solid rgba(240,240,236,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, transform 0.3s;
     }
@@ -243,31 +246,31 @@
     .hero-badge {
       position: absolute; top: 36px; right: 60px; z-index: 3;
       display: flex; align-items: center; gap: 10px;
-      background: rgba(14,10,7,0.7); border: 1px solid rgba(139,94,60,0.25);
+      background: rgba(10,12,14,0.7); border: 1px solid rgba(193,127,78,0.25);
       padding: 10px 18px; backdrop-filter: blur(10px);
       opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
     }
     .hero-badge svg { color: var(--accent); flex-shrink: 0; }
     .hero-badge span {
       font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(245,243,239,0.7);
+      color: rgba(240,240,236,0.7);
     }
 
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(139,94,60,0.12);
-      border-bottom: 1px solid rgba(139,94,60,0.12);
+      border-top: 1px solid rgba(193,127,78,0.12);
+      border-bottom: 1px solid rgba(193,127,78,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
       display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 28s linear infinite;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 30px;
       padding: 0 40px;
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: rgba(245,243,239,0.25);
+      font-style: italic; color: rgba(240,240,236,0.25);
       letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
@@ -293,7 +296,7 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(193,127,78,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -301,7 +304,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(139,94,60,0.08);
+      border: 1px solid rgba(193,127,78,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -311,7 +314,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(139,94,60,0.3); }
+    .stat-card:hover { border-color: rgba(193,127,78,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -335,7 +338,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(139,94,60,0.3);
+      border-bottom: 1px solid rgba(193,127,78,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -361,7 +364,7 @@
     .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,12,14,0.9) 0%, rgba(10,12,14,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -380,7 +383,7 @@
       font-weight: 300; line-height: 1.15; margin-bottom: 14px;
     }
     .project-meta {
-      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      font-size: 0.73rem; color: rgba(240,240,236,0.45);
       letter-spacing: 0.1em; opacity: 0;
       transition: opacity 0.5s 0.1s;
     }
@@ -388,7 +391,7 @@
     .project-arrow {
       position: absolute; top: 36px; right: 36px;
       width: 50px; height: 50px;
-      border: 1px solid rgba(245,243,239,0.15);
+      border: 1px solid rgba(240,240,236,0.15);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       opacity: 0; transform: translate(10px, -10px);
       transition: all 0.4s var(--ease-out);
@@ -410,7 +413,7 @@
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(139,94,60,0.25);
+      background: var(--black); border: 1px solid rgba(193,127,78,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-icon {
@@ -418,7 +421,7 @@
     }
     .about-badge-text {
       font-size: 0.72rem; letter-spacing: 0.1em;
-      color: rgba(245,243,239,0.5); margin-top: 6px;
+      color: rgba(240,240,236,0.5); margin-top: 6px;
     }
     .about-badge-accent {
       font-family: var(--font-serif); font-size: 1.2rem;
@@ -429,7 +432,7 @@
     }
     .about-body {
       font-size: 1.05rem; line-height: 1.8;
-      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      color: rgba(240,240,236,0.65); margin: 32px 0 52px;
       font-weight: 300;
     }
     .about-body strong { color: var(--white); font-weight: 400; }
@@ -439,10 +442,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(139,94,60,0.06);
+      padding: 20px; border: 1px solid rgba(193,127,78,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(139,94,60,0.2); }
+    .about-value:hover { border-color: rgba(193,127,78,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -464,15 +467,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(139,94,60,0.07);
+      border: 1px solid rgba(193,127,78,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,94,60,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(193,127,78,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(139,94,60,0.2); color: var(--accent);
+      border: 1px solid rgba(193,127,78,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -486,22 +489,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(139,94,60,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(193,127,78,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(139,94,60,0.05);
+      font-weight: 300; color: rgba(193,127,78,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(139,94,60,0.1); }
+    .service-card:hover .service-number { color: rgba(193,127,78,0.1); }
 
     /* ─── CARTA ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(193,127,78,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -523,7 +526,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,94,60,0.15);
+      border-bottom: 1px solid rgba(193,127,78,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -545,7 +548,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(139,94,60,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(193,127,78,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -575,9 +578,9 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(139,94,60,0.03); line-height: 1; pointer-events: none;
+      color: rgba(193,127,78,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -585,11 +588,11 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(139,94,60,0.07);
+      padding: 56px 44px; background: rgba(10,12,14,0.4);
+      border: 1px solid rgba(193,127,78,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(139,94,60,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(193,127,78,0.2); background: rgba(10,12,14,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -598,7 +601,7 @@
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
       font-style: italic; font-weight: 300;
-      line-height: 1.7; color: rgba(245,243,239,0.8);
+      line-height: 1.7; color: rgba(240,240,236,0.8);
       margin-bottom: 36px;
     }
     .testimonial-divider {
@@ -615,7 +618,7 @@
     /* ─── MAP SECTION ─── */
     .map-section {
       padding: 0; background: var(--black);
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(193,127,78,0.08);
       position: relative;
     }
     .map-inner {
@@ -639,7 +642,7 @@
     }
     .map-detail-icon {
       width: 40px; height: 40px; flex-shrink: 0;
-      border: 1px solid rgba(139,94,60,0.2);
+      border: 1px solid rgba(193,127,78,0.2);
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
     }
@@ -674,7 +677,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(10,12,14,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -692,10 +695,23 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25d366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .whatsapp-float svg { width: 30px; height: 30px; }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(193,127,78,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -706,15 +722,15 @@
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      font-size: 1.05rem; color: rgba(240,240,236,0.35);
       line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
     .footer-social { display: flex; gap: 14px; }
     .social-link {
       width: 40px; height: 40px;
-      border: 1px solid rgba(245,243,239,0.1);
+      border: 1px solid rgba(240,240,236,0.1);
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(240,240,236,0.4);
       font-size: 0.75rem; letter-spacing: 0.1em;
       transition: border-color 0.3s, color 0.3s;
     }
@@ -726,20 +742,20 @@
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col ul a {
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(240,240,236,0.4);
       font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
     .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      border-top: 1px solid rgba(245,243,239,0.06);
+      border-top: 1px solid rgba(240,240,236,0.06);
       padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
     .footer-copy {
-      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+      font-size: 0.75rem; color: rgba(240,240,236,0.25); letter-spacing: 0.05em;
     }
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a {
-      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      font-size: 0.72rem; color: rgba(240,240,236,0.2);
       text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
     .footer-legal a:hover { color: var(--text-muted); }
@@ -771,7 +787,7 @@
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
-      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      width: 200px; height: 1px; background: rgba(240,240,236,0.1);
       position: relative; overflow: hidden;
     }
     .loader-bar::after {
@@ -819,6 +835,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
     }
   </style>
 </head>
@@ -858,7 +875,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('https://img02.restaurantguru.com/ccbe-Cafe-On-Kafe-facade.jpg');"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <!-- Location badge -->
@@ -866,19 +883,19 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
     </svg>
-    <span>Galdakao</span>
+    <span>Galdakao · Bizkaia</span>
   </div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Café · Desayunos · Pintxos</p>
+    <p class="hero-eyebrow">Café · Helados · Cócteles · Vinos</p>
     <h1 class="hero-title">
-      El sabor de<br>cada <em>mañana</em>
+      De la mañana<br>a la <em>noche</em>
     </h1>
     <p class="hero-sub">
-      Café de calidad, desayunos artesanales y pintxos de autor en el corazón de Galdakao. Un espacio cálido para empezar bien el día.
+      15 tipos de café, 50 variedades de té, helados artesanales, cócteles de autor y una selección de vinos. Todo en el corazón de Galdakao, junto al Ayuntamiento.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Visítanos</span>
+      <a href="https://wa.me/34944572883" target="_blank" rel="noopener" class="btn-primary">
+        <span>Reservar mesa</span>
         <span>→</span>
       </a>
       <a href="#carta" class="btn-ghost">
@@ -896,18 +913,22 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Café de Calidad</span>
-    <span class="marquee-item"><span class="dot"></span>Desayunos Artesanales</span>
-    <span class="marquee-item"><span class="dot"></span>Pintxos de Autor</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Ambiente Acogedor</span>
-    <span class="marquee-item"><span class="dot"></span>Galdakao · Bizkaia</span>
-    <span class="marquee-item"><span class="dot"></span>Café de Calidad</span>
-    <span class="marquee-item"><span class="dot"></span>Desayunos Artesanales</span>
-    <span class="marquee-item"><span class="dot"></span>Pintxos de Autor</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Ambiente Acogedor</span>
-    <span class="marquee-item"><span class="dot"></span>Galdakao · Bizkaia</span>
+    <span class="marquee-item"><span class="dot"></span>15 Cafés de Origen</span>
+    <span class="marquee-item"><span class="dot"></span>50 Variedades de Té</span>
+    <span class="marquee-item"><span class="dot"></span>Helados Artesanales</span>
+    <span class="marquee-item"><span class="dot"></span>10 Chocolates Calientes</span>
+    <span class="marquee-item"><span class="dot"></span>Cócteles de Autor</span>
+    <span class="marquee-item"><span class="dot"></span>Vinoteca Seleccionada</span>
+    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
+    <span class="marquee-item"><span class="dot"></span>Pet Friendly</span>
+    <span class="marquee-item"><span class="dot"></span>15 Cafés de Origen</span>
+    <span class="marquee-item"><span class="dot"></span>50 Variedades de Té</span>
+    <span class="marquee-item"><span class="dot"></span>Helados Artesanales</span>
+    <span class="marquee-item"><span class="dot"></span>10 Chocolates Calientes</span>
+    <span class="marquee-item"><span class="dot"></span>Cócteles de Autor</span>
+    <span class="marquee-item"><span class="dot"></span>Vinoteca Seleccionada</span>
+    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
+    <span class="marquee-item"><span class="dot"></span>Pet Friendly</span>
   </div>
 </div>
 
@@ -923,12 +944,12 @@
       <div class="stat-label">Valoración media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
-      <div class="stat-label">Desayunos artesanales</div>
+      <div class="stat-number"><span class="count" data-target="50">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Variedades de té</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix">d</span></div>
-      <div class="stat-label">Abierto cada semana</div>
+      <div class="stat-number"><span class="count" data-target="16">0</span><span class="stat-suffix">h</span></div>
+      <div class="stat-label">Abierto cada día</div>
     </div>
   </div>
 </div>
@@ -937,54 +958,54 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestra cafetería</p>
-      <h2 class="section-title reveal reveal-delay-1">Un espacio para<br><em>disfrutar</em></h2>
+      <p class="section-label reveal">Nuestro espacio</p>
+      <h2 class="section-title reveal reveal-delay-1">Un rincón para<br><em>cada momento</em></h2>
     </div>
     <a href="#contacto" class="view-all reveal">Ven a vernos →</a>
   </div>
   <div class="projects-grid">
-    <!-- Carta wide -->
+    <!-- Wide: cafe interior -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cc6f-On-Kafe-Galdakao-meals.jpg" alt="Platos de On Kafe Galdakao" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1400&q=80" alt="Interior moderno de On Kafe Galdakao" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Cocina · De Mercado</p>
-        <h3 class="project-name">Platos del día</h3>
-        <p class="project-meta">Ingredientes frescos · Recetas caseras</p>
+        <p class="project-cat">Ambiente · Moderno</p>
+        <h3 class="project-name">Nuestro espacio</h3>
+        <p class="project-meta">Junto al Ayuntamiento · Bizkai Kalea 1</p>
       </div>
     </div>
-    <!-- Food 1 -->
+    <!-- Cocktails -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/ca26-food-On-Kafe.jpg" alt="Comida en On Kafe" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&q=80" alt="Cócteles de autor en On Kafe" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Cocina · Casera</p>
-        <h3 class="project-name">Elaboración propia</h3>
-        <p class="project-meta">Sabores de siempre · Con cariño</p>
+        <p class="project-cat">Coctelería · De Autor</p>
+        <h3 class="project-name">Cócteles creativos</h3>
+        <p class="project-meta">Combinados premium · Gin-tonics</p>
       </div>
     </div>
-    <!-- Food 2 -->
+    <!-- Ice cream / desserts -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cd29-Cafe-On-Kafe-food.jpg" alt="Platos de On Kafe" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&q=80" alt="Helados artesanales de On Kafe" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Pintxos · Raciones</p>
-        <h3 class="project-name">Pintxos de autor</h3>
-        <p class="project-meta">Tradición vasca · Creatividad propia</p>
+        <p class="project-cat">Heladería · Artesanal</p>
+        <h3 class="project-name">Helados y postres</h3>
+        <p class="project-meta">Sabores de temporada · Hechos aquí</p>
       </div>
     </div>
-    <!-- Burger -->
+    <!-- Coffee art -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/ca66-Cafe-On-Kafe-burger.jpg" alt="Burger de On Kafe" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Café de especialidad en On Kafe" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Casa</p>
-        <h3 class="project-name">Burger On Kafe</h3>
-        <p class="project-meta">Pan artesano · Carne seleccionada</p>
+        <p class="project-cat">Café · Especialidad</p>
+        <h3 class="project-name">15 orígenes de café</h3>
+        <p class="project-meta">Tostado artesanal · Preparado con cariño</p>
       </div>
     </div>
   </div>
@@ -993,42 +1014,42 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://img02.restaurantguru.com/cce3-Cafe-On-Kafe-design.jpg" alt="Interior de On Kafe Galdakao">
+    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=80" alt="Bollería artesanal en On Kafe Galdakao" loading="lazy">
     <div class="about-badge">
       <div class="about-badge-icon">☕</div>
       <div class="about-badge-accent">On Kafe</div>
-      <div class="about-badge-text">Cafetería en Galdakao, Bizkaia</div>
+      <div class="about-badge-text">Galdakao · Junto al Ayuntamiento</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que una cafetería,<br><em>un rincón tuyo</em>
+      Mucho más que<br>una <em>cafetería</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      On Kafe nació con una idea sencilla: crear el lugar donde los vecinos de Galdakao quisieran empezar su día. Café bien hecho, desayunos con producto fresco y un espacio donde sentirse como en casa.<br><br><strong>Cada visita cuenta.</strong> Desde el primer café de la mañana hasta el pintxo de la tarde, cuidamos cada detalle para que salgas con una sonrisa.
+      On Kafe nació para ser el punto de encuentro de Galdakao. Un espacio donde disfrutar desde el primer café de la mañana hasta el último cóctel de la noche. Con <strong>15 tipos de café de origen</strong>, <strong>50 variedades de té</strong>, <strong>10 chocolates calientes diferentes</strong>, helados artesanales y una cuidada selección de vinos y combinados.<br><br>Abrimos <strong>de 7 de la mañana a 11 de la noche</strong>, los 7 días de la semana. Y sí: las mascotas son bienvenidas.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto fresco</h4>
-          <p>Ingredientes seleccionados cada día para garantizar el mejor sabor en cada plato</p>
+          <h4>Bollería artesanal diaria</h4>
+          <p>Palmeras, croissants, napolitanas y bizcochos recién horneados cada mañana</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Ambiente acogedor</h4>
-          <p>Un espacio cálido y bien diseñado donde el tiempo pasa más despacio</p>
+          <h4>Smoothies y zumos naturales</h4>
+          <p>Bebidas saludables preparadas al momento con fruta fresca de temporada</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Tradición vasca</h4>
-          <p>Pintxos y recetas que rinden homenaje a la rica gastronomía del País Vasco</p>
+          <h4>Pintxos y cocina vasca</h4>
+          <p>Pintxos creativos, tortilla de la casa y platos elaborados con producto local</p>
         </div>
       </div>
     </div>
@@ -1040,7 +1061,7 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Todo lo que necesitas para <em>un buen día</em>
+      Un espacio para <em>cada momento del día</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -1050,52 +1071,52 @@
             <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <h3>Cafés y Bebidas</h3>
-        <p>Café de calidad preparado con esmero. Cortados, cappuccinos, lattes y una selección de infusiones para empezar el día con energía.</p>
+        <h3>Cafetería y Tés</h3>
+        <p>15 cafés de origen, 50 variedades de té e infusiones naturales, 10 tipos de chocolate caliente y bollería artesanal horneada a diario.</p>
         <a href="#carta" class="service-link">Ver carta →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M8 2v4"/><path d="M16 2v4"/><path d="M12 11v6"/><path d="M9 14h6"/><rect x="3" y="6" width="18" height="14" rx="2"/>
           </svg>
         </div>
-        <h3>Desayunos y Pintxos</h3>
-        <p>Desayunos artesanales y pintxos de autor elaborados con productos frescos. Desde la tostada clásica hasta las especialidades de la casa.</p>
-        <a href="#carta-pintxos" class="service-link">Ver pintxos →</a>
+        <h3>Helados y Postres</h3>
+        <p>Heladería artesanal con sabores de temporada, postres caseros y dulces para los más golosos. El complemento perfecto en cualquier momento.</p>
+        <a href="#carta-postres" class="service-link">Ver postres →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <path d="M8 22V19.5C8 17.57 9.57 16 11.5 16H12.5C14.43 16 16 17.57 16 19.5V22"/><path d="M12 16V12"/><path d="M9 12C9 10.34 10.34 9 12 9C13.66 9 15 10.34 15 12"/><path d="M17 8L19 6"/><path d="M7 8L5 6"/>
           </svg>
         </div>
-        <h3>Menú del Día</h3>
-        <p>Cocina casera de mercado, preparada con ingredientes frescos. Un menú completo que cambia a diario para sorprenderte con nuevos sabores.</p>
-        <a href="#carta-menu" class="service-link">Ver menú →</a>
+        <h3>Cócteles y Vinos</h3>
+        <p>Coctelería de autor, gin-tonics premium y una carta de vinos seleccionados. On Kafe se transforma por las noches en vinoteca y coctelería.</p>
+        <a href="#carta-cocteles" class="service-link">Ver cócteles →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: CAFÉS Y DESAYUNOS -->
+<!-- CARTA: CAFÉS, TÉS Y DESAYUNOS -->
 <section class="carta-section" id="carta">
   <div class="section-inner">
     <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
-    <p class="section-label reveal">Desayunos · Cafés</p>
+    <p class="section-label reveal">Cafés · Tés · Desayunos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
       Empieza el día con <em>buen sabor</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Cafés e Infusiones</h4>
+          <h4>Cafés de Origen</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Café solo</div>
-              <div class="carta-item-desc">Espresso intenso de selección</div>
+              <div class="carta-item-name">Espresso / Café solo</div>
+              <div class="carta-item-desc">Selección de granos de origen</div>
             </div>
             <div class="carta-item-price">1,50 €</div>
           </div>
@@ -1108,9 +1129,16 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Cappuccino</div>
-              <div class="carta-item-desc">Con leche vaporizada y espuma sedosa</div>
+              <div class="carta-item-desc">Espuma cremosa y canela</div>
             </div>
-            <div class="carta-item-price">2,20 €</div>
+            <div class="carta-item-price">2,30 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Café especial de temporada</div>
+              <div class="carta-item-desc">Consultar variedad en barra</div>
+            </div>
+            <div class="carta-item-price">2,80 €</div>
           </div>
           <div class="carta-item">
             <div>
@@ -1118,34 +1146,53 @@
             </div>
             <div class="carta-item-price">2,00 €</div>
           </div>
+        </div>
+        <div class="carta-category reveal">
+          <h4>Tés e Infusiones (50 variedades)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Té / Infusión</div>
-              <div class="carta-item-desc">Selección de variedades</div>
+              <div class="carta-item-name">Té verde / negro / rojo</div>
+              <div class="carta-item-desc">Selección de hojas sueltas</div>
             </div>
-            <div class="carta-item-price">1,80 €</div>
+            <div class="carta-item-price">2,00 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Infusión natural</div>
+              <div class="carta-item-desc">Manzanilla, tila, menta, rooibos...</div>
+            </div>
+            <div class="carta-item-price">2,00 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Té chai / matcha latte</div>
+            </div>
+            <div class="carta-item-price">2,80 €</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Chocolate caliente</div>
+              <div class="carta-item-desc">10 variedades disponibles</div>
             </div>
             <div class="carta-item-price">2,50 €</div>
           </div>
         </div>
-        <div class="carta-category reveal">
-          <h4>Tostadas y Bocadillos</h4>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Desayunos y Tostadas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tostada con tomate y aceite</div>
+              <div class="carta-item-desc">Pan artesano, tomate fresco, AOVE</div>
+            </div>
+            <div class="carta-item-price">3,00 €</div>
+          </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Tostada con mantequilla y mermelada</div>
             </div>
             <div class="carta-item-price">2,50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Tostada con tomate y aceite</div>
-              <div class="carta-item-desc">Pan de masa madre, tomate fresco</div>
-            </div>
-            <div class="carta-item-price">3,00 €</div>
           </div>
           <div class="carta-item">
             <div>
@@ -1155,38 +1202,13 @@
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Bocadillo de jamón york y queso</div>
+              <div class="carta-item-name">Bocadillo de jamón y queso</div>
             </div>
             <div class="carta-item-price">3,80 €</div>
           </div>
         </div>
-      </div>
-      <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Zumos y Batidos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Zumo de naranja natural</div>
-              <div class="carta-item-desc">Exprimido al momento</div>
-            </div>
-            <div class="carta-item-price">2,80 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Batido de frutas de temporada</div>
-            </div>
-            <div class="carta-item-price">3,50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Smoothie verde</div>
-              <div class="carta-item-desc">Espinacas, manzana, jengibre</div>
-            </div>
-            <div class="carta-item-price">4,00 €</div>
-          </div>
-        </div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Bollería y Dulces</h4>
+          <h4>Bollería Artesanal</h4>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Croissant de mantequilla</div>
@@ -1202,20 +1224,20 @@
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Bizcocho casero del día</div>
+              <div class="carta-item-name">Palmera</div>
             </div>
             <div class="carta-item-price">1,80 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Muffin de arándanos</div>
+              <div class="carta-item-name">Bizcocho casero del día</div>
             </div>
-            <div class="carta-item-price">2,50 €</div>
+            <div class="carta-item-price">2,00 €</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Desayuno completo</h4>
-          <p>Café + zumo de naranja + tostada a elegir + bollería del día. El mejor modo de empezar con energía. Consulta precio en barra.</p>
+          <h4>Desayuno On Kafe</h4>
+          <p>Café o té + zumo de naranja natural + tostada a elegir + bollería del día. Consulta precio del día en barra. Disponible de 7:00 a 12:00.</p>
         </div>
       </div>
     </div>
@@ -1225,71 +1247,167 @@
   </div>
 </section>
 
-<!-- CARTA: PINTXOS Y RACIONES -->
-<section class="carta-section" id="carta-pintxos">
+<!-- CARTA: HELADOS Y POSTRES -->
+<section class="carta-section" id="carta-postres">
   <div class="section-inner">
     <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
-    <p class="section-label reveal">Pintxos · Raciones</p>
+    <p class="section-label reveal">Helados · Postres</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Sabor vasco en <em>cada bocado</em>
+      El toque <em>dulce</em> del día
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Pintxos Fríos</h4>
+          <h4>Helados Artesanales</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de tortilla de la casa</div>
-              <div class="carta-item-desc">Receta tradicional, en su punto</div>
+              <div class="carta-item-name">1 bola</div>
+              <div class="carta-item-desc">Elige entre nuestros sabores de temporada</div>
             </div>
             <div class="carta-item-price">2,50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de jamón ibérico</div>
+              <div class="carta-item-name">2 bolas</div>
             </div>
-            <div class="carta-item-price">3,20 €</div>
+            <div class="carta-item-price">4,00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de gamba con alioli</div>
-              <div class="carta-item-desc">Gamba fresca, alioli casero</div>
+              <div class="carta-item-name">3 bolas</div>
             </div>
-            <div class="carta-item-price">3,50 €</div>
+            <div class="carta-item-price">5,50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de salmón marinado</div>
+              <div class="carta-item-name">Copa especial On Kafe</div>
+              <div class="carta-item-desc">3 bolas, nata, sirope y toppings</div>
             </div>
-            <div class="carta-item-price">3,80 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pintxo de anchoa del Cantábrico</div>
-              <div class="carta-item-desc">Sobre pan tostado con pimiento</div>
-            </div>
-            <div class="carta-item-price">3,50 €</div>
+            <div class="carta-item-price">7,00 €</div>
           </div>
         </div>
         <div class="carta-category reveal">
-          <h4>Pintxos Calientes</h4>
+          <h4>Smoothies y Zumos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de hongos con foie</div>
-              <div class="carta-item-desc">Hongos salteados, foie a la plancha</div>
-            </div>
-            <div class="carta-item-price">4,50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Croqueta de bacalao</div>
-              <div class="carta-item-desc">Receta casera, crujiente por fuera</div>
+              <div class="carta-item-name">Zumo de naranja natural</div>
+              <div class="carta-item-desc">Exprimido al momento</div>
             </div>
             <div class="carta-item-price">2,80 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de txistorra con huevo</div>
+              <div class="carta-item-name">Smoothie de frutas</div>
+              <div class="carta-item-desc">Fruta de temporada y hielo</div>
+            </div>
+            <div class="carta-item-price">3,80 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Smoothie verde</div>
+              <div class="carta-item-desc">Espinacas, manzana y jengibre</div>
+            </div>
+            <div class="carta-item-price">4,00 €</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Postres Caseros</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tarta de queso vasca</div>
+              <div class="carta-item-desc">Receta cremosa al horno</div>
+            </div>
+            <div class="carta-item-price">4,50 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Brownie con helado</div>
+              <div class="carta-item-desc">Chocolate negro y vainilla</div>
+            </div>
+            <div class="carta-item-price">5,00 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Crepe dulce</div>
+              <div class="carta-item-desc">Con Nutella, plátano o nata</div>
+            </div>
+            <div class="carta-item-price">4,50 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gofre belga</div>
+              <div class="carta-item-desc">Con helado, fruta o chocolate</div>
+            </div>
+            <div class="carta-item-price">5,50 €</div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Sabores de temporada</h4>
+          <p>Los sabores de helado cambian con las estaciones. Pregunta en barra por las novedades de esta semana. Opciones veganas disponibles.</p>
+        </div>
+      </div>
+    </div>
+    <a href="tel:944572883" class="carta-cta reveal">
+      <span>Llamar al 944 57 28 83</span><span>→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CARTA: CÓCTELES Y VINOS -->
+<section class="carta-section" id="carta-cocteles">
+  <div class="section-inner">
+    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
+    <p class="section-label reveal">Cócteles · Vinos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Brindamos por las <em>buenas tardes</em>
+    </h2>
+    <div class="carta-columns">
+      <div>
+        <div class="carta-category reveal">
+          <h4>Cócteles de Autor</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gin-Tonic Premium</div>
+              <div class="carta-item-desc">Ginebra seleccionada, tónica artesana, botánicos</div>
+            </div>
+            <div class="carta-item-price">8,50 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Mojito On Kafe</div>
+              <div class="carta-item-desc">Ron, hierbabuena fresca, lima</div>
+            </div>
+            <div class="carta-item-price">7,50 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Aperol Spritz</div>
+              <div class="carta-item-desc">Aperol, prosecco, soda</div>
+            </div>
+            <div class="carta-item-price">7,00 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cóctel de temporada</div>
+              <div class="carta-item-desc">Pregunta por la especialidad de la casa</div>
+            </div>
+            <div class="carta-item-price">8,00 €</div>
+          </div>
+        </div>
+        <div class="carta-category reveal">
+          <h4>Cervezas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Caña</div>
+            </div>
+            <div class="carta-item-price">1,80 €</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cerveza artesana local</div>
+              <div class="carta-item-desc">Selección rotativa</div>
             </div>
             <div class="carta-item-price">3,50 €</div>
           </div>
@@ -1297,44 +1415,45 @@
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Raciones para Compartir</h4>
+          <h4>Vinos Seleccionados</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Tabla de quesos y embutidos</div>
-              <div class="carta-item-desc">Selección artesana con mermelada</div>
+              <div class="carta-item-name">Txakoli</div>
+              <div class="carta-item-desc">D.O. Bizkaiko Txakolina</div>
             </div>
-            <div class="carta-item-price">14,00 €</div>
+            <div class="carta-item-price">3,00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Media ración de croquetas</div>
-              <div class="carta-item-desc">4 unidades, elaboración propia</div>
+              <div class="carta-item-name">Rioja Crianza</div>
+              <div class="carta-item-desc">Copa / Botella</div>
             </div>
-            <div class="carta-item-price">7,00 €</div>
+            <div class="carta-item-price">3,50 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Patatas bravas con salsa de la casa</div>
+              <div class="carta-item-name">Ribera del Duero</div>
+              <div class="carta-item-desc">Copa / Botella</div>
             </div>
-            <div class="carta-item-price">6,50 €</div>
+            <div class="carta-item-price">4,00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Champiñones al ajillo</div>
+              <div class="carta-item-name">Vino blanco Rueda</div>
+              <div class="carta-item-desc">Verdejo, fresco y afrutado</div>
             </div>
-            <div class="carta-item-price">8,00 €</div>
+            <div class="carta-item-price">3,00 €</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Burger On Kafe</div>
-              <div class="carta-item-desc">Pan artesano, carne seleccionada, patatas</div>
+              <div class="carta-item-name">Cava / Prosecco</div>
             </div>
-            <div class="carta-item-price">12,00 €</div>
+            <div class="carta-item-price">4,50 €</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Horario de pintxos</h4>
-          <p>Los pintxos se sirven desde las 10:00 h hasta el cierre. Pregunta por las especialidades del día en barra. Los fines de semana ampliamos la selección.</p>
+          <h4>Horario de coctelería</h4>
+          <p>Los cócteles se sirven a partir de las 17:00 h. Vinoteca disponible todo el día. Los fines de semana cerramos a las 23:00 h. Pregunta por los eventos especiales.</p>
         </div>
       </div>
     </div>
@@ -1344,97 +1463,22 @@
   </div>
 </section>
 
-<!-- CARTA: MENÚ DEL DÍA -->
-<section class="carta-section" id="carta-menu">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
-    <p class="section-label reveal">Menú del día</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Cocina casera que <em>sabe a hogar</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Primeros platos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Sopa de verduras de temporada</div>
-              <div class="carta-item-desc">Receta casera con caldo natural</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Ensalada mixta</div>
-              <div class="carta-item-desc">Con atún, huevo y aceite de oliva virgen</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pasta con salsa de la casa</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Legumbre del día</div>
-              <div class="carta-item-desc">Alubia, lenteja o garbanzo según temporada</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Segundos platos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Merluza a la plancha o en salsa</div>
-              <div class="carta-item-desc">Pescado fresco, receta tradicional</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pollo al horno con patatas</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Filete de ternera a la plancha</div>
-              <div class="carta-item-desc">Con guarnición a elegir</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Huevos fritos con chorizo y patatas</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Menú completo — Precio orientativo</h4>
-          <p>Incluye primer plato, segundo plato, postre o café, y bebida. El menú cambia cada día con productos de mercado. Consulta el precio del día en barra. Disponible de lunes a viernes al mediodía.</p>
-        </div>
-      </div>
-    </div>
-    <a href="tel:944572883" class="carta-cta reveal">
-      <span>Consultar menú hoy</span><span>→</span>
-    </a>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Reseñas Google</p>
+    <p class="section-label reveal">Reseñas en Google</p>
     <h2 class="section-title reveal reveal-delay-1">
-      296 clientes que ya<br>han <em>repetido</em>
+      296 opiniones que<br>nos <em>avalan</em>
     </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Cafetería muy acogedora en Galdakao. El café está muy bueno y los pintxos son de los mejores de la zona. Repetiré seguro."</p>
+        <p class="testimonial-quote">"El mejor sitio de Galdakao para desayunar. Tienen una variedad de cafés y tés enorme, y la bollería que preparan cada mañana está increíble. Ambiente muy agradable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Iker M.</strong>
+          <strong>Ainhoa G.</strong>
           <span>Reseña en Google · Galdakao</span>
         </div>
       </div>
@@ -1442,22 +1486,22 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Desayuno aquí casi todos los días. La tortilla de la casa es espectacular y el trato del personal es inmejorable. Mi sitio favorito."</p>
+        <p class="testimonial-quote">"Me encanta que puedes venir por la mañana a tomar un café tranquilo y por la noche a disfrutar de un buen gin-tonic. Los helados en verano son espectaculares."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Amaia L.</strong>
+          <strong>Unai E.</strong>
           <span>Reseña en Google · Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
-          <div class="star" style="background: rgba(139,94,60,0.35);"></div>
+          <div class="star" style="background: rgba(193,127,78,0.35);"></div>
         </div>
-        <p class="testimonial-quote">"Buen ambiente y pintxos variados. El menú del día está muy bien de precio y la comida siempre fresca y bien preparada."</p>
+        <p class="testimonial-quote">"Buena cafetería, muy completa. Lo que más me gusta es la variedad: tés, chocolates, pintxos, helados... Y además admiten mascotas. Un acierto seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Mikel A.</strong>
+          <strong>Leire Z.</strong>
           <span>Reseña en Google · Bizkaia</span>
         </div>
       </div>
@@ -1471,7 +1515,7 @@
     <div class="map-info">
       <p class="section-label reveal">Encuéntranos</p>
       <h2 class="reveal reveal-delay-1">
-        Ven a <em>vernos</em><br>cuando quieras
+        Ven a <em>On Kafe</em><br>cuando quieras
       </h2>
       <div class="map-details reveal reveal-delay-2">
         <div class="map-detail">
@@ -1482,7 +1526,7 @@
           </div>
           <div class="map-detail-text">
             <h4>Dirección</h4>
-            <p>Bizkai Kalea, 1<br>48960 Galdakao, Bizkaia</p>
+            <p>Bizkai Kalea, 1 (junto al Ayuntamiento)<br>48960 Galdakao, Bizkaia</p>
           </div>
         </div>
         <div class="map-detail">
@@ -1503,8 +1547,8 @@
             </svg>
           </div>
           <div class="map-detail-text">
-            <h4>Horario orientativo</h4>
-            <p>Lunes – Viernes: 7:30 – 21:00<br>Sábado – Domingo: 8:00 – 15:00</p>
+            <h4>Horario</h4>
+            <p>Todos los días: 7:00 – 23:00</p>
           </div>
         </div>
         <div class="map-detail">
@@ -1515,7 +1559,7 @@
           </div>
           <div class="map-detail-text">
             <h4>Redes sociales</h4>
-            <a href="https://www.facebook.com/onkafe/" target="_blank" rel="noopener">Facebook: facebook.com/onkafe</a><br>
+            <a href="https://www.facebook.com/onkafe/" target="_blank" rel="noopener">Facebook: /onkafe</a><br>
             <a href="https://www.instagram.com/on_kafe.galdakao/" target="_blank" rel="noopener">Instagram: @on_kafe.galdakao</a>
           </div>
         </div>
@@ -1524,8 +1568,8 @@
         <a href="tel:944572883" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px;">
           <span>Llamar ahora</span><span>→</span>
         </a>
-        <a href="https://www.facebook.com/onkafe/" target="_blank" rel="noopener" class="btn-ghost" style="border:1px solid rgba(139,94,60,0.3); padding:18px 28px;">
-          <span>Facebook</span>
+        <a href="https://wa.me/34944572883" target="_blank" rel="noopener" class="btn-ghost" style="border:1px solid rgba(193,127,78,0.3); padding:18px 28px;">
+          <span>WhatsApp</span>
         </a>
       </div>
     </div>
@@ -1544,8 +1588,8 @@
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece un<br>buen desayuno?</h2>
-    <p>Ven a On Kafe. Te esperamos en Galdakao.</p>
+    <h2>¿Café, helado<br>o cóctel?</h2>
+    <p>De 7 de la mañana a 11 de la noche. On Kafe te espera en Galdakao.</p>
   </div>
   <a href="tel:944572883" class="btn-dark">
     <span>Llamar: 944 57 28 83</span>
@@ -1558,7 +1602,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">On <span>Kafe</span></a>
-      <p class="footer-tagline">"El mejor momento del día<br>empieza con un buen café."</p>
+      <p class="footer-tagline">"De la primera taza a la<br>última copa, siempre On."</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/onkafe/" target="_blank" rel="noopener" class="social-link" title="Facebook On Kafe">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -1577,11 +1621,11 @@
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#carta">Cafés y Bebidas</a></li>
+        <li><a href="#carta">Cafés y Tés</a></li>
         <li><a href="#carta">Desayunos</a></li>
-        <li><a href="#carta-pintxos">Pintxos</a></li>
-        <li><a href="#carta-pintxos">Raciones</a></li>
-        <li><a href="#carta-menu">Menú del Día</a></li>
+        <li><a href="#carta-postres">Helados y Postres</a></li>
+        <li><a href="#carta-cocteles">Cócteles</a></li>
+        <li><a href="#carta-cocteles">Vinos</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1599,12 +1643,12 @@
       <ul>
         <li><a href="tel:944572883">944 57 28 83</a></li>
         <li><a href="https://maps.google.com/?q=On+Kafe+Galdakao" target="_blank" rel="noopener">Bizkai Kalea, 1<br>48960 Galdakao</a></li>
-        <li><a href="https://www.facebook.com/onkafe/" target="_blank" rel="noopener">Mensaje en Facebook</a></li>
+        <li><a href="https://wa.me/34944572883" target="_blank" rel="noopener">WhatsApp</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 On Kafe · Galdakao, Bizkaia. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 On Kafe &middot; Galdakao, Bizkaia. Todos los derechos reservados.</p>
     <div class="footer-legal">
       <a href="#">Política de Privacidad</a>
       <a href="#">Aviso Legal</a>
@@ -1612,6 +1656,11 @@
     </div>
   </div>
 </footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34944572883" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.13 6.742 3.05 9.376L1.054 31.25l6.118-1.96A15.92 15.92 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.312 22.594c-.39 1.1-1.932 2.014-3.154 2.28-.836.18-1.926.322-5.6-1.204-4.7-1.952-7.724-6.722-7.958-7.034-.226-.312-1.9-2.53-1.9-4.826s1.202-3.424 1.63-3.892c.39-.428.924-.624 1.238-.624.15 0 .286.008.408.014.428.018.642.044.924.716.354.84 1.214 2.962 1.32 3.178.108.216.216.508.07.798-.138.298-.26.43-.476.678-.216.248-.42.438-.636.706-.198.232-.42.48-.176.93.244.444 1.084 1.788 2.328 2.898 1.6 1.426 2.88 1.884 3.354 2.082.352.148.772.11.996-.148.284-.328.636-.872.994-1.41.254-.384.574-.434.958-.286.39.142 2.462 1.162 2.884 1.374.422.212.702.318.806.496.102.178.102 1.028-.288 2.128z"/></svg>
+</a>
 
 <script>
   // ── LOADER
@@ -1697,15 +1746,6 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
-
-  // ── HERO PARALLAX
-  window.addEventListener('scroll', () => {
-    const heroBg = document.getElementById('heroBg');
-    if (heroBg) {
-      const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
-    }
-  });
 </script>
 </body>
 </html>

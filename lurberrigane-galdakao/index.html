@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lurberrigane Jatetxea — Restaurante &amp; Hamburguesería · Galdakao</title>
+  <meta name="description" content="Lurberrigane Jatetxea: hamburguesas artesanas y cocina vasca en el centro de Galdakao. 4.0★ en Google con 289 reseñas. Reserva: 944 56 54 03.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,13 +12,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
+      --black: #0a0807;
       --white: #f5f3ef;
-      --accent: #B45309;
-      --accent-light: #d97706;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
+      --accent: #c0392b;
+      --accent-light: #e74c3c;
+      --accent-dark: #962d22;
+      --warm: #d4a056;
+      --carbon: #141110;
+      --carbon-mid: #1c1714;
+      --carbon-light: #2a221c;
       --text-muted: #9a8a7a;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Source Sans 3', sans-serif;
@@ -50,7 +53,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(180,83,9,0.4);
+      border: 1px solid rgba(192,57,43,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,8 +62,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(180,83,9,0.7);
-      background: rgba(180,83,9,0.05);
+      border-color: rgba(192,57,43,0.7);
+      background: rgba(192,57,43,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -73,9 +76,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(10,8,7,0.9);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(180,83,9,0.08);
+      border-bottom: 1px solid rgba(192,57,43,0.1);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -103,7 +106,7 @@
       letter-spacing: 0.25em !important;
       transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
 
     /* ─── HAMBURGER ─── */
     .hamburger {
@@ -144,7 +147,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(10,8,7,0.92) 0%, rgba(10,8,7,0.5) 50%, rgba(10,8,7,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -167,7 +170,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -190,7 +193,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -198,11 +201,11 @@
     }
     .btn-primary::before {
       content: ''; position: absolute; inset: 0;
-      background: var(--white); transform: translateX(-102%);
+      background: var(--accent-dark); transform: translateX(-102%);
       transition: transform 0.4s var(--ease-out);
     }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
+    .btn-primary:hover { color: var(--white); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
       color: rgba(245,243,239,0.6); text-decoration: none;
@@ -241,8 +244,8 @@
 
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(180,83,9,0.12);
-      border-bottom: 1px solid rgba(180,83,9,0.12);
+      border-top: 1px solid rgba(192,57,43,0.12);
+      border-bottom: 1px solid rgba(192,57,43,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -279,7 +282,7 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(192,57,43,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -287,7 +290,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(180,83,9,0.08);
+      border: 1px solid rgba(192,57,43,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -297,7 +300,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(180,83,9,0.3); }
+    .stat-card:hover { border-color: rgba(192,57,43,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -321,7 +324,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(180,83,9,0.3);
+      border-bottom: 1px solid rgba(192,57,43,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -347,7 +350,7 @@
     .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,8,7,0.9) 0%, rgba(10,8,7,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -395,7 +398,7 @@
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(180,83,9,0.25);
+      background: var(--black); border: 1px solid rgba(192,57,43,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-icon {
@@ -421,10 +424,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(180,83,9,0.06);
+      padding: 20px; border: 1px solid rgba(192,57,43,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(180,83,9,0.2); }
+    .about-value:hover { border-color: rgba(192,57,43,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -446,15 +449,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(192,57,43,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(180,83,9,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(192,57,43,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(180,83,9,0.2); color: var(--accent);
+      border: 1px solid rgba(192,57,43,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -468,22 +471,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(180,83,9,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(192,57,43,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(180,83,9,0.05);
+      font-weight: 300; color: rgba(192,57,43,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(180,83,9,0.1); }
+    .service-card:hover .service-number { color: rgba(192,57,43,0.1); }
 
     /* ─── CARTA ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(192,57,43,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -505,7 +508,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(180,83,9,0.15);
+      border-bottom: 1px solid rgba(192,57,43,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -527,7 +530,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(180,83,9,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(192,57,43,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -552,21 +555,20 @@
     .map-section {
       background: var(--black);
       padding: 130px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(192,57,43,0.08);
     }
     .map-inner {
       max-width: 1400px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 2fr;
       gap: 80px; align-items: center;
     }
-    .map-info { }
     .map-detail {
       display: flex; gap: 20px; align-items: flex-start;
       margin-top: 36px; padding: 20px;
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(192,57,43,0.07);
       transition: border-color 0.3s;
     }
-    .map-detail:hover { border-color: rgba(180,83,9,0.2); }
+    .map-detail:hover { border-color: rgba(192,57,43,0.2); }
     .map-detail-icon {
       color: var(--accent); flex-shrink: 0; margin-top: 2px;
     }
@@ -582,7 +584,7 @@
     }
     .map-detail-text a:hover { opacity: 0.75; }
     .map-embed {
-      border: 1px solid rgba(180,83,9,0.1);
+      border: 1px solid rgba(192,57,43,0.1);
       overflow: hidden;
     }
     .map-embed iframe {
@@ -595,9 +597,9 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
+      color: rgba(192,57,43,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -605,18 +607,18 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(180,83,9,0.07);
+      padding: 56px 44px; background: rgba(10,8,7,0.4);
+      border: 1px solid rgba(192,57,43,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(180,83,9,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(192,57,43,0.2); background: rgba(10,8,7,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .star.half {
-      background: linear-gradient(to right, var(--accent) 50%, rgba(180,83,9,0.2) 50%);
+      background: linear-gradient(to right, var(--accent) 50%, rgba(192,57,43,0.2) 50%);
     }
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
@@ -644,10 +646,10 @@
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 {
       font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300; color: var(--black); line-height: 1.1;
+      font-weight: 300; color: var(--white); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -665,10 +667,25 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── WHATSAPP FAB ─── */
+    .whatsapp-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(192,57,43,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -812,19 +829,19 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Lurberrigane<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#carta">Carta</a></li>
     <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#carta" onclick="closeMobile()">Carta</a>
   <a href="#contacto" onclick="closeMobile()">Reservar</a>
@@ -832,25 +849,25 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('https://img02.restaurantguru.com/c344-Restaurant-Lurberrigane-Jatetxea-interior.jpg');"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600&q=80');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Galdakao · Restaurante · Hamburguesería</p>
+    <p class="hero-eyebrow">Galdakao · Restaurante · Hamburgueseria</p>
     <h1 class="hero-title">
-      Sabor de siempre,<br><em>calidad</em><br>de verdad
+      Hamburguesas<br><em>artesanas</em><br>con alma vasca
     </h1>
     <p class="hero-sub">
-      Cocina vasca con alma y hamburguesas artesanas que enamoran. En el corazón de Galdakao, con 289 opiniones que nos avalan.
+      Carne seleccionada, pan de verdad y salsas caseras. Cocina vasca y hamburguesas que enamoran desde el centro de Galdakao, con 289 opiniones que nos avalan.
     </p>
     <div class="hero-actions">
       <a href="tel:944565403" class="btn-primary">
         <span>Llamar y reservar</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
       <a href="#carta" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -863,17 +880,17 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
     <span class="marquee-item"><span class="dot"></span>Hamburguesas Artesanas</span>
-    <span class="marquee-item"><span class="dot"></span>Producto Local</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Grupos y Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Carnes a la Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
     <span class="marquee-item"><span class="dot"></span>Galdakao</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
     <span class="marquee-item"><span class="dot"></span>Hamburguesas Artesanas</span>
-    <span class="marquee-item"><span class="dot"></span>Producto Local</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Grupos y Celebraciones</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Carnes a la Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Terraza</span>
     <span class="marquee-item"><span class="dot"></span>Galdakao</span>
   </div>
 </div>
@@ -883,19 +900,19 @@
   <div class="stats-grid">
     <div class="stat-card reveal">
       <div class="stat-number"><span class="count" data-target="289">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reseñas en Google</div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.0 ★</span></div>
-      <div class="stat-label">Valoración media</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.0 &#9733;</span></div>
+      <div class="stat-label">Valoracion media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number" style="font-size:3.2rem; padding-top:0.3rem">Cocina</div>
-      <div class="stat-label">Casera Vasca</div>
+      <div class="stat-number"><span class="count" data-target="150">0</span><span class="stat-suffix">g</span></div>
+      <div class="stat-label">Hamburguesa Premium</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number" style="font-size:3rem; padding-top:0.4rem">Centro</div>
-      <div class="stat-label">Galdakao</div>
+      <div class="stat-number" style="font-size:2.8rem; padding-top:0.5rem">11-16h</div>
+      <div class="stat-label">y de 20-23h</div>
     </div>
   </div>
 </div>
@@ -905,53 +922,49 @@
   <div class="projects-header">
     <div>
       <p class="section-label reveal">Nuestra cocina</p>
-      <h2 class="section-title reveal reveal-delay-1">Platos que <em>hablan por sí solos</em></h2>
+      <h2 class="section-title reveal reveal-delay-1">Platos que <em>hablan por si solos</em></h2>
     </div>
-    <a href="#contacto" class="view-all reveal">Reservar mesa →</a>
+    <a href="#contacto" class="view-all reveal">Reservar mesa &rarr;</a>
   </div>
   <div class="projects-grid">
-    <!-- Full-width hero card -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/c685-Lurberrigane-Jatetxea-Galdakao-meals.jpg" alt="Platos del día en Lurberrigane Jatetxea, Galdakao" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80" alt="Interior del restaurante Lurberrigane Jatetxea, Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Platos · Temporada</p>
-        <h3 class="project-name">Cocina de mercado</h3>
-        <p class="project-meta">Producto fresco · Elaboración propia</p>
+        <p class="project-cat">Espacio &middot; Ambiente</p>
+        <h3 class="project-name">Nuestro restaurante</h3>
+        <p class="project-meta">Ambiente acogedor &middot; Terraza acondicionada</p>
       </div>
     </div>
-    <!-- Burger card -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cd55-Restaurant-Lurberrigane-Jatetxea-burger.jpg" alt="Hamburguesa artesana en Lurberrigane Jatetxea" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&q=80" alt="Hamburguesa gourmet artesana en Lurberrigane Jatetxea" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Hamburguesería</p>
+        <p class="project-cat">Especialidad &middot; Hamburgueseria</p>
         <h3 class="project-name">Hamburguesas artesanas</h3>
-        <p class="project-meta">Carne seleccionada · Salsas propias</p>
+        <p class="project-meta">Carne seleccionada &middot; Pan de verdad</p>
       </div>
     </div>
-    <!-- Filet card -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/ce79-Restaurant-Lurberrigane-Jatetxea-filet-mignon.jpg" alt="Filet mignon en Lurberrigane Jatetxea" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Chuleton a la brasa en Lurberrigane Jatetxea" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Carta · Carnes</p>
-        <h3 class="project-name">Filet mignon</h3>
-        <p class="project-meta">Corte premium · Punto perfecto</p>
+        <p class="project-cat">Carta &middot; Carnes</p>
+        <h3 class="project-name">Carnes a la brasa</h3>
+        <p class="project-meta">Chuleton &middot; Cordero lechal &middot; Entrecot</p>
       </div>
     </div>
-    <!-- Salad card -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cad9-Restaurant-Lurberrigane-Jatetxea-greek-salad.jpg" alt="Ensalada fresca en Lurberrigane Jatetxea" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80" alt="Cerveza artesana y tapas en Lurberrigane Jatetxea" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Carta · Ensaladas</p>
-        <h3 class="project-name">Ensaladas frescas</h3>
-        <p class="project-meta">Ingredientes frescos · Aliños propios</p>
+        <p class="project-cat">Bebidas &middot; Tapas</p>
+        <h3 class="project-name">Pintxos y cervezas</h3>
+        <p class="project-meta">Seleccion de pintxos &middot; Cervezas artesanas</p>
       </div>
     </div>
   </div>
@@ -960,42 +973,42 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://img02.restaurantguru.com/ce54-Restaurant-Lurberrigane-Jatetxea-design.jpg" alt="Interior del restaurante Lurberrigane Jatetxea en Galdakao">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Interior del restaurante Lurberrigane Jatetxea en Galdakao">
     <div class="about-badge">
-      <div class="about-badge-icon">★★★★</div>
-      <div class="about-badge-text">4 estrellas · 289 reseñas verificadas en Google</div>
+      <div class="about-badge-icon">&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="about-badge-text">4.0 estrellas &middot; 289 resenas verificadas en Google</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina vasca<br>se encuentra con la <em>pasión</em>
+      Donde la cocina vasca<br>se encuentra con la <em>pasion</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
       Lurberrigane Jatetxea es un restaurante de referencia en Galdakao, conocido por combinar lo mejor de la <strong>cocina vasca tradicional</strong> con unas hamburguesas artesanas que no dejan indiferente a nadie.<br><br>
-      Producto de calidad, elaboración propia y un ambiente acogedor que invita a repetir. Llevamos años siendo el lugar elegido por las familias y amigos de Galdakao para sus momentos especiales.
+      Carne de calidad, salsas caseras, pan elaborado artesanalmente y un ambiente acogedor con terraza. Nuestras raciones generosas y el trato cercano nos han convertido en el lugar elegido por familias y cuadrillas de Galdakao.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de calidad</h4>
-          <p>Ingredientes seleccionados y elaboración casera en cada plato que sale de nuestra cocina</p>
+          <h4>Hamburguesas con pan real</h4>
+          <p>Nuestra seña de identidad: hamburguesas artesanas con pan elaborado en el dia, carne premium de 150g y salsas propias</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
           <h4>Cocina vasca de verdad</h4>
-          <p>Recetas con raíces, sabores auténticos y ese toque de casa que convierte una comida en un recuerdo</p>
+          <p>Alubias de Tolosa, bacalao al pil-pil, cordero lechal, txuletones... recetas con raices y sabor de siempre</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Hamburguesas artesanas</h4>
-          <p>Nuestra especialidad que ha enamorado a Galdakao: carne seleccionada, salsas propias, pan artesano</p>
+          <h4>Raciones generosas</h4>
+          <p>Ensaladas que pueden con tres, hamburguesas contundentes y porciones que no escatiman en producto de calidad</p>
         </div>
       </div>
     </div>
@@ -1017,9 +1030,9 @@
             <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <h3>Menú del día</h3>
-        <p>Cocina vasca de temporada con primero, segundo y postre. Producto fresco, elaboración casera y precios honestos para el día a día.</p>
-        <a href="#carta-menu" class="service-link">Ver menú →</a>
+        <h3>Menu del dia</h3>
+        <p>Cocina vasca de temporada con primero, segundo y postre. Producto fresco, elaboracion casera y precios honestos para el dia a dia.</p>
+        <a href="#carta-menu" class="service-link">Ver menu &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -1029,8 +1042,8 @@
           </svg>
         </div>
         <h3>Hamburguesas artesanas</h3>
-        <p>Nuestra seña de identidad: carne seleccionada, pan de elaboración propia, salsas caseras y combinaciones que sorprenden. La hamburguesería de Galdakao.</p>
-        <a href="#carta-hamburguesas" class="service-link">Ver hamburguesas →</a>
+        <p>Nuestra especialidad: carne seleccionada de 150g, pan artesano de elaboracion propia, salsas caseras y combinaciones que enamoran a Galdakao.</p>
+        <a href="#carta-hamburguesas" class="service-link">Ver hamburguesas &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
@@ -1040,20 +1053,143 @@
           </svg>
         </div>
         <h3>Grupos y celebraciones</h3>
-        <p>Comidas de empresa, cumpleaños, reuniones familiares... Adaptamos el espacio y el menú para que tu celebración sea perfecta.</p>
-        <a href="#carta-grupos" class="service-link">Más información →</a>
+        <p>Comidas de empresa, cumpleanos, cuadrillas... Adaptamos espacio y menu para que tu celebracion sea perfecta. Terraza disponible.</p>
+        <a href="#carta-grupos" class="service-link">Mas informacion &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: MENÚ DEL DÍA -->
+<!-- CARTA: HAMBURGUESAS -->
+<section class="carta-section" id="carta-hamburguesas">
+  <div class="section-inner">
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Nuestra especialidad</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Hamburguesas que <em>enamoran</em>
+    </h2>
+    <div class="carta-columns">
+      <div>
+        <div class="carta-category reveal">
+          <h4>Hamburguesas de ternera (150g)</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Lurberrigane Burger</div>
+              <div class="carta-item-desc">Ternera, queso, lechuga, tomate, salsa de la casa, pan artesano</div>
+            </div>
+            <div class="carta-item-price">8,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Bacon Cheddar Burger</div>
+              <div class="carta-item-desc">Doble carne, bacon crujiente, cheddar fundido, cebolla caramelizada</div>
+            </div>
+            <div class="carta-item-price">10,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">BBQ Smokehouse</div>
+              <div class="carta-item-desc">Carne ahumada, salsa barbacoa casera, aros de cebolla, jalapeños</div>
+            </div>
+            <div class="carta-item-price">10,90 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Blue Cheese Special</div>
+              <div class="carta-item-desc">Queso azul fundido, rucula, cebolla crujiente, salsa mostaza y miel</div>
+            </div>
+            <div class="carta-item-price">10,90 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal">
+          <h4>Hamburguesas de pollo y vegetal</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chicken Crispy Burger</div>
+              <div class="carta-item-desc">Pechuga empanada crujiente, lechuga, tomate, alioli</div>
+            </div>
+            <div class="carta-item-price">8,90 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Veggie Burger</div>
+              <div class="carta-item-desc">Hamburguesa vegetal, verduras asadas, alioli de la casa</div>
+            </div>
+            <div class="carta-item-price">8,50 &euro;</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Acompañamientos</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Patatas fritas caseras</div>
+            </div>
+            <div class="carta-item-price">3,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Aros de cebolla</div>
+            </div>
+            <div class="carta-item-price">4,00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Patatas bravas</div>
+            </div>
+            <div class="carta-item-price">4,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada de la casa</div>
+            </div>
+            <div class="carta-item-price">5,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal reveal-delay-2">
+          <h4>Sandwiches y bocadillos</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Sandwich mixto</div>
+              <div class="carta-item-desc">Jamon y queso en pan tostado</div>
+            </div>
+            <div class="carta-item-price">4,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Sandwich cubano</div>
+              <div class="carta-item-desc">Pulled pork, jamon, queso, pepinillos, mostaza</div>
+            </div>
+            <div class="carta-item-price">7,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Hot dog artesano</div>
+              <div class="carta-item-desc">Salchicha premium, cebolla crujiente, salsas</div>
+            </div>
+            <div class="carta-item-price">6,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Pan artesano propio</h4>
+          <p>Todas nuestras hamburguesas se sirven en pan elaborado artesanalmente. La combinacion de carne seleccionada de 150g y pan de calidad es lo que marca la diferencia en Lurberrigane.</p>
+        </div>
+      </div>
+    </div>
+    <a href="tel:944565403" class="carta-cta reveal">
+      <span>Reservar mesa</span><span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- CARTA: MENU DEL DIA -->
 <section class="carta-section" id="carta-menu">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a carta</a>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
     <p class="section-label reveal">Cocina vasca diaria</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      El menú que <em>sabe a casa</em>
+      El menu que <em>sabe a casa</em>
     </h2>
     <div class="carta-columns">
       <div>
@@ -1062,13 +1198,13 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Ensalada de temporada</div>
-              <div class="carta-item-desc">Ingredientes del día, aliño de la casa</div>
+              <div class="carta-item-desc">Ingredientes del dia, aliño de la casa</div>
             </div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Sopa de verduras</div>
-              <div class="carta-item-desc">Caldo casero, verdura fresca</div>
+              <div class="carta-item-desc">Caldo casero, verdura fresca de mercado</div>
             </div>
           </div>
           <div class="carta-item">
@@ -1080,7 +1216,13 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Pimientos del piquillo rellenos</div>
-              <div class="carta-item-desc">Rellenos de bacalao o carne según el día</div>
+              <div class="carta-item-desc">Rellenos de bacalao o carne segun el dia</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Croquetas caseras</div>
+              <div class="carta-item-desc">De jamon o bacalao, segun disponibilidad</div>
             </div>
           </div>
         </div>
@@ -1091,7 +1233,7 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Bacalao al pil-pil</div>
-              <div class="carta-item-desc">Receta vasca clásica</div>
+              <div class="carta-item-desc">Receta vasca clasica</div>
             </div>
           </div>
           <div class="carta-item">
@@ -1108,103 +1250,114 @@
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pollo de caserío asado</div>
-              <div class="carta-item-desc">Con patatas panadera</div>
+              <div class="carta-item-name">Cordero lechal asado</div>
+              <div class="carta-item-desc">Especialidad de la casa, por encargo</div>
             </div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Incluye postre y bebida</h4>
-          <p>El menú del día incluye primero, segundo, postre casero y bebida (agua, vino o refresco). Consulta disponibilidad llamando al <a href="tel:944565403">944 56 54 03</a> — la oferta cambia cada día según el mercado.</p>
+          <h4>Menu completo &middot; Consultar precio</h4>
+          <p>El menu del dia incluye primero, segundo, postre casero y bebida (agua, vino o refresco). Disponible de lunes a viernes en horario de comidas. Llama al <a href="tel:944565403" style="color:var(--accent)">944 56 54 03</a> para consultar la oferta del dia.</p>
         </div>
       </div>
     </div>
     <a href="tel:944565403" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+      <span>Llamar para reservar</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: HAMBURGUESAS -->
-<section class="carta-section" id="carta-hamburguesas">
+<!-- CARTA: CARNES Y ESPECIALIDADES -->
+<section class="carta-section" id="carta-carnes">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Nuestra especialidad</p>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">De la brasa a tu mesa</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Hamburguesas que <em>enamoran</em>
+      Carnes y <em>especialidades</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Hamburguesas clásicas</h4>
+          <h4>Carnes a la brasa</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Lurberrigane Burger</div>
-              <div class="carta-item-desc">Carne de ternera, queso, lechuga, tomate, salsa de la casa</div>
+              <div class="carta-item-name">Chuleton de buey (1kg aprox.)</div>
+              <div class="carta-item-desc">Pieza madurada, brasa de carbon, para compartir</div>
             </div>
+            <div class="carta-item-price">48,00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Burger con bacon</div>
-              <div class="carta-item-desc">Doble carne, bacon crujiente, cheddar fundido</div>
+              <div class="carta-item-name">Entrecot a la brasa</div>
+              <div class="carta-item-desc">Carne seleccionada, al punto, con guarnicion</div>
             </div>
+            <div class="carta-item-price">18,50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Burger vegetal</div>
-              <div class="carta-item-desc">Opción vegetariana, verduras asadas y alioli</div>
+              <div class="carta-item-name">Cordero lechal asado</div>
+              <div class="carta-item-desc">Medio cordero, por encargo previo</div>
             </div>
-          </div>
-        </div>
-        <div class="carta-category reveal">
-          <h4>Acompañamientos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Patatas fritas caseras</div>
-            </div>
+            <div class="carta-item-price">Consultar</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Aros de cebolla</div>
+              <div class="carta-item-name">Cochinillo asado</div>
+              <div class="carta-item-desc">Crujiente y tierno, por encargo</div>
             </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Ensalada de la casa</div>
-            </div>
+            <div class="carta-item-price">Consultar</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Especialidades de carta</h4>
+          <h4>Paellas (por encargo)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Filet mignon</div>
-              <div class="carta-item-desc">Corte premium, salsa de la casa, guarnición</div>
+              <div class="carta-item-name">Paella mixta</div>
+              <div class="carta-item-desc">Minimo 2 personas, avisar con antelacion</div>
             </div>
+            <div class="carta-item-price">14,00 &euro;/p</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Entrecot a la brasa</div>
-              <div class="carta-item-desc">Carne seleccionada, al punto</div>
+              <div class="carta-item-name">Paella de marisco</div>
+              <div class="carta-item-desc">Minimo 2 personas, avisar con antelacion</div>
             </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Chuletón para compartir</div>
-              <div class="carta-item-desc">Ración para 2, con patatas y pimientos</div>
-            </div>
+            <div class="carta-item-price">16,00 &euro;/p</div>
           </div>
         </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Pan artesano propio</h4>
-          <p>Todas nuestras hamburguesas se sirven en pan elaborado artesanalmente. La combinación de carne seleccionada y pan de calidad marca la diferencia. Consulta los platos del día llamando al <a href="tel:944565403">944 56 54 03</a>.</p>
+        <div class="carta-category reveal reveal-delay-2">
+          <h4>Bebidas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cerveza de barril (caña)</div>
+            </div>
+            <div class="carta-item-price">2,00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Vino de la casa (copa)</div>
+            </div>
+            <div class="carta-item-price">2,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Refrescos</div>
+            </div>
+            <div class="carta-item-price">2,00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Agua mineral</div>
+            </div>
+            <div class="carta-item-price">1,80 &euro;</div>
+          </div>
         </div>
       </div>
     </div>
     <a href="tel:944565403" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+      <span>Reservar para grupos</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1212,7 +1365,7 @@
 <!-- CARTA: GRUPOS -->
 <section class="carta-section" id="carta-grupos">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a carta</a>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
     <p class="section-label reveal">Eventos y grupos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
       Celebra con <em>nosotros</em>
@@ -1224,19 +1377,19 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Comedor principal</div>
-              <div class="carta-item-desc">Ambiente cálido, capacidad para grupos medianos</div>
+              <div class="carta-item-desc">Ambiente acogedor, capacidad para grupos medianos</div>
             </div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Zona reservada para grupos</div>
-              <div class="carta-item-desc">Consulta disponibilidad con antelación</div>
+              <div class="carta-item-name">Terraza acondicionada</div>
+              <div class="carta-item-desc">Ideal para comidas de buen tiempo</div>
             </div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados a medida</h4>
-          <p>Diseñamos menús personalizados para tu evento. Llámanos al <a href="tel:944565403">944 56 54 03</a> y cuéntanos qué necesitas — nos adaptamos a presupuesto y preferencias del grupo.</p>
+          <h4>Menus cerrados a medida</h4>
+          <p>Diseñamos menus personalizados para tu evento. Llamanos al <a href="tel:944565403" style="color:var(--accent)">944 56 54 03</a> y cuentanos que necesitas. Nos adaptamos a presupuesto y preferencias del grupo.</p>
         </div>
       </div>
       <div>
@@ -1245,12 +1398,12 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Comidas de empresa</div>
-              <div class="carta-item-desc">Ambiente profesional, menú adaptado</div>
+              <div class="carta-item-desc">Ambiente profesional, menu adaptado</div>
             </div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Cumpleaños y celebraciones</div>
+              <div class="carta-item-name">Cumpleanos y celebraciones</div>
               <div class="carta-item-desc">Festeja con los tuyos en Lurberrigane</div>
             </div>
           </div>
@@ -1262,7 +1415,7 @@
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Cuadrillas y grupos de amigos</div>
+              <div class="carta-item-name">Cuadrillas y amigos</div>
               <div class="carta-item-desc">El plan perfecto para una tarde en Galdakao</div>
             </div>
           </div>
@@ -1270,7 +1423,7 @@
       </div>
     </div>
     <a href="tel:944565403" class="carta-cta reveal">
-      <span>Llamar para grupos</span><span>→</span>
+      <span>Llamar para grupos</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1287,33 +1440,66 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Las hamburguesas están buenísimas, sin duda las mejores de la zona. El trato es muy cercano y el ambiente acogedor. Repetimos seguro."</p>
+        <p class="testimonial-quote">"Las hamburguesas son espectaculares, sin duda las mejores de Galdakao. Las raciones son muy generosas y el trato es cercano y personalizado. Repetimos siempre."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ane M.</strong>
-          <span>Reseña Google · Galdakao</span>
+          <strong>Amaia G.</strong>
+          <span>Resena Google &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Comida vasca de calidad, menú del día a buen precio y el personal muy amable. Es nuestro sitio de referencia para las comidas de empresa en Galdakao."</p>
+        <p class="testimonial-quote">"Cocina vasca de calidad, menu del dia a buen precio y el personal muy amable. Es nuestro sitio de referencia para las comidas de cuadrilla en Galdakao."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Mikel U.</strong>
-          <span>Reseña Google · Bizkaia</span>
+          <strong>Jokin A.</strong>
+          <span>Resena Google &middot; Bizkaia</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star half"></div>
         </div>
-        <p class="testimonial-quote">"El filet mignon estaba espectacular. Un restaurante que combina bien la cocina tradicional con opciones más actuales. El interior muy cuidado."</p>
+        <p class="testimonial-quote">"La ensalada es para tres personas, porciones muy generosas. Buen ambiente y una terraza bien acondicionada. Combinacion de calidad, atencion y buen precio."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Leire B.</strong>
-          <span>Reseña Google · Galdakao</span>
+          <strong>Itsaso L.</strong>
+          <span>Resena Google &middot; Galdakao</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"El chuleton estaba espectacular, en su punto perfecto. Las patatas fritas crujientes y con mucho sabor. Sitio ideal para una comida tranquila en Galdakao."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Hodei R.</strong>
+          <span>Resena Google &middot; Galdakao</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Vinimos a probar las hamburguesas artesanas y salimos encantados. El pan se nota que es del dia. Sitio perfecto para venir con la familia un sabado."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Eneko M.</strong>
+          <span>Resena Google &middot; Bizkaia</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Fuimos para una comida de empresa y todo perfecto. Menu adaptado a nuestras necesidades, servicio atento y un trato increible. Muy recomendable."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Nerea Z.</strong>
+          <span>Resena Google &middot; Galdakao</span>
         </div>
       </div>
     </div>
@@ -1324,7 +1510,7 @@
 <div class="map-section" id="contacto">
   <div class="map-inner">
     <div class="map-info">
-      <p class="section-label reveal">Encuéntranos</p>
+      <p class="section-label reveal">Encuentranos</p>
       <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(2rem,3.5vw,3.2rem)">
         En el centro de <em>Galdakao</em>
       </h2>
@@ -1333,8 +1519,8 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="map-detail-text">
-          <h4>Dirección</h4>
-          <p>Muguru Kalea, 6<br>Galdakao, Bizkaia</p>
+          <h4>Direccion</h4>
+          <p>Muguru Kalea, 6<br>48960 Galdakao, Bizkaia</p>
         </div>
       </div>
       <div class="map-detail reveal reveal-delay-1">
@@ -1342,7 +1528,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.22 2 2 0 012.11.04h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.44-1.44a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2z"/></svg>
         </div>
         <div class="map-detail-text">
-          <h4>Teléfono</h4>
+          <h4>Telefono</h4>
           <p><a href="tel:944565403">944 56 54 03</a></p>
         </div>
       </div>
@@ -1352,7 +1538,7 @@
         </div>
         <div class="map-detail-text">
           <h4>Horario</h4>
-          <p>Consultar horario actual<br>llamando al restaurante</p>
+          <p>11:00 &ndash; 16:00<br>20:00 &ndash; 23:00</p>
         </div>
       </div>
       <div class="map-detail reveal reveal-delay-3">
@@ -1360,18 +1546,18 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <div class="map-detail-text">
-          <h4>Valoración Google</h4>
-          <p>4.0 estrellas · 289 reseñas</p>
+          <h4>Valoracion Google</h4>
+          <p>4.0 estrellas &middot; 289 resenas</p>
         </div>
       </div>
     </div>
     <div class="map-embed reveal reveal-delay-1">
       <iframe
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Lurberrigane+Jatetxea+Galdakao&zoom=17"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.5!2d-2.8425!3d43.2325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f8e8e8e8e8e%3A0x0!2sMuguru%20Kalea%2C%206%2C%2048960%20Galdakao%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1700000000000"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Ubicación de Lurberrigane Jatetxea en Galdakao">
+        title="Ubicacion de Lurberrigane Jatetxea en Galdakao">
       </iframe>
     </div>
   </div>
@@ -1381,11 +1567,11 @@
 <div class="cta-section">
   <div class="cta-text">
     <h2>¿Te apetece comer<br>bien en Galdakao?</h2>
-    <p>Llámanos y reserva tu mesa. Estaremos encantados de recibirte.</p>
+    <p>Llamanos y reserva tu mesa. Hamburguesas artesanas, cocina vasca y buen ambiente te esperan.</p>
   </div>
   <a href="tel:944565403" class="btn-dark">
     <span>944 56 54 03</span>
-    <span>↗</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
@@ -1394,20 +1580,22 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Lurberrigane<span>.</span></a>
-      <p class="footer-tagline">"Cocina vasca con alma, hamburguesas que enamoran."<br>— Lurberrigane Jatetxea</p>
+      <p class="footer-tagline">"Hamburguesas artesanas con alma vasca, en el centro de Galdakao."</p>
       <div class="footer-social">
         <a href="https://www.google.com/maps/search/Lurberrigane+Jatetxea+Galdakao" target="_blank" rel="noopener" class="social-link" title="Google Maps">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </a>
+        <a href="tel:944565403" class="social-link" title="Telefono">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         </a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#carta-menu">Menú del día</a></li>
         <li><a href="#carta-hamburguesas">Hamburguesas</a></li>
-        <li><a href="#carta-hamburguesas">Carnes</a></li>
-        <li><a href="#carta-hamburguesas">Ensaladas</a></li>
+        <li><a href="#carta-menu">Menu del dia</a></li>
+        <li><a href="#carta-carnes">Carnes a la brasa</a></li>
         <li><a href="#carta-grupos">Grupos</a></li>
       </ul>
     </div>
@@ -1415,29 +1603,34 @@
       <h4>Restaurante</h4>
       <ul>
         <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#galeria">Galeria</a></li>
         <li><a href="#carta-grupos">Celebraciones</a></li>
-        <li><a href="#contacto">Ubicación</a></li>
+        <li><a href="#contacto">Ubicacion</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
         <li><a href="tel:944565403">944 56 54 03</a></li>
-        <li><a href="https://www.google.com/maps/search/Lurberrigane+Jatetxea+Galdakao" target="_blank" rel="noopener">Muguru Kalea, 6, Galdakao</a></li>
+        <li><a href="https://www.google.com/maps/search/Lurberrigane+Jatetxea+Galdakao" target="_blank" rel="noopener">Muguru Kalea, 6</a></li>
         <li><a href="https://www.google.com/maps/search/Lurberrigane+Jatetxea+Galdakao" target="_blank" rel="noopener">Ver en Google Maps</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Lurberrigane Jatetxea · Galdakao, Bizkaia</p>
+    <p class="footer-copy">&copy; 2026 Lurberrigane Jatetxea &middot; Galdakao, Bizkaia</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/34944565403?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20Lurberrigane" class="whatsapp-fab" target="_blank" rel="noopener" title="Reservar por WhatsApp" aria-label="Reservar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
   // ── LOADER
@@ -1527,7 +1720,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

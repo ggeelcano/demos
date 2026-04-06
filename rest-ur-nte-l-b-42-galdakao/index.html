@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restāurānte Lābēā 42 — Restaurante</title>
+  <title>Restaurante Labea 42 — Cocina Casera en Galdakao</title>
+  <meta name="description" content="Restaurante Labea 42 en Galdakao. Cocina casera con producto fresco, menu del dia, pintxos y terraza. Labeaga Auzoa 42. Reservas: 631 95 56 88">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
-      --white: #f5f3ef;
-      --accent: #B45309;
-      --accent-light: #d97706;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
+      --black: #1a120b;
+      --white: #f5f0e8;
+      --accent: #a0522d;
+      --accent-light: #c47a4a;
+      --carbon: #211a12;
+      --carbon-mid: #2a2015;
+      --carbon-light: #362c1f;
       --text-muted: #9a8a7a;
+      --terracotta: #c25a3c;
+      --cream: #f5f0e8;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +40,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +53,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(180,83,9,0.4);
+      border: 1px solid rgba(160,82,45,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +62,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(180,83,9,0.7);
-      background: rgba(180,83,9,0.05);
+      border-color: rgba(160,82,45,0.7);
+      background: rgba(160,82,45,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,15 +76,15 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(26,18,11,0.9);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(180,83,9,0.08);
+      border-bottom: 1px solid rgba(160,82,45,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -89,7 +92,7 @@
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(245,243,239,0.65);
+      text-decoration: none; color: rgba(245,240,232,0.65);
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       transition: color 0.3s; font-weight: 400;
     }
@@ -105,7 +108,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* HAMBURGER MOBILE */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +132,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,7 +140,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0c0806 0%, #201a16 40%, #B4530922 100%);
+      background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80');
       background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
@@ -145,7 +148,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(26,18,11,0.92) 0%, rgba(26,18,11,0.5) 50%, rgba(26,18,11,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +171,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -178,7 +181,7 @@
     }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      font-size: 1.05rem; color: rgba(245,240,232,0.6);
       max-width: 480px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
@@ -206,7 +209,7 @@
     .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      color: rgba(245,243,239,0.6); text-decoration: none;
+      color: rgba(245,240,232,0.6); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
       transition: color 0.3s;
@@ -214,7 +217,7 @@
     .btn-ghost:hover { color: var(--accent); }
     .btn-ghost-arrow {
       width: 36px; height: 36px;
-      border: 1px solid rgba(245,243,239,0.2);
+      border: 1px solid rgba(245,240,232,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, transform 0.3s;
     }
@@ -240,10 +243,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* MARQUEE */
     .marquee-section {
-      border-top: 1px solid rgba(180,83,9,0.12);
-      border-bottom: 1px solid rgba(180,83,9,0.12);
+      border-top: 1px solid rgba(160,82,45,0.12);
+      border-bottom: 1px solid rgba(160,82,45,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -254,13 +257,13 @@
       display: inline-flex; align-items: center; gap: 30px;
       padding: 0 40px;
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: rgba(245,243,239,0.25);
+      font-style: italic; color: rgba(245,240,232,0.25);
       letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +279,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +291,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(180,83,9,0.08);
+      border: 1px solid rgba(160,82,45,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +301,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(180,83,9,0.3); }
+    .stat-card:hover { border-color: rgba(160,82,45,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +313,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
+    /* GALLERY */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +325,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(180,83,9,0.3);
+      border-bottom: 1px solid rgba(160,82,45,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,12 +345,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(26,18,11,0.9) 0%, rgba(26,18,11,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -366,7 +369,7 @@
       font-weight: 300; line-height: 1.15; margin-bottom: 14px;
     }
     .project-meta {
-      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      font-size: 0.73rem; color: rgba(245,240,232,0.45);
       letter-spacing: 0.1em; opacity: 0;
       transition: opacity 0.5s 0.1s;
     }
@@ -374,14 +377,14 @@
     .project-arrow {
       position: absolute; top: 36px; right: 36px;
       width: 50px; height: 50px;
-      border: 1px solid rgba(245,243,239,0.15);
+      border: 1px solid rgba(245,240,232,0.15);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       opacity: 0; transform: translate(10px, -10px);
       transition: all 0.4s var(--ease-out);
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,11 +392,13 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(180,83,9,0.25);
+      background: var(--black); border: 1px solid rgba(160,82,45,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -402,14 +407,14 @@
     }
     .about-badge-text {
       font-size: 0.72rem; letter-spacing: 0.1em;
-      color: rgba(245,243,239,0.5); margin-top: 6px;
+      color: rgba(245,240,232,0.5); margin-top: 6px;
     }
     .about-content {
       padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
     }
     .about-body {
       font-size: 1.05rem; line-height: 1.8;
-      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      color: rgba(245,240,232,0.65); margin: 32px 0 52px;
       font-weight: 300;
     }
     .about-body strong { color: var(--white); font-weight: 400; }
@@ -419,10 +424,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(180,83,9,0.06);
+      padding: 20px; border: 1px solid rgba(160,82,45,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(180,83,9,0.2); }
+    .about-value:hover { border-color: rgba(160,82,45,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +441,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +449,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(160,82,45,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(180,83,9,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(160,82,45,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(180,83,9,0.2); color: var(--accent);
+      border: 1px solid rgba(160,82,45,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,22 +471,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(180,83,9,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(160,82,45,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(180,83,9,0.05);
+      font-weight: 300; color: rgba(160,82,45,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(180,83,9,0.1); }
+    .service-card:hover .service-number { color: rgba(160,82,45,0.1); }
 
-    /* ─── CARTA SECTIONS ─── */
+    /* CARTA SECTIONS */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -503,7 +508,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(180,83,9,0.15);
+      border-bottom: 1px solid rgba(160,82,45,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -525,7 +530,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(180,83,9,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(160,82,45,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -550,14 +555,14 @@
       .carta-columns { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* ─── TESTIMONIALS ─── */
+    /* TESTIMONIALS */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
+      color: rgba(160,82,45,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -565,11 +570,11 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(180,83,9,0.07);
+      padding: 56px 44px; background: rgba(26,18,11,0.4);
+      border: 1px solid rgba(160,82,45,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(180,83,9,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(160,82,45,0.2); background: rgba(26,18,11,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -578,7 +583,7 @@
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
       font-style: italic; font-weight: 300;
-      line-height: 1.7; color: rgba(245,243,239,0.8);
+      line-height: 1.7; color: rgba(245,240,232,0.8);
       margin-bottom: 36px;
     }
     .testimonial-divider {
@@ -592,7 +597,7 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA BANNER */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -604,7 +609,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(26,18,11,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -622,10 +627,41 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25d366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .whatsapp-float svg { width: 30px; height: 30px; }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      padding: 100px 8%; background: var(--carbon);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;
+    }
+    .contact-info p {
+      color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;
+    }
+    .contact-info a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+    .contact-info a:hover { color: var(--accent-light); }
+    .contact-map {
+      border-radius: 16px; overflow: hidden; height: 300px;
+    }
+
+    /* FOOTER */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(160,82,45,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -636,15 +672,15 @@
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      font-size: 1.05rem; color: rgba(245,240,232,0.35);
       line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
     .footer-social { display: flex; gap: 14px; }
     .social-link {
       width: 40px; height: 40px;
-      border: 1px solid rgba(245,243,239,0.1);
+      border: 1px solid rgba(245,240,232,0.1);
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(245,240,232,0.4);
       font-size: 0.75rem; letter-spacing: 0.1em;
       transition: border-color 0.3s, color 0.3s;
     }
@@ -655,25 +691,25 @@
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col ul a {
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(245,240,232,0.4);
       font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
     .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      border-top: 1px solid rgba(245,243,239,0.06);
+      border-top: 1px solid rgba(245,240,232,0.06);
       padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
     .footer-copy {
-      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+      font-size: 0.75rem; color: rgba(245,240,232,0.25); letter-spacing: 0.05em;
     }
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a {
-      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      font-size: 0.72rem; color: rgba(245,240,232,0.2);
       text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -685,7 +721,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* LOADER */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -695,12 +731,12 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2.2rem;
+      letter-spacing: 0.2em; color: var(--white);
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
-      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      width: 200px; height: 1px; background: rgba(245,240,232,0.1);
       position: relative; overflow: hidden;
     }
     .loader-bar::after {
@@ -710,7 +746,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -744,6 +780,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -751,7 +788,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">RESTĀURĀNTE LĀBĒĀ 42 <span>.</span></div>
+  <div class="loader-logo">LABEA 42 <span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -761,24 +798,26 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Restāurānte Lābēā 42<span>.</span></a>
+  <a href="#" class="nav-logo">Labea 42<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#carta-principal">Carta</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
+  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar</a>
 </div>
 
 <!-- HERO -->
@@ -787,21 +826,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Cocina casera · Galdakao · Desde siempre</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      Sabor de<br><em>casa</em><br>en tu mesa
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Cocina casera con producto fresco, raciones generosas y un trato familiar que te hace sentir como en casa. Junto al Hospital de Galdakao.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
+      <a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" class="btn-primary" target="_blank">
         <span>Reservar mesa</span>
-        <span>→</span>
+        <span>&#8594;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
+      <a href="#carta-principal" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&#8599;</div>
       </a>
     </div>
   </div>
@@ -814,18 +853,20 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Casera</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Paella</span>
+    <span class="marquee-item"><span class="dot"></span>Txuleta</span>
     <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
+    <span class="marquee-item"><span class="dot"></span>Postres Caseros</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Casera</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos</span>
+    <span class="marquee-item"><span class="dot"></span>Paella</span>
+    <span class="marquee-item"><span class="dot"></span>Txuleta</span>
     <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Postres Caseros</span>
   </div>
 </div>
 
@@ -833,20 +874,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
+      <div class="stat-number"><span class="count" data-target="284">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="3">0</span><span class="stat-suffix">.8</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="12">0</span><span class="stat-suffix">&#8364;</span></div>
+      <div class="stat-label">Menu del dia desde</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Cocina casera</div>
     </div>
   </div>
 </div>
@@ -855,50 +896,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestra cocina</p>
+      <h2 class="section-title reveal reveal-delay-1">Platos que<br><em>saben a casa</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#carta-principal" class="view-all reveal">Ver carta &#8594;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="Cocina casera Labea 42" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Especialidad · Casa</p>
+        <h3 class="project-name">Paella de marisco</h3>
+        <p class="project-meta">Arroz en su punto, fondo casero</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Txuleta a la brasa" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Carne · Brasa</p>
+        <h3 class="project-name">Txuleta a la brasa</h3>
+        <p class="project-meta">Vaca vieja, punto perfecto</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80" alt="Callos caseros" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Guiso · Tradicion</p>
+        <h3 class="project-name">Callos caseros</h3>
+        <p class="project-meta">Receta tradicional vasca</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Terraza Labea 42" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&#8599;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Espacio · Terraza</p>
+        <h3 class="project-name">Nuestra terraza</h3>
+        <p class="project-meta">Disfruta al aire libre</p>
       </div>
     </div>
   </div>
@@ -907,40 +948,41 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&q=80" alt="Interior Restaurante Labea 42 Galdakao" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">L42</div>
+      <div class="about-badge-text">Cocina casera junto al Hospital de Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Cocina con<br><em>alma vasca</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      Labea 42 es un restaurante familiar en el barrio de Labeaga, Galdakao. Aqui la cocina es cosa seria: <strong>producto fresco, raciones generosas y recetas de toda la vida</strong>.<br><br>Situados junto al Hospital de Galdakao, somos el lugar de referencia para comer bien, a buen precio y con un trato cercano. <strong>Del mercado a tu plato</strong>, sin complicaciones ni artificios.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Cocina casera de verdad</h4>
+          <p>Guisos, arroces, callos y platos de temporada hechos como en casa</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Menu del dia completo</h4>
+          <p>Primer plato, segundo, postre, pan y bebida a un precio honesto</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <h4>Terraza y buen ambiente</h4>
+          <p>Espacio acogedor con terraza exterior para disfrutar en familia</p>
         </div>
       </div>
     </div>
@@ -952,83 +994,120 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas para <em>comer bien</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Menu del dia</h3>
+        <p>Primer plato, segundo, postre casero, pan y bebida. Cocina de mercado que cambia cada dia segun el producto fresco disponible.</p>
+        <a href="#carta-principal" class="service-link">Ver menu &#8594;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Carta y pintxos</h3>
+        <p>Txuleta a la brasa, paella, pescados frescos, ensalada de ventresca y los mejores pintxos del barrio de Labeaga.</p>
+        <a href="#carta-especialidades" class="service-link">Ver carta &#8594;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Grupos y celebraciones</h3>
+        <p>Comidas de empresa, cumpleanos, reuniones familiares. Menu cerrado bajo peticion y atencion personalizada.</p>
+        <a href="#carta-grupos" class="service-link">Mas info &#8594;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
+<!-- CARTA: MENU DEL DIA -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver</a>
+    <p class="section-label reveal">De lunes a viernes</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Menu del <em>dia</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Primeros platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Sopa de pescado</div>
+              <div class="carta-item-desc">Caldo casero con merluza y gambas</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada mixta</div>
+              <div class="carta-item-desc">Lechuga, tomate, cebolla, atun, huevo</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Macarrones a la boloñesa</div>
+              <div class="carta-item-desc">Salsa casera de carne</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Alubias rojas</div>
+              <div class="carta-item-desc">Con sacramentos, receta vasca</div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Segundos platos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Merluza en salsa verde</div>
+              <div class="carta-item-desc">Con almejas y esparragos</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chuleton a la brasa</div>
+              <div class="carta-item-desc">Con pimientos de Gernika</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pollo asado</div>
+              <div class="carta-item-desc">Con patatas panaderas</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Callos a la vizcaina</div>
+              <div class="carta-item-desc">Guiso tradicional casero</div>
+            </div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Menu completo desde 12 &#8364;</h4>
+          <p>Incluye primer plato, segundo, postre casero, pan y bebida. Producto fresco del dia.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" class="carta-cta reveal" target="_blank">
+      <span>Reservar mesa</span><span>&#8594;</span>
     </a>
   </div>
 </section>
@@ -1036,35 +1115,104 @@
 <!-- CARTA: ESPECIALIDADES -->
 <section class="carta-section" id="carta-especialidades">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver</a>
+    <p class="section-label reveal">Nuestra carta</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Platos de <em>siempre</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Entrantes y pintxos</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Ensalada de ventresca</div>
+            <div class="carta-item-desc">Ventresca de bonito, pimientos, cebolla</div></div>
+            <div class="carta-item-price">9,50 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pimientos de Gernika</div>
+            <div class="carta-item-desc">Fritos con sal gorda</div></div>
+            <div class="carta-item-price">7 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Croquetas caseras</div>
+            <div class="carta-item-desc">De jamon o bacalao (6 uds)</div></div>
+            <div class="carta-item-price">8 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pintxos variados</div>
+            <div class="carta-item-desc">Seleccion de barra</div></div>
+            <div class="carta-item-price">2,50 &#8364;</div>
+          </div>
         </div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Pescados</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Merluza en salsa verde</div>
+            <div class="carta-item-desc">Con almejas y perejil</div></div>
+            <div class="carta-item-price">14 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Rape a la plancha</div>
+            <div class="carta-item-desc">Con verduras de temporada</div></div>
+            <div class="carta-item-price">15 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Bacalao al pil-pil</div>
+            <div class="carta-item-desc">Clasico vasco</div></div>
+            <div class="carta-item-price">14,50 &#8364;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Carnes y guisos</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Txuleta de vaca</div>
+            <div class="carta-item-desc">A la brasa, punto al gusto</div></div>
+            <div class="carta-item-price">18 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Callos a la vizcaina</div>
+            <div class="carta-item-desc">Receta de la casa</div></div>
+            <div class="carta-item-price">12 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Paella mixta</div>
+            <div class="carta-item-desc">Pollo, marisco, verduras (min. 2 personas)</div></div>
+            <div class="carta-item-price">13 &#8364;/pp</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Solomillo a la plancha</div>
+            <div class="carta-item-desc">Con patatas y pimientos</div></div>
+            <div class="carta-item-price">16 &#8364;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Postres caseros</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tarta de limon</div>
+            <div class="carta-item-desc">Casera, crujiente y cremosa</div></div>
+            <div class="carta-item-price">4,50 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Arroz con leche</div>
+            <div class="carta-item-desc">Receta tradicional</div></div>
+            <div class="carta-item-price">4 &#8364;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Natillas caseras</div></div>
+            <div class="carta-item-price">3,50 &#8364;</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Precios orientativos</h4>
+          <p>Los precios pueden variar segun temporada y disponibilidad del producto fresco. IVA incluido. Consulta platos del dia por telefono.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" class="carta-cta reveal" target="_blank">
+      <span>Reservar mesa</span><span>&#8594;</span>
     </a>
   </div>
 </section>
@@ -1072,7 +1220,7 @@
 <!-- CARTA: GRUPOS -->
 <section class="carta-section" id="carta-grupos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
+    <a href="#servicios" class="carta-back reveal">&#8592; Volver</a>
     <p class="section-label reveal">Eventos y grupos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
       Celebra con <em>nosotros</em>
@@ -1083,15 +1231,20 @@
           <h4>Nuestro espacio</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
+              <div class="carta-item-name">Comedor interior</div>
+              <div class="carta-item-desc">Ambiente acogedor y familiar</div>
             </div>
           </div>
-          <!-- Repetir por cada espacio -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Terraza exterior</div>
+              <div class="carta-item-desc">Ideal para los meses de buen tiempo</div>
+            </div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <h4>Menus cerrados bajo peticion</h4>
+          <p>Desde 18 &#8364;/persona. Diseñamos el menu segun tus necesidades. Llamanos y te asesoramos sin compromiso.</p>
         </div>
       </div>
       <div>
@@ -1099,24 +1252,35 @@
           <h4>Tipo de eventos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menu adaptado a grupos con factura</div>
             </div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cumpleanos y aniversarios</div>
+              <div class="carta-item-desc">Ambiente familiar, tarta incluida bajo peticion</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Reuniones familiares</div>
+              <div class="carta-item-desc">Bautizos, comuniones, homenajes</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+    <a href="tel:+34631955688" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>&#8594;</span>
     </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones reales</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1125,33 +1289,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"Comida casera de verdad, raciones enormes y un precio muy bueno. Los callos son de los mejores que he probado. Repetiremos seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Ander Etxebarria</strong>
+          <span>Menu del dia &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Siempre vamos despues de visitar el hospital y nunca falla. El trato es muy cercano, te sientes como en familia. La paella esta increible."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Miren Goikoetxea</strong>
+          <span>Carta &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"Hicimos la comida de empresa aqui y todo perfecto. Menu cerrado con mucha comida, buen vino y postres caseros. El personal muy atento."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Koldo Uriarte</strong>
+          <span>Grupos &middot; Galdakao</span>
         </div>
       </div>
     </div>
@@ -1159,29 +1323,31 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>Ven a comer<br>como en casa</h2>
+    <p>Reserva tu mesa por WhatsApp o llamanos directamente.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
-    <span>↗</span>
+  <a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" class="btn-dark" target="_blank">
+    <span>Reservar por WhatsApp</span>
+    <span>&#8599;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Labeaga Auzoa, 42, 48960 Galdakao, Bizkaia</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34631955688" style="color: var(--accent,#0284C7);">631 95 56 88</a></p>
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p><strong style="color:var(--white)">Direccion:</strong><br>Labeaga Auzoa, 42, 48960 Galdakao, Bizkaia</p>
+        <p><strong style="color:var(--white)">Telefono:</strong><br><a href="tel:+34631955688">631 95 56 88</a></p>
+        <p><strong style="color:var(--white)">WhatsApp:</strong><br><a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" target="_blank">Enviar mensaje</a></p>
+        <p><strong style="color:var(--white)">Ubicacion:</strong><br>Junto al Hospital de Galdakao, barrio de Labeaga</p>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restāurānte+Lābēā+42,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="contact-map reveal reveal-delay-1">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restaurante+Labea+42,Galdakao,Bizkaia&zoom=16" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1191,56 +1357,59 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Restāurānte Lābēā 42<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <a href="#" class="nav-logo">Labea 42<span>.</span></a>
+      <p class="footer-tagline">"Cocina casera con alma vasca, en el corazon de Galdakao."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://wa.me/34631955688" class="social-link" target="_blank" title="WhatsApp">Wa</a>
+        <a href="https://www.google.com/maps/place/Restaurante+Labea+42" class="social-link" target="_blank" title="Google Maps">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-principal">Menu del dia</a></li>
+        <li><a href="#carta-especialidades">Entrantes</a></li>
+        <li><a href="#carta-especialidades">Pescados</a></li>
+        <li><a href="#carta-especialidades">Carnes</a></li>
+        <li><a href="#carta-especialidades">Postres</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#carta-grupos">Eventos</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34631955688">631 95 56 88</a></li>
-        <li><a href="#">Labeaga Auzoa, Galdakao</a></li>
+        <li><a href="https://wa.me/34631955688" target="_blank">WhatsApp</a></li>
+        <li><a href="#contacto">Labeaga Auzoa, 42</a></li>
+        <li><a href="#contacto">48960 Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Restāurānte Lābēā 42. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Restaurante Labea 42. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
 
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34631955688?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Labea%2042" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.01 2.64C8.67 2.64 2.7 8.6 2.7 15.93c0 2.35.62 4.64 1.8 6.66L2.56 29.36l7.02-1.84a13.28 13.28 0 006.42 1.64h.01c7.34 0 13.31-5.96 13.31-13.29 0-3.55-1.38-6.89-3.89-9.4a13.22 13.22 0 00-9.42-3.83zm0 24.32a11.02 11.02 0 01-5.62-1.54l-.4-.24-4.17 1.09 1.11-4.07-.26-.42a10.97 10.97 0 01-1.69-5.85c0-6.1 4.97-11.06 11.07-11.06 2.96 0 5.74 1.15 7.83 3.25a10.98 10.98 0 013.24 7.84c0 6.1-4.97 11.06-11.07 11.06l-.04-.06zm6.07-8.28c-.33-.17-1.97-.97-2.28-1.08-.3-.11-.52-.17-.74.17-.22.33-.86 1.08-1.06 1.3-.19.22-.39.25-.73.08-.33-.17-1.41-.52-2.68-1.65-.99-.88-1.66-1.97-1.85-2.3-.19-.33-.02-.51.15-.68.15-.15.33-.39.5-.59.17-.19.22-.33.33-.56.11-.22.06-.42-.03-.59-.08-.17-.74-1.78-1.01-2.43-.27-.64-.54-.56-.74-.57h-.63c-.22 0-.57.08-.87.42-.3.33-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.17.22 2.3 3.52 5.58 4.93.78.34 1.39.54 1.86.69.78.25 1.49.21 2.06.13.63-.09 1.97-.8 2.25-1.58.28-.78.28-1.44.19-1.58-.08-.14-.3-.22-.63-.39z"/></svg>
+</a>
+
 <script>
-  // ── LOADER
+  // LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1248,7 +1417,7 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
+  // CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1273,13 +1442,13 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
+  // NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
+  // HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1291,14 +1460,14 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
+  // REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
+  // COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1322,12 +1491,12 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
+  // HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

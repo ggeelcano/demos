@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zurrut Taberna — Bar de Pintxos · Galdakao</title>
+  <meta name="description" content="Zurrut Taberna: pintxos artesanales, 12 variedades de gildas y el mejor ambiente tabernero de Galdakao. C. Gipuzkoa, 3. Llama al 944 02 54 51.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #100c08;
+      --black: #0e0b07;
       --white: #f5f3ef;
-      --accent: #C0623A;
-      --accent-light: #d88860;
-      --carbon: #1a1510;
-      --carbon-mid: #241e16;
-      --carbon-light: #332a1e;
+      --accent: #c47a3a;
+      --accent-light: #daa06d;
+      --carbon: #18130d;
+      --carbon-mid: #221b12;
+      --carbon-light: #302618;
       --text-muted: #9a8a78;
+      --green-deep: #2a3a2a;
       --font-serif: 'Libre Baskerville', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,7 +52,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(192,98,58,0.4);
+      border: 1px solid rgba(196,122,58,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,8 +61,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(192,98,58,0.7);
-      background: rgba(192,98,58,0.05);
+      border-color: rgba(196,122,58,0.7);
+      background: rgba(196,122,58,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -75,7 +77,7 @@
       backdrop-filter: blur(20px);
       background: rgba(8,8,8,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(192,98,58,0.08);
+      border-bottom: 1px solid rgba(196,122,58,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -144,7 +146,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(8,8,8,0.90) 0%, rgba(8,8,8,0.45) 50%, rgba(8,8,8,0.20) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -242,7 +244,7 @@
     /* ─── LOCATION BADGE (hero corner) ─── */
     .hero-location {
       position: absolute; top: 100px; right: 60px; z-index: 2;
-      background: rgba(16,12,8,0.7); border: 1px solid rgba(192,98,58,0.25);
+      background: rgba(14,11,7,0.7); border: 1px solid rgba(196,122,58,0.25);
       backdrop-filter: blur(12px);
       padding: 14px 22px;
       display: flex; align-items: center; gap: 10px;
@@ -257,8 +259,8 @@
 
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(192,98,58,0.12);
-      border-bottom: 1px solid rgba(192,98,58,0.12);
+      border-top: 1px solid rgba(196,122,58,0.12);
+      border-bottom: 1px solid rgba(196,122,58,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -295,7 +297,7 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(196,122,58,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -303,7 +305,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(192,98,58,0.08);
+      border: 1px solid rgba(196,122,58,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -313,7 +315,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(192,98,58,0.3); }
+    .stat-card:hover { border-color: rgba(196,122,58,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -337,7 +339,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(192,98,58,0.3);
+      border-bottom: 1px solid rgba(196,122,58,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -412,7 +414,7 @@
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(192,98,58,0.25);
+      background: var(--black); border: 1px solid rgba(196,122,58,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-stars {
@@ -445,10 +447,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(192,98,58,0.06);
+      padding: 20px; border: 1px solid rgba(196,122,58,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(192,98,58,0.2); }
+    .about-value:hover { border-color: rgba(196,122,58,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -470,15 +472,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(192,98,58,0.07);
+      border: 1px solid rgba(196,122,58,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(192,98,58,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(196,122,58,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(192,98,58,0.2); color: var(--accent);
+      border: 1px solid rgba(196,122,58,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -492,22 +494,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(192,98,58,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(196,122,58,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(192,98,58,0.05);
+      font-weight: 300; color: rgba(196,122,58,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(192,98,58,0.1); }
+    .service-card:hover .service-number { color: rgba(196,122,58,0.1); }
 
     /* ─── CARTA ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(196,122,58,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -529,7 +531,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(192,98,58,0.15);
+      border-bottom: 1px solid rgba(196,122,58,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -551,7 +553,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(192,98,58,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(196,122,58,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -577,9 +579,9 @@
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(192,98,58,0.03); line-height: 1; pointer-events: none;
+      color: rgba(196,122,58,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -588,10 +590,10 @@
     }
     .testimonial-card {
       padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(192,98,58,0.07);
+      border: 1px solid rgba(196,122,58,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(192,98,58,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(196,122,58,0.2); background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -618,7 +620,7 @@
     .map-section {
       background: var(--black);
       padding: 0;
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(196,122,58,0.08);
     }
     .map-wrapper {
       display: grid; grid-template-columns: 1fr 1.6fr;
@@ -627,7 +629,7 @@
     .map-info {
       padding: 80px 70px; background: var(--carbon);
       display: flex; flex-direction: column; justify-content: center;
-      border-right: 1px solid rgba(192,98,58,0.08);
+      border-right: 1px solid rgba(196,122,58,0.08);
     }
     .map-info .section-label { margin-bottom: 30px; }
     .map-info h2 {
@@ -641,7 +643,7 @@
     }
     .map-detail-icon {
       width: 40px; height: 40px; flex-shrink: 0;
-      border: 1px solid rgba(192,98,58,0.2);
+      border: 1px solid rgba(196,122,58,0.2);
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
     }
@@ -696,10 +698,25 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
+    /* ─── WHATSAPP FLOATING ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25d366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(192,98,58,0.08);
+      border-top: 1px solid rgba(196,122,58,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -795,7 +812,7 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
       .map-wrapper { grid-template-columns: 1fr; }
-      .map-info { border-right: none; border-bottom: 1px solid rgba(192,98,58,0.08); }
+      .map-info { border-right: none; border-bottom: 1px solid rgba(196,122,58,0.08); }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -825,6 +842,7 @@
       .carta-section { padding: 80px 24px; }
       .carta-columns { grid-template-columns: 1fr; gap: 40px; }
       .map-info { padding: 60px 24px; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
     }
   </style>
 </head>
@@ -844,19 +862,19 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Zurrut<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#carta">Carta</a></li>
     <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#carta" onclick="closeMobile()">Carta</a>
   <a href="#contacto" onclick="closeMobile()">Reservar</a>
@@ -864,7 +882,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('https://img02.restaurantguru.com/cf96-Pub-and-bar-Zurrut-Taberna-interior.jpg');"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600&q=80');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
 
@@ -880,21 +898,21 @@
   </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Pintxos · Tapas · Taberna</p>
+    <p class="hero-eyebrow">Pintxos · Gildas · Taberna</p>
     <h1 class="hero-title">
       El sabor de<br><em>Bizkaia</em><br>en cada pintxo
     </h1>
     <p class="hero-sub">
-      Pintxos artesanales, raciones generosas y la taberna que Galdakao lleva en el corazón. Tradición vasca con alma de barrio.
+      15 anos en la calle de bares de Galdakao. Tortillas caseras cada dia, 12 variedades de gildas y el ambiente familiar que nos ha hecho referencia en el barrio.
     </p>
     <div class="hero-actions">
       <a href="tel:944025451" class="btn-primary">
         <span>Llamar ahora</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
       <a href="#carta" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -907,18 +925,18 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Pintxos Artesanales</span>
-    <span class="marquee-item"><span class="dot"></span>Raciones de la Casa</span>
+    <span class="marquee-item"><span class="dot"></span>12 Variedades de Gildas</span>
+    <span class="marquee-item"><span class="dot"></span>Tortillas Caseras</span>
     <span class="marquee-item"><span class="dot"></span>Txakoli &amp; Sidra</span>
-    <span class="marquee-item"><span class="dot"></span>Bocatas Taberneros</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Cañas al Momento</span>
-    <span class="marquee-item"><span class="dot"></span>Pintxos Artesanales</span>
-    <span class="marquee-item"><span class="dot"></span>Raciones de la Casa</span>
+    <span class="marquee-item"><span class="dot"></span>Bocatas Especiales los Jueves</span>
+    <span class="marquee-item"><span class="dot"></span>Rabas los Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos con Tostas</span>
+    <span class="marquee-item"><span class="dot"></span>12 Variedades de Gildas</span>
+    <span class="marquee-item"><span class="dot"></span>Tortillas Caseras</span>
     <span class="marquee-item"><span class="dot"></span>Txakoli &amp; Sidra</span>
-    <span class="marquee-item"><span class="dot"></span>Bocatas Taberneros</span>
-    <span class="marquee-item"><span class="dot"></span>Menú del Día</span>
-    <span class="marquee-item"><span class="dot"></span>Cañas al Momento</span>
+    <span class="marquee-item"><span class="dot"></span>Bocatas Especiales los Jueves</span>
+    <span class="marquee-item"><span class="dot"></span>Rabas los Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Desayunos con Tostas</span>
   </div>
 </div>
 
@@ -927,19 +945,19 @@
   <div class="stats-grid">
     <div class="stat-card reveal">
       <div class="stat-number"><span class="count" data-target="273">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reseñas en Google</div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4" data-decimal=".6">0</span><span class="stat-suffix" id="ratingDecimal">.6</span></div>
-      <div class="stat-label">Valoración media</div>
+      <div class="stat-number"><span class="count" data-target="4" data-decimal=".6">0</span><span class="stat-suffix">.6</span></div>
+      <div class="stat-label">Valoracion media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
-      <div class="stat-label">Pintxos artesanales</div>
+      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos en Galdakao</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="1">0</span></div>
-      <div class="stat-label">Taberna en Galdakao</div>
+      <div class="stat-number"><span class="count" data-target="12">0</span></div>
+      <div class="stat-label">Variedades de gildas</div>
     </div>
   </div>
 </div>
@@ -951,51 +969,51 @@
       <p class="section-label reveal">Nuestra cocina</p>
       <h2 class="section-title reveal reveal-delay-1">Bocados que<br><em>enamoran</em></h2>
     </div>
-    <a href="#contacto" class="view-all reveal">Reservar mesa →</a>
+    <a href="#contacto" class="view-all reveal">Reservar mesa &rarr;</a>
   </div>
   <div class="projects-grid">
-    <!-- Hero gallery card (wide) -->
+    <!-- Hero gallery card (wide) — pintxos bar -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cfc0-Pub-and-bar-Zurrut-food.jpg" alt="Pintxos Zurrut Taberna" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1605333396915-47ed6b68a00e?w=1200&q=80" alt="Barra de pintxos Zurrut Taberna" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Casa</p>
-        <h3 class="project-name">Pintxos de la Taberna</h3>
-        <p class="project-meta">Elaboración artesanal · Producto local</p>
+        <p class="project-cat">Especialidad &middot; Casa</p>
+        <h3 class="project-name">Nuestra barra de pintxos</h3>
+        <p class="project-meta">Elaboracion artesanal &middot; Producto local</p>
       </div>
     </div>
-    <!-- Card 2 -->
+    <!-- Card 2 — gildas -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cae6-Pub-and-bar-Zurrut-food-1.jpg" alt="Comida Zurrut" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&q=80" alt="Gildas de Zurrut" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Raciones · Mercado</p>
-        <h3 class="project-name">Raciones para Compartir</h3>
-        <p class="project-meta">Generosas · De temporada</p>
+        <p class="project-cat">Gildas &middot; 12 variedades</p>
+        <h3 class="project-name">Nuestras Gildas</h3>
+        <p class="project-meta">La especialidad de la casa</p>
       </div>
     </div>
-    <!-- Card 3 -->
+    <!-- Card 3 — tortilla -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/ca8b-Pub-and-bar-Zurrut-Taberna-meals.jpg" alt="Platos Zurrut" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80" alt="Tortilla casera Zurrut" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Platos · Diarios</p>
-        <h3 class="project-name">Menú del Día</h3>
-        <p class="project-meta">Casero · Con amor</p>
+        <p class="project-cat">Tortillas &middot; Caseras</p>
+        <h3 class="project-name">Tortillas del Dia</h3>
+        <p class="project-meta">2 fijas + 1 sorpresa semanal</p>
       </div>
     </div>
-    <!-- Card 4 -->
+    <!-- Card 4 — txakoli/wine -->
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/c3f3-Pub-and-bar-Zurrut-Taberna-burger.jpg" alt="Hamburguesa Zurrut" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Txakoli y vinos Zurrut" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Bocatas · Especiales</p>
-        <h3 class="project-name">Hamburguesa Tabernera</h3>
-        <p class="project-meta">Carne fresca · Pan artesano</p>
+        <p class="project-cat">Bodega &middot; Txakoli</p>
+        <h3 class="project-name">Txakoli y Sidra Natural</h3>
+        <p class="project-meta">Bien frio &middot; DO Bizkaia</p>
       </div>
     </div>
   </div>
@@ -1004,7 +1022,7 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://img02.restaurantguru.com/cf77-Pub-and-bar-Zurrut-photo.jpg" alt="Zurrut Taberna — Local en Galdakao" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80" alt="Zurrut Taberna — Local en Galdakao" loading="lazy">
     <div class="about-badge">
       <div class="about-badge-stars">
         <div class="star-sm"></div><div class="star-sm"></div>
@@ -1012,38 +1030,38 @@
         <div class="star-sm"></div>
       </div>
       <div class="about-badge-rating">4.6</div>
-      <div class="about-badge-text">273 reseñas en Google</div>
+      <div class="about-badge-text">273 resenas en Google</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que una barra,<br>un <em>rincón de Bizkaia</em>
+      Mas que una barra,<br>un <em>rincon de Bizkaia</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Zurrut Taberna es la taberna de Galdakao donde el pintxo manda y la sidra nunca falta. Un local con carácter, donde cada visita huele a cocina de verdad.<br><br><strong>Pintxos hechos a mano.</strong> Producto de proximidad, recetas propias y el trato cercano que solo se encuentra en los bares de toda la vida.
+      Zurrut Taberna lleva mas de 15 anos en la centrica calle de bares de Galdakao. Un lugar donde conviven generaciones, con ambiente familiar y servicio atento del desayuno a la copa nocturna.<br><br><strong>Tortillas cada dia, gildas para todos los gustos.</strong> Dos tortillas fijas a diario y una tercera que cambia cada semana con recetas originales. Y hasta 12 variedades de gildas que son nuestra senal de identidad.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Pintxos artesanales</h4>
-          <p>Elaborados cada día con ingredientes frescos y recetas de la casa</p>
+          <h4>Tortillas artesanales</h4>
+          <p>2 fijas a diario + 1 especial semanal con recetas originales</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Ambiente tabernero</h4>
-          <p>La barra donde el tiempo pasa despacio y la conversación fluye sola</p>
+          <h4>12 variedades de gildas</h4>
+          <p>La mayor seleccion de gildas de Galdakao, cada una diferente</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>4.6 en Google</h4>
-          <p>273 reseñas de vecinos y visitantes que repiten una y otra vez</p>
+          <h4>Ambiente familiar</h4>
+          <p>Trato cercano, varias generaciones compartiendo barra desde hace 15 anos</p>
         </div>
       </div>
     </div>
@@ -1068,9 +1086,9 @@
             <line x1="15" y1="9" x2="15.01" y2="9"/>
           </svg>
         </div>
-        <h3>Pintxos y Tapas</h3>
-        <p>Pintxos de temporada elaborados a mano: de tortilla, de bonito, de jamón, de hongos… La selección varía cada día según el mercado.</p>
-        <a href="#carta-pintxos" class="service-link">Ver pintxos →</a>
+        <h3>Pintxos y Gildas</h3>
+        <p>Tortillas caseras, gildas en 12 variedades, pintxos de temporada elaborados a mano. La seleccion varia cada dia segun el mercado.</p>
+        <a href="#carta-pintxos" class="service-link">Ver pintxos &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -1080,9 +1098,9 @@
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Raciones y Platos</h3>
-        <p>Desde carnes a la brasa hasta pescados del día. Raciones generosas para compartir con los tuyos. Menú del día entre semana.</p>
-        <a href="#carta-raciones" class="service-link">Ver raciones →</a>
+        <h3>Raciones y Bocatas</h3>
+        <p>Rabas y txopitos los domingos, bocadillos especiales los jueves. Raciones generosas para compartir con los tuyos.</p>
+        <a href="#carta-raciones" class="service-link">Ver raciones &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
@@ -1092,114 +1110,121 @@
             <path d="M12 8v4l3 3"/>
           </svg>
         </div>
-        <h3>Bebidas y Bodega</h3>
-        <p>Txakoli frío, sidra natural, cañas tiradas en el momento y una selección de vinos de Rioja y Ribera para acompañar tu elección.</p>
-        <a href="#carta-bebidas" class="service-link">Ver bodega →</a>
+        <h3>Desayunos y Bodega</h3>
+        <p>Tostas con pan integral, aceite de albahaca y hummus casero. Txakoli frio, sidra natural, canas y una seleccion de vinos de la tierra.</p>
+        <a href="#carta-bebidas" class="service-link">Ver bebidas &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PINTXOS -->
+<!-- CARTA: PINTXOS & GILDAS -->
 <section class="carta-section" id="carta-pintxos">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Pintxos de la casa</p>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Pintxos y gildas</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
       Artesanales,<br><em>de temporada</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Pintxos Fríos</h4>
+          <h4>Gildas (12 variedades)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de Tortilla</div>
-              <div class="carta-item-desc">Tortilla jugosa sobre pan tostado</div>
-            </div>
-            <div class="carta-item-price">2.50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pintxo de Bonito</div>
-              <div class="carta-item-desc">Bonito del norte con pimiento y anchoa</div>
-            </div>
-            <div class="carta-item-price">3.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gilda Clásica</div>
+              <div class="carta-item-name">Gilda Clasica</div>
               <div class="carta-item-desc">Anchoa, aceituna y guindilla</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
+            <div class="carta-item-price">2.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de Jamón Ibérico</div>
-              <div class="carta-item-desc">Jamón de bellota con tomate</div>
+              <div class="carta-item-name">Gilda de Bonito</div>
+              <div class="carta-item-desc">Bonito del norte, pimiento y anchoa</div>
             </div>
-            <div class="carta-item-price">3.50 €</div>
+            <div class="carta-item-price">3.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de Queso</div>
-              <div class="carta-item-desc">Idiazabal ahumado con membrillo</div>
+              <div class="carta-item-name">Gilda Picante</div>
+              <div class="carta-item-desc">Doble guindilla, aceituna y anchoa</div>
             </div>
-            <div class="carta-item-price">2.80 €</div>
+            <div class="carta-item-price">2.80 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gilda de Salmon</div>
+              <div class="carta-item-desc">Salmon ahumado, pepinillo y alcaparra</div>
+            </div>
+            <div class="carta-item-price">3.20 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gilda Vegetal</div>
+              <div class="carta-item-desc">Pimiento, cebolleta y aceituna</div>
+            </div>
+            <div class="carta-item-price">2.50 &euro;</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Pintxos Calientes</h4>
+          <h4>Tortillas y Pintxos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Pintxo de Hongos</div>
-              <div class="carta-item-desc">Setas de temporada al ajillo</div>
+              <div class="carta-item-name">Tortilla del Dia (2 fijas)</div>
+              <div class="carta-item-desc">Patata clasica + variedad del dia</div>
             </div>
-            <div class="carta-item-price">3.50 €</div>
+            <div class="carta-item-price">2.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Chistorra en Sidra</div>
-              <div class="carta-item-desc">Chistorra vasca con sidra natural</div>
+              <div class="carta-item-name">Tortilla Especial Semanal</div>
+              <div class="carta-item-desc">Receta original que cambia cada semana</div>
             </div>
-            <div class="carta-item-price">3.00 €</div>
+            <div class="carta-item-price">3.00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pintxo de Jamon Iberico</div>
+              <div class="carta-item-desc">Jamon de bellota con tomate y pan</div>
+            </div>
+            <div class="carta-item-price">3.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Pintxo de Bacalao</div>
-              <div class="carta-item-desc">Bacalao al pil-pil sobre pan de maíz</div>
+              <div class="carta-item-desc">Bacalao al pil-pil sobre pan de maiz</div>
             </div>
-            <div class="carta-item-price">4.00 €</div>
+            <div class="carta-item-price">4.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Mini Hamburguesa</div>
-              <div class="carta-item-desc">Carne de ternera, queso y cebolla caramelizada</div>
+              <div class="carta-item-name">Pintxo de Idiazabal</div>
+              <div class="carta-item-desc">Queso ahumado con membrillo casero</div>
             </div>
-            <div class="carta-item-price">4.50 €</div>
+            <div class="carta-item-price">2.80 &euro;</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Pintxo del día</h4>
-          <p>Cada día elaboramos un pintxo especial según el mercado. Pregunta en barra. Precio orientativo: 3–4.50 €.</p>
+          <h4>Pregunta en barra</h4>
+          <p>Ademas de las 5 gildas fijas, rotamos otras 7 variedades segun temporada. Pregunta al personal cuales hay hoy. Precio orientativo: 2.50&ndash;3.50 &euro;.</p>
         </div>
       </div>
     </div>
     <a href="tel:944025451" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+      <span>Llamar para reservar</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: RACIONES -->
+<!-- CARTA: RACIONES & BOCATAS -->
 <section class="carta-section" id="carta-raciones">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Raciones y platos</p>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Raciones y bocatas</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Para compartir<br><em>en buena compañía</em>
+      Para compartir<br><em>en buena compania</em>
     </h2>
     <div class="carta-columns">
       <div>
@@ -1207,143 +1232,160 @@
           <h4>Raciones</h4>
           <div class="carta-item">
             <div>
+              <div class="carta-item-name">Rabas (domingos)</div>
+              <div class="carta-item-desc">Calamares rebozados, crujientes y tiernos</div>
+            </div>
+            <div class="carta-item-price">8.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Txopitos (domingos)</div>
+              <div class="carta-item-desc">Chipirones rebozados, nuestra especialidad dominical</div>
+            </div>
+            <div class="carta-item-price">9.00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
               <div class="carta-item-name">Patatas Bravas</div>
-              <div class="carta-item-desc">Con salsa brava picante y alioli</div>
+              <div class="carta-item-desc">Con salsa brava casera y alioli</div>
             </div>
-            <div class="carta-item-price">6.50 €</div>
+            <div class="carta-item-price">6.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Calamares a la Romana</div>
-              <div class="carta-item-desc">Con limón y alioli de la casa</div>
+              <div class="carta-item-name">Chistorra en Sidra</div>
+              <div class="carta-item-desc">Chistorra vasca flambeada con sidra</div>
             </div>
-            <div class="carta-item-price">9.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Carne a la Brasa</div>
-              <div class="carta-item-desc">Txuletón de ternera con pimientos</div>
-            </div>
-            <div class="carta-item-price">16.00 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Morcilla con Pimientos</div>
-              <div class="carta-item-desc">Morcilla de Burgos con pimientos asados</div>
-            </div>
-            <div class="carta-item-price">8.00 €</div>
+            <div class="carta-item-price">7.00 &euro;</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Menú del Día</h4>
+          <h4>Bocatas Especiales (jueves)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Primer plato</div>
-              <div class="carta-item-desc">Sopa, ensalada o verduras del día</div>
+              <div class="carta-item-name">Bocata del Dia</div>
+              <div class="carta-item-desc">Elaboracion especial que cambia cada jueves</div>
             </div>
+            <div class="carta-item-price">5.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Segundo plato</div>
-              <div class="carta-item-desc">Carne, pescado o pasta (elección diaria)</div>
+              <div class="carta-item-name">Bocata de Tortilla</div>
+              <div class="carta-item-desc">Pan casero con tortilla jugosa recien hecha</div>
             </div>
+            <div class="carta-item-price">4.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Postre + bebida</div>
-              <div class="carta-item-desc">Casero o fruta del tiempo</div>
+              <div class="carta-item-name">Bocata de Jamon</div>
+              <div class="carta-item-desc">Jamon iberico con tomate y aceite</div>
             </div>
+            <div class="carta-item-price">5.50 &euro;</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Precio orientativo</h4>
-          <p>Menú del día aprox. 12–15 €. Disponible de lunes a viernes al mediodía. Consultar disponibilidad en barra.</p>
+          <h4>Dias especiales</h4>
+          <p>Jueves: bocadillos especiales con recetas diferentes cada semana. Domingos: rabas y txopitos recien hechos. Pregunta en barra por la oferta del dia.</p>
         </div>
       </div>
     </div>
     <a href="tel:944025451" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+      <span>Llamar para reservar</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: BEBIDAS -->
+<!-- CARTA: BEBIDAS Y DESAYUNOS -->
 <section class="carta-section" id="carta-bebidas">
   <div class="section-inner">
-    <a href="#carta" class="carta-back reveal">← Volver a bodega</a>
-    <p class="section-label reveal">Bebidas y bodega</p>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Bebidas y desayunos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Con cada trago,<br><em>Euskadi en vaso</em>
+      Del desayuno<br><em>a la copa nocturna</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Bebidas de la Casa</h4>
+          <h4>Bebidas</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Caña</div>
+              <div class="carta-item-name">Cana</div>
               <div class="carta-item-desc">Cerveza rubia de grifo</div>
             </div>
-            <div class="carta-item-price">2.00 €</div>
+            <div class="carta-item-price">2.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Txakoli</div>
-              <div class="carta-item-desc">Txakoli de Bizkaia DO</div>
+              <div class="carta-item-desc">Txakoli de Bizkaia DO, bien frio</div>
             </div>
-            <div class="carta-item-price">2.80 €</div>
+            <div class="carta-item-price">2.80 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Sidra Natural</div>
-              <div class="carta-item-desc">Sidra asturiana en vaso largo</div>
+              <div class="carta-item-desc">Tirada en vaso largo</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
+            <div class="carta-item-price">2.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Vino de la Casa</div>
               <div class="carta-item-desc">Tinto, blanco o rosado</div>
             </div>
-            <div class="carta-item-price">2.50 €</div>
+            <div class="carta-item-price">2.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cafe solo / cortado</div>
+              <div class="carta-item-desc">Cafe de especialidad</div>
+            </div>
+            <div class="carta-item-price">1.40 &euro;</div>
           </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Vinos Selección</h4>
+          <h4>Desayunos y Tostas</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Rioja Crianza</div>
-              <div class="carta-item-desc">Tinto con 12 meses en barrica</div>
+              <div class="carta-item-name">Tosta con Tomate</div>
+              <div class="carta-item-desc">Pan integral con tomate y aceite de oliva</div>
             </div>
-            <div class="carta-item-price">14.00 €</div>
+            <div class="carta-item-price">2.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Ribera del Duero</div>
-              <div class="carta-item-desc">Selección de la casa</div>
+              <div class="carta-item-name">Tosta con Hummus</div>
+              <div class="carta-item-desc">Pan integral, hummus casero y aceite de albahaca</div>
             </div>
-            <div class="carta-item-price">16.00 €</div>
+            <div class="carta-item-price">3.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Albariño</div>
-              <div class="carta-item-desc">Blanco atlántico, fresco y mineral</div>
+              <div class="carta-item-name">Tosta Completa</div>
+              <div class="carta-item-desc">Jamon, queso, tomate y aceite</div>
             </div>
-            <div class="carta-item-price">15.00 €</div>
+            <div class="carta-item-price">3.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cafe + Tosta</div>
+              <div class="carta-item-desc">Combo desayuno (cualquier tosta)</div>
+            </div>
+            <div class="carta-item-price">3.50 &euro;</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>¿No ves lo que buscas?</h4>
-          <p>Pregunta en barra. Tenemos más referencias de Txakoli Bizkaino y cervezas artesanas de temporada.</p>
+          <h4>Desayunos de lunes a sabado</h4>
+          <p>Tostas variadas con pan integral, aceite de albahaca natural, hummus casero y buen cafe. El desayuno perfecto antes de empezar el dia.</p>
         </div>
       </div>
     </div>
     <a href="tel:944025451" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+      <span>Reservar mesa</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1351,7 +1393,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Reseñas de Google</p>
+    <p class="section-label reveal">Resenas de Google</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>los <em>galdakoztarras</em>
     </h2>
@@ -1360,33 +1402,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Los mejores pintxos de Galdakao sin duda. El de bacalao al pil-pil es una maravilla. Siempre que paso por aquí me paro a tomar algo."</p>
+        <p class="testimonial-quote">"Lugar excelente para desayunar un buen cafe y picar algo. Las gildas son las mejores de Galdakao, siempre que paso me paro a tomar una cana con gilda."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
           <strong>Ander M.</strong>
-          <span>Vecino de Galdakao · Google</span>
+          <span>Vecino de Galdakao &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Sitio con mucho ambiente, buen trato y pintxos de categoría. El menú del día es casero de verdad. Lo recomiendo a todo el que viene a Galdakao."</p>
+        <p class="testimonial-quote">"El trato es muy bueno y el cafe y los pintxos muy ricos. Es un sitio donde estar a gusto desayunando, picoteando algo o lo que se quiera. Muy recomendable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
           <strong>Miren G.</strong>
-          <span>Clienta habitual · Google</span>
+          <span>Clienta habitual &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La carne a la brasa es espectacular y el txakoli bien frío. Una taberna con carácter, de las de verdad. Seguiremos viniendo con la familia."</p>
+        <p class="testimonial-quote">"La tortilla es de las mejores que he probado y las rabas de los domingos no fallan nunca. Una taberna con caracter, de las de verdad. Seguiremos viniendo."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Joseba T.</strong>
-          <span>Cliente · Google</span>
+          <strong>Koldo T.</strong>
+          <span>Cliente &middot; Google</span>
         </div>
       </div>
     </div>
@@ -1397,7 +1439,7 @@
 <div class="map-section" id="contacto">
   <div class="map-wrapper">
     <div class="map-info">
-      <p class="section-label reveal">Encuéntranos</p>
+      <p class="section-label reveal">Encuentranos</p>
       <h2 class="reveal reveal-delay-1">
         Ven a la<br><em>taberna</em>
       </h2>
@@ -1409,8 +1451,8 @@
             </svg>
           </div>
           <div class="map-detail-text">
-            <span class="map-detail-label">Dirección</span>
-            <span class="map-detail-value">C. Gipuzkoa, 3, Bj<br>Galdakao, Bizkaia</span>
+            <span class="map-detail-label">Direccion</span>
+            <span class="map-detail-value">C. Gipuzkoa, 3, Bj<br>48960 Galdakao, Bizkaia</span>
           </div>
         </div>
         <div class="map-detail reveal reveal-delay-2">
@@ -1420,7 +1462,7 @@
             </svg>
           </div>
           <div class="map-detail-text">
-            <span class="map-detail-label">Teléfono</span>
+            <span class="map-detail-label">Telefono</span>
             <span class="map-detail-value"><a href="tel:944025451">944 02 54 51</a></span>
           </div>
         </div>
@@ -1434,7 +1476,7 @@
             <span class="map-detail-label">Redes sociales</span>
             <span class="map-detail-value">
               <a href="https://www.facebook.com/people/Zurrut-Taberna/100039677845829/" target="_blank" rel="noopener">Facebook</a>
-              &nbsp;·&nbsp;
+              &nbsp;&middot;&nbsp;
               <a href="https://www.instagram.com/zurrut/" target="_blank" rel="noopener">@zurrut</a>
             </span>
           </div>
@@ -1447,7 +1489,7 @@
           </div>
           <div class="map-detail-text">
             <span class="map-detail-label">Horario</span>
-            <span class="map-detail-value">Lun–Vie: 07:00–23:00<br>Sáb–Dom: 09:00–23:00</span>
+            <span class="map-detail-value">Lun&ndash;Vie: 07:00&ndash;23:00<br>Sab&ndash;Dom: 09:00&ndash;23:00</span>
           </div>
         </div>
       </div>
@@ -1467,21 +1509,26 @@
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-text">
-    <h2>¿Nos vemos<br>en Zurrut?</h2>
-    <p>Llama y reserva tu mesa. O pásate sin más, siempre hay sitio en la barra.</p>
+    <h2>Nos vemos<br>en Zurrut?</h2>
+    <p>Llama y reserva tu mesa. O pasate sin mas, siempre hay sitio en la barra.</p>
   </div>
   <a href="tel:944025451" class="btn-dark">
-    <span>Llamar ahora — 944 02 54 51</span>
-    <span>↗</span>
+    <span>Llamar ahora &mdash; 944 02 54 51</span>
+    <span>&nearr;</span>
   </a>
 </div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/34944025451?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20Zurrut%20Taberna" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Zurrut<span>.</span></a>
-      <p class="footer-tagline">"El mejor pintxo es el que compartes con los tuyos."<br>— Zurrut Taberna</p>
+      <p class="footer-tagline">"Del desayuno a la copa nocturna, siempre con el mismo carino."</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/people/Zurrut-Taberna/100039677845829/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -1500,19 +1547,19 @@
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#carta-pintxos">Pintxos</a></li>
+        <li><a href="#carta-pintxos">Gildas</a></li>
+        <li><a href="#carta-pintxos">Pintxos y Tortillas</a></li>
         <li><a href="#carta-raciones">Raciones</a></li>
-        <li><a href="#carta-raciones">Menú del día</a></li>
+        <li><a href="#carta-raciones">Bocatas del Jueves</a></li>
         <li><a href="#carta-bebidas">Bebidas</a></li>
-        <li><a href="#carta-bebidas">Txakoli &amp; Sidra</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>La Taberna</h4>
       <ul>
         <li><a href="#nosotros">Nuestra historia</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#contacto">Cómo llegar</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contacto">Como llegar</a></li>
         <li><a href="https://www.instagram.com/zurrut/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.facebook.com/people/Zurrut-Taberna/100039677845829/" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
@@ -1522,22 +1569,21 @@
       <ul>
         <li><a href="tel:944025451">944 02 54 51</a></li>
         <li><a href="#contacto">C. Gipuzkoa, 3, Bj</a></li>
-        <li><a href="#contacto">Galdakao, Bizkaia</a></li>
+        <li><a href="#contacto">48960 Galdakao</a></li>
         <li><a href="https://maps.google.com/?q=Zurrut+Taberna+Galdakao" target="_blank" rel="noopener">Ver en Google Maps</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Zurrut Taberna. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Zurrut Taberna. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
 
-<!-- EXTRA PHOTO (meat) used as decorative CSS bg in about section fallback -->
 <script>
   // ── LOADER
   window.addEventListener('load', () => {
@@ -1626,7 +1672,7 @@
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

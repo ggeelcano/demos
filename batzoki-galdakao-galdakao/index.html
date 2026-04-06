@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Batzoki Galdakao — Cafetería</title>
+  <title>Batzoki Galdakao — Pintxos, Cazuelitas y Restaurante Vasco</title>
+  <meta name="description" content="Batzoki Galdakao: pintxos elaborados, cazuelitas caseras y cocina vasca de calidad en Iturrondo Plaza, Galdakao. Reserva: 944 56 83 12.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0e0a07;
-      --white: #f5f3ef;
-      --accent: #8B5E3C;
-      --accent-light: #b8845c;
-      --carbon: #18130e;
-      --carbon-mid: #221b14;
-      --carbon-light: #302518;
-      --text-muted: #9a8878;
+      --black: #0a0e08;
+      --white: #f2f0eb;
+      --accent: #7B8C3E;
+      --accent-light: #9aad5a;
+      --accent-warm: #C4944A;
+      --carbon: #10140e;
+      --carbon-mid: #181e14;
+      --carbon-light: #222b1c;
+      --text-muted: #8a9478;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Nunito Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +39,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +52,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(139,94,60,0.4);
+      border: 1px solid rgba(123,140,62,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +61,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(139,94,60,0.7);
-      background: rgba(139,94,60,0.05);
+      border-color: rgba(123,140,62,0.7);
+      background: rgba(123,140,62,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,15 +75,15 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(10,14,8,0.9);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(139,94,60,0.08);
+      border-bottom: 1px solid rgba(123,140,62,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -89,7 +91,7 @@
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(245,243,239,0.65);
+      text-decoration: none; color: rgba(242,240,235,0.65);
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       transition: color 0.3s; font-weight: 400;
     }
@@ -105,7 +107,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* HAMBURGER MOBILE */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +131,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,15 +139,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0e0a07 0%, #221b14 40%, #8B5E3C22 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(10,14,8,0.92) 0%, rgba(10,14,8,0.55) 50%, rgba(10,14,8,0.3) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +169,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -178,7 +179,7 @@
     }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      font-size: 1.05rem; color: rgba(242,240,235,0.6);
       max-width: 480px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
@@ -206,7 +207,7 @@
     .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      color: rgba(245,243,239,0.6); text-decoration: none;
+      color: rgba(242,240,235,0.6); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
       transition: color 0.3s;
@@ -214,7 +215,7 @@
     .btn-ghost:hover { color: var(--accent); }
     .btn-ghost-arrow {
       width: 36px; height: 36px;
-      border: 1px solid rgba(245,243,239,0.2);
+      border: 1px solid rgba(242,240,235,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, transform 0.3s;
     }
@@ -240,27 +241,27 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* MARQUEE */
     .marquee-section {
-      border-top: 1px solid rgba(139,94,60,0.12);
-      border-bottom: 1px solid rgba(139,94,60,0.12);
+      border-top: 1px solid rgba(123,140,62,0.12);
+      border-bottom: 1px solid rgba(123,140,62,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
       display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 28s linear infinite;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 30px;
       padding: 0 40px;
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: rgba(245,243,239,0.25);
+      font-style: italic; color: rgba(242,240,235,0.25);
       letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +277,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(123,140,62,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +289,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(139,94,60,0.08);
+      border: 1px solid rgba(123,140,62,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +299,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(139,94,60,0.3); }
+    .stat-card:hover { border-color: rgba(123,140,62,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +311,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
+    /* GALLERY */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +323,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(139,94,60,0.3);
+      border-bottom: 1px solid rgba(123,140,62,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,12 +343,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,14,8,0.9) 0%, rgba(10,14,8,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -366,7 +367,7 @@
       font-weight: 300; line-height: 1.15; margin-bottom: 14px;
     }
     .project-meta {
-      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      font-size: 0.73rem; color: rgba(242,240,235,0.45);
       letter-spacing: 0.1em; opacity: 0;
       transition: opacity 0.5s 0.1s;
     }
@@ -374,14 +375,14 @@
     .project-arrow {
       position: absolute; top: 36px; right: 36px;
       width: 50px; height: 50px;
-      border: 1px solid rgba(245,243,239,0.15);
+      border: 1px solid rgba(242,240,235,0.15);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       opacity: 0; transform: translate(10px, -10px);
       transition: all 0.4s var(--ease-out);
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,11 +390,13 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+    }
+    .about-visual img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(139,94,60,0.25);
+      background: var(--black); border: 1px solid rgba(123,140,62,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -402,14 +405,14 @@
     }
     .about-badge-text {
       font-size: 0.72rem; letter-spacing: 0.1em;
-      color: rgba(245,243,239,0.5); margin-top: 6px;
+      color: rgba(242,240,235,0.5); margin-top: 6px;
     }
     .about-content {
       padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
     }
     .about-body {
       font-size: 1.05rem; line-height: 1.8;
-      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      color: rgba(242,240,235,0.65); margin: 32px 0 52px;
       font-weight: 300;
     }
     .about-body strong { color: var(--white); font-weight: 400; }
@@ -419,10 +422,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(139,94,60,0.06);
+      padding: 20px; border: 1px solid rgba(123,140,62,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(139,94,60,0.2); }
+    .about-value:hover { border-color: rgba(123,140,62,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +439,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +447,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(139,94,60,0.07);
+      border: 1px solid rgba(123,140,62,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,94,60,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(123,140,62,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(139,94,60,0.2); color: var(--accent);
+      border: 1px solid rgba(123,140,62,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,23 +469,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(139,94,60,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(123,140,62,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(139,94,60,0.05);
+      font-weight: 300; color: rgba(123,140,62,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(139,94,60,0.1); }
+    .service-card:hover .service-number { color: rgba(123,140,62,0.1); }
 
-
-    /* ─── CARTA SECTIONS ─── */
+    /* CARTA SECTIONS */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(123,140,62,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -504,7 +506,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,94,60,0.15);
+      border-bottom: 1px solid rgba(123,140,62,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -526,7 +528,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(139,94,60,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(123,140,62,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -546,18 +548,15 @@
       transition: background 0.4s, gap 0.3s;
     }
     .carta-cta:hover { background: var(--accent); gap: 18px; }
-    @media (max-width: 768px) {
-      .carta-section { padding: 80px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-    }
-    /* ─── TESTIMONIALS ─── */
+
+    /* TESTIMONIALS */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(139,94,60,0.03); line-height: 1; pointer-events: none;
+      color: rgba(123,140,62,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -565,20 +564,20 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(139,94,60,0.07);
+      padding: 56px 44px; background: rgba(10,14,8,0.4);
+      border: 1px solid rgba(123,140,62,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(139,94,60,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(123,140,62,0.2); background: rgba(10,14,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
-      width: 12px; height: 12px; background: var(--accent);
+      width: 12px; height: 12px; background: var(--accent-warm);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .testimonial-quote {
       font-family: var(--font-serif); font-size: 1.2rem;
       font-style: italic; font-weight: 300;
-      line-height: 1.7; color: rgba(245,243,239,0.8);
+      line-height: 1.7; color: rgba(242,240,235,0.8);
       margin-bottom: 36px;
     }
     .testimonial-divider {
@@ -592,7 +591,7 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA BANNER */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -604,7 +603,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(10,14,8,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -622,10 +621,58 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* MAP SECTION */
+    .map-section {
+      padding: 100px 60px; background: var(--black);
+    }
+    .map-inner { max-width: 1400px; margin: 0 auto; }
+    .map-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; margin-top: 60px; align-items: center;
+    }
+    .map-iframe {
+      width: 100%; border-radius: 4px; overflow: hidden;
+      border: 1px solid rgba(123,140,62,0.1);
+    }
+    .map-iframe iframe {
+      width: 100%; height: 400px; border: 0;
+    }
+    .map-info { display: flex; flex-direction: column; gap: 32px; }
+    .map-info-item { display: flex; gap: 20px; align-items: flex-start; }
+    .map-info-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border: 1px solid rgba(123,140,62,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1.1rem;
+    }
+    .map-info-text h4 {
+      font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 6px;
+    }
+    .map-info-text p {
+      font-size: 0.92rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;
+    }
+    .map-info-text a {
+      color: var(--accent); text-decoration: none; transition: opacity 0.3s;
+    }
+    .map-info-text a:hover { opacity: 0.7; }
+
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.8rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+
+    /* FOOTER */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(139,94,60,0.08);
+      border-top: 1px solid rgba(123,140,62,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -636,15 +683,15 @@
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      font-size: 1.05rem; color: rgba(242,240,235,0.35);
       line-height: 1.6; max-width: 280px; margin-bottom: 36px;
     }
     .footer-social { display: flex; gap: 14px; }
     .social-link {
       width: 40px; height: 40px;
-      border: 1px solid rgba(245,243,239,0.1);
+      border: 1px solid rgba(242,240,235,0.1);
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(242,240,235,0.4);
       font-size: 0.75rem; letter-spacing: 0.1em;
       transition: border-color 0.3s, color 0.3s;
     }
@@ -655,25 +702,35 @@
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col ul a {
-      text-decoration: none; color: rgba(245,243,239,0.4);
+      text-decoration: none; color: rgba(242,240,235,0.4);
       font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
     }
     .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      border-top: 1px solid rgba(245,243,239,0.06);
+      border-top: 1px solid rgba(242,240,235,0.06);
       padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
     }
     .footer-copy {
-      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+      font-size: 0.75rem; color: rgba(242,240,235,0.25); letter-spacing: 0.05em;
     }
     .footer-legal { display: flex; gap: 28px; }
     .footer-legal a {
-      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      font-size: 0.72rem; color: rgba(242,240,235,0.2);
       text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
     }
     .footer-legal a:hover { color: var(--text-muted); }
+    .powered-by {
+      text-align: center; padding: 20px 60px 30px;
+      background: var(--black);
+    }
+    .powered-by a {
+      font-size: 0.68rem; color: rgba(242,240,235,0.15);
+      text-decoration: none; letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .powered-by a:hover { color: rgba(242,240,235,0.35); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -685,7 +742,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* LOADER */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -695,12 +752,12 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2.2rem;
+      letter-spacing: 0.2em; color: var(--white);
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
-      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      width: 200px; height: 1px; background: rgba(242,240,235,0.1);
       position: relative; overflow: hidden;
     }
     .loader-bar::after {
@@ -710,7 +767,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -719,6 +776,7 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .map-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -744,6 +802,10 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .carta-section { padding: 80px 24px; }
+      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
+      .map-section { padding: 60px 24px; }
+      .map-grid { grid-template-columns: 1fr; gap: 40px; }
     }
   </style>
 </head>
@@ -751,7 +813,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">BATZOKI GALDAKAO <span>.</span></div>
+  <div class="loader-logo">BATZOKI <span>GALDAKAO</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -761,24 +823,26 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Batzoki Galdakao<span>.</span></a>
+  <a href="#" class="nav-logo">Batzoki<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#carta-pintxos">Carta</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#carta-pintxos" onclick="closeMobile()">Carta</a>
+  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar</a>
 </div>
 
 <!-- HERO -->
@@ -787,21 +851,21 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Café · Brunch · Momentos</p>
+    <p class="hero-eyebrow">Pintxos &middot; Cazuelitas &middot; Restaurante Vasco</p>
     <h1 class="hero-title">
-      Cada taza<br>cuenta una<br><em>historia</em>
+      Donde cada<br>pintxo es una<br><em>obra maestra</em>
     </h1>
     <p class="hero-sub">
-      Café de especialidad, bollería artesanal y un espacio acogedor para trabajar, leer o simplemente disfrutar.
+      Pintxos elaborados, cazuelitas caseras y cocina vasca de calidad en el corazon de Galdakao. Barra espectacular y servicio de siempre.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
-        <span>Visítanos</span>
-        <span>→</span>
+      <a href="tel:944568312" class="btn-primary">
+        <span>Reservar Mesa</span>
+        <span>&rarr;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
-        <span>Nuestra carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+      <a href="#carta-pintxos" class="btn-ghost">
+        <span>Ver nuestra carta</span>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -814,18 +878,22 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
-    <span class="marquee-item"><span class="dot"></span>Café de Especialidad</span>
-    <span class="marquee-item"><span class="dot"></span>Bollería Artesanal</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch de Fin de Semana</span>
-    <span class="marquee-item"><span class="dot"></span>Tés e Infusiones</span>
-    <span class="marquee-item"><span class="dot"></span>Tostadas Gourmet</span>
-    <span class="marquee-item"><span class="dot"></span>WiFi Gratis</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos Elaborados</span>
+    <span class="marquee-item"><span class="dot"></span>Cazuelitas Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Tarta de Queso Batzokia</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones y Bocadillos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Fin de Semana 30&euro;</span>
+    <span class="marquee-item"><span class="dot"></span>Jamon Iberico</span>
+    <span class="marquee-item"><span class="dot"></span>Pintxos Elaborados</span>
+    <span class="marquee-item"><span class="dot"></span>Cazuelitas Caseras</span>
+    <span class="marquee-item"><span class="dot"></span>Tarta de Queso Batzokia</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca</span>
+    <span class="marquee-item"><span class="dot"></span>Menu del Dia</span>
+    <span class="marquee-item"><span class="dot"></span>Raciones y Bocadillos</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Fin de Semana 30&euro;</span>
+    <span class="marquee-item"><span class="dot"></span>Jamon Iberico</span>
   </div>
 </div>
 
@@ -833,20 +901,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años abiertos</div>
+      <div class="stat-number"><span class="count" data-target="427">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="15">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Orígenes de café</div>
+      <div class="stat-number"><span class="count" data-target="3">0</span><span class="stat-suffix">.9 &#9733;</span></div>
+      <div class="stat-label">Valoracion media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
-      <div class="stat-label">Nota en Google</div>
+      <div class="stat-number"><span class="count" data-target="50">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Pintxos en barra</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="200">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Clientes diarios</div>
+      <div class="stat-number"><span class="count" data-target="8">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Cazuelitas caseras</div>
     </div>
   </div>
 </div>
@@ -855,50 +923,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestro local</p>
+      <h2 class="section-title reveal reveal-delay-1">Sabor vasco en<br><em>cada rincon</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#carta-pintxos" class="view-all reveal">Ver carta completa &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=80" alt="Barra de pintxos Batzoki Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Café · Especialidad</p>
-        <h3 class="project-name">Latte Art Competition</h3>
-        <p class="project-meta">Barista champion · 2024</p>
+        <p class="project-cat">Especialidad &middot; Barra</p>
+        <h3 class="project-name">Nuestra Barra de Pintxos</h3>
+        <p class="project-meta">Variedad espectacular cada dia</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=800&q=80" alt="Cazuelitas caseras Batzoki" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Brunch · Fin de Semana</p>
-        <h3 class="project-name">Brunch Premium</h3>
-        <p class="project-meta">Sábados y domingos · 10-14h</p>
+        <p class="project-cat">Tradicion &middot; Cazuelitas</p>
+        <h3 class="project-name">Cazuelitas Caseras</h3>
+        <p class="project-meta">Albondigas, carrillera, callos y mas</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurante Batzoki comedor" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Bollería · Artesanal</p>
-        <h3 class="project-name">Nuestros Croissants</h3>
-        <p class="project-meta">Masa madre · Horneados hoy</p>
+        <p class="project-cat">Restaurante &middot; Comedor</p>
+        <h3 class="project-name">Comedor del Batzoki</h3>
+        <p class="project-meta">Platos combinados y menu del dia</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(139,94,60,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80" alt="Tarta de queso Batzokia" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Coworking</p>
-        <h3 class="project-name">Zona de Trabajo</h3>
-        <p class="project-meta">WiFi · Enchufes · Silencio</p>
+        <p class="project-cat">Postre &middot; Estrella</p>
+        <h3 class="project-name">Tarta de Queso Batzokia</h3>
+        <p class="project-meta">Nuestro postre mas famoso</p>
       </div>
     </div>
   </div>
@@ -907,40 +975,41 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900&q=80" alt="Interior Batzoki Galdakao" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">2016</div>
-      <div class="about-badge-text">Tostando con pasión desde entonces</div>
+      <div class="about-badge-year">Batzoki</div>
+      <div class="about-badge-text">Cocina vasca en Iturrondo Plaza, Galdakao</div>
     </div>
   </div>
   <div class="about-content">
-    <p class="section-label reveal">Sobre nosotros</p>
+    <p class="section-label reveal">Gure historia</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Más que café,<br><em>una experiencia</em>
+      Mas que un bar,<br><em>el batzoki del pueblo</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Café Molino nació de la pasión por el café bien hecho. Tostamos nuestros propios granos y cuidamos cada detalle del proceso.<br><br><strong>Cada taza importa.</strong> Desde la selección del grano hasta el latte art final, buscamos la excelencia en cada servicio.
+      El Batzoki de Galdakao es un punto de encuentro para vecinos y visitantes. Con una <strong>barra de pintxos que no deja indiferente</strong>, cazuelitas elaboradas con recetas de toda la vida y un comedor donde disfrutar de cocina vasca en un ambiente familiar.<br><br><strong>Ingredientes de calidad, servicio cercano y precios justos.</strong> Eso es lo que nos define desde siempre.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Café de origen</h4>
-          <p>Granos seleccionados directamente de fincas en Colombia, Etiopía y Guatemala</p>
+          <h4>Pintxos elaborados</h4>
+          <p>Barra surtida cada dia con pintxos variados y de temporada</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Tostado propio</h4>
-          <p>Tostamos en pequeños lotes cada semana para garantizar frescura máxima</p>
+          <h4>Cocina tradicional</h4>
+          <p>Cazuelitas, raciones y platos de la cocina vasca de siempre</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Sostenibilidad</h4>
-          <p>Vasos compostables, leches vegetales y acuerdo con productores de comercio justo</p>
+          <h4>Trato familiar</h4>
+          <p>Servicio atento y ambiente acogedor para todos los publicos</p>
         </div>
       </div>
     </div>
@@ -950,21 +1019,21 @@
 <!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Lo que ofrecemos</p>
+    <p class="section-label reveal">Zer eskaintzen dugu</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Cocina vasca con <em>sabor autentico</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/>
           </svg>
         </div>
-        <h3>Café de Especialidad</h3>
-        <p>Granos seleccionados de origen único. Espresso, V60, Chemex, AeroPress. Cada método resalta matices diferentes del café.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Barra de Pintxos</h3>
+        <p>Variedad inmejorable de pintxos elaborados cada dia. Frios y calientes, con producto de primera calidad. Ven, mira la barra y elige.</p>
+        <a href="#carta-pintxos" class="service-link">Ver pintxos &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -973,151 +1042,351 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Bollería y Brunch</h3>
-        <p>Croissants, cookies, carrot cake, banana bread. Todo horneado cada mañana. Brunch los fines de semana de 10 a 14h.</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Cazuelitas y Raciones</h3>
+        <p>Recetas caseras: albondigas, carrillera, callos, rabo de ternera, chipirones en su tinta. Sabor de siempre con producto fresco.</p>
+        <a href="#carta-cazuelitas" class="service-link">Ver cazuelitas &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
           </svg>
         </div>
-        <h3>Espacio de Trabajo</h3>
-        <p>WiFi de alta velocidad, enchufes en cada mesa, ambiente tranquilo. Tu oficina favorita con el mejor café de la ciudad.</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Menu del Dia y Eventos</h3>
+        <p>Menu diario completo con primero, segundo, postre y bebida. Menu especial de fin de semana por 30 euros. Celebraciones y grupos bajo reserva.</p>
+        <a href="#carta-menus" class="service-link">Ver menus &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
-<section class="carta-section" id="carta-principal">
+<!-- CARTA: CAZUELITAS Y RACIONES -->
+<section class="carta-section" id="carta-pintxos">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <p class="section-label reveal">Gure sukaldea</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Cazuelitas y <em>raciones</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Cazuelitas</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Albondigas en Salsa</div>
+              <div class="carta-item-desc">Receta casera tradicional</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">9 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Carrillera en Salsa</div>
+              <div class="carta-item-desc">Guisada a fuego lento</div>
+            </div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Callos</div>
+            </div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Manitas de Cerdo</div>
+            </div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Conejo en Salsa de Almendras</div>
+            </div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Rabo de Ternera Estofado</div>
+              <div class="carta-item-desc">Deshuesado y tierno</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chipirones en su Tinta</div>
+            </div>
+            <div class="carta-item-price">18 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Kokotxas de Bacalao</div>
+              <div class="carta-item-desc">Al pil-pil</div>
+            </div>
+            <div class="carta-item-price">20 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Raciones</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Patatas Bravas / Alioli</div></div>
+            <div class="carta-item-price">5 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Croquetas de Jamon (6 uds.)</div></div>
+            <div class="carta-item-price">6 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Queso Manchego</div></div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Chorizo Iberico</div></div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Jamon Iberico</div></div>
+            <div class="carta-item-price">15 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Lomo Iberico</div></div>
+            <div class="carta-item-price">15 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Puerros en Vinagreta</div></div>
+            <div class="carta-item-price">8 &euro;</div>
+          </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato]</div>
+              <div class="carta-item-name">Penca Rellena</div>
+              <div class="carta-item-desc">De york y queso</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">8 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Sardinas Marinadas (4 uds.)</div>
+            </div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:944568312" class="carta-cta reveal">
+      <span>Reservar mesa</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
+<!-- CARTA: ENSALADAS Y HAMBURGUESAS -->
+<section class="carta-section" id="carta-cazuelitas">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
+    <a href="#carta-pintxos" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Mas opciones</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Ensaladas, hamburguesas y <em>sandwiches</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Ensaladas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada Sencilla</div>
+              <div class="carta-item-desc">Lechuga, tomate, cebolla</div>
+            </div>
+            <div class="carta-item-price">4 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada Mixta</div>
+              <div class="carta-item-desc">Variedad de verduras y proteinas</div>
+            </div>
+            <div class="carta-item-price">6 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada Batzoki</div>
+              <div class="carta-item-desc">Especialidad de la casa con langostinos</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ensalada de Ventresca</div>
+              <div class="carta-item-desc">Con tomate y cebolla</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
         </div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Hamburguesas</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Hamburguesa Clasica</div></div>
+            <div class="carta-item-price">5 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Con Queso y Bacon</div></div>
+            <div class="carta-item-price">7 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Con Huevo y Foie</div></div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Hamburguesa Completa</div></div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Sandwiches y Bocadillos</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Mixto</div></div>
+            <div class="carta-item-price">3,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Mixto Iberico</div></div>
+            <div class="carta-item-price">4,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Vegetal</div></div>
+            <div class="carta-item-price">5 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Sandwich Batzoki de 2 Pisos</div>
+              <div class="carta-item-desc">El especial de la casa</div>
+            </div>
+            <div class="carta-item-price">6,50 &euro;</div>
+          </div>
         </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Postres Caseros</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tarta de Queso Cremosa</div>
+              <div class="carta-item-desc">La estrella del Batzoki</div>
+            </div>
+            <div class="carta-item-price">4 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tiramisu</div></div>
+            <div class="carta-item-price">5 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pastel de Sobaos</div></div>
+            <div class="carta-item-price">4 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Natillas</div></div>
+            <div class="carta-item-price">3 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Arroz con Leche</div></div>
+            <div class="carta-item-price">3,50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Helados Variados</div></div>
+            <div class="carta-item-price">2 &euro;</div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="tel:944568312" class="carta-cta reveal">
+      <span>Reservar mesa</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
+<!-- CARTA: MENUS Y EVENTOS -->
+<section class="carta-section" id="carta-menus">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
+    <a href="#carta-pintxos" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Menuak eta ekitaldiak</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
+      Menus y <em>celebraciones</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
+          <h4>Platos Combinados</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
+              <div class="carta-item-name">Lomo con patatas y ensalada</div>
             </div>
+            <div class="carta-item-price">10 &euro;</div>
           </div>
-          <!-- Repetir por cada espacio -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pollo a la plancha con guarnicion</div>
+            </div>
+            <div class="carta-item-price">11 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Ternera con pimientos y patatas</div>
+            </div>
+            <div class="carta-item-price">14 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Plato completo especial</div>
+            </div>
+            <div class="carta-item-price">16 &euro;</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
+          <h4>Menu Fin de Semana</h4>
+          <p>Menu especial los domingos: primero, segundo, postre, pan y bebida incluidos por 30 euros por persona. Reserva recomendada.</p>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
+          <h4>Para Grupos y Eventos</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
+              <div class="carta-item-name">Comedor principal</div>
+              <div class="carta-item-desc">Amplio espacio para grupos de hasta 40 personas</div>
             </div>
           </div>
-          <!-- Repetir por cada tipo -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menus cerrados personalizados</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Celebraciones familiares</div>
+              <div class="carta-item-desc">Comuniones, cumpleanos, jubilaciones</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cuadrillas y sociedades</div>
+              <div class="carta-item-desc">Menus para grupos con precio cerrado</div>
+            </div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-2">
+          <h4>Consultar sin compromiso</h4>
+          <p>Preparamos menus a medida para tu evento. Llamanos al 944 56 83 12 o al 665 73 93 76 y te asesoramos con las mejores opciones para tu grupo.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
+    <a href="tel:944568312" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Gure bezeroen iritziak</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1126,33 +1395,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El mejor café de especialidad que he probado en Madrid. El flat white es perfecto y el carrot cake está increíble."</p>
+        <p class="testimonial-quote">"Barra de pintxos espectacular, de los mejores de Galdakao sin duda. Llegas, ves la barra y no sabes que elegir. Todo tiene una pinta increible."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena Torres</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Aitor Etxebarria</strong>
+          <span>Google Maps &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo a trabajar aquí casi todos los días. WiFi rápido, enchufes, ambiente tranquilo y un café espectacular. Mi oficina favorita."</p>
+        <p class="testimonial-quote">"Menu del dia muy completo y con postres caseros que estan para repetir. El servicio es inmejorable, siempre atentos y con una sonrisa."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Pablo García</strong>
-          <span>Freelance · Madrid</span>
+          <strong>Maialen Uriarte</strong>
+          <span>Google Maps &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Los brunch del sábado son un planazo. Tostadas de aguacate, huevos benedict y zumo natural. Siempre lleno, hay que reservar."</p>
+        <p class="testimonial-quote">"Las cazuelitas caseras son lo mejor. La carrillera se deshace en la boca y los chipirones en su tinta son autenticos. Precios muy razonables para la calidad."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Cristina López</strong>
-          <span>Foodie · Madrid</span>
+          <strong>Gorka Aguirre</strong>
+          <span>Google Maps &middot; Bilbao</span>
         </div>
       </div>
     </div>
@@ -1162,167 +1431,200 @@
 <!-- CTA -->
 <div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>¿Te apetece un<br>buen café?</h2>
-    <p>Ven a conocernos. El primer café invita la casa.</p>
+    <h2>Erreserbatu zure<br>mahaia gaur</h2>
+    <p>Reserva tu mesa y ven a disfrutar de la mejor cocina vasca en Galdakao.</p>
   </div>
-  <a href="mailto:info@batzoki.com" class="btn-dark">
-    <span>Cómo llegar</span>
-    <span>↗</span>
+  <a href="tel:944568312" class="btn-dark">
+    <span>Llamar: 944 56 83 12</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
-    <section id="ubicacion" class="reveal">
-        <div class="container">
-            <h2>Encuéntranos</h2>
-            <div style="width:100%;border-radius:18px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10);margin-top:2rem;">
-                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Batzoki+Galdakao,Galdakao&zoom=17" width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+<!-- MAP SECTION -->
+<section class="map-section" id="ubicacion">
+  <div class="map-inner">
+    <p class="section-label reveal">Non gaude</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Encuentranos en<br><em>Iturrondo Plaza</em>
+    </h2>
+    <div class="map-grid">
+      <div class="map-iframe reveal">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Batzoki+Galdakao,Galdakao&zoom=17" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-info reveal reveal-delay-1">
+        <div class="map-info-item">
+          <div class="map-info-icon">&#9906;</div>
+          <div class="map-info-text">
+            <h4>Direccion</h4>
+            <p>Iturrondo Plaza (Sollube 6)<br>48960 Galdakao, Bizkaia</p>
+          </div>
         </div>
-    </section>
+        <div class="map-info-item">
+          <div class="map-info-icon">&#9742;</div>
+          <div class="map-info-text">
+            <h4>Telefonos</h4>
+            <p><a href="tel:944568312">944 56 83 12</a><br><a href="tel:665739376">665 73 93 76</a></p>
+          </div>
+        </div>
+        <div class="map-info-item">
+          <div class="map-info-icon">&#9993;</div>
+          <div class="map-info-text">
+            <h4>Email</h4>
+            <p><a href="mailto:marije.mgrego@gmail.com">marije.mgrego@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="map-info-item">
+          <div class="map-info-icon">&#128337;</div>
+          <div class="map-info-text">
+            <h4>Horario</h4>
+            <p>Abierto 6 dias a la semana<br>Consultar horarios por telefono</p>
+          </div>
+        </div>
+        <div class="map-info-item">
+          <div class="map-info-icon">&#127760;</div>
+          <div class="map-info-text">
+            <h4>Web</h4>
+            <p><a href="https://www.batzokigaldakao.com" target="_blank" rel="noopener">batzokigaldakao.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Batzoki Galdakao<span>.</span></a>
-      <p class="footer-tagline">"El café es un abrazo en forma de taza."<br>— Café Molino</p>
+      <a href="#" class="nav-logo">Batzoki<span>.</span></a>
+      <p class="footer-tagline">Pintxos, cazuelitas y cocina vasca en el corazon de Galdakao.</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.facebook.com/batzokigaldakao" target="_blank" rel="noopener" class="social-link" title="Facebook">Fb</a>
+        <a href="https://www.instagram.com/batzokigaldakao" target="_blank" rel="noopener" class="social-link" title="Instagram">Ig</a>
+        <a href="https://maps.google.com/?q=Batzoki+Galdakao" target="_blank" rel="noopener" class="social-link" title="Google Maps">Gm</a>
+        <a href="https://wa.me/34665739376" target="_blank" rel="noopener" class="social-link" title="WhatsApp">Wa</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Cafés</a></li>
-        <li><a href="#">Tés</a></li>
-        <li><a href="#">Bollería</a></li>
-        <li><a href="#">Brunch</a></li>
-        <li><a href="#">Bebidas</a></li>
+        <li><a href="#carta-pintxos">Cazuelitas</a></li>
+        <li><a href="#carta-pintxos">Raciones</a></li>
+        <li><a href="#carta-cazuelitas">Ensaladas</a></li>
+        <li><a href="#carta-cazuelitas">Hamburguesas</a></li>
+        <li><a href="#carta-cazuelitas">Postres</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Cafetería</h4>
+      <h4>Batzoki</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Baristas</a></li>
-        <li><a href="#">Nuestro café</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#carta-menus">Eventos</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@batzoki.com">info@batzoki.com</a></li>
-        <li><a href="tel:[+34XXXXXXXXX]">944 56 83 12</a></li>
-        <li><a href="#">Iturrondo plaza, 48960 Kurtzea, Bizkaia, España</a></li>
+        <li><a href="tel:944568312">944 56 83 12</a></li>
+        <li><a href="tel:665739376">665 73 93 76</a></li>
+        <li><a href="mailto:marije.mgrego@gmail.com">Email</a></li>
+        <li><a href="https://www.batzokigaldakao.com" target="_blank" rel="noopener">Web oficial</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Batzoki Galdakao. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Batzoki Galdakao. Eskubide guztiak erreserbatuta.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
       <a href="#">Aviso Legal</a>
-      <a href="#">Cookies</a>
+      <a href="#">Politica de Privacidad</a>
     </div>
   </div>
 </footer>
 
+<div class="powered-by">
+  <a href="https://ggelcano.com" target="_blank" rel="noopener">Web creada por G&G Elcano</a>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/34665739376?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Batzoki%20Galdakao" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-  // ── LOADER
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hidden');
-      document.getElementById('heroBg').classList.add('loaded');
-    }, 1800);
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800);
+  setTimeout(() => document.getElementById('heroBg').classList.add('loaded'), 2000);
+});
+
+// Custom Cursor
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function anim() {
+  rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+  if (dot) { dot.style.left = mx + 'px'; dot.style.top = my + 'px'; }
+  if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+  requestAnimationFrame(anim);
+})();
+document.querySelectorAll('a, button, .project-card, .service-card, .testimonial-card').forEach(el => {
+  el.addEventListener('mouseenter', () => ring && ring.classList.add('expanded'));
+  el.addEventListener('mouseleave', () => ring && ring.classList.remove('expanded'));
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobile() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
   });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── CUSTOM CURSOR
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
-  });
-
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.7;
-    ringY += (mouseY - ringY) * 0.7;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
-  });
-
-  // ── NAVBAR SCROLL
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ── HAMBURGER MENU
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobile() {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
-  }
-
-  // ── REVEAL ON SCROLL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  reveals.forEach(el => observer.observe(el));
-
-  // ── COUNTER ANIMATION
-  function animateCount(el) {
-    const target = parseInt(el.dataset.target);
-    const duration = 1800;
-    const start = performance.now();
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 4);
-      el.textContent = Math.round(ease * target);
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  const countObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCount(e.target);
-        countObserver.unobserve(e.target);
+// Animated counters
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const start = performance.now();
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else counter.textContent = target;
       }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
-
-  // ── HERO PARALLAX
-  window.addEventListener('scroll', () => {
-    const heroBg = document.getElementById('heroBg');
-    if (heroBg) {
-      const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      requestAnimationFrame(update);
+      counterObserver.unobserve(counter);
     }
   });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>
