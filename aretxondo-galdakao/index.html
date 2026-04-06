@@ -3,90 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurante Aretxondo &mdash; Galdakao</title>
-  <meta name="description" content="Restaurante Aretxondo en Galdakao. Cocina vasca tradicional y creativa en un caserio con vistas privilegiadas. 1 Sol Guia Repsol. 4.4 en Google con 1054 opiniones.">
+  <title>Aretxondo — Jatetxea · Cocina vasca de autor en Galdakao</title>
+  <meta name="description" content="Aretxondo Jatetxea — Restaurante de cocina vasca de autor en caserío tradicional. 1 Sol Repsol. Menú degustación, carta de temporada y eventos privados en Galdakao.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0b0907;
-      --white: #f4f0ea;
-      --accent: #8B6914;
-      --accent-light: #a67c1a;
-      --carbon: #100d09;
-      --carbon-mid: #181410;
-      --carbon-light: #241e16;
-      --text-muted: #9a8d7a;
-      --warm-deep: #3D2B08;
+      --black: #0a0a0e;
+      --white: #f5f3ef;
+      --accent: #046bd2;
+      --accent-light: #2d8aef;
+      --accent-warm: #886647;
+      --carbon: #111116;
+      --carbon-mid: #18181e;
+      --carbon-light: #222230;
+      --text-muted: #8a8a9a;
       --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Nunito Sans', sans-serif;
+      --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html { scroll-behavior: smooth; }
+
     body {
-      background: var(--black); color: var(--white);
-      font-family: var(--font-sans); font-weight: 300;
-      line-height: 1.6; overflow-x: hidden; cursor: none;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
     }
 
+    /* ─── CUSTOM CURSOR ─── */
     .cursor-dot {
-      width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
-      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
-      transition: transform 0.1s; transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+      transform: translate(-50%, -50%);
       box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3);
     }
     .cursor-ring {
-      width: 40px; height: 40px; border: 1px solid rgba(139,105,20,0.4);
-      border-radius: 50%; position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
+      width: 40px; height: 40px;
+      border: 1px solid rgba(4,107,210,0.4);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
       transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth);
     }
     .cursor-ring.expanded {
-      width: 70px; height: 70px; border-color: rgba(139,105,20,0.7);
-      background: rgba(139,105,20,0.05);
+      width: 70px; height: 70px;
+      border-color: rgba(4,107,210,0.7);
+      background: rgba(4,107,210,0.05);
     }
 
+    /* ─── NAVBAR ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 28px 60px; backdrop-filter: blur(0px);
+      padding: 28px 60px;
+      backdrop-filter: blur(0px);
       transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s;
     }
     nav.scrolled {
-      backdrop-filter: blur(20px); background: rgba(11,9,7,0.88);
-      padding: 18px 60px; border-bottom: 1px solid rgba(139,105,20,0.08);
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,14,0.88);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(4,107,210,0.08);
     }
     .nav-logo {
-      font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400;
-      letter-spacing: 0.12em; text-decoration: none; color: var(--white);
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--white);
       display: flex; align-items: center; gap: 10px;
     }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(244,240,234,0.65);
+      text-decoration: none; color: rgba(245,243,239,0.65);
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       transition: color 0.3s; font-weight: 400;
     }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: transparent; border: 1px solid var(--accent);
-      color: var(--accent) !important; padding: 10px 28px !important;
-      font-size: 0.72rem !important; letter-spacing: 0.25em !important;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 10px 28px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
       transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
 
+    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
     }
-    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -102,26 +131,31 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
+    /* ─── HERO ─── */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
-      display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      overflow: hidden;
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/Foto-Exterior-Aretxondo.jpg') center/cover no-repeat;
-      transform: scale(1.08); transition: transform 8s var(--ease-out);
+      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400') center/cover no-repeat;
+      transform: scale(1.08);
+      transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(11,9,7,0.92) 0%, rgba(11,9,7,0.5) 50%, rgba(11,9,7,0.2) 100%);
+      background: linear-gradient(135deg, rgba(10,10,14,0.92) 0%, rgba(10,10,14,0.5) 50%, rgba(10,10,14,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
       background: linear-gradient(to top, var(--black), transparent);
     }
     .hero-content {
-      position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px;
+      position: relative; z-index: 2;
+      padding: 0 60px 100px;
+      max-width: 900px;
     }
     .hero-eyebrow {
       font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -130,26 +164,24 @@
       opacity: 0; transform: translateY(20px);
       animation: fadeUp 0.9s 0.3s var(--ease-out) forwards;
     }
-    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(139,105,20,0.15); border: 1px solid rgba(139,105,20,0.3);
-      padding: 6px 16px; font-size: 0.68rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
-      opacity: 0; transform: translateY(20px);
-      animation: fadeUp 0.9s 0.4s var(--ease-out) forwards;
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
     }
-    .hero-badge svg { width: 14px; height: 14px; fill: var(--accent); }
     .hero-title {
-      font-family: var(--font-serif); font-size: clamp(3.5rem, 7vw, 7rem);
-      font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
-      margin-bottom: 32px; opacity: 0; transform: translateY(30px);
+      font-family: var(--font-serif);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(30px);
       animation: fadeUp 1.1s 0.5s var(--ease-out) forwards;
     }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
-      font-size: 1.05rem; color: rgba(244,240,234,0.6);
-      max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300;
+      font-size: 1.05rem; color: rgba(245,243,239,0.6);
+      max-width: 500px; line-height: 1.7; margin-bottom: 52px;
+      font-weight: 300;
       opacity: 0; transform: translateY(20px);
       animation: fadeUp 1s 0.8s var(--ease-out) forwards;
     }
@@ -160,7 +192,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -174,17 +206,21 @@
     .btn-primary:hover::before { transform: translateX(0); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
-      color: rgba(244,240,234,0.6); text-decoration: none;
+      color: rgba(245,243,239,0.6); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
-      display: flex; align-items: center; gap: 10px; transition: color 0.3s;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
     }
     .btn-ghost:hover { color: var(--accent); }
     .btn-ghost-arrow {
-      width: 36px; height: 36px; border: 1px solid rgba(244,240,234,0.2);
+      width: 36px; height: 36px;
+      border: 1px solid rgba(245,243,239,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.3s, transform 0.3s;
     }
-    .btn-ghost:hover .btn-ghost-arrow { border-color: var(--accent); transform: rotate(45deg); }
+    .btn-ghost:hover .btn-ghost-arrow {
+      border-color: var(--accent); transform: rotate(45deg);
+    }
     .hero-scroll {
       position: absolute; right: 60px; bottom: 100px; z-index: 2;
       display: flex; flex-direction: column; align-items: center; gap: 16px;
@@ -204,9 +240,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
+    /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(139,105,20,0.12);
-      border-bottom: 1px solid rgba(139,105,20,0.12);
+      border-top: 1px solid rgba(4,107,210,0.12);
+      border-bottom: 1px solid rgba(4,107,210,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -214,13 +251,16 @@
       animation: marquee 22s linear infinite;
     }
     .marquee-item {
-      display: inline-flex; align-items: center; gap: 30px; padding: 0 40px;
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 40px;
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: rgba(244,240,234,0.25); letter-spacing: 0.05em;
+      font-style: italic; color: rgba(245,243,239,0.25);
+      letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    /* ─── SECTION COMMONS ─── */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -229,17 +269,28 @@
     }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
     .section-title {
-      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem);
-      font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.01em;
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid rgba(139,105,20,0.08); }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
+    /* ─── STATS ─── */
+    .stats-section {
+      background: var(--carbon);
+      padding: 100px 60px;
+      border-top: 1px solid rgba(4,107,210,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; max-width: 1400px; margin: 0 auto;
+    }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(139,105,20,0.08);
-      position: relative; overflow: hidden; transition: border-color 0.4s;
+      border: 1px solid rgba(4,107,210,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
     }
     .stat-card::before {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0;
@@ -247,14 +298,19 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(139,105,20,0.3); }
+    .stat-card:hover { border-color: rgba(4,107,210,0.3); }
     .stat-number {
-      font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300;
-      line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em;
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; line-height: 1; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.02em;
     }
     .stat-number .stat-suffix { color: var(--accent); }
-    .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 400;
+    }
 
+    /* ─── GALLERY ─── */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -262,269 +318,470 @@
     }
     .projects-header .section-title { max-width: 500px; }
     .view-all {
-      display: flex; align-items: center; gap: 12px; text-decoration: none;
-      color: var(--accent); font-size: 0.75rem; letter-spacing: 0.25em;
-      text-transform: uppercase; transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(139,105,20,0.3); white-space: nowrap;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      transition: gap 0.3s; padding-bottom: 4px;
+      border-bottom: 1px solid rgba(4,107,210,0.3);
+      white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; max-width: 1400px; margin: 0 auto; }
-    .project-card { position: relative; overflow: hidden; aspect-ratio: 4/3; cursor: none; }
-    .project-card:first-child { grid-column: span 2; aspect-ratio: 21/8; }
-    .project-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: none;
+    }
+    .project-card:first-child {
+      grid-column: span 2; aspect-ratio: 21/8;
+    }
+    .project-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
     .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11,9,7,0.9) 0%, rgba(11,9,7,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,10,14,0.9) 0%, rgba(10,10,14,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
     .project-info {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 40px;
-      transform: translateY(15px); transition: transform 0.5s var(--ease-out);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px; transform: translateY(15px);
+      transition: transform 0.5s var(--ease-out);
     }
     .project-card:hover .project-info { transform: translateY(0); }
-    .project-cat { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .project-name { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 300; line-height: 1.15; margin-bottom: 14px; }
-    .project-meta { font-size: 0.73rem; color: rgba(244,240,234,0.45); letter-spacing: 0.1em; opacity: 0; transition: opacity 0.5s 0.1s; }
+    .project-cat {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; font-weight: 400;
+    }
+    .project-name {
+      font-family: var(--font-serif); font-size: 1.9rem;
+      font-weight: 300; line-height: 1.15; margin-bottom: 14px;
+    }
+    .project-meta {
+      font-size: 0.73rem; color: rgba(245,243,239,0.45);
+      letter-spacing: 0.1em; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
     .project-card:hover .project-meta { opacity: 1; }
     .project-arrow {
-      position: absolute; top: 36px; right: 36px; width: 50px; height: 50px;
-      border: 1px solid rgba(244,240,234,0.15); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: translate(10px, -10px); transition: all 0.4s var(--ease-out);
+      position: absolute; top: 36px; right: 36px;
+      width: 50px; height: 50px;
+      border: 1px solid rgba(245,243,239,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(10px, -10px);
+      transition: all 0.4s var(--ease-out);
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
+    /* ─── ABOUT ─── */
     .about-section {
-      background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--carbon);
+      display: grid; grid-template-columns: 1fr 1fr;
       gap: 0; padding: 0; max-width: none;
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/Foto-Interior-Aretxondo.jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(139,105,20,0.25);
-      padding: 24px 30px; max-width: 260px;
+      background: var(--black); border: 1px solid rgba(4,107,210,0.25);
+      padding: 24px 30px; max-width: 240px;
     }
-    .about-badge-year { font-family: var(--font-serif); font-size: 2.2rem; color: var(--accent); line-height: 1; }
-    .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(244,240,234,0.5); margin-top: 6px; }
-    .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
-    .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(244,240,234,0.65); margin: 32px 0 52px; font-weight: 300; }
+    .about-badge-year {
+      font-family: var(--font-serif); font-size: 3rem;
+      color: var(--accent); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      color: rgba(245,243,239,0.5); margin-top: 6px;
+    }
+    .about-content {
+      padding: 100px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-body {
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(245,243,239,0.65); margin: 32px 0 52px;
+      font-weight: 300;
+    }
     .about-body strong { color: var(--white); font-weight: 400; }
-    .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
+    .about-divider {
+      width: 60px; height: 1px; background: var(--accent); margin: 40px 0;
+    }
     .about-values { display: flex; flex-direction: column; gap: 20px; }
-    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid rgba(139,105,20,0.06); transition: border-color 0.4s; }
-    .about-value:hover { border-color: rgba(139,105,20,0.2); }
-    .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
-    .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
-    .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+    .about-value {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px; border: 1px solid rgba(4,107,210,0.06);
+      transition: border-color 0.4s;
+    }
+    .about-value:hover { border-color: rgba(4,107,210,0.2); }
+    .value-num {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .value-text h4 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; margin-bottom: 4px;
+    }
+    .value-text p {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
 
+    /* ─── SERVICES ─── */
     .services-section { background: var(--black); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; max-width: 1400px; margin: 60px auto 0;
+    }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(139,105,20,0.07); position: relative; overflow: hidden;
+      border: 1px solid rgba(4,107,210,0.07);
+      position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,105,20,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(4,107,210,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(139,105,20,0.2); color: var(--accent);
+      border: 1px solid rgba(4,107,210,0.2); color: var(--accent);
     }
-    .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
-    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+    .service-card h3 {
+      font-family: var(--font-serif); font-size: 1.55rem;
+      font-weight: 400; margin-bottom: 18px; line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;
+      font-weight: 300;
+    }
     .service-link {
-      display: inline-flex; align-items: center; gap: 10px; margin-top: 32px;
-      text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: rgba(139,105,20,0.5); transition: color 0.3s, gap 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 32px; text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(4,107,210,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
-      font-family: var(--font-serif); font-size: 5rem; font-weight: 300;
-      color: rgba(139,105,20,0.05); line-height: 1; transition: color 0.5s;
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(4,107,210,0.05);
+      line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(139,105,20,0.1); }
+    .service-card:hover .service-number { color: rgba(4,107,210,0.1); }
 
-    .carta-section { padding: 140px 60px; background: var(--carbon); border-top: 1px solid rgba(139,105,20,0.08); }
+    /* ─── CARTA SECTIONS ─── */
+    .carta-section {
+      padding: 140px 60px;
+      background: var(--carbon);
+      border-top: 1px solid rgba(4,107,210,0.08);
+    }
     .carta-section:nth-child(even) { background: var(--black); }
-    .carta-section .section-inner { max-width: 1200px; margin: 0 auto; }
+    .carta-section .section-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
     .carta-back {
-      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-      color: var(--accent); font-size: 0.72rem; letter-spacing: 0.2em;
-      text-transform: uppercase; margin-bottom: 40px; transition: gap 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--accent);
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 40px; transition: gap 0.3s;
     }
     .carta-back:hover { gap: 14px; }
-    .carta-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+    .carta-columns {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 60px;
+    }
     .carta-category { margin-bottom: 48px; }
     .carta-category h4 {
-      font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400;
-      color: var(--white); padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,105,20,0.15);
+      font-family: var(--font-serif); font-size: 1.3rem;
+      font-weight: 400; color: var(--white);
+      padding-bottom: 16px; margin-bottom: 24px;
+      border-bottom: 1px solid rgba(4,107,210,0.15);
     }
-    .carta-item { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .carta-item {
+      display: flex; justify-content: space-between;
+      align-items: baseline; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
     .carta-item:last-child { border-bottom: none; }
-    .carta-item-name { font-size: 0.92rem; font-weight: 400; color: var(--white); flex: 1; }
-    .carta-item-desc { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
-    .carta-item-price { font-family: var(--font-serif); font-size: 1rem; color: var(--accent); white-space: nowrap; margin-left: 20px; font-weight: 400; }
-    .carta-highlight { background: var(--carbon-mid); border: 1px solid rgba(139,105,20,0.1); padding: 40px; margin-top: 40px; }
-    .carta-highlight h4 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--accent); margin-bottom: 16px; }
-    .carta-highlight p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+    .carta-item-name {
+      font-size: 0.92rem; font-weight: 400; color: var(--white);
+      flex: 1;
+    }
+    .carta-item-desc {
+      font-size: 0.78rem; color: var(--text-muted);
+      font-weight: 300; margin-top: 2px;
+    }
+    .carta-item-price {
+      font-family: var(--font-serif); font-size: 1rem;
+      color: var(--accent); white-space: nowrap;
+      margin-left: 20px; font-weight: 400;
+    }
+    .carta-highlight {
+      background: var(--carbon-mid); border: 1px solid rgba(4,107,210,0.1);
+      padding: 40px; margin-top: 40px;
+    }
+    .carta-highlight h4 {
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-weight: 400; color: var(--accent); margin-bottom: 16px;
+    }
+    .carta-highlight p {
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.75; font-weight: 300;
+    }
     .carta-cta {
-      display: inline-flex; align-items: center; gap: 12px; margin-top: 48px;
-      text-decoration: none; padding: 18px 40px; border: 1px solid var(--accent);
-      color: var(--white); font-size: 0.72rem; letter-spacing: 0.2em;
-      text-transform: uppercase; transition: background 0.4s, gap 0.3s;
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-top: 48px; text-decoration: none;
+      padding: 18px 40px; border: 1px solid var(--accent);
+      color: var(--white); font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background 0.4s, gap 0.3s;
     }
     .carta-cta:hover { background: var(--accent); gap: 18px; }
 
-    .testimonials-section { background: var(--carbon); position: relative; overflow: hidden; }
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section {
+      background: var(--carbon); position: relative; overflow: hidden;
+    }
     .testimonials-section::before {
       content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(139,105,20,0.03); line-height: 1; pointer-events: none;
+      color: rgba(4,107,210,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 70px;
+    }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(11,9,7,0.4);
-      border: 1px solid rgba(139,105,20,0.07); transition: border-color 0.4s, background 0.4s;
+      padding: 56px 44px; background: rgba(10,10,14,0.4);
+      border: 1px solid rgba(4,107,210,0.07);
+      transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(139,105,20,0.2); background: rgba(11,9,7,0.7); }
+    .testimonial-card:hover { border-color: rgba(4,107,210,0.2); background: rgba(10,10,14,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
-    .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-    .star.empty { background: rgba(139,105,20,0.2); }
-    .testimonial-quote {
-      font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;
-      font-weight: 300; line-height: 1.7; color: rgba(244,240,234,0.8); margin-bottom: 36px;
+    .star {
+      width: 12px; height: 12px; background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
-    .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
-    .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
-    .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .testimonial-quote {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-style: italic; font-weight: 300;
+      line-height: 1.7; color: rgba(245,243,239,0.8);
+      margin-bottom: 36px;
+    }
+    .testimonial-divider {
+      width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4;
+    }
+    .testimonial-author strong {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .testimonial-author span {
+      font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
+    }
 
-    .location-section { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
-    .location-map { min-height: 500px; }
-    .location-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.7) brightness(0.75) contrast(1.1); }
-    .location-info { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
-    .location-item { margin-bottom: 36px; }
-    .location-item h4 { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 500; }
-    .location-item p, .location-item a { font-size: 0.95rem; color: rgba(244,240,234,0.6); font-weight: 300; text-decoration: none; line-height: 1.7; }
-    .location-item a:hover { color: var(--accent); }
-    .horario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
-    .horario-dia { font-size: 0.85rem; color: rgba(244,240,234,0.4); }
-    .horario-hora { font-size: 0.85rem; color: rgba(244,240,234,0.7); }
-    .horario-cerrado { color: rgba(220,60,60,0.7); }
+    /* ─── MAP ─── */
+    .map-section {
+      padding: 0; background: var(--black);
+      border-top: 1px solid rgba(4,107,210,0.08);
+    }
+    .map-section iframe { display: block; width: 100%; height: 400px; border: 0; filter: grayscale(0.3) brightness(0.85); }
 
+    /* ─── CTA BANNER ─── */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
-      display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; flex-wrap: wrap;
     }
     .cta-text { flex: 1; min-width: 300px; }
-    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.1; }
-    .cta-text p { font-size: 1rem; color: rgba(11,9,7,0.65); margin-top: 16px; font-weight: 300; }
+    .cta-text h2 {
+      font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300; color: var(--white); line-height: 1.1;
+    }
+    .cta-text p {
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
+    }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--black); color: var(--white); text-decoration: none;
-      padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em;
-      text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth);
+      background: var(--black); color: var(--white);
+      text-decoration: none; padding: 20px 48px;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; transition: all 0.35s var(--ease-smooth);
       white-space: nowrap; position: relative; overflow: hidden;
     }
-    .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--carbon-light); transform: translateX(-102%);
+      transition: transform 0.4s var(--ease-out);
+    }
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid rgba(139,105,20,0.08); }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
-    .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
-    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(244,240,234,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d0d11; padding: 90px 60px 50px;
+      border-top: 1px solid rgba(136,102,71,0.15);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand .nav-logo {
+      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(245,243,239,0.35);
+      line-height: 1.6; max-width: 280px; margin-bottom: 36px;
+    }
     .footer-social { display: flex; gap: 14px; }
     .social-link {
-      width: 40px; height: 40px; border: 1px solid rgba(244,240,234,0.1);
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,243,239,0.1);
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: rgba(244,240,234,0.4); font-size: 0.75rem;
-      letter-spacing: 0.1em; transition: border-color 0.3s, color 0.3s;
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: border-color 0.3s, color 0.3s;
     }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
-    .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; font-weight: 500; }
+    .footer-col h4 {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
+    }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col ul a { text-decoration: none; color: rgba(244,240,234,0.4); font-size: 0.85rem; transition: color 0.3s; font-weight: 300; }
+    .footer-col ul a {
+      text-decoration: none; color: rgba(245,243,239,0.4);
+      font-size: 0.85rem; transition: color 0.3s; font-weight: 300;
+    }
     .footer-col ul a:hover { color: var(--white); }
-    .footer-bottom { border-top: 1px solid rgba(244,240,234,0.06); padding-top: 36px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 0.75rem; color: rgba(244,240,234,0.25); letter-spacing: 0.05em; }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,243,239,0.06);
+      padding-top: 36px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em;
+    }
     .footer-legal { display: flex; gap: 28px; }
-    .footer-legal a { font-size: 0.72rem; color: rgba(244,240,234,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
+    .footer-legal a {
+      font-size: 0.72rem; color: rgba(245,243,239,0.2);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;
+    }
     .footer-legal a:hover { color: var(--text-muted); }
 
+    /* ─── REPSOL BADGE ─── */
+    .repsol-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(4,107,210,0.1); border: 1px solid rgba(4,107,210,0.2);
+      padding: 6px 16px; font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-top: 16px;
+    }
+    .repsol-badge .sun { font-size: 1rem; }
+
+    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
-    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
+    /* ─── LOADER ─── */
     .loader {
-      position: fixed; inset: 0; z-index: 10000; background: var(--black);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s;
+      position: fixed; inset: 0; z-index: 10000;
+      background: var(--black); display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      transition: opacity 0.8s, visibility 0.8s;
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.3em; color: var(--white); }
+    .loader-logo {
+      font-family: var(--font-serif); font-size: 2.5rem;
+      letter-spacing: 0.3em; color: var(--white);
+    }
     .loader-logo span { color: var(--accent); }
-    .loader-bar { width: 200px; height: 1px; background: rgba(244,240,234,0.1); position: relative; overflow: hidden; }
-    .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
+    .loader-bar {
+      width: 200px; height: 1px; background: rgba(245,243,239,0.1);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: translateX(-100%);
+      animation: loadBar 1.5s var(--ease-out) 0.3s forwards;
+    }
     @keyframes loadBar { to { transform: translateX(0); } }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
-      section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; }
-      .hero-scroll { right: 36px; } .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; }
+      .hero-content { padding: 0 36px 80px; }
+      .hero-scroll { right: 36px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
-      .location-section { grid-template-columns: 1fr; } .location-info { padding: 60px 36px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; }
-      .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
-      .nav-links { display: none; } section { padding: 80px 24px; }
-      .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; }
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; }
+      .hero-scroll { display: none; }
       .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
       .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
-      .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; }
-      .about-content { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr; }
+      .about-section { grid-template-columns: 1fr; }
+      .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .cta-section { padding: 80px 24px; flex-direction: column; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-      .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; }
-      .location-section { grid-template-columns: 1fr; }
-      .location-map { min-height: 300px; } .location-info { padding: 50px 24px; }
-      .carta-section { padding: 80px 24px; } .carta-columns { grid-template-columns: 1fr; gap: 40px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-section { padding: 70px 24px; }
+      .carta-section { padding: 80px 24px; }
+      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
     }
   </style>
 </head>
 <body>
 
+<!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">Aretxondo <span>.</span></div>
+  <div class="loader-logo">Aretxondo<span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
+<!-- CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Carta</a></li>
-    <li><a href="#ubicacion">Ubicacion</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
     <li><a href="tel:+34944567671" class="nav-cta">Reservar</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -532,435 +789,592 @@
   </button>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Carta</a>
-  <a href="#ubicacion" onclick="closeMobile()">Ubicacion</a>
-  <a href="tel:+34944567671" onclick="closeMobile()">Reservar</a>
+  <a href="#carta" onclick="closeMobile()">Carta</a>
+  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
+  <a href="tel:+34944567671" onclick="closeMobile()">Reservar Mesa</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Caserio Vasco &middot; Cocina de Autor &middot; Galdakao</p>
-    <div class="hero-badge">
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      1 Sol Guia Repsol
-    </div>
-    <h1 class="hero-title">Tradicion vasca<br>con alma de<br><em>caserio</em></h1>
-    <p class="hero-sub">Cocina vasca tradicional y creativa en un caserio con vistas privilegiadas. Producto fresco, recetas de siempre y toques de vanguardia en el corazon de Galdakao.</p>
+    <p class="hero-eyebrow">Jatetxea &middot; 1 Sol Repsol &middot; Desde 1989</p>
+    <h1 class="hero-title">
+      Cocina vasca<br>de <em>autor</em>
+    </h1>
+    <p class="hero-sub">
+      En un caserio tradicional de Galdakao, tradicion vasca con toques de vanguardia. Producto de temporada, tecnica depurada y mas de 35 anos de pasion por la gastronomia.
+    </p>
     <div class="hero-actions">
-      <a href="tel:+34944567671" class="btn-primary"><span>Reservar mesa</span><span>&rarr;</span></a>
-      <a href="#servicios" class="btn-ghost"><span>Ver nuestra carta</span><div class="btn-ghost-arrow">&nearr;</div></a>
+      <a href="tel:+34944567671" class="btn-primary">
+        <span>Reservar mesa</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#carta" class="btn-ghost">
+        <span>Ver carta</span>
+        <div class="btn-ghost-arrow">&nearr;</div>
+      </a>
     </div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Merluza en Salsa Verde</span>
-    <span class="marquee-item"><span class="dot"></span>Ensalada de Bogavante</span>
-    <span class="marquee-item"><span class="dot"></span>Hongos con Huevo</span>
-    <span class="marquee-item"><span class="dot"></span>Solomillo al Tuetano</span>
-    <span class="marquee-item"><span class="dot"></span>Kokotxas a la Plancha</span>
-    <span class="marquee-item"><span class="dot"></span>Tarta de Queso Idiazabal</span>
-    <span class="marquee-item"><span class="dot"></span>Merluza en Salsa Verde</span>
-    <span class="marquee-item"><span class="dot"></span>Ensalada de Bogavante</span>
-    <span class="marquee-item"><span class="dot"></span>Hongos con Huevo</span>
-    <span class="marquee-item"><span class="dot"></span>Solomillo al Tuetano</span>
-    <span class="marquee-item"><span class="dot"></span>Kokotxas a la Plancha</span>
-    <span class="marquee-item"><span class="dot"></span>Tarta de Queso Idiazabal</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca de Autor</span>
+    <span class="marquee-item"><span class="dot"></span>1 Sol Repsol</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
+    <span class="marquee-item"><span class="dot"></span>Caserio Tradicional</span>
+    <span class="marquee-item"><span class="dot"></span>Bodega Selecta</span>
+    <span class="marquee-item"><span class="dot"></span>Opciones Celiacos y Veganos</span>
+    <span class="marquee-item"><span class="dot"></span>Cocina Vasca de Autor</span>
+    <span class="marquee-item"><span class="dot"></span>1 Sol Repsol</span>
+    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
+    <span class="marquee-item"><span class="dot"></span>Caserio Tradicional</span>
+    <span class="marquee-item"><span class="dot"></span>Bodega Selecta</span>
+    <span class="marquee-item"><span class="dot"></span>Opciones Celiacos y Veganos</span>
   </div>
 </div>
 
+<!-- STATS -->
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4 &#9733;</span></div>
-      <div class="stat-label">Nota en Google</div>
+      <div class="stat-number"><span class="count" data-target="35">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de historia</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="1054">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Opiniones</div>
+      <div class="stat-number"><span class="count" data-target="1000">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="24">0</span><span class="stat-suffix">,50 &euro;</span></div>
-      <div class="stat-label">Menu Ejecutivo</div>
+      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"> Sol</span></div>
+      <div class="stat-label">Guia Repsol</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number">1<span class="stat-suffix"> Sol</span></div>
-      <div class="stat-label">Guia Repsol</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4&#9733;</span></div>
+      <div class="stat-label">Valoracion Google</div>
     </div>
   </div>
 </div>
 
+<!-- GALLERY -->
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro espacio</p>
-      <h2 class="section-title reveal reveal-delay-1">Descubre<br><em>Aretxondo</em></h2>
+      <p class="section-label reveal">Nuestro restaurante</p>
+      <h2 class="section-title reveal reveal-delay-1">Un caserio con<br><em>alma gastronomica</em></h2>
     </div>
-    <a href="https://www.instagram.com/rest_aretxondo/" target="_blank" rel="noopener" class="view-all reveal">Siguenos en Instagram &rarr;</a>
+    <a href="https://www.instagram.com/rest_aretxondo/" target="_blank" rel="noopener" class="view-all reveal">Seguir en Instagram &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/Foto-Estrella-Aretxondo_0.jpg') center/cover no-repeat;"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800" alt="Interior del restaurante Aretxondo" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Gastronomia &middot; Plato Estrella</p>
-        <h3 class="project-name">Nuestra Cocina de Autor</h3>
-        <p class="project-meta">Recetas vascas con toques creativos y producto de temporada</p>
+        <p class="project-cat">Espacio &middot; Caserio</p>
+        <h3 class="project-name">Nuestro Caserio</h3>
+        <p class="project-meta">B. Elexalde, 16 &middot; Galdakao &middot; Desde 1989</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/Foto-Producto-restaurante-Aretxondo.jpg') center/cover no-repeat;"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800" alt="Plato de autor en Aretxondo" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Producto &middot; Mercado</p>
-        <h3 class="project-name">Producto Fresco</h3>
-        <p class="project-meta">Pescado del dia, verduras de Navarra y carnes selectas</p>
+        <p class="project-cat">Plato &middot; Autor</p>
+        <h3 class="project-name">Jamon de mar con ponzu</h3>
+        <p class="project-meta">Ponzu &middot; Ajo frito &middot; Especialidad</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: url('https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-dc-d8-dcd8c6c2-ceb3-4905-830c-62d000a18b32-reducida_7186-aretxondo-1683ab3a28554776b0d039b277d8a7cf.jpeg') center/cover no-repeat;"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800" alt="Detalle de plato en Aretxondo" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Interior &middot; Caserio</p>
+        <p class="project-cat">Temporada &middot; Local</p>
+        <h3 class="project-name">Producto de Temporada</h3>
+        <p class="project-meta">Mercado local &middot; Km 0</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800" alt="Ambiente del restaurante Aretxondo" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Ambiente &middot; Acogedor</p>
         <h3 class="project-name">Salon Principal</h3>
-        <p class="project-meta">Caserio tradicional con ventanales y vistas al entorno natural</p>
+        <p class="project-meta">Calidez &middot; Tradicion &middot; Caserio</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: url('https://www.disfrutabizkaia.com/wp-content/uploads/2022/03/Foto-Exterior-Aretxondo.jpg') center 30%/cover no-repeat;"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800" alt="Vinos y gastronomia en Aretxondo" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Exterior &middot; Entorno</p>
-        <h3 class="project-name">El Caserio</h3>
-        <p class="project-meta">Rodeado de robles, vinedos y prados a 9 km de Bilbao</p>
+        <p class="project-cat">Bodega &middot; Seleccion</p>
+        <h3 class="project-name">Bodega Selecta</h3>
+        <p class="project-meta">Txakoli &middot; Rioja &middot; Vinos de autor</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800" alt="Chef de Aretxondo cocinando" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Cocina &middot; Autor</p>
+        <h3 class="project-name">Nuestro Equipo</h3>
+        <p class="project-meta">+35 anos &middot; Pasion por la cocina vasca</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">1997 &mdash; Hoy</div>
-      <div class="about-badge-text">Mas de 25 anos en Galdakao</div>
+      <div class="about-badge-year">1989</div>
+      <div class="about-badge-text">Cocina vasca de autor en caserio tradicional</div>
     </div>
   </div>
   <div class="about-content">
-    <p class="section-label reveal">Sobre nosotros</p>
-    <h2 class="section-title reveal reveal-delay-1">Cocina vasca en un<br><em>caserio con historia</em></h2>
+    <p class="section-label reveal">Sobre Aretxondo</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Tradicion vasca<br>con toque de <em>vanguardia</em>
+    </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Aretxondo es un espectacular caserio tradicional en el Barrio Elexalde de Galdakao, rodeado de robles, vinedos y prados. Nuestra propuesta combina un <strong>entorno acogedor con una cocina que equilibra el recetario vasco de siempre y toques de vanguardia</strong>.<br><br>Distinguidos con <strong>1 Sol de la Guia Repsol</strong>, apostamos por el producto fresco y de temporada: pescado del dia, verduras de Navarra y carnes selectas. Un lugar donde <strong>tradicion y creatividad se encuentran</strong> en cada plato.
+      Aretxondo nacio en 1989 en un caserio del barrio de Elexalde, Galdakao. Desde entonces, nuestra filosofia ha sido clara: <strong>respetar el producto y honrar la cocina vasca</strong> anadiendo toques de creatividad contemporanea.<br><br>Reconocidos con <strong>1 Sol Repsol</strong> y mas de 1.000 opiniones en Google, trabajamos con producto de temporada y proveedores locales para ofrecer una experiencia gastronomica autentica en un entorno con historia.
     </p>
-    <div class="about-values reveal reveal-delay-3">
+    <div class="repsol-badge reveal">
+      <span class="sun">&#9788;</span> 1 Sol Guia Repsol
+    </div>
+    <div class="about-values reveal reveal-delay-3" style="margin-top:40px">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
           <h4>Producto de temporada</h4>
-          <p>Verduras de Navarra, pescado fresco del dia y carnes selectas</p>
+          <p>Ingredientes locales y de mercado, seleccionados a diario para garantizar frescura y calidad</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Tradicion y vanguardia</h4>
-          <p>Recetas vascas clasicas con toques creativos y presentacion actual</p>
+          <h4>Tradicion con vanguardia</h4>
+          <p>Cocina vasca clasica reinterpretada con tecnicas contemporaneas y presentacion cuidada</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Celebraciones y eventos</h4>
-          <p>Menus especiales para grupos, bodas y comidas de empresa</p>
+          <h4>Opciones para todos</h4>
+          <p>Menus adaptados para celiacos y opciones veganas. Celebraciones y eventos privados en nuestro caserio</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Nuestra carta</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">Una experiencia para <em>disfrutar</em></h2>
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Una experiencia <em>completa</em>
+    </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
         </div>
-        <h3>Menu Ejecutivo</h3>
-        <p>Menu completo de lunes a viernes por 24,50 &euro;. Primero, segundo, postre y bebida. Cocina casera con producto fresco.</p>
-        <a href="#carta-menu" class="service-link">Ver menu &rarr;</a>
+        <h3>Cocina de Autor</h3>
+        <p>Tradicion vasca con toques de vanguardia. Producto local, tecnica depurada y platos que sorprenden en cada bocado.</p>
+        <a href="#carta-principal" class="service-link">Ver especialidades &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
         </div>
-        <h3>Carta a la Carta</h3>
-        <p>Entrantes creativos, pescados frescos, carnes selectas y postres de autor. Producto de mercado y temporada.</p>
-        <a href="#carta-platos" class="service-link">Ver platos &rarr;</a>
+        <h3>Menu Degustacion</h3>
+        <p>5 o 6 platos seleccionados por el chef para vivir una experiencia gastronomica completa. Desde 44,50 &euro;/persona.</p>
+        <a href="#carta-degustacion" class="service-link">Ver menus &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 2v4M16 2v4"/><rect x="2" y="4" width="20" height="18" rx="2"/><path d="M2 10h20"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
         </div>
-        <h3>Menus Degustacion</h3>
-        <p>Menu Aretxondo (44,50 &euro;, 5 platos en media racion) y Menu Degustacion (69,50 &euro;, 6 platos de carta). Ideal para descubrir nuestra cocina.</p>
-        <a href="#carta-degustacion" class="service-link">Ver menus &rarr;</a>
+        <h3>Menu Ejecutivo</h3>
+        <p>De lunes a viernes, calidad de autor a un precio accesible. Menu completo por 24,50 &euro;/persona.</p>
+        <a href="#carta-ejecutivo" class="service-link">Ver menu &rarr;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M8 22h8M12 2v9m0 0l3-3m-3 3l-3-3"/><circle cx="12" cy="17" r="3"/>
+          </svg>
+        </div>
+        <h3>Bodega Selecta</h3>
+        <p>Txakoli, Rioja, vinos de autor y referencias cuidadosamente seleccionadas para maridar con cada plato.</p>
+        <a href="#carta-principal" class="service-link">Descubrir &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Eventos Privados</h3>
+        <p>Celebraciones en nuestro caserio tradicional. Bodas, comuniones, comidas de empresa y menus personalizados.</p>
+        <a href="#carta-eventos" class="service-link">Mas info &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <h3>Opciones Especiales</h3>
+        <p>Menu celiaco y opciones veganas disponibles. Consultanos tus necesidades alimentarias y las atendemos encantados.</p>
+        <a href="tel:+34944567671" class="service-link">Consultar &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="carta-section" id="carta-menu">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">&larr; Volver a carta</a>
-    <p class="section-label reveal">Menu ejecutivo</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">Cocina de mercado a <em>diario</em></h2>
+<!-- CARTA: ESPECIALIDADES -->
+<section class="carta-section" id="carta">
+  <div class="section-inner" id="carta-principal">
+    <p class="section-label reveal">Nuestra carta</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Especialidades de la <em>casa</em>
+    </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Primeros</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Crema de verduras de temporada</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Ensalada mixta con vinagreta</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Pasta fresca del dia</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Legumbres estofadas</div></div><div class="carta-item-price">incl.</div></div>
+          <h4>Especialidades del Chef</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Jamon de mar con ponzu y ajo frito</div>
+              <div class="carta-item-desc">Textura unica, sabor intenso del mar</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Lubina asada con vieira y salsa de txakoli</div>
+              <div class="carta-item-desc">Pescado de lonja, coccion perfecta</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cerdo iberico con milhojas de boniato</div>
+              <div class="carta-item-desc">Iberico seleccionado, guarnicion de temporada</div>
+            </div>
+          </div>
         </div>
-        <div class="carta-category reveal">
-          <h4>Segundos</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Merluza a la plancha</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Solomillo con guarnicion</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Pollo asado con patatas</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Bacalao en salsa verde</div></div><div class="carta-item-price">incl.</div></div>
+        <div class="carta-highlight reveal reveal-delay-1">
+          <h4>Carta completa</h4>
+          <p>La carta varia segun temporada y disponibilidad del producto. Precio medio a la carta: entre 41 &euro; y 75 &euro; por persona. Consultanos la carta del dia llamando al restaurante.</p>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Postres</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Tarta de queso Idiazabal</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Torrija caramelizada</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Helado artesano</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Fruta de temporada</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Cuajada con nueces</div></div><div class="carta-item-price">incl.</div></div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Menu Ejecutivo &mdash; 24,50 &euro;</h4>
-          <p>Incluye primero, segundo, postre, pan y bebida. Disponible de lunes a viernes. Carta rotatoria con producto de mercado.</p>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal"><span>Reservar mesa</span><span>&rarr;</span></a>
-  </div>
-</section>
-
-<section class="carta-section" id="carta-platos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">&larr; Volver a carta</a>
-    <p class="section-label reveal">Platos a la carta</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">Producto fresco y <em>cocina de autor</em></h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Entrantes</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Ensalada de bacalao y txangurro</div><div class="carta-item-desc">Con piperrada y vinagreta suave</div></div><div class="carta-item-price">23,50 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Surtido de croquetas y calamares</div></div><div class="carta-item-price">17,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Taco de pulpo asado</div><div class="carta-item-desc">Con salsa romesco</div></div><div class="carta-item-price">23,70 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Hongos con huevo y crema de patata</div></div><div class="carta-item-price">19,70 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Jamon de mar con ponzu</div></div><div class="carta-item-price">21,00 &euro;</div></div>
-        </div>
-        <div class="carta-category reveal">
-          <h4>Pescados</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Merluza en salsa verde</div></div><div class="carta-item-price">26,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Kokotxas a la plancha con vieira</div><div class="carta-item-desc">Con salsa de txakoli</div></div><div class="carta-item-price">28,50 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Lubina asada con vieira</div><div class="carta-item-desc">Con salsa de txakoli</div></div><div class="carta-item-price">27,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Gambas de Huelva a la plancha</div></div><div class="carta-item-price">24,00 &euro;</div></div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Carnes</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Solomillo en costra de finas hierbas</div><div class="carta-item-desc">Al tuetano</div></div><div class="carta-item-price">28,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Steak tartar de solomillo</div><div class="carta-item-desc">Con huevo de codorniz y pan carasau</div></div><div class="carta-item-price">19,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Pluma iberica</div><div class="carta-item-desc">Con milhojas de boniato crujiente</div></div><div class="carta-item-price">22,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Txuleton de vaca vieja</div></div><div class="carta-item-price">Mercado</div></div>
+          <h4>Nuestra filosofia</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Producto de temporada</div>
+              <div class="carta-item-desc">Ingredientes locales seleccionados a diario</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cocina vasca reinterpretada</div>
+              <div class="carta-item-desc">Tradicion con tecnicas de vanguardia</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Opciones para celiacos y veganos</div>
+              <div class="carta-item-desc">Consultanos tus necesidades alimentarias</div>
+            </div>
+          </div>
         </div>
         <div class="carta-category reveal reveal-delay-2">
-          <h4>Postres</h4>
-          <div class="carta-item"><div><div class="carta-item-name">Tarta de queso Idiazabal</div></div><div class="carta-item-price">9,50 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Torrija caramelizada</div></div><div class="carta-item-price">9,00 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Coulant de chocolate</div></div><div class="carta-item-price">9,50 &euro;</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Sorbetes y helados artesanos</div></div><div class="carta-item-price">7,50 &euro;</div></div>
+          <h4>Bodega</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Txakoli</div>
+              <div class="carta-item-desc">Seleccion de las mejores bodegas vascas</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Rioja &amp; Ribera</div>
+              <div class="carta-item-desc">Tintos seleccionados para cada plato</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Vinos de autor</div>
+              <div class="carta-item-desc">Referencias unicas elegidas por el equipo</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:+34944567671" class="carta-cta reveal"><span>Reservar mesa</span><span>&rarr;</span></a>
+    <a href="tel:+34944567671" class="carta-cta reveal">
+      <span>Reservar mesa</span><span>&rarr;</span>
+    </a>
   </div>
 </section>
 
+<!-- CARTA: MENUS -->
 <section class="carta-section" id="carta-degustacion">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">&larr; Volver a carta</a>
-    <p class="section-label reveal">Menus degustacion</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">La experiencia<br><em>Aretxondo completa</em></h2>
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Menus</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Experiencias <em>gastronomicas</em>
+    </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>Menu Aretxondo &mdash; 44,50 &euro;</h4>
-          <div class="carta-item"><div><div class="carta-item-name">5 platos en media racion</div><div class="carta-item-desc">Seleccion del chef con producto de temporada</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Postre del dia</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Pan artesano y aceite</div></div><div class="carta-item-price">incl.</div></div>
+          <h4>Menu Ejecutivo (L-V)</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Menu completo de lunes a viernes</div>
+              <div class="carta-item-desc">Entrante + principal + postre + bebida</div>
+            </div>
+            <div class="carta-item-price">24,50 &euro;</div>
+          </div>
         </div>
-        <div class="carta-highlight reveal">
-          <h4>Menu Aretxondo &mdash; 44,50 &euro;</h4>
-          <p>5 platos servidos en media racion con seleccion del chef. Ideal para conocer la esencia de nuestra cocina sin compromiso.</p>
+        <div class="carta-category reveal reveal-delay-1" id="carta-ejecutivo">
+          <h4>Menu Degustacion (5 platos)</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">5 platos seleccionados por el chef</div>
+              <div class="carta-item-desc">Recorrido por los sabores de la temporada</div>
+            </div>
+            <div class="carta-item-price">44,50 &euro;</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal">
+          <h4>Menu Degustacion Premium (6 platos)</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">6 platos con las mejores elaboraciones</div>
+              <div class="carta-item-desc">La experiencia completa de Aretxondo</div>
+            </div>
+            <div class="carta-item-price">69,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-1">
+          <h4>A la carta</h4>
+          <p>Precio medio entre 41 &euro; y 75 &euro; por persona. La carta cambia segun la temporada y la disponibilidad del mejor producto del dia. Reserva tu mesa y pregunta por las sugerencias del chef.</p>
+        </div>
+      </div>
+    </div>
+    <a href="tel:+34944567671" class="carta-cta reveal">
+      <span>Reservar mesa</span><span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- CARTA: EVENTOS -->
+<section class="carta-section" id="carta-eventos">
+  <div class="section-inner">
+    <a href="#carta" class="carta-back reveal">&larr; Volver a carta</a>
+    <p class="section-label reveal">Eventos y celebraciones</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Celebra en nuestro <em>caserio</em>
+    </h2>
+    <div class="carta-columns">
+      <div>
+        <div class="carta-category reveal">
+          <h4>Nuestro espacio</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Caserio tradicional</div>
+              <div class="carta-item-desc">Edificio historico en el barrio de Elexalde, Galdakao</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Salon privado</div>
+              <div class="carta-item-desc">Espacio reservado para celebraciones intimas</div>
+            </div>
+          </div>
+        </div>
+        <div class="carta-highlight reveal reveal-delay-1">
+          <h4>Menus personalizados</h4>
+          <p>Disenamos menus a medida para tu celebracion. Bodas, comuniones, bautizos, comidas de empresa y cenas de grupo. Llamanos y te asesoramos sin compromiso.</p>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>Menu Degustacion &mdash; 69,50 &euro;</h4>
-          <div class="carta-item"><div><div class="carta-item-name">6 platos escogidos de carta</div><div class="carta-item-desc">Experiencia completa con maridaje opcional</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Postre especial del chef</div></div><div class="carta-item-price">incl.</div></div>
-          <div class="carta-item"><div><div class="carta-item-name">Petit fours y cafe</div></div><div class="carta-item-price">incl.</div></div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Menu Degustacion &mdash; 69,50 &euro;</h4>
-          <p>La experiencia gastronomica completa. 6 platos de carta con postre especial, petit fours y cafe. Opciones sin gluten y veganas disponibles.</p>
+          <h4>Tipo de eventos</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Bodas y celebraciones</div>
+              <div class="carta-item-desc">Menu cerrado personalizado en entorno unico</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Comidas de empresa</div>
+              <div class="carta-item-desc">Menus ejecutivos y degustacion para grupos</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Comuniones y bautizos</div>
+              <div class="carta-item-desc">Celebraciones familiares en un marco incomparable</div>
+            </div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Cenas de grupo</div>
+              <div class="carta-item-desc">Cuadrillas, amigos, aniversarios</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:+34944567671" class="carta-cta reveal"><span>Reservar para grupo</span><span>&rarr;</span></a>
+    <a href="tel:+34944567671" class="carta-cta reveal">
+      <span>Llamar para reservar</span><span>&rarr;</span>
+    </a>
   </div>
 </section>
 
-<section class="testimonials-section">
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
     <p class="section-label reveal">Opiniones reales</p>
-    <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>comensales</em>
+    </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
-        <p class="testimonial-quote">"Producto fresco y presentacion impecable. La ensalada de bogavante y los hongos con huevo sobre crema de patata ahumada son espectaculares."</p>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">&ldquo;Un caserio con una cocina de nivel Repsol. El menu degustacion es una experiencia completa.&rdquo;</p>
         <div class="testimonial-divider"></div>
-        <div class="testimonial-author"><strong>Sonia Fernandez</strong><span>Resena en Google</span></div>
+        <div class="testimonial-author">
+          <strong>Koldo A.</strong>
+          <span>Menu Degustacion &middot; Google</span>
+        </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
-        <p class="testimonial-quote">"Ideal para comer en familia. Ambiente tranquilo, preciosas vistas y una cocina que equilibra tradicion y creatividad. Siempre repetimos."</p>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">&ldquo;El cerdo iberico con boniato es una obra de arte. Ambiente acogedor y servicio impecable.&rdquo;</p>
         <div class="testimonial-divider"></div>
-        <div class="testimonial-author"><strong>Helena Ortega</strong><span>Resena en Google</span></div>
+        <div class="testimonial-author">
+          <strong>Leire B.</strong>
+          <span>A la carta &middot; Google</span>
+        </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star empty"></div></div>
-        <p class="testimonial-quote">"Pagas el producto, el servicio y la calidad. Fuimos un grupo de 12 personas y todos quedamos encantados. El caserio es precioso."</p>
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">&ldquo;De los mejores restaurantes de Galdakao. La lubina con txakoli es espectacular.&rdquo;</p>
         <div class="testimonial-divider"></div>
-        <div class="testimonial-author"><strong>Gorka Gil</strong><span>Resena en Google</span></div>
+        <div class="testimonial-author">
+          <strong>Asier T.</strong>
+          <span>Habitual &middot; Google</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="location-section" id="ubicacion">
-  <div class="location-map">
-    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Aretxondo,Galdakao,Spain&zoom=17" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  <div class="location-info">
-    <p class="section-label reveal">Donde estamos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 48px;">Ven a <em>visitarnos</em></h2>
-    <div class="location-item reveal">
-      <h4>Direccion</h4>
-      <p>B Elexalde, 16<br>Galdakao, Bizkaia</p>
-    </div>
-    <div class="location-item reveal">
-      <h4>Telefono</h4>
-      <a href="tel:+34944567671">944 56 76 71</a>
-    </div>
-    <div class="location-item reveal">
-      <h4>Horario</h4>
-      <div class="horario-grid">
-        <span class="horario-dia">Lunes</span><span class="horario-hora horario-cerrado">Cerrado</span>
-        <span class="horario-dia">Martes</span><span class="horario-hora">13:00 &mdash; 16:00</span>
-        <span class="horario-dia">Miercoles</span><span class="horario-hora">13:00 &mdash; 16:00</span>
-        <span class="horario-dia">Jueves</span><span class="horario-hora">13:00 &mdash; 16:00</span>
-        <span class="horario-dia">Viernes</span><span class="horario-hora">13:00 &mdash; 16:00 / 20:30 &mdash; 23:00</span>
-        <span class="horario-dia">Sabado</span><span class="horario-hora">13:00 &mdash; 16:00 / 20:30 &mdash; 23:00</span>
-        <span class="horario-dia">Domingo</span><span class="horario-hora">13:00 &mdash; 16:00</span>
-      </div>
-    </div>
-    <div class="location-item reveal">
-      <h4>Email</h4>
-      <a href="mailto:aretxondo@aretxondo.com">aretxondo@aretxondo.com</a>
-    </div>
-    <div class="location-item reveal">
-      <h4>Web</h4>
-      <a href="https://www.aretxondo.com" target="_blank" rel="noopener">www.aretxondo.com</a>
-    </div>
-  </div>
+<!-- MAP -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Aretxondo,Galdakao&zoom=17" width="100%" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
 </div>
 
-<div class="cta-section">
+<!-- CTA -->
+<div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>Te esperamos<br>en el caserio</h2>
-    <p>Reserva tu mesa en Aretxondo. Cocina vasca tradicional y creativa en un caserio con vistas en Galdakao.</p>
+    <h2>Reserva tu mesa<br>en Aretxondo</h2>
+    <p>Cocina vasca de autor en caserio tradicional. Llamanos o escribenos.</p>
   </div>
-  <a href="tel:+34944567671" class="btn-dark"><span>Reservar: 944 56 76 71</span><span>&nearr;</span></a>
+  <a href="tel:+34944567671" class="btn-dark">
+    <span>944 567 671</span>
+    <span>&nearr;</span>
+  </a>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
-      <p class="footer-tagline">"Tradicion vasca con alma de caserio, en el corazon de Galdakao."</p>
+      <p class="footer-tagline">"Jatetxea — Cocina vasca de autor en caserio tradicional desde 1989"</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/rest_aretxondo/" target="_blank" rel="noopener" class="social-link">Ig</a>
-        <a href="https://www.facebook.com/RestauranteAretxondo/" target="_blank" rel="noopener" class="social-link">Fb</a>
-        <a href="https://maps.google.com/?q=Restaurante+Aretxondo+Galdakao" target="_blank" rel="noopener" class="social-link">Gm</a>
-        <a href="https://www.aretxondo.com" target="_blank" rel="noopener" class="social-link">Wb</a>
+        <a href="https://www.facebook.com/RestauranteAretxondo/" target="_blank" rel="noopener" class="social-link" title="Facebook">Fb</a>
+        <a href="https://www.instagram.com/rest_aretxondo/" target="_blank" rel="noopener" class="social-link" title="Instagram">Ig</a>
+        <a href="https://www.google.com/maps/place/Aretxondo" target="_blank" rel="noopener" class="social-link" title="Google Maps">Gm</a>
+        <a href="tel:+34944567671" class="social-link" title="Telefono">Tf</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#carta-menu">Menu Ejecutivo</a></li>
-        <li><a href="#carta-platos">Platos a la Carta</a></li>
-        <li><a href="#carta-degustacion">Menus Degustacion</a></li>
+        <li><a href="#carta-principal">Especialidades</a></li>
+        <li><a href="#carta-degustacion">Menu Degustacion</a></li>
+        <li><a href="#carta-ejecutivo">Menu Ejecutivo</a></li>
+        <li><a href="#carta-eventos">Eventos</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Aretxondo</h4>
+      <h4>Restaurante</h4>
       <ul>
         <li><a href="#nosotros">Sobre nosotros</a></li>
         <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#ubicacion">Ubicacion</a></li>
-        <li><a href="https://www.instagram.com/rest_aretxondo/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/RestauranteAretxondo/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="https://aretxondo.es" target="_blank" rel="noopener">Web oficial</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="tel:+34944567671">944 56 76 71</a></li>
         <li><a href="mailto:aretxondo@aretxondo.com">aretxondo@aretxondo.com</a></li>
-        <li><a href="#">B Elexalde, 16</a></li>
-        <li><a href="#">Galdakao, Bizkaia</a></li>
+        <li><a href="tel:+34944567671">944 567 671</a></li>
+        <li><a href="https://www.google.com/maps/place/Aretxondo" target="_blank" rel="noopener">B. Elexalde, 16<br>48960 Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Restaurante Aretxondo. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Aretxondo Jatetxea. Todos los derechos reservados.</p>
     <div class="footer-legal">
       <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
@@ -970,6 +1384,7 @@
 </footer>
 
 <script>
+  // ── LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -977,43 +1392,61 @@
     }, 1800);
   });
 
+  // ── CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX; mouseY = e.clientY;
-    dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
   });
+
   function animateRing() {
-    ringX += (mouseX - ringX) * 0.7; ringY += (mouseY - ringY) * 0.7;
-    ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
     requestAnimationFrame(animateRing);
   }
   animateRing();
+
   document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
+  // ── NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
 
+  // ── HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active'); mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
   });
-  function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('open'); }
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
 
+  // ── REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
+  // ── COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
-    const duration = 1800; const start = performance.now();
+    const duration = 1800;
+    const start = performance.now();
     function step(now) {
       const progress = Math.min((now - start) / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 4);
@@ -1022,14 +1455,24 @@
     }
     requestAnimationFrame(step);
   }
+
   const countObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countObserver.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
+  // ── HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
-    if (heroBg) heroBg.style.transform = 'scale(1) translateY(' + (window.scrollY * 0.25) + 'px)';
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
+    }
   });
 </script>
 </body>
