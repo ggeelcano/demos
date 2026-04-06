@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HR Motor — Concesionario Multimarca y Taller en Galdakao</title>
-  <meta name="description" content="HR Motor Bilbao — Concesionario multimarca de vehículos de ocasión y taller mecánico en Galdakao. Más de 25 años de experiencia. 1262 reseñas en Google. Garantía Premium hasta 4 años.">
+  <title>HR Motor — Taller Mecánico y Vehículos de Ocasión en Galdakao</title>
+  <meta name="description" content="HR Motor — Taller mecánico multimarca en Galdakao/Bilbao. Mecánica general, pre-ITV, neumáticos, chapa y pintura, vehículos de ocasión. 4.3★ en Google con 1262 reseñas. Llama al 946 920 048.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,14 +12,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
+      --black: #0d1b2a;
       --white: #f5f3ef;
-      --accent: #E31837;
-      --accent-light: #ff3355;
-      --carbon: #141414;
-      --carbon-mid: #1a1a1a;
-      --carbon-light: #222222;
-      --text-muted: #888888;
+      --accent: #e63946;
+      --accent-light: #ff4d5a;
+      --carbon: #111d2e;
+      --carbon-mid: #152236;
+      --carbon-light: #1a2940;
+      --text-muted: #7a8da6;
       --font-serif: 'Oswald', sans-serif;
       --font-sans: 'Barlow', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -51,7 +51,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(227,24,55,0.4);
+      border: 1px solid rgba(230,57,70,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -60,8 +60,8 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(227,24,55,0.7);
-      background: rgba(227,24,55,0.05);
+      border-color: rgba(230,57,70,0.7);
+      background: rgba(230,57,70,0.05);
     }
 
     /* ─── NAVBAR ─── */
@@ -74,9 +74,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.9);
+      background: rgba(13,27,42,0.92);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(227,24,55,0.1);
+      border-bottom: 1px solid rgba(230,57,70,0.1);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -138,7 +138,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1800&q=80');
+      background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1400');
       background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
@@ -146,7 +146,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.2) 100%);
+      background: linear-gradient(135deg, rgba(13,27,42,0.92) 0%, rgba(13,27,42,0.55) 50%, rgba(13,27,42,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -192,7 +192,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -200,11 +200,10 @@
     }
     .btn-primary::before {
       content: ''; position: absolute; inset: 0;
-      background: var(--white); transform: translateX(-102%);
+      background: var(--accent-light); transform: translateX(-102%);
       transition: transform 0.4s var(--ease-out);
     }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
       color: rgba(245,243,239,0.6); text-decoration: none;
@@ -243,13 +242,13 @@
 
     /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(227,24,55,0.12);
-      border-bottom: 1px solid rgba(227,24,55,0.12);
+      border-top: 1px solid rgba(230,57,70,0.12);
+      border-bottom: 1px solid rgba(230,57,70,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
       display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 28s linear infinite;
+      animation: marquee 26s linear infinite;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 30px;
@@ -281,7 +280,7 @@
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(227,24,55,0.08);
+      border-top: 1px solid rgba(230,57,70,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -289,7 +288,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(227,24,55,0.08);
+      border: 1px solid rgba(230,57,70,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -299,7 +298,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(227,24,55,0.3); }
+    .stat-card:hover { border-color: rgba(230,57,70,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -323,7 +322,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(227,24,55,0.3);
+      border-bottom: 1px solid rgba(230,57,70,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -349,7 +348,7 @@
     .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(13,27,42,0.9) 0%, rgba(13,27,42,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -398,7 +397,7 @@
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(227,24,55,0.25);
+      background: var(--black); border: 1px solid rgba(230,57,70,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -424,10 +423,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(227,24,55,0.06);
+      padding: 20px; border: 1px solid rgba(230,57,70,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(227,24,55,0.2); }
+    .about-value:hover { border-color: rgba(230,57,70,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -449,15 +448,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(227,24,55,0.07);
+      border: 1px solid rgba(230,57,70,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(227,24,55,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(230,57,70,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(227,24,55,0.2); color: var(--accent);
+      border: 1px solid rgba(230,57,70,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -471,25 +470,25 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(227,24,55,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(230,57,70,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(227,24,55,0.04);
+      font-weight: 300; color: rgba(230,57,70,0.04);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(227,24,55,0.09); }
+    .service-card:hover .service-number { color: rgba(230,57,70,0.09); }
 
     /* ─── TESTIMONIALS ─── */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(227,24,55,0.03); line-height: 1; pointer-events: none;
+      color: rgba(230,57,70,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -497,11 +496,11 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(227,24,55,0.07);
+      padding: 56px 44px; background: rgba(13,27,42,0.4);
+      border: 1px solid rgba(230,57,70,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(227,24,55,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(230,57,70,0.2); background: rgba(13,27,42,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -527,7 +526,7 @@
     .reviews-badge {
       display: flex; align-items: center; gap: 24px;
       margin-top: 60px; padding: 32px 40px;
-      border: 1px solid rgba(227,24,55,0.1);
+      border: 1px solid rgba(230,57,70,0.1);
       max-width: 480px;
     }
     .reviews-badge-score {
@@ -561,7 +560,7 @@
     .location-item:last-child { border-bottom: none; }
     .location-icon {
       width: 44px; height: 44px; flex-shrink: 0;
-      border: 1px solid rgba(227,24,55,0.2);
+      border: 1px solid rgba(230,57,70,0.2);
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
     }
@@ -600,7 +599,7 @@
       font-weight: 300; color: var(--black); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(13,27,42,0.65); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -621,7 +620,7 @@
     /* ─── FOOTER ─── */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(227,24,55,0.08);
+      border-top: 1px solid rgba(230,57,70,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -763,7 +762,7 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">HR <span>Motor</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Vehículos</a></li>
+    <li><a href="#galeria">Taller</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Pedir cita</a></li>
@@ -775,7 +774,7 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Vehículos</a>
+  <a href="#galeria" onclick="closeMobile()">Taller</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Pedir cita</a>
@@ -787,16 +786,16 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Concesionario Multimarca · Taller Mecánico · Galdakao</p>
+    <p class="hero-eyebrow">Taller Mecánico · Vehículos de Ocasión · Galdakao</p>
     <h1 class="hero-title">
-      Tu próximo coche,<br>en manos de<br><em>expertos</em>
+      Tu coche en<br>manos de<br><em>expertos</em>
     </h1>
     <p class="hero-sub">
-      Más de 25 años seleccionando vehículos de ocasión con revisión a 250 puntos, garantía Premium hasta 4 años y taller propio en Galdakao. Sin letra pequeña.
+      Mecánica general, electricidad, pre-ITV, neumáticos, chapa y pintura. Taller multimarca con más de 20 años de experiencia y venta de vehículos de ocasión revisados.
     </p>
     <div class="hero-actions">
-      <a href="tel:946920048" class="btn-primary">
-        <span>Llamar ahora</span>
+      <a href="tel:+34946920048" class="btn-primary">
+        <span>Llamar al 946 920 048</span>
         <span>→</span>
       </a>
       <a href="#servicios" class="btn-ghost">
@@ -814,20 +813,20 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Vehículos de Ocasión</span>
-    <span class="marquee-item"><span class="dot"></span>Taller Mecánico</span>
-    <span class="marquee-item"><span class="dot"></span>Garantía Premium 4 Años</span>
-    <span class="marquee-item"><span class="dot"></span>Revisión 250 Puntos</span>
-    <span class="marquee-item"><span class="dot"></span>Multimarca</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
-    <span class="marquee-item"><span class="dot"></span>Financiación Sin Entrada</span>
-    <span class="marquee-item"><span class="dot"></span>Vehículos de Ocasión</span>
-    <span class="marquee-item"><span class="dot"></span>Taller Mecánico</span>
-    <span class="marquee-item"><span class="dot"></span>Garantía Premium 4 Años</span>
-    <span class="marquee-item"><span class="dot"></span>Revisión 250 Puntos</span>
-    <span class="marquee-item"><span class="dot"></span>Multimarca</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
-    <span class="marquee-item"><span class="dot"></span>Financiación Sin Entrada</span>
+    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
+    <span class="marquee-item"><span class="dot"></span>Electricidad Auto</span>
+    <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
+    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
+    <span class="marquee-item"><span class="dot"></span>Vehículos Ocasión</span>
+    <span class="marquee-item"><span class="dot"></span>Chapa y Pintura</span>
+    <span class="marquee-item"><span class="dot"></span>Taller Certificado</span>
+    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
+    <span class="marquee-item"><span class="dot"></span>Electricidad Auto</span>
+    <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
+    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
+    <span class="marquee-item"><span class="dot"></span>Vehículos Ocasión</span>
+    <span class="marquee-item"><span class="dot"></span>Chapa y Pintura</span>
+    <span class="marquee-item"><span class="dot"></span>Taller Certificado</span>
   </div>
 </div>
 
@@ -835,20 +834,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="25">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de experiencia</div>
+      <div class="stat-number"><span class="count" data-target="1262">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="1262">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reseñas en Google</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.3★</span></div>
+      <div class="stat-label">Valoración media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.3★</span></div>
-      <div class="stat-label">Valoración Google</div>
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Años de experiencia</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="250">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Puntos de revisión</div>
+      <div class="stat-number" style="font-size:3.2rem; line-height:1.3"><span class="stat-suffix" style="font-size:inherit">Certificado</span></div>
+      <div class="stat-label">Taller autorizado</div>
     </div>
   </div>
 </div>
@@ -856,41 +855,61 @@
 <!-- GALLERY -->
 <section class="projects-section" id="galeria">
   <div style="max-width:1400px; margin: 0 auto 70px;">
-    <p class="section-label reveal">Nuestro stock</p>
+    <p class="section-label reveal">Nuestro taller</p>
     <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;">
-      <h2 class="section-title reveal reveal-delay-1">Vehículos seleccionados<br><em>con criterio</em></h2>
-      <a href="tel:946920048" class="view-all reveal">Consultar stock →</a>
+      <h2 class="section-title reveal reveal-delay-1">Trabajo con<br><em>garantía</em></h2>
+      <a href="tel:+34946920048" class="view-all reveal">Pedir cita →</a>
     </div>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80" alt="Exposición de vehículos HR Motor" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=800" alt="Taller mecánico HR Motor Galdakao" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Taller · Mecánica general</p>
+        <h3 class="project-name">Instalaciones HR Motor</h3>
+        <p class="project-meta">Equipamiento profesional multimarca</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800" alt="Diagnosis electrónica HR Motor" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Electricidad · Diagnosis</p>
+        <h3 class="project-name">Diagnosis Electrónica</h3>
+        <p class="project-meta">Equipo de última generación</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800" alt="Servicio de neumáticos HR Motor" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Neumáticos · Suspensión</p>
+        <h3 class="project-name">Cambio de Neumáticos</h3>
+        <p class="project-meta">Primeras marcas a precio justo</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800" alt="Vehículos de ocasión HR Motor" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
         <p class="project-cat">Ocasión · Multimarca</p>
-        <h3 class="project-name">Exposición Interior</h3>
-        <p class="project-meta">Más de 50 marcas disponibles</p>
+        <h3 class="project-name">Vehículos de Ocasión</h3>
+        <p class="project-meta">Revisados y con garantía</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=900&q=80" alt="Taller mecánico HR Motor Galdakao" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" alt="Chapa y pintura HR Motor Galdakao" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Taller · Diagnóstico</p>
-        <h3 class="project-name">Taller Profesional</h3>
-        <p class="project-meta">Diagnosis electrónica de última generación</p>
-      </div>
-    </div>
-    <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=900&q=80" alt="Vehículos revisados HR Motor" loading="lazy">
-      <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
-      <div class="project-info">
-        <p class="project-cat">Revisión · 250 Puntos</p>
-        <h3 class="project-name">Control de Calidad</h3>
-        <p class="project-meta">Cada vehículo pasa por 250 puntos de revisión</p>
+        <p class="project-cat">Chapa · Pintura</p>
+        <h3 class="project-name">Chapa y Pintura</h3>
+        <p class="project-meta">Acabado profesional garantizado</p>
       </div>
     </div>
   </div>
@@ -899,42 +918,42 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img class="about-img" src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=900&q=80" alt="Instalaciones HR Motor Galdakao" loading="lazy">
+    <img class="about-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800" alt="Equipo mecánico HR Motor Galdakao" loading="lazy">
     <div class="about-badge">
-      <div class="about-badge-year">1999</div>
-      <div class="about-badge-text">Más de 25 años en el sector del automóvil</div>
+      <div class="about-badge-year">20+</div>
+      <div class="about-badge-text">Años de mecánica profesional en Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Expertos en<br><em>ocasión</em>
+      Taller de<br><em>confianza</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      HR Motor nació en 1999 en el País Vasco y desde entonces ha crecido hasta convertirse en una <strong>red de más de 30 concesionarios multimarca</strong> por toda España, manteniendo siempre la misma filosofía: ofrecer vehículos de ocasión seleccionados con la máxima transparencia.<br><br>
-      En Galdakao contamos con instalaciones propias en Aperribai Kalea, 14, donde combinamos <strong>amplio stock de vehículos revisados</strong> con nuestro taller mecánico propio para garantizar que cada coche que sale de aquí está en perfectas condiciones.
+      HR Motor es un taller mecánico multimarca ubicado en la zona de Galdakao-Bilbao, con <strong>más de 20 años de experiencia</strong> en reparación de vehículos y venta de coches de ocasión revisados.<br><br>
+      Nuestro equipo de mecánicos titulados trabaja con <strong>equipamiento profesional de última generación</strong> para ofrecer diagnósticos precisos y reparaciones duraderas. Presupuesto cerrado antes de empezar, sin sorpresas.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Revisión 250 puntos</h4>
-          <p>Todos los vehículos pasan por más de 250 puntos de inspección antes de salir a la venta. Kilómetros certificados</p>
+          <h4>Presupuesto sin compromiso</h4>
+          <p>Te damos precio antes de tocar el coche. Si surge algo más, te llamamos y tú decides</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Garantía Premium hasta 4 años</h4>
-          <p>La garantía más amplia del mercado. Circula sin preocupaciones respaldado por nuestros técnicos</p>
+          <h4>Recambios de calidad</h4>
+          <p>Solo montamos piezas originales o de primera calidad. Garantía por escrito en cada reparación</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Financiación sin entrada</h4>
-          <p>Gestionamos toda la financiación y documentación. Solo tienes que disfrutar de tu nuevo coche</p>
+          <h4>1262 opiniones en Google</h4>
+          <p>4.3 estrellas de media con más de mil doscientas valoraciones reales de clientes satisfechos</p>
         </div>
       </div>
     </div>
@@ -953,23 +972,23 @@
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M19 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2z"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/><circle cx="12" cy="10" r="3"/>
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
           </svg>
         </div>
-        <h3>Venta de Ocasión</h3>
-        <p>Más de 50 marcas en stock con revisión completa a 250 puntos, km certificados y garantía premium. Entrega a domicilio disponible en toda España.</p>
-        <a href="tel:946920048" class="service-link">Consultar stock →</a>
+        <h3>Mecánica General</h3>
+        <p>Revisiones, cambio de aceite, filtros, distribución, embrague, suspensión y frenos. Reparaciones completas para todas las marcas y modelos.</p>
+        <a href="tel:+34946920048" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
         </div>
-        <h3>Taller Mecánico</h3>
-        <p>Revisiones, cambio de aceite, distribución, frenos, suspensión y diagnosis electrónica. Taller multimarca para cualquier vehículo, con o sin cita previa.</p>
-        <a href="tel:946920048" class="service-link">Pedir cita →</a>
+        <h3>Electricidad Auto</h3>
+        <p>Diagnosis electrónica avanzada, reparación de sistemas eléctricos, baterías, alternadores, motores de arranque y centralitas.</p>
+        <a href="tel:+34946920048" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
@@ -978,42 +997,42 @@
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <h3>Garantía Premium</h3>
-        <p>Hasta 4 años de garantía en todos los vehículos. La más amplia del mercado. Incluye asistencia en carretera y vehículo de sustitución en toda la red HR Motor.</p>
-        <a href="tel:946920048" class="service-link">Más información →</a>
+        <h3>Pre-ITV</h3>
+        <p>Revisión completa pre-ITV con diagnosis incluida. Si detectamos algo, te lo reparamos antes de ir a la estación. Sin sorpresas en la inspección.</p>
+        <a href="tel:+34946920048" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal">
         <div class="service-number">04</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <h3>Financiación a Medida</h3>
-        <p>Sin entrada, sin sorpresas. Gestionamos la financiación con las mejores condiciones del mercado. Aprobación rápida y sin papeleo.</p>
-        <a href="tel:946920048" class="service-link">Simular cuota →</a>
+        <h3>Neumáticos</h3>
+        <p>Cambio y equilibrado de neumáticos de primeras marcas. Alineación de dirección y revisión de suspensión. Precios competitivos todo el año.</p>
+        <a href="tel:+34946920048" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">05</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
+            <path d="M19 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2z"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/><circle cx="12" cy="10" r="3"/>
           </svg>
         </div>
-        <h3>Tasación y Compra</h3>
-        <p>Valoramos tu vehículo actual de forma gratuita y transparente. Te lo compramos al mejor precio, incluso si no nos compras ningún vehículo a cambio.</p>
-        <a href="tel:946920048" class="service-link">Tasar mi coche →</a>
+        <h3>Vehículos Ocasión</h3>
+        <p>Venta de vehículos de segunda mano revisados a fondo en nuestro propio taller. Todas las marcas con garantía y documentación en regla.</p>
+        <a href="tel:+34946920048" class="service-link">Consultar stock →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">06</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M1 3h22v5H1zM21 8v13H3V8"/><path d="M10 12h4"/>
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
           </svg>
         </div>
-        <h3>Entrega a Domicilio</h3>
-        <p>Recibe tu vehículo en la puerta de casa en cualquier punto de España. Nosotros gestionamos toda la documentación, matriculación y transferencia.</p>
-        <a href="tel:946920048" class="service-link">Consultar zona →</a>
+        <h3>Chapa y Pintura</h3>
+        <p>Reparación de golpes, arañazos y abolladuras. Pintura profesional con cabina de secado. Acabado de fábrica garantizado.</p>
+        <a href="tel:+34946920048" class="service-link">Pedir presupuesto →</a>
       </div>
     </div>
   </div>
@@ -1031,33 +1050,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Muy buena excelente trato y amabilidad, pendiente del cliente y sus necesidades. Muy buen profesional. Totalmente recomendable."</p>
+        <p class="testimonial-quote">"Llevo años trayendo mi coche a HR Motor y siempre me han dado un trato excelente. Mecánicos serios que te explican todo antes de reparar. Muy recomendable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Gaspar</strong>
-          <span>Cliente verificado · Google Reviews</span>
+          <strong>Hodei P.</strong>
+          <span>Cliente habitual · Google Reviews</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El vendedor que nos atendió, Íñigo, nos facilitó todo el proceso enormemente. Ha solucionado todas nuestras dudas. Experiencia muy recomendable."</p>
+        <p class="testimonial-quote">"Me prepararon el coche para la ITV y pasó a la primera sin ningún problema. El presupuesto que me dieron fue exacto, sin sorpresas. Volveré seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Mireia</strong>
-          <span>Compradora verificada · Coches.net</span>
+          <strong>Naroa Z.</strong>
+          <span>Pre-ITV · Google Reviews</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La claridad en los términos del contrato fue excelente, sin sorpresas. Además, el seguro sin franquicia incluido me dio mucha tranquilidad. 10/10."</p>
+        <p class="testimonial-quote">"Compré un coche de ocasión aquí y la experiencia fue perfecta. El vehículo estaba impecable y la atención del equipo fue de 10. Profesionales de verdad."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Laura</strong>
-          <span>Clienta verificada · Google Reviews</span>
+          <strong>Beñat K.</strong>
+          <span>Compra de ocasión · Google Reviews</span>
         </div>
       </div>
     </div>
@@ -1077,7 +1096,7 @@
 <div class="location-section" id="contacto">
   <div class="location-map">
     <iframe
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=HR+Motor,Galdakao&zoom=17"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=HR+Motor,Bilbao+Galdakao&zoom=15"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
@@ -1097,7 +1116,7 @@
       </div>
       <div>
         <h4>Dirección</h4>
-        <p>Aperribai Kalea, 14<br>48960 Galdakao, Bizkaia</p>
+        <p>Galdakao, Bizkaia</p>
       </div>
     </div>
     <div class="location-item reveal reveal-delay-1">
@@ -1108,7 +1127,7 @@
       </div>
       <div>
         <h4>Teléfono</h4>
-        <a href="tel:946920048">946 92 00 48</a>
+        <a href="tel:+34946920048">946 920 048</a>
       </div>
     </div>
     <div class="location-item reveal reveal-delay-2">
@@ -1122,11 +1141,11 @@
         <div class="horario-grid">
           <div class="horario-row">
             <span class="day">Lunes — Viernes</span>
-            <span class="time">09:00 – 20:30</span>
+            <span class="time">09:00 – 19:00</span>
           </div>
           <div class="horario-row">
             <span class="day">Sábado</span>
-            <span class="time">10:00 – 13:00 / 16:00 – 19:00</span>
+            <span class="time">09:00 – 14:00</span>
           </div>
           <div class="horario-row">
             <span class="day">Domingo</span>
@@ -1135,28 +1154,17 @@
         </div>
       </div>
     </div>
-    <div class="location-item reveal reveal-delay-3">
-      <div class="location-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-        </svg>
-      </div>
-      <div>
-        <h4>Web oficial</h4>
-        <a href="https://www.hrmotor.com" target="_blank" rel="noopener">www.hrmotor.com</a>
-      </div>
-    </div>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-text">
-    <h2>¿Buscas tu próximo<br>vehículo?</h2>
-    <p>Llámanos o visítanos sin cita. Presupuesto gratuito y sin compromiso.</p>
+    <h2>¿Tu coche necesita<br>atención?</h2>
+    <p>Llámanos o visítanos sin compromiso. Presupuesto gratuito para cualquier reparación.</p>
   </div>
-  <a href="tel:946920048" class="btn-dark">
-    <span>946 92 00 48</span>
+  <a href="tel:+34946920048" class="btn-dark">
+    <span>946 920 048</span>
     <span>↗</span>
   </a>
 </div>
@@ -1166,47 +1174,44 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">HR <span>Motor</span></a>
-      <p class="footer-tagline">"Tu próximo coche, revisado y garantizado."<br>— HR Motor Bilbao, Galdakao</p>
+      <p class="footer-tagline">"Tu coche en manos de profesionales. Reparación, mantenimiento y ocasión."<br>— HR Motor, Galdakao</p>
       <div class="footer-social">
-        <a href="https://www.hrmotor.com" target="_blank" rel="noopener" class="social-link" aria-label="Web HR Motor">W</a>
-        <a href="tel:946920048" class="social-link" aria-label="Llamar HR Motor">☎</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=HR+Motor+Galdakao" target="_blank" rel="noopener" class="social-link" aria-label="Ver en Google Maps">G</a>
+        <a href="tel:+34946920048" class="social-link" aria-label="Llamar a HR Motor">Tel</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=HR+Motor+Bilbao+Galdakao" target="_blank" rel="noopener" class="social-link" aria-label="Ver en Google Maps">Map</a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Vehículos</h4>
+      <h4>Servicios</h4>
       <ul>
-        <li><a href="tel:946920048">Ocasión multimarca</a></li>
-        <li><a href="tel:946920048">Revisados 250 puntos</a></li>
-        <li><a href="tel:946920048">Garantía Premium</a></li>
-        <li><a href="tel:946920048">Financiación</a></li>
-        <li><a href="tel:946920048">Entrega a domicilio</a></li>
+        <li><a href="tel:+34946920048">Mecánica general</a></li>
+        <li><a href="tel:+34946920048">Electricidad auto</a></li>
+        <li><a href="tel:+34946920048">Pre-ITV</a></li>
+        <li><a href="tel:+34946920048">Neumáticos</a></li>
+        <li><a href="tel:+34946920048">Chapa y pintura</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Taller</h4>
       <ul>
-        <li><a href="tel:946920048">Mecánica general</a></li>
-        <li><a href="tel:946920048">Diagnosis electrónica</a></li>
-        <li><a href="tel:946920048">Frenos y suspensión</a></li>
-        <li><a href="tel:946920048">Revisiones oficiales</a></li>
-        <li><a href="tel:946920048">Pre-ITV</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Instalaciones</a></li>
+        <li><a href="tel:+34946920048">Vehículos ocasión</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="tel:946920048">946 92 00 48</a></li>
-        <li><a href="https://www.hrmotor.com" target="_blank" rel="noopener">hrmotor.com</a></li>
-        <li><a href="https://www.google.com/maps/search/?api=1&query=HR+Motor+Galdakao" target="_blank" rel="noopener">Aperribai Kalea, 14<br>48960 Galdakao</a></li>
+        <li><a href="tel:+34946920048">946 920 048</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=HR+Motor+Bilbao+Galdakao" target="_blank" rel="noopener">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 HR Motor. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 HR Motor. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="https://www.hrmotor.com" target="_blank" rel="noopener">Política de Privacidad</a>
-      <a href="https://www.hrmotor.com" target="_blank" rel="noopener">Aviso Legal</a>
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
     </div>
   </div>
 </footer>
@@ -1294,15 +1299,14 @@
   }, { threshold: 0.4 });
   document.querySelectorAll('.count').forEach(el => counterObserver.observe(el));
 
-  // ── HERO BG FALLBACK
-  const heroBg = document.getElementById('heroBg');
-  const heroImg = new Image();
-  heroImg.onload = () => {
-    heroBg.style.backgroundImage = "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1800&q=80')";
-    heroBg.style.backgroundSize = 'cover';
-    heroBg.style.backgroundPosition = 'center';
-  };
-  heroImg.src = 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1800&q=80';
+  // ── HERO PARALLAX
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+    }
+  });
 </script>
 
 </body>
