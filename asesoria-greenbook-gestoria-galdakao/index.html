@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asesoría Greenbook — Gestoría en Galdakao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0C1220;
+      --white: #f5f3ef;
+      --accent: #2E7D52;
+      --accent-light: #4CAF77;
+      --carbon: #131d30;
+      --carbon-mid: #1a2640;
+      --carbon-light: #253552;
+      --text-muted: #7a8899;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; cursor: none; }
+    .cursor-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.1s; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--black), 0 0 0 3px rgba(255,255,255,0.3); }
+    .cursor-ring { width: 40px; height: 40px; border: 1px solid rgba(46,125,82,0.4); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth), border-color 0.35s var(--ease-smooth); }
+    .cursor-ring.expanded { width: 70px; height: 70px; border-color: rgba(46,125,82,0.7); background: rgba(46,125,82,0.05); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; backdrop-filter: blur(0px); transition: backdrop-filter 0.5s, background 0.5s, padding 0.4s; }
+    nav.scrolled { backdrop-filter: blur(20px); background: rgba(8,8,8,0.85); padding: 18px 60px; border-bottom: 1px solid rgba(46,125,82,0.08); }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; letter-spacing: 0.1em; text-decoration: none; color: var(--white); display: flex; align-items: center; gap: 10px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: rgba(245,243,239,0.65); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent) !important; padding: 10px 28px !important; font-size: 0.72rem !important; letter-spacing: 0.25em !important; transition: background 0.3s, color 0.3s !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: var(--white); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--accent); }
+    .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=80'); background-size: cover; background-position: center; transform: scale(1.08); transition: transform 8s var(--ease-out); }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.2) 100%); }
+    .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--black), transparent); }
+    .hero-content { position: relative; z-index: 2; padding: 0 60px 100px; max-width: 900px; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease-out) forwards; }
+    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 7vw, 7rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s var(--ease-out) forwards; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; color: rgba(245,243,239,0.6); max-width: 480px; line-height: 1.7; margin-bottom: 52px; font-weight: 300; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s var(--ease-out) forwards; }
+    .hero-actions { display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1s var(--ease-out) forwards; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--white); text-decoration: none; padding: 18px 40px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--accent-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost { color: rgba(245,243,239,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost-arrow { width: 36px; height: 36px; border: 1px solid rgba(245,243,239,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, transform 0.3s; }
+    .btn-ghost:hover .btn-ghost-arrow { border-color: var(--accent); transform: rotate(45deg); }
+    .hero-scroll { position: absolute; right: 60px; bottom: 100px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; animation: fadeIn 1s 1.5s ease forwards; }
+    .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
+    .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
+    .marquee-section { border-top: 1px solid rgba(46,125,82,0.12); border-bottom: 1px solid rgba(46,125,82,0.12); overflow: hidden; padding: 20px 0; background: var(--carbon); }
+    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 30px; padding: 0 40px; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    section { padding: 130px 60px; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .stats-section { background: var(--carbon); padding: 100px 60px; border-top: 1px solid rgba(46,125,82,0.08); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
+    .stat-card { padding: 60px 50px; background: var(--carbon); border: 1px solid rgba(46,125,82,0.08); position: relative; overflow: hidden; transition: border-color 0.4s; }
+    .stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.5s var(--ease-out); transform-origin: left; }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-card:hover { border-color: rgba(46,125,82,0.3); }
+    .stat-number { font-family: var(--font-serif); font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .stat-number .stat-suffix { color: var(--accent); }
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+    .projects-section { background: var(--black); }
+    .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 70px; max-width: 1400px; margin-left: auto; margin-right: auto; }
+    .projects-header .section-title { max-width: 500px; }
+    .view-all { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--accent); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; transition: gap 0.3s; padding-bottom: 4px; border-bottom: 1px solid rgba(46,125,82,0.3); white-space: nowrap; }
+    .view-all:hover { gap: 20px; border-color: var(--accent); }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; max-width: 1400px; margin: 0 auto; }
+    .project-card { position: relative; overflow: hidden; aspect-ratio: 4/3; cursor: none; }
+    .project-card:first-child { grid-column: span 2; aspect-ratio: 21/8; }
+    .project-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%); opacity: 0.6; transition: opacity 0.5s; }
+    .project-card:hover .project-overlay { opacity: 0.85; }
+    .project-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; transform: translateY(15px); transition: transform 0.5s var(--ease-out); }
+    .project-card:hover .project-info { transform: translateY(0); }
+    .project-cat { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 400; }
+    .project-name { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 300; line-height: 1.15; margin-bottom: 14px; }
+    .project-meta { font-size: 0.73rem; color: rgba(245,243,239,0.45); letter-spacing: 0.1em; opacity: 0; transition: opacity 0.5s 0.1s; }
+    .project-card:hover .project-meta { opacity: 1; }
+    .project-arrow { position: absolute; top: 36px; right: 36px; width: 50px; height: 50px; border: 1px solid rgba(245,243,239,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translate(10px, -10px); transition: all 0.4s var(--ease-out); }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
+    .about-section { background: var(--carbon); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; max-width: none; }
+    .about-visual { position: relative; overflow: hidden; min-height: 700px; }
+    .about-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-badge { position: absolute; bottom: 48px; left: 48px; background: var(--black); border: 1px solid rgba(46,125,82,0.25); padding: 24px 30px; max-width: 260px; }
+    .about-badge-year { font-family: var(--font-serif); font-size: 2rem; color: var(--accent); line-height: 1; }
+    .about-badge-text { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(245,243,239,0.5); margin-top: 6px; }
+    .about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+    .about-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,243,239,0.65); margin: 32px 0 52px; font-weight: 300; }
+    .about-body strong { color: var(--white); font-weight: 400; }
+    .about-divider { width: 60px; height: 1px; background: var(--accent); margin: 40px 0; }
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+    .about-value { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid rgba(46,125,82,0.06); transition: border-color 0.4s; }
+    .about-value:hover { border-color: rgba(46,125,82,0.2); }
+    .value-num { font-family: var(--font-serif); font-size: 1.4rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; line-height: 1.2; }
+    .value-text h4 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 4px; }
+    .value-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+    .services-section { background: var(--black); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1400px; margin: 60px auto 0; }
+    .service-card { padding: 60px 48px; background: var(--black); border: 1px solid rgba(46,125,82,0.07); position: relative; overflow: hidden; transition: background 0.5s, border-color 0.5s; }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(46,125,82,0.2); }
+    .service-icon { width: 52px; height: 52px; margin-bottom: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46,125,82,0.2); color: var(--accent); }
+    .service-card h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; margin-bottom: 18px; line-height: 1.2; }
+    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+    .service-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,125,82,0.5); transition: color 0.3s, gap 0.3s; }
+    .service-link:hover { color: var(--accent); gap: 16px; }
+    .service-number { position: absolute; top: 30px; right: 36px; font-family: var(--font-serif); font-size: 5rem; font-weight: 300; color: rgba(46,125,82,0.05); line-height: 1; transition: color 0.5s; }
+    .service-card:hover .service-number { color: rgba(46,125,82,0.1); }
+    .map-section { background: var(--carbon); padding: 0; }
+    .map-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .map-frame { width: 100%; height: 100%; min-height: 400px; border: none; display: block; filter: grayscale(20%) contrast(1.1); }
+    .map-info { padding: 80px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid rgba(46,125,82,0.08); }
+    .map-info .section-label { margin-bottom: 24px; }
+    .map-info h2 { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 36px; }
+    .map-info h2 em { font-style: italic; color: var(--accent); }
+    .contact-detail { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; }
+    .contact-icon { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgba(46,125,82,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+    .contact-detail-text p { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-detail-text a, .contact-detail-text span { font-size: 1rem; color: var(--white); text-decoration: none; font-weight: 300; transition: color 0.3s; }
+    .contact-detail-text a:hover { color: var(--accent); }
+    .testimonials-section { background: var(--black); position: relative; overflow: hidden; }
+    .testimonials-section::before { content: '"'; position: absolute; top: -60px; left: 40px; font-family: var(--font-serif); font-size: 30rem; color: rgba(46,125,82,0.03); line-height: 1; pointer-events: none; }
+    .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
+    .testimonial-card { padding: 56px 44px; background: rgba(8,8,8,0.4); border: 1px solid rgba(46,125,82,0.07); transition: border-color 0.4s, background 0.4s; }
+    .testimonial-card:hover { border-color: rgba(46,125,82,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
+    .star { width: 12px; height: 12px; background: var(--accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+    .testimonial-quote { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(245,243,239,0.8); margin-bottom: 36px; }
+    .testimonial-divider { width: 30px; height: 1px; background: var(--accent); margin-bottom: 28px; opacity: 0.4; }
+    .testimonial-author strong { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .testimonial-author span { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .cta-section { background: var(--accent); padding: 110px 60px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
+    .cta-text { flex: 1; min-width: 300px; }
+    .cta-text h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-text p { font-size: 1rem; color: rgba(245,243,239,0.75); margin-top: 16px; font-weight: 300; }
+    .btn-dark { display: inline-flex; align-items: center; gap: 14px; background: var(--black); color: var(--white); text-decoration: none; padding: 20px 48px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: all 0.35s var(--ease-smooth); white-space: nowrap; position: relative; overflow: hidden; }
+    .btn-dark::before { content: ''; position: absolute; inset: 0; background: var(--carbon-light); transform: translateX(-102%); transition: transform 0.4s var(--ease-out); }
+    .btn-dark:hover::before { transform: translateX(0); }
+    .btn-dark span { position: relative; z-index: 1; }
+    footer { background: var(--black); padding: 90px 60px 50px; border-top: 1px solid rgba(46,125,82,0.08); }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 70px; }
+    .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 22px; display: inline-flex; }
+    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(245,243,239,0.35); line-height: 1.6; max-width: 280px; margin-bottom: 36px; }
+    .footer-social { display: flex; gap: 14px; }
+    .social-link { width: 44px; height: 44px; border: 1px solid rgba(245,243,239,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(245,243,239,0.4); font-size: 0.72rem; letter-spacing: 0.08em; transition: border-color 0.3s, color 0.3s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; font-weight: 500; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a { text-decoration: none; color: rgba(245,243,239,0.4); font-size: 0.85rem; transition: color 0.3s; font-weight: 300; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(245,243,239,0.06); padding-top: 36px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.75rem; color: rgba(245,243,239,0.25); letter-spacing: 0.05em; }
+    .footer-legal { display: flex; gap: 28px; }
+    .footer-legal a { font-size: 0.72rem; color: rgba(245,243,239,0.2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--text-muted); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+    .loader { position: fixed; inset: 0; z-index: 10000; background: var(--black); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; transition: opacity 0.8s, visibility 0.8s; }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: var(--font-serif); font-size: 2.5rem; letter-spacing: 0.2em; color: var(--white); }
+    .loader-logo span { color: var(--accent); }
+    .loader-bar { width: 200px; height: 1px; background: rgba(245,243,239,0.1); position: relative; overflow: hidden; }
+    .loader-bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); animation: loadBar 1.5s var(--ease-out) 0.3s forwards; }
+    @keyframes loadBar { to { transform: translateX(0); } }
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; } nav.scrolled { padding: 16px 36px; }
+      section { padding: 100px 36px; } .hero-content { padding: 0 36px 80px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .map-inner { grid-template-columns: 1fr; }
+      .map-info { padding: 60px 36px; border-left: none; border-top: 1px solid rgba(46,125,82,0.08); }
+    }
+    @media (max-width: 768px) {
+      body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; }
+      .hamburger { display: flex; } nav { padding: 20px 24px; } nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; } section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 70px; } .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: 1; aspect-ratio: 4/3; }
+      .about-section { grid-template-columns: 1fr; } .about-visual { min-height: 300px; }
+      .about-content { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 80px 24px; flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; } .stats-section { padding: 70px 24px; }
+      .map-info { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-logo">Green<span>book</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Green<span>book</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Ubicación</a></li>
+    <li><a href="tel:944144969" class="nav-cta">944 14 49 69</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#contacto" onclick="closeMobile()">Ubicación</a>
+  <a href="tel:944144969" onclick="closeMobile()">944 14 49 69</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Asesoría Fiscal · Gestoría · Galdakao</p>
+    <h1 class="hero-title">
+      Tu empresa,<br><em>en buenas</em><br>manos
+    </h1>
+    <p class="hero-sub">
+      Llevamos la contabilidad, las nóminas y los trámites fiscales de autónomos y pymes en Galdakao. Tú te centras en tu negocio, nosotros en los números.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:944144969" class="btn-primary">
+        <span>944 14 49 69</span>
+        <span>→</span>
+      </a>
+      <a href="#servicios" class="btn-ghost">
+        <span>Nuestros servicios</span>
+        <div class="btn-ghost-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Asesoría Fiscal</span>
+    <span class="marquee-item"><span class="dot"></span>Contabilidad</span>
+    <span class="marquee-item"><span class="dot"></span>Nóminas y Laboral</span>
+    <span class="marquee-item"><span class="dot"></span>Alta de Autónomos</span>
+    <span class="marquee-item"><span class="dot"></span>Declaración de la Renta</span>
+    <span class="marquee-item"><span class="dot"></span>Trámites Empresariales</span>
+    <span class="marquee-item"><span class="dot"></span>Asesoría Fiscal</span>
+    <span class="marquee-item"><span class="dot"></span>Contabilidad</span>
+    <span class="marquee-item"><span class="dot"></span>Nóminas y Laboral</span>
+    <span class="marquee-item"><span class="dot"></span>Alta de Autónomos</span>
+    <span class="marquee-item"><span class="dot"></span>Declaración de la Renta</span>
+    <span class="marquee-item"><span class="dot"></span>Trámites Empresariales</span>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Reseñas en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="500">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Clientes satisfechos</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number"><span class="count" data-target="44">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Reseñas en Google</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">Confidencialidad garantizada</div>
+    </div>
+  </div>
+</div>
+
+<section class="projects-section" id="galeria">
+  <div class="projects-header">
+    <div>
+      <p class="section-label reveal">Nuestra asesoría</p>
+      <h2 class="section-title reveal reveal-delay-1">Gestión profesional<br><em>para tu negocio</em></h2>
+    </div>
+    <a href="tel:944144969" class="view-all reveal">Contactar →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80" alt="Asesoría profesional Greenbook Galdakao" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Fiscal · Contabilidad</p>
+        <h3 class="project-name">Gestión integral para autónomos y pymes</h3>
+        <p class="project-meta">Galdakao, Bizkaia</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&q=80" alt="Declaración de la renta Galdakao" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Renta · Impuestos</p>
+        <h3 class="project-name">Declaración de la renta sin estrés</h3>
+        <p class="project-meta">Asesoramiento personalizado</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" alt="Gestión laboral Galdakao" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Laboral · Nóminas</p>
+        <h3 class="project-name">Gestión laboral y nóminas de tu equipo</h3>
+        <p class="project-meta">Empresas de Galdakao y Bizkaia</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Alta de autónomos Galdakao" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">↗</div>
+      <div class="project-info">
+        <p class="project-cat">Trámites · Alta autónomos</p>
+        <h3 class="project-name">Empieza tu actividad sin complicaciones</h3>
+        <p class="project-meta">Alta rápida y sin burocracia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="about-section" id="nosotros">
+  <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=80" alt="Oficina Asesoría Greenbook Galdakao">
+    <div class="about-badge">
+      <div class="about-badge-year">Galdakao</div>
+      <div class="about-badge-text">Barrio Aperribai, 41 · Bizkaia</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Sobre nosotros</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Asesoría <em>cercana</em><br>y de confianza
+    </h2>
+    <div class="about-divider reveal"></div>
+    <p class="about-body reveal reveal-delay-2">
+      En Asesoría Greenbook llevamos más de dos décadas ayudando a autónomos y empresas de Galdakao y alrededores a mantener sus cuentas en orden y cumplir con Hacienda sin sobresaltos.<br><br><strong>Cada cliente es diferente.</strong> Analizamos tu situación y te ofrecemos soluciones a medida para que puedas centrarte en lo que realmente importa: hacer crecer tu negocio.
+    </p>
+    <div class="about-values reveal reveal-delay-3">
+      <div class="about-value">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <h4>Trato personalizado</h4>
+          <p>Un asesor de referencia para cada cliente, disponible cuando lo necesitas</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <h4>Transparencia total</h4>
+          <p>Sin sorpresas ni costes ocultos — sabes exactamente lo que pagas y por qué</p>
+        </div>
+      </div>
+      <div class="about-value">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <h4>Actualización continua</h4>
+          <p>Al día con la normativa fiscal y laboral para que nunca tengas problemas con Hacienda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="services-section" id="servicios">
+  <div style="max-width:1400px; margin:0 auto">
+    <p class="section-label reveal">Lo que ofrecemos</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
+      Servicios diseñados para <em>tranquilizar tu negocio</em>
+    </h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <h3>Asesoría Fiscal</h3>
+        <p>Planificación tributaria, IVA, IRPF, impuesto de sociedades y gestión de inspecciones de Hacienda. Optimiza tu carga fiscal dentro de la ley.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3>Contabilidad</h3>
+        <p>Llevamos la contabilidad de tu empresa al día: libros contables, cuentas anuales, balances y todo lo que necesitas para tener el control financiero.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Laboral y Nóminas</h3>
+        <p>Gestión de contratos, altas y bajas en la Seguridad Social, elaboración de nóminas y liquidaciones. Cumple con la normativa laboral sin complicaciones.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <h3>Trámites Empresariales</h3>
+        <p>Constitución de sociedades, cambios estatutarios, poderes notariales, registros mercantiles y todo tipo de gestiones administrativas para tu empresa.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Declaración de la Renta</h3>
+        <p>Presentamos tu IRPF de forma óptima, revisando todas las deducciones a las que tienes derecho para que pagues solo lo justo y ni un euro más.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3>Alta de Autónomos</h3>
+        <p>Te asesoramos sobre la cuota más ventajosa, tramitamos tu alta en Hacienda y la Seguridad Social, y te guiamos en tus primeros pasos como autónomo.</p>
+        <a href="tel:944144969" class="service-link">Más info →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">Testimonios</p>
+    <h2 class="section-title reveal reveal-delay-1">
+      Lo que dicen<br>nuestros <em>clientes</em>
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Llevo años con Greenbook y nunca he tenido un problema con Hacienda. Me explican todo con calma y siempre están disponibles cuando tengo dudas. Son de confianza total."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Joseba L.</strong>
+          <span>Autónomo · Galdakao</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Me ayudaron a darme de alta como autónoma y a entender qué cuota me convenía. El proceso fue rapidísimo y sin estrés. Les recomiendo a cualquier persona que empiece su negocio."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Amaia R.</strong>
+          <span>Autónoma · Usansolo</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <p class="testimonial-quote">"Tienen la contabilidad de mi empresa desde hace cinco años. Profesionales, eficientes y siempre al día con los cambios fiscales. No podría estar más tranquilo."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <strong>Koldo M.</strong>
+          <span>Empresario · Basauri</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="map-section" id="contacto">
+  <div class="map-inner">
+    <iframe
+      class="map-frame"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Asesoria+Greenbook,Galdakao&zoom=17"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa Asesoría Greenbook Galdakao">
+    </iframe>
+    <div class="map-info">
+      <p class="section-label reveal">Dónde estamos</p>
+      <h2 class="reveal reveal-delay-1">Visítanos en<br><em>Galdakao</em></h2>
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <p>Dirección</p>
+          <span>Barrio Aperribai, 41, 48960 Galdakao, Bizkaia</span>
+        </div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.72 6.72l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <p>Teléfono</p>
+          <a href="tel:944144969">944 14 49 69</a>
+        </div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-3">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="contact-detail-text">
+          <p>Horario</p>
+          <span>Lunes – Viernes: 9:00 – 14:00 / 16:00 – 19:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-text">
+    <h2>¿Necesitas un asesor<br>de confianza?</h2>
+    <p>Primera consulta gratuita y sin compromiso. Llámanos hoy mismo.</p>
+  </div>
+  <a href="tel:944144969" class="btn-dark">
+    <span>944 14 49 69</span>
+    <span>↗</span>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Green<span>book</span></a>
+      <p class="footer-tagline">"La mejor inversión es tener un buen asesor que cuide tu negocio."</p>
+      <div class="footer-social">
+        <a href="https://asesoriagreenbook.com/" class="social-link" target="_blank" rel="noopener">Web</a>
+        <a href="tel:944144969" class="social-link">Tel</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Asesoría Fiscal</a></li>
+        <li><a href="#servicios">Contabilidad</a></li>
+        <li><a href="#servicios">Laboral y Nóminas</a></li>
+        <li><a href="#servicios">Trámites Empresariales</a></li>
+        <li><a href="#servicios">Declaración Renta</a></li>
+        <li><a href="#servicios">Alta Autónomos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Asesoría</h4>
+      <ul>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Nuestro trabajo</a></li>
+        <li><a href="#contacto">Ubicación</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:944144969">944 14 49 69</a></li>
+        <li><a href="https://asesoriagreenbook.com/" target="_blank" rel="noopener">asesoriagreenbook.com</a></li>
+        <li><a href="#contacto">Barrio Aperribai, 41 — Galdakao</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Asesoría Greenbook. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('heroBg').classList.add('loaded');
+    }, 1800);
+  });
+
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.7;
+    ringY += (mouseY - ringY) * 0.7;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(ease * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCount(e.target); countObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  window.addEventListener('scroll', () => {
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      heroBg.style.transform = `scale(1) translateY(${window.scrollY * 0.25}px)`;
+    }
+  });
+</script>
+</body>
+</html>
