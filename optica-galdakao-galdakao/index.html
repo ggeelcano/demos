@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aretxondo — Restaurante en Galdakao</title>
-  <meta name="description" content="Restaurante Aretxondo en Galdakao. Caserio vasco con cocina tradicional, producto de temporada y 1 Sol Repsol. Reservas: 944 56 76 71">
+  <title>Optica Galdakao — Tu optica y centro auditivo de confianza en Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
+      --black: #080c10;
       --white: #f5f3ef;
-      --accent: #8B4513;
-      --accent-light: #A0522D;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
-      --text-muted: #9a8a7a;
-      --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Source Sans 3', sans-serif;
+      --accent: #0EA5E9;
+      --accent-light: #38bdf8;
+      --carbon: #0f1520;
+      --carbon-mid: #162030;
+      --carbon-light: #1e2d40;
+      --text-muted: #7a8899;
+      --font-serif: 'DM Serif Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -38,7 +37,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR ─── */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -51,7 +50,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(139,69,19,0.4);
+      border: 1px solid rgba(14,165,233,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -60,11 +59,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(139,69,19,0.7);
-      background: rgba(139,69,19,0.05);
+      border-color: rgba(14,165,233,0.7);
+      background: rgba(14,165,233,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -76,7 +75,7 @@
       backdrop-filter: blur(20px);
       background: rgba(8,8,8,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(139,69,19,0.08);
+      border-bottom: 1px solid rgba(14,165,233,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -106,7 +105,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* HAMBURGER MOBILE */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -130,7 +129,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -138,7 +137,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=1600&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
@@ -191,7 +190,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--white);
+      background: var(--accent); color: var(--black);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -240,10 +239,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* MARQUEE */
     .marquee-section {
-      border-top: 1px solid rgba(139,69,19,0.12);
-      border-bottom: 1px solid rgba(139,69,19,0.12);
+      border-top: 1px solid rgba(14,165,233,0.12);
+      border-bottom: 1px solid rgba(14,165,233,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -260,7 +259,7 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +275,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(139,69,19,0.08);
+      border-top: 1px solid rgba(14,165,233,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +287,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(139,69,19,0.08);
+      border: 1px solid rgba(14,165,233,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +297,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(139,69,19,0.3); }
+    .stat-card:hover { border-color: rgba(14,165,233,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +309,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY ─── */
+    /* GALLERY */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +321,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(139,69,19,0.3);
+      border-bottom: 1px solid rgba(14,165,233,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -381,7 +380,7 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,11 +388,11 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=960&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1577401239170-897942555fb3?w=900&q=80') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(139,69,19,0.25);
+      background: var(--black); border: 1px solid rgba(14,165,233,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -419,10 +418,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(139,69,19,0.06);
+      padding: 20px; border: 1px solid rgba(14,165,233,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(139,69,19,0.2); }
+    .about-value:hover { border-color: rgba(14,165,233,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +435,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +443,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(139,69,19,0.07);
+      border: 1px solid rgba(14,165,233,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,69,19,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(14,165,233,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(139,69,19,0.2); color: var(--accent);
+      border: 1px solid rgba(14,165,233,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,98 +465,25 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(139,69,19,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(14,165,233,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(139,69,19,0.05);
+      font-weight: 300; color: rgba(14,165,233,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(139,69,19,0.1); }
+    .service-card:hover .service-number { color: rgba(14,165,233,0.1); }
 
-    /* ─── CARTA SECTIONS ─── */
-    .carta-section {
-      padding: 140px 60px;
-      background: var(--carbon);
-      border-top: 1px solid rgba(139,69,19,0.08);
-    }
-    .carta-section:nth-child(even) { background: var(--black); }
-    .carta-section .section-inner {
-      max-width: 1200px; margin: 0 auto;
-    }
-    .carta-back {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--accent);
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 40px; transition: gap 0.3s;
-    }
-    .carta-back:hover { gap: 14px; }
-    .carta-columns {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; margin-top: 60px;
-    }
-    .carta-category { margin-bottom: 48px; }
-    .carta-category h4 {
-      font-family: var(--font-serif); font-size: 1.3rem;
-      font-weight: 400; color: var(--white);
-      padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,69,19,0.15);
-    }
-    .carta-item {
-      display: flex; justify-content: space-between;
-      align-items: baseline; padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .carta-item:last-child { border-bottom: none; }
-    .carta-item-name {
-      font-size: 0.92rem; font-weight: 400; color: var(--white);
-      flex: 1;
-    }
-    .carta-item-desc {
-      font-size: 0.78rem; color: var(--text-muted);
-      font-weight: 300; margin-top: 2px;
-    }
-    .carta-item-price {
-      font-family: var(--font-serif); font-size: 1rem;
-      color: var(--accent); white-space: nowrap;
-      margin-left: 20px; font-weight: 400;
-    }
-    .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(139,69,19,0.1);
-      padding: 40px; margin-top: 40px;
-    }
-    .carta-highlight h4 {
-      font-family: var(--font-serif); font-size: 1.1rem;
-      font-weight: 400; color: var(--accent); margin-bottom: 16px;
-    }
-    .carta-highlight p {
-      font-size: 0.88rem; color: var(--text-muted);
-      line-height: 1.75; font-weight: 300;
-    }
-    .carta-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-top: 48px; text-decoration: none;
-      padding: 18px 40px; border: 1px solid var(--accent);
-      color: var(--white); font-size: 0.72rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      transition: background 0.4s, gap 0.3s;
-    }
-    .carta-cta:hover { background: var(--accent); gap: 18px; }
-    @media (max-width: 768px) {
-      .carta-section { padding: 80px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-    }
-
-    /* ─── TESTIMONIALS ─── */
+    /* TESTIMONIALS */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
       content: '"'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(139,69,19,0.03); line-height: 1; pointer-events: none;
+      color: rgba(14,165,233,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -566,10 +492,10 @@
     }
     .testimonial-card {
       padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(139,69,19,0.07);
+      border: 1px solid rgba(14,165,233,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(139,69,19,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(14,165,233,0.2); background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -592,17 +518,33 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── MAP ─── */
-    .map-section {
-      padding: 0; background: var(--black);
-      border-top: 1px solid rgba(139,69,19,0.08);
+    /* GOOGLE RATING BADGE */
+    .google-badge {
+      display: flex; align-items: center; gap: 20px;
+      margin-top: 50px; padding: 28px 36px;
+      background: rgba(14,165,233,0.04);
+      border: 1px solid rgba(14,165,233,0.12);
+      max-width: fit-content;
     }
-    .map-section iframe {
-      width: 100%; height: 450px; border: 0;
-      filter: grayscale(0.3) contrast(1.1);
+    .google-badge-icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .google-badge-info .gb-rating {
+      font-family: var(--font-serif); font-size: 2rem;
+      color: var(--accent); line-height: 1;
+    }
+    .google-badge-info .gb-stars { display: flex; gap: 3px; margin: 6px 0 4px; }
+    .google-badge-info .gb-stars .star { width: 14px; height: 14px; }
+    .google-badge-info .gb-text {
+      font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* MAP */
+    .map-section { padding: 0; }
+    .map-section iframe { width: 100%; height: 450px; border: 0; filter: grayscale(0.8) contrast(1.1); }
+
+    /* CTA BANNER */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -632,10 +574,10 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(139,69,19,0.08);
+      border-top: 1px solid rgba(14,165,233,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -683,20 +625,20 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── POWERED BY ─── */
+    /* POWERED BY */
     .powered-by {
       text-align: center; padding: 18px;
       background: var(--carbon);
-      border-top: 1px solid rgba(139,69,19,0.06);
+      border-top: 1px solid rgba(14,165,233,0.06);
     }
     .powered-by a {
-      font-size: 0.7rem; color: rgba(245,243,239,0.2);
-      text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase;
+      font-size: 0.7rem; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 0.1em;
       transition: color 0.3s;
     }
     .powered-by a:hover { color: var(--accent); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -708,7 +650,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* LOADER */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -733,7 +675,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -767,7 +709,7 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
-      .map-section iframe { height: 300px; }
+      .google-badge { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -775,7 +717,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">Aretxondo<span>.</span></div>
+  <div class="loader-logo">Optica Galdakao<span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -785,13 +727,12 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
+  <a href="#" class="nav-logo">Optica Galdakao<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#carta-principal">Carta</a></li>
-    <li><a href="#opiniones">Opiniones</a></li>
-    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -802,9 +743,8 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
-  <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
-  <a href="#contacto" onclick="closeMobile()">Reservar</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
 <!-- HERO -->
@@ -813,20 +753,20 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Caserio vasco · 1 Sol Repsol · Galdakao</p>
+    <p class="hero-eyebrow">Optica y Audiologia en Galdakao desde hace mas de 20 anos</p>
     <h1 class="hero-title">
-      Cocina vasca<br>con <em>alma</em><br>de caserio
+      Tu vision,<br>nuestra <em>vocacion</em>
     </h1>
     <p class="hero-sub">
-      Un bello caserio rodeado de robles y vinedos a 9 km de Bilbao. Cocina tradicional vasca con toques personales, producto de temporada y 3 comedores para 180 comensales.
+      Examenes visuales completos, gafas graduadas, lentillas, gafas de sol y audiologia. Atencion personalizada con las mejores marcas y entrega en el mismo dia.
     </p>
     <div class="hero-actions">
-      <a href="tel:+34944567671" class="btn-primary">
-        <span>Reservar mesa</span>
+      <a href="tel:688856690" class="btn-primary">
+        <span>Pedir cita</span>
         <span>→</span>
       </a>
-      <a href="#carta-principal" class="btn-ghost">
-        <span>Ver carta</span>
+      <a href="#galeria" class="btn-ghost">
+        <span>Descubrir</span>
         <div class="btn-ghost-arrow">↗</div>
       </a>
     </div>
@@ -840,18 +780,22 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina Tradicional Vasca</span>
-    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
-    <span class="marquee-item"><span class="dot"></span>Txuleta a la Brasa</span>
-    <span class="marquee-item"><span class="dot"></span>Bodega Seleccion</span>
-    <span class="marquee-item"><span class="dot"></span>Celebraciones y Bodas</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza y Jardin</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina Tradicional Vasca</span>
-    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
-    <span class="marquee-item"><span class="dot"></span>Txuleta a la Brasa</span>
-    <span class="marquee-item"><span class="dot"></span>Bodega Seleccion</span>
-    <span class="marquee-item"><span class="dot"></span>Celebraciones y Bodas</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza y Jardin</span>
+    <span class="marquee-item"><span class="dot"></span>Examen Visual</span>
+    <span class="marquee-item"><span class="dot"></span>Gafas Graduadas</span>
+    <span class="marquee-item"><span class="dot"></span>Lentes de Contacto</span>
+    <span class="marquee-item"><span class="dot"></span>Gafas de Sol</span>
+    <span class="marquee-item"><span class="dot"></span>Audiologia</span>
+    <span class="marquee-item"><span class="dot"></span>Audiometria</span>
+    <span class="marquee-item"><span class="dot"></span>Audifonos</span>
+    <span class="marquee-item"><span class="dot"></span>Entrega en el dia</span>
+    <span class="marquee-item"><span class="dot"></span>Examen Visual</span>
+    <span class="marquee-item"><span class="dot"></span>Gafas Graduadas</span>
+    <span class="marquee-item"><span class="dot"></span>Lentes de Contacto</span>
+    <span class="marquee-item"><span class="dot"></span>Gafas de Sol</span>
+    <span class="marquee-item"><span class="dot"></span>Audiologia</span>
+    <span class="marquee-item"><span class="dot"></span>Audiometria</span>
+    <span class="marquee-item"><span class="dot"></span>Audifonos</span>
+    <span class="marquee-item"><span class="dot"></span>Entrega en el dia</span>
   </div>
 </div>
 
@@ -859,20 +803,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="37">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Anos de historia</div>
+      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">.0</span></div>
+      <div class="stat-label">Puntuacion perfecta en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4</span></div>
-      <div class="stat-label">Nota en Google</div>
+      <div class="stat-number"><span class="count" data-target="285">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1054">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Opiniones en Google</div>
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="180">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Comensales de aforo</div>
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Marcas disponibles</div>
     </div>
   </div>
 </div>
@@ -881,50 +825,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestra esencia</p>
-      <h2 class="section-title reveal reveal-delay-1">Un caserio donde<br><em>la tradicion vive</em></h2>
+      <p class="section-label reveal">Nuestro trabajo</p>
+      <h2 class="section-title reveal reveal-delay-1">Especialistas en<br><em>vision y audicion</em></h2>
     </div>
-    <a href="tel:+34944567671" class="view-all reveal">Reservar →</a>
+    <a href="tel:688856690" class="view-all reveal">Pedir cita →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=80" alt="Interior rustico del restaurante Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1556015048-4d3aa10df74c?w=1400&q=80" alt="Coleccion de gafas graduadas premium" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Caserio</p>
-        <h3 class="project-name">Comedor Principal</h3>
-        <p class="project-meta">Vigas de madera · Techos altos · Luz natural</p>
+        <p class="project-cat">Graduado · Premium</p>
+        <h3 class="project-name">Gafas Graduadas de Primeras Marcas</h3>
+        <p class="project-meta">Ray-Ban · Gucci · Calvin Klein · Montaje en 24-48h</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Txuleta a la brasa en Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=800&q=80" alt="Examen visual optometrico" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Brasa</p>
-        <h3 class="project-name">Txuleta a la Parrilla</h3>
-        <p class="project-meta">Carne de vacuno mayor · Punto perfecto</p>
+        <p class="project-cat">Optometria · Revision</p>
+        <h3 class="project-name">Examen Visual Completo</h3>
+        <p class="project-meta">Tecnologia avanzada · Retinografia · Campimetria</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Bodega de vinos del restaurante" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80" alt="Gafas de sol polarizadas" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Seleccion</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">Txakoli · Rioja · Ribera · Vinos del mundo</p>
+        <p class="project-cat">Sol · Polarizadas</p>
+        <h3 class="project-name">Gafas de Sol</h3>
+        <p class="project-meta">Proteccion UV400 · Lentes polarizadas · Las mejores marcas</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Plato de pescado fresco en Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?w=800&q=80" alt="Centro auditivo y audifonos" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Pescado · Lonja</p>
-        <h3 class="project-name">Del Mar a la Mesa</h3>
-        <p class="project-meta">Merluza · Rodaballo · Rape · Bogavante</p>
+        <p class="project-cat">Audiologia · Centro Auditivo</p>
+        <h3 class="project-name">Audiologia y Audifonos</h3>
+        <p class="project-meta">Audiometria · Audifonos digitales · Red VIVEMAS</p>
       </div>
     </div>
   </div>
@@ -934,39 +878,39 @@
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">1989</div>
-      <div class="about-badge-text">Caserio vasco construido con materiales nobles</div>
+      <div class="about-badge-year">5.0</div>
+      <div class="about-badge-text">Puntuacion perfecta en Google con 285 resenas</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>tradicion</em>
+      Mas alla de<br>las <em>lentes</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Aretxondo es un bello caserio vasco construido en 1989 con materiales nobles, rodeado de magnifica vegetacion a tan solo 9 kilometros de Bilbao. Un restaurante familiar con ambiente rustico y acogedor donde la cocina tradicional vasca se combina con toques personales.<br><br><strong>Entre 1996 y 1999 tuvimos estrella Michelin</strong>, y actualmente mantenemos 1 Sol de la Guia Repsol. Nuestro luminoso comedor rustico de techos altos con vigas de madera a la vista ofrece el marco perfecto para disfrutar de una cocina honesta basada en el producto.
+      En Optica Galdakao no somos una franquicia mas. Somos profesionales con vocacion que miran mas alla de un numero de cliente. Nuestra experiencia y formacion continua nos convierte en <strong>uno de los mejores centros de Bizkaia</strong> en optica y audiologia.<br><br><strong>Cada paciente es unico.</strong> Por eso ofrecemos atencion personalizada, entrega a domicilio y un servicio de entrega en el mismo dia que nos diferencia.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de temporada</h4>
-          <p>Merluza, rape negro, solomillo y productos tipicos de la tierra de maxima calidad</p>
+          <h4>Atencion personalizada</h4>
+          <p>Escuchamos, asesoramos y encontramos la solucion perfecta para cada persona</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina con alma vasca</h4>
-          <p>Tradicion y modernidad en cada plato, con presentaciones cuidadas y sabores autenticos</p>
+          <h4>Optica y audiologia integrada</h4>
+          <p>Centro dual: cuidamos tu vision y tu audicion en un mismo espacio de confianza</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>3 comedores + terraza</h4>
-          <p>Espacio para 180 comensales, aparcamiento privado y jardin para celebraciones</p>
+          <h4>Entrega en el dia</h4>
+          <p>Servicio express y entrega a domicilio. Tus gafas cuando las necesitas, sin esperas</p>
         </div>
       </div>
     </div>
@@ -978,19 +922,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Experiencias para <em>cada ocasion</em>
+      Servicios disenados para <em>tu bienestar</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
           </svg>
         </div>
-        <h3>Carta y Menu del Dia</h3>
-        <p>Menu ejecutivo de lunes a viernes por 24,50 EUR y carta completa con pescados de lonja, carnes a la brasa y especialidades vascas. Cocina de mercado que cambia con las estaciones.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Examen Visual Completo</h3>
+        <p>Revision optometrica avanzada con tecnologia de ultima generacion. Retinografia, topografia corneal y campimetria. Deteccion precoz de patologias oculares.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -999,9 +943,9 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Menus Degustacion</h3>
-        <p>Menu Aretxondo de 5 platos en medias raciones por 44,50 EUR o menu degustacion de 6 platos escogidos de carta por 69,50 EUR. Bebidas aparte. Disponibles fines de semana.</p>
-        <a href="#carta-especialidades" class="service-link">Ver degustacion →</a>
+        <h3>Gafas Graduadas</h3>
+        <p>Ray-Ban, Gucci, Calvin Klein, Oakley y muchas mas. Cristales de las mejores marcas: Essilor, Zeiss y Hoya. Montaje y entrega en el mismo dia.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
@@ -1010,313 +954,124 @@
             <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
           </svg>
         </div>
-        <h3>Eventos y Celebraciones</h3>
-        <p>Bodas, comuniones, comidas de empresa y celebraciones especiales. 3 comedores privados, terraza con jardin, carpa para eventos y aparcamiento para autobuses.</p>
-        <a href="#carta-grupos" class="service-link">Mas info →</a>
+        <h3>Lentillas y Contactologia</h3>
+        <p>Adaptacion de lentillas diarias, quincenales y mensuales. Soluciones especiales para astigmatismo, presbicia y ojos secos. Seguimiento personalizado.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <h3>Audiologia y Audifonos</h3>
+        <p>Centro auditivo integrado en la red VIVEMAS. Audiometrias completas, adaptacion de audifonos digitales de ultima generacion y seguimiento continuo.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Entrega Express</h3>
+        <p>Servicio de entrega en el mismo dia y envio a domicilio. No tienes que esperar semanas: recoge tus gafas cuando estes listo o te las llevamos a casa.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3>Gafas de Sol</h3>
+        <p>Amplia seleccion de gafas de sol de las mejores marcas con lentes polarizadas y proteccion UV400. Asesoramiento de imagen para encontrar el estilo perfecto.</p>
+        <a href="tel:688856690" class="service-link">Pedir cita →</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CARTA: PRINCIPAL -->
-<section class="carta-section" id="carta-principal">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Nuestra carta</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Producto de <em>temporada</em>, sabor autentico
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Pescados y mariscos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Merluza a la plancha</div>
-              <div class="carta-item-desc">Sobre crema de marisco y tripetas de bacalao</div>
-            </div>
-            <div class="carta-item-price">22,70 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Rodaballo a la plancha</div>
-              <div class="carta-item-desc">Con pisto de berenjena y tapenade</div>
-            </div>
-            <div class="carta-item-price">33,90 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Lomo de rape a la parrilla</div>
-              <div class="carta-item-desc">Con almejas y trigueros</div>
-            </div>
-            <div class="carta-item-price">31,30 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Kokotxas a la plancha</div>
-              <div class="carta-item-desc">Con vieira y emulsion de txakoli</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Carnes a la brasa</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Solomillo asado a la parrilla</div>
-              <div class="carta-item-desc">Con terrina de bacon e Idiazabal</div>
-            </div>
-            <div class="carta-item-price">28,90 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pluma iberica laminada</div>
-              <div class="carta-item-desc">Con especias morunas y yogur</div>
-            </div>
-            <div class="carta-item-price">24,50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Txuleta de vacuno mayor</div>
-              <div class="carta-item-desc">Madurada y a la brasa de carbon</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Costillas de Angus</div>
-              <div class="carta-item-desc">Coccion lenta y acabado a la brasa</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: ESPECIALIDADES / DEGUSTACION -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Menus degustacion</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      La experiencia <em>completa</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Menu Aretxondo — 44,50 €</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">5 platos en medias raciones</div>
-              <div class="carta-item-desc">Seleccion del chef con producto de temporada</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Entrante + Pescado + Carne + 2 Postres</div>
-              <div class="carta-item-desc">Bebidas no incluidas</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-category reveal">
-          <h4>Entrantes destacados</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Ensalada de bogavante</div>
-              <div class="carta-item-desc">Con vinagreta citrica y brotes frescos</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Jamon de mar</div>
-              <div class="carta-item-desc">Con salsa ponzu y laminas de ajo frito</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Setas de temporada con huevo</div>
-              <div class="carta-item-desc">Hongos, perretxikos o setas segun estacion</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Menu Degustacion — 69,50 €</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">6 platos escogidos de carta</div>
-              <div class="carta-item-desc">La mejor seleccion del chef, bebidas aparte</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Lubina asada con vieira</div>
-              <div class="carta-item-desc">Y salsa de txakoli</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Solomillo en costra de hierbas</div>
-              <div class="carta-item-desc">Con tuetano y reduccion de vino tinto</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Menu Ejecutivo — 24,50 €</h4>
-          <p>Disponible de lunes a viernes en horario de mediodias. Primer plato + segundo plato + postre + bebida. Ideal para comidas de trabajo en un entorno unico.</p>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Eventos y grupos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra en un <em>caserio unico</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Nuestros espacios</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comedor principal</div>
-              <div class="carta-item-desc">Salon con vigas de madera, ventanales y vistas al entorno natural</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Salones privados</div>
-              <div class="carta-item-desc">2 espacios adicionales para grupos reducidos e intimidad total</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Terraza y jardin</div>
-              <div class="carta-item-desc">Espacio exterior con carpa para eventos al aire libre</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Aparcamiento privado</div>
-              <div class="carta-item-desc">Espacio para vehiculos y autobuses</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menus cerrados bajo peticion</h4>
-          <p>Menus a medida para cada celebracion. Bodas, comuniones, comidas de empresa y eventos especiales. Consulta sin compromiso llamando al 944 56 76 71.</p>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipos de evento</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Bodas</div>
-              <div class="carta-item-desc">Menu personalizado, carpa exterior y coctel de bienvenida</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comuniones y bautizos</div>
-              <div class="carta-item-desc">Menus especiales para toda la familia en un entorno natural</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comidas de empresa</div>
-              <div class="carta-item-desc">Menus ejecutivos o degustacion para reuniones profesionales</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Cumpleanos y aniversarios</div>
-              <div class="carta-item-desc">Celebraciones intimas o grandes fiestas con espacio a medida</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
-    </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section" id="opiniones">
+<section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Opiniones reales</p>
+    <p class="section-label reveal">Testimonios</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Lo que dicen<br>nuestros <em>comensales</em>
+      Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Sitio muy bonito, comida deliciosa, trato estupendo y excelente calidad-precio. Un caserio precioso donde se come de maravilla."</p>
+        <p class="testimonial-quote">"He pasado por muchas opticas y ha sido en esta, en la unica, en la que he notado que me han mirado mas alla de las lentes. Profesionales con vocacion, empatia y gran dedicacion."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ana</strong>
-          <span>Google Reviews</span>
+          <strong>Miren Josune L.</strong>
+          <span>Clienta verificada en Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"De 10. Ninguna pega: pagas el producto, el servicio y la calidad. Fuimos 12 personas y todo perfecto de principio a fin."</p>
+        <p class="testimonial-quote">"Atencion excelente desde el primer momento. Estela me asesoro con mucha paciencia y encontre las gafas perfectas. Ademas, me las entregaron el mismo dia. Increible servicio."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Sonia Fernandez</strong>
-          <span>Google Reviews</span>
+          <strong>Aitor G.</strong>
+          <span>Cliente verificado en Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Ambiente familiar, entorno tranquilo, vistas preciosas, excelente atencion y comida deliciosa. Ideal para ir con ninos."</p>
+        <p class="testimonial-quote">"Llevo anos viniendo con toda la familia. Tanto para gafas como para la revision auditiva de mi padre. Profesionalidad, cercania y un trato que no encuentras en las grandes cadenas."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Helena Ortega</strong>
-          <span>Google Reviews</span>
+          <strong>Nerea S.</strong>
+          <span>Clienta verificada en Google</span>
         </div>
+      </div>
+    </div>
+
+    <!-- GOOGLE RATING BADGE -->
+    <div class="google-badge reveal">
+      <div class="google-badge-icon">
+        <svg width="40" height="40" viewBox="0 0 48 48">
+          <path d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" fill="#FFC107"/>
+          <path d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" fill="#FF3D00"/>
+          <path d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" fill="#4CAF50"/>
+          <path d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" fill="#1976D2"/>
+        </svg>
+      </div>
+      <div class="google-badge-info">
+        <div class="gb-rating">5.0</div>
+        <div class="gb-stars">
+          <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        </div>
+        <div class="gb-text">285 resenas en Google Maps</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MAP -->
-<div class="map-section">
-  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restaurante+Aretxondo+Galdakao&zoom=17" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="map-section reveal">
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Optica+Galdakao&zoom=17" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicacion de Optica Galdakao"></iframe>
 </div>
 
 <!-- CTA -->
 <div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>Reserva tu mesa<br>en el caserio</h2>
-    <p>Llama al 944 56 76 71 o escribenos a aretxondo@aretxondo.com. Cerrado los lunes. Martes a domingo de 13:00 a 17:30.</p>
+    <h2>Cuando fue tu<br>ultima revision visual?</h2>
+    <p>Pide tu cita para un examen visual o auditivo completo. Atencion personalizada y sin esperas.</p>
   </div>
-  <a href="tel:+34944567671" class="btn-dark">
-    <span>Llamar ahora</span>
+  <a href="tel:688856690" class="btn-dark">
+    <span>Llamar al 688 85 66 90</span>
     <span>↗</span>
   </a>
 </div>
@@ -1325,44 +1080,44 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
-      <p class="footer-tagline">"Cocina tradicional vasca con toques personales en un caserio unico."</p>
+      <a href="#" class="nav-logo">Optica Galdakao<span>.</span></a>
+      <p class="footer-tagline">"Miramos mas alla de las lentes, mas alla de un numero de cliente."</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com" target="_blank" class="social-link" aria-label="Facebook">Fb</a>
-        <a href="https://www.instagram.com" target="_blank" class="social-link" aria-label="Instagram">Ig</a>
-        <a href="https://maps.google.com/?q=Restaurante+Aretxondo+Galdakao" target="_blank" class="social-link" aria-label="Google Maps">Gm</a>
-        <a href="tel:+34944567671" class="social-link" aria-label="Telefono">Tf</a>
+        <a href="https://www.google.com/maps/place/Optica+Galdakao" target="_blank" rel="noopener" class="social-link" title="Google Maps">Gm</a>
+        <a href="https://wa.me/34688856690" target="_blank" rel="noopener" class="social-link" title="WhatsApp">Wa</a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Carta</h4>
+      <h4>Servicios</h4>
       <ul>
-        <li><a href="#carta-principal">Pescados</a></li>
-        <li><a href="#carta-principal">Carnes</a></li>
-        <li><a href="#carta-especialidades">Degustacion</a></li>
-        <li><a href="#carta-especialidades">Menu ejecutivo</a></li>
+        <li><a href="#servicios">Examen visual</a></li>
+        <li><a href="#servicios">Gafas graduadas</a></li>
+        <li><a href="#servicios">Gafas de sol</a></li>
+        <li><a href="#servicios">Lentillas</a></li>
+        <li><a href="#servicios">Audiologia</a></li>
+        <li><a href="#servicios">Audifonos</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Restaurante</h4>
+      <h4>Horario</h4>
       <ul>
-        <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#carta-grupos">Eventos</a></li>
-        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#">L-V: 9:30 - 13:30</a></li>
+        <li><a href="#">L-V: 16:30 - 20:00</a></li>
+        <li><a href="#">Sabados: 9:30 - 13:30</a></li>
+        <li><a href="#">Domingos: Cerrado</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:aretxondo@aretxondo.com">aretxondo@aretxondo.com</a></li>
-        <li><a href="tel:+34944567671">944 56 76 71</a></li>
-        <li><a href="https://maps.google.com/?q=Restaurante+Aretxondo+Galdakao" target="_blank">B Elexalde 16, Galdakao</a></li>
+        <li><a href="tel:688856690">688 85 66 90</a></li>
+        <li><a href="tel:944565954">944 56 59 54</a></li>
+        <li><a href="https://www.google.com/maps/place/Optica+Galdakao" target="_blank" rel="noopener">J.B. Uriarte Kalea, 19<br>Bajo, 48960 Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Restaurante Aretxondo. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Optica Galdakao. Todos los derechos reservados.</p>
     <div class="footer-legal">
       <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
@@ -1373,11 +1128,11 @@
 
 <!-- POWERED BY -->
 <div class="powered-by">
-  <a href="https://ggelcano.com" target="_blank">Web creada por G&G Elcano</a>
+  <a href="https://ggelcano.com" target="_blank" rel="noopener">Web creada por G&G Elcano</a>
 </div>
 
 <script>
-  // ── LOADER
+  // LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1385,7 +1140,7 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
+  // CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1410,13 +1165,13 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
+  // NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
+  // HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1428,14 +1183,14 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
+  // REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
+  // COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1459,12 +1214,12 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
+  // HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aretxondo — Restaurante en Galdakao</title>
-  <meta name="description" content="Restaurante Aretxondo en Galdakao. Caserio vasco con cocina tradicional, producto de temporada y 1 Sol Repsol. Reservas: 944 56 76 71">
+  <title>Gran Almacen Del Mueble — Muebles Galdakao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
+      --black: #0c0e10;
       --white: #f5f3ef;
-      --accent: #8B4513;
-      --accent-light: #A0522D;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
-      --text-muted: #9a8a7a;
+      --accent: #8B6F47;
+      --accent-light: #A68B5B;
+      --carbon: #141820;
+      --carbon-mid: #1c2230;
+      --carbon-light: #242e3e;
+      --text-muted: #7a8899;
+      --warm: #D4A574;
       --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Source Sans 3', sans-serif;
+      --font-sans: 'Inter', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -38,7 +38,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR ─── */
+    /* --- CUSTOM CURSOR --- */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -51,7 +51,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(139,69,19,0.4);
+      border: 1px solid rgba(139,111,71,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -60,11 +60,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(139,69,19,0.7);
-      background: rgba(139,69,19,0.05);
+      border-color: rgba(139,111,71,0.7);
+      background: rgba(139,111,71,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* --- NAVBAR --- */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -76,13 +76,13 @@
       backdrop-filter: blur(20px);
       background: rgba(8,8,8,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(139,69,19,0.08);
+      border-bottom: 1px solid rgba(139,111,71,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.08em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -106,7 +106,7 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* --- HAMBURGER MOBILE --- */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -130,7 +130,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* --- HERO --- */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -138,14 +138,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.3) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +168,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -191,7 +191,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--white);
+      background: var(--accent); color: var(--black);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -240,10 +240,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* --- MARQUEE --- */
     .marquee-section {
-      border-top: 1px solid rgba(139,69,19,0.12);
-      border-bottom: 1px solid rgba(139,69,19,0.12);
+      border-top: 1px solid rgba(139,111,71,0.12);
+      border-bottom: 1px solid rgba(139,111,71,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -260,7 +260,7 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* --- SECTION COMMONS --- */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +276,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* --- STATS --- */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(139,69,19,0.08);
+      border-top: 1px solid rgba(139,111,71,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +288,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(139,69,19,0.08);
+      border: 1px solid rgba(139,111,71,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +298,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(139,69,19,0.3); }
+    .stat-card:hover { border-color: rgba(139,111,71,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +310,7 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY ─── */
+    /* --- GALLERY / PROJECTS --- */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +322,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(139,69,19,0.3);
+      border-bottom: 1px solid rgba(139,111,71,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -381,7 +381,7 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* --- ABOUT --- */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,14 +389,14 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=960&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=80') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(139,69,19,0.25);
+      background: var(--black); border: 1px solid rgba(139,111,71,0.25);
       padding: 24px 30px; max-width: 240px;
     }
-    .about-badge-year {
+    .about-badge-number {
       font-family: var(--font-serif); font-size: 3rem;
       color: var(--accent); line-height: 1;
     }
@@ -419,10 +419,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(139,69,19,0.06);
+      padding: 20px; border: 1px solid rgba(139,111,71,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(139,69,19,0.2); }
+    .about-value:hover { border-color: rgba(139,111,71,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +436,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* --- SERVICES --- */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +444,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(139,69,19,0.07);
+      border: 1px solid rgba(139,111,71,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,69,19,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(139,111,71,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(139,69,19,0.2); color: var(--accent);
+      border: 1px solid rgba(139,111,71,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,98 +466,25 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(139,69,19,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(139,111,71,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(139,69,19,0.05);
+      font-weight: 300; color: rgba(139,111,71,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(139,69,19,0.1); }
+    .service-card:hover .service-number { color: rgba(139,111,71,0.1); }
 
-    /* ─── CARTA SECTIONS ─── */
-    .carta-section {
-      padding: 140px 60px;
-      background: var(--carbon);
-      border-top: 1px solid rgba(139,69,19,0.08);
-    }
-    .carta-section:nth-child(even) { background: var(--black); }
-    .carta-section .section-inner {
-      max-width: 1200px; margin: 0 auto;
-    }
-    .carta-back {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--accent);
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 40px; transition: gap 0.3s;
-    }
-    .carta-back:hover { gap: 14px; }
-    .carta-columns {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; margin-top: 60px;
-    }
-    .carta-category { margin-bottom: 48px; }
-    .carta-category h4 {
-      font-family: var(--font-serif); font-size: 1.3rem;
-      font-weight: 400; color: var(--white);
-      padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(139,69,19,0.15);
-    }
-    .carta-item {
-      display: flex; justify-content: space-between;
-      align-items: baseline; padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .carta-item:last-child { border-bottom: none; }
-    .carta-item-name {
-      font-size: 0.92rem; font-weight: 400; color: var(--white);
-      flex: 1;
-    }
-    .carta-item-desc {
-      font-size: 0.78rem; color: var(--text-muted);
-      font-weight: 300; margin-top: 2px;
-    }
-    .carta-item-price {
-      font-family: var(--font-serif); font-size: 1rem;
-      color: var(--accent); white-space: nowrap;
-      margin-left: 20px; font-weight: 400;
-    }
-    .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(139,69,19,0.1);
-      padding: 40px; margin-top: 40px;
-    }
-    .carta-highlight h4 {
-      font-family: var(--font-serif); font-size: 1.1rem;
-      font-weight: 400; color: var(--accent); margin-bottom: 16px;
-    }
-    .carta-highlight p {
-      font-size: 0.88rem; color: var(--text-muted);
-      line-height: 1.75; font-weight: 300;
-    }
-    .carta-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-top: 48px; text-decoration: none;
-      padding: 18px 40px; border: 1px solid var(--accent);
-      color: var(--white); font-size: 0.72rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      transition: background 0.4s, gap 0.3s;
-    }
-    .carta-cta:hover { background: var(--accent); gap: 18px; }
-    @media (max-width: 768px) {
-      .carta-section { padding: 80px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-    }
-
-    /* ─── TESTIMONIALS ─── */
+    /* --- TESTIMONIALS --- */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(139,69,19,0.03); line-height: 1; pointer-events: none;
+      color: rgba(139,111,71,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -566,10 +493,10 @@
     }
     .testimonial-card {
       padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(139,69,19,0.07);
+      border: 1px solid rgba(139,111,71,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(139,69,19,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(139,111,71,0.2); background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -592,17 +519,20 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── MAP ─── */
+    /* --- GOOGLE MAP --- */
     .map-section {
       padding: 0; background: var(--black);
-      border-top: 1px solid rgba(139,69,19,0.08);
     }
     .map-section iframe {
       width: 100%; height: 450px; border: 0;
-      filter: grayscale(0.3) contrast(1.1);
+      filter: grayscale(0.6) brightness(0.8) contrast(1.1);
+      transition: filter 0.5s;
+    }
+    .map-section:hover iframe {
+      filter: grayscale(0.2) brightness(0.9) contrast(1.05);
     }
 
-    /* ─── CTA BANNER ─── */
+    /* --- CTA BANNER --- */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -632,10 +562,40 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* --- HORARIO --- */
+    .horario-section {
+      background: var(--black); padding: 100px 60px;
+      border-top: 1px solid rgba(139,111,71,0.08);
+    }
+    .horario-inner {
+      max-width: 800px; margin: 0 auto;
+    }
+    .horario-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 50px;
+    }
+    .horario-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 30px; background: var(--carbon);
+      border: 1px solid rgba(139,111,71,0.06);
+      transition: border-color 0.3s;
+    }
+    .horario-row:hover { border-color: rgba(139,111,71,0.2); }
+    .horario-day {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400;
+    }
+    .horario-time {
+      font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
+    }
+    .horario-closed {
+      color: rgba(234,88,12,0.6);
+    }
+
+    /* --- FOOTER --- */
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(139,69,19,0.08);
+      border-top: 1px solid rgba(139,111,71,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -683,20 +643,38 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── POWERED BY ─── */
-    .powered-by {
-      text-align: center; padding: 18px;
-      background: var(--carbon);
-      border-top: 1px solid rgba(139,69,19,0.06);
+    /* --- GOOGLE BADGE --- */
+    .google-badge {
+      position: fixed; bottom: 24px; right: 24px; z-index: 900;
+      background: var(--black); border: 1px solid rgba(139,111,71,0.2);
+      padding: 16px 22px; display: flex; align-items: center; gap: 14px;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s, transform 0.3s;
     }
-    .powered-by a {
-      font-size: 0.7rem; color: rgba(245,243,239,0.2);
-      text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase;
-      transition: color 0.3s;
+    .google-badge:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .google-badge-stars { display: flex; gap: 3px; }
+    .google-badge-stars .star { width: 10px; height: 10px; }
+    .google-badge-info { display: flex; flex-direction: column; }
+    .google-badge-rating {
+      font-family: var(--font-serif); font-size: 1.3rem;
+      font-weight: 400; line-height: 1;
     }
-    .powered-by a:hover { color: var(--accent); }
+    .google-badge-count {
+      font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 3px;
+    }
 
-    /* ─── ANIMATIONS ─── */
+    /* --- WHATSAPP FAB --- */
+    .whatsapp-fab {
+      position: fixed; bottom: 24px; left: 24px; z-index: 900;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+
+    /* --- ANIMATIONS --- */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -708,7 +686,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* --- LOADER --- */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -718,8 +696,9 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2rem;
+      letter-spacing: 0.15em; color: var(--white);
+      text-align: center;
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
@@ -733,7 +712,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* --- RESPONSIVE --- */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -742,6 +721,7 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .horario-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -767,6 +747,10 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .horario-section { padding: 70px 24px; }
+      .horario-grid { grid-template-columns: 1fr; }
+      .google-badge { bottom: 16px; right: 16px; padding: 12px 16px; }
+      .whatsapp-fab { bottom: 16px; left: 16px; width: 50px; height: 50px; }
       .map-section iframe { height: 300px; }
     }
   </style>
@@ -775,7 +759,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">Aretxondo<span>.</span></div>
+  <div class="loader-logo">Gran Almac&eacute;n<span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
@@ -785,13 +769,13 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
+  <a href="#" class="nav-logo">Gran Almac&eacute;n<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#galeria">Exposicion</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#carta-principal">Carta</a></li>
+    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#opiniones">Opiniones</a></li>
-    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -800,11 +784,11 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galeria</a>
+  <a href="#galeria" onclick="closeMobile()">Exposicion</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#opiniones" onclick="closeMobile()">Opiniones</a>
-  <a href="#contacto" onclick="closeMobile()">Reservar</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
 <!-- HERO -->
@@ -813,20 +797,20 @@
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Caserio vasco · 1 Sol Repsol · Galdakao</p>
+    <p class="hero-eyebrow">Salon · Dormitorio · Cocina · Juvenil</p>
     <h1 class="hero-title">
-      Cocina vasca<br>con <em>alma</em><br>de caserio
+      Tu hogar<br>merece el mejor<br><em>mueble</em>
     </h1>
     <p class="hero-sub">
-      Un bello caserio rodeado de robles y vinedos a 9 km de Bilbao. Cocina tradicional vasca con toques personales, producto de temporada y 3 comedores para 180 comensales.
+      Mas de 2.000 m2 de exposicion en Galdakao. Muebles de salon, dormitorio, cocina, juvenil y auxiliar. Asesoramiento personalizado, entrega y montaje incluidos.
     </p>
     <div class="hero-actions">
-      <a href="tel:+34944567671" class="btn-primary">
-        <span>Reservar mesa</span>
+      <a href="tel:666211158" class="btn-primary">
+        <span>Llamar ahora</span>
         <span>→</span>
       </a>
-      <a href="#carta-principal" class="btn-ghost">
-        <span>Ver carta</span>
+      <a href="#galeria" class="btn-ghost">
+        <span>Ver exposicion</span>
         <div class="btn-ghost-arrow">↗</div>
       </a>
     </div>
@@ -840,18 +824,22 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina Tradicional Vasca</span>
-    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
-    <span class="marquee-item"><span class="dot"></span>Txuleta a la Brasa</span>
-    <span class="marquee-item"><span class="dot"></span>Bodega Seleccion</span>
-    <span class="marquee-item"><span class="dot"></span>Celebraciones y Bodas</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza y Jardin</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina Tradicional Vasca</span>
-    <span class="marquee-item"><span class="dot"></span>Menu Degustacion</span>
-    <span class="marquee-item"><span class="dot"></span>Txuleta a la Brasa</span>
-    <span class="marquee-item"><span class="dot"></span>Bodega Seleccion</span>
-    <span class="marquee-item"><span class="dot"></span>Celebraciones y Bodas</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza y Jardin</span>
+    <span class="marquee-item"><span class="dot"></span>Salones</span>
+    <span class="marquee-item"><span class="dot"></span>Dormitorios</span>
+    <span class="marquee-item"><span class="dot"></span>Cocinas</span>
+    <span class="marquee-item"><span class="dot"></span>Juvenil</span>
+    <span class="marquee-item"><span class="dot"></span>Sofas</span>
+    <span class="marquee-item"><span class="dot"></span>Colchones</span>
+    <span class="marquee-item"><span class="dot"></span>Auxiliar</span>
+    <span class="marquee-item"><span class="dot"></span>Decoracion</span>
+    <span class="marquee-item"><span class="dot"></span>Salones</span>
+    <span class="marquee-item"><span class="dot"></span>Dormitorios</span>
+    <span class="marquee-item"><span class="dot"></span>Cocinas</span>
+    <span class="marquee-item"><span class="dot"></span>Juvenil</span>
+    <span class="marquee-item"><span class="dot"></span>Sofas</span>
+    <span class="marquee-item"><span class="dot"></span>Colchones</span>
+    <span class="marquee-item"><span class="dot"></span>Auxiliar</span>
+    <span class="marquee-item"><span class="dot"></span>Decoracion</span>
   </div>
 </div>
 
@@ -859,20 +847,20 @@
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="37">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Anos de historia</div>
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4</span></div>
-      <div class="stat-label">Nota en Google</div>
+      <div class="stat-number"><span class="count" data-target="2000">0</span><span class="stat-suffix"> m2</span></div>
+      <div class="stat-label">De exposicion</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1054">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Opiniones en Google</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.7</span></div>
+      <div class="stat-label">Valoracion Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="180">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Comensales de aforo</div>
+      <div class="stat-number"><span class="count" data-target="277">0</span><span class="stat-suffix"></span></div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
   </div>
 </div>
@@ -881,50 +869,50 @@
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestra esencia</p>
-      <h2 class="section-title reveal reveal-delay-1">Un caserio donde<br><em>la tradicion vive</em></h2>
+      <p class="section-label reveal">Nuestra exposicion</p>
+      <h2 class="section-title reveal reveal-delay-1">Ambientes que<br><em>inspiran tu hogar</em></h2>
     </div>
-    <a href="tel:+34944567671" class="view-all reveal">Reservar →</a>
+    <a href="tel:666211158" class="view-all reveal">Pide cita →</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=80" alt="Interior rustico del restaurante Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1400&q=80" alt="Salon moderno con sofa y mesa" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Caserio</p>
-        <h3 class="project-name">Comedor Principal</h3>
-        <p class="project-meta">Vigas de madera · Techos altos · Luz natural</p>
+        <p class="project-cat">Salon · Moderno</p>
+        <h3 class="project-name">Salones Completos</h3>
+        <p class="project-meta">Mueble de TV · Estanterias · Mesa centro</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Txuleta a la brasa en Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?w=800&q=80" alt="Dormitorio elegante" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Especialidad · Brasa</p>
-        <h3 class="project-name">Txuleta a la Parrilla</h3>
-        <p class="project-meta">Carne de vacuno mayor · Punto perfecto</p>
+        <p class="project-cat">Dormitorio · Premium</p>
+        <h3 class="project-name">Dormitorios de Matrimonio</h3>
+        <p class="project-meta">Cama · Armario · Comoda · Mesillas</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Bodega de vinos del restaurante" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Cocina moderna equipada" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Seleccion</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">Txakoli · Rioja · Ribera · Vinos del mundo</p>
+        <p class="project-cat">Cocina · Funcional</p>
+        <h3 class="project-name">Cocinas a Medida</h3>
+        <p class="project-meta">Diseno · Electrodomesticos · Montaje</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Plato de pescado fresco en Aretxondo" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80" alt="Habitacion juvenil colorida" loading="lazy">
       <div class="project-overlay"></div>
       <div class="project-arrow">↗</div>
       <div class="project-info">
-        <p class="project-cat">Pescado · Lonja</p>
-        <h3 class="project-name">Del Mar a la Mesa</h3>
-        <p class="project-meta">Merluza · Rodaballo · Rape · Bogavante</p>
+        <p class="project-cat">Juvenil · Versatil</p>
+        <h3 class="project-name">Dormitorios Juveniles</h3>
+        <p class="project-meta">Literas · Escritorios · Almacenaje</p>
       </div>
     </div>
   </div>
@@ -934,39 +922,39 @@
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">1989</div>
-      <div class="about-badge-text">Caserio vasco construido con materiales nobles</div>
+      <div class="about-badge-number">4.7</div>
+      <div class="about-badge-text">Valoracion en Google con 277 resenas de clientes</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>tradicion</em>
+      Tu tienda de muebles<br>en <em>Galdakao</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Aretxondo es un bello caserio vasco construido en 1989 con materiales nobles, rodeado de magnifica vegetacion a tan solo 9 kilometros de Bilbao. Un restaurante familiar con ambiente rustico y acogedor donde la cocina tradicional vasca se combina con toques personales.<br><br><strong>Entre 1996 y 1999 tuvimos estrella Michelin</strong>, y actualmente mantenemos 1 Sol de la Guia Repsol. Nuestro luminoso comedor rustico de techos altos con vigas de madera a la vista ofrece el marco perfecto para disfrutar de una cocina honesta basada en el producto.
+      Gran Almacen Del Mueble es la referencia en muebles en Galdakao desde hace mas de 30 anos. Con mas de 2.000 m2 de exposicion, ofrecemos todo lo que necesitas para amueblar tu hogar.<br><br><strong>Un equipo que te escucha y te asesora.</strong> Nuestros profesionales, como Edorta y Ana, te acompanan desde la primera idea hasta el montaje final en tu casa. Cada proyecto es unico y lo tratamos como tal.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de temporada</h4>
-          <p>Merluza, rape negro, solomillo y productos tipicos de la tierra de maxima calidad</p>
+          <h4>Asesoramiento personalizado</h4>
+          <p>Te ayudamos a elegir los muebles que mejor se adaptan a tu espacio, tu estilo y tu presupuesto</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina con alma vasca</h4>
-          <p>Tradicion y modernidad en cada plato, con presentaciones cuidadas y sabores autenticos</p>
+          <h4>Entrega y montaje incluidos</h4>
+          <p>Montadores profesionales que cuidan cada detalle. Tu mueble instalado y listo para disfrutar</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>3 comedores + terraza</h4>
-          <p>Espacio para 180 comensales, aparcamiento privado y jardin para celebraciones</p>
+          <h4>Relacion calidad-precio</h4>
+          <p>Muebles de calidad a precios competitivos. Financiacion disponible sin intereses</p>
         </div>
       </div>
     </div>
@@ -978,19 +966,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Experiencias para <em>cada ocasion</em>
+      Todo para amueblar <em>tu hogar</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <rect x="2" y="14" width="20" height="6" rx="1"/><path d="M4 14V8a2 2 0 012-2h12a2 2 0 012 2v6"/><path d="M12 14V8"/>
           </svg>
         </div>
-        <h3>Carta y Menu del Dia</h3>
-        <p>Menu ejecutivo de lunes a viernes por 24,50 EUR y carta completa con pescados de lonja, carnes a la brasa y especialidades vascas. Cocina de mercado que cambia con las estaciones.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Salones y Comedores</h3>
+        <p>Muebles de salon, comedores completos, muebles de TV, estanterias, vitrinas y mesas de centro. Estilos moderno, clasico y nordico para todos los gustos.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -999,324 +987,156 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Menus Degustacion</h3>
-        <p>Menu Aretxondo de 5 platos en medias raciones por 44,50 EUR o menu degustacion de 6 platos escogidos de carta por 69,50 EUR. Bebidas aparte. Disponibles fines de semana.</p>
-        <a href="#carta-especialidades" class="service-link">Ver degustacion →</a>
+        <h3>Dormitorios y Colchones</h3>
+        <p>Dormitorios de matrimonio y juveniles. Armarios a medida, camas canape, colchones de las mejores marcas. Conjunto completo o piezas sueltas.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>
           </svg>
         </div>
-        <h3>Eventos y Celebraciones</h3>
-        <p>Bodas, comuniones, comidas de empresa y celebraciones especiales. 3 comedores privados, terraza con jardin, carpa para eventos y aparcamiento para autobuses.</p>
-        <a href="#carta-grupos" class="service-link">Mas info →</a>
+        <h3>Cocinas y Banos</h3>
+        <p>Cocinas completas a medida con diseno 3D. Muebles de bano, espejos y accesorios. Incluimos medicion, diseno, transporte y montaje profesional.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/>
+          </svg>
+        </div>
+        <h3>Sofas y Tapiceria</h3>
+        <p>Sofas de 2, 3 plazas y chaise longue. Sillones relax, sofas cama y pufs. Gran variedad de telas, colores y medidas. Prueba antes de comprar.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+          </svg>
+        </div>
+        <h3>Mueble Auxiliar</h3>
+        <p>Recibidores, zapateros, estanterias, cajoneras, escritorios y muebles de oficina. Piezas funcionales que completan cualquier estancia de tu hogar.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Entrega y Montaje</h3>
+        <p>Servicio completo de transporte y montaje profesional incluido. Montadores con experiencia que cuidan tu mueble y tu hogar. Plazos de entrega cumplidos.</p>
+        <a href="tel:666211158" class="service-link">Consultar →</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CARTA: PRINCIPAL -->
-<section class="carta-section" id="carta-principal">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Nuestra carta</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Producto de <em>temporada</em>, sabor autentico
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Pescados y mariscos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Merluza a la plancha</div>
-              <div class="carta-item-desc">Sobre crema de marisco y tripetas de bacalao</div>
-            </div>
-            <div class="carta-item-price">22,70 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Rodaballo a la plancha</div>
-              <div class="carta-item-desc">Con pisto de berenjena y tapenade</div>
-            </div>
-            <div class="carta-item-price">33,90 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Lomo de rape a la parrilla</div>
-              <div class="carta-item-desc">Con almejas y trigueros</div>
-            </div>
-            <div class="carta-item-price">31,30 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Kokotxas a la plancha</div>
-              <div class="carta-item-desc">Con vieira y emulsion de txakoli</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Carnes a la brasa</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Solomillo asado a la parrilla</div>
-              <div class="carta-item-desc">Con terrina de bacon e Idiazabal</div>
-            </div>
-            <div class="carta-item-price">28,90 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Pluma iberica laminada</div>
-              <div class="carta-item-desc">Con especias morunas y yogur</div>
-            </div>
-            <div class="carta-item-price">24,50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Txuleta de vacuno mayor</div>
-              <div class="carta-item-desc">Madurada y a la brasa de carbon</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Costillas de Angus</div>
-              <div class="carta-item-desc">Coccion lenta y acabado a la brasa</div>
-            </div>
-            <div class="carta-item-price">Consultar</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: ESPECIALIDADES / DEGUSTACION -->
-<section class="carta-section" id="carta-especialidades">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Menus degustacion</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      La experiencia <em>completa</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Menu Aretxondo — 44,50 €</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">5 platos en medias raciones</div>
-              <div class="carta-item-desc">Seleccion del chef con producto de temporada</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Entrante + Pescado + Carne + 2 Postres</div>
-              <div class="carta-item-desc">Bebidas no incluidas</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-category reveal">
-          <h4>Entrantes destacados</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Ensalada de bogavante</div>
-              <div class="carta-item-desc">Con vinagreta citrica y brotes frescos</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Jamon de mar</div>
-              <div class="carta-item-desc">Con salsa ponzu y laminas de ajo frito</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Setas de temporada con huevo</div>
-              <div class="carta-item-desc">Hongos, perretxikos o setas segun estacion</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Menu Degustacion — 69,50 €</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">6 platos escogidos de carta</div>
-              <div class="carta-item-desc">La mejor seleccion del chef, bebidas aparte</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Lubina asada con vieira</div>
-              <div class="carta-item-desc">Y salsa de txakoli</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Solomillo en costra de hierbas</div>
-              <div class="carta-item-desc">Con tuetano y reduccion de vino tinto</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Menu Ejecutivo — 24,50 €</h4>
-          <p>Disponible de lunes a viernes en horario de mediodias. Primer plato + segundo plato + postre + bebida. Ideal para comidas de trabajo en un entorno unico.</p>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver</a>
-    <p class="section-label reveal">Eventos y grupos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra en un <em>caserio unico</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Nuestros espacios</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comedor principal</div>
-              <div class="carta-item-desc">Salon con vigas de madera, ventanales y vistas al entorno natural</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Salones privados</div>
-              <div class="carta-item-desc">2 espacios adicionales para grupos reducidos e intimidad total</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Terraza y jardin</div>
-              <div class="carta-item-desc">Espacio exterior con carpa para eventos al aire libre</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Aparcamiento privado</div>
-              <div class="carta-item-desc">Espacio para vehiculos y autobuses</div>
-            </div>
-          </div>
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menus cerrados bajo peticion</h4>
-          <p>Menus a medida para cada celebracion. Bodas, comuniones, comidas de empresa y eventos especiales. Consulta sin compromiso llamando al 944 56 76 71.</p>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipos de evento</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Bodas</div>
-              <div class="carta-item-desc">Menu personalizado, carpa exterior y coctel de bienvenida</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comuniones y bautizos</div>
-              <div class="carta-item-desc">Menus especiales para toda la familia en un entorno natural</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Comidas de empresa</div>
-              <div class="carta-item-desc">Menus ejecutivos o degustacion para reuniones profesionales</div>
-            </div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Cumpleanos y aniversarios</div>
-              <div class="carta-item-desc">Celebraciones intimas o grandes fiestas con espacio a medida</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="tel:+34944567671" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
-    </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials-section" id="opiniones">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Opiniones reales</p>
+    <p class="section-label reveal">Testimonios</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Lo que dicen<br>nuestros <em>comensales</em>
+      Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Sitio muy bonito, comida deliciosa, trato estupendo y excelente calidad-precio. Un caserio precioso donde se come de maravilla."</p>
+        <p class="testimonial-quote">"Gran variedad de muebles y sobre todo muy buena acogida y atencion. Ana es muy maja y amable, te asesora genial. Repetiremos seguro."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ana</strong>
-          <span>Google Reviews</span>
+          <strong>Felisa</strong>
+          <span>Cliente verificada · Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"De 10. Ninguna pega: pagas el producto, el servicio y la calidad. Fuimos 12 personas y todo perfecto de principio a fin."</p>
+        <p class="testimonial-quote">"Edorta es un gran profesional. Nos dio ideas fantasticas y el seguimiento fue excepcional. El montaje impecable, cuidaron cada detalle."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Sonia Fernandez</strong>
-          <span>Google Reviews</span>
+          <strong>Yolanda</strong>
+          <span>Cliente verificada · Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Ambiente familiar, entorno tranquilo, vistas preciosas, excelente atencion y comida deliciosa. Ideal para ir con ninos."</p>
+        <p class="testimonial-quote">"Muy buena atencion al cliente y servicio posventa. Buenos productos a muy buen precio. Los montadores fueron muy amables y profesionales."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Helena Ortega</strong>
-          <span>Google Reviews</span>
+          <strong>Mikel A.</strong>
+          <span>Cliente verificado · Google</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- HORARIO -->
+<div class="horario-section" id="horario">
+  <div class="horario-inner">
+    <p class="section-label reveal" style="justify-content:center">Horario</p>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">
+      Cuando <em>visitarnos</em>
+    </h2>
+    <div class="horario-grid">
+      <div class="horario-row reveal">
+        <span class="horario-day">Lunes</span>
+        <span class="horario-time">16:00 - 20:00</span>
+      </div>
+      <div class="horario-row reveal reveal-delay-1">
+        <span class="horario-day">Martes</span>
+        <span class="horario-time">10:00 - 13:00 / 16:00 - 20:00</span>
+      </div>
+      <div class="horario-row reveal">
+        <span class="horario-day">Miercoles</span>
+        <span class="horario-time">10:00 - 13:00 / 16:00 - 20:00</span>
+      </div>
+      <div class="horario-row reveal reveal-delay-1">
+        <span class="horario-day">Jueves</span>
+        <span class="horario-time">10:00 - 13:00 / 16:00 - 20:00</span>
+      </div>
+      <div class="horario-row reveal">
+        <span class="horario-day">Viernes</span>
+        <span class="horario-time">10:00 - 13:00 / 16:00 - 20:00</span>
+      </div>
+      <div class="horario-row reveal reveal-delay-1">
+        <span class="horario-day">Sabado</span>
+        <span class="horario-time">10:00 - 14:00 / 16:30 - 20:30</span>
+      </div>
+      <div class="horario-row reveal">
+        <span class="horario-day">Domingo</span>
+        <span class="horario-time horario-closed">Cerrado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MAP -->
 <div class="map-section">
-  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Restaurante+Aretxondo+Galdakao&zoom=17" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Gran+Almacen+Del+Mueble+Galdakao&zoom=17" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicacion Gran Almacen Del Mueble Galdakao"></iframe>
 </div>
 
 <!-- CTA -->
 <div class="cta-section" id="contacto">
   <div class="cta-text">
-    <h2>Reserva tu mesa<br>en el caserio</h2>
-    <p>Llama al 944 56 76 71 o escribenos a aretxondo@aretxondo.com. Cerrado los lunes. Martes a domingo de 13:00 a 17:30.</p>
+    <h2>¿Buscas muebles<br>para tu hogar?</h2>
+    <p>Visitanos en nuestra exposicion de 2.000 m2 en Galdakao o llamanos sin compromiso.</p>
   </div>
-  <a href="tel:+34944567671" class="btn-dark">
-    <span>Llamar ahora</span>
+  <a href="tel:666211158" class="btn-dark">
+    <span>666 21 11 58</span>
     <span>↗</span>
   </a>
 </div>
@@ -1325,44 +1145,45 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Aretxondo<span>.</span></a>
-      <p class="footer-tagline">"Cocina tradicional vasca con toques personales en un caserio unico."</p>
+      <a href="#" class="nav-logo">Gran Almac&eacute;n<span>.</span></a>
+      <p class="footer-tagline">"Tu hogar, nuestro compromiso. Muebles con alma en Galdakao."</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com" target="_blank" class="social-link" aria-label="Facebook">Fb</a>
-        <a href="https://www.instagram.com" target="_blank" class="social-link" aria-label="Instagram">Ig</a>
-        <a href="https://maps.google.com/?q=Restaurante+Aretxondo+Galdakao" target="_blank" class="social-link" aria-label="Google Maps">Gm</a>
-        <a href="tel:+34944567671" class="social-link" aria-label="Telefono">Tf</a>
+        <a href="https://www.facebook.com/granalmacendelmueblegaldakano/" target="_blank" rel="noopener" class="social-link">Fb</a>
+        <a href="https://www.instagram.com/granalmacengaldakano/" target="_blank" rel="noopener" class="social-link">Ig</a>
+        <a href="https://www.google.com/maps/place/Gran+Almac%C3%A9n+Del+Mueble/" target="_blank" rel="noopener" class="social-link">Gm</a>
+        <a href="https://wa.me/34666211158" target="_blank" rel="noopener" class="social-link">Wa</a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Carta</h4>
+      <h4>Secciones</h4>
       <ul>
-        <li><a href="#carta-principal">Pescados</a></li>
-        <li><a href="#carta-principal">Carnes</a></li>
-        <li><a href="#carta-especialidades">Degustacion</a></li>
-        <li><a href="#carta-especialidades">Menu ejecutivo</a></li>
+        <li><a href="#galeria">Salones</a></li>
+        <li><a href="#galeria">Dormitorios</a></li>
+        <li><a href="#galeria">Cocinas</a></li>
+        <li><a href="#galeria">Juvenil</a></li>
+        <li><a href="#galeria">Sofas</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Restaurante</h4>
+      <h4>Tienda</h4>
       <ul>
         <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#carta-grupos">Eventos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
         <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#horario">Horario</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:aretxondo@aretxondo.com">aretxondo@aretxondo.com</a></li>
-        <li><a href="tel:+34944567671">944 56 76 71</a></li>
-        <li><a href="https://maps.google.com/?q=Restaurante+Aretxondo+Galdakao" target="_blank">B Elexalde 16, Galdakao</a></li>
+        <li><a href="tel:666211158">666 21 11 58</a></li>
+        <li><a href="tel:944905411">944 90 54 11</a></li>
+        <li><a href="#">Bilbao-San Sebastian Errepidea, Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Restaurante Aretxondo. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Gran Almacen Del Mueble — Muebles Galdakao. Todos los derechos reservados.</p>
     <div class="footer-legal">
       <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
@@ -1371,13 +1192,26 @@
   </div>
 </footer>
 
-<!-- POWERED BY -->
-<div class="powered-by">
-  <a href="https://ggelcano.com" target="_blank">Web creada por G&G Elcano</a>
+<!-- GOOGLE BADGE -->
+<div class="google-badge">
+  <div class="google-badge-stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  </div>
+  <div class="google-badge-info">
+    <div class="google-badge-rating">4.7</div>
+    <div class="google-badge-count">277 resenas en Google</div>
+  </div>
 </div>
 
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/34666211158?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20muebles" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
 <script>
-  // ── LOADER
+  // -- LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1385,7 +1219,7 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
+  // -- CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1410,13 +1244,13 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
+  // -- NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
+  // -- HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1428,14 +1262,14 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
+  // -- REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
+  // -- COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1459,12 +1293,12 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
+  // -- HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>
