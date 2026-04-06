@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Stop Ibaizabal — Taller Mecánico</title>
+  <title>First Stop Ibaizabal — Neumáticos y Mecánica en Galdakao</title>
+  <meta name="description" content="Taller de neumáticos y mecánica rápida en Galdakao. Bridgestone, Michelin, Continental, Pirelli. Pre-ITV, alineación, frenos, aire acondicionado. +36 años de experiencia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -13,8 +14,8 @@
     :root {
       --black: #0a0a0a;
       --white: #f5f3ef;
-      --accent: #DC2626;
-      --accent-light: #ef5350;
+      --accent: #E4002B;
+      --accent-light: #ff2d50;
       --carbon: #141414;
       --carbon-mid: #1e1e1e;
       --carbon-light: #2a2a2a;
@@ -37,7 +38,6 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +50,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(220,38,38,0.4);
+      border: 1px solid rgba(228,0,43,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +59,10 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(220,38,38,0.7);
-      background: rgba(220,38,38,0.05);
+      border-color: rgba(228,0,43,0.7);
+      background: rgba(228,0,43,0.05);
     }
 
-    /* ─── NAVBAR ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -75,13 +74,13 @@
       backdrop-filter: blur(20px);
       background: rgba(8,8,8,0.85);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(220,38,38,0.08);
+      border-bottom: 1px solid rgba(228,0,43,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-decoration: none;
       color: var(--white);
       display: flex; align-items: center; gap: 10px;
@@ -105,7 +104,6 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +127,6 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,15 +134,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 40%, #DC262622 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1600&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.3) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -179,7 +175,7 @@
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-sub {
       font-size: 1.05rem; color: rgba(245,243,239,0.6);
-      max-width: 480px; line-height: 1.7; margin-bottom: 52px;
+      max-width: 520px; line-height: 1.7; margin-bottom: 52px;
       font-weight: 300;
       opacity: 0; transform: translateY(20px);
       animation: fadeUp 1s 0.8s var(--ease-out) forwards;
@@ -191,7 +187,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -240,15 +236,14 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(220,38,38,0.12);
-      border-bottom: 1px solid rgba(220,38,38,0.12);
+      border-top: 1px solid rgba(228,0,43,0.12);
+      border-bottom: 1px solid rgba(228,0,43,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
       display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 28s linear infinite;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 30px;
@@ -260,7 +255,6 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +270,34 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    .brands-section {
+      background: var(--carbon-mid);
+      padding: 50px 60px;
+      border-top: 1px solid rgba(228,0,43,0.06);
+      border-bottom: 1px solid rgba(228,0,43,0.06);
+    }
+    .brands-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 60px;
+      flex-wrap: wrap;
+    }
+    .brand-tag {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,243,239,0.2);
+      transition: color 0.4s;
+    }
+    .brand-tag:hover { color: rgba(245,243,239,0.5); }
+    .brand-tag.premium { color: rgba(228,0,43,0.35); }
+    .brand-tag.premium:hover { color: rgba(228,0,43,0.6); }
+
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(220,38,38,0.08);
+      border-top: 1px solid rgba(228,0,43,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +305,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(220,38,38,0.08);
+      border: 1px solid rgba(228,0,43,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +315,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(220,38,38,0.3); }
+    .stat-card:hover { border-color: rgba(228,0,43,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +327,6 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +338,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(220,38,38,0.3);
+      border-bottom: 1px solid rgba(228,0,43,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,9 +358,9 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
@@ -381,7 +397,6 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,11 +404,11 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+      background: url('https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=900&q=80') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(220,38,38,0.25);
+      background: var(--black); border: 1px solid rgba(228,0,43,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-year {
@@ -419,10 +434,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(220,38,38,0.06);
+      padding: 20px; border: 1px solid rgba(228,0,43,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(220,38,38,0.2); }
+    .about-value:hover { border-color: rgba(228,0,43,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +451,6 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +458,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(220,38,38,0.07);
+      border: 1px solid rgba(228,0,43,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(220,38,38,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(228,0,43,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(220,38,38,0.2); color: var(--accent);
+      border: 1px solid rgba(228,0,43,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,25 +480,24 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(220,38,38,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(228,0,43,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(220,38,38,0.05);
+      font-weight: 300; color: rgba(228,0,43,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(220,38,38,0.1); }
+    .service-card:hover .service-number { color: rgba(228,0,43,0.1); }
 
-    /* ─── TESTIMONIALS ─── */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(220,38,38,0.03); line-height: 1; pointer-events: none;
+      color: rgba(228,0,43,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -493,10 +506,10 @@
     }
     .testimonial-card {
       padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(220,38,38,0.07);
+      border: 1px solid rgba(228,0,43,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(220,38,38,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(228,0,43,0.2); background: rgba(8,8,8,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
@@ -519,7 +532,27 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    .hours-section {
+      background: var(--black);
+      padding: 100px 60px;
+    }
+    .hours-inner {
+      max-width: 800px; margin: 0 auto;
+    }
+    .hours-grid {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 50px;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(228,0,43,0.08);
+      font-size: 0.95rem;
+    }
+    .hours-row .day { color: var(--white); font-weight: 400; letter-spacing: 0.05em; }
+    .hours-row .time { color: var(--text-muted); font-weight: 300; }
+    .hours-row.closed .time { color: rgba(228,0,43,0.5); }
+
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -528,10 +561,10 @@
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 {
       font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300; color: var(--black); line-height: 1.1;
+      font-weight: 300; color: var(--white); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -549,10 +582,32 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    .contact-section {
+      padding: 100px 60px; background: var(--carbon);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;
+    }
+    .contact-info a {
+      color: var(--accent); text-decoration: none; transition: opacity 0.3s;
+    }
+    .contact-info a:hover { opacity: 0.7; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px; color: rgba(245,243,239,0.6); font-size: 0.9rem;
+    }
+    .contact-detail svg { color: var(--accent); flex-shrink: 0; }
+    .contact-map {
+      border-radius: 8px; overflow: hidden; height: 350px;
+      border: 1px solid rgba(228,0,43,0.1);
+    }
+
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(220,38,38,0.08);
+      border-top: 1px solid rgba(228,0,43,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -600,7 +655,20 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37,211,102,0.5);
+    }
+
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -612,7 +680,6 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -622,8 +689,8 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2rem;
+      letter-spacing: 0.2em; color: var(--white);
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
@@ -637,7 +704,6 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -646,6 +712,10 @@
       .hero-scroll { right: 36px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .brands-inner { gap: 36px; }
+      .brands-section { padding: 40px 36px; }
+      .hours-section { padding: 80px 36px; }
+      .contact-section { padding: 80px 36px; }
     }
     @media (max-width: 768px) {
       body { cursor: auto; }
@@ -671,64 +741,65 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .brands-inner { gap: 24px; }
+      .brand-tag { font-size: 1rem; }
+      .brands-section { padding: 30px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hours-section { padding: 60px 24px; }
+      .contact-section { padding: 60px 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">FIRST STOP IBAIZABAL <span>.</span></div>
+  <div class="loader-logo">FIRST STOP <span>IBAIZABAL</span></div>
   <div class="loader-bar"></div>
 </div>
 
-<!-- CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">First Stop Ibaizabal<span>.</span></a>
+  <a href="#" class="nav-logo">First Stop <span>Ibaizabal</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#servicios" onclick="closeMobile()">Servicios</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Mecánica · Confianza · Garantía</p>
+    <p class="hero-eyebrow">Bridgestone &middot; First Stop &middot; Galdakao</p>
     <h1 class="hero-title">
-      Tu coche en<br>manos de<br><em>profesionales</em>
+      Tus neumaticos<br>en manos<br><em>expertas</em>
     </h1>
     <p class="hero-sub">
-      Mecánica general, ITV, neumáticos, frenos, distribución. Taller multimarca con presupuesto previo y garantía escrita.
+      Mas de 36 anos cuidando tu vehiculo en Galdakao. Neumaticos premium, mecanica rapida, diagnosis electronica, pre-ITV y alineacion. Red oficial First Stop &mdash; Bridgestone.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
+      <a href="https://wa.me/34944409350?text=Hola%2C%20quiero%20pedir%20cita%20en%20First%20Stop%20Ibaizabal" class="btn-primary" target="_blank" rel="noopener">
         <span>Pedir cita</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
       <a href="#servicios" class="btn-ghost">
         <span>Servicios</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -738,188 +809,231 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
-    <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
-    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
+    <span class="marquee-item"><span class="dot"></span>Neumaticos</span>
+    <span class="marquee-item"><span class="dot"></span>Alineacion</span>
     <span class="marquee-item"><span class="dot"></span>Frenos</span>
-    <span class="marquee-item"><span class="dot"></span>Distribución</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
-    <span class="marquee-item"><span class="dot"></span>Mecánica General</span>
     <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
-    <span class="marquee-item"><span class="dot"></span>Neumáticos</span>
+    <span class="marquee-item"><span class="dot"></span>Diagnosis Electronica</span>
+    <span class="marquee-item"><span class="dot"></span>Aire Acondicionado</span>
+    <span class="marquee-item"><span class="dot"></span>Cambio de Aceite</span>
+    <span class="marquee-item"><span class="dot"></span>Amortiguadores</span>
+    <span class="marquee-item"><span class="dot"></span>Neumaticos</span>
+    <span class="marquee-item"><span class="dot"></span>Alineacion</span>
     <span class="marquee-item"><span class="dot"></span>Frenos</span>
-    <span class="marquee-item"><span class="dot"></span>Distribución</span>
-    <span class="marquee-item"><span class="dot"></span>Diagnosis Electrónica</span>
+    <span class="marquee-item"><span class="dot"></span>Pre-ITV</span>
+    <span class="marquee-item"><span class="dot"></span>Diagnosis Electronica</span>
+    <span class="marquee-item"><span class="dot"></span>Aire Acondicionado</span>
+    <span class="marquee-item"><span class="dot"></span>Cambio de Aceite</span>
+    <span class="marquee-item"><span class="dot"></span>Amortiguadores</span>
   </div>
 </div>
 
-<!-- STATS -->
+<div class="brands-section">
+  <div class="brands-inner">
+    <span class="brand-tag premium">Bridgestone</span>
+    <span class="brand-tag">Michelin</span>
+    <span class="brand-tag">Continental</span>
+    <span class="brand-tag">Pirelli</span>
+    <span class="brand-tag premium">Firestone</span>
+    <span class="brand-tag">Kumho</span>
+  </div>
+</div>
+
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años de taller</div>
+      <div class="stat-number"><span class="count" data-target="36">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Anos de experiencia</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="5000">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Coches al año</div>
+      <div class="stat-number"><span class="count" data-target="263">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
-      <div class="stat-label">Nota en Google</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.3&#9733;</span></div>
+      <div class="stat-label">Nota media</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Mecánicos titulados</div>
+      <div class="stat-number"><span class="count" data-target="50">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Puntos de revision</div>
     </div>
   </div>
 </div>
 
-<!-- GALLERY -->
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestro taller</p>
+      <h2 class="section-title reveal reveal-delay-1">Instalaciones<br><em>profesionales</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="https://ibaizabal.firststop.es/" class="view-all reveal" target="_blank" rel="noopener">Web oficial &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80" alt="Taller mecanico profesional" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Taller · General</p>
-        <h3 class="project-name">Nuestro Taller</h3>
-        <p class="project-meta">6 elevadores · Multimarca</p>
+        <p class="project-cat">Taller &middot; First Stop</p>
+        <h3 class="project-name">Zona de Mecanica Rapida</h3>
+        <p class="project-meta">Mantenimiento integral multimarca</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80" alt="Neumaticos apilados en taller" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Diagnosis · Digital</p>
-        <h3 class="project-name">Diagnosis Electrónica</h3>
-        <p class="project-meta">Equipo de última generación</p>
+        <p class="project-cat">Neumaticos &middot; Premium</p>
+        <h3 class="project-name">Seccion Neumaticos</h3>
+        <p class="project-meta">Bridgestone &middot; Michelin &middot; Continental &middot; Pirelli</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="Mecanico trabajando en frenos" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Neumáticos · Premium</p>
-        <h3 class="project-name">Sección Neumáticos</h3>
-        <p class="project-meta">Michelin · Continental · Pirelli</p>
+        <p class="project-cat">Frenos &middot; Seguridad</p>
+        <h3 class="project-name">Servicio de Frenos</h3>
+        <p class="project-meta">Pastillas &middot; Discos &middot; Liquido</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(220,38,38,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1632823471406-4477acb1dd46?w=800&q=80" alt="Diagnosis electronica vehiculo" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">ITV · Pre-revisión</p>
-        <h3 class="project-name">Servicio Pre-ITV</h3>
-        <p class="project-meta">Sin sorpresas · Garantizado</p>
+        <p class="project-cat">Diagnosis &middot; 50 puntos</p>
+        <h3 class="project-name">Revision Completa</h3>
+        <p class="project-meta">Diagnosis First Stop de 50 puntos</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">1994</div>
-      <div class="about-badge-text">Tres décadas de mecánica honesta</div>
+      <div class="about-badge-year">1990</div>
+      <div class="about-badge-text">Mas de tres decadas en Galdakao</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Mecánicos de<br><em>fiar</em>
+      Red oficial<br><em>First Stop</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Talleres Hernández es un taller familiar donde la confianza se gana con trabajo bien hecho y precios justos.<br><br><strong>Sin sorpresas.</strong> Presupuesto cerrado antes de tocar tu coche. Si encontramos algo más, te llamamos antes de reparar. Así de simple.
+      First Stop Ibaizabal es parte de la red oficial de talleres Bridgestone &mdash; First Stop, con mas de 36 anos de experiencia en Galdakao.<br><br><strong>Especialistas en neumaticos y mecanica rapida.</strong> Trabajamos con las mejores marcas: Bridgestone, Michelin, Continental y Pirelli. Sala de espera comoda con prensa, cafe y amplio parking exterior.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Presupuesto cerrado</h4>
-          <p>Te damos el precio antes de empezar. Si hay imprevistos, te avisamos y tú decides</p>
+          <h4>Garantia Bridgestone</h4>
+          <p>Red oficial First Stop. Garantia de fabrica en todos los neumaticos montados en nuestro taller</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Piezas de primera</h4>
-          <p>Solo montamos recambios originales o de primera calidad. Nada genérico ni de dudoso origen</p>
+          <h4>Diagnosis 50 puntos</h4>
+          <p>Revision integral First Stop que cubre 50 puntos criticos de tu vehiculo. Informe detallado incluido</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Garantía por escrito</h4>
-          <p>2 años de garantía en mano de obra y piezas. Por escrito y con factura detallada</p>
+          <h4>Hotel de neumaticos</h4>
+          <p>Guardamos tus neumaticos de temporada en nuestro almacen. Cambio rapido cuando los necesites</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Servicios para tu <em>vehiculo</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
           </svg>
         </div>
-        <h3>Mecánica General</h3>
-        <p>Revisiones, cambio de aceite, filtros, distribución, embrague, suspensión. Todo tipo de reparaciones para todas las marcas.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Neumaticos</h3>
+        <p>Montaje, equilibrado, rotacion, reparacion de pinchazos y hotel de neumaticos. Marcas premium: Bridgestone, Michelin, Continental, Pirelli, Firestone, Kumho.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
           </svg>
         </div>
-        <h3>Pre-ITV y Diagnosis</h3>
-        <p>Revisión completa pre-ITV con diagnosis electrónica. Si no pasa, te hacemos la reparación y volvemos a pasar la ITV sin coste extra.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Mecanica Rapida</h3>
+        <p>Cambio de aceite, filtros, baterias, escobillas, liquido refrigerante, AdBlue, pastillas y discos de freno, amortiguadores y tubo de escape.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
           </svg>
         </div>
-        <h3>Neumáticos y Frenos</h3>
-        <p>Cambio de neumáticos de primeras marcas (Michelin, Continental, Pirelli). Cambio de pastillas, discos y líquido de frenos.</p>
-        <a href="#contacto" class="service-link">Más info →</a>
+        <h3>Diagnosis y Pre-ITV</h3>
+        <p>Diagnosis electronica avanzada, revision completa de 50 puntos First Stop, pre-ITV oficial e inspeccion tecnica. Sin sorpresas en la estacion.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Alineacion</h3>
+        <p>Alineacion de eje delantero y doble eje, tanto para turismos como para 4x4. Alargamos la vida de tus neumaticos y mejoramos la estabilidad.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-number">05</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </div>
+        <h3>Aire Acondicionado</h3>
+        <p>Recarga y revision completa del sistema de climatizacion. Mantenimiento de refrigerante y deteccion de fugas para maxima eficiencia.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-number">06</div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+          </svg>
+        </div>
+        <h3>Descarbonizacion</h3>
+        <p>Limpieza del motor mediante descarbonizacion profesional. Mejora el rendimiento, reduce emisiones y prepara tu vehiculo para la ITV.</p>
+        <a href="#contacto" class="service-link">Pedir cita &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
     <p class="section-label reveal">Testimonios</p>
@@ -931,122 +1045,178 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Llevo 15 años trayendo mis coches aquí. Siempre me han dicho la verdad, incluso cuando no había que reparar nada. Eso no tiene precio."</p>
+        <p class="testimonial-quote">"Llevo mas de 10 anos cambiando neumaticos aqui. Siempre te asesoran bien, sin intentar venderte lo mas caro. Precios justos y trabajo rapido."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Antonio García</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Joseba Etxebarria</strong>
+          <span>Neumaticos &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Me hicieron la distribución por la mitad de precio que el concesionario oficial. Mismas piezas, mismo resultado. Muy recomendable."</p>
+        <p class="testimonial-quote">"Fui a hacer la pre-ITV y me detectaron dos cosas que habrian dado fallo seguro. Me lo arreglaron en el momento y pase la ITV a la primera. Muy agradecida."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Laura Martínez</strong>
-          <span>Reparación · Vallecas</span>
+          <strong>Ainhoa Goikoetxea</strong>
+          <span>Pre-ITV &middot; Basauri</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Me dijeron que mi coche pasaría la ITV sin problemas y acertaron. La pre-revisión fue muy completa. Tranquilidad total."</p>
+        <p class="testimonial-quote">"Tenia un ruido raro en la direccion. Me hicieron la diagnosis, encontraron el problema y me dieron presupuesto al momento. Reparacion impecable y rapida."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Marcos López</strong>
-          <span>Pre-ITV · Madrid</span>
+          <strong>Mikel Uriarte</strong>
+          <span>Mecanica &middot; Galdakao</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contacto">
-  <div class="cta-text">
-    <h2>¿Tu coche necesita<br>atención?</h2>
-    <p>Pide cita online o llámanos. Presupuesto sin compromiso.</p>
-  </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Pedir cita</span>
-    <span>↗</span>
-  </a>
-</div>
-
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">N-634, Km. 104, 200, 48960 Aperribai, Vizcaya</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34944409350" style="color: var(--accent,#0284C7);">944 40 93 50</a></p>
+<section class="hours-section">
+  <div class="hours-inner">
+    <p class="section-label reveal">Horario</p>
+    <h2 class="section-title reveal reveal-delay-1">Cuando <em>visitarnos</em></h2>
+    <div class="hours-grid reveal reveal-delay-2">
+      <div class="hours-row">
+        <span class="day">Lunes</span>
+        <span class="time">08:00 - 13:00 / 15:00 - 18:00</span>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=First+Stop+Ibaizabal,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="hours-row">
+        <span class="day">Martes</span>
+        <span class="time">08:00 - 13:00 / 15:00 - 18:00</span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Miercoles</span>
+        <span class="time">08:00 - 13:00 / 15:00 - 18:00</span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Jueves</span>
+        <span class="time">08:00 - 13:00 / 15:00 - 18:00</span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Viernes</span>
+        <span class="time">08:00 - 13:00 / 15:00 - 18:00</span>
+      </div>
+      <div class="hours-row closed">
+        <span class="day">Sabado</span>
+        <span class="time">Cerrado</span>
+      </div>
+      <div class="hours-row closed">
+        <span class="day">Domingo</span>
+        <span class="time">Cerrado</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<div class="cta-section">
+  <div class="cta-text">
+    <h2>Necesitas neumaticos<br>o revision?</h2>
+    <p>Llamanos o envianos un WhatsApp. Presupuesto sin compromiso en el acto.</p>
+  </div>
+  <a href="https://wa.me/34944409350?text=Hola%2C%20quiero%20pedir%20cita%20en%20First%20Stop%20Ibaizabal" class="btn-dark" target="_blank" rel="noopener">
+    <span>WhatsApp directo</span>
+    <span>&nearr;</span>
+  </a>
+</div>
+
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal reveal-delay-1">Visitanos en <em>Galdakao</em></h2>
+    <div class="contact-grid">
+      <div class="reveal reveal-delay-2">
+        <div class="contact-detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>N-634, Km. 104, 200 &mdash; 48960 Aperribai, Galdakao (Vizcaya)</span>
+        </div>
+        <div class="contact-detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+34944409350" style="color:var(--accent);text-decoration:none">944 40 93 50</a>
+        </div>
+        <div class="contact-detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:ibaizabal@bridgestone.eu" style="color:var(--accent);text-decoration:none">ibaizabal@bridgestone.eu</a>
+        </div>
+        <div class="contact-detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <a href="https://ibaizabal.firststop.es/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">ibaizabal.firststop.es</a>
+        </div>
+        <p style="color: var(--text-muted); margin-top: 28px; font-size: 0.88rem; line-height: 1.7;">
+          Amplio parking exterior gratuito. Sala de espera con prensa diaria, cafe y wifi. Acceso directo desde la N-634.
+        </p>
+      </div>
+      <div class="contact-map reveal reveal-delay-3">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=First+Stop+Ibaizabal,Galdakao&zoom=16" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">First Stop Ibaizabal<span>.</span></a>
-      <p class="footer-tagline">"Un coche bien cuidado es un coche que no te deja tirado."<br>— Talleres Hernández</p>
+      <a href="#" class="nav-logo">First Stop <span>Ibaizabal</span></a>
+      <p class="footer-tagline">Red oficial Bridgestone &mdash; First Stop. Tu taller de confianza en Galdakao desde 1990.</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://ibaizabal.firststop.es/" class="social-link" target="_blank" rel="noopener">Web</a>
+        <a href="https://wa.me/34944409350" class="social-link" target="_blank" rel="noopener">Wa</a>
+        <a href="https://www.google.com/maps/place/First+Stop+Ibaizabal/" class="social-link" target="_blank" rel="noopener">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="#">Mecánica</a></li>
-        <li><a href="#">Pre-ITV</a></li>
-        <li><a href="#">Neumáticos</a></li>
-        <li><a href="#">Frenos</a></li>
-        <li><a href="#">Diagnosis</a></li>
+        <li><a href="#servicios">Neumaticos</a></li>
+        <li><a href="#servicios">Mecanica rapida</a></li>
+        <li><a href="#servicios">Pre-ITV</a></li>
+        <li><a href="#servicios">Alineacion</a></li>
+        <li><a href="#servicios">Aire acondicionado</a></li>
+        <li><a href="#servicios">Diagnosis</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Taller</h4>
+      <h4>Marcas</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Equipo</a></li>
-        <li><a href="#">Instalaciones</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#">Bridgestone</a></li>
+        <li><a href="#">Michelin</a></li>
+        <li><a href="#">Continental</a></li>
+        <li><a href="#">Pirelli</a></li>
+        <li><a href="#">Firestone</a></li>
+        <li><a href="#">Kumho</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
+        <li><a href="mailto:ibaizabal@bridgestone.eu">ibaizabal@bridgestone.eu</a></li>
         <li><a href="tel:+34944409350">944 40 93 50</a></li>
-        <li><a href="#">N-634, Galdakao</a></li>
+        <li><a href="#contacto">N-634, Galdakao</a></li>
+        <li><a href="https://ibaizabal.firststop.es/" target="_blank" rel="noopener">Web oficial</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 First Stop Ibaizabal. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 First Stop Ibaizabal. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
 
+<a href="https://wa.me/34944409350?text=Hola%2C%20quiero%20pedir%20cita%20en%20First%20Stop%20Ibaizabal" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-  // ── LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1054,7 +1224,6 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1079,13 +1248,11 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1097,14 +1264,12 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1128,12 +1293,11 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

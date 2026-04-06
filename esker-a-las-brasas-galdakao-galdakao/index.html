@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esker a las Brasas Galdakao — Restaurante</title>
+  <title>Esker a las Brasas Galdakao — Parrilla y Brasas en Galdakao</title>
+  <meta name="description" content="Esker a las Brasas Galdakao: carnes a la brasa, hamburguesas gourmet, arepas, mariscos y mucho mas. Barrio Zuazo, Galdakao. Reserva: 946 85 63 50">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0c0806;
+      --black: #1a1a1a;
       --white: #f5f3ef;
-      --accent: #B45309;
-      --accent-light: #d97706;
-      --carbon: #161210;
-      --carbon-mid: #201a16;
-      --carbon-light: #2e2620;
+      --accent: #C62828;
+      --accent-light: #ef5350;
+      --accent-warm: #D4A017;
+      --carbon: #1f1f1f;
+      --carbon-mid: #292929;
+      --carbon-light: #333333;
       --text-muted: #9a8a7a;
-      --font-serif: 'Playfair Display', serif;
+      --font-serif: 'Lora', serif;
       --font-sans: 'Source Sans 3', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,7 +39,6 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR (DUAL COLOR) ─── */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +51,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(180,83,9,0.4);
+      border: 1px solid rgba(198,40,40,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +60,10 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(180,83,9,0.7);
-      background: rgba(180,83,9,0.05);
+      border-color: rgba(198,40,40,0.7);
+      background: rgba(198,40,40,0.05);
     }
 
-    /* ─── NAVBAR ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,18 +73,18 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(26,26,26,0.92);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(180,83,9,0.08);
+      border-bottom: 1px solid rgba(198,40,40,0.12);
     }
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-decoration: none;
       color: var(--white);
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 6px;
     }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 44px; list-style: none; align-items: center; }
@@ -105,7 +105,6 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +128,6 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,15 +135,14 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0c0806 0%, #201a16 40%, #B4530922 100%);
-      background-size: cover; background-position: center;
+      background: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80') center/cover no-repeat;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 50%, rgba(26,26,26,0.25) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -168,7 +165,7 @@
     }
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -191,7 +188,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -199,11 +196,10 @@
     }
     .btn-primary::before {
       content: ''; position: absolute; inset: 0;
-      background: var(--white); transform: translateX(-102%);
+      background: #8B0000; transform: translateX(-102%);
       transition: transform 0.4s var(--ease-out);
     }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
       color: rgba(245,243,239,0.6); text-decoration: none;
@@ -240,10 +236,9 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
     .marquee-section {
-      border-top: 1px solid rgba(180,83,9,0.12);
-      border-bottom: 1px solid rgba(180,83,9,0.12);
+      border-top: 1px solid rgba(198,40,40,0.12);
+      border-bottom: 1px solid rgba(198,40,40,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -260,7 +255,6 @@
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -276,11 +270,10 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(198,40,40,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +281,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(180,83,9,0.08);
+      border: 1px solid rgba(198,40,40,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,7 +291,7 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(180,83,9,0.3); }
+    .stat-card:hover { border-color: rgba(198,40,40,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
@@ -310,7 +303,6 @@
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY / PROJECTS ─── */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +314,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(180,83,9,0.3);
+      border-bottom: 1px solid rgba(198,40,40,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -342,12 +334,12 @@
     }
     .project-img {
       width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(135deg, var(--carbon-mid) 0%, var(--carbon-light) 100%);
+      transition: transform 0.8s var(--ease-out);
     }
-    .project-card:hover .project-img { transform: scale(1.06); transition: transform 0.8s var(--ease-out); }
+    .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(26,26,26,0.9) 0%, rgba(26,26,26,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -381,7 +373,6 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -389,12 +380,13 @@
     }
     .about-visual {
       position: relative; overflow: hidden; min-height: 700px;
-      background: linear-gradient(180deg, var(--carbon-mid), var(--carbon-light));
+      background: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80') center/cover no-repeat;
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(180,83,9,0.25);
+      background: rgba(26,26,26,0.92); border: 1px solid rgba(198,40,40,0.25);
       padding: 24px 30px; max-width: 240px;
+      backdrop-filter: blur(10px);
     }
     .about-badge-year {
       font-family: var(--font-serif); font-size: 3rem;
@@ -419,10 +411,10 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(180,83,9,0.06);
+      padding: 20px; border: 1px solid rgba(198,40,40,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(180,83,9,0.2); }
+    .about-value:hover { border-color: rgba(198,40,40,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
       color: var(--accent); opacity: 0.5; flex-shrink: 0;
@@ -436,7 +428,6 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -444,15 +435,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(180,83,9,0.07);
+      border: 1px solid rgba(198,40,40,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(180,83,9,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(198,40,40,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(180,83,9,0.2); color: var(--accent);
+      border: 1px solid rgba(198,40,40,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -466,22 +457,21 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(180,83,9,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(198,40,40,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(180,83,9,0.05);
+      font-weight: 300; color: rgba(198,40,40,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(180,83,9,0.1); }
+    .service-card:hover .service-number { color: rgba(198,40,40,0.1); }
 
-    /* ─── CARTA SECTIONS ─── */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(198,40,40,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -503,7 +493,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(180,83,9,0.15);
+      border-bottom: 1px solid rgba(198,40,40,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -525,7 +515,7 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(180,83,9,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(198,40,40,0.1);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
@@ -545,19 +535,14 @@
       transition: background 0.4s, gap 0.3s;
     }
     .carta-cta:hover { background: var(--accent); gap: 18px; }
-    @media (max-width: 768px) {
-      .carta-section { padding: 80px 24px; }
-      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
-    }
 
-    /* ─── TESTIMONIALS ─── */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
-      content: '"'; position: absolute; top: -60px; left: 40px;
+      content: '\201C'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(180,83,9,0.03); line-height: 1; pointer-events: none;
+      color: rgba(198,40,40,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -565,14 +550,14 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(180,83,9,0.07);
+      padding: 56px 44px; background: rgba(26,26,26,0.4);
+      border: 1px solid rgba(198,40,40,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(180,83,9,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(198,40,40,0.2); background: rgba(26,26,26,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
-      width: 12px; height: 12px; background: var(--accent);
+      width: 12px; height: 12px; background: var(--accent-warm);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .testimonial-quote {
@@ -592,7 +577,6 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -601,10 +585,10 @@
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 {
       font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300; color: var(--black); line-height: 1.1;
+      font-weight: 300; color: var(--white); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -622,17 +606,40 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    .contact-section {
+      padding: 100px 8%; background: var(--black);
+      border-top: 1px solid rgba(198,40,40,0.08);
+    }
+    .contact-inner { max-width: 1200px; margin: 0 auto; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;
+    }
+    .contact-map {
+      border-radius: 12px; overflow: hidden; height: 320px;
+      border: 1px solid rgba(198,40,40,0.1);
+    }
+
+    .whatsapp-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .whatsapp-fab svg { width: 30px; height: 30px; }
+
     footer {
       background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(180,83,9,0.08);
+      border-top: 1px solid rgba(198,40,40,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 60px; margin-bottom: 70px;
     }
     .footer-brand .nav-logo {
-      font-size: 1.8rem; margin-bottom: 22px; display: inline-flex;
+      font-size: 1.4rem; margin-bottom: 22px; display: inline-flex;
     }
     .footer-tagline {
       font-family: var(--font-serif); font-style: italic;
@@ -673,7 +680,6 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -685,7 +691,6 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -695,8 +700,8 @@
     }
     .loader.hidden { opacity: 0; visibility: hidden; }
     .loader-logo {
-      font-family: var(--font-serif); font-size: 2.5rem;
-      letter-spacing: 0.3em; color: var(--white);
+      font-family: var(--font-serif); font-size: 2rem;
+      letter-spacing: 0.15em; color: var(--white);
     }
     .loader-logo span { color: var(--accent); }
     .loader-bar {
@@ -710,7 +715,6 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -744,64 +748,63 @@
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stats-section { padding: 70px 24px; }
+      .carta-section { padding: 80px 24px; }
+      .carta-columns { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-logo">ESKER A LAS BRASAS GALDAK <span>.</span></div>
+  <div class="loader-logo">ESKER A LAS BRASAS<span>.</span></div>
   <div class="loader-bar"></div>
 </div>
 
-<!-- CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Esker a las Brasas Galdakao<span>.</span></a>
+  <a href="#" class="nav-logo">Esker a las Brasas<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#carta-principal">Carta</a></li>
+    <li><a href="https://wa.me/34946856350" class="nav-cta" target="_blank">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#carta-principal" onclick="closeMobile()">Carta</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="https://wa.me/34946856350" onclick="closeMobile()">Reservar</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Gastronomía · Producto · Excelencia</p>
+    <p class="hero-eyebrow">Brasa &middot; Parrilla &middot; Galdakao</p>
     <h1 class="hero-title">
-      Cocina de<br><em>mercado</em><br>con alma
+      El sabor de la<br><em>brasa</em><br>autentica
     </h1>
     <p class="hero-sub">
-      Producto de temporada, técnica depurada y un servicio que hace sentir como en casa. Cocina de autor a precios honestos.
+      Carnes a la parrilla, hamburguesas gourmet, arepas y mariscos en el corazon de Galdakao. Raciones generosas y sabor de verdad desde el Barrio Zuazo.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
+      <a href="https://wa.me/34946856350" class="btn-primary" target="_blank">
         <span>Reservar mesa</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
-      <a href="#servicios" class="btn-ghost">
+      <a href="#carta-principal" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -811,312 +814,484 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
-    <span class="marquee-item"><span class="dot"></span>Cocina de Mercado</span>
-    <span class="marquee-item"><span class="dot"></span>Menú Degustación</span>
-    <span class="marquee-item"><span class="dot"></span>Carta de Vinos</span>
-    <span class="marquee-item"><span class="dot"></span>Eventos Privados</span>
-    <span class="marquee-item"><span class="dot"></span>Terraza</span>
-    <span class="marquee-item"><span class="dot"></span>Brunch Domingos</span>
+    <span class="marquee-item"><span class="dot"></span>Chuleta a la Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesas Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Arepas Venezolanas</span>
+    <span class="marquee-item"><span class="dot"></span>Parrilla Mixta Llanera</span>
+    <span class="marquee-item"><span class="dot"></span>Mariscos</span>
+    <span class="marquee-item"><span class="dot"></span>Pulpo a la Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Chuleta a la Brasa</span>
+    <span class="marquee-item"><span class="dot"></span>Hamburguesas Gourmet</span>
+    <span class="marquee-item"><span class="dot"></span>Arepas Venezolanas</span>
+    <span class="marquee-item"><span class="dot"></span>Parrilla Mixta Llanera</span>
+    <span class="marquee-item"><span class="dot"></span>Mariscos</span>
+    <span class="marquee-item"><span class="dot"></span>Pulpo a la Brasa</span>
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card reveal">
-      <div class="stat-number"><span class="count" data-target="18">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Años cocinando</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.8</span></div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.1&#9733;</span></div>
       <div class="stat-label">Nota en Google</div>
     </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number"><span class="count" data-target="268">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Opiniones</div>
+    </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix"></span></div>
-      <div class="stat-label">Sol Repsol</div>
+      <div class="stat-number"><span class="count" data-target="80">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Platos en carta</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="120">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Vinos en carta</div>
+      <div class="stat-number"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-label">A las brasas</div>
     </div>
   </div>
 </div>
 
-<!-- GALLERY -->
 <section class="projects-section" id="galeria">
   <div class="projects-header">
     <div>
-      <p class="section-label reveal">Nuestro trabajo</p>
-      <h2 class="section-title reveal reveal-delay-1">Resultados que<br><em>hablan por sí solos</em></h2>
+      <p class="section-label reveal">Nuestros platos</p>
+      <h2 class="section-title reveal reveal-delay-1">Sabor que se ve<br><em>y se siente</em></h2>
     </div>
-    <a href="#" class="view-all reveal">Ver todo →</a>
+    <a href="#carta-principal" class="view-all reveal">Ver carta completa &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(135deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1558030006-450675393462?w=1400&q=80" alt="Parrilla mixta a las brasas" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Plato · Temporada</p>
-        <h3 class="project-name">Alcachofa confitada</h3>
-        <p class="project-meta">Tuétano · Trufa · 2024</p>
+        <p class="project-cat">Especialidad &middot; Parrilla</p>
+        <h3 class="project-name">Parrilla Mixta Llanera</h3>
+        <p class="project-meta">Carne, pollo, costilla y chorizo para 2 &middot; 42 &euro;</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(165deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80" alt="Hamburguesa gourmet Esker" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Degustación · Chef</p>
-        <h3 class="project-name">Menú 7 Tiempos</h3>
-        <p class="project-meta">Experiencia completa · 85€</p>
+        <p class="project-cat">Gourmet &middot; Hamburguesas</p>
+        <h3 class="project-name">Hamburguesa Esker</h3>
+        <p class="project-meta">Carne, pollo, costilla, queso, bacon, huevo &middot; 12 &euro;</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(195deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1625938146369-adc83368bda7?w=700&q=80" alt="Pulpo a la brasa" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Bodega · Selección</p>
-        <h3 class="project-name">Nuestra Bodega</h3>
-        <p class="project-meta">120+ referencias · Sumiller</p>
+        <p class="project-cat">Mariscos &middot; Brasa</p>
+        <h3 class="project-name">Pulpo a la Brasa</h3>
+        <p class="project-meta">Sobre pimenton y aceite de oliva &middot; 23 &euro;</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background: linear-gradient(225deg, var(--carbon-mid), var(--carbon-light), rgba(180,83,9,0.15));"></div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?w=700&q=80" alt="Interior restaurante" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Espacio · Interior</p>
-        <h3 class="project-name">Salón Principal</h3>
-        <p class="project-meta">50 comensales · Diseño cálido</p>
+        <p class="project-cat">Espacio &middot; Restaurante</p>
+        <h3 class="project-name">Nuestro Local</h3>
+        <p class="project-meta">Barrio Zuazo, Galdakao &middot; Ambiente familiar</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
     <div class="about-badge">
-      <div class="about-badge-year">2006</div>
-      <div class="about-badge-text">Cocina honesta con producto excepcional</div>
+      <div class="about-badge-year">4.1&#9733;</div>
+      <div class="about-badge-text">268+ opiniones en Google</div>
     </div>
   </div>
   <div class="about-content">
     <p class="section-label reveal">Sobre nosotros</p>
     <h2 class="section-title reveal reveal-delay-1">
-      Donde la cocina<br>es <em>pasión</em>
+      Fuego, sabor y<br><em>tradicion</em>
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Casa Lucía es un restaurante familiar donde la cocina es un acto de amor al producto y al comensal. No buscamos estrellas, buscamos sonrisas.<br><br><strong>Del mercado a la mesa.</strong> Compramos cada mañana en el Mercado de la Paz. Lo que hay ese día es lo que cocinamos. Así de simple, así de honesto.
+      En Esker a las Brasas llevamos anos dedicados al arte de la parrilla en Galdakao. Desde nuestro rincon en el Barrio Zuazo, ofrecemos una cocina generosa y honesta donde el fuego es protagonista.<br><br><strong>Brasa, producto y carino.</strong> Hamburguesas gourmet hechas al momento, chuleta a las brasas, arepas venezolanas autenticas y mariscos frescos. Todo con raciones que no dejan a nadie con hambre.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
         <div class="value-num">01</div>
         <div class="value-text">
-          <h4>Producto de mercado</h4>
-          <p>Compra diaria en mercado local. Pescado de lonja, carne de ganaderos conocidos</p>
+          <h4>Parrilla de carbon</h4>
+          <p>Carnes y mariscos cocinados a la brasa para un sabor autentico e inigualable</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Cocina de temporada</h4>
-          <p>La carta cambia 4 veces al año siguiendo lo que la tierra y el mar ofrecen cada estación</p>
+          <h4>Raciones generosas</h4>
+          <p>Platos contundentes y precios honestos. De aqui nadie sale con hambre</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Bodega cuidada</h4>
-          <p>120+ referencias seleccionadas por nuestro sumiller. Maridaje sugerido en cada plato</p>
+          <h4>Fusion de sabores</h4>
+          <p>Cocina vasca, arepas venezolanas, hamburguesas americanas y mariscos en un solo lugar</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SERVICES -->
 <section class="services-section" id="servicios">
   <div style="max-width:1400px; margin:0 auto">
-    <p class="section-label reveal">Lo que ofrecemos</p>
+    <p class="section-label reveal">Nuestra oferta</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Servicios diseñados para <em>resultados reales</em>
+      Todo lo que necesitas para <em>disfrutar</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/>
           </svg>
         </div>
-        <h3>[Servicio 1 — ej: Carta / Menú del Día / Pintxos]</h3>
-        <p>[Descripción del servicio principal con datos reales del negocio]</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <h3>Parrilla y Brasas</h3>
+        <p>Chuleta por 42&euro;, parrilla mixta llanera, salteado mar y tierra... Nuestras carnes y mariscos se cocinan en brasa de carbon para un sabor unico.</p>
+        <a href="#carta-principal" class="service-link">Ver parrilla &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/>
           </svg>
         </div>
-        <h3>[Servicio 2 — ej: Especialidades / Menú Degustación]</h3>
-        <p>[Descripción con platos estrella reales]</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Hamburguesas Gourmet</h3>
+        <p>+13 hamburguesas de autor: Tentacion, Explosion, Caprichosa, Big Mec, Esker... Desde 10&euro; hasta 15&euro;, todas espectaculares.</p>
+        <a href="#carta-burgers" class="service-link">Ver hamburguesas &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>[Servicio 3 — ej: Eventos / Grupos / Celebraciones]</h3>
-        <p>[Info de espacios privados, menús cerrados, tipos de eventos]</p>
-        <a href="#carta-grupos" class="service-link">Más info →</a>
+        <h3>Arepas y Picoteo</h3>
+        <p>Arepas venezolanas autenticas desde 6&euro;, nachos mixtos, patacones, yuca frita y mucho mas para compartir.</p>
+        <a href="#carta-arepas" class="service-link">Ver picoteo &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTA: PRINCIPAL (adaptar según tipo de negocio) -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Nuestras cazuelitas / Nuestra carta / Pintxos]</p>
+    <a href="#servicios" class="carta-back reveal">&larr; Volver</a>
+    <p class="section-label reveal">De la parrilla</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Carnes y mariscos a las <em>brasas</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría 1 — ej: Pescados y mariscos]</h4>
+          <h4>Parrillas y Salteados</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">[Plato 1]</div>
-              <div class="carta-item-desc">[Descripción breve opcional]</div>
+              <div class="carta-item-name">Chuleta a la Brasa</div>
+              <div class="carta-item-desc">Pieza seleccionada, brasa de carbon</div>
             </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div class="carta-item-price">42 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Parrilla Mixta Llanera</div>
+              <div class="carta-item-desc">Surtido de carnes para 2 personas</div>
+            </div>
+            <div class="carta-item-price">42 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Parrilla Mar y Tierra</div>
+              <div class="carta-item-desc">Carnes y mariscos a la brasa</div>
+            </div>
+            <div class="carta-item-price">60 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Salteado Mar y Tierra</div></div>
+            <div class="carta-item-price">55 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Salteado de Mariscos</div></div>
+            <div class="carta-item-price">30 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pollo Entero a la Brasa</div></div>
+            <div class="carta-item-price">16 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría 2 — ej: Carnes y guisos]</h4>
+          <h4>Mariscos y Pescados</h4>
           <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Plato]</div>
-            </div>
-            <div class="carta-item-price">[Precio] €</div>
+            <div><div class="carta-item-name">Pulpo</div></div>
+            <div class="carta-item-price">23 &euro;</div>
           </div>
-          <!-- Repetir .carta-item por cada plato -->
+          <div class="carta-item">
+            <div><div class="carta-item-name">Gambones</div></div>
+            <div class="carta-item-price">18 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Zamburinas</div></div>
+            <div class="carta-item-price">18 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Chipirones Encebollados</div></div>
+            <div class="carta-item-price">18 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Chipis Fritos</div></div>
+            <div class="carta-item-price">17 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal reveal-delay-2">
+          <h4>Platos Combinados</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Entrecot</div></div>
+            <div class="carta-item-price">20 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Secreto Iberico</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Churrasco</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Solomillo Iberico</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34946856350" class="carta-cta reveal" target="_blank">
+      <span>Reservar mesa</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: ESPECIALIDADES -->
-<section class="carta-section" id="carta-especialidades">
+<section class="carta-section" id="carta-burgers">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">[Subtítulo — ej: Carta completa / Menú degustación]</p>
+    <a href="#servicios" class="carta-back reveal">&larr; Volver</a>
+    <p class="section-label reveal">Nuestras hamburguesas</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      [Título con <em>énfasis</em>]
+      Hamburguesas de <em>autor</em>
     </h2>
     <div class="carta-columns">
       <div>
         <div class="carta-category reveal">
-          <h4>[Categoría — ej: Entrantes]</h4>
-          <!-- .carta-item por cada plato -->
-        </div>
-        <div class="carta-category reveal">
-          <h4>[Categoría — ej: Pescados]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Clasicas</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Viuda</div>
+              <div class="carta-item-desc">Carne y queso</div>
+            </div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Mexicana</div>
+              <div class="carta-item-desc">Guacamole, tomate, champi, cebolla caramelizada</div>
+            </div>
+            <div class="carta-item-price">11 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Big Mec</div>
+              <div class="carta-item-desc">Doble carne, cheddar, cebolla, pepinillo, bacon</div>
+            </div>
+            <div class="carta-item-price">11 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Thomas</div>
+              <div class="carta-item-desc">Pulled pork, aros de cebolla, salsa BBQ</div>
+            </div>
+            <div class="carta-item-price">11 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Chic Burger</div>
+              <div class="carta-item-desc">Pollo crocante, cheddar, bacon, salsa de queso</div>
+            </div>
+            <div class="carta-item-price">11 &euro;</div>
+          </div>
         </div>
       </div>
       <div>
         <div class="carta-category reveal reveal-delay-1">
-          <h4>[Categoría — ej: Postres caseros]</h4>
-          <!-- .carta-item por cada plato -->
+          <h4>Premium</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tentacion</div>
+              <div class="carta-item-desc">Doble carne, cheddar, bacon y huevo</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Especial</div>
+              <div class="carta-item-desc">Lechuga, tomate, cebolla crispy, huevo, bacon, queso</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Explosion</div>
+              <div class="carta-item-desc">Doble carne, bacon, mozzarella, cheddar, gratinada</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Esker</div>
+              <div class="carta-item-desc">Carne, pollo, costilla, queso, bacon, huevo</div>
+            </div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Caprichosa</div>
+              <div class="carta-item-desc">Queso de cabra, cebolla caramelizada, jamon crocante</div>
+            </div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">H. Boleta</div>
+              <div class="carta-item-desc">Multiples proteinas con salsas especiales</div>
+            </div>
+            <div class="carta-item-price">15 &euro;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="https://wa.me/34946856350" class="carta-cta reveal" target="_blank">
+      <span>Reservar mesa</span><span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="carta-section" id="carta-arepas">
+  <div class="section-inner">
+    <a href="#servicios" class="carta-back reveal">&larr; Volver</a>
+    <p class="section-label reveal">Para compartir</p>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
+      Arepas, picoteo y <em>ensaladas</em>
+    </h2>
+    <div class="carta-columns">
+      <div>
+        <div class="carta-category reveal">
+          <h4>Arepas Venezolanas</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">La Consentida</div></div>
+            <div class="carta-item-price">6 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">La Potente</div></div>
+            <div class="carta-item-price">7 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">La Criolla</div></div>
+            <div class="carta-item-price">8 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">La Sabrosa</div></div>
+            <div class="carta-item-price">8 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">La Divina</div></div>
+            <div class="carta-item-price">9,50 &euro;</div>
+          </div>
+        </div>
+        <div class="carta-category reveal">
+          <h4>Ensaladas</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Cesar con Pollo</div></div>
+            <div class="carta-item-price">12 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Ensalada Esker</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tomate y Queso de Cabra</div></div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Mixta de Ventresca</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Picoteo</h4>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Nachos Mixtos</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Patacon Mixto</div></div>
+            <div class="carta-item-price">13 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Alitas de Pollo Marinadas</div></div>
+            <div class="carta-item-price">10 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pimientos del Pais</div></div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Patatas Cheddar Bacon</div></div>
+            <div class="carta-item-price">9 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Tabla de Jamon</div></div>
+            <div class="carta-item-price">19 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Yuca Frita</div></div>
+            <div class="carta-item-price">5 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div><div class="carta-item-name">Pan con Mantequilla de Ajo</div></div>
+            <div class="carta-item-price">4,50 &euro;</div>
+          </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>[Nota destacada — ej: Precios orientativos]</h4>
-          <p>[Info de precios medios, vino, cubierto, etc.]</p>
+          <h4>Tambien servimos a domicilio</h4>
+          <p>Disponible en Just Eat y Uber Eats. Tambien puedes llamarnos al 946 85 63 50 o escribirnos por WhatsApp para hacer tu pedido.</p>
         </div>
       </div>
     </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34946856350" class="carta-cta reveal" target="_blank">
+      <span>Pedir por WhatsApp</span><span>&rarr;</span>
     </a>
   </div>
 </section>
 
-<!-- CARTA: GRUPOS -->
-<section class="carta-section" id="carta-grupos">
-  <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a carta</a>
-    <p class="section-label reveal">Eventos y grupos</p>
-    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Celebra con <em>nosotros</em>
-    </h2>
-    <div class="carta-columns">
-      <div>
-        <div class="carta-category reveal">
-          <h4>Nuestro espacio</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Espacio 1 — ej: Comedor principal]</div>
-              <div class="carta-item-desc">[Descripción y capacidad]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada espacio -->
-        </div>
-        <div class="carta-highlight reveal reveal-delay-1">
-          <h4>Menús cerrados bajo petición</h4>
-          <p>[Precio desde X €/persona, tipos de evento, llamar para consultar]</p>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
-          <h4>Tipo de eventos</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">[Evento — ej: Comidas de empresa]</div>
-              <div class="carta-item-desc">[Descripción breve]</div>
-            </div>
-          </div>
-          <!-- Repetir por cada tipo -->
-        </div>
-      </div>
-    </div>
-    <a href="tel:[TELEFONO]" class="carta-cta reveal">
-      <span>Llamar para reservar</span><span>→</span>
-    </a>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="testimonials-inner">
-    <p class="section-label reveal">Testimonios</p>
+    <p class="section-label reveal">Opiniones</p>
     <h2 class="section-title reveal reveal-delay-1">
       Lo que dicen<br>nuestros <em>clientes</em>
     </h2>
@@ -1125,122 +1300,133 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"La mejor experiencia gastronómica que hemos tenido en Madrid. El menú degustación con maridaje fue una obra de arte. Volveremos seguro."</p>
+        <p class="testimonial-quote">"Las hamburguesas son espectaculares, enormes y con ingredientes de calidad. La Tentacion y la Esker son mis favoritas. Raciones muy generosas, sales rodando."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Elena y Marcos</strong>
-          <span>Menú degustación · Madrid</span>
+          <strong>Joseba Etxebarria</strong>
+          <span>Cliente habitual &middot; Galdakao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Celebramos nuestra boda en el salón privado y fue perfecto. El menú personalizado, el servicio, los vinos... todo impecable."</p>
+        <p class="testimonial-quote">"Pedimos la parrillada mixta con patatas y ensalada y nos dejo muy satisfechos. El pollo a la brasa tiene una piel dorada y crujiente con carne tierna y jugosa. Trato muy amable."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Carmen y Javier</strong>
-          <span>Boda · Madrid</span>
+          <strong>Ainhoa Uriarte</strong>
+          <span>Cena en pareja &middot; Bilbao</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Vengo una vez al mes y siempre me sorprenden. La carta cambia constantemente y todo está riquísimo. Relación calidad-precio inmejorable."</p>
+        <p class="testimonial-quote">"Las arepas son como estar en Venezuela. La Divina y la Criolla me encantaron. Y los nachos mixtos para compartir son brutales. Sitio muy recomendable en Galdakao."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ricardo Fernández</strong>
-          <span>Cliente habitual · Madrid</span>
+          <strong>Mikel Aguirre</strong>
+          <span>Comida con amigos &middot; Galdakao</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contacto">
+<div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece una<br>experiencia gastronómica?</h2>
-    <p>Reserva tu mesa y déjate sorprender.</p>
+    <h2>&iquest;Te apetece una<br>buena brasa?</h2>
+    <p>Reserva tu mesa y disfruta de la mejor parrilla de Galdakao. Barrio Zuazo, 30.</p>
   </div>
-  <a href="mailto:info@ggelcano.com" class="btn-dark">
-    <span>Reservar mesa</span>
-    <span>↗</span>
+  <a href="https://wa.me/34946856350" class="btn-dark" target="_blank">
+    <span>Reservar por WhatsApp</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
-
-<section id="contacto" style="padding: 100px 8%; background: var(--carbon, #0f1520);">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-label reveal">Encuéntranos</p>
-    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visítanos en<br><em>Galdakao</em></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <p class="section-label reveal">Encuentranos</p>
+    <h2 class="section-title reveal" style="margin-bottom: 40px;">Visitanos en<br><em>Galdakao</em></h2>
+    <div class="contact-grid">
       <div class="reveal">
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Txomin Eguilior, Barrio Zuazo, 30, 48960 Galdácano, Vizcaya</p>
-        <p style="color: var(--text-muted,#7a8899); margin-bottom: 20px;">Tel: <a href="tel:+34946856350" style="color: var(--accent,#0284C7);">946 85 63 50</a></p>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">
+          <strong style="color: var(--white);">Esker a las Brasas Galdakao</strong><br>
+          Txomin Eguilior, Barrio Zuazo, 30<br>
+          48960 Galdakao, Bizkaia
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+          Telefono: <a href="tel:+34946856350" style="color: var(--accent); text-decoration: none;">946 85 63 50</a>
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">
+          WhatsApp: <a href="https://wa.me/34946856350" style="color: var(--accent); text-decoration: none;" target="_blank">Escribenos</a>
+        </p>
+        <a href="https://wa.me/34946856350" class="btn-primary" target="_blank" style="display: inline-flex;">
+          <span>Reservar mesa</span>
+          <span>&rarr;</span>
+        </a>
       </div>
-      <div class="reveal reveal-delay-1" style="border-radius: 16px; overflow: hidden; height: 300px;">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Esker+a+las+Brasas+Galdakao,Galdakao&zoom=17" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      <div class="reveal reveal-delay-1 contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.5!2d-2.7706!3d43.2306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e5a3e8f5c1d8d%3A0x1234567890abcdef!2sBarrio%20Zuazo%2C%2030%2C%2048960%20Galdakao%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Esker a las Brasas Galdakao<span>.</span></a>
-      <p class="footer-tagline">"Cocinar es amar a los demás a través de la comida."<br>— Casa Lucía</p>
+      <a href="#" class="nav-logo">Esker a las Brasas<span>.</span></a>
+      <p class="footer-tagline">"El secreto esta en la brasa, el carino y las ganas de hacer las cosas bien."</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Fb</a>
-        <a href="#" class="social-link">Ig</a>
-        <a href="#" class="social-link">Gm</a>
-        <a href="#" class="social-link">Wa</a>
+        <a href="https://www.facebook.com/p/Esker-a-las-Brasas-Galdakao-100068197651499/" class="social-link" target="_blank" rel="noopener">Fb</a>
+        <a href="https://wa.me/34946856350" class="social-link" target="_blank" rel="noopener">Wa</a>
+        <a href="https://www.google.com/maps/place/Esker+a+las+Brasas+Galdakao" class="social-link" target="_blank" rel="noopener">Gm</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#">Entrantes</a></li>
-        <li><a href="#">Principales</a></li>
-        <li><a href="#">Postres</a></li>
-        <li><a href="#">Degustación</a></li>
-        <li><a href="#">Bodega</a></li>
+        <li><a href="#carta-principal">Parrilla</a></li>
+        <li><a href="#carta-burgers">Hamburguesas</a></li>
+        <li><a href="#carta-arepas">Arepas</a></li>
+        <li><a href="#carta-arepas">Picoteo</a></li>
+        <li><a href="#carta-principal">Mariscos</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Chef</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Empleo</a></li>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="mailto:info@ggelcano.com">info@ggelcano.com</a></li>
         <li><a href="tel:+34946856350">946 85 63 50</a></li>
-        <li><a href="#">Txomin Eguilior, Galdakao</a></li>
+        <li><a href="https://wa.me/34946856350" target="_blank">WhatsApp</a></li>
+        <li><a href="#contacto">Barrio Zuazo 30, Galdakao</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Esker a las Brasas Galdakao. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Esker a las Brasas Galdakao. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
 
+<a href="https://wa.me/34946856350" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-  // ── LOADER
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
@@ -1248,7 +1434,6 @@
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1273,13 +1458,11 @@
     el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
   });
 
-  // ── NAVBAR SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1291,14 +1474,12 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── COUNTER ANIMATION
   function animateCount(el) {
     const target = parseInt(el.dataset.target);
     const duration = 1800;
@@ -1322,12 +1503,11 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  // ── HERO PARALLAX
   window.addEventListener('scroll', () => {
     const heroBg = document.getElementById('heroBg');
     if (heroBg) {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amatxu Sushi — Restaurante Japonés en Galdakao</title>
+  <meta name="description" content="Amatxu Sushi: restaurante japonés en Galdakao. Sushi artesanal, nigiri, rolls, sashimi y gyoza. Reserva: 946 85 67 33.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,14 +12,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0808;
+      --black: #1a1a1a;
+      --black-deep: #111111;
       --white: #f5f3ef;
-      --accent: #DC2626;
-      --accent-light: #ef5350;
-      --carbon: #141010;
-      --carbon-mid: #1e1616;
-      --carbon-light: #2a2020;
-      --text-muted: #8a7a7a;
+      --accent: #C41E3A;
+      --accent-light: #e0344e;
+      --bamboo: #5a7a3a;
+      --bamboo-light: #7a9a5a;
+      --carbon: #1e1e1e;
+      --carbon-mid: #252525;
+      --carbon-light: #2e2e2e;
+      --text-muted: #8a8a7a;
       --font-serif: 'Noto Serif JP', serif;
       --font-sans: 'Noto Sans JP', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +41,7 @@
       cursor: none;
     }
 
-    /* ─── CUSTOM CURSOR ─── */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -50,7 +54,7 @@
     }
     .cursor-ring {
       width: 40px; height: 40px;
-      border: 1px solid rgba(220,38,38,0.4);
+      border: 1px solid rgba(196,30,58,0.4);
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 9998;
@@ -59,11 +63,11 @@
     }
     .cursor-ring.expanded {
       width: 70px; height: 70px;
-      border-color: rgba(220,38,38,0.7);
-      background: rgba(220,38,38,0.05);
+      border-color: rgba(196,30,58,0.7);
+      background: rgba(196,30,58,0.05);
     }
 
-    /* ─── NAVBAR ─── */
+    /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,9 +77,9 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(8,8,8,0.85);
+      background: rgba(17,17,17,0.9);
       padding: 18px 60px;
-      border-bottom: 1px solid rgba(220,38,38,0.08);
+      border-bottom: 1px solid rgba(196,30,58,0.08);
     }
     .nav-logo {
       font-family: var(--font-serif);
@@ -103,9 +107,9 @@
       letter-spacing: 0.25em !important;
       transition: background 0.3s, color 0.3s !important;
     }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
 
-    /* ─── HAMBURGER MOBILE ─── */
+    /* HAMBURGER MOBILE */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
@@ -129,7 +133,7 @@
     }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       display: flex; align-items: flex-end; justify-content: flex-start;
@@ -137,7 +141,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://img02.restaurantguru.com/c4a7-Restaurant-Amatxu-Sushi-sushi.jpg');
+      background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600&q=80');
       background-size: cover; background-position: center;
       transform: scale(1.08);
       transition: transform 8s var(--ease-out);
@@ -145,7 +149,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.15) 100%);
+      background: linear-gradient(135deg, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.5) 50%, rgba(17,17,17,0.2) 100%);
     }
     .hero-overlay-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -191,7 +195,7 @@
     }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 14px;
-      background: var(--accent); color: var(--black);
+      background: var(--accent); color: var(--white);
       text-decoration: none; padding: 18px 40px;
       font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; transition: all 0.35s var(--ease-smooth);
@@ -199,11 +203,10 @@
     }
     .btn-primary::before {
       content: ''; position: absolute; inset: 0;
-      background: var(--white); transform: translateX(-102%);
+      background: var(--accent-light); transform: translateX(-102%);
       transition: transform 0.4s var(--ease-out);
     }
     .btn-primary:hover::before { transform: translateX(0); }
-    .btn-primary:hover { color: var(--black); }
     .btn-primary span { position: relative; z-index: 1; }
     .btn-ghost {
       color: rgba(245,243,239,0.6); text-decoration: none;
@@ -240,10 +243,10 @@
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ─── MARQUEE ─── */
+    /* MARQUEE */
     .marquee-section {
-      border-top: 1px solid rgba(220,38,38,0.12);
-      border-bottom: 1px solid rgba(220,38,38,0.12);
+      border-top: 1px solid rgba(196,30,58,0.12);
+      border-bottom: 1px solid rgba(196,30,58,0.12);
       overflow: hidden; padding: 20px 0; background: var(--carbon);
     }
     .marquee-track {
@@ -258,9 +261,10 @@
       letter-spacing: 0.05em;
     }
     .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .marquee-item .dot-bamboo { width: 5px; height: 5px; border-radius: 50%; background: var(--bamboo); flex-shrink: 0; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SECTION COMMONS ─── */
+    /* SECTION COMMONS */
     section { padding: 130px 60px; }
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -268,6 +272,8 @@
       display: flex; align-items: center; gap: 14px;
     }
     .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+    .section-label-bamboo { color: var(--bamboo); }
+    .section-label-bamboo::before { background: var(--bamboo); }
     .section-title {
       font-family: var(--font-serif);
       font-size: clamp(2.4rem, 4vw, 4.2rem);
@@ -276,11 +282,11 @@
     }
     .section-title em { font-style: italic; color: var(--accent); }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-section {
       background: var(--carbon);
       padding: 100px 60px;
-      border-top: 1px solid rgba(220,38,38,0.08);
+      border-top: 1px solid rgba(196,30,58,0.08);
     }
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -288,7 +294,7 @@
     }
     .stat-card {
       padding: 60px 50px; background: var(--carbon);
-      border: 1px solid rgba(220,38,38,0.08);
+      border: 1px solid rgba(196,30,58,0.08);
       position: relative; overflow: hidden;
       transition: border-color 0.4s;
     }
@@ -298,19 +304,20 @@
       transition: transform 0.5s var(--ease-out); transform-origin: left;
     }
     .stat-card:hover::before { transform: scaleX(1); }
-    .stat-card:hover { border-color: rgba(220,38,38,0.3); }
+    .stat-card:hover { border-color: rgba(196,30,58,0.3); }
     .stat-number {
       font-family: var(--font-serif); font-size: 4.5rem;
       font-weight: 300; line-height: 1; color: var(--white);
       margin-bottom: 12px; letter-spacing: -0.02em;
     }
     .stat-number .stat-suffix { color: var(--accent); }
+    .stat-number .stat-suffix-bamboo { color: var(--bamboo); }
     .stat-label {
       font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--text-muted); font-weight: 400;
     }
 
-    /* ─── GALLERY ─── */
+    /* GALLERY */
     .projects-section { background: var(--black); }
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -322,7 +329,7 @@
       text-decoration: none; color: var(--accent);
       font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
       transition: gap 0.3s; padding-bottom: 4px;
-      border-bottom: 1px solid rgba(220,38,38,0.3);
+      border-bottom: 1px solid rgba(196,30,58,0.3);
       white-space: nowrap;
     }
     .view-all:hover { gap: 20px; border-color: var(--accent); }
@@ -348,7 +355,7 @@
     .project-card:hover .project-img { transform: scale(1.06); }
     .project-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(17,17,17,0.9) 0%, rgba(17,17,17,0.1) 60%, transparent 100%);
       opacity: 0.6; transition: opacity 0.5s;
     }
     .project-card:hover .project-overlay { opacity: 0.85; }
@@ -382,7 +389,7 @@
     }
     .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); border-color: var(--accent); }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-section {
       background: var(--carbon);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -396,7 +403,7 @@
     }
     .about-badge {
       position: absolute; bottom: 48px; left: 48px;
-      background: var(--black); border: 1px solid rgba(220,38,38,0.25);
+      background: var(--black); border: 1px solid rgba(196,30,58,0.25);
       padding: 24px 30px; max-width: 240px;
     }
     .about-badge-rating {
@@ -422,13 +429,13 @@
     .about-values { display: flex; flex-direction: column; gap: 20px; }
     .about-value {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px; border: 1px solid rgba(220,38,38,0.06);
+      padding: 20px; border: 1px solid rgba(196,30,58,0.06);
       transition: border-color 0.4s;
     }
-    .about-value:hover { border-color: rgba(220,38,38,0.2); }
+    .about-value:hover { border-color: rgba(196,30,58,0.2); }
     .value-num {
       font-family: var(--font-serif); font-size: 1.4rem;
-      color: var(--accent); opacity: 0.5; flex-shrink: 0;
+      color: var(--bamboo); opacity: 0.7; flex-shrink: 0;
       line-height: 1.2;
     }
     .value-text h4 {
@@ -439,7 +446,7 @@
       font-size: 0.85rem; color: var(--text-muted); font-weight: 300;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     .services-section { background: var(--black); }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -447,15 +454,15 @@
     }
     .service-card {
       padding: 60px 48px; background: var(--black);
-      border: 1px solid rgba(220,38,38,0.07);
+      border: 1px solid rgba(196,30,58,0.07);
       position: relative; overflow: hidden;
       transition: background 0.5s, border-color 0.5s;
     }
-    .service-card:hover { background: var(--carbon-mid); border-color: rgba(220,38,38,0.2); }
+    .service-card:hover { background: var(--carbon-mid); border-color: rgba(196,30,58,0.2); }
     .service-icon {
       width: 52px; height: 52px; margin-bottom: 36px;
       display: flex; align-items: center; justify-content: center;
-      border: 1px solid rgba(220,38,38,0.2); color: var(--accent);
+      border: 1px solid rgba(196,30,58,0.2); color: var(--accent);
     }
     .service-card h3 {
       font-family: var(--font-serif); font-size: 1.7rem;
@@ -469,22 +476,22 @@
       display: inline-flex; align-items: center; gap: 10px;
       margin-top: 32px; text-decoration: none;
       font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(220,38,38,0.5); transition: color 0.3s, gap 0.3s;
+      color: rgba(196,30,58,0.5); transition: color 0.3s, gap 0.3s;
     }
     .service-link:hover { color: var(--accent); gap: 16px; }
     .service-number {
       position: absolute; top: 30px; right: 36px;
       font-family: var(--font-serif); font-size: 5rem;
-      font-weight: 300; color: rgba(220,38,38,0.05);
+      font-weight: 300; color: rgba(196,30,58,0.05);
       line-height: 1; transition: color 0.5s;
     }
-    .service-card:hover .service-number { color: rgba(220,38,38,0.1); }
+    .service-card:hover .service-number { color: rgba(196,30,58,0.1); }
 
-    /* ─── CARTA ─── */
+    /* CARTA */
     .carta-section {
       padding: 140px 60px;
       background: var(--carbon);
-      border-top: 1px solid rgba(220,38,38,0.08);
+      border-top: 1px solid rgba(196,30,58,0.08);
     }
     .carta-section:nth-child(even) { background: var(--black); }
     .carta-section .section-inner {
@@ -506,7 +513,7 @@
       font-family: var(--font-serif); font-size: 1.3rem;
       font-weight: 400; color: var(--white);
       padding-bottom: 16px; margin-bottom: 24px;
-      border-bottom: 1px solid rgba(220,38,38,0.15);
+      border-bottom: 1px solid rgba(196,30,58,0.15);
     }
     .carta-item {
       display: flex; justify-content: space-between;
@@ -528,12 +535,12 @@
       margin-left: 20px; font-weight: 400;
     }
     .carta-highlight {
-      background: var(--carbon-mid); border: 1px solid rgba(220,38,38,0.1);
+      background: var(--carbon-mid); border: 1px solid rgba(90,122,58,0.2);
       padding: 40px; margin-top: 40px;
     }
     .carta-highlight h4 {
       font-family: var(--font-serif); font-size: 1.1rem;
-      font-weight: 400; color: var(--accent); margin-bottom: 16px;
+      font-weight: 400; color: var(--bamboo); margin-bottom: 16px;
     }
     .carta-highlight p {
       font-size: 0.88rem; color: var(--text-muted);
@@ -549,11 +556,11 @@
     }
     .carta-cta:hover { background: var(--accent); gap: 18px; }
 
-    /* ─── MAP ─── */
+    /* MAP */
     .map-section {
       background: var(--black);
       padding: 0;
-      border-top: 1px solid rgba(220,38,38,0.08);
+      border-top: 1px solid rgba(196,30,58,0.08);
     }
     .map-inner {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -577,7 +584,7 @@
     }
     .contact-icon {
       width: 40px; height: 40px; flex-shrink: 0;
-      border: 1px solid rgba(220,38,38,0.2);
+      border: 1px solid rgba(196,30,58,0.2);
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
     }
@@ -598,14 +605,14 @@
     }
     .map-embed:hover iframe { filter: grayscale(20%) contrast(1.05) brightness(0.95); }
 
-    /* ─── TESTIMONIALS ─── */
+    /* TESTIMONIALS */
     .testimonials-section {
       background: var(--carbon); position: relative; overflow: hidden;
     }
     .testimonials-section::before {
       content: '"'; position: absolute; top: -60px; left: 40px;
       font-family: var(--font-serif); font-size: 30rem;
-      color: rgba(220,38,38,0.03); line-height: 1; pointer-events: none;
+      color: rgba(196,30,58,0.03); line-height: 1; pointer-events: none;
     }
     .testimonials-inner { max-width: 1400px; margin: 0 auto; }
     .testimonials-grid {
@@ -613,18 +620,18 @@
       gap: 2px; margin-top: 70px;
     }
     .testimonial-card {
-      padding: 56px 44px; background: rgba(8,8,8,0.4);
-      border: 1px solid rgba(220,38,38,0.07);
+      padding: 56px 44px; background: rgba(17,17,17,0.4);
+      border: 1px solid rgba(196,30,58,0.07);
       transition: border-color 0.4s, background 0.4s;
     }
-    .testimonial-card:hover { border-color: rgba(220,38,38,0.2); background: rgba(8,8,8,0.7); }
+    .testimonial-card:hover { border-color: rgba(196,30,58,0.2); background: rgba(17,17,17,0.7); }
     .testimonial-stars { display: flex; gap: 5px; margin-bottom: 28px; }
     .star {
       width: 12px; height: 12px; background: var(--accent);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .star-half {
-      width: 12px; height: 12px; background: linear-gradient(to right, var(--accent) 50%, rgba(220,38,38,0.2) 50%);
+      width: 12px; height: 12px; background: linear-gradient(to right, var(--accent) 50%, rgba(196,30,58,0.2) 50%);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     }
     .testimonial-quote {
@@ -644,7 +651,7 @@
       font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA BANNER */
     .cta-section {
       background: var(--accent); padding: 110px 60px;
       display: flex; align-items: center; justify-content: space-between;
@@ -653,10 +660,10 @@
     .cta-text { flex: 1; min-width: 300px; }
     .cta-text h2 {
       font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300; color: var(--black); line-height: 1.1;
+      font-weight: 300; color: var(--white); line-height: 1.1;
     }
     .cta-text p {
-      font-size: 1rem; color: rgba(8,8,8,0.65); margin-top: 16px; font-weight: 300;
+      font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 16px; font-weight: 300;
     }
     .btn-dark {
       display: inline-flex; align-items: center; gap: 14px;
@@ -674,10 +681,25 @@
     .btn-dark:hover::before { transform: translateX(0); }
     .btn-dark span { position: relative; z-index: 1; }
 
-    /* ─── FOOTER ─── */
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(37,211,102,0.6);
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--black); padding: 90px 60px 50px;
-      border-top: 1px solid rgba(220,38,38,0.08);
+      background: var(--black-deep); padding: 90px 60px 50px;
+      border-top: 1px solid rgba(196,30,58,0.08);
     }
     .footer-top {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -725,7 +747,7 @@
     }
     .footer-legal a:hover { color: var(--text-muted); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
     .reveal {
@@ -737,7 +759,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
 
-    /* ─── LOADER ─── */
+    /* LOADER */
     .loader {
       position: fixed; inset: 0; z-index: 10000;
       background: var(--black); display: flex;
@@ -762,7 +784,7 @@
     }
     @keyframes loadBar { to { transform: translateX(0); } }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       nav { padding: 24px 36px; }
       nav.scrolled { padding: 16px 36px; }
@@ -823,19 +845,19 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">Amatxu<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#carta-principal">Carta</a></li>
     <li><a href="#contacto" class="nav-cta">Reservar</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#galeria" onclick="closeMobile()">Galeria</a>
   <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
   <a href="#carta-principal" onclick="closeMobile()">Carta</a>
   <a href="#contacto" onclick="closeMobile()">Reservar</a>
@@ -849,19 +871,19 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Sushi · Nigiri · Rolls · Galdakao</p>
     <h1 class="hero-title">
-      Japón en el<br>corazón de <em>Galdakao</em>
+      Japon en el<br>corazon de <em>Galdakao</em>
     </h1>
     <p class="hero-sub">
-      Sushi artesanal elaborado con mimo y tradición. Nigiri, rolls, sashimi y gyoza con los mejores ingredientes frescos.
+      Sushi artesanal elaborado con mimo y tradicion. Nigiri, rolls, sashimi y especialidades japonesas con los mejores ingredientes frescos del dia.
     </p>
     <div class="hero-actions">
-      <a href="tel:946856733" class="btn-primary">
+      <a href="https://wa.me/34946856733?text=Hola%2C%20me%20gustaria%20reservar%20mesa%20en%20Amatxu%20Sushi" class="btn-primary" target="_blank" rel="noopener">
         <span>Reservar mesa</span>
-        <span>→</span>
+        <span>&rarr;</span>
       </a>
       <a href="#carta-principal" class="btn-ghost">
         <span>Ver carta</span>
-        <div class="btn-ghost-arrow">↗</div>
+        <div class="btn-ghost-arrow">&nearr;</div>
       </a>
     </div>
   </div>
@@ -875,19 +897,19 @@
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-item"><span class="dot"></span>Nigiri Premium</span>
-    <span class="marquee-item"><span class="dot"></span>Sashimi Fresco</span>
-    <span class="marquee-item"><span class="dot"></span>Rolls Especiales</span>
-    <span class="marquee-item"><span class="dot"></span>Gyoza Artesanal</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Sashimi Fresco</span>
+    <span class="marquee-item"><span class="dot"></span>Uramaki Especiales</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Pollo Crunchy</span>
     <span class="marquee-item"><span class="dot"></span>Tempura Crujiente</span>
-    <span class="marquee-item"><span class="dot"></span>Sake Selección</span>
-    <span class="marquee-item"><span class="dot"></span>Miso Casero</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Tallarines con Gambas</span>
+    <span class="marquee-item"><span class="dot"></span>Tataki Fresco</span>
     <span class="marquee-item"><span class="dot"></span>Nigiri Premium</span>
-    <span class="marquee-item"><span class="dot"></span>Sashimi Fresco</span>
-    <span class="marquee-item"><span class="dot"></span>Rolls Especiales</span>
-    <span class="marquee-item"><span class="dot"></span>Gyoza Artesanal</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Sashimi Fresco</span>
+    <span class="marquee-item"><span class="dot"></span>Uramaki Especiales</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Pollo Crunchy</span>
     <span class="marquee-item"><span class="dot"></span>Tempura Crujiente</span>
-    <span class="marquee-item"><span class="dot"></span>Sake Selección</span>
-    <span class="marquee-item"><span class="dot"></span>Miso Casero</span>
+    <span class="marquee-item"><span class="dot-bamboo"></span>Tallarines con Gambas</span>
+    <span class="marquee-item"><span class="dot"></span>Tataki Fresco</span>
   </div>
 </div>
 
@@ -896,19 +918,19 @@
   <div class="stats-grid">
     <div class="stat-card reveal">
       <div class="stat-number"><span class="count" data-target="245">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-label">Reseñas en Google</div>
+      <div class="stat-label">Resenas en Google</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4★</span></div>
-      <div class="stat-label">Valoración media</div>
+      <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">.4&#9733;</span></div>
+      <div class="stat-label">Valoracion media</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number">100<span class="stat-suffix">%</span></div>
-      <div class="stat-label">Sushi artesanal</div>
+      <div class="stat-number"><span class="count" data-target="30">0</span><span class="stat-suffix-bamboo">+</span></div>
+      <div class="stat-label">Rolls en carta</div>
     </div>
     <div class="stat-card reveal reveal-delay-3">
-      <div class="stat-number"><span class="count" data-target="1">0</span><span class="stat-suffix">.er</span></div>
-      <div class="stat-label">Japonés en Galdakao</div>
+      <div class="stat-number"><span class="count" data-target="7">0</span><span class="stat-suffix"> dias</span></div>
+      <div class="stat-label">Abierto toda la semana</div>
     </div>
   </div>
 </div>
@@ -920,47 +942,47 @@
       <p class="section-label reveal">Nuestra cocina</p>
       <h2 class="section-title reveal reveal-delay-1">Sushi que<br><em>enamora a primera vista</em></h2>
     </div>
-    <a href="tel:946856733" class="view-all reveal">Reservar mesa →</a>
+    <a href="https://wa.me/34946856733?text=Hola%2C%20quiero%20reservar%20mesa" class="view-all reveal" target="_blank" rel="noopener">Reservar mesa &rarr;</a>
   </div>
   <div class="projects-grid">
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/c95f-Restaurante-Japones-AMATXU-SUSHI-Galdakao-sushi.jpg" alt="Sushi Amatxu" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=1400&q=80" alt="Variedad de sushi en Amatxu Sushi Galdakao" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Sushi · Rolls</p>
+        <p class="project-cat">Sushi &middot; Variedad</p>
+        <h3 class="project-name">Sushi Amatxu</h3>
+        <p class="project-meta">Un sushi diferente en el corazon de Galdakao</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&q=80" alt="Nigiri de salmon fresco" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Nigiri &middot; Premium</p>
+        <h3 class="project-name">Nigiri Seleccion</h3>
+        <p class="project-meta">Arroz perfecto con pescado fresco de temporada</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img class="project-img" src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&q=80" alt="Maki rolls especiales" loading="lazy">
+      <div class="project-overlay"></div>
+      <div class="project-arrow">&nearr;</div>
+      <div class="project-info">
+        <p class="project-cat">Maki &middot; Rolls</p>
         <h3 class="project-name">Rolls de la Casa</h3>
         <p class="project-meta">Elaborados al momento con ingredientes frescos</p>
       </div>
     </div>
     <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cfce-Restaurante-Japones-AMATXU-SUSHI-sushi.jpg" alt="Nigiri Amatxu" loading="lazy">
+      <img class="project-img" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80" alt="Ramen y platos calientes japoneses" loading="lazy">
       <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
+      <div class="project-arrow">&nearr;</div>
       <div class="project-info">
-        <p class="project-cat">Nigiri · Premium</p>
-        <h3 class="project-name">Nigiri Selección</h3>
-        <p class="project-meta">Arroz perfecto · Pescado fresco de temporada</p>
-      </div>
-    </div>
-    <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/c99f-sushi-Restaurante-Japones-AMATXU-SUSHI.jpg" alt="Sashimi Amatxu" loading="lazy">
-      <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
-      <div class="project-info">
-        <p class="project-cat">Sashimi · Fresco</p>
-        <h3 class="project-name">Sashimi del Día</h3>
-        <p class="project-meta">Corte preciso · Presentación impecable</p>
-      </div>
-    </div>
-    <div class="project-card">
-      <img class="project-img" src="https://img02.restaurantguru.com/cf72-Restaurante-Japones-AMATXU-SUSHI-Galdakao-gyoza.jpg" alt="Gyoza Amatxu" loading="lazy">
-      <div class="project-overlay"></div>
-      <div class="project-arrow">↗</div>
-      <div class="project-info">
-        <p class="project-cat">Gyoza · Artesanal</p>
-        <h3 class="project-name">Gyoza de la Abuela</h3>
-        <p class="project-meta">Rellenas a mano · Doradas en sartén</p>
+        <p class="project-cat">Calientes &middot; Especialidades</p>
+        <h3 class="project-name">Platos Calientes</h3>
+        <p class="project-meta">Tallarines, tempura, pollo crunchy y mas</p>
       </div>
     </div>
   </div>
@@ -969,10 +991,10 @@
 <!-- ABOUT -->
 <div class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://img02.restaurantguru.com/cfca-Restaurante-Japones-AMATXU-SUSHI-Galdakao-meals.jpg" alt="Amatxu Sushi Galdakao">
+    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=900&q=80" alt="Interior restaurante japones Amatxu Sushi Galdakao">
     <div class="about-badge">
-      <div class="about-badge-rating">4.4★</div>
-      <div class="about-badge-text">245 reseñas en Google · Galdakao</div>
+      <div class="about-badge-rating">4.4&#9733;</div>
+      <div class="about-badge-text">245 resenas en Google &middot; Galdakao</div>
     </div>
   </div>
   <div class="about-content">
@@ -982,7 +1004,7 @@
     </h2>
     <div class="about-divider reveal"></div>
     <p class="about-body reveal reveal-delay-2">
-      Amatxu Sushi es el restaurante japonés de referencia en Galdakao. Un espacio donde la tradición culinaria nipona se fusiona con el cariño de siempre.<br><br><strong>Cada pieza está elaborada con mimo y técnica.</strong> Ingredientes frescos, arroz perfectamente sazonado y una presentación que conquista desde el primer vistazo.
+      Amatxu Sushi es el restaurante japones de referencia en Galdakao. Un espacio donde la tradicion culinaria nipona se fusiona con la cercania de siempre.<br><br><strong>Cada pieza esta elaborada con mimo y tecnica.</strong> Ingredientes frescos, arroz perfectamente sazonado y una presentacion que conquista desde el primer vistazo. Abierto los 7 dias de la semana, de 13:00 a 16:30 y de 19:00 a 22:30.
     </p>
     <div class="about-values reveal reveal-delay-3">
       <div class="about-value">
@@ -995,15 +1017,15 @@
       <div class="about-value">
         <div class="value-num">02</div>
         <div class="value-text">
-          <h4>Técnica artesanal</h4>
-          <p>Cada pieza de sushi elaborada a mano con respeto a la tradición japonesa más auténtica</p>
+          <h4>Tecnica artesanal</h4>
+          <p>Cada pieza de sushi elaborada a mano con respeto a la tradicion japonesa mas autentica</p>
         </div>
       </div>
       <div class="about-value">
         <div class="value-num">03</div>
         <div class="value-text">
-          <h4>Ambiente acogedor</h4>
-          <p>Un restaurante íntimo en el corazón de Galdakao donde sentirte como en Japón</p>
+          <h4>Servicio a domicilio</h4>
+          <p>Disfruta de nuestro sushi en casa. Envio a domicilio en Galdakao y alrededores</p>
         </div>
       </div>
     </div>
@@ -1015,19 +1037,19 @@
   <div style="max-width:1400px; margin:0 auto">
     <p class="section-label reveal">Lo que ofrecemos</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:560px">
-      Todo el sabor de <em>Japón</em>
+      Todo el sabor de <em>Japon</em>
     </h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/>
+            <circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>
           </svg>
         </div>
         <h3>Sushi y Sashimi</h3>
-        <p>Nigiri, maki, uramaki, temaki y sashimi. Pescado fresco elaborado con técnica japonesa tradicional y presentación artística.</p>
-        <a href="#carta-principal" class="service-link">Ver carta →</a>
+        <p>Nigiri, maki, uramaki, temaki y sashimi. Pescado fresco elaborado con tecnica japonesa tradicional y presentacion artistica.</p>
+        <a href="#carta-principal" class="service-link">Ver carta &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-number">02</div>
@@ -1036,9 +1058,9 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Gyoza y Calientes</h3>
-        <p>Gyoza artesanales, tempura crujiente, edamame, sopa de miso y otros platos calientes de la cocina japonesa más tradicional.</p>
-        <a href="#carta-especialidades" class="service-link">Ver especialidades →</a>
+        <h3>Platos Calientes</h3>
+        <p>Pollo crunchy con arroz, tallarines con gambas, tempura crujiente, tataki y otros platos calientes de la cocina japonesa.</p>
+        <a href="#carta-especialidades" class="service-link">Ver especialidades &rarr;</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-number">03</div>
@@ -1047,9 +1069,9 @@
             <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
           </svg>
         </div>
-        <h3>Menús y Grupos</h3>
-        <p>Menús especiales para grupos, celebraciones y eventos. Contacta con nosotros para reservar tu experiencia en Amatxu.</p>
-        <a href="tel:946856733" class="service-link">Consultar →</a>
+        <h3>Delivery y Grupos</h3>
+        <p>Sushi a domicilio en Galdakao y alrededores. Menus especiales para grupos y celebraciones. Sin lactosa y sin gluten disponible.</p>
+        <a href="https://wa.me/34946856733?text=Hola%2C%20quiero%20hacer%20un%20pedido" class="service-link" target="_blank" rel="noopener">Pedir por WhatsApp &rarr;</a>
       </div>
     </div>
   </div>
@@ -1058,10 +1080,9 @@
 <!-- CARTA: SUSHI -->
 <section class="carta-section" id="carta-principal">
   <div class="section-inner">
-    <a href="#servicios" class="carta-back reveal">← Volver a servicios</a>
-    <p class="section-label reveal">Carta · Sushi</p>
+    <p class="section-label reveal">Carta &middot; Sushi</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Piezas elaboradas<br>con <em>maestría</em>
+      Piezas elaboradas<br>con <em>maestria</em>
     </h2>
     <div class="carta-columns">
       <div>
@@ -1069,55 +1090,69 @@
           <h4>Nigiri (2 piezas)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Salmón</div>
-              <div class="carta-item-desc">Salmón fresco sobre arroz de sushi</div>
+              <div class="carta-item-name">Salmon</div>
+              <div class="carta-item-desc">Salmon fresco sobre arroz de sushi</div>
             </div>
-            <div class="carta-item-price">3.80 €</div>
+            <div class="carta-item-price">3.80 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Atún</div>
-              <div class="carta-item-desc">Atún rojo sobre arroz de sushi</div>
+              <div class="carta-item-name">Atun</div>
+              <div class="carta-item-desc">Atun rojo sobre arroz de sushi</div>
             </div>
-            <div class="carta-item-price">4.20 €</div>
+            <div class="carta-item-price">4.20 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Langostino</div>
               <div class="carta-item-desc">Langostino cocido sobre arroz</div>
             </div>
-            <div class="carta-item-price">3.60 €</div>
+            <div class="carta-item-price">3.60 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Pez Mantequilla</div>
               <div class="carta-item-desc">Hamachi fresco con sal marina</div>
             </div>
-            <div class="carta-item-price">4.50 €</div>
+            <div class="carta-item-price">4.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Anguila</div>
+              <div class="carta-item-desc">Unagi glaseada con salsa kabayaki</div>
+            </div>
+            <div class="carta-item-price">4.80 &euro;</div>
           </div>
         </div>
         <div class="carta-category reveal">
           <h4>Maki (8 piezas)</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Maki Salmón</div>
-              <div class="carta-item-desc">Salmón fresco, arroz, alga nori</div>
+              <div class="carta-item-name">Maki Salmon</div>
+              <div class="carta-item-desc">Salmon fresco, arroz, alga nori</div>
             </div>
-            <div class="carta-item-price">7.50 €</div>
+            <div class="carta-item-price">7.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Maki Atún</div>
-              <div class="carta-item-desc">Atún rojo, arroz, alga nori</div>
+              <div class="carta-item-name">Maki Atun</div>
+              <div class="carta-item-desc">Atun rojo, arroz, alga nori</div>
             </div>
-            <div class="carta-item-price">8.00 €</div>
+            <div class="carta-item-price">8.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Maki Aguacate</div>
-              <div class="carta-item-desc">Aguacate, pepino, sésamo tostado</div>
+              <div class="carta-item-desc">Aguacate, pepino, sesamo tostado</div>
             </div>
-            <div class="carta-item-price">6.50 €</div>
+            <div class="carta-item-price">6.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Maki Tempura</div>
+              <div class="carta-item-desc">Gamba en tempura, aguacate, mayonesa spicy</div>
+            </div>
+            <div class="carta-item-price">9.00 &euro;</div>
           </div>
         </div>
       </div>
@@ -1127,57 +1162,67 @@
           <div class="carta-item">
             <div>
               <div class="carta-item-name">California Roll</div>
-              <div class="carta-item-desc">Cangrejo, aguacate, huevas de pez volador</div>
+              <div class="carta-item-desc">Cangrejo, aguacate, huevas tobiko</div>
             </div>
-            <div class="carta-item-price">9.50 €</div>
+            <div class="carta-item-price">9.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Spicy Tuna</div>
-              <div class="carta-item-desc">Atún picante, pepino, salsa sriracha</div>
+              <div class="carta-item-name">Spicy Tuna Roll</div>
+              <div class="carta-item-desc">Atun picante, pepino, salsa sriracha</div>
             </div>
-            <div class="carta-item-price">10.50 €</div>
+            <div class="carta-item-price">10.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Dragon Roll</div>
               <div class="carta-item-desc">Langostino, aguacate, salsa especial de la casa</div>
             </div>
-            <div class="carta-item-price">12.00 €</div>
+            <div class="carta-item-price">12.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Rainbow Roll</div>
-              <div class="carta-item-desc">Salmón, atún, langostino, aguacate</div>
+              <div class="carta-item-desc">Salmon, atun, langostino, aguacate</div>
             </div>
-            <div class="carta-item-price">13.50 €</div>
+            <div class="carta-item-price">13.50 &euro;</div>
           </div>
         </div>
         <div class="carta-category reveal reveal-delay-1">
           <h4>Sashimi</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Sashimi Salmón (5 piezas)</div>
+              <div class="carta-item-name">Sashimi Salmon (5 pzs)</div>
+              <div class="carta-item-desc">Corte fino de salmon fresco</div>
             </div>
-            <div class="carta-item-price">10.50 €</div>
+            <div class="carta-item-price">10.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Sashimi Atún (5 piezas)</div>
+              <div class="carta-item-name">Sashimi Atun (5 pzs)</div>
+              <div class="carta-item-desc">Corte preciso de atun rojo</div>
             </div>
-            <div class="carta-item-price">12.00 €</div>
+            <div class="carta-item-price">12.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Sashimi Mixto (10 piezas)</div>
+              <div class="carta-item-name">Sashimi Mixto (10 pzs)</div>
+              <div class="carta-item-desc">Seleccion del chef, pescado del dia</div>
             </div>
-            <div class="carta-item-price">18.00 €</div>
+            <div class="carta-item-price">18.00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tataki de Salmon</div>
+              <div class="carta-item-desc">Salmon sellado, salsa ponzu, cebollino</div>
+            </div>
+            <div class="carta-item-price">11.50 &euro;</div>
           </div>
         </div>
       </div>
     </div>
-    <a href="tel:946856733" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34946856733?text=Hola%2C%20quiero%20reservar%20mesa" class="carta-cta reveal" target="_blank" rel="noopener">
+      <span>Reservar mesa</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1185,10 +1230,10 @@
 <!-- CARTA: ESPECIALIDADES -->
 <section class="carta-section" id="carta-especialidades">
   <div class="section-inner">
-    <a href="#carta-principal" class="carta-back reveal">← Volver a sushi</a>
-    <p class="section-label reveal">Carta · Especialidades</p>
+    <a href="#carta-principal" class="carta-back reveal">&larr; Volver a sushi</a>
+    <p class="section-label section-label-bamboo reveal">Carta &middot; Especialidades</p>
     <h2 class="section-title reveal reveal-delay-1" style="max-width:600px">
-      Cocina japonesa<br><em>más allá del sushi</em>
+      Cocina japonesa<br><em>mas alla del sushi</em>
     </h2>
     <div class="carta-columns">
       <div>
@@ -1199,81 +1244,102 @@
               <div class="carta-item-name">Edamame</div>
               <div class="carta-item-desc">Vainas de soja salteadas con sal marina</div>
             </div>
-            <div class="carta-item-price">4.50 €</div>
+            <div class="carta-item-price">4.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Sopa de Miso</div>
               <div class="carta-item-desc">Caldo dashi, tofu, algas wakame, cebollino</div>
             </div>
-            <div class="carta-item-price">3.80 €</div>
+            <div class="carta-item-price">3.80 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Ensalada de Algas</div>
-              <div class="carta-item-desc">Algas variadas, sésamo, vinagreta japonesa</div>
+              <div class="carta-item-name">Ensalada Wakame</div>
+              <div class="carta-item-desc">Algas, sesamo, vinagreta japonesa</div>
             </div>
-            <div class="carta-item-price">5.50 €</div>
+            <div class="carta-item-price">5.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gyoza de Cerdo (6 uds)</div>
+              <div class="carta-item-desc">Empanadillas japonesas, cerdo y verduras</div>
+            </div>
+            <div class="carta-item-price">7.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Gyoza de Gambas (6 uds)</div>
+              <div class="carta-item-desc">Gambas, jengibre, cebollino</div>
+            </div>
+            <div class="carta-item-price">8.50 &euro;</div>
           </div>
         </div>
         <div class="carta-category reveal">
-          <h4>Gyoza (6 piezas)</h4>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gyoza de Cerdo</div>
-              <div class="carta-item-desc">Cerdo y verduras, salteadas en sartén</div>
-            </div>
-            <div class="carta-item-price">7.50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gyoza de Gambas</div>
-              <div class="carta-item-desc">Gambas, jengibre, cebollino</div>
-            </div>
-            <div class="carta-item-price">8.50 €</div>
-          </div>
-          <div class="carta-item">
-            <div>
-              <div class="carta-item-name">Gyoza Vegetal</div>
-              <div class="carta-item-desc">Verduras de temporada, tofu, sésamo</div>
-            </div>
-            <div class="carta-item-price">7.00 €</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="carta-category reveal reveal-delay-1">
           <h4>Tempura</h4>
           <div class="carta-item">
             <div>
-              <div class="carta-item-name">Tempura de Gambas (4 piezas)</div>
+              <div class="carta-item-name">Tempura de Gambas (4 uds)</div>
               <div class="carta-item-desc">Gambas en tempura crujiente, salsa tentsuyu</div>
             </div>
-            <div class="carta-item-price">9.50 €</div>
+            <div class="carta-item-price">9.50 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Tempura de Verduras</div>
-              <div class="carta-item-desc">Boniato, calabacín, zanahoria, seta</div>
+              <div class="carta-item-desc">Boniato, calabacin, zanahoria, seta</div>
             </div>
-            <div class="carta-item-price">8.00 €</div>
+            <div class="carta-item-price">8.00 &euro;</div>
           </div>
           <div class="carta-item">
             <div>
               <div class="carta-item-name">Tempura Mixta</div>
               <div class="carta-item-desc">Gambas y verduras, salsa de la casa</div>
             </div>
-            <div class="carta-item-price">11.00 €</div>
+            <div class="carta-item-price">11.00 &euro;</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="carta-category reveal reveal-delay-1">
+          <h4>Platos Calientes</h4>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Pollo Crunchy con Arroz</div>
+              <div class="carta-item-desc">Pollo empanado estilo japones, arroz blanco</div>
+            </div>
+            <div class="carta-item-price">11.50 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tallarines con Gambas</div>
+              <div class="carta-item-desc">Noodles salteados al wok con gambas y verduras</div>
+            </div>
+            <div class="carta-item-price">12.00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Tallarines con Pollo</div>
+              <div class="carta-item-desc">Noodles salteados al wok con pollo teriyaki</div>
+            </div>
+            <div class="carta-item-price">11.00 &euro;</div>
+          </div>
+          <div class="carta-item">
+            <div>
+              <div class="carta-item-name">Arroz Frito Especial</div>
+              <div class="carta-item-desc">Arroz salteado con gambas, verduras, huevo</div>
+            </div>
+            <div class="carta-item-price">10.50 &euro;</div>
           </div>
         </div>
         <div class="carta-highlight reveal reveal-delay-2">
-          <h4>Precios orientativos</h4>
-          <p>Carta sujeta a disponibilidad según temporada. Precio medio por persona: 25–35 €. Consulta menús especiales para grupos llamando al 946 85 67 33.</p>
+          <h4>Horario y reservas</h4>
+          <p>Abierto de lunes a domingo, 13:00&ndash;16:30 y 19:00&ndash;22:30. Opciones sin gluten y sin lactosa disponibles. Precio medio por persona: 20&ndash;35 &euro;. Reserva por WhatsApp o llamando al 946 85 67 33.</p>
         </div>
       </div>
     </div>
-    <a href="tel:946856733" class="carta-cta reveal">
-      <span>Reservar mesa</span><span>→</span>
+    <a href="https://wa.me/34946856733?text=Hola%2C%20quiero%20hacer%20un%20pedido" class="carta-cta reveal" target="_blank" rel="noopener">
+      <span>Pedir por WhatsApp</span><span>&rarr;</span>
     </a>
   </div>
 </section>
@@ -1290,33 +1356,33 @@
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"El mejor sushi de Bizkaia sin ninguna duda. Las gyozas están para repetir y el ambiente es muy acogedor. Totalmente recomendable."</p>
+        <p class="testimonial-quote">"El mejor sushi de Galdakao sin ninguna duda. Los rolls especiales estan espectaculares y el servicio siempre atento. Venimos cada semana."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Miren Ereño</strong>
-          <span>Galdakao · Google</span>
+          <strong>Unai Etxebarria</strong>
+          <span>Galdakao &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
         </div>
-        <p class="testimonial-quote">"Venimos cada semana. El salmón siempre fresco y la atención es un 10. Los rolls especiales son espectaculares. Un clásico de Galdakao."</p>
+        <p class="testimonial-quote">"El pollo crunchy con arroz esta increible y los tallarines con gambas de 10. Un sitio diferente en Galdakao donde siempre aciertas."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Josu Arteaga</strong>
-          <span>Bilbao · Google</span>
+          <strong>Garazi Uriarte</strong>
+          <span>Bilbao &middot; Google</span>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-stars">
           <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star-half"></div>
         </div>
-        <p class="testimonial-quote">"Fui por primera vez con mi pareja y nos encantó. La presentación de los platos es preciosa y el sabor, auténtico. Reservamos para volver pronto."</p>
+        <p class="testimonial-quote">"Fuimos por primera vez con mi pareja y nos encanto. La presentacion de los platos es preciosa, el sashimi fresquisimo. Ya hemos reservado para volver."</p>
         <div class="testimonial-divider"></div>
         <div class="testimonial-author">
-          <strong>Ane Zubiaurre</strong>
-          <span>Ermua · Google</span>
+          <strong>Ibon Goikoetxea</strong>
+          <span>Ermua &middot; Google</span>
         </div>
       </div>
     </div>
@@ -1327,8 +1393,8 @@
 <div class="map-section" id="contacto">
   <div class="map-inner">
     <div class="map-info">
-      <p class="section-label reveal">Dónde estamos</p>
-      <h2 class="reveal reveal-delay-1">Visítanos en<br><em>Galdakao</em></h2>
+      <p class="section-label reveal">Donde estamos</p>
+      <h2 class="reveal reveal-delay-1">Visitanos en<br><em>Galdakao</em></h2>
       <div class="contact-list reveal reveal-delay-2">
         <div class="contact-item">
           <div class="contact-icon">
@@ -1337,8 +1403,8 @@
             </svg>
           </div>
           <div class="contact-text">
-            <strong>Dirección</strong>
-            Bernart Etxepare Kalea, 3<br>Galdakao, Bizkaia
+            <strong>Direccion</strong>
+            Bernart Etxepare Kalea, 3<br>48960 Galdakao, Bizkaia
           </div>
         </div>
         <div class="contact-item">
@@ -1348,8 +1414,30 @@
             </svg>
           </div>
           <div class="contact-text">
-            <strong>Teléfono</strong>
+            <strong>Telefono</strong>
             <a href="tel:946856733">946 85 67 33</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Email</strong>
+            <a href="mailto:info@amatxusushi.es">info@amatxusushi.es</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Horario</strong>
+            Lunes a Domingo<br>13:00&ndash;16:30 &middot; 19:00&ndash;22:30
           </div>
         </div>
         <div class="contact-item">
@@ -1364,14 +1452,14 @@
           </div>
         </div>
       </div>
-      <a href="tel:946856733" class="btn-primary reveal reveal-delay-3" style="display:inline-flex; margin-top: 0;">
-        <span>Llamar y reservar</span>
-        <span>→</span>
+      <a href="https://wa.me/34946856733?text=Hola%2C%20me%20gustaria%20reservar%20mesa%20en%20Amatxu%20Sushi" class="btn-primary reveal reveal-delay-3" style="display:inline-flex; margin-top: 0; background: #25D366;" target="_blank" rel="noopener">
+        <span>WhatsApp &middot; Reservar</span>
+        <span>&rarr;</span>
       </a>
     </div>
     <div class="map-embed">
       <iframe
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Amatxu+Sushi+Galdakao&zoom=17"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2900.5!2d-2.7717!3d43.2297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fdf5b3c1a69%3A0x4e1a8b95f45e3c!2sAmatxu%20Sushi!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
@@ -1384,12 +1472,12 @@
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-text">
-    <h2>¿Te apetece<br>auténtico Japón?</h2>
-    <p>Llama ahora y reserva tu mesa en Amatxu Sushi, Galdakao.</p>
+    <h2>Te apetece<br>autentico sushi?</h2>
+    <p>Reserva ahora por WhatsApp o llamanos al 946 85 67 33.</p>
   </div>
-  <a href="tel:946856733" class="btn-dark">
-    <span>946 85 67 33</span>
-    <span>↗</span>
+  <a href="https://wa.me/34946856733?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Amatxu%20Sushi" class="btn-dark" target="_blank" rel="noopener">
+    <span>Reservar por WhatsApp</span>
+    <span>&nearr;</span>
   </a>
 </div>
 
@@ -1398,68 +1486,74 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Amatxu<span>.</span></a>
-      <p class="footer-tagline">"La cocina japonesa es la búsqueda de la perfección en la simplicidad."</p>
+      <p class="footer-tagline">Sushi diferente en el corazon de Galdakao. Tradicion japonesa con carino de siempre.</p>
       <div class="footer-social">
         <a href="https://www.google.com/maps/search/Amatxu+Sushi+Galdakao" target="_blank" rel="noopener" class="social-link" title="Google Maps">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         </a>
         <a href="https://amatxusushi.es" target="_blank" rel="noopener" class="social-link" title="Web oficial">Wb</a>
+        <a href="https://wa.me/34946856733" target="_blank" rel="noopener" class="social-link" title="WhatsApp">Wa</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Carta</h4>
       <ul>
-        <li><a href="#carta-principal">Sushi</a></li>
+        <li><a href="#carta-principal">Sushi y Rolls</a></li>
         <li><a href="#carta-principal">Nigiri</a></li>
-        <li><a href="#carta-especialidades">Gyoza</a></li>
+        <li><a href="#carta-principal">Sashimi</a></li>
+        <li><a href="#carta-especialidades">Platos Calientes</a></li>
         <li><a href="#carta-especialidades">Tempura</a></li>
-        <li><a href="#carta-especialidades">Miso</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Restaurante</h4>
       <ul>
         <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#galeria">Galeria</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Cómo llegar</a></li>
+        <li><a href="#contacto">Como llegar</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
         <li><a href="tel:946856733">946 85 67 33</a></li>
+        <li><a href="mailto:info@amatxusushi.es">info@amatxusushi.es</a></li>
         <li><a href="https://amatxusushi.es" target="_blank" rel="noopener">amatxusushi.es</a></li>
-        <li><a href="#contacto">Bernart Etxepare Kalea, 3</a></li>
         <li><a href="#contacto">Galdakao, Bizkaia</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Amatxu Sushi. Todos los derechos reservados.</p>
+    <p class="footer-copy">&copy; 2026 Amatxu Sushi. Todos los derechos reservados.</p>
     <div class="footer-legal">
-      <a href="#">Política de Privacidad</a>
+      <a href="#">Politica de Privacidad</a>
       <a href="#">Aviso Legal</a>
       <a href="#">Cookies</a>
     </div>
   </div>
 </footer>
 
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34946856733?text=Hola%2C%20me%20gustaria%20reservar%20mesa%20en%20Amatxu%20Sushi" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-  // ── LOADER
-  window.addEventListener('load', () => {
-    setTimeout(() => {
+  // LOADER
+  window.addEventListener('load', function() {
+    setTimeout(function() {
       document.getElementById('loader').classList.add('hidden');
       document.getElementById('heroBg').classList.add('loaded');
     }, 1800);
   });
 
-  // ── CUSTOM CURSOR
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  // CUSTOM CURSOR
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-  document.addEventListener('mousemove', e => {
+  document.addEventListener('mousemove', function(e) {
     mouseX = e.clientX; mouseY = e.clientY;
     dot.style.left = mouseX + 'px';
     dot.style.top = mouseY + 'px';
@@ -1474,66 +1568,66 @@
   }
   animateRing();
 
-  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  document.querySelectorAll('a, button, .project-card, .service-card, .stat-card').forEach(function(el) {
+    el.addEventListener('mouseenter', function() { ring.classList.add('expanded'); });
+    el.addEventListener('mouseleave', function() { ring.classList.remove('expanded'); });
   });
 
-  // ── NAVBAR SCROLL
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
+  // NAVBAR SCROLL
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── HAMBURGER MENU
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+  // HAMBURGER MENU
+  var hamburgerBtn = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', function() {
+    hamburgerBtn.classList.toggle('active');
     mobileMenu.classList.toggle('open');
   });
   function closeMobile() {
-    hamburger.classList.remove('active');
+    hamburgerBtn.classList.remove('active');
     mobileMenu.classList.remove('open');
   }
 
-  // ── REVEAL ON SCROLL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  // REVEAL ON SCROLL
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  reveals.forEach(function(el) { observer.observe(el); });
 
-  // ── COUNTER ANIMATION
+  // COUNTER ANIMATION
   function animateCount(el) {
-    const target = parseInt(el.dataset.target);
-    const duration = 1800;
-    const start = performance.now();
+    var target = parseInt(el.dataset.target);
+    var duration = 1800;
+    var start = performance.now();
     function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 4);
+      var progress = Math.min((now - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 4);
       el.textContent = Math.round(ease * target);
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
 
-  const countObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
+  var countObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
       if (e.isIntersecting) {
         animateCount(e.target);
         countObserver.unobserve(e.target);
       }
     });
   }, { threshold: 0.5 });
-  document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+  document.querySelectorAll('.count').forEach(function(el) { countObserver.observe(el); });
 
-  // ── HERO PARALLAX
-  window.addEventListener('scroll', () => {
-    const heroBg = document.getElementById('heroBg');
+  // HERO PARALLAX
+  window.addEventListener('scroll', function() {
+    var heroBg = document.getElementById('heroBg');
     if (heroBg) {
-      const scrolled = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+      var scrolled = window.scrollY;
+      heroBg.style.transform = 'scale(1) translateY(' + (scrolled * 0.25) + 'px)';
     }
   });
 </script>
