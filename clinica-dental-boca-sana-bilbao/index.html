@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Dental Boca Sana — Dentista en Casco Viejo, Bilbao</title>
+  <meta name="description" content="Clínica Dental Boca Sana en el Casco Viejo de Bilbao. Odontología general, implantes, ortodoncia, estética dental y blanqueamiento. Iturribide 53. Tel 666 60 94 48.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #0E7490;
+      --accent-light: #0891B2;
+      --accent-dark: #0B5E73;
+      --bg: #ffffff;
+      --bg-alt: #f0f7f8;
+      --bg-card: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --text-lighter: #94a3b8;
+      --border: #e2e8f0;
+      --font: 'Fira Sans Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-brand { font-family: var(--font); font-size: 1.4rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .nav-brand span { color: var(--text); font-weight: 300; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.85rem; font-weight: 400; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); opacity: 0; visibility: hidden; transition: all 0.3s; list-style: none; background: #fff; border: 1px solid var(--border); padding: 12px 0; min-width: 220px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 101; }
+    .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a { display: block; padding: 10px 24px; font-size: 0.82rem; color: var(--text-light); white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: var(--accent); background: var(--bg-alt); }
+    .dropdown-arrow { font-size: 0.6rem; margin-left: 4px; }
+    .nav-cta { background: var(--accent); color: #fff !important; padding: 10px 24px; border-radius: 6px; font-weight: 500; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--accent-dark); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; }
+
+    /* HERO */
+    .hero { padding: 160px 60px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-text h1 { font-family: var(--font); font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 24px; }
+    .hero-text h1 em { font-style: normal; color: var(--accent); font-weight: 600; }
+    .hero-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,116,144,0.25); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--accent); text-decoration: none; padding: 14px 32px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; border: 1.5px solid var(--accent); transition: all 0.3s; }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .hero-img img { width: 100%; height: 500px; object-fit: cover; border-radius: 16px; }
+
+    /* SECTIONS */
+    section { padding: 100px 60px; }
+    .section-label { font-family: var(--font); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+    .section-title { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
+    .section-title em { font-style: normal; color: var(--accent); font-weight: 600; }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 450px; object-fit: cover; border-radius: 12px; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-highlight { display: flex; gap: 40px; margin-top: 32px; }
+    .about-stat-num { font-family: var(--font); font-size: 2.4rem; font-weight: 600; color: var(--accent); line-height: 1; }
+    .about-stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+
+    /* SERVICES */
+    .services-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 40px 32px; transition: all 0.35s; }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(14,116,144,0.1); }
+    .service-icon { width: 48px; height: 48px; background: rgba(14,116,144,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 24px; }
+    .service-card h3 { font-family: var(--font); font-size: 1.25rem; font-weight: 500; margin-bottom: 12px; }
+    .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--bg-alt); }
+    .testimonials-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 36px 28px; }
+    .testimonial-stars { color: var(--accent); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testimonial-quote { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+    .testimonial-author { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+
+    /* CTA */
+    .cta { background: var(--accent); padding: 80px 60px; text-align: center; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; color: #fff; margin-bottom: 16px; }
+    .cta p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 32px; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--accent); text-decoration: none; padding: 14px 36px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* CONTACT */
+    .contact-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-item-icon { width: 44px; height: 44px; background: rgba(14,116,144,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+    .contact-item h4 { font-family: var(--font); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+    .contact-item p, .contact-item a { font-size: 0.88rem; color: var(--text-light); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent); }
+    .map-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 380px; border: 0; }
+
+    /* FOOTER */
+    footer { background: #1a2332; padding: 60px 60px 40px; color: rgba(255,255,255,0.5); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.2rem; color: rgba(255,255,255,0.8); font-weight: 500; }
+    .footer-brand span { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 140px 24px 60px; gap: 40px; }
+      .hero-img img { height: 300px; }
+      section { padding: 70px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .cta { padding: 60px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">Boca Sana <span>| Clínica Dental</span></a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="#servicios">Tratamientos <span class="dropdown-arrow">▾</span></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="#servicios">Odontología General</a></li>
+        <li><a href="#servicios">Implantes Dentales</a></li>
+        <li><a href="#servicios">Ortodoncia</a></li>
+        <li><a href="#servicios">Estética Dental</a></li>
+        <li><a href="#servicios">Blanqueamiento</a></li>
+        <li><a href="#servicios">Odontopediatría</a></li>
+      </ul>
+    </li>
+    <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+    <li><a href="#testimonios">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34666609448" class="nav-cta">666 60 94 48</a></li>
+  </ul>
+  <button class="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-in">
+    <h1>Tu sonrisa en las <em>mejores manos</em></h1>
+    <p>Clínica Dental Boca Sana en el Casco Viejo de Bilbao. Odontología general, implantes, ortodoncia, estética dental y blanqueamiento. Primera consulta de valoración gratuita.</p>
+    <div class="hero-actions">
+      <a href="tel:+34666609448" class="btn-primary">Pedir cita →</a>
+      <a href="#servicios" class="btn-outline">Ver tratamientos</a>
+    </div>
+  </div>
+  <div class="hero-img fade-in">
+    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Clínica Dental Boca Sana Bilbao">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-nosotros">
+  <div class="about-inner">
+    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Equipo dental Boca Sana" class="about-img fade-in">
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre nosotros</p>
+      <h2 class="section-title">Tu dentista de <em>confianza</em></h2>
+      <p>Clínica Dental Boca Sana está en el corazón del Casco Viejo de Bilbao, en la calle Iturribide 53. Un equipo de profesionales con <strong>tecnología de última generación</strong> y un trato cercano que marca la diferencia.</p>
+      <p>Ofrecemos todos los tratamientos de odontología: desde revisiones y limpiezas hasta implantes, ortodoncia y estética dental. <strong>Acceso para sillas de ruedas</strong> y abiertos los sábados por la mañana para tu comodidad.</p>
+      <div class="about-highlight">
+        <div>
+          <div class="about-stat-num">4.2★</div>
+          <div class="about-stat-label">Nota en Google</div>
+        </div>
+        <div>
+          <div class="about-stat-num">21</div>
+          <div class="about-stat-label">Reseñas</div>
+        </div>
+        <div>
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Financiación</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Tratamientos</p>
+    <h2 class="section-title">Cuidamos tu <em>sonrisa</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Ofrecemos todos los tratamientos de odontología moderna con tecnología avanzada y atención personalizada.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Odontología General</h3>
+      <p>Revisiones, limpiezas, empastes, extracciones y prevención. La base de una boca sana empieza aquí.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/></svg></div>
+      <h3>Implantes Dentales</h3>
+      <p>Implantes de última generación con cirugía mínimamente invasiva. Resultados naturales y duraderos.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3>Ortodoncia</h3>
+      <p>Brackets metálicos, estéticos y ortodoncia invisible. Corregimos tu sonrisa con el método que mejor se adapte a ti.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <h3>Estética Dental</h3>
+      <p>Carillas de porcelana, composite y diseño de sonrisa. Transforma tu sonrisa de forma natural y duradera.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>Blanqueamiento</h3>
+      <p>Blanqueamiento profesional en clínica y ambulatorio. Dientes más blancos en una sola sesión.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h3>Odontopediatría</h3>
+      <p>Odontología infantil con un trato especial para los más pequeños. Que ir al dentista sea una buena experiencia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Opiniones</p>
+    <h2 class="section-title">Lo que dicen nuestros <em>pacientes</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Trato excelente desde la primera visita. Me hicieron una limpieza y un empaste y no sentí absolutamente nada. Muy profesionales y cercanos."</p>
+      <div class="testimonial-author">— Paciente verificado</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Me puse implantes y estoy encantada con el resultado. Se ve totalmente natural. El equipo te explica todo paso a paso y te transmite mucha confianza."</p>
+      <div class="testimonial-author">— Paciente verificada</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Llevé a mi hija por primera vez al dentista y fue una experiencia genial. Trato fantástico con los niños. Ahora quiere volver ella sola."</p>
+      <div class="testimonial-author">— Paciente verificada</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Primera consulta de valoración gratuita</h2>
+  <p>Llámanos o escríbenos por WhatsApp. Estamos en el Casco Viejo, en Iturribide 53.</p>
+  <a href="tel:+34666609448" class="btn-white">Pedir cita — 666 60 94 48</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en el <em>Casco Viejo</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h4>Dirección</h4><p>Iturribide Kalea, 53<br>48006 Bilbao (Casco Viejo)</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><h4>Teléfono / WhatsApp</h4><a href="tel:+34666609448">666 60 94 48</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div><h4>Email</h4><a href="mailto:Iturribidebocasana@gmail.com">Iturribidebocasana@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><h4>Horario</h4><p>Lunes a Viernes: 10:00 — 20:00<br>Sábado: 11:00 — 14:00<br>Domingo: Cerrado</p></div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Iturribide+53+Bilbao&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Boca Sana <span>| Clínica Dental</span></div>
+    <p class="footer-copy">© 2026 Clínica Dental Boca Sana. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40); });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }}); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
