@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ariotza Jatetxea — Restaurante en Mungia</title>
+  <meta name="description" content="Ariotza Jatetxea en Mungia. Cocina tradicional vasca, carnes y pescados de la zona. Menú del día, raciones generosas y producto fresco. Aritz Bidea 14.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #8B5A2B;
+      --accent-light: #A86B33;
+      --accent-dark: #6B4422;
+      --bg: #faf8f4;
+      --bg-alt: #f0ebe1;
+      --bg-card: #ffffff;
+      --text: #2a2520;
+      --text-light: #6b6357;
+      --text-lighter: #9b9285;
+      --border: #e5dfd0;
+      --font: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(250,248,244,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(139,90,43,0.08); }
+    .nav-brand { font-family: var(--font); font-size: 1.5rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .nav-brand span { color: var(--text); font-style: italic; font-weight: 400; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.85rem; font-weight: 400; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #fff !important; padding: 10px 24px; border-radius: 4px; font-weight: 500; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--accent-dark); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; }
+
+    /* HERO */
+    .hero { padding: 160px 60px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-text h1 { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 500; line-height: 1.1; margin-bottom: 24px; color: var(--text); }
+    .hero-text h1 em { font-style: italic; color: var(--accent); }
+    .hero-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 4px; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,90,43,0.25); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--accent); text-decoration: none; padding: 14px 32px; border-radius: 4px; font-size: 0.9rem; font-weight: 500; border: 1.5px solid var(--accent); transition: all 0.3s; }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .hero-img img { width: 100%; height: 520px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 50px rgba(139,90,43,0.15); }
+
+    /* SECTIONS */
+    section { padding: 100px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 500; }
+    .section-title { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; line-height: 1.2; margin-bottom: 20px; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 480px; object-fit: cover; border-radius: 8px; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-stats { display: flex; gap: 40px; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .stat-num { font-family: var(--font); font-size: 2.4rem; font-weight: 600; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; letter-spacing: 0.05em; }
+
+    /* MENU SECTION */
+    .menu-section { background: var(--bg); }
+    .menu-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .menu-col h3 { font-family: var(--font); font-size: 1.6rem; color: var(--accent); margin-bottom: 24px; font-weight: 500; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+    .menu-item { padding: 14px 0; border-bottom: 1px dashed var(--border); font-size: 0.92rem; color: var(--text-light); }
+    .menu-item:last-child { border-bottom: none; }
+
+    /* SERVICES */
+    .services-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 40px 32px; transition: all 0.35s; text-align: center; }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(139,90,43,0.1); }
+    .service-icon { width: 56px; height: 56px; background: rgba(139,90,43,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); margin: 0 auto 24px; }
+    .service-card h3 { font-family: var(--font); font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
+    .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--bg-alt); }
+    .testimonials-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testimonial-card { background: var(--bg-card); border-radius: 8px; padding: 36px 28px; border: 1px solid var(--border); }
+    .testimonial-stars { color: var(--accent); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testimonial-quote { font-family: var(--font); font-size: 1rem; font-style: italic; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+    .testimonial-author { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+
+    /* CTA */
+    .cta { background: var(--accent); padding: 90px 60px; text-align: center; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; color: #fff; margin-bottom: 16px; }
+    .cta h2 em { font-style: italic; color: rgba(255,255,255,0.85); }
+    .cta p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 32px; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--accent); text-decoration: none; padding: 14px 36px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* CONTACT */
+    .contact-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+    .contact-icon { width: 44px; height: 44px; background: rgba(139,90,43,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+    .contact-item h4 { font-family: var(--font); font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+    .contact-item p, .contact-item a { font-size: 0.88rem; color: var(--text-light); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent); }
+    .map-wrapper { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 420px; border: 0; }
+
+    /* FOOTER */
+    footer { background: #1f1a14; padding: 60px; color: rgba(255,255,255,0.5); text-align: center; }
+    .footer-brand { font-family: var(--font); font-size: 1.6rem; color: var(--accent); margin-bottom: 12px; }
+    .footer-brand em { font-style: italic; color: rgba(255,255,255,0.7); font-weight: 400; }
+    .footer-copy { font-size: 0.78rem; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 140px 24px 60px; gap: 40px; }
+      .hero-img img { height: 320px; }
+      section { padding: 70px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .menu-grid, .services-grid, .testimonials-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+      .cta { padding: 60px 24px; }
+      footer { padding: 40px 24px; }
+    }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">Ariotza <span>Jatetxea</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre-nosotros">Nosotros</a></li>
+    <li><a href="#carta">Nuestra carta</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34946744723" class="nav-cta">Reservar</a></li>
+  </ul>
+  <button class="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-in">
+    <h1>Sabor vasco<br><em>de siempre</em></h1>
+    <p>Cocina tradicional vasca en el corazón de Mungia. Carnes y pescados frescos, menú del día casero y un trato familiar que enamora desde el primer plato.</p>
+    <div class="hero-actions">
+      <a href="tel:+34946744723" class="btn-primary">Reservar mesa →</a>
+      <a href="#carta" class="btn-outline">Ver carta</a>
+    </div>
+  </div>
+  <div class="hero-img fade-in">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Ariotza Jatetxea Restaurante Mungia">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-nosotros">
+  <div class="about-inner">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80" alt="Interior Ariotza Jatetxea" class="about-img fade-in">
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre nosotros</p>
+      <h2 class="section-title">Tradición y <em>buen producto</em></h2>
+      <p>Ariotza Jatetxea es un restaurante tradicional en Mungia donde la <strong>cocina vasca de toda la vida</strong> se mantiene fiel a sus raíces. Carnes a la parrilla, pescados frescos del Cantábrico y los platos de cuchara que enamoran.</p>
+      <p>Nuestro menú del día es uno de los más completos de la zona: <strong>10 primeros y 12 segundos</strong> a elegir, postre casero, pan, vino y agua. Producto fresco, recetas de siempre y raciones generosas.</p>
+      <p>Disponemos de <strong>parking propio, terraza-jardín</strong> y acceso para personas con movilidad reducida. Capacidad para 90 comensales — ideal para celebraciones, comidas familiares y eventos.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">90</div>
+          <div class="stat-label">Comensales</div>
+        </div>
+        <div>
+          <div class="stat-num">10+12</div>
+          <div class="stat-label">Platos al día</div>
+        </div>
+        <div>
+          <div class="stat-num">7</div>
+          <div class="stat-label">Días a la semana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="carta">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Nuestra carta</p>
+    <h2 class="section-title">Cocina <em>casera vasca</em></h2>
+    <p class="section-sub" style="margin:0 auto 0;">Menú del día con 10 primeros y 12 segundos a elegir. Postre casero, pan, vino y agua incluidos.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-col fade-in">
+      <h3>Para empezar</h3>
+      <div class="menu-item">Ensalada mixta de la huerta</div>
+      <div class="menu-item">Entremeses fríos del chef</div>
+      <div class="menu-item">Revuelto de tallos</div>
+      <div class="menu-item">Pencas rellenas</div>
+      <div class="menu-item">Sopa de pescado del Cantábrico</div>
+      <div class="menu-item">Langostinos a la plancha</div>
+      <div class="menu-item">Espaguetis a la carbonara</div>
+      <div class="menu-item">Puerros rellenos</div>
+    </div>
+    <div class="menu-col fade-in">
+      <h3>Carnes y pescados</h3>
+      <div class="menu-item">Lubina al horno</div>
+      <div class="menu-item">Dorada a la sal</div>
+      <div class="menu-item">Pimientos rellenos de la casa</div>
+      <div class="menu-item">Lomo relleno</div>
+      <div class="menu-item">Pollo asado entero</div>
+      <div class="menu-item">Filete de ternera</div>
+      <div class="menu-item">Sepia a la plancha</div>
+      <div class="menu-item">Rodaballo del día</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Servicios</p>
+    <h2 class="section-title">Lo que <em>ofrecemos</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Menú del Día</h3>
+      <p>Primero, segundo, postre, pan, vino y agua. Cocina casera vasca a precio cerrado de lunes a viernes.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
+      <h3>Carta y Eventos</h3>
+      <p>Salón con capacidad para 90 personas. Ideal para comuniones, bodas, comidas de empresa y celebraciones.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h3>Terraza y Parking</h3>
+      <p>Terraza-jardín para disfrutar al aire libre y parking propio. Acceso para personas con movilidad reducida.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <h3>Comida para Llevar</h3>
+      <p>Take away disponible. Llámanos y prepara tu pedido para llevar a casa o a la oficina.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg></div>
+      <h3>Producto Fresco</h3>
+      <p>Pescado del Cantábrico, carne de la zona y verduras de temporada. Mercado del día siempre.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h3>Atención Familiar</h3>
+      <p>Trato cercano y personal. Nos sentimos como en casa porque queremos que tú también lo sientas así.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="opiniones">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Opiniones</p>
+    <h2 class="section-title">Lo que dicen nuestros <em>clientes</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Sitio perfecto para comer rico y casero. Precio del menú justo en calidad y precio. Atención muy atenta."</p>
+      <div class="testimonial-author">— Cliente verificado</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"La sopa de pescado es espectacular y el pollo asado entero, una pasada. Raciones muy generosas."</p>
+      <div class="testimonial-author">— Cliente verificado</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Comida tradicional vasca de la de verdad. Trato familiar, servicio rápido y un menú variadísimo. Volveremos seguro."</p>
+      <div class="testimonial-author">— Cliente verificado</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ven a probar la <em>auténtica cocina vasca</em></h2>
+  <p>Reserva tu mesa llamando o por WhatsApp. Te esperamos en Aritz Bidea 14, Mungia.</p>
+  <a href="tel:+34946744723" class="btn-white">Reservar — 946 74 47 23</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en <em>Mungia</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h4>Dirección</h4><p>Aritz Bidea, 14<br>48100 Mungia, Bizkaia</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><h4>Reservas</h4><a href="tel:+34946744723">946 74 47 23</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><h4>Horario</h4><p>Todos los días: 13:00 — 16:00<br>Cenas: 20:00 — 23:00<br><em style="font-size:0.78rem;">Domingo tarde: cerrado</em></p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div><h4>Servicios</h4><p>Parking · Terraza · Comida para llevar<br>Acceso para discapacitados</p></div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Aritz+Bidea+14+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Ariotza <em>Jatetxea</em></div>
+  <p class="footer-copy">© 2026 Ariotza Jatetxea. Cocina tradicional vasca en Mungia. Diseño web por G&G Elcano.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40); });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }}); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
