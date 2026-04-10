@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Pilates Mungia — Pilates en grupos reducidos</title>
+  <meta name="description" content="Studio Pilates Mungia. Clases de pilates en grupos reducidos de máximo 6 personas. Principiantes, intermedio, avanzado, embarazadas y rehabilitación. Aita Elorriaga 29.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sage: #7a8c6e;
+      --sage-light: #97a98a;
+      --sage-dark: #5e6d54;
+      --cream: #faf8f3;
+      --cream-dark: #f0ebe0;
+      --bg: #ffffff;
+      --bg-alt: #faf8f3;
+      --text: #2d2e2a;
+      --text-light: #6b6e65;
+      --text-lighter: #9ca095;
+      --border: #e8e3d6;
+      --font: 'Marcellus', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
+    .nav-brand { font-family: var(--font); font-size: 1.5rem; color: var(--sage-dark); text-decoration: none; letter-spacing: 0.04em; }
+    .nav-brand span { color: var(--text-light); font-size: 0.8rem; font-family: var(--font-body); display: block; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+    .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--sage-dark); }
+    .nav-cta { background: var(--sage); color: #fff !important; padding: 12px 26px; border-radius: 50px; font-weight: 500; transition: background 0.3s; text-transform: none !important; letter-spacing: 0.02em !important; }
+    .nav-cta:hover { background: var(--sage-dark); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { padding: 180px 60px 120px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; }
+    .hero-text .eyebrow { font-size: 0.75rem; color: var(--sage-dark); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px; font-weight: 500; }
+    .hero-text h1 { font-family: var(--font); font-size: clamp(2.8rem, 5vw, 4.6rem); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 28px; letter-spacing: -0.01em; }
+    .hero-text h1 em { font-style: italic; color: var(--sage); }
+    .hero-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.85; margin-bottom: 40px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--sage); color: #fff; text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(122,140,110,0.3); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: var(--sage-dark); text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; border: 1.5px solid var(--sage); letter-spacing: 0.04em; transition: all 0.3s; }
+    .btn-outline:hover { background: var(--sage); color: #fff; }
+    .hero-img { width: 100%; border-radius: 200px 200px 12px 12px; overflow: hidden; box-shadow: 0 30px 60px rgba(122,140,110,0.18); }
+    .hero-img img { width: 100%; height: 600px; object-fit: cover; }
+
+    /* SECTION COMMON */
+    section { padding: 110px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage-dark); margin-bottom: 14px; font-weight: 500; }
+    .section-title { font-family: var(--font); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 400; line-height: 1.15; color: var(--text); margin-bottom: 22px; }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 640px; line-height: 1.85; }
+
+    /* PRINCIPIOS / FEATURES */
+    .principios { background: var(--cream); }
+    .principios-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .principio-item { text-align: center; padding: 32px 20px; }
+    .principio-num { font-family: var(--font); font-size: 2.4rem; color: var(--sage); margin-bottom: 12px; font-style: italic; }
+    .principio-item h3 { font-family: var(--font); font-size: 1.25rem; color: var(--text); margin-bottom: 10px; font-weight: 400; }
+    .principio-item p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+    /* ABOUT */
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; height: 540px; object-fit: cover; border-radius: 12px; }
+    .about-stat-card { position: absolute; bottom: -30px; right: -30px; background: var(--sage); color: #fff; padding: 28px 36px; border-radius: 12px; box-shadow: 0 20px 50px rgba(122,140,110,0.3); }
+    .about-stat-num { font-family: var(--font); font-size: 3rem; line-height: 1; font-style: italic; }
+    .about-stat-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; opacity: 0.9; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .quote-block { border-left: 3px solid var(--sage); padding: 20px 0 20px 28px; margin: 32px 0; }
+    .quote-block p { font-family: var(--font); font-style: italic; font-size: 1.15rem; color: var(--text); line-height: 1.6; margin: 0; }
+
+    /* CLASES */
+    .clases { background: var(--cream); }
+    .clases-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .clase-card { background: #fff; border-radius: 12px; padding: 44px 36px; transition: all 0.4s; border: 1px solid transparent; }
+    .clase-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(122,140,110,0.15); border-color: var(--sage-light); }
+    .clase-num { font-family: var(--font); font-size: 1rem; color: var(--sage); font-style: italic; margin-bottom: 14px; letter-spacing: 0.05em; }
+    .clase-card h3 { font-family: var(--font); font-size: 1.7rem; color: var(--text); margin-bottom: 14px; font-weight: 400; line-height: 1.2; }
+    .clase-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.75; margin-bottom: 24px; }
+    .clase-tag { display: inline-block; padding: 6px 14px; background: var(--cream-dark); color: var(--sage-dark); font-size: 0.72rem; border-radius: 50px; letter-spacing: 0.05em; }
+
+    /* HORARIOS */
+    .horarios-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .horarios-img { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; }
+    .horarios-table { display: flex; flex-direction: column; gap: 2px; margin-top: 28px; background: var(--cream); border-radius: 12px; overflow: hidden; }
+    .horario-row { display: flex; justify-content: space-between; padding: 18px 28px; background: #fff; }
+    .horario-row.cerrado { background: var(--cream); color: var(--text-lighter); }
+    .horario-row .day { font-weight: 500; color: var(--text); letter-spacing: 0.02em; }
+    .horario-row.cerrado .day { color: var(--text-lighter); }
+    .horario-row .hours { font-family: var(--font); font-style: italic; color: var(--sage-dark); }
+
+    /* CTA */
+    .cta { background: var(--sage); padding: 100px 60px; text-align: center; color: #fff; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 18px; font-weight: 400; }
+    .cta h2 em { font-style: italic; }
+    .cta p { color: rgba(255,255,255,0.9); font-size: 1.05rem; max-width: 560px; margin: 0 auto 36px; line-height: 1.8; }
+    .btn-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--sage-dark); text-decoration: none; padding: 16px 40px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testimonial-card { background: var(--cream); border-radius: 12px; padding: 40px 32px; }
+    .testimonial-stars { color: var(--sage); font-size: 1rem; margin-bottom: 18px; letter-spacing: 3px; }
+    .testimonial-quote { font-family: var(--font); font-style: italic; font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 22px; }
+    .testimonial-author { font-size: 0.82rem; font-weight: 500; color: var(--sage-dark); letter-spacing: 0.05em; }
+
+    /* CONTACT */
+    .contact { background: var(--cream); }
+    .contact-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; gap: 18px; align-items: flex-start; padding: 24px; background: #fff; border-radius: 12px; }
+    .contact-item-icon { width: 48px; height: 48px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--sage); flex-shrink: 0; }
+    .contact-item h4 { font-family: var(--font); font-size: 1.15rem; color: var(--text); margin-bottom: 4px; font-weight: 400; }
+    .contact-item p, .contact-item a { font-size: 0.9rem; color: var(--text-light); text-decoration: none; line-height: 1.6; }
+    .contact-item a:hover { color: var(--sage-dark); }
+    .map-wrapper { border-radius: 12px; overflow: hidden; }
+    .map-wrapper iframe { width: 100%; height: 460px; border: 0; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--text); padding: 60px 60px 40px; color: rgba(255,255,255,0.5); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.3rem; color: rgba(255,255,255,0.85); letter-spacing: 0.04em; }
+    .footer-brand span { color: var(--sage-light); }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--sage-light); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 130px 24px 70px; gap: 50px; }
+      .hero-img { border-radius: 120px 120px 12px 12px; }
+      .hero-img img { height: 380px; }
+      section { padding: 70px 24px; }
+      .principios-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .about-inner, .horarios-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { height: 360px; }
+      .about-stat-card { right: 20px; bottom: -20px; padding: 22px 28px; }
+      .about-stat-num { font-size: 2.4rem; }
+      .clases-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .horarios-img { height: 320px; }
+      .cta { padding: 70px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">Studio Pilates<span>Mungia</span></a>
+  <ul class="nav-links">
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#clases">Clases</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34691550425" class="nav-cta">Pedir cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-in">
+    <p class="eyebrow">Pilates · Mungia · Bizkaia</p>
+    <h1>Movimiento <em>consciente.</em><br>Cuerpo en <em>equilibrio.</em></h1>
+    <p>Estudio de pilates en el centro de Mungia. Clases en grupos reducidos de máximo 6 personas para que cada postura, cada respiración y cada movimiento reciba la atención que merece.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34691550425" class="btn-primary">Reservar clase →</a>
+      <a href="#metodo" class="btn-outline">Conocer el método</a>
+    </div>
+  </div>
+  <div class="hero-img fade-in">
+    <img src="images/hero.jpg" alt="Studio Pilates Mungia">
+  </div>
+</div>
+
+<!-- PRINCIPIOS -->
+<section class="principios" id="metodo">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Nuestro método</p>
+    <h2 class="section-title">Pilates con <em>intención</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Cuatro principios que guían cada clase. No buscamos rapidez, buscamos hacer las cosas bien.</p>
+  </div>
+  <div class="principios-grid">
+    <div class="principio-item fade-in">
+      <div class="principio-num">i.</div>
+      <h3>Grupos reducidos</h3>
+      <p>Máximo 6 personas por clase. Cada alumna recibe atención personalizada y correcciones individuales.</p>
+    </div>
+    <div class="principio-item fade-in">
+      <div class="principio-num">ii.</div>
+      <h3>Postura y respiración</h3>
+      <p>Trabajamos la alineación corporal y la respiración consciente como base de cualquier movimiento.</p>
+    </div>
+    <div class="principio-item fade-in">
+      <div class="principio-num">iii.</div>
+      <h3>Adaptado a ti</h3>
+      <p>Embarazo, lesiones, rehabilitación, condiciones específicas. Modificamos cada ejercicio según tus necesidades.</p>
+    </div>
+    <div class="principio-item fade-in">
+      <div class="principio-num">iv.</div>
+      <h3>Constancia</h3>
+      <p>Resultados reales que se notan en tu día a día: menos dolor, más energía, mejor postura, mayor flexibilidad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Estudio de pilates Mungia" class="about-img">
+      <div class="about-stat-card">
+        <div class="about-stat-num">5<small style="font-size:1.6rem">★</small></div>
+        <div class="about-stat-label">Google Reviews</div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre el estudio</p>
+      <h2 class="section-title">Un espacio para <em>cuidarte</em></h2>
+      <p>Studio Pilates Mungia nace de la convicción de que el pilates, bien enseñado y en grupos pequeños, puede transformar la forma en la que tu cuerpo se mueve y se siente cada día.</p>
+      <p>Nos especializamos en <strong>clases para todos los niveles</strong>: desde quien nunca ha hecho pilates hasta alumnas con años de práctica. También ofrecemos sesiones específicas para <strong>embarazadas y personas en proceso de rehabilitación</strong>.</p>
+      <div class="quote-block">
+        <p>"En las clases pequeñas no hay alumnas anónimas. Conocemos a cada persona, sus puntos fuertes y lo que necesita trabajar."</p>
+      </div>
+      <p>El estudio es accesible — disponemos de acceso para sillas de ruedas y aseo adaptado, porque creemos que el pilates es para todas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLASES -->
+<section class="clases" id="clases">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Tipos de clase</p>
+    <h2 class="section-title">Encuentra <em>la tuya</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Programas adaptados a cada nivel y a cada momento vital. Si no sabes por dónde empezar, escríbenos y te ayudamos.</p>
+  </div>
+  <div class="clases-grid">
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 01</div>
+      <h3>Pilates Iniciación</h3>
+      <p>Para quien empieza desde cero. Aprendes los fundamentos del método, la respiración y la postura básica. Sin presión, a tu ritmo.</p>
+      <span class="clase-tag">Sin experiencia</span>
+    </div>
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 02</div>
+      <h3>Pilates Intermedio</h3>
+      <p>Avanzamos en complejidad y resistencia. Trabajo más profundo de core, fuerza funcional y movilidad articular para quien ya tiene base.</p>
+      <span class="clase-tag">Con experiencia</span>
+    </div>
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 03</div>
+      <h3>Pilates Avanzado</h3>
+      <p>Para alumnas con dominio técnico. Secuencias largas, precisión máxima y desafíos físicos exigentes en grupos muy reducidos.</p>
+      <span class="clase-tag">Nivel alto</span>
+    </div>
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 04</div>
+      <h3>Pilates Embarazo</h3>
+      <p>Acompañamos cada trimestre con ejercicios seguros, fortaleciendo suelo pélvico, espalda y postura para vivir mejor el embarazo.</p>
+      <span class="clase-tag">Pre/post parto</span>
+    </div>
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 05</div>
+      <h3>Pilates Terapéutico</h3>
+      <p>Sesiones específicas para personas con lesiones, dolor crónico o en rehabilitación. Coordinamos con tu fisioterapeuta si es necesario.</p>
+      <span class="clase-tag">Lesiones / dolor</span>
+    </div>
+    <div class="clase-card fade-in">
+      <div class="clase-num">— 06</div>
+      <h3>Sesión privada</h3>
+      <p>Una hora solo para ti. Trabajo 100% personalizado para objetivos concretos o si prefieres entrenar de forma individual.</p>
+      <span class="clase-tag">1 a 1</span>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section id="horarios">
+  <div class="horarios-inner">
+    <img src="images/class1.jpg" alt="Clase de pilates" class="horarios-img fade-in">
+    <div class="fade-in">
+      <p class="section-label">Horarios</p>
+      <h2 class="section-title">Cuándo <em>nos vemos</em></h2>
+      <p style="color:var(--text-light); margin-top:12px;">Abrimos de lunes a jueves con franjas amplias para que puedas elegir el horario que mejor te encaje. Consulta disponibilidad por WhatsApp.</p>
+      <div class="horarios-table">
+        <div class="horario-row"><span class="day">Lunes</span><span class="hours">08:00 — 21:00</span></div>
+        <div class="horario-row"><span class="day">Martes</span><span class="hours">08:00 — 21:00</span></div>
+        <div class="horario-row"><span class="day">Miércoles</span><span class="hours">08:00 — 21:00</span></div>
+        <div class="horario-row"><span class="day">Jueves</span><span class="hours">08:00 — 21:00</span></div>
+        <div class="horario-row cerrado"><span class="day">Viernes</span><span class="hours">Cerrado</span></div>
+        <div class="horario-row cerrado"><span class="day">Sábado · Domingo</span><span class="hours">Cerrado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--cream);">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Opiniones</p>
+    <h2 class="section-title">Lo que dicen nuestras <em>alumnas</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Lo que más me gusta es que las clases son de pocas alumnas. Te corrigen una a una, sin masificación. He notado un cambio enorme en mi postura y dolores de espalda."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Empecé después de dar a luz y la profesora adaptó cada ejercicio a mi situación. Súper profesional, súper cercana. Es mi momento de la semana."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"El mejor estudio de pilates de Mungia sin duda. Atención personalizada, espacio cuidado y se nota que saben muchísimo de lo que hacen. Lo recomiendo a todo el mundo."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Empieza tu primera <em>clase</em></h2>
+  <p>Reserva por WhatsApp y te asesoramos sobre la clase que mejor encaja contigo. Sin compromiso, sin pagar nada por adelantado.</p>
+  <a href="https://wa.me/34691550425" class="btn-white">📱 WhatsApp — 691 55 04 25</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en <em>Mungia</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Aita Elorriaga Kalea, 29<br>48100 Mungia, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Teléfono / WhatsApp</h4>
+          <a href="https://wa.me/34691550425">691 55 04 25</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes a Jueves: 08:00 — 21:00<br>Viernes a Domingo: Cerrado</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg>
+        </div>
+        <div>
+          <h4>Accesibilidad</h4>
+          <p>Acceso en silla de ruedas<br>Aseo adaptado</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Aita+Elorriaga+29+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Studio Pilates <span>Mungia</span></div>
+    <p class="footer-copy">© 2026 Studio Pilates Mungia. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34691550425" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
