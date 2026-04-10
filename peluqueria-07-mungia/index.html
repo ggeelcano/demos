@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluquería 07 — Barbería de caballero en Mungia</title>
+  <meta name="description" content="Peluquería 07 en Mungia. Barbería tradicional para caballero: cortes, barba, afeitado clásico. Butroi 9, Mungia. 4.3★ Google. Sin cita previa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --burgundy: #8c2730;
+      --burgundy-dark: #6b1b22;
+      --burgundy-light: #a8323d;
+      --cream: #f4ede0;
+      --cream-dark: #e8ddc8;
+      --black: #1a1410;
+      --bg: #fbf6ec;
+      --bg-alt: #f4ede0;
+      --text: #1a1410;
+      --text-light: #5c5048;
+      --text-lighter: #8a7d72;
+      --border: #d4c8b0;
+      --font: 'Oswald', sans-serif;
+      --font-body: 'Lora', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 400; line-height: 1.7; }
+
+    /* TOP BAR */
+    .topbar { background: var(--black); color: var(--cream); padding: 10px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--font); letter-spacing: 0.08em; text-transform: uppercase; }
+    .topbar-left { display: flex; gap: 30px; }
+    .topbar-right { color: var(--burgundy-light); font-weight: 500; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; width: 100%; z-index: 100; background: var(--cream); border-bottom: 3px solid var(--burgundy); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+    .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+    .nav-brand-circle { width: 48px; height: 48px; background: var(--burgundy); color: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font); font-weight: 700; font-size: 1.3rem; border: 3px solid var(--cream); box-shadow: 0 0 0 1px var(--burgundy); }
+    .nav-brand-text { font-family: var(--font); font-size: 1.6rem; color: var(--black); font-weight: 600; letter-spacing: 0.04em; line-height: 1; }
+    .nav-brand-sub { font-size: 0.65rem; color: var(--burgundy); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 4px; font-family: var(--font); font-weight: 500; }
+    .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--black); font-family: var(--font); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--burgundy); }
+    .nav-cta { background: var(--burgundy); color: var(--cream) !important; padding: 12px 26px; font-weight: 600; transition: all 0.3s; border: 2px solid var(--burgundy); }
+    .nav-cta:hover { background: transparent; color: var(--burgundy) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 88vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; z-index: 0; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(26,20,16,0.92) 0%, rgba(26,20,16,0.7) 50%, rgba(26,20,16,0.45) 100%); z-index: 1; }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
+    .hero-stripe { display: inline-flex; align-items: center; gap: 18px; padding: 14px 28px; background: var(--burgundy); color: var(--cream); font-family: var(--font); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 32px; font-weight: 500; }
+    .hero-stripe::before, .hero-stripe::after { content: ''; width: 32px; height: 2px; background: var(--cream); }
+    .hero h1 { font-family: var(--font); font-size: clamp(3.4rem, 8vw, 7rem); font-weight: 700; line-height: 0.9; color: var(--cream); margin-bottom: 32px; letter-spacing: 0.01em; max-width: 900px; text-transform: uppercase; }
+    .hero h1 span { display: block; color: var(--burgundy-light); font-style: italic; font-weight: 300; font-family: var(--font-body); font-size: 0.45em; text-transform: none; letter-spacing: 0.02em; margin-top: 16px; }
+    .hero p { font-size: 1.1rem; max-width: 540px; color: rgba(244,237,224,0.85); margin-bottom: 40px; line-height: 1.85; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--burgundy); color: var(--cream); text-decoration: none; padding: 18px 40px; font-family: var(--font); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.3s; border: 2px solid var(--burgundy); }
+    .btn-primary:hover { background: var(--cream); color: var(--burgundy); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--cream); text-decoration: none; padding: 18px 40px; font-family: var(--font); font-size: 0.85rem; font-weight: 600; border: 2px solid var(--cream); letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: var(--cream); color: var(--black); }
+
+    /* SECTION COMMON */
+    section { padding: 120px 60px; }
+    .section-label { font-family: var(--font); font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 16px; font-weight: 600; display: inline-flex; align-items: center; gap: 14px; }
+    .section-label::before { content: ''; width: 30px; height: 2px; background: var(--burgundy); }
+    .section-title { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.5rem); font-weight: 700; line-height: 1; color: var(--black); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.005em; }
+    .section-title span { color: var(--burgundy); font-style: italic; }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 620px; line-height: 1.85; font-family: var(--font-body); }
+
+    /* SERVICES */
+    .servicios-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .servicio-row { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 30px; border-bottom: 1px solid var(--border); transition: background 0.3s; }
+    .servicio-row:hover { background: var(--cream); }
+    .servicio-row:nth-child(odd) { border-right: 1px solid var(--border); }
+    .servicio-info h3 { font-family: var(--font); font-size: 1.5rem; color: var(--black); font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 6px; }
+    .servicio-info p { font-size: 0.88rem; color: var(--text-light); }
+    .servicio-price { font-family: var(--font); font-size: 1.8rem; color: var(--burgundy); font-weight: 600; flex-shrink: 0; padding-left: 20px; }
+
+    /* ABOUT */
+    .about { background: var(--black); color: var(--cream); }
+    .about .section-title { color: var(--cream); }
+    .about .section-label { color: var(--burgundy-light); }
+    .about .section-label::before { background: var(--burgundy-light); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; height: 580px; object-fit: cover; }
+    .about-img-frame { position: absolute; top: 24px; left: 24px; width: 100%; height: 100%; border: 3px solid var(--burgundy); z-index: -1; }
+    .about-text p { font-size: 1.05rem; color: rgba(244,237,224,0.8); line-height: 1.95; margin-bottom: 22px; font-family: var(--font-body); }
+    .about-text strong { color: var(--cream); font-weight: 600; }
+    .about-quote { font-family: var(--font); font-style: italic; font-size: 1.6rem; color: var(--burgundy-light); line-height: 1.4; padding: 28px 0; border-top: 2px solid var(--burgundy); border-bottom: 2px solid var(--burgundy); margin: 36px 0; font-weight: 300; }
+    .about-since { display: flex; align-items: center; gap: 28px; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .about-since-num { font-family: var(--font); font-size: 4.5rem; color: var(--burgundy-light); font-weight: 700; line-height: 1; }
+    .about-since-text { font-family: var(--font); font-size: 0.85rem; color: rgba(244,237,224,0.7); letter-spacing: 0.15em; text-transform: uppercase; line-height: 1.6; }
+
+    /* HORARIO */
+    .horario-section { background: var(--cream); }
+    .horario-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+    .horario-img { width: 100%; height: 460px; object-fit: cover; }
+    .horario-list { background: #fff; padding: 16px; border: 2px solid var(--border); margin-top: 32px; }
+    .horario-row { display: flex; justify-content: space-between; padding: 18px 24px; border-bottom: 1px dashed var(--border); }
+    .horario-row:last-child { border-bottom: none; }
+    .horario-row .day { font-family: var(--font); font-weight: 600; color: var(--black); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.95rem; }
+    .horario-row.cerrado { background: var(--bg-alt); }
+    .horario-row.cerrado .day, .horario-row.cerrado .hours { color: var(--text-lighter); }
+    .horario-row .hours { font-family: var(--font-body); color: var(--burgundy); font-weight: 500; font-size: 0.95rem; }
+    .horario-note { margin-top: 24px; padding: 18px 24px; background: var(--burgundy); color: var(--cream); font-family: var(--font); letter-spacing: 0.05em; font-size: 0.85rem; text-align: center; }
+
+    /* TESTIMONIALS */
+    .testimonios-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonio { background: var(--cream); padding: 44px 36px; border-bottom: 4px solid var(--burgundy); }
+    .testimonio-stars { color: var(--burgundy); font-size: 1.1rem; margin-bottom: 18px; letter-spacing: 4px; }
+    .testimonio-quote { font-family: var(--font-body); font-style: italic; font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+    .testimonio-author { font-family: var(--font); font-size: 0.78rem; color: var(--burgundy); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+
+    /* CTA */
+    .cta { background: var(--burgundy); padding: 110px 60px; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
+    .cta::before, .cta::after { content: ''; position: absolute; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(90deg, var(--burgundy) 0, var(--burgundy) 20px, var(--cream) 20px, var(--cream) 40px, var(--black) 40px, var(--black) 60px); }
+    .cta::before { top: 0; }
+    .cta::after { bottom: 0; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.5rem); margin-bottom: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.01em; }
+    .cta h2 span { display: block; font-style: italic; font-weight: 300; font-family: var(--font-body); font-size: 0.45em; margin-top: 12px; text-transform: none; letter-spacing: 0; color: rgba(244,237,224,0.85); }
+    .cta p { color: rgba(244,237,224,0.9); font-size: 1.05rem; max-width: 540px; margin: 0 auto 40px; line-height: 1.85; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); color: var(--burgundy); text-decoration: none; padding: 20px 48px; font-family: var(--font); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; border: 2px solid var(--cream); }
+    .btn-cta:hover { background: transparent; color: var(--cream); }
+
+    /* CONTACT */
+    .contacto-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 24px; }
+    .contacto-item { display: flex; gap: 20px; align-items: flex-start; padding: 26px; background: var(--cream); border-left: 4px solid var(--burgundy); }
+    .contacto-item-icon { width: 48px; height: 48px; background: var(--burgundy); color: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contacto-item h4 { font-family: var(--font); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); font-weight: 600; margin-bottom: 4px; }
+    .contacto-item p, .contacto-item a { font-family: var(--font-body); font-size: 1rem; color: var(--text); text-decoration: none; line-height: 1.6; }
+    .contacto-item a:hover { color: var(--burgundy); }
+    .map-wrapper { overflow: hidden; border: 3px solid var(--burgundy); }
+    .map-wrapper iframe { width: 100%; height: 460px; border: 0; display: block; filter: grayscale(0.4) contrast(1.1); }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 60px 60px 40px; color: rgba(244,237,224,0.5); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: var(--cream); letter-spacing: 0.05em; font-weight: 600; text-transform: uppercase; }
+    .footer-brand span { color: var(--burgundy-light); font-style: italic; font-weight: 300; }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(244,237,224,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--burgundy-light); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; }
+      .topbar-left { flex-direction: column; gap: 4px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 80px 24px; min-height: 70vh; }
+      section { padding: 80px 24px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .servicio-row:nth-child(odd) { border-right: none; }
+      .about-inner, .horario-inner, .contacto-grid { grid-template-columns: 1fr; gap: 50px; }
+      .about-img { height: 380px; }
+      .about-img-frame { display: none; }
+      .horario-img { height: 320px; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .cta { padding: 80px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Butroi 9 · Mungia</span>
+    <span>★ 4.3 / 5 en Google</span>
+  </div>
+  <div class="topbar-right">📞 946 57 13 26</div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-circle">07</div>
+    <div>
+      <div class="nav-brand-text">PELUQUERÍA</div>
+      <div class="nav-brand-sub">Mungia · Caballero</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#sobre">Nosotros</a></li>
+    <li><a href="#horario">Horario</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34946571326" class="nav-cta">📱 Cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-stripe">Barbería de caballero · Mungia</div>
+    <h1>CORTES DE TODA<br>LA VIDA<span>Con la cercanía y el oficio de siempre</span></h1>
+    <p>Llevamos años en el centro de Mungia ofreciendo cortes clásicos y modernos, arreglos de barba y afeitados a la antigua. Atención cercana, precios honestos y sin necesidad de cita previa.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34946571326" class="btn-primary">Pedir cita →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Nuestros servicios</p>
+    <h2 class="section-title">Cortes, <span>barba</span><br>y afeitado clásico</h2>
+    <p class="section-sub" style="margin:0 auto;">Todo lo que un caballero necesita, hecho con tijera, navaja y oficio. Sin trampas, sin complicaciones.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Corte clásico</h3>
+        <p>Tijera y máquina, lavado y peinado.</p>
+      </div>
+      <div class="servicio-price">14€</div>
+    </div>
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Corte + barba</h3>
+        <p>Pack completo: corte, barba y peinado.</p>
+      </div>
+      <div class="servicio-price">22€</div>
+    </div>
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Arreglo de barba</h3>
+        <p>Perfilado, repaso y aceites nutritivos.</p>
+      </div>
+      <div class="servicio-price">10€</div>
+    </div>
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Afeitado clásico</h3>
+        <p>Toalla caliente, navaja y after shave.</p>
+      </div>
+      <div class="servicio-price">14€</div>
+    </div>
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Corte niño</h3>
+        <p>Hasta 12 años. Paciencia y cariño.</p>
+      </div>
+      <div class="servicio-price">11€</div>
+    </div>
+    <div class="servicio-row">
+      <div class="servicio-info">
+        <h3>Cejas + nariz + orejas</h3>
+        <p>Detalles que marcan la diferencia.</p>
+      </div>
+      <div class="servicio-price">6€</div>
+    </div>
+  </div>
+  <p style="text-align:center; max-width:600px; margin: 36px auto 0; font-size: 0.85rem; color: var(--text-lighter); font-style: italic;">* Precios orientativos. Confírmanos por WhatsApp el servicio que necesites.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Peluquería 07 Mungia interior" class="about-img">
+      <div class="about-img-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre nosotros</p>
+      <h2 class="section-title">EL OFICIO DE<br><span>siempre</span></h2>
+      <p>Peluquería 07 lleva años siendo una de las barberías de referencia en el centro de Mungia. Trabajamos con técnicas tradicionales — tijera, navaja, toalla caliente — porque creemos que <strong>las cosas bien hechas no pasan de moda</strong>.</p>
+      <p>Aquí no hay listas de espera infinitas ni cobros sorpresa. Pasas, te sentamos, te cortamos como te gusta y sales con la cabeza fresca y la cuenta clara. Como debe ser.</p>
+      <div class="about-quote">"Una buena barbería no es la que está más llena. Es a la que vuelves."</div>
+      <p>Ofrecemos también <strong>accesibilidad para sillas de ruedas</strong> y aceptamos pago con tarjeta y móvil. Cerca del centro, fácil aparcamiento, y sin necesidad de cita previa.</p>
+      <div class="about-since">
+        <div class="about-since-num">07</div>
+        <div class="about-since-text">Tradición<br>barbera en<br>el corazón<br>de Mungia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section class="horario-section" id="horario">
+  <div class="horario-inner">
+    <img src="images/gallery1.jpg" alt="Detalle barbería" class="horario-img fade-in">
+    <div class="fade-in">
+      <p class="section-label">Cuándo abrimos</p>
+      <h2 class="section-title">Horario de <span>la casa</span></h2>
+      <p style="color:var(--text-light); margin-top:12px; font-size:1rem; line-height:1.85;">Abrimos seis días a la semana en horario partido. Si tienes una urgencia o quieres asegurarte plaza, escríbenos por WhatsApp y te confirmamos al momento.</p>
+      <div class="horario-list">
+        <div class="horario-row"><span class="day">Lunes — Viernes</span><span class="hours">10:00 — 14:00 · 16:00 — 20:30</span></div>
+        <div class="horario-row"><span class="day">Sábado</span><span class="hours">10:00 — 14:00 · 16:00 — 20:30</span></div>
+        <div class="horario-row cerrado"><span class="day">Domingo</span><span class="hours">Cerrado</span></div>
+      </div>
+      <div class="horario-note">No es necesaria cita previa — pero la aceptamos</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Lo que dicen</p>
+    <h2 class="section-title">Opiniones de <span>la clientela</span></h2>
+    <p class="section-sub" style="margin:0 auto;">4.3 estrellas en Google con 33 reseñas verificadas. Estos son algunos de nuestros clientes habituales.</p>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Llevo viniendo desde hace años y siempre salgo contento. Buen trato, buen precio y un corte como me gusta. Los recomiendo a todo el mundo en Mungia."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Ambiente acogedor, trato increíble. La habilidad y profesionalidad del equipo se nota desde que entras. Un sitio de confianza, de los que ya quedan pocos."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Buena calidad-precio, sin esperas eternas y siempre te dan conversación. Ahora también voy con mi crío y se porta porque le tratan genial. Top."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Tu próximo corte<br><span>te está esperando</span></h2>
+  <p>Pásate cuando quieras o pídenos cita por WhatsApp. Sin compromiso, sin esperas largas y siempre con la calidad del trabajo bien hecho.</p>
+  <a href="https://wa.me/34946571326" class="btn-cta">📱 WhatsApp · 946 57 13 26</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en <span>Mungia</span></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-info fade-in">
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Butroi Kalea, 9<br>48100 Mungia, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Teléfono / WhatsApp</h4>
+          <a href="https://wa.me/34946571326">946 57 13 26</a>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>L-S: 10:00 — 14:00 · 16:00 — 20:30<br>Domingo: Cerrado</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div>
+          <h4>Métodos de pago</h4>
+          <p>Tarjeta · Móvil (NFC) · Efectivo</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Butroi+9+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">PELUQUERÍA <span>07 · Mungia</span></div>
+    <p class="footer-copy">© 2026 Peluquería 07. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34946571326" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
