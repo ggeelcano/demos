@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa del Electricista — Electrodomésticos en Barakaldo</title>
+  <meta name="description" content="Casa del Electricista en Barakaldo. Más de 40 años vendiendo electrodomésticos, imagen y sonido, móviles y tablets. C/ Velázquez 9. Cadena Estrella Azul.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1e40af;
+      --blue-dark: #1e3a8a;
+      --blue-light: #3b82f6;
+      --accent: #fbbf24;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --text: #0f172a;
+      --text-light: #475569;
+      --border: #e2e8f0;
+      --font: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; }
+    .topbar { background: var(--blue-dark); color: #fff; padding: 10px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; }
+    .topbar-right { color: var(--accent); font-weight: 600; }
+    .topbar a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: var(--font); font-size: 1.5rem; color: var(--blue-dark); font-weight: 700; text-decoration: none; }
+    .nav-brand span { color: var(--accent); font-size: 0.65rem; display: block; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; font-weight: 600; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-family: var(--font); font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff !important; padding: 12px 26px; border-radius: 6px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--blue-dark); }
+    .hero { position: relative; min-height: 88vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(15,23,42,0.92), rgba(30,58,138,0.7) 50%, rgba(30,64,175,0.4)); }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 12px; padding: 10px 22px; background: var(--accent); color: var(--blue-dark); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 30px; font-weight: 700; border-radius: 50px; }
+    .hero h1 { font-family: var(--font); font-size: clamp(2.8rem, 6.5vw, 5.4rem); font-weight: 700; line-height: 1.05; color: #fff; margin-bottom: 28px; letter-spacing: -0.02em; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.88); max-width: 600px; margin-bottom: 40px; line-height: 1.75; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--blue-dark); text-decoration: none; padding: 17px 38px; font-family: var(--font); font-size: 0.92rem; font-weight: 700; border-radius: 8px; transition: all 0.3s; }
+    .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff; text-decoration: none; padding: 17px 38px; border: 2px solid rgba(255,255,255,0.45); font-family: var(--font); font-size: 0.92rem; font-weight: 600; border-radius: 8px; transition: all 0.3s; }
+    .btn-outline:hover { background: #fff; color: var(--blue-dark); border-color: #fff; }
+    section { padding: 110px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; font-weight: 700; }
+    .section-title { font-family: var(--font); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; color: var(--text); margin-bottom: 24px; letter-spacing: -0.015em; }
+    .section-title span { color: var(--blue); }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 620px; line-height: 1.85; }
+    .servicios-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .servicio-card { background: #fff; padding: 36px 32px; border: 1px solid var(--border); border-radius: 12px; transition: all 0.4s; }
+    .servicio-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(30,64,175,0.1); border-color: var(--blue); }
+    .servicio-icon { width: 56px; height: 56px; background: var(--bg-alt); color: var(--blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+    .servicio-card h3 { font-family: var(--font); font-size: 1.35rem; color: var(--text); font-weight: 600; margin-bottom: 10px; }
+    .servicio-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 540px; object-fit: cover; border-radius: 16px; }
+    .about-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-stats { display: flex; gap: 40px; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .about-stat-num { font-family: var(--font); font-size: 2.8rem; color: var(--blue); font-weight: 700; line-height: 1; }
+    .about-stat-label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+    .marcas { background: var(--bg); }
+    .marcas-grid { max-width: 1200px; margin: 50px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .marca-item { padding: 36px 20px; text-align: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); font-family: var(--font); font-weight: 700; font-size: 1.2rem; color: var(--text-light); }
+    .marca-item:nth-child(4n) { border-right: none; }
+    .marca-item:nth-last-child(-n+4) { border-bottom: none; }
+    .cta { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 110px 60px; text-align: center; color: #fff; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; margin-bottom: 22px; line-height: 1.1; }
+    .cta h2 span { color: var(--accent); }
+    .cta p { font-size: 1.1rem; max-width: 580px; margin: 0 auto 38px; line-height: 1.85; color: rgba(255,255,255,0.9); }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contacto-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 22px; }
+    .contacto-item { padding: 28px; background: var(--bg-alt); border-radius: 12px; border-left: 4px solid var(--blue); }
+    .contacto-item h4 { font-family: var(--font); font-size: 1.05rem; color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+    .contacto-item p, .contacto-item a { color: var(--text); text-decoration: none; font-size: 0.95rem; line-height: 1.6; }
+    .contacto-item a:hover { color: var(--blue); }
+    .map-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 460px; border: 0; display: block; }
+    footer { background: var(--text); padding: 50px 60px 36px; color: rgba(255,255,255,0.5); text-align: center; }
+    .footer-brand { font-family: var(--font); font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand span { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; }
+    @media (max-width: 900px) {
+      .topbar, nav { padding: 12px 20px; flex-direction: column; gap: 6px; }
+      .nav-links { display: none; }
+      .hero { padding: 80px 24px; }
+      section { padding: 70px 24px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .marcas-grid { grid-template-columns: repeat(2, 1fr); }
+      .marca-item:nth-child(4n) { border-right: 1px solid var(--border); }
+      .marca-item:nth-child(2n) { border-right: none; }
+      .about-inner, .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { height: 360px; }
+      .cta { padding: 70px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>📍 C/ Velázquez 9 · Barakaldo · 40 años de oficio</div>
+  <div class="topbar-right">📞 <a href="tel:+34944377007">944 37 70 07</a></div>
+</div>
+
+<nav>
+  <a href="#" class="nav-brand">Casa del Electricista<span>Barakaldo · Desde 1987</span></a>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34944377007" class="nav-cta">📞 Llamar</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">⚡ Cadena Estrella Azul · 40+ años</div>
+    <h1>Tu tienda de <span>confianza</span><br>en Barakaldo.</h1>
+    <p>40 años vendiendo electrodomésticos, imagen y sonido, fotografía, movilidad urbana, móviles, tablets y portátiles. Atención personal, asesoramiento real y los mejores precios del barrio.</p>
+    <div class="hero-actions">
+      <a href="tel:+34944377007" class="btn-primary">📞 Llamar ahora</a>
+      <a href="#productos" class="btn-outline">Ver productos</a>
+    </div>
+  </div>
+</div>
+
+<section id="productos">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Nuestros productos</p>
+    <h2 class="section-title">Todo para tu <span>hogar</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Desde electrodomésticos grandes hasta el último móvil. Te asesoramos sin presión y te conseguimos el mejor precio.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v6"/></svg>
+      </div>
+      <h3>Electrodomésticos</h3>
+      <p>Lavadoras, frigoríficos, hornos, lavavajillas, microondas y pequeño electrodoméstico. Marcas de confianza y entrega a domicilio.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3>Imagen y sonido</h3>
+      <p>Televisores 4K/8K, barras de sonido, equipos Hi-Fi, altavoces inalámbricos. Te asesoramos para elegir el modelo perfecto.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M9 7h.01"/></svg>
+      </div>
+      <h3>Fotografía</h3>
+      <p>Cámaras réflex, sin espejo, accesorios y revelado. Asesoramiento profesional para aficionados y entusiastas.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+      </div>
+      <h3>Móviles y tablets</h3>
+      <p>Smartphones, tablets y accesorios de las principales marcas. Nuevo, segunda mano y libres. Servicio postventa local.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 21h20M8 17v4M16 17v4"/></svg>
+      </div>
+      <h3>Portátiles</h3>
+      <p>Ordenadores portátiles para estudio, trabajo y gaming. Configuración inicial y asesoramiento sobre el que mejor encaja.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l3-9h6l3 9M9 8h6"/></svg>
+      </div>
+      <h3>Movilidad urbana</h3>
+      <p>Patinetes eléctricos, bicicletas eléctricas y accesorios. Modelos homologados y servicio técnico propio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <img src="images/about.jpg" alt="Casa del Electricista Barakaldo" class="about-img">
+    <div class="about-text">
+      <p class="section-label">— 40 años en Barakaldo</p>
+      <h2 class="section-title">Cuatro décadas <span>aconsejando</span></h2>
+      <p>Desde 1987, Casa del Electricista S.L. lleva atendiendo a las familias de Barakaldo en su tienda de Calle Velázquez 9. Empezamos como una pequeña tienda de barrio y hemos crecido hasta convertirnos en <strong>uno de los negocios de referencia en electrodomésticos e imagen y sonido</strong> de toda la zona.</p>
+      <p>Formamos parte de la <strong>Cadena Estrella Azul</strong>, lo que nos permite competir en precio con las grandes superficies pero manteniendo el trato cercano y el asesoramiento real que nos diferencia. Aquí no te van a vender lo más caro — te vamos a vender lo que de verdad necesitas.</p>
+      <div class="about-stats">
+        <div>
+          <div class="about-stat-num">40+</div>
+          <div class="about-stat-label">Años de oficio</div>
+        </div>
+        <div>
+          <div class="about-stat-num">5-25</div>
+          <div class="about-stat-label">Personas en plantilla</div>
+        </div>
+        <div>
+          <div class="about-stat-num">⭐</div>
+          <div class="about-stat-label">Cadena Estrella Azul</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>¿Buscas algo <span>concreto?</span></h2>
+  <p>Llámanos y te decimos si lo tenemos en tienda, te lo conseguimos rápido, o te asesoramos sobre alternativas. Sin compromiso.</p>
+  <div class="cta-buttons">
+    <a href="tel:+34944377007" class="btn-primary">📞 944 37 70 07</a>
+    <a href="tel:+34944374848" class="btn-outline">📞 944 37 48 48</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Contacto</p>
+    <h2 class="section-title">Visítanos en <span>Barakaldo</span></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <div class="contacto-item">
+        <h4>Dirección</h4>
+        <p>Calle Velázquez, 9<br>48902 Barakaldo, Bizkaia</p>
+      </div>
+      <div class="contacto-item">
+        <h4>Teléfonos</h4>
+        <p><a href="tel:+34944377007">944 37 70 07</a><br><a href="tel:+34944374848">944 37 48 48</a></p>
+      </div>
+      <div class="contacto-item">
+        <h4>Email</h4>
+        <a href="mailto:casadelelectricista.sl@gmail.com">casadelelectricista.sl@gmail.com</a>
+      </div>
+      <div class="contacto-item">
+        <h4>Redes sociales</h4>
+        <p>Facebook · Instagram<br>@casadelelectricistasl</p>
+      </div>
+    </div>
+    <div class="map-wrapper">
+      <iframe src="https://maps.google.com/maps?q=Velazquez+9+Barakaldo&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Casa del Electricista <span>· Barakaldo</span></div>
+  <p class="footer-copy">© 2026 Casa del Electricista S.L. · Cadena Estrella Azul · Diseño web por G&G Elcano</p>
+</footer>
+
+</body>
+</html>

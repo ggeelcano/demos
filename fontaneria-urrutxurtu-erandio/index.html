@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jon Urrutxurtu — Fontanero en Erandio y Bizkaia</title>
+  <meta name="description" content="Jon Urrutxurtu, fontanero autónomo en Erandio. Reparaciones, fugas, calderas, reformas de baño. Servicio rápido en toda Bizkaia. 637 73 72 67.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a2540;
+      --navy-dark: #051628;
+      --navy-light: #14365e;
+      --orange: #ff6b35;
+      --orange-light: #ff8a5b;
+      --bg: #ffffff;
+      --bg-alt: #f4f6fa;
+      --text: #1a1a2e;
+      --text-light: #5b6473;
+      --border: #e1e6ef;
+      --font: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; }
+    .topbar { background: var(--navy-dark); color: rgba(255,255,255,0.85); padding: 10px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; }
+    .topbar-right { color: var(--orange); font-weight: 700; }
+    .topbar a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: var(--font); font-size: 1.7rem; color: var(--navy); letter-spacing: 0.04em; text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .nav-brand::before { content: ''; width: 6px; height: 28px; background: var(--orange); display: inline-block; }
+    .nav-brand span { color: var(--text-light); font-weight: 400; font-size: 0.85rem; font-family: var(--font-body); letter-spacing: 0.05em; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: var(--orange); color: #fff !important; padding: 12px 26px; font-weight: 700 !important; border-radius: 4px; }
+    .nav-cta:hover { background: var(--orange-light); }
+    .hero { position: relative; padding: 100px 60px 110px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: #fff; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: url('images/hero.jpg') center/cover; opacity: 0.32; mask-image: linear-gradient(to left, #000 40%, transparent 100%); -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 100%); }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 22px; background: rgba(255,107,53,0.15); border: 1px solid var(--orange); color: var(--orange-light); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 50px; margin-bottom: 30px; font-weight: 600; }
+    .hero-badge .pulse { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .hero h1 { font-family: var(--font); font-size: clamp(3rem, 7vw, 6rem); line-height: 0.95; margin-bottom: 28px; max-width: 800px; }
+    .hero h1 span { color: var(--orange); }
+    .hero p { font-size: 1.15rem; max-width: 540px; color: rgba(255,255,255,0.85); margin-bottom: 38px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--orange); color: #fff; text-decoration: none; padding: 18px 38px; font-family: var(--font); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 4px; transition: all 0.3s; }
+    .btn-primary:hover { background: #fff; color: var(--navy); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,107,53,0.35); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: #fff; text-decoration: none; padding: 18px 38px; font-family: var(--font); font-size: 0.95rem; font-weight: 600; border: 2px solid rgba(255,255,255,0.4); border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+    .trust-bar { background: var(--bg-alt); padding: 36px 60px; border-bottom: 1px solid var(--border); }
+    .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .trust-item { text-align: center; }
+    .trust-item-num { font-family: var(--font); font-size: 2.6rem; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .trust-item-num span { color: var(--orange); }
+    .trust-item-label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    section { padding: 100px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; font-weight: 700; }
+    .section-title { font-family: var(--font); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.05; color: var(--navy); margin-bottom: 22px; text-transform: uppercase; }
+    .section-title span { color: var(--orange); }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.85; }
+    .servicios-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .servicio-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 36px 32px; transition: all 0.35s; position: relative; }
+    .servicio-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--orange); transform: scaleY(0); transform-origin: top; transition: transform 0.35s; }
+    .servicio-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(10,37,64,0.1); border-color: var(--orange); }
+    .servicio-card:hover::before { transform: scaleY(1); }
+    .servicio-icon { width: 56px; height: 56px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--orange); margin-bottom: 22px; }
+    .servicio-card h3 { font-family: var(--font); font-size: 1.6rem; color: var(--navy); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 10px; }
+    .servicio-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 480px; object-fit: cover; border-radius: 8px; }
+    .about-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--navy); font-weight: 600; }
+    .features { list-style: none; margin-top: 26px; }
+    .features li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .features li:last-child { border-bottom: none; }
+    .features svg { color: var(--orange); flex-shrink: 0; margin-top: 3px; }
+    .features span { color: var(--text); font-weight: 500; font-size: 0.95rem; }
+    .cta-urgent { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); padding: 90px 60px; text-align: center; color: #fff; border-top: 4px solid var(--orange); border-bottom: 4px solid var(--orange); }
+    .cta-urgent .label { display: inline-block; background: var(--orange); color: var(--navy-dark); padding: 6px 16px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .cta-urgent h2 { font-family: var(--font); font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 18px; text-transform: uppercase; }
+    .cta-urgent p { font-size: 1.05rem; max-width: 540px; margin: 0 auto 38px; color: rgba(255,255,255,0.85); line-height: 1.85; }
+    .contacto-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 22px; }
+    .contacto-item { padding: 24px; background: var(--bg-alt); border-radius: 8px; border-left: 4px solid var(--orange); }
+    .contacto-item h4 { font-family: var(--font); font-size: 1.2rem; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .contacto-item p, .contacto-item a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; line-height: 1.6; }
+    .contacto-item a:hover { color: var(--orange); }
+    .map-wrapper { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 460px; border: 0; display: block; }
+    footer { background: var(--navy-dark); padding: 50px 60px 36px; color: rgba(255,255,255,0.5); text-align: center; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: #fff; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .footer-brand span { color: var(--orange); }
+    .footer-copy { font-size: 0.78rem; }
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    @media (max-width: 900px) {
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; }
+      nav { padding: 16px 24px; flex-direction: column; gap: 8px; }
+      .nav-links { display: none; }
+      .hero { padding: 70px 24px 90px; }
+      .hero::before { display: none; }
+      .trust-bar { padding: 28px 24px; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      section { padding: 70px 24px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .about-inner, .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { height: 320px; }
+      .cta-urgent { padding: 70px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>📍 Erandio · 🕐 24h disponibles para urgencias</div>
+  <div class="topbar-right">⚡ URGENCIAS · <a href="tel:+34637737267">637 73 72 67</a></div>
+</div>
+
+<nav>
+  <a href="#" class="nav-brand">JON URRUTXURTU<span>Fontanero · Erandio · Bizkaia</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34637737267" class="nav-cta">📱 WhatsApp</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="pulse"></span> Urgencias 24h · Toda Bizkaia</div>
+    <h1>FONTANERO<br>EN ERANDIO,<br><span>RÁPIDO Y SERIO.</span></h1>
+    <p>Soy Jon Urrutxurtu, fontanero autónomo en Erandio. Cuando llamas, hablas conmigo y voy yo. Trabajo limpio, presupuesto claro y cero excusas. Cobertura en toda Bizkaia.</p>
+    <div class="hero-actions">
+      <a href="tel:+34637737267" class="btn-primary">📞 Llamar ahora</a>
+      <a href="https://wa.me/34637737267" class="btn-outline">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-item-num">24<span>h</span></div>
+      <div class="trust-item-label">Urgencias</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">100<span>%</span></div>
+      <div class="trust-item-label">Trabajo garantizado</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">0<span>€</span></div>
+      <div class="trust-item-label">Presupuesto sin compromiso</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">1<span></span></div>
+      <div class="trust-item-label">Persona, sin intermediarios</div>
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Lo que hago</p>
+    <h2 class="section-title">Servicios de <span>fontanería</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Reparaciones, instalaciones nuevas, urgencias y reformas. Trabajo en casas particulares, comunidades y negocios.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>Urgencias 24h</h3>
+      <p>Tubería rota, fuga grave, baño inundado. Llamas y voy. Sin recargos absurdos por venir un domingo o por la noche.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>Desatascos</h3>
+      <p>Tuberías, fregaderos, inodoros, bajantes. Equipos profesionales sin destrozar paredes ni suelos.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12s4-8 9-8 9 8 9 8-4 8-9 8-9-8-9-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>Detección de fugas</h3>
+      <p>Localizo fugas ocultas sin obra. Te ahorras dinero en reformas innecesarias y evitas daños mayores.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+      </div>
+      <h3>Calderas y termos</h3>
+      <p>Instalación, reparación y mantenimiento de calderas y calentadores de gas y eléctricos.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+      </div>
+      <h3>Reformas de baño</h3>
+      <p>Cambio de bañera por plato de ducha, sustitución de grifería, mamparas y reformas integrales.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+      </div>
+      <h3>Instalaciones nuevas</h3>
+      <p>Fontanería de obra nueva, ampliaciones, redistribución de tuberías y conexiones de electrodomésticos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <img src="images/about.jpg" alt="Jon Urrutxurtu fontanero Erandio" class="about-img">
+    <div class="about-text">
+      <p class="section-label">— Sobre mí</p>
+      <h2 class="section-title">Un fontanero <span>de verdad</span></h2>
+      <p>Soy Jon Urrutxurtu, fontanero autónomo en Erandio. Trabajo solo — y eso significa que cuando llamas <strong>hablas directamente conmigo</strong>, no con un call-center que te marea, ni con un operario que cambia cada vez.</p>
+      <p>Cubro <strong>todo Erandio, Bilbao y los pueblos del entorno</strong>. Para urgencias estoy disponible 24 horas, fines de semana y festivos incluidos. Sin recargos absurdos por venir un sábado.</p>
+      <ul class="features">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Presupuesto sin compromiso y por escrito</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Trabajo garantizado y factura legal</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Disponible 24h también fines de semana</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Atiendes conmigo, no con call-center</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta-urgent">
+  <div class="label">⚡ Urgencia</div>
+  <h2>¿Tienes una avería <span style="color:var(--orange)">ahora mismo?</span></h2>
+  <p>Llámame o escríbeme por WhatsApp. Te respondo en minutos y voy a tu casa hoy mismo.</p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+    <a href="tel:+34637737267" class="btn-primary">📞 637 73 72 67</a>
+    <a href="https://wa.me/34637737267" class="btn-outline">💬 Abrir WhatsApp</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Contacto</p>
+    <h2 class="section-title">Cómo <span>contactarme</span></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <div class="contacto-item">
+        <h4>Teléfono / WhatsApp</h4>
+        <a href="tel:+34637737267">637 73 72 67</a>
+      </div>
+      <div class="contacto-item">
+        <h4>Email</h4>
+        <a href="mailto:jurutxurtu@hotmail.com">jurutxurtu@hotmail.com</a>
+      </div>
+      <div class="contacto-item">
+        <h4>Zona de cobertura</h4>
+        <p>Erandio, Bilbao, Getxo, Leioa<br>y toda Bizkaia</p>
+      </div>
+      <div class="contacto-item">
+        <h4>Horario</h4>
+        <p>Urgencias: 24h, 365 días<br>Trabajos programados: L-V 8:00-19:00</p>
+      </div>
+    </div>
+    <div class="map-wrapper">
+      <iframe src="https://maps.google.com/maps?q=Erandio+Bizkaia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">JON URRUTXURTU <span>· FONTANERO</span></div>
+  <p class="footer-copy">© 2026 Jon Urrutxurtu Fontanero · Diseño web por G&G Elcano</p>
+</footer>
+
+<a href="https://wa.me/34637737267" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
