@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryelma — Relojería, Joyería y Bazar en Mungia</title>
+  <meta name="description" content="Ryelma, relojería, joyería y bazar en Mungia desde 1982. Venta y reparación de relojes, joyas, electrónica y regalos. Aritz Bidea, 17. ⭐ 4.8/5 en Google.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#1a1a18;--ink-deep:#0e0e0c;--ink-soft:#2a2a26;
+      --gold:#c9a35a;--gold-light:#e0bd76;--gold-dark:#a07830;
+      --cream:#faf6ee;--cream-dark:#f0e9d8;
+      --bg:#fdfbf5;--bg-alt:#f5efde;
+      --text:#1f1815;--text-l:#5c504a;--text-m:#8a7e76;
+      --border:#e3d9c0;
+      --font:'Playfair Display',serif;--font-b:'Inter',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
+
+    .topbar{background:var(--ink-deep);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
+    .topbar a{color:var(--gold);text-decoration:none}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(253,251,245,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(107,26,26,.08)}
+    .nav-brand{display:flex;align-items:center;gap:16px;text-decoration:none}
+    .nav-mark{width:50px;height:50px;background:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--gold)}
+    .nav-mark span{font-family:var(--font);color:var(--gold);font-size:1.4rem;font-weight:600;font-style:italic}
+    .nav-text{font-family:var(--font);font-size:1.7rem;color:var(--ink);font-weight:600;line-height:1}
+    .nav-sub{font-size:.65rem;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;margin-top:4px;font-weight:600}
+    .nav-links{display:flex;gap:38px;list-style:none;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--gold-dark)}
+    .nav-cta{background:var(--ink);color:var(--gold)!important;padding:12px 26px;font-weight:600!important;transition:all .3s;border:1px solid var(--ink)}
+    .nav-cta:hover{background:transparent;color:var(--ink)!important}
+    .hamburger{display:none;background:none;border:none;cursor:pointer}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0}
+
+    .hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(14,14,12,.92) 0%,rgba(14,14,12,.65) 50%,rgba(14,14,12,.3) 100%);z-index:1}
+    .hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:14px;padding:12px 26px;background:rgba(201,163,90,.12);border:1px solid var(--gold);color:var(--gold-light);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:36px}
+    .hero h1{font-family:var(--font);font-size:clamp(3.2rem,7vw,6.5rem);font-weight:600;line-height:1;color:var(--cream);margin-bottom:32px;max-width:1000px}
+    .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+    .hero p{font-size:1.2rem;max-width:580px;color:rgba(250,246,238,.88);margin-bottom:44px;line-height:1.75;font-weight:300}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--ink);text-decoration:none;padding:18px 40px;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .3s;border:2px solid var(--gold)}
+    .btn-p:hover{background:transparent;color:var(--gold-light)}
+    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:18px 40px;font-size:.82rem;font-weight:600;border:2px solid rgba(250,246,238,.4);letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+    .btn-o:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+    .trust{background:var(--ink);color:var(--cream);padding:50px 60px;text-align:center;border-top:4px solid var(--gold);border-bottom:4px solid var(--gold)}
+    .trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;align-items:center}
+    .trust-item{text-align:center}
+    .trust-num{font-family:var(--font);font-size:2.8rem;color:var(--gold);font-style:italic;line-height:1}
+    .trust-label{font-size:.78rem;color:rgba(250,246,238,.65);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+
+    section{padding:130px 60px}
+    .slabel{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:600;display:inline-flex;align-items:center;gap:14px}
+    .slabel::before,.slabel::after{content:'';width:30px;height:1px;background:var(--gold)}
+    .stitle{font-family:var(--font);font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:26px}
+    .stitle em{font-style:italic;color:var(--gold-dark)}
+
+    .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:90px;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;height:620px;object-fit:cover}
+    .about-frame{position:absolute;top:28px;left:-28px;width:100%;height:100%;border:2px solid var(--gold);z-index:-1}
+    .about-text p{font-size:1.05rem;color:var(--text-l);line-height:1.95;margin-bottom:22px}
+    .about-text strong{color:var(--ink);font-weight:600}
+    .about-quote{font-family:var(--font);font-style:italic;font-size:1.6rem;color:var(--gold-dark);line-height:1.5;padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:36px 0}
+    .about-stats{display:flex;gap:50px;margin-top:32px}
+    .about-stat-num{font-family:var(--font);font-size:3rem;color:var(--gold);line-height:1;font-weight:600;font-style:italic}
+    .about-stat-label{font-size:.78rem;color:var(--text-l);letter-spacing:.12em;text-transform:uppercase;margin-top:6px;font-weight:500}
+
+    .srv-section{background:var(--bg-alt);position:relative}
+    .srv-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold)}
+    .srv-grid{max-width:1200px;margin:70px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+    .srv-card{text-align:center;padding:40px 24px;background:var(--bg);border-top:3px solid var(--gold);transition:transform .3s}
+    .srv-card:hover{transform:translateY(-6px)}
+    .srv-icon{font-size:2.4rem;margin-bottom:16px}
+    .srv-card h3{font-family:var(--font);font-size:1.5rem;color:var(--ink);font-weight:600;margin-bottom:12px;font-style:italic}
+    .srv-card p{font-size:.92rem;color:var(--text-l);line-height:1.75}
+
+    .cta{background:linear-gradient(135deg,var(--ink-deep) 0%,var(--ink) 100%);padding:130px 60px;text-align:center;color:var(--cream);border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,163,90,.15) 0%,transparent 70%)}
+    .cta h2{font-family:var(--font);font-size:clamp(2.8rem,5.5vw,4.8rem);margin-bottom:28px;font-weight:600;line-height:1.05;position:relative}
+    .cta h2 em{font-style:italic;color:var(--gold)}
+    .cta p{color:rgba(250,246,238,.85);font-size:1.1rem;max-width:580px;margin:0 auto 44px;line-height:1.85;position:relative}
+
+    .contacto-grid{max-width:1300px;margin:70px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+    .contacto-card{display:flex;gap:22px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--gold-dark)}
+    .contacto-icon{width:48px;height:48px;background:var(--ink);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+    .contacto-card h4{font-family:var(--font);font-size:1.25rem;color:var(--ink);font-weight:600;margin-bottom:4px;font-style:italic}
+    .contacto-card p,.contacto-card a{font-size:.95rem;color:var(--text-l);text-decoration:none;line-height:1.6}
+    .contacto-card a:hover{color:var(--gold-dark)}
+
+    footer{background:var(--ink-deep);padding:60px 60px 40px;color:rgba(250,246,238,.5);border-top:1px solid var(--gold)}
+    .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+    .footer-brand{font-family:var(--font);font-size:1.6rem;color:var(--cream);font-weight:600;font-style:italic}
+    .footer-brand span{color:var(--gold)}
+    .footer-copy{font-size:.78rem}
+    .footer-copy a{color:var(--gold);text-decoration:none}
+
+    .fade-in{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:900px){
+      .topbar{padding:8px 20px;flex-direction:column;gap:6px;text-align:center;font-size:.72rem}
+      nav{padding:16px 24px}.nav-links{display:none}.hamburger{display:block}
+      .hero{padding:80px 24px;min-height:80vh}
+      .trust{padding:36px 24px}.trust-inner{grid-template-columns:1fr 1fr;gap:20px}
+      section{padding:80px 24px}
+      .about-inner{grid-template-columns:1fr;gap:50px}.about-img{height:400px}.about-frame{display:none}
+      .about-stats{gap:30px}
+      .srv-grid{grid-template-columns:1fr;gap:24px}
+      .cta{padding:80px 24px}
+      .contacto-grid{grid-template-columns:1fr}
+      footer{padding:40px 24px 30px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>📍 Aritz Bidea, 17 · Mungia · Bizkaia</div>
+  <div>📞 <a href="tel:+34946155575">946 155 575</a></div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-mark"><span>R</span></div>
+    <div>
+      <div class="nav-text">Ryelma</div>
+      <div class="nav-sub">Relojería · Joyería · Bazar · Mungia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34946155575" class="nav-cta">⌚ Llamar</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
+      Desde 1982 en Mungia · ⭐ 4.8 en Google
+    </div>
+    <h1>El tiempo<br><em>merece cuidado.</em></h1>
+    <p>Ryelma es la relojería y joyería de referencia en Mungia desde hace más de 40 años. Venta, reparación y un servicio que solo da la experiencia de toda una vida dedicada al oficio.</p>
+    <div class="hero-actions">
+      <a href="tel:+34946155575" class="btn-p">Llamar ahora →</a>
+      <a href="#servicios" class="btn-o">Nuestros servicios</a>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item fade-in">
+      <div class="trust-num">42+</div>
+      <div class="trust-label">Años de experiencia</div>
+    </div>
+    <div class="trust-item fade-in">
+      <div class="trust-num">4.8</div>
+      <div class="trust-label">Valoración Google (33 reseñas)</div>
+    </div>
+    <div class="trust-item fade-in">
+      <div class="trust-num">⌚</div>
+      <div class="trust-label">Relojeros expertos</div>
+    </div>
+    <div class="trust-item fade-in">
+      <div class="trust-num">💎</div>
+      <div class="trust-label">Joyería de confianza</div>
+    </div>
+  </div>
+</div>
+
+<section id="nosotros">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Ryelma Relojería Mungia" class="about-img">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="slabel">Nuestra historia</p>
+      <h2 class="stitle">Más de 40 años dando <em>la hora exacta</em>.</h2>
+      <p>Ryelma nació en <strong>1982 en Mungia</strong> como un taller de relojería y electrónica. Lo que empezó como un pequeño negocio artesanal se ha convertido con los años en un referente local: hoy somos relojería, joyería y bazar — un lugar donde encontrar desde un reloj de marca hasta el regalo perfecto.</p>
+      <p>Nuestro equipo de <strong>relojeros expertos</strong> se encarga de reparar y restaurar todo tipo de relojes — de pulsera, de pared, de bolsillo, antiguos y modernos. Es un oficio que cada vez menos gente domina, y en Ryelma lo cuidamos con orgullo.</p>
+      <div class="about-quote">"Un buen relojero no arregla mecanismos. Arregla el tiempo de la gente."</div>
+      <div class="about-stats">
+        <div>
+          <div class="about-stat-num">1982</div>
+          <div class="about-stat-label">Fundación</div>
+        </div>
+        <div>
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">Generaciones</div>
+        </div>
+        <div>
+          <div class="about-stat-num">∞</div>
+          <div class="about-stat-label">Relojes reparados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="srv-section">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Lo que hacemos</p>
+    <h2 class="stitle">Servicios <em>Ryelma</em></h2>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card fade-in">
+      <div class="srv-icon">⌚</div>
+      <h3>Reparación de relojes</h3>
+      <p>Relojes de pulsera, pared, bolsillo. Antiguos y modernos. Nuestros relojeros expertos les devuelven la vida con la precisión que merecen.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">💎</div>
+      <h3>Joyería</h3>
+      <p>Collares, anillos, pulseras, pendientes. Piezas elegantes para cada ocasión. Joyería que marca la diferencia.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🎁</div>
+      <h3>Bazar y regalos</h3>
+      <p>Electrónica, accesorios, gadgets y detalles para regalar. Todo lo que necesitas en un solo sitio, en el centro de Mungia.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🔋</div>
+      <h3>Pilas y correas</h3>
+      <p>Cambio de pilas y correas de reloj al momento. Entra, espera un minuto y sal con tu reloj funcionando.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🕰️</div>
+      <h3>Relojes de pared</h3>
+      <p>Restauración y reparación de relojes de pared, de cuco, de péndulo. Un servicio que cada vez cuesta más encontrar.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🛍️</div>
+      <h3>Venta de relojes</h3>
+      <p>Marcas reconocidas para hombre y mujer. Relojes de calidad con la garantía de una tienda de toda la vida.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>¿Tu reloj <em>necesita cuidados</em>?</h2>
+  <p>Tráelo a Ryelma. Más de 40 años arreglando relojes en Mungia. Sin cita previa — pásate cuando quieras.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="tel:+34946155575" class="btn-p">📞 946 155 575</a>
+    <a href="#contacto" class="btn-o">Cómo llegar</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Encuéntranos</p>
+    <h2 class="stitle">Estamos en <em>Mungia</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-card">
+      <div class="contacto-icon">📍</div>
+      <div>
+        <h4>Dirección</h4>
+        <p>Aritz Bidea, 17 Bajo<br>48100 Mungia, Bizkaia</p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">📞</div>
+      <div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:+34946155575">946 155 575</a></p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">🕐</div>
+      <div>
+        <h4>Horario</h4>
+        <p>Lunes a Viernes<br>10:00 – 13:00 / 17:00 – 20:00<br>Sábados: 10:00 – 13:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Ryelma <span>⌚</span></div>
+    <div class="footer-copy">&copy; 2025 Ryelma · Relojería, Joyería y Bazar · Mungia · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
