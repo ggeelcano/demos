@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBAYC Auditores — Auditoría y Consultoría en Bilbao</title>
+  <meta name="description" content="SBAYC Auditores S.L.P., firma de auditoría de cuentas y consultoría empresarial en Bilbao. Cumplimiento normativo, valoración de empresas y asesoría fiscal. Máximo Aguirre, 18.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#162640;--navy-dark:#0c1a30;--navy-light:#2a4060;
+      --steel:#3a5a7a;--steel-light:#5a7a9a;
+      --gold:#b8942a;--gold-light:#d4b04a;
+      --bg:#f8f9fb;--bg-alt:#eef1f5;
+      --cream:#f4f6f9;
+      --black:#0a1018;--text:#1a2a3a;--text-l:#4a5a6a;--text-m:#7a8a9a;
+      --border:#d0d8e2;
+      --font:'DM Serif Display',serif;--font-b:'Outfit',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
+
+    .topbar{background:var(--navy-dark);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
+    .topbar a{color:var(--gold-light);text-decoration:none}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(248,249,251,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(22,38,64,.08)}
+    .nav-brand{display:flex;align-items:center;gap:16px;text-decoration:none}
+    .nav-mark{width:50px;height:50px;background:var(--navy);display:flex;align-items:center;justify-content:center;border-radius:4px;border:2px solid var(--gold)}
+    .nav-mark span{font-family:var(--font-b);color:var(--gold);font-size:.85rem;font-weight:600;letter-spacing:.08em}
+    .nav-text{font-family:var(--font);font-size:1.6rem;color:var(--navy);font-weight:400;line-height:1}
+    .nav-sub{font-size:.6rem;color:var(--steel);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:500}
+    .nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--navy)}
+    .nav-cta{background:var(--navy);color:var(--cream)!important;padding:12px 26px;font-weight:500!important;transition:all .3s;border:1px solid var(--navy)}
+    .nav-cta:hover{background:transparent;color:var(--navy)!important}
+    .hamburger{display:none;background:none;border:none;cursor:pointer}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0}
+
+    .hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(12,26,48,.94) 0%,rgba(12,26,48,.7) 45%,rgba(12,26,48,.35) 100%);z-index:1}
+    .hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(184,148,42,.1);border:1px solid var(--gold);color:var(--gold-light);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:34px}
+    .hero h1{font-family:var(--font);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:28px;max-width:900px}
+    .hero h1 em{font-style:italic;color:var(--gold-light)}
+    .hero p{font-size:1.15rem;max-width:560px;color:rgba(244,246,249,.82);margin-bottom:44px;line-height:1.75;font-weight:300}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--navy-dark);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--gold)}
+    .btn-p:hover{background:transparent;color:var(--gold-light)}
+    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:400;border:2px solid rgba(244,246,249,.3);letter-spacing:.14em;text-transform:uppercase;transition:all .3s}
+    .btn-o:hover{background:var(--cream);color:var(--navy);border-color:var(--cream)}
+
+    .trust{background:var(--navy);color:var(--cream);padding:50px 60px;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+    .trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;text-align:center}
+    .trust-num{font-family:var(--font);font-size:2.6rem;color:var(--gold);font-style:italic;line-height:1}
+    .trust-label{font-size:.76rem;color:rgba(244,246,249,.6);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+
+    section{padding:120px 60px}
+    .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500;display:inline-flex;align-items:center;gap:14px}
+    .slabel::before,.slabel::after{content:'';width:28px;height:1px;background:var(--gold)}
+    .stitle{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);font-weight:400;line-height:1.08;color:var(--navy);margin-bottom:24px}
+    .stitle em{font-style:italic;color:var(--steel)}
+
+    .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;height:560px;object-fit:cover}
+    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--gold);z-index:-1}
+    .about-text p{font-size:1.02rem;color:var(--text-l);line-height:1.9;margin-bottom:20px}
+    .about-text strong{color:var(--navy);font-weight:500}
+    .about-quote{font-family:var(--font);font-style:italic;font-size:1.4rem;color:var(--navy);line-height:1.5;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:30px 0}
+
+    .srv-section{background:var(--bg-alt)}
+    .srv-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+    .srv-card{padding:40px 30px;background:var(--bg);border-top:3px solid var(--gold);transition:transform .3s}
+    .srv-card:hover{transform:translateY(-6px)}
+    .srv-icon{width:56px;height:56px;background:var(--navy);color:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.4rem}
+    .srv-card h3{font-family:var(--font);font-size:1.3rem;color:var(--navy);font-weight:400;margin-bottom:10px;font-style:italic}
+    .srv-card p{font-size:.9rem;color:var(--text-l);line-height:1.75}
+
+    .process{background:var(--navy-dark);color:var(--cream);padding:120px 60px}
+    .process-grid{max-width:1100px;margin:60px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+    .process-step{position:relative;padding:0 16px}
+    .process-num{font-family:var(--font);font-size:3.5rem;color:var(--gold);font-style:italic;line-height:1;margin-bottom:14px}
+    .process-step h4{font-family:var(--font);font-size:1.15rem;color:var(--cream);font-weight:400;font-style:italic;margin-bottom:8px}
+    .process-step p{font-size:.85rem;color:rgba(244,246,249,.6);line-height:1.65}
+
+    .cta{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);padding:120px 60px;text-align:center;color:var(--cream);border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(184,148,42,.1) 0%,transparent 70%)}
+    .cta h2{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;font-weight:400;line-height:1.08;position:relative}
+    .cta h2 em{font-style:italic;color:var(--gold)}
+    .cta p{color:rgba(244,246,249,.78);font-size:1.02rem;max-width:560px;margin:0 auto 40px;line-height:1.8;position:relative}
+
+    .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+    .contacto-card{display:flex;gap:20px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--navy)}
+    .contacto-icon{width:46px;height:46px;background:var(--navy);color:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+    .contacto-card h4{font-family:var(--font);font-size:1.15rem;color:var(--navy);font-weight:400;margin-bottom:4px;font-style:italic}
+    .contacto-card p,.contacto-card a{font-size:.9rem;color:var(--text-l);text-decoration:none;line-height:1.6}
+    .contacto-card a:hover{color:var(--navy)}
+
+    footer{background:var(--navy-dark);padding:50px 60px 36px;color:rgba(244,246,249,.4);border-top:1px solid var(--gold)}
+    .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-brand{font-family:var(--font);font-size:1.4rem;color:var(--cream);font-weight:400;font-style:italic}
+    .footer-brand span{color:var(--gold)}
+    .footer-copy{font-size:.75rem}
+    .footer-copy a{color:var(--gold);text-decoration:none}
+
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:900px){
+      .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center}
+      nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:block}
+      .hero{padding:70px 22px;min-height:78vh}
+      .trust{padding:30px 22px}.trust-inner{grid-template-columns:1fr 1fr;gap:18px}
+      section{padding:70px 22px}
+      .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:340px}.about-frame{display:none}
+      .srv-grid{grid-template-columns:1fr;gap:20px}
+      .process{padding:70px 22px}.process-grid{grid-template-columns:1fr 1fr;gap:24px}
+      .cta{padding:70px 22px}
+      .contacto-grid{grid-template-columns:1fr}
+      footer{padding:30px 22px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 Máximo Aguirre, 18 · Bilbao · Bizkaia</span>
+  <span>📞 <a href="tel:+34944439044">944 439 044</a></span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-mark"><span>SBAYC</span></div>
+    <div>
+      <div class="nav-text">SBAYC Auditores</div>
+      <div class="nav-sub">Auditoría · Consultoría · Bilbao</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#firma">La firma</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34944439044" class="nav-cta">Consulta gratuita</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Firma de auditoría inscrita en el ROAC
+    </div>
+    <h1>Auditoría con <em>rigor y cercanía</em>.</h1>
+    <p>SBAYC Auditores es una firma de auditoría de cuentas y consultoría empresarial en Bilbao. Trabajamos con empresas que necesitan confianza en sus números, cumplimiento normativo y un equipo que entienda su negocio.</p>
+    <div class="hero-actions">
+      <a href="tel:+34944439044" class="btn-p">Solicitar consulta →</a>
+      <a href="#servicios" class="btn-o">Nuestros servicios</a>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="trust-inner">
+    <div class="fade-in">
+      <div class="trust-num">ROAC</div>
+      <div class="trust-label">Auditor inscrito</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">⚖️</div>
+      <div class="trust-label">Cumplimiento normativo</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">📊</div>
+      <div class="trust-label">Valoración de empresas</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">🤝</div>
+      <div class="trust-label">Trato directo con el socio</div>
+    </div>
+  </div>
+</div>
+
+<section id="firma">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="SBAYC Auditores Bilbao" class="about-img">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="slabel">La firma</p>
+      <h2 class="stitle">Auditoría de cuentas <em>con criterio propio</em>.</h2>
+      <p><strong>SBAYC Auditores S.L.P.</strong> es una firma de auditoría y consultoría con sede en Bilbao, especializada en <strong>auditoría de cuentas anuales, cumplimiento normativo y valoración de empresas</strong>.</p>
+      <p>Trabajamos con sociedades que necesitan un auditor que no sea solo un firmante de informes, sino un <strong>asesor de confianza</strong> que conozca la realidad de su negocio. Nuestro equipo combina rigor técnico con la cercanía de una firma donde el socio está presente en cada encargo.</p>
+      <p>Con presencia en <strong>Bilbao y Galdakao</strong>, atendemos a empresas de toda Bizkaia y el País Vasco.</p>
+      <div class="about-quote">"Una buena auditoría no solo verifica números. Da seguridad para tomar decisiones."</div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="srv-section">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Áreas de práctica</p>
+    <h2 class="stitle">Servicios <em>profesionales</em></h2>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card fade-in">
+      <div class="srv-icon">📋</div>
+      <h3>Auditoría de cuentas</h3>
+      <p>Auditoría de cuentas anuales, auditorías voluntarias, informes especiales y revisiones limitadas. Trabajo riguroso conforme a las NIA-ES.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">⚖️</div>
+      <h3>Cumplimiento normativo</h3>
+      <p>Revisión del cumplimiento de obligaciones legales, mercantiles y fiscales. Prevención de riesgos regulatorios y planes de acción correctiva.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">📊</div>
+      <h3>Valoración de empresas</h3>
+      <p>Valoraciones de empresas y participaciones sociales para operaciones de compraventa, herencias, reestructuraciones y litigios.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🏢</div>
+      <h3>Due diligence</h3>
+      <p>Revisión financiera, fiscal y legal previa a adquisiciones, fusiones e inversiones. Identificamos riesgos antes de que se conviertan en problemas.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">💼</div>
+      <h3>Consultoría fiscal</h3>
+      <p>Asesoramiento en planificación fiscal, normativa foral de Bizkaia, Impuesto sobre Sociedades, IRPF y operaciones societarias.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">📑</div>
+      <h3>Informes periciales</h3>
+      <p>Elaboración de informes periciales económico-financieros para procedimientos judiciales, arbitrajes y mediaciones.</p>
+    </div>
+  </div>
+</section>
+
+<div class="process" id="proceso">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <p class="slabel" style="color:var(--gold)">Cómo trabajamos</p>
+    <h2 class="stitle" style="color:var(--cream)">Un proceso <em style="color:var(--gold)">claro y directo</em></h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step fade-in">
+      <div class="process-num">01</div>
+      <h4>Reunión inicial</h4>
+      <p>Conocemos tu empresa, entendemos tus necesidades y definimos el alcance del trabajo.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="process-num">02</div>
+      <h4>Planificación</h4>
+      <p>Diseñamos un plan de auditoría a medida, con plazos y responsables claros.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="process-num">03</div>
+      <h4>Ejecución</h4>
+      <p>Realizamos el trabajo de campo con rigor, comunicándonos contigo en cada paso.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="process-num">04</div>
+      <h4>Informe y seguimiento</h4>
+      <p>Entregamos un informe claro con recomendaciones accionables y seguimiento continuo.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>¿Necesitas un <em>auditor de confianza</em>?</h2>
+  <p>Primera consulta gratuita y sin compromiso. Cuéntanos qué necesitas y te decimos cómo podemos ayudarte.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="tel:+34944439044" class="btn-p">📞 944 439 044</a>
+    <a href="mailto:jlocariz@sarenet.es" class="btn-o">✉️ Enviar email</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Contacto</p>
+    <h2 class="stitle">Oficinas en <em>Bilbao</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-card">
+      <div class="contacto-icon">📍</div>
+      <div>
+        <h4>Bilbao</h4>
+        <p>C/ Máximo Aguirre, 18 Bis<br>Planta 5, Dpto. 4<br>48011 Bilbao, Bizkaia</p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">📞</div>
+      <div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:+34944439044">944 439 044</a></p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">✉️</div>
+      <div>
+        <h4>Email</h4>
+        <p><a href="mailto:jlocariz@sarenet.es">jlocariz@sarenet.es</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">SBAYC <span>Auditores</span></div>
+    <div class="footer-copy">&copy; 2025 SBAYC Auditores S.L.P. · CIF: B48417398 · Bilbao · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
