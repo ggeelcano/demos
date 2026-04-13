@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brico Hogar Cantalejo — ferretería bricolaje en Cantalejo, Segovia</title>
+  <meta name="description" content="Brico Hogar Cantalejo, tu ferretería bricolaje de confianza en Cantalejo, Segovia. Calidad, atención personalizada y años de experiencia a tu servicio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--p:#7a4a2a;--pl:#9a6040;--pd:#5a3018;--a:#c8a060;--al:#e0b878;--bg:#faf8f4;--bg-alt:#f2ece4;--cream:#f5f0e8;--black:#1a1410;--text:#2a2018;--text-l:#6a5848;--border:#d8c8b0;--font:'Libre Baskerville',serif;--font-b:'Karla',sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
+
+    .topbar{background:var(--black);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
+    .topbar a{color:var(--a);text-decoration:none}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.06)}
+    .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+    .nav-mark{width:46px;height:46px;background:var(--p);display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--a)}
+    .nav-mark span{font-family:var(--font);color:var(--cream);font-size:1.3rem;font-weight:600;font-style:italic}
+    .nav-text{font-family:var(--font);font-size:1.5rem;color:var(--pd);font-weight:600;line-height:1}
+    .nav-sub{font-size:.62rem;color:var(--a);letter-spacing:.22em;text-transform:uppercase;margin-top:3px;font-weight:600}
+    .nav-links{display:flex;gap:34px;list-style:none;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--p)}
+    .nav-cta{background:var(--p);color:var(--cream)!important;padding:11px 24px;font-weight:600!important;transition:all .3s;border:1px solid var(--p)}
+    .nav-cta:hover{background:transparent;color:var(--p)!important}
+    .hamburger{display:none;background:none;border:none;cursor:pointer}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+
+    .hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.3) 100%);z-index:1}
+    .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;background:rgba(201,163,90,.12);border:1px solid var(--a);color:var(--al);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:32px}
+    .hero h1{font-family:var(--font);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:600;line-height:1.02;color:var(--cream);margin-bottom:28px;letter-spacing:-.01em;max-width:900px}
+    .hero h1 em{font-style:italic;color:var(--a);font-weight:500}
+    .hero p{font-size:1.15rem;max-width:540px;color:rgba(250,246,238,.85);margin-bottom:40px;line-height:1.75;font-weight:300}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--a);color:var(--black);text-decoration:none;padding:16px 36px;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--a)}
+    .btn-p:hover{background:transparent;color:var(--al)}
+    .btn-o{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 36px;font-size:.8rem;font-weight:600;border:2px solid rgba(250,246,238,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s}
+    .btn-o:hover{background:var(--cream);color:var(--black);border-color:var(--cream)}
+
+    .features{background:var(--p);color:var(--cream);padding:48px 60px;border-top:3px solid var(--a);border-bottom:3px solid var(--a)}
+    .features-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
+    .feat-icon{color:var(--a);margin-bottom:8px}
+    .feat h4{font-family:var(--font);font-size:1.2rem;font-weight:600;font-style:italic;margin-bottom:4px}
+    .feat p{font-size:.78rem;color:rgba(250,246,238,.65);letter-spacing:.06em;text-transform:uppercase}
+
+    section{padding:110px 60px}
+    .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--a);margin-bottom:16px;font-weight:600;display:inline-flex;align-items:center;gap:12px}
+    .slabel::before,.slabel::after{content:'';width:26px;height:1px;background:var(--a)}
+    .stitle{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.08;color:var(--pd);margin-bottom:22px;letter-spacing:-.01em}
+    .stitle em{font-style:italic;color:var(--p)}
+    .ssub{font-size:1rem;color:var(--text-l);max-width:580px;line-height:1.85}
+
+    .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;height:520px;object-fit:cover}
+    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--a);z-index:-1}
+    .about-text p{font-size:1rem;color:var(--text-l);line-height:1.9;margin-bottom:18px}
+    .about-text strong{color:var(--pd);font-weight:600}
+    .about-quote{font-family:var(--font);font-style:italic;font-size:1.45rem;color:var(--p);line-height:1.5;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:30px 0}
+
+    .services-section{background:var(--bg-alt)}
+    .srv-grid{max-width:1100px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+    .srv-card{text-align:center;padding:0 18px}
+    .srv-icon{width:64px;height:64px;margin:0 auto 20px;border:2px solid var(--a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--p)}
+    .srv-card h3{font-family:var(--font);font-size:1.5rem;color:var(--pd);font-weight:600;margin-bottom:12px;font-style:italic}
+    .srv-card p{font-size:.92rem;color:var(--text-l);line-height:1.8}
+
+    .cta-section{background:linear-gradient(135deg,var(--pd) 0%,var(--p) 100%);padding:110px 60px;text-align:center;color:var(--cream);border-top:3px solid var(--a);border-bottom:3px solid var(--a);position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;top:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(201,163,90,.12) 0%,transparent 70%)}
+    .cta-section h2{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;font-weight:600;line-height:1.08;position:relative}
+    .cta-section h2 em{font-style:italic;color:var(--a)}
+    .cta-section p{color:rgba(250,246,238,.8);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.85;position:relative}
+    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+    .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+    .contacto-card{padding:32px;background:var(--bg-alt);border-left:4px solid var(--p);display:flex;gap:20px;align-items:flex-start}
+    .contacto-icon{width:44px;height:44px;background:var(--p);color:var(--a);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+    .contacto-card h4{font-family:var(--font);font-size:1.15rem;color:var(--pd);font-weight:600;margin-bottom:4px;font-style:italic}
+    .contacto-card p,.contacto-card a{font-size:.92rem;color:var(--text-l);text-decoration:none;line-height:1.6}
+    .contacto-card a:hover{color:var(--p)}
+
+    footer{background:var(--black);padding:50px 60px 36px;color:rgba(250,246,238,.45);border-top:1px solid var(--a)}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-brand{font-family:var(--font);font-size:1.4rem;color:var(--cream);font-weight:600;font-style:italic}
+    .footer-brand span{color:var(--a)}
+    .footer-copy{font-size:.75rem}
+    .footer-copy a{color:var(--a);text-decoration:none}
+
+    .whatsapp-float{position:fixed;bottom:26px;right:26px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:99;transition:transform .3s;text-decoration:none}
+    .whatsapp-float:hover{transform:scale(1.08)}
+
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:900px){
+      .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center;font-size:.72rem}
+      nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:flex;flex-direction:column;gap:5px}
+      .hero{padding:70px 22px;min-height:75vh}
+      .features{padding:30px 22px}.features-inner{grid-template-columns:1fr;gap:20px}
+      section{padding:70px 22px}
+      .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:340px}.about-frame{display:none}
+      .srv-grid{grid-template-columns:1fr;gap:28px}
+      .cta-section{padding:70px 22px}
+      .contacto-grid{grid-template-columns:1fr}
+      footer{padding:30px 22px 24px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 Cantalejo, Segovia · 🕐 Horario habitual</span>
+  <span>📞 <a href="tel:+34921520873">921 520 873</a></span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-mark"><span>B</span></div>
+    <div>
+      <div class="nav-text">Brico Hogar Cantalejo</div>
+      <div class="nav-sub">ferretería bricolaje · Cantalejo</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34921520873" class="nav-cta">📞 Llamar</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
+      Tu ferretería bricolaje en Cantalejo
+    </div>
+    <h1>Brico Hogar Cantalejo.<br><em>A tu servicio.</em></h1>
+    <p>En Brico Hogar Cantalejo nos dedicamos a lo que mejor sabemos hacer. Años de experiencia, trato cercano y la confianza de nuestros clientes nos avalan como referencia en Cantalejo.</p>
+    <div class="hero-actions">
+      <a href="tel:+34921520873" class="btn-p">Contactar →</a>
+      <a href="#sobre" class="btn-o">Conócenos</a>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="features-inner">
+    <div class="feat">
+      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg></div>
+      <h4>Calidad</h4>
+      <p>Compromiso con la excelencia</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h4>Cercanía</h4>
+      <p>Trato personalizado y directo</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h4>Cantalejo</h4>
+      <p>Arraigados en tu barrio</p>
+    </div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Brico Hogar Cantalejo" class="about-img">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="slabel">Sobre nosotros</p>
+      <h2 class="stitle">Una historia de <em>confianza</em>.</h2>
+      <p><strong>Brico Hogar Cantalejo</strong> es mucho más que un nombre. Somos un equipo de personas que creemos en hacer bien las cosas — con honestidad, dedicación y el cariño que solo se pone cuando te importa de verdad lo que haces.</p>
+      <p>Nuestros clientes en <strong>Cantalejo</strong> lo saben: aquí encuentran un trato cercano, profesionalidad y la tranquilidad de estar en buenas manos. Eso es lo que nos mueve cada día.</p>
+      <div class="about-quote">"Lo importante no es solo lo que hacemos, sino cómo lo hacemos."</div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="services-section">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <p class="slabel">Lo que ofrecemos</p>
+    <h2 class="stitle">Nuestros <em>servicios</em></h2>
+    <p class="ssub" style="margin:0 auto 10px">Todo lo que necesitas, con la calidad que mereces.</p>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card fade-in">
+      <div class="srv-icon">⭐</div>
+      <h3>Experiencia</h3>
+      <p>Años de trayectoria nos respaldan. Conocemos nuestro oficio y lo demostramos cada día con resultados.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🤝</div>
+      <h3>Atención personal</h3>
+      <p>Cada cliente es único. Te escuchamos, te asesoramos y buscamos la mejor solución para lo que necesitas.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">✨</div>
+      <h3>Calidad garantizada</h3>
+      <p>Trabajamos solo con los mejores materiales y las mejores prácticas. Tu satisfacción es nuestra prioridad.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>¿Hablamos? <em>Estamos cerca.</em></h2>
+  <p>Cuéntanos qué necesitas. Sin compromiso, sin letra pequeña. Estamos aquí para ayudarte.</p>
+  <div class="cta-actions">
+    <a href="tel:+34921520873" class="btn-p">📞 Llamar ahora</a>
+    <a href="mailto:goya19@hotmail.es" class="btn-o">✉️ Enviar email</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <p class="slabel">Contacto</p>
+    <h2 class="stitle">Encuéntranos en <em>Cantalejo</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-card">
+      <div class="contacto-icon">📍</div>
+      <div>
+        <h4>Ubicación</h4>
+        <p>Cantalejo, Segovia</p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">📞</div>
+      <div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:+34921520873">921 520 873</a></p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">✉️</div>
+      <div>
+        <h4>Email</h4>
+        <p><a href="mailto:goya19@hotmail.es">goya19@hotmail.es</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Brico Hogar Cantalejo <span>·</span></div>
+    <div class="footer-copy">&copy; 2025 Brico Hogar Cantalejo · Cantalejo, Segovia · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
+  </div>
+</footer>
+
+
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
