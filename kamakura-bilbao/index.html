@@ -3,310 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kamakura — Restaurante Japonés en Bilbao</title>
-  <meta name="description" content="Kamakura, restaurante japonés en Bilbao. Sushi, ramen, tempura y cocina japonesa auténtica. Reserva tu mesa.">
+  <title>Kamakura — Tienda Infantil en Bilbao</title>
+  <meta name="description" content="Kamakura, tienda infantil en Bilbao. Ropa, juguetes y accesorios para los más pequeños. Hogar, familia, amor y cuidado.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink: #1a1a18;
-      --ink-deep: #0e0e0c;
-      --ink-soft: #2a2a26;
-      --red: #c23a3a;
-      --red-dark: #8b1a1a;
-      --gold: #c9a35a;
-      --gold-light: #e0bd76;
-      --cream: #faf6ee;
-      --cream-dark: #f0e9d8;
-      --bg: #fdfbf5;
-      --bg-alt: #f5f0e4;
-      --text: #1f1c18;
-      --text-l: #5c5650;
-      --text-m: #8a7e72;
-      --border: #e3d9c0;
-      --font: 'Playfair Display', serif;
-      --font-b: 'Inter', sans-serif;
+      --sage: #7a9a7e;
+      --sage-dark: #4a6e4e;
+      --sage-deep: #2e4a32;
+      --blush: #e8b4b8;
+      --blush-light: #f0cdd0;
+      --cream: #fdf8f4;
+      --cream-dark: #f5ece4;
+      --warm: #f8f2ea;
+      --black: #2a2420;
+      --text: #3a3230;
+      --text-l: #6a5e58;
+      --text-m: #9a8e86;
+      --border: #e8ddd0;
+      --font: 'Cormorant Garamond', serif;
+      --font-b: 'Jost', sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--font-b); font-weight: 300; line-height: 1.7; }
+    body { background: var(--cream); color: var(--text); font-family: var(--font-b); font-weight: 300; line-height: 1.7; }
 
     /* TOPBAR */
-    .topbar { background: var(--ink-deep); color: var(--cream); padding: 10px 60px; font-size: .78rem; display: flex; justify-content: space-between; align-items: center; letter-spacing: .04em; }
-    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar { background: var(--sage-deep); color: var(--cream); padding: 10px 60px; font-size: .78rem; display: flex; justify-content: space-between; align-items: center; letter-spacing: .04em; }
+    .topbar a { color: var(--blush-light); text-decoration: none; }
 
     /* NAV */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(253,251,245,.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow .3s; }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(253,248,244,.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow .3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(42,36,32,.06); }
     .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
-    .nav-mark { width: 50px; height: 50px; background: var(--red-dark); display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--gold); }
+    .nav-mark { width: 50px; height: 50px; background: var(--sage); display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--blush); }
     .nav-mark span { font-family: var(--font); color: var(--cream); font-size: 1.4rem; font-weight: 600; font-style: italic; }
-    .nav-text { font-family: var(--font); font-size: 1.7rem; color: var(--ink); font-weight: 600; line-height: 1; letter-spacing: .005em; }
-    .nav-sub { font-size: .65rem; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-top: 4px; font-weight: 600; }
+    .nav-text { font-family: var(--font); font-size: 1.7rem; color: var(--sage-deep); font-weight: 600; line-height: 1; }
+    .nav-sub { font-size: .65rem; color: var(--blush); letter-spacing: .22em; text-transform: uppercase; margin-top: 4px; font-weight: 500; }
     .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
-    .nav-links a { text-decoration: none; color: var(--text); font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; transition: color .3s; }
-    .nav-links a:hover { color: var(--red); }
-    .nav-cta { background: var(--red-dark); color: var(--cream) !important; padding: 12px 26px; font-weight: 600 !important; transition: all .3s; border: 1px solid var(--red-dark); }
-    .nav-cta:hover { background: transparent; color: var(--red-dark) !important; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: .82rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { background: var(--sage); color: var(--cream) !important; padding: 12px 26px; font-weight: 500 !important; transition: all .3s; border: 1px solid var(--sage); border-radius: 30px; }
+    .nav-cta:hover { background: transparent; color: var(--sage) !important; }
     .hamburger { display: none; background: none; border: none; cursor: pointer; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: .3s; }
 
     /* HERO */
-    .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; z-index: 0; }
-    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(14,14,12,.92) 0%, rgba(14,14,12,.65) 50%, rgba(14,14,12,.3) 100%); z-index: 1; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(46,74,50,.88) 0%, rgba(46,74,50,.6) 45%, rgba(46,74,50,.25) 100%); z-index: 1; }
     .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 14px; padding: 12px 26px; background: rgba(194,58,58,.12); border: 1px solid var(--red); color: var(--gold-light); font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; margin-bottom: 36px; }
-    .hero h1 { font-family: var(--font); font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 600; line-height: 1; color: var(--cream); margin-bottom: 32px; letter-spacing: -.015em; max-width: 1000px; }
-    .hero h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
-    .hero p { font-size: 1.2rem; max-width: 580px; color: rgba(250,246,238,.88); margin-bottom: 44px; line-height: 1.75; font-weight: 300; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 12px; padding: 10px 24px; background: rgba(232,180,184,.15); border: 1px solid var(--blush); color: var(--blush-light); font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; margin-bottom: 36px; border-radius: 30px; }
+    .hero h1 { font-family: var(--font); font-size: clamp(3rem, 6.5vw, 6rem); font-weight: 600; line-height: 1.02; color: var(--cream); margin-bottom: 30px; letter-spacing: -.01em; max-width: 900px; }
+    .hero h1 em { font-style: italic; color: var(--blush-light); font-weight: 400; }
+    .hero p { font-size: 1.15rem; max-width: 560px; color: rgba(253,248,244,.85); margin-bottom: 44px; line-height: 1.75; font-weight: 300; }
     .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-p { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--ink); text-decoration: none; padding: 18px 40px; font-size: .82rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; transition: all .3s; border: 2px solid var(--gold); }
-    .btn-p:hover { background: transparent; color: var(--gold-light); }
-    .btn-o { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--cream); text-decoration: none; padding: 18px 40px; font-size: .82rem; font-weight: 600; border: 2px solid rgba(250,246,238,.4); letter-spacing: .15em; text-transform: uppercase; transition: all .3s; }
-    .btn-o:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .btn-p { display: inline-flex; align-items: center; gap: 12px; background: var(--blush); color: var(--black); text-decoration: none; padding: 16px 38px; font-size: .82rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; transition: all .3s; border: 2px solid var(--blush); border-radius: 30px; }
+    .btn-p:hover { background: transparent; color: var(--blush-light); }
+    .btn-o { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--cream); text-decoration: none; padding: 16px 38px; font-size: .82rem; font-weight: 400; border: 2px solid rgba(253,248,244,.35); letter-spacing: .12em; text-transform: uppercase; transition: all .3s; border-radius: 30px; }
+    .btn-o:hover { background: var(--cream); color: var(--black); border-color: var(--cream); }
 
-    /* FEATURES BAND */
-    .features { background: var(--red-dark); color: var(--cream); padding: 50px 60px; text-align: center; border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); }
-    .features-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: center; }
-    .feat { display: flex; align-items: center; gap: 20px; justify-content: center; }
-    .feat-icon { color: var(--gold); flex-shrink: 0; }
-    .feat-text h4 { font-family: var(--font); font-size: 1.3rem; color: var(--cream); font-weight: 600; line-height: 1.2; margin-bottom: 4px; font-style: italic; }
-    .feat-text p { font-size: .78rem; color: rgba(250,246,238,.7); letter-spacing: .08em; text-transform: uppercase; }
+    /* VALUES */
+    .values { background: var(--warm); padding: 70px 60px; border-top: 3px solid var(--blush); border-bottom: 3px solid var(--blush); }
+    .values-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+    .val-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .val h4 { font-family: var(--font); font-size: 1.3rem; color: var(--sage-deep); font-weight: 600; font-style: italic; margin-bottom: 6px; }
+    .val p { font-size: .82rem; color: var(--text-l); line-height: 1.6; }
 
     /* SECTIONS */
-    section { padding: 130px 60px; }
-    .slabel { font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 14px; }
-    .slabel::before, .slabel::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
-    .stitle { font-family: var(--font); font-size: clamp(2.8rem, 5.5vw, 4.8rem); font-weight: 600; line-height: 1.05; color: var(--ink); margin-bottom: 26px; letter-spacing: -.015em; }
-    .stitle em { font-style: italic; color: var(--red-dark); }
+    section { padding: 120px 60px; }
+    .slabel { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; font-weight: 500; display: inline-flex; align-items: center; gap: 14px; }
+    .slabel::before, .slabel::after { content: ''; width: 30px; height: 1px; background: var(--blush); }
+    .stitle { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.08; color: var(--sage-deep); margin-bottom: 24px; letter-spacing: -.01em; }
+    .stitle em { font-style: italic; color: var(--sage); }
 
     /* ABOUT */
-    .about-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 90px; align-items: center; }
+    .about-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
     .about-img-wrap { position: relative; }
-    .about-img { width: 100%; height: 620px; object-fit: cover; }
-    .about-frame { position: absolute; top: 28px; left: -28px; width: 100%; height: 100%; border: 2px solid var(--gold); z-index: -1; }
-    .about-text p { font-size: 1.05rem; color: var(--text-l); line-height: 1.95; margin-bottom: 22px; }
-    .about-text strong { color: var(--ink); font-weight: 600; }
-    .about-quote { font-family: var(--font); font-style: italic; font-size: 1.6rem; color: var(--red-dark); line-height: 1.5; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 36px 0; }
+    .about-img { width: 100%; height: 580px; object-fit: cover; border-radius: 16px; }
+    .about-frame { position: absolute; top: 24px; left: -24px; width: 100%; height: 100%; border: 2px solid var(--blush); border-radius: 16px; z-index: -1; }
+    .about-text p { font-size: 1.05rem; color: var(--text-l); line-height: 1.9; margin-bottom: 20px; }
+    .about-text strong { color: var(--sage-deep); font-weight: 500; }
+    .about-quote { font-family: var(--font); font-style: italic; font-size: 1.5rem; color: var(--sage); line-height: 1.5; padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 32px 0; }
 
-    /* MENU / FOOD */
-    .menu-section { background: var(--bg-alt); position: relative; }
-    .menu-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gold); }
-    .menu-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-    .menu-col h3 { font-family: var(--font); font-size: 2rem; color: var(--ink); font-weight: 600; margin-bottom: 8px; font-style: italic; }
-    .menu-col-sub { font-size: .78rem; color: var(--gold); letter-spacing: .15em; text-transform: uppercase; margin-bottom: 32px; font-weight: 600; }
-    .menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px dashed var(--border); }
-    .menu-item:last-child { border-bottom: none; }
-    .menu-item h4 { font-family: var(--font); font-size: 1.2rem; color: var(--text); font-weight: 600; }
-    .menu-item p { font-size: .85rem; color: var(--text-m); font-style: italic; }
-
-    /* FOOD IMAGE */
-    .food-showcase { background: var(--ink); color: var(--cream); position: relative; padding: 0; }
-    .food-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; align-items: center; }
-    .food-img { width: 100%; height: 100%; min-height: 600px; object-fit: cover; }
-    .food-text { padding: 100px 80px; }
-    .food-text .slabel { color: var(--gold); }
-    .food-text .slabel::before, .food-text .slabel::after { background: var(--gold); }
-    .food-text .stitle { color: var(--cream); }
-    .food-text .stitle em { color: var(--gold); }
-    .food-text p { font-size: 1.05rem; color: rgba(250,246,238,.8); line-height: 1.95; margin-bottom: 22px; }
-    .food-text strong { color: var(--gold-light); font-weight: 600; }
+    /* PRODUCTS */
+    .products { background: var(--sage-deep); color: var(--cream); position: relative; padding: 0; }
+    .prod-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; align-items: center; }
+    .prod-img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; }
+    .prod-text { padding: 90px 80px; }
+    .prod-text .slabel { color: var(--blush); }
+    .prod-text .slabel::before, .prod-text .slabel::after { background: var(--blush); }
+    .prod-text .stitle { color: var(--cream); }
+    .prod-text .stitle em { color: var(--blush-light); }
+    .prod-text p { font-size: 1.05rem; color: rgba(253,248,244,.8); line-height: 1.9; margin-bottom: 20px; }
 
     /* CTA */
-    .cta { background: linear-gradient(135deg, var(--ink-deep) 0%, var(--red-dark) 100%); padding: 130px 60px; text-align: center; color: var(--cream); border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); position: relative; overflow: hidden; }
-    .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,163,90,.15) 0%, transparent 70%); }
-    .cta h2 { font-family: var(--font); font-size: clamp(2.8rem, 5.5vw, 4.8rem); margin-bottom: 28px; font-weight: 600; line-height: 1.05; position: relative; }
-    .cta h2 em { font-style: italic; color: var(--gold); }
-    .cta p { color: rgba(250,246,238,.85); font-size: 1.1rem; max-width: 580px; margin: 0 auto 44px; line-height: 1.85; position: relative; }
-    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .cta { background: linear-gradient(135deg, var(--sage-deep) 0%, var(--sage-dark) 100%); padding: 120px 60px; text-align: center; color: var(--cream); border-top: 3px solid var(--blush); border-bottom: 3px solid var(--blush); position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,180,184,.12) 0%, transparent 70%); }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.5rem); margin-bottom: 24px; font-weight: 600; line-height: 1.08; position: relative; }
+    .cta h2 em { font-style: italic; color: var(--blush-light); }
+    .cta p { color: rgba(253,248,244,.82); font-size: 1.05rem; max-width: 560px; margin: 0 auto 40px; line-height: 1.8; position: relative; }
 
     /* CONTACT */
-    .contacto-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
-    .contacto-card { display: flex; gap: 22px; align-items: flex-start; padding: 28px; background: var(--bg-alt); border-left: 4px solid var(--red-dark); }
-    .contacto-icon { width: 48px; height: 48px; background: var(--red-dark); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
-    .contacto-card h4 { font-family: var(--font); font-size: 1.25rem; color: var(--ink); font-weight: 600; margin-bottom: 4px; font-style: italic; }
-    .contacto-card p, .contacto-card a { font-size: .95rem; color: var(--text-l); text-decoration: none; line-height: 1.6; }
-    .contacto-card a:hover { color: var(--red); }
+    .contacto-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
+    .contacto-card { display: flex; gap: 20px; align-items: flex-start; padding: 28px; background: var(--warm); border-left: 4px solid var(--sage); border-radius: 8px; }
+    .contacto-icon { width: 46px; height: 46px; background: var(--sage); color: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.15rem; }
+    .contacto-card h4 { font-family: var(--font); font-size: 1.2rem; color: var(--sage-deep); font-weight: 600; margin-bottom: 4px; font-style: italic; }
+    .contacto-card p { font-size: .92rem; color: var(--text-l); line-height: 1.6; }
 
     /* FOOTER */
-    footer { background: var(--ink-deep); padding: 60px 60px 40px; color: rgba(250,246,238,.5); border-top: 1px solid var(--gold); }
-    .footer-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-brand { font-family: var(--font); font-size: 1.6rem; color: var(--cream); font-weight: 600; font-style: italic; }
-    .footer-brand span { color: var(--gold); }
+    footer { background: var(--black); padding: 50px 60px 36px; color: rgba(253,248,244,.45); border-top: 1px solid var(--blush); }
+    .footer-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: var(--cream); font-weight: 600; font-style: italic; }
+    .footer-brand span { color: var(--blush); }
     .footer-copy { font-size: .78rem; }
-    .footer-copy a { color: var(--gold); text-decoration: none; }
+    .footer-copy a { color: var(--blush); text-decoration: none; }
 
-    /* ANIMATIONS */
-    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; font-size: .72rem; }
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-      .hero { padding: 80px 24px; min-height: 80vh; }
-      .features { padding: 36px 24px; }
-      .features-inner { grid-template-columns: 1fr; gap: 24px; }
-      section { padding: 80px 24px; }
-      .about-inner { grid-template-columns: 1fr; gap: 50px; }
-      .about-img { height: 400px; }
-      .about-frame { display: none; }
-      .menu-grid { grid-template-columns: 1fr; gap: 50px; }
-      .food-inner { grid-template-columns: 1fr; }
-      .food-img { min-height: 360px; height: 360px; }
-      .food-text { padding: 70px 24px; }
-      .cta { padding: 80px 24px; }
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 4px; text-align: center; }
+      nav { padding: 16px 22px; } .nav-links { display: none; } .hamburger { display: block; }
+      .hero { padding: 70px 22px; min-height: 78vh; }
+      .values { padding: 40px 22px; } .values-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+      section { padding: 70px 22px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 360px; } .about-frame { display: none; }
+      .prod-inner { grid-template-columns: 1fr; } .prod-img { min-height: 320px; height: 320px; } .prod-text { padding: 60px 22px; }
+      .cta { padding: 70px 22px; }
       .contacto-grid { grid-template-columns: 1fr; }
-      footer { padding: 40px 24px 30px; }
+      footer { padding: 30px 22px; }
     }
   </style>
 </head>
 <body>
 
 <div class="topbar">
-  <span>📍 Bilbao · Cocina japonesa auténtica</span>
-  <span>📞 <a href="tel:+34944000000">Reservas</a></span>
+  <span>📍 Bilbao · Tienda infantil</span>
+  <span>🛍️ <a href="#contacto">Visítanos</a></span>
 </div>
 
 <nav id="navbar">
   <a href="#" class="nav-brand">
-    <div class="nav-mark"><span>鎌</span></div>
+    <div class="nav-mark"><span>K</span></div>
     <div>
       <div class="nav-text">Kamakura</div>
-      <div class="nav-sub">Restaurante Japonés · Bilbao</div>
+      <div class="nav-sub">Tienda infantil · Bilbao</div>
     </div>
   </a>
   <ul class="nav-links">
     <li><a href="#sobre">Nosotros</a></li>
-    <li><a href="#carta">La carta</a></li>
-    <li><a href="#cocina">Cocina</a></li>
+    <li><a href="#productos">Productos</a></li>
     <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
+    <li><a href="#contacto" class="nav-cta">Visítanos</a></li>
   </ul>
   <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-badge">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
-      Cocina japonesa en Bilbao
+      🌿 Nueva tienda infantil en Bilbao
     </div>
-    <h1>Sabor japonés.<br><em>Alma bilbaína.</em></h1>
-    <p>Kamakura trae a Bilbao lo mejor de la cocina japonesa: sushi artesanal, ramen reconfortante, tempura crujiente y una experiencia que transporta a Japón sin salir de la ciudad.</p>
+    <h1>Un mundo<br><em>para los pequeños.</em></h1>
+    <p>Kamakura es una tienda infantil que nace de la conexión entre dos ciudades — Kamakura y Bilbao — y de los valores que más importan: hogar, familia, amor y cuidado.</p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-p">Reservar mesa →</a>
-      <a href="#carta" class="btn-o">Ver la carta</a>
+      <a href="#contacto" class="btn-p">Descubre la tienda →</a>
+      <a href="#sobre" class="btn-o">Conócenos</a>
     </div>
   </div>
 </div>
 
-<!-- FEATURES -->
-<div class="features">
-  <div class="features-inner">
-    <div class="feat">
-      <svg class="feat-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
-      <div class="feat-text">
-        <h4>Producto fresco</h4>
-        <p>Selección diaria de mercado</p>
-      </div>
+<div class="values">
+  <div class="values-inner">
+    <div class="val fade-in">
+      <div class="val-icon">🏠</div>
+      <h4>Hogar</h4>
+      <p>Un espacio cálido donde cada familia se siente como en casa</p>
     </div>
-    <div class="feat">
-      <svg class="feat-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      <div class="feat-text">
-        <h4>Cocina auténtica</h4>
-        <p>Tradición japonesa real</p>
-      </div>
+    <div class="val fade-in">
+      <div class="val-icon">👨‍👩‍👧</div>
+      <h4>Familia</h4>
+      <p>Todo pensado para los momentos que compartís juntos</p>
     </div>
-    <div class="feat">
-      <svg class="feat-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <div class="feat-text">
-        <h4>Bilbao</h4>
-        <p>En el corazón de la ciudad</p>
-      </div>
+    <div class="val fade-in">
+      <div class="val-icon">💛</div>
+      <h4>Amor</h4>
+      <p>Cada producto elegido con el cariño que tus hijos merecen</p>
+    </div>
+    <div class="val fade-in">
+      <div class="val-icon">🤲</div>
+      <h4>Cuidado</h4>
+      <p>Materiales seguros, marcas de confianza, calidad real</p>
     </div>
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="sobre">
   <div class="about-inner">
     <div class="about-img-wrap fade-in">
-      <img src="images/about.jpg" alt="Kamakura Bilbao interior" class="about-img">
+      <img src="images/about.jpg" alt="Kamakura Bilbao tienda" class="about-img">
       <div class="about-frame"></div>
     </div>
     <div class="about-text fade-in">
-      <p class="slabel">Sobre nosotros</p>
-      <h2 class="stitle">Un viaje a <em>Japón</em><br>en cada plato.</h2>
-      <p><strong>Kamakura</strong> nace de la pasión por la cocina japonesa auténtica. No buscamos atajos ni fusiones forzadas — trabajamos con <strong>producto fresco de mercado</strong>, técnicas tradicionales y el respeto por cada ingrediente que marca la filosofía japonesa.</p>
-      <p>Cada bocado en Kamakura es una invitación a descubrir los sabores reales de Japón: desde el umami profundo de un buen dashi hasta la delicadeza de un nigiri cortado al momento.</p>
-      <div class="about-quote">"La cocina japonesa es simplicidad, producto y respeto. Eso es Kamakura."</div>
+      <p class="slabel">Nuestra historia</p>
+      <h2 class="stitle">De Kamakura a <em>Bilbao</em>.</h2>
+      <p>Kamakura nace de un sueño: crear un espacio donde las familias bilbaínas encuentren <strong>todo lo que necesitan para sus pequeños</strong> en un solo lugar, con una selección cuidada y un trato cercano.</p>
+      <p>El nombre conecta dos ciudades y dos culturas — la delicadeza japonesa y la fuerza vasca — para ofrecer algo diferente: <strong>productos con alma</strong>, elegidos pieza a pieza pensando en lo que de verdad importa.</p>
+      <div class="about-quote">"Cada detalle cuenta cuando se trata de los más pequeños de la casa."</div>
     </div>
   </div>
 </section>
 
-<!-- CARTA -->
-<section id="carta" class="menu-section">
-  <div style="max-width:1200px;margin:0 auto;text-align:center">
-    <p class="slabel">Nuestra carta</p>
-    <h2 class="stitle">Sabores de <em>Japón</em></h2>
-  </div>
-  <div class="menu-grid">
-    <div class="fade-in">
-      <h3>Sushi & Sashimi</h3>
-      <p class="menu-col-sub">Pescado fresco del día</p>
-      <div class="menu-item"><div><h4>Nigiri variado</h4><p>Selección del chef, 8 piezas</p></div></div>
-      <div class="menu-item"><div><h4>Sashimi mixto</h4><p>Salmón, atún, pez mantequilla</p></div></div>
-      <div class="menu-item"><div><h4>Maki especial Kamakura</h4><p>Creación de la casa</p></div></div>
-      <div class="menu-item"><div><h4>Uramaki de langostino</h4><p>Tempura, aguacate, salsa teriyaki</p></div></div>
-    </div>
-    <div class="fade-in">
-      <h3>Calientes</h3>
-      <p class="menu-col-sub">Tradición y reconfort</p>
-      <div class="menu-item"><div><h4>Ramen tonkotsu</h4><p>Caldo de cerdo 12h, huevo marinado, chashu</p></div></div>
-      <div class="menu-item"><div><h4>Tempura de verduras</h4><p>Boniato, berenjena, pimiento shishito</p></div></div>
-      <div class="menu-item"><div><h4>Gyozas caseras</h4><p>Cerdo y verduras, a la plancha</p></div></div>
-      <div class="menu-item"><div><h4>Teriyaki de salmón</h4><p>Glaseado casero, arroz japonés</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOD SHOWCASE -->
-<div class="food-showcase">
-  <div class="food-inner">
-    <img src="images/food.jpg" alt="Platos Kamakura" class="food-img">
-    <div class="food-text fade-in">
-      <p class="slabel">Nuestra cocina</p>
-      <h2 class="stitle">Producto <em>de verdad</em>.</h2>
-      <p>En Kamakura no hay trucos. Trabajamos con <strong>pescado fresco seleccionado cada mañana</strong>, arroz de grano japonés y ingredientes importados directamente de Japón.</p>
-      <p>Cada pieza de sushi se corta al momento. Cada caldo lleva horas de cocción lenta. Cada tempura se fríe con la técnica precisa que marca la diferencia entre lo correcto y lo extraordinario.</p>
-      <p>Eso es lo que nos hace diferentes: <strong>no imitamos la cocina japonesa, la hacemos de verdad</strong>.</p>
+<div class="products" id="productos">
+  <div class="prod-inner">
+    <img src="images/food.jpg" alt="Productos Kamakura" class="prod-img">
+    <div class="prod-text fade-in">
+      <p class="slabel">Lo que encontrarás</p>
+      <h2 class="stitle">Productos con <em>alma</em>.</h2>
+      <p>En Kamakura encontrarás una <strong>selección cuidada de ropa infantil</strong>, juguetes, accesorios y todo lo que necesitas para vestir y cuidar a los más pequeños.</p>
+      <p>Trabajamos con marcas que comparten nuestros valores: <strong>calidad, diseño bonito y materiales seguros</strong>. Nada de más, nada de menos — justo lo que tu familia necesita.</p>
+      <p>Ven a conocernos. Te sorprenderá lo que hemos preparado.</p>
     </div>
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta">
-  <h2>¿Reservamos <em>tu mesa</em>?</h2>
-  <p>Ven a vivir la experiencia Kamakura. Cocina japonesa auténtica en el corazón de Bilbao.</p>
-  <div class="cta-actions">
-    <a href="#contacto" class="btn-p">Reservar ahora →</a>
-    <a href="#carta" class="btn-o">Ver carta completa</a>
+  <h2>Ven a <em>conocernos</em>.</h2>
+  <p>Kamakura te espera en Bilbao. Un espacio pensado para familias, con productos que enamoran y un trato que se nota.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="#contacto" class="btn-p">Cómo llegar →</a>
   </div>
 </div>
 
-<!-- CONTACTO -->
 <section id="contacto">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
-    <p class="slabel">Contacto</p>
-    <h2 class="stitle">Encuéntranos en <em>Bilbao</em></h2>
+    <p class="slabel">Visítanos</p>
+    <h2 class="stitle">Estamos en <em>Bilbao</em></h2>
   </div>
   <div class="contacto-grid">
     <div class="contacto-card">
@@ -320,14 +257,14 @@
       <div class="contacto-icon">🕐</div>
       <div>
         <h4>Horario</h4>
-        <p>Martes a Domingo<br>13:00 – 15:30 / 20:00 – 23:00</p>
+        <p>Lunes a Sábado<br>10:00 – 13:30 / 17:00 – 20:00</p>
       </div>
     </div>
     <div class="contacto-card">
-      <div class="contacto-icon">📞</div>
+      <div class="contacto-icon">🛍️</div>
       <div>
-        <h4>Reservas</h4>
-        <p>Llámanos o escríbenos por WhatsApp</p>
+        <h4>La tienda</h4>
+        <p>Ropa, juguetes y accesorios infantiles</p>
       </div>
     </div>
   </div>
@@ -335,18 +272,14 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">Kamakura <span>鎌倉</span></div>
+    <div class="footer-brand">Kamakura <span>·</span></div>
     <div class="footer-copy">&copy; 2025 Kamakura · Bilbao · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
   </div>
 </footer>
 
 <script>
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
-});
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: .15 });
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60); });
+const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: .15 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
 </body>
