@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exposegur 2007 — Correduría de Seguros en Bilbao</title>
+  <meta name="description" content="Exposegur 2007, correduría de seguros en Bilbao. Asesoramiento personalizado en seguros de hogar, auto, vida, salud, negocio y comunidades. C/ Rodríguez Arias, 23.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1a2744;--navy-dark:#0f1a30;--navy-light:#2a3d60;
+      --gold:#c9a35a;--gold-light:#e0bd76;
+      --bg:#f8fafb;--bg-alt:#eef3f6;--cream:#f0f5f8;
+      --black:#0c1520;--text:#1a2a3a;--text-l:#4a6070;--text-m:#7a8e9a;
+      --border:#c8d8e4;
+      --font:'DM Serif Display',serif;--font-b:'Outfit',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
+
+    .topbar{background:var(--navy-dark);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
+    .topbar a{color:var(--gold);text-decoration:none}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(248,250,251,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(26,39,68,.08)}
+    .nav-brand{display:flex;align-items:center;gap:16px;text-decoration:none}
+    .nav-mark{width:50px;height:50px;background:var(--navy);display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--gold)}
+    .nav-mark span{font-family:var(--font);color:var(--cream);font-size:1.3rem;font-weight:400;font-style:italic}
+    .nav-text{font-family:var(--font);font-size:1.6rem;color:var(--navy-dark);font-weight:400;line-height:1}
+    .nav-sub{font-size:.62rem;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;margin-top:3px;font-weight:500}
+    .nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--navy)}
+    .nav-cta{background:var(--navy);color:var(--cream)!important;padding:12px 26px;font-weight:500!important;transition:all .3s;border:1px solid var(--navy)}
+    .nav-cta:hover{background:transparent;color:var(--navy)!important}
+    .hamburger{display:none;background:none;border:none;cursor:pointer}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0}
+
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(15,26,48,.92) 0%,rgba(15,26,48,.65) 50%,rgba(15,26,48,.3) 100%);z-index:1}
+    .hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(201,163,90,.12);border:1px solid var(--gold);color:var(--gold-light);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:34px}
+    .hero h1{font-family:var(--font);font-size:clamp(3rem,6.5vw,6rem);font-weight:400;line-height:1.02;color:var(--cream);margin-bottom:28px;max-width:900px}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero p{font-size:1.15rem;max-width:560px;color:rgba(240,245,248,.85);margin-bottom:44px;line-height:1.75;font-weight:300}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--black);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--gold)}
+    .btn-p:hover{background:transparent;color:var(--gold-light)}
+    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:400;border:2px solid rgba(240,245,248,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s}
+    .btn-o:hover{background:var(--cream);color:var(--black);border-color:var(--cream)}
+
+    .trust{background:var(--navy);color:var(--cream);padding:50px 60px;text-align:center;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+    .trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+    .trust-item{text-align:center}
+    .trust-num{font-family:var(--font);font-size:2.8rem;color:var(--gold);font-style:italic;line-height:1}
+    .trust-label{font-size:.78rem;color:rgba(240,245,248,.65);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+
+    section{padding:120px 60px}
+    .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500;display:inline-flex;align-items:center;gap:14px}
+    .slabel::before,.slabel::after{content:'';width:28px;height:1px;background:var(--gold)}
+    .stitle{font-family:var(--font);font-size:clamp(2.6rem,5vw,4.5rem);font-weight:400;line-height:1.08;color:var(--navy-dark);margin-bottom:24px}
+    .stitle em{font-style:italic;color:var(--navy)}
+
+    .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img{width:100%;height:560px;object-fit:cover}
+    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--gold);z-index:-1}
+    .about-text p{font-size:1.05rem;color:var(--text-l);line-height:1.9;margin-bottom:20px}
+    .about-text strong{color:var(--navy-dark);font-weight:500}
+    .about-quote{font-family:var(--font);font-style:italic;font-size:1.5rem;color:var(--navy);line-height:1.5;padding:26px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:32px 0}
+
+    .services-section{background:var(--bg-alt)}
+    .srv-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+    .srv-card{padding:40px 30px;background:var(--bg);border-top:3px solid var(--gold);transition:transform .3s}
+    .srv-card:hover{transform:translateY(-6px)}
+    .srv-icon{font-size:2.2rem;margin-bottom:16px}
+    .srv-card h3{font-family:var(--font);font-size:1.4rem;color:var(--navy-dark);font-weight:400;margin-bottom:12px;font-style:italic}
+    .srv-card p{font-size:.92rem;color:var(--text-l);line-height:1.75}
+
+    .cta{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);padding:120px 60px;text-align:center;color:var(--cream);border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,163,90,.12) 0%,transparent 70%)}
+    .cta h2{font-family:var(--font);font-size:clamp(2.6rem,5vw,4.5rem);margin-bottom:24px;font-weight:400;line-height:1.08;position:relative}
+    .cta h2 em{font-style:italic;color:var(--gold)}
+    .cta p{color:rgba(240,245,248,.82);font-size:1.05rem;max-width:560px;margin:0 auto 40px;line-height:1.8;position:relative}
+
+    .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+    .contacto-card{display:flex;gap:20px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--navy)}
+    .contacto-icon{width:46px;height:46px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.15rem}
+    .contacto-card h4{font-family:var(--font);font-size:1.2rem;color:var(--navy-dark);font-weight:400;margin-bottom:4px;font-style:italic}
+    .contacto-card p,.contacto-card a{font-size:.92rem;color:var(--text-l);text-decoration:none;line-height:1.6}
+    .contacto-card a:hover{color:var(--navy)}
+
+    footer{background:var(--navy-dark);padding:50px 60px 36px;color:rgba(240,245,248,.45);border-top:1px solid var(--gold)}
+    .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-brand{font-family:var(--font);font-size:1.4rem;color:var(--cream);font-weight:400;font-style:italic}
+    .footer-brand span{color:var(--gold)}
+    .footer-copy{font-size:.78rem}
+    .footer-copy a{color:var(--gold);text-decoration:none}
+
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:900px){
+      .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center}
+      nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:block}
+      .hero{padding:70px 22px;min-height:78vh}
+      .trust{padding:36px 22px}.trust-inner{grid-template-columns:1fr 1fr;gap:20px}
+      section{padding:70px 22px}
+      .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:340px}.about-frame{display:none}
+      .srv-grid{grid-template-columns:1fr;gap:20px}
+      .cta{padding:70px 22px}
+      .contacto-grid{grid-template-columns:1fr}
+      footer{padding:30px 22px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 C/ Rodríguez Arias, 23 · Bilbao</span>
+  <span>📞 <a href="tel:+34944701115">944 701 115</a></span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-mark"><span>E</span></div>
+    <div>
+      <div class="nav-text">Exposegur 2007</div>
+      <div class="nav-sub">Correduría de seguros · Bilbao</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#seguros">Seguros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34944701115" class="nav-cta">📞 Llamar</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Correduría de seguros desde 2007
+    </div>
+    <h1>Tu tranquilidad,<br><em>nuestro compromiso.</em></h1>
+    <p>Exposegur 2007 es una correduría de seguros independiente en Bilbao. Trabajamos para ti, no para las aseguradoras. Nuestro trabajo es encontrar la mejor cobertura al mejor precio, sin ataduras.</p>
+    <div class="hero-actions">
+      <a href="tel:+34944701115" class="btn-p">Pedir presupuesto →</a>
+      <a href="#seguros" class="btn-o">Ver seguros</a>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="trust-inner">
+    <div class="fade-in">
+      <div class="trust-num">18+</div>
+      <div class="trust-label">Años de experiencia</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">100%</div>
+      <div class="trust-label">Independientes</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">20+</div>
+      <div class="trust-label">Compañías comparadas</div>
+    </div>
+    <div class="fade-in">
+      <div class="trust-num">0 €</div>
+      <div class="trust-label">Coste del asesoramiento</div>
+    </div>
+  </div>
+</div>
+
+<section id="nosotros">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Exposegur 2007 oficina Bilbao" class="about-img">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="slabel">Quiénes somos</p>
+      <h2 class="stitle">Una correduría <em>que trabaja para ti</em>.</h2>
+      <p>Desde 2007, <strong>Exposegur</strong> asesora a particulares y empresas en Bilbao en todo lo relacionado con seguros. Somos una <strong>correduría independiente</strong> — eso significa que no estamos vinculados a ninguna compañía aseguradora.</p>
+      <p>Nuestro trabajo es sencillo: <strong>comparamos entre más de 20 compañías</strong> para encontrar la póliza que mejor se adapta a lo que necesitas, al mejor precio posible. Y si tienes un siniestro, estamos contigo para que cobres lo que te corresponde.</p>
+      <div class="about-quote">"Un corredor de seguros trabaja para el cliente, no para la aseguradora. Esa es la diferencia."</div>
+    </div>
+  </div>
+</section>
+
+<section id="seguros" class="services-section">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Nuestros seguros</p>
+    <h2 class="stitle">Protección para <em>todo lo que importa</em></h2>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🏠</div>
+      <h3>Hogar</h3>
+      <p>Protege tu casa y tus pertenencias. Comparamos coberturas de las mejores compañías para que pagues lo justo.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🚗</div>
+      <h3>Auto y moto</h3>
+      <p>Desde terceros hasta todo riesgo. Te buscamos la póliza que mejor se adapta a tu perfil y tu vehículo.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">❤️</div>
+      <h3>Vida y salud</h3>
+      <p>Seguros de vida, salud y accidentes. Protege a tu familia con las coberturas que realmente necesitáis.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🏢</div>
+      <h3>Negocio y PYME</h3>
+      <p>Responsabilidad civil, multirriesgo comercial, D&O. Todo lo que tu empresa necesita para operar tranquila.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🏘️</div>
+      <h3>Comunidades</h3>
+      <p>Seguros para comunidades de propietarios. Cobertura completa del edificio, zonas comunes y responsabilidad civil.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">⚖️</div>
+      <h3>Defensa jurídica</h3>
+      <p>Protección legal para particulares y empresas. Reclamaciones, conflictos laborales, defensa penal y más.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>¿Hablamos de <em>tu seguro</em>?</h2>
+  <p>Te hacemos un estudio gratuito y sin compromiso. Comparamos entre más de 20 compañías y te recomendamos la mejor opción.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="tel:+34944701115" class="btn-p">📞 944 701 115</a>
+    <a href="#contacto" class="btn-o">Más formas de contacto</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Contacto</p>
+    <h2 class="stitle">Estamos en <em>Bilbao</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-card">
+      <div class="contacto-icon">📍</div>
+      <div>
+        <h4>Dirección</h4>
+        <p>C/ Rodríguez Arias, 23<br>48011 Bilbao, Bizkaia</p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">📞</div>
+      <div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:+34944701115">944 701 115</a><br><a href="tel:+34944027302">944 027 302</a></p>
+      </div>
+    </div>
+    <div class="contacto-card">
+      <div class="contacto-icon">🕐</div>
+      <div>
+        <h4>Horario</h4>
+        <p>Lunes a Viernes<br>9:00 – 14:00 / 16:00 – 19:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Exposegur <span>2007</span></div>
+    <div class="footer-copy">&copy; 2025 Exposegur 2007 Correduría de Seguros S.L. · CIF: B95448007 · Bilbao · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
