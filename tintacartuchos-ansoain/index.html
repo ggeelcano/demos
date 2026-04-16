@@ -14,51 +14,79 @@
       --cyan:#0a7e8c;--cyan-dark:#065a64;--cyan-deep:#043e44;
       --amber:#e8a020;--amber-light:#f0b840;--amber-soft:#f5d070;
       --bg:#f6fafb;--bg-alt:#e8f2f4;
-      --cream:#f0f8f9;
+      --cream:#f0f8f9;--white:#ffffff;
       --black:#0a1416;--text:#1a2c30;--text-l:#4a6268;--text-m:#7a9298;
       --border:#c0d8dc;
       --font:'DM Serif Display',serif;--font-b:'Outfit',sans-serif;
     }
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+    /* CURSOR CUSTOM */
+    .cursor{width:12px;height:12px;background:var(--amber);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .15s;mix-blend-mode:difference}
+    .cursor-ring{width:44px;height:44px;border:1.5px solid var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:width .3s,height .3s,border-color .3s;transform:translate(-50%,-50%)}
+    .cursor-ring.hover{width:70px;height:70px;border-color:var(--amber)}
+    @media(max-width:900px){.cursor,.cursor-ring{display:none}}
 
     .topbar{background:var(--cyan-deep);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
     .topbar a{color:var(--amber-light);text-decoration:none}
 
-    nav{position:sticky;top:0;z-index:100;background:rgba(246,250,251,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
-    nav.scrolled{box-shadow:0 2px 24px rgba(10,126,140,.08)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;padding:26px 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+    nav.scrolled{background:rgba(246,250,251,.97);backdrop-filter:blur(14px);padding:16px 60px;border-bottom:1px solid var(--border);box-shadow:0 2px 24px rgba(10,126,140,.08)}
     .nav-brand{display:flex;align-items:center;gap:16px;text-decoration:none}
-    .nav-mark{width:52px;height:52px;background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));display:flex;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--amber)}
-    .nav-mark span{font-family:var(--font-b);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-align:center;line-height:1.1}
-    .nav-text{font-family:var(--font);font-size:1.6rem;color:var(--cyan-deep);font-weight:400;line-height:1}
-    .nav-sub{font-size:.6rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:500}
+    .nav-mark{width:52px;height:52px;background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));display:flex;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--amber);transition:transform .3s}
+    .nav-mark:hover{transform:rotate(5deg) scale(1.05)}
+    .nav-mark span{font-family:var(--font-b);color:#fff;font-size:.65rem;font-weight:600;letter-spacing:.05em;text-align:center;line-height:1.1}
+    .nav-text{font-family:var(--font);font-size:1.6rem;color:var(--white);font-weight:400;line-height:1;transition:color .4s}
+    nav.scrolled .nav-text{color:var(--cyan-deep)}
+    .nav-sub{font-size:.58rem;color:var(--amber-light);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:500;transition:color .4s}
+    nav.scrolled .nav-sub{color:var(--cyan)}
     .nav-links{display:flex;gap:34px;list-style:none;align-items:center}
-    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
-    .nav-links a:hover{color:var(--cyan)}
-    .nav-cta{background:var(--cyan);color:#fff!important;padding:12px 26px;font-weight:500!important;transition:all .3s;border:1px solid var(--cyan);border-radius:8px}
-    .nav-cta:hover{background:transparent;color:var(--cyan)!important}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,.8);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--amber);transition:width .3s}
+    .nav-links a:hover::after{width:100%}
+    nav.scrolled .nav-links a{color:var(--text)}
+    .nav-links a:hover{color:var(--amber)}
+    .nav-cta{background:var(--amber)!important;color:var(--black)!important;padding:12px 26px;font-weight:600!important;transition:all .3s;border:2px solid var(--amber);border-radius:8px}
+    .nav-cta::after{display:none!important}
+    .nav-cta:hover{background:transparent!important;color:var(--amber)!important}
     .hamburger{display:none;background:none;border:none;cursor:pointer}
-    .hamburger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);margin:5px 0;transition:.3s}
+    nav.scrolled .hamburger span{background:var(--text)}
 
-    .hero{position:relative;min-height:90vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(4,62,68,.94) 0%,rgba(4,62,68,.7) 45%,rgba(4,62,68,.3) 100%);z-index:1}
+    /* HERO FULLSCREEN WITH PARALLAX */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 60px 100px;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0;will-change:transform}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(4,62,68,.95) 0%,rgba(4,62,68,.7) 40%,rgba(4,62,68,.2) 100%);z-index:1}
     .hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
-    .hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(232,160,32,.12);border:1px solid var(--amber);color:var(--amber-light);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:34px;border-radius:30px}
-    .hero h1{font-family:var(--font);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:28px;max-width:900px}
+    .hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(232,160,32,.12);border:1px solid var(--amber);color:var(--amber-light);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:34px;border-radius:30px;animation:fadeUp .8s ease .2s both}
+    .hero h1{font-family:var(--font);font-size:clamp(3rem,7vw,6rem);font-weight:400;line-height:1.02;color:var(--cream);margin-bottom:28px;max-width:900px;animation:fadeUp .8s ease .4s both}
     .hero h1 em{font-style:italic;color:var(--amber-light)}
-    .hero p{font-size:1.15rem;max-width:560px;color:rgba(240,248,249,.85);margin-bottom:44px;line-height:1.75;font-weight:300}
-    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:var(--black);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--amber);border-radius:8px}
-    .btn-p:hover{background:transparent;color:var(--amber-light)}
-    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:400;border:2px solid rgba(240,248,249,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border-radius:8px}
-    .btn-o:hover{background:var(--cream);color:var(--cyan-deep);border-color:var(--cream)}
+    .hero p{font-size:1.2rem;max-width:560px;color:rgba(240,248,249,.85);margin-bottom:44px;line-height:1.75;font-weight:300;animation:fadeUp .8s ease .6s both}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s ease .8s both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-    .features{background:var(--cyan);color:#fff;padding:50px 60px;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber)}
-    .features-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
-    .feat-icon{font-size:2.2rem;margin-bottom:10px}
-    .feat h4{font-family:var(--font);font-size:1.2rem;font-weight:400;font-style:italic;margin-bottom:4px}
-    .feat p{font-size:.78rem;color:rgba(255,255,255,.65);letter-spacing:.06em;text-transform:uppercase}
+    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:var(--black);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--amber);border-radius:8px;position:relative;overflow:hidden}
+    .btn-p::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
+    .btn-p:hover::before{left:100%}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(232,160,32,.35)}
+    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:400;border:2px solid rgba(240,248,249,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border-radius:8px}
+    .btn-o:hover{background:var(--cream);color:var(--cyan-deep);border-color:var(--cream);transform:translateY(-2px)}
+
+    /* MARQUEE TICKER */
+    .ticker{background:var(--cyan);color:var(--white);padding:14px 0;overflow:hidden;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber)}
+    .ticker-track{display:flex;gap:60px;animation:scroll 25s linear infinite;white-space:nowrap}
+    .ticker-item{font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .ticker-dot{width:8px;height:8px;background:var(--amber);border-radius:50%}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* COUNTER STATS */
+    .stats{background:var(--cyan-deep);color:var(--white);padding:60px 60px}
+    .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+    .stat{padding:20px}
+    .stat-num{font-family:var(--font);font-size:3.2rem;color:var(--amber);font-style:italic;line-height:1}
+    .stat-label{font-size:.78rem;color:rgba(240,248,249,.55);letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+    .stat-bar{width:60px;height:3px;background:var(--amber);margin:12px auto 0;border-radius:2px;opacity:.5}
 
     section{padding:120px 60px}
     .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px;font-weight:500;display:inline-flex;align-items:center;gap:14px}
@@ -68,24 +96,32 @@
 
     .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
     .about-img-wrap{position:relative}
-    .about-img{width:100%;height:560px;object-fit:cover;border-radius:16px}
-    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--amber);border-radius:16px;z-index:-1}
+    .about-img{width:100%;height:560px;object-fit:cover;border-radius:16px;transition:transform .5s}
+    .about-img:hover{transform:scale(1.02)}
+    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--amber);border-radius:16px;z-index:-1;transition:transform .5s}
+    .about-img-wrap:hover .about-frame{transform:translate(6px,-6px)}
     .about-text p{font-size:1.02rem;color:var(--text-l);line-height:1.9;margin-bottom:20px}
     .about-text strong{color:var(--cyan-deep);font-weight:500}
     .about-quote{font-family:var(--font);font-style:italic;font-size:1.4rem;color:var(--cyan);line-height:1.5;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:30px 0}
 
+    /* SERVICES WITH INTERACTIVE TABS */
     .srv-section{background:var(--bg-alt)}
-    .srv-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .srv-card{padding:36px 28px;background:var(--bg);border-radius:16px;border-top:3px solid var(--amber);transition:transform .3s}
-    .srv-card:hover{transform:translateY(-6px)}
-    .srv-icon{font-size:2rem;margin-bottom:14px}
-    .srv-card h3{font-family:var(--font);font-size:1.25rem;color:var(--cyan-deep);font-weight:400;margin-bottom:10px;font-style:italic}
-    .srv-card p{font-size:.88rem;color:var(--text-l);line-height:1.75}
+    .tabs{max-width:1200px;margin:40px auto 0;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    .tab{padding:12px 28px;background:transparent;border:2px solid var(--border);color:var(--text-l);font-family:var(--font-b);font-size:.82rem;font-weight:500;letter-spacing:.06em;cursor:pointer;border-radius:30px;transition:all .3s}
+    .tab:hover,.tab.active{background:var(--cyan);color:var(--white);border-color:var(--cyan)}
+    .tab-panels{max-width:1000px;margin:40px auto 0}
+    .tab-panel{display:none;animation:fadeIn .5s ease}
+    .tab-panel.active{display:grid;grid-template-columns:100px 1fr;gap:30px;align-items:center;padding:40px;background:var(--white);border-radius:16px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.04)}
+    .tab-panel-icon{font-size:3.5rem;text-align:center}
+    .tab-panel h3{font-family:var(--font);font-size:1.6rem;color:var(--cyan-deep);font-weight:400;font-style:italic;margin-bottom:8px}
+    .tab-panel p{font-size:.95rem;color:var(--text-l);line-height:1.8}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-    .sublimacion{background:var(--cyan-deep);color:#fff;position:relative;padding:0}
-    .sub-inner{display:grid;grid-template-columns:1fr 1fr;min-height:560px;align-items:center}
-    .sub-img{width:100%;height:100%;min-height:560px;object-fit:cover}
-    .sub-text{padding:90px 80px}
+    /* SUBLIMACIÓN GALLERY */
+    .sublimacion{background:var(--cyan-deep);color:#fff;padding:120px 60px}
+    .sub-header{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;margin-bottom:60px}
+    .sub-img{width:100%;height:480px;object-fit:cover;border-radius:16px;transition:transform .5s}
+    .sub-img:hover{transform:scale(1.02)}
     .sub-text .slabel{color:var(--amber)}
     .sub-text .slabel::before,.sub-text .slabel::after{background:var(--amber)}
     .sub-text .stitle{color:#fff}
@@ -93,20 +129,27 @@
     .sub-text p{font-size:1.02rem;color:rgba(240,248,249,.8);line-height:1.9;margin-bottom:18px}
     .sub-text strong{color:var(--amber-light);font-weight:500}
     .sub-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-    .sub-tag{background:rgba(232,160,32,.15);border:1px solid var(--amber);color:var(--amber-light);padding:8px 18px;font-size:.78rem;border-radius:30px;letter-spacing:.06em}
+    .sub-tag{background:rgba(232,160,32,.15);border:1px solid rgba(232,160,32,.4);color:var(--amber-light);padding:10px 22px;font-size:.82rem;border-radius:30px;letter-spacing:.06em;cursor:default;transition:all .3s}
+    .sub-tag:hover{background:var(--amber);color:var(--black);border-color:var(--amber);transform:translateY(-2px)}
 
     .cta{background:linear-gradient(135deg,var(--cyan-deep) 0%,var(--cyan-dark) 100%);padding:120px 60px;text-align:center;color:#fff;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber);position:relative;overflow:hidden}
-    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,160,32,.1) 0%,transparent 70%)}
+    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,160,32,.08) 0%,transparent 70%);animation:pulse 4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
     .cta h2{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;font-weight:400;line-height:1.08;position:relative}
     .cta h2 em{font-style:italic;color:var(--amber-light)}
     .cta p{color:rgba(240,248,249,.78);font-size:1.02rem;max-width:560px;margin:0 auto 40px;line-height:1.8;position:relative}
 
     .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
-    .contacto-card{display:flex;gap:18px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--cyan);border-radius:12px}
+    .contacto-card{display:flex;gap:18px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--cyan);border-radius:12px;transition:transform .3s,box-shadow .3s}
+    .contacto-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(10,126,140,.1)}
     .contacto-icon{width:44px;height:44px;background:var(--cyan);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
     .contacto-card h4{font-family:var(--font);font-size:1.15rem;color:var(--cyan-deep);font-weight:400;margin-bottom:4px;font-style:italic}
     .contacto-card p,.contacto-card a{font-size:.9rem;color:var(--text-l);text-decoration:none;line-height:1.6}
     .contacto-card a:hover{color:var(--cyan)}
+
+    /* MAP EMBED */
+    .map-wrap{max-width:1200px;margin:40px auto 0;border-radius:16px;overflow:hidden;border:3px solid var(--amber)}
+    .map-wrap iframe{width:100%;height:350px;border:0;display:block;filter:saturate(.8) contrast(1.05)}
 
     footer{background:var(--black);padding:50px 60px 36px;color:rgba(240,248,249,.4);border-top:1px solid var(--amber)}
     .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
@@ -115,18 +158,25 @@
     .footer-copy{font-size:.75rem}
     .footer-copy a{color:var(--amber);text-decoration:none}
 
+    /* WHATSAPP FLOAT */
+    .wa{position:fixed;bottom:26px;right:26px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:99;text-decoration:none;transition:transform .3s;animation:waBounce 2s ease-in-out infinite}
+    .wa:hover{transform:scale(1.1)}
+    @keyframes waBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
     .fade-in{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
     @media(max-width:900px){
       .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center}
       nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:block}
-      .hero{padding:70px 22px;min-height:78vh}
-      .features{padding:30px 22px}.features-inner{grid-template-columns:1fr;gap:20px}
+      .hero{padding:100px 22px 70px;min-height:85vh}
+      .stats{padding:30px 22px}.stats-inner{grid-template-columns:1fr 1fr;gap:18px}
       section{padding:70px 22px}
-      .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:340px}.about-frame{display:none}
-      .srv-grid{grid-template-columns:1fr;gap:18px}
-      .sub-inner{grid-template-columns:1fr}.sub-img{min-height:300px;height:300px}.sub-text{padding:60px 22px}
+      .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:300px}.about-frame{display:none}
+      .tab-panel.active{grid-template-columns:1fr}
+      .tab-panel-icon{font-size:2.5rem}
+      .sublimacion{padding:70px 22px}
+      .sub-header{grid-template-columns:1fr;gap:40px}.sub-img{height:300px}
       .cta{padding:70px 22px}
       .contacto-grid{grid-template-columns:1fr}
       footer{padding:30px 22px}
@@ -134,6 +184,9 @@
   </style>
 </head>
 <body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <div class="topbar">
   <span>📍 C/ Lapurbide, 1 Bajo · Ansoáin, Navarra</span>
@@ -145,7 +198,7 @@
     <div class="nav-mark"><span>TINTA<br>CART.</span></div>
     <div>
       <div class="nav-text">Tintacartuchos</div>
-      <div class="nav-sub">Cartuchos · Informática · Sublimación · Ansoáin</div>
+      <div class="nav-sub">Cartuchos · Informática · Sublimación</div>
     </div>
   </a>
   <ul class="nav-links">
@@ -160,13 +213,13 @@
   </button>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-inner">
-    <div class="hero-badge">
-      🖨️ Tu tienda de confianza en Ansoáin
-    </div>
+    <div class="hero-badge">🖨️ Tu tienda de confianza en Ansoáin</div>
     <h1>Tinta, tecnología<br><em>y mucho más.</em></h1>
-    <p>Tintacartuchos es la tienda de referencia en Ansoáin para cartuchos de tinta, accesorios de informática, material de oficina y ahora también sublimación personalizada. Todo lo que necesitas, cerca de casa.</p>
+    <p>Cartuchos, informática, telefonía, material de oficina y sublimación personalizada. Todo lo que necesitas, a un paso de casa.</p>
     <div class="hero-actions">
       <a href="tel:+34948147420" class="btn-p">Llámanos →</a>
       <a href="#servicios" class="btn-o">Nuestros servicios</a>
@@ -174,26 +227,55 @@
   </div>
 </div>
 
-<div class="features">
-  <div class="features-inner">
-    <div class="feat fade-in">
-      <div class="feat-icon">🖨️</div>
-      <h4>Cartuchos y tóner</h4>
-      <p>Reciclados · Alternativos · Originales</p>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Recarga de cartuchos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tóner original y alternativo</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Accesorios informática</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Accesorios telefonía</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Material de oficina</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Sublimación personalizada</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tazas · Piedras · Azulejos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Aluminio · Madera · Baberos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Recarga de cartuchos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tóner original y alternativo</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Accesorios informática</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Accesorios telefonía</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Material de oficina</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Sublimación personalizada</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tazas · Piedras · Azulejos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Aluminio · Madera · Baberos</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat fade-in">
+      <div class="stat-num" data-target="6" data-suffix="+">0+</div>
+      <div class="stat-label">Servicios diferentes</div>
+      <div class="stat-bar"></div>
     </div>
-    <div class="feat fade-in">
-      <div class="feat-icon">💻</div>
-      <h4>Informática y telefonía</h4>
-      <p>Accesorios · Consumibles · Reparación</p>
+    <div class="stat fade-in">
+      <div class="stat-num" data-target="100" data-suffix="%">0%</div>
+      <div class="stat-label">Personalización</div>
+      <div class="stat-bar"></div>
     </div>
-    <div class="feat fade-in">
-      <div class="feat-icon">🎨</div>
-      <h4>Sublimación</h4>
-      <p>Tazas · Piedras · Azulejos · Madera</p>
+    <div class="stat fade-in">
+      <div class="stat-num" data-target="20" data-suffix="+">0+</div>
+      <div class="stat-label">Marcas de impresora</div>
+      <div class="stat-bar"></div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num" data-target="0" data-suffix="€">0€</div>
+      <div class="stat-label">Presupuesto sin compromiso</div>
+      <div class="stat-bar"></div>
     </div>
   </div>
 </div>
 
+<!-- ABOUT -->
 <section id="nosotros">
   <div class="about-inner">
     <div class="about-img-wrap fade-in">
@@ -203,60 +285,63 @@
     <div class="about-text fade-in">
       <p class="slabel">Sobre nosotros</p>
       <h2 class="stitle">Más que una tienda <em>de cartuchos</em>.</h2>
-      <p><strong>Tintacartuchos</strong> empezó como una tienda especializada en recarga de cartuchos de tinta en Ansoáin, y con los años ha crecido hasta convertirse en mucho más: hoy somos el sitio al que vienes cuando necesitas <strong>cualquier cosa de informática, telefonía, material de oficina o un regalo personalizado</strong>.</p>
-      <p>Desde el año pasado ofrecemos un servicio de <strong>sublimación</strong> que está encantando a nuestros clientes: diseñamos e imprimimos fotos y gráficos sobre tazas, piedras, azulejos, aluminio, madera, baberos, alfombrillas de ratón y mucho más. <strong>Personalización total, hecha aquí en Ansoáin.</strong></p>
+      <p><strong>Tintacartuchos</strong> empezó como una tienda de recarga de cartuchos en Ansoáin y hoy es mucho más: <strong>informática, telefonía, material de oficina y sublimación personalizada</strong>.</p>
+      <p>Desde el año pasado ofrecemos sublimación — diseñamos e imprimimos sobre tazas, piedras, azulejos, aluminio, madera y más. <strong>Personalización total, hecha aquí en Ansoáin.</strong></p>
       <div class="about-quote">"Lo que empezó con tinta, hoy es un mundo de posibilidades."</div>
     </div>
   </div>
 </section>
 
+<!-- SERVICES TABS -->
 <section id="servicios" class="srv-section">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
     <p class="slabel">Lo que hacemos</p>
-    <h2 class="stitle">Todos nuestros <em>servicios</em></h2>
+    <h2 class="stitle">Elige un <em>servicio</em></h2>
   </div>
-  <div class="srv-grid">
-    <div class="srv-card fade-in">
-      <div class="srv-icon">🔄</div>
-      <h3>Recarga de cartuchos</h3>
-      <p>Recargamos tus cartuchos de tinta vacíos con tinta de calidad. Ahorra dinero sin perder calidad de impresión.</p>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab(0)">🔄 Recarga</button>
+    <button class="tab" onclick="showTab(1)">🖨️ Cartuchos</button>
+    <button class="tab" onclick="showTab(2)">💻 Informática</button>
+    <button class="tab" onclick="showTab(3)">📱 Telefonía</button>
+    <button class="tab" onclick="showTab(4)">📎 Oficina</button>
+    <button class="tab" onclick="showTab(5)">🎨 Sublimación</button>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel active" id="panel0">
+      <div class="tab-panel-icon">🔄</div>
+      <div><h3>Recarga de cartuchos</h3><p>Recargamos tus cartuchos de tinta vacíos con tinta de calidad profesional. Ahorra hasta un 70% respecto al cartucho original sin perder calidad de impresión. Servicio rápido — lo dejas y lo recoges.</p></div>
     </div>
-    <div class="srv-card fade-in">
-      <div class="srv-icon">🖨️</div>
-      <h3>Cartuchos y tóner</h3>
-      <p>Reciclados, alternativos premium plus+ y originales. Para todas las marcas y modelos de impresora.</p>
+    <div class="tab-panel" id="panel1">
+      <div class="tab-panel-icon">🖨️</div>
+      <div><h3>Cartuchos y tóner</h3><p>Reciclados, alternativos premium plus+ y originales para todas las marcas: HP, Epson, Canon, Brother, Samsung, Kyocera y más. Te asesoramos para que elijas la mejor opción calidad-precio para tu impresora.</p></div>
     </div>
-    <div class="srv-card fade-in">
-      <div class="srv-icon">💻</div>
-      <h3>Accesorios informática</h3>
-      <p>Cables, ratones, teclados, pendrives, auriculares y todo lo que necesitas para tu equipo.</p>
+    <div class="tab-panel" id="panel2">
+      <div class="tab-panel-icon">💻</div>
+      <div><h3>Accesorios de informática</h3><p>Cables, ratones, teclados, pendrives, discos duros, auriculares, webcams, hubs USB y todo lo que necesitas para tu equipo. Marcas de confianza a precios de barrio.</p></div>
     </div>
-    <div class="srv-card fade-in">
-      <div class="srv-icon">📱</div>
-      <h3>Accesorios telefonía</h3>
-      <p>Fundas, protectores de pantalla, cargadores, auriculares bluetooth y más para tu móvil.</p>
+    <div class="tab-panel" id="panel3">
+      <div class="tab-panel-icon">📱</div>
+      <div><h3>Accesorios de telefonía</h3><p>Fundas, protectores de pantalla, cargadores, cables, auriculares bluetooth, soportes de coche y más. Para iPhone, Samsung, Xiaomi y todas las marcas.</p></div>
     </div>
-    <div class="srv-card fade-in">
-      <div class="srv-icon">📎</div>
-      <h3>Material de oficina</h3>
-      <p>Papel, bolígrafos, archivadores, sobres, carpetas... Todo el material que tu oficina necesita, sin ir más lejos.</p>
+    <div class="tab-panel" id="panel4">
+      <div class="tab-panel-icon">📎</div>
+      <div><h3>Material de oficina</h3><p>Papel, bolígrafos, archivadores, sobres, carpetas, grapas, tijeras, celo, correctores... Todo el material que tu oficina necesita, sin tener que ir más lejos de Ansoáin.</p></div>
     </div>
-    <div class="srv-card fade-in">
-      <div class="srv-icon">🎨</div>
-      <h3>Sublimación</h3>
-      <p>Personalización de tazas, piedras, azulejos, aluminio, madera, baberos, alfombrillas y más. Diseño e impresión a medida.</p>
+    <div class="tab-panel" id="panel5">
+      <div class="tab-panel-icon">🎨</div>
+      <div><h3>Sublimación personalizada</h3><p>Imprimimos tus fotos y diseños sobre tazas, piedras, azulejos, aluminio, madera, baberos, alfombrillas de ratón y más. Perfecto para regalos, merchandising o caprichos personales. Tú eliges la imagen, nosotros hacemos la magia.</p></div>
     </div>
   </div>
 </section>
 
+<!-- SUBLIMACIÓN -->
 <div class="sublimacion" id="sublimacion">
-  <div class="sub-inner">
-    <img src="images/sublimacion.jpg" alt="Sublimación Tintacartuchos" class="sub-img">
+  <div class="sub-header">
+    <img src="images/sublimacion.jpg" alt="Sublimación Tintacartuchos" class="sub-img fade-in">
     <div class="sub-text fade-in">
       <p class="slabel">Nuevo servicio</p>
       <h2 class="stitle">Sublimación <em>personalizada</em>.</h2>
-      <p>Desde el año pasado ofrecemos un servicio de <strong>sublimación</strong>: personalización, diseño e impresión de fotos y gráficos sobre materiales rígidos. Tú nos dices la idea y nosotros la hacemos realidad.</p>
-      <p>Perfecto para <strong>regalos únicos, recuerdos, merchandising para negocios o simplemente para darte un capricho</strong> con algo diferente.</p>
+      <p>Tú nos dices la idea y nosotros la hacemos realidad. Perfecto para <strong>regalos únicos, recuerdos, merchandising</strong> o simplemente para darte un capricho.</p>
       <div class="sub-tags">
         <span class="sub-tag">Tazas</span>
         <span class="sub-tag">Piedras</span>
@@ -271,15 +356,17 @@
   </div>
 </div>
 
+<!-- CTA -->
 <div class="cta">
   <h2>¿Necesitas <em>tinta, tecnología o un regalo único</em>?</h2>
-  <p>Pásate por la tienda o llámanos. Estamos en Lapurbide 1, en el centro de Ansoáin. Te asesoramos sin compromiso.</p>
+  <p>Pásate por la tienda o llámanos. Estamos en Lapurbide 1, en Ansoáin.</p>
   <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
     <a href="tel:+34948147420" class="btn-p">📞 948 147 420</a>
     <a href="mailto:cartuchosansoain@gmail.com" class="btn-o">✉️ Email</a>
   </div>
 </div>
 
+<!-- CONTACTO -->
 <section id="contacto">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
     <p class="slabel">Encuéntranos</p>
@@ -288,25 +375,19 @@
   <div class="contacto-grid">
     <div class="contacto-card">
       <div class="contacto-icon">📍</div>
-      <div>
-        <h4>Dirección</h4>
-        <p>C/ Lapurbide, 1 Bajo<br>31013 Ansoáin, Navarra</p>
-      </div>
+      <div><h4>Dirección</h4><p>C/ Lapurbide, 1 Bajo<br>31013 Ansoáin, Navarra</p></div>
     </div>
     <div class="contacto-card">
       <div class="contacto-icon">📞</div>
-      <div>
-        <h4>Teléfono</h4>
-        <p><a href="tel:+34948147420">948 147 420</a></p>
-      </div>
+      <div><h4>Teléfono</h4><p><a href="tel:+34948147420">948 147 420</a></p></div>
     </div>
     <div class="contacto-card">
       <div class="contacto-icon">✉️</div>
-      <div>
-        <h4>Email</h4>
-        <p><a href="mailto:cartuchosansoain@gmail.com">cartuchosansoain@gmail.com</a></p>
-      </div>
+      <div><h4>Email</h4><p><a href="mailto:cartuchosansoain@gmail.com">cartuchosansoain@gmail.com</a></p></div>
     </div>
+  </div>
+  <div class="map-wrap fade-in">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.5!2d-1.6384!3d42.8275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDQ5JzM5LjAiTiAxwrAzOCcxOC4yIlc!5e0!3m2!1ses!2ses!4v1" allowfullscreen loading="lazy"></iframe>
   </div>
 </section>
 
@@ -317,10 +398,65 @@
   </div>
 </footer>
 
+<!-- WHATSAPP -->
+<a href="https://wa.me/34948147420" class="wa" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>80);
+});
+
+// PARALLAX HERO
+window.addEventListener('scroll',()=>{
+  const bg=document.getElementById('heroBg');
+  if(bg)bg.style.transform='translateY('+window.scrollY*.35+'px)';
+});
+
+// FADE IN
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// COUNTER ANIMATION
+const counterObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      const target=parseInt(e.target.dataset.target);
+      const suffix=e.target.dataset.suffix||'';
+      let current=0;
+      const step=Math.max(1,Math.floor(target/40));
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer)}
+        e.target.textContent=current+suffix;
+      },30);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-num').forEach(el=>counterObs.observe(el));
+
+// TABS
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  document.querySelectorAll('.tab-panel').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+}
+
+// CUSTOM CURSOR
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+if(cursor&&ring){
+  document.addEventListener('mousemove',e=>{
+    cursor.style.left=e.clientX-6+'px';cursor.style.top=e.clientY-6+'px';
+    ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
+  });
+  document.querySelectorAll('a,button,.tab,.sub-tag').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+  });
+}
 </script>
 </body>
 </html>
