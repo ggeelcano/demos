@@ -3,136 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tintacartuchos Ansoáin — tienda de tinta en Ansoáin, Navarra</title>
-  <meta name="description" content="Tintacartuchos Ansoáin, tu tienda de tinta de confianza en Ansoáin, Navarra. Calidad, atención personalizada y años de experiencia a tu servicio.">
+  <title>Tintacartuchos Ansoáin — Cartuchos, Informática, Sublimación y Más</title>
+  <meta name="description" content="Tintacartuchos Ansoáin: recarga de cartuchos, tinta y tóner, accesorios de informática y telefonía, material de oficina y sublimación personalizada. C/ Lapurbide 1, Ansoáin.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--p:#1a3a5c;--pl:#2a5580;--pd:#0f2440;--a:#e8a05c;--al:#f0b878;--bg:#f8fafb;--bg-alt:#eef3f6;--cream:#f0f5f8;--black:#0c1520;--text:#1a2a3a;--text-l:#4a6070;--border:#c8d8e4;--font:'DM Serif Display',serif;--font-b:'Outfit',sans-serif}
+    :root{
+      --cyan:#0a7e8c;--cyan-dark:#065a64;--cyan-deep:#043e44;
+      --amber:#e8a020;--amber-light:#f0b840;--amber-soft:#f5d070;
+      --bg:#f6fafb;--bg-alt:#e8f2f4;
+      --cream:#f0f8f9;
+      --black:#0a1416;--text:#1a2c30;--text-l:#4a6268;--text-m:#7a9298;
+      --border:#c0d8dc;
+      --font:'DM Serif Display',serif;--font-b:'Outfit',sans-serif;
+    }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.7}
 
-    .topbar{background:var(--black);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
-    .topbar a{color:var(--a);text-decoration:none}
+    .topbar{background:var(--cyan-deep);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em}
+    .topbar a{color:var(--amber-light);text-decoration:none}
 
-    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
-    nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.06)}
-    .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
-    .nav-mark{width:46px;height:46px;background:var(--p);display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--a)}
-    .nav-mark span{font-family:var(--font);color:var(--cream);font-size:1.3rem;font-weight:600;font-style:italic}
-    .nav-text{font-family:var(--font);font-size:1.5rem;color:var(--pd);font-weight:600;line-height:1}
-    .nav-sub{font-size:.62rem;color:var(--a);letter-spacing:.22em;text-transform:uppercase;margin-top:3px;font-weight:600}
+    nav{position:sticky;top:0;z-index:100;background:rgba(246,250,251,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(10,126,140,.08)}
+    .nav-brand{display:flex;align-items:center;gap:16px;text-decoration:none}
+    .nav-mark{width:52px;height:52px;background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));display:flex;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--amber)}
+    .nav-mark span{font-family:var(--font-b);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-align:center;line-height:1.1}
+    .nav-text{font-family:var(--font);font-size:1.6rem;color:var(--cyan-deep);font-weight:400;line-height:1}
+    .nav-sub{font-size:.6rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;font-weight:500}
     .nav-links{display:flex;gap:34px;list-style:none;align-items:center}
-    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
-    .nav-links a:hover{color:var(--p)}
-    .nav-cta{background:var(--p);color:var(--cream)!important;padding:11px 24px;font-weight:600!important;transition:all .3s;border:1px solid var(--p)}
-    .nav-cta:hover{background:transparent;color:var(--p)!important}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+    .nav-links a:hover{color:var(--cyan)}
+    .nav-cta{background:var(--cyan);color:#fff!important;padding:12px 26px;font-weight:500!important;transition:all .3s;border:1px solid var(--cyan);border-radius:8px}
+    .nav-cta:hover{background:transparent;color:var(--cyan)!important}
     .hamburger{display:none;background:none;border:none;cursor:pointer}
-    .hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0}
 
-    .hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover;z-index:0}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.3) 100%);z-index:1}
-    .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%}
-    .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;background:rgba(201,163,90,.12);border:1px solid var(--a);color:var(--al);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:32px}
-    .hero h1{font-family:var(--font);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:600;line-height:1.02;color:var(--cream);margin-bottom:28px;letter-spacing:-.01em;max-width:900px}
-    .hero h1 em{font-style:italic;color:var(--a);font-weight:500}
-    .hero p{font-size:1.15rem;max-width:540px;color:rgba(250,246,238,.85);margin-bottom:40px;line-height:1.75;font-weight:300}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-    .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--a);color:var(--black);text-decoration:none;padding:16px 36px;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--a)}
-    .btn-p:hover{background:transparent;color:var(--al)}
-    .btn-o{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 36px;font-size:.8rem;font-weight:600;border:2px solid rgba(250,246,238,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s}
-    .btn-o:hover{background:var(--cream);color:var(--black);border-color:var(--cream)}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(4,62,68,.94) 0%,rgba(4,62,68,.7) 45%,rgba(4,62,68,.3) 100%);z-index:1}
+    .hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(232,160,32,.12);border:1px solid var(--amber);color:var(--amber-light);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:34px;border-radius:30px}
+    .hero h1{font-family:var(--font);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:28px;max-width:900px}
+    .hero h1 em{font-style:italic;color:var(--amber-light)}
+    .hero p{font-size:1.15rem;max-width:560px;color:rgba(240,248,249,.85);margin-bottom:44px;line-height:1.75;font-weight:300}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:var(--black);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border:2px solid var(--amber);border-radius:8px}
+    .btn-p:hover{background:transparent;color:var(--amber-light)}
+    .btn-o{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);text-decoration:none;padding:16px 38px;font-size:.82rem;font-weight:400;border:2px solid rgba(240,248,249,.35);letter-spacing:.14em;text-transform:uppercase;transition:all .3s;border-radius:8px}
+    .btn-o:hover{background:var(--cream);color:var(--cyan-deep);border-color:var(--cream)}
 
-    .features{background:var(--p);color:var(--cream);padding:48px 60px;border-top:3px solid var(--a);border-bottom:3px solid var(--a)}
-    .features-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
-    .feat-icon{color:var(--a);margin-bottom:8px}
-    .feat h4{font-family:var(--font);font-size:1.2rem;font-weight:600;font-style:italic;margin-bottom:4px}
-    .feat p{font-size:.78rem;color:rgba(250,246,238,.65);letter-spacing:.06em;text-transform:uppercase}
+    .features{background:var(--cyan);color:#fff;padding:50px 60px;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber)}
+    .features-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
+    .feat-icon{font-size:2.2rem;margin-bottom:10px}
+    .feat h4{font-family:var(--font);font-size:1.2rem;font-weight:400;font-style:italic;margin-bottom:4px}
+    .feat p{font-size:.78rem;color:rgba(255,255,255,.65);letter-spacing:.06em;text-transform:uppercase}
 
-    section{padding:110px 60px}
-    .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--a);margin-bottom:16px;font-weight:600;display:inline-flex;align-items:center;gap:12px}
-    .slabel::before,.slabel::after{content:'';width:26px;height:1px;background:var(--a)}
-    .stitle{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.08;color:var(--pd);margin-bottom:22px;letter-spacing:-.01em}
-    .stitle em{font-style:italic;color:var(--p)}
-    .ssub{font-size:1rem;color:var(--text-l);max-width:580px;line-height:1.85}
+    section{padding:120px 60px}
+    .slabel{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px;font-weight:500;display:inline-flex;align-items:center;gap:14px}
+    .slabel::before,.slabel::after{content:'';width:28px;height:1px;background:var(--amber)}
+    .stitle{font-family:var(--font);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:400;line-height:1.08;color:var(--cyan-deep);margin-bottom:24px}
+    .stitle em{font-style:italic;color:var(--cyan)}
 
-    .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+    .about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
     .about-img-wrap{position:relative}
-    .about-img{width:100%;height:520px;object-fit:cover}
-    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--a);z-index:-1}
-    .about-text p{font-size:1rem;color:var(--text-l);line-height:1.9;margin-bottom:18px}
-    .about-text strong{color:var(--pd);font-weight:600}
-    .about-quote{font-family:var(--font);font-style:italic;font-size:1.45rem;color:var(--p);line-height:1.5;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:30px 0}
+    .about-img{width:100%;height:560px;object-fit:cover;border-radius:16px}
+    .about-frame{position:absolute;top:24px;left:-24px;width:100%;height:100%;border:2px solid var(--amber);border-radius:16px;z-index:-1}
+    .about-text p{font-size:1.02rem;color:var(--text-l);line-height:1.9;margin-bottom:20px}
+    .about-text strong{color:var(--cyan-deep);font-weight:500}
+    .about-quote{font-family:var(--font);font-style:italic;font-size:1.4rem;color:var(--cyan);line-height:1.5;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:30px 0}
 
-    .services-section{background:var(--bg-alt)}
-    .srv-grid{max-width:1100px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-    .srv-card{text-align:center;padding:0 18px}
-    .srv-icon{width:64px;height:64px;margin:0 auto 20px;border:2px solid var(--a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--p)}
-    .srv-card h3{font-family:var(--font);font-size:1.5rem;color:var(--pd);font-weight:600;margin-bottom:12px;font-style:italic}
-    .srv-card p{font-size:.92rem;color:var(--text-l);line-height:1.8}
+    .srv-section{background:var(--bg-alt)}
+    .srv-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .srv-card{padding:36px 28px;background:var(--bg);border-radius:16px;border-top:3px solid var(--amber);transition:transform .3s}
+    .srv-card:hover{transform:translateY(-6px)}
+    .srv-icon{font-size:2rem;margin-bottom:14px}
+    .srv-card h3{font-family:var(--font);font-size:1.25rem;color:var(--cyan-deep);font-weight:400;margin-bottom:10px;font-style:italic}
+    .srv-card p{font-size:.88rem;color:var(--text-l);line-height:1.75}
 
-    .cta-section{background:linear-gradient(135deg,var(--pd) 0%,var(--p) 100%);padding:110px 60px;text-align:center;color:var(--cream);border-top:3px solid var(--a);border-bottom:3px solid var(--a);position:relative;overflow:hidden}
-    .cta-section::before{content:'';position:absolute;top:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(201,163,90,.12) 0%,transparent 70%)}
-    .cta-section h2{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;font-weight:600;line-height:1.08;position:relative}
-    .cta-section h2 em{font-style:italic;color:var(--a)}
-    .cta-section p{color:rgba(250,246,238,.8);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.85;position:relative}
-    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+    .sublimacion{background:var(--cyan-deep);color:#fff;position:relative;padding:0}
+    .sub-inner{display:grid;grid-template-columns:1fr 1fr;min-height:560px;align-items:center}
+    .sub-img{width:100%;height:100%;min-height:560px;object-fit:cover}
+    .sub-text{padding:90px 80px}
+    .sub-text .slabel{color:var(--amber)}
+    .sub-text .slabel::before,.sub-text .slabel::after{background:var(--amber)}
+    .sub-text .stitle{color:#fff}
+    .sub-text .stitle em{color:var(--amber-light)}
+    .sub-text p{font-size:1.02rem;color:rgba(240,248,249,.8);line-height:1.9;margin-bottom:18px}
+    .sub-text strong{color:var(--amber-light);font-weight:500}
+    .sub-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .sub-tag{background:rgba(232,160,32,.15);border:1px solid var(--amber);color:var(--amber-light);padding:8px 18px;font-size:.78rem;border-radius:30px;letter-spacing:.06em}
 
-    .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
-    .contacto-card{padding:32px;background:var(--bg-alt);border-left:4px solid var(--p);display:flex;gap:20px;align-items:flex-start}
-    .contacto-icon{width:44px;height:44px;background:var(--p);color:var(--a);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
-    .contacto-card h4{font-family:var(--font);font-size:1.15rem;color:var(--pd);font-weight:600;margin-bottom:4px;font-style:italic}
-    .contacto-card p,.contacto-card a{font-size:.92rem;color:var(--text-l);text-decoration:none;line-height:1.6}
-    .contacto-card a:hover{color:var(--p)}
+    .cta{background:linear-gradient(135deg,var(--cyan-deep) 0%,var(--cyan-dark) 100%);padding:120px 60px;text-align:center;color:#fff;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,160,32,.1) 0%,transparent 70%)}
+    .cta h2{font-family:var(--font);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;font-weight:400;line-height:1.08;position:relative}
+    .cta h2 em{font-style:italic;color:var(--amber-light)}
+    .cta p{color:rgba(240,248,249,.78);font-size:1.02rem;max-width:560px;margin:0 auto 40px;line-height:1.8;position:relative}
 
-    footer{background:var(--black);padding:50px 60px 36px;color:rgba(250,246,238,.45);border-top:1px solid var(--a)}
-    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-brand{font-family:var(--font);font-size:1.4rem;color:var(--cream);font-weight:600;font-style:italic}
-    .footer-brand span{color:var(--a)}
+    .contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+    .contacto-card{display:flex;gap:18px;align-items:flex-start;padding:28px;background:var(--bg-alt);border-left:4px solid var(--cyan);border-radius:12px}
+    .contacto-icon{width:44px;height:44px;background:var(--cyan);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+    .contacto-card h4{font-family:var(--font);font-size:1.15rem;color:var(--cyan-deep);font-weight:400;margin-bottom:4px;font-style:italic}
+    .contacto-card p,.contacto-card a{font-size:.9rem;color:var(--text-l);text-decoration:none;line-height:1.6}
+    .contacto-card a:hover{color:var(--cyan)}
+
+    footer{background:var(--black);padding:50px 60px 36px;color:rgba(240,248,249,.4);border-top:1px solid var(--amber)}
+    .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-brand{font-family:var(--font);font-size:1.4rem;color:#fff;font-weight:400;font-style:italic}
+    .footer-brand span{color:var(--amber)}
     .footer-copy{font-size:.75rem}
-    .footer-copy a{color:var(--a);text-decoration:none}
-
-    .whatsapp-float{position:fixed;bottom:26px;right:26px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:99;transition:transform .3s;text-decoration:none}
-    .whatsapp-float:hover{transform:scale(1.08)}
+    .footer-copy a{color:var(--amber);text-decoration:none}
 
     .fade-in{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
     @media(max-width:900px){
-      .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center;font-size:.72rem}
-      nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:flex;flex-direction:column;gap:5px}
-      .hero{padding:70px 22px;min-height:75vh}
+      .topbar{padding:8px 20px;flex-direction:column;gap:4px;text-align:center}
+      nav{padding:16px 22px}.nav-links{display:none}.hamburger{display:block}
+      .hero{padding:70px 22px;min-height:78vh}
       .features{padding:30px 22px}.features-inner{grid-template-columns:1fr;gap:20px}
       section{padding:70px 22px}
       .about-inner{grid-template-columns:1fr;gap:40px}.about-img{height:340px}.about-frame{display:none}
-      .srv-grid{grid-template-columns:1fr;gap:28px}
-      .cta-section{padding:70px 22px}
+      .srv-grid{grid-template-columns:1fr;gap:18px}
+      .sub-inner{grid-template-columns:1fr}.sub-img{min-height:300px;height:300px}.sub-text{padding:60px 22px}
+      .cta{padding:70px 22px}
       .contacto-grid{grid-template-columns:1fr}
-      footer{padding:30px 22px 24px}
+      footer{padding:30px 22px}
     }
   </style>
 </head>
 <body>
 
 <div class="topbar">
-  <span>📍 Ansoáin, Navarra · 🕐 Horario habitual</span>
+  <span>📍 C/ Lapurbide, 1 Bajo · Ansoáin, Navarra</span>
   <span>📞 <a href="tel:+34948147420">948 147 420</a></span>
 </div>
 
 <nav id="navbar">
   <a href="#" class="nav-brand">
-    <div class="nav-mark"><span>T</span></div>
+    <div class="nav-mark"><span>TINTA<br>CART.</span></div>
     <div>
-      <div class="nav-text">Tintacartuchos Ansoáin</div>
-      <div class="nav-sub">tienda de tinta · Ansoáin</div>
+      <div class="nav-text">Tintacartuchos</div>
+      <div class="nav-sub">Cartuchos · Informática · Sublimación · Ansoáin</div>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#sobre">Nosotros</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#sublimacion">Sublimación</a></li>
     <li><a href="#contacto">Contacto</a></li>
     <li><a href="tel:+34948147420" class="nav-cta">📞 Llamar</a></li>
   </ul>
@@ -144,99 +163,134 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-badge">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
-      Tu tienda de tinta en Ansoáin
+      🖨️ Tu tienda de confianza en Ansoáin
     </div>
-    <h1>Tintacartuchos Ansoáin.<br><em>A tu servicio.</em></h1>
-    <p>En Tintacartuchos Ansoáin nos dedicamos a lo que mejor sabemos hacer. Años de experiencia, trato cercano y la confianza de nuestros clientes nos avalan como referencia en Ansoáin.</p>
+    <h1>Tinta, tecnología<br><em>y mucho más.</em></h1>
+    <p>Tintacartuchos es la tienda de referencia en Ansoáin para cartuchos de tinta, accesorios de informática, material de oficina y ahora también sublimación personalizada. Todo lo que necesitas, cerca de casa.</p>
     <div class="hero-actions">
-      <a href="tel:+34948147420" class="btn-p">Contactar →</a>
-      <a href="#sobre" class="btn-o">Conócenos</a>
+      <a href="tel:+34948147420" class="btn-p">Llámanos →</a>
+      <a href="#servicios" class="btn-o">Nuestros servicios</a>
     </div>
   </div>
 </div>
 
 <div class="features">
   <div class="features-inner">
-    <div class="feat">
-      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg></div>
-      <h4>Calidad</h4>
-      <p>Compromiso con la excelencia</p>
+    <div class="feat fade-in">
+      <div class="feat-icon">🖨️</div>
+      <h4>Cartuchos y tóner</h4>
+      <p>Reciclados · Alternativos · Originales</p>
     </div>
-    <div class="feat">
-      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-      <h4>Cercanía</h4>
-      <p>Trato personalizado y directo</p>
+    <div class="feat fade-in">
+      <div class="feat-icon">💻</div>
+      <h4>Informática y telefonía</h4>
+      <p>Accesorios · Consumibles · Reparación</p>
     </div>
-    <div class="feat">
-      <div class="feat-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <h4>Ansoáin</h4>
-      <p>Arraigados en tu barrio</p>
+    <div class="feat fade-in">
+      <div class="feat-icon">🎨</div>
+      <h4>Sublimación</h4>
+      <p>Tazas · Piedras · Azulejos · Madera</p>
     </div>
   </div>
 </div>
 
-<section id="sobre">
+<section id="nosotros">
   <div class="about-inner">
     <div class="about-img-wrap fade-in">
-      <img src="images/about.jpg" alt="Tintacartuchos Ansoáin" class="about-img">
+      <img src="images/about.jpg" alt="Tintacartuchos Ansoáin tienda" class="about-img">
       <div class="about-frame"></div>
     </div>
     <div class="about-text fade-in">
       <p class="slabel">Sobre nosotros</p>
-      <h2 class="stitle">Una historia de <em>confianza</em>.</h2>
-      <p><strong>Tintacartuchos Ansoáin</strong> es mucho más que un nombre. Somos un equipo de personas que creemos en hacer bien las cosas — con honestidad, dedicación y el cariño que solo se pone cuando te importa de verdad lo que haces.</p>
-      <p>Nuestros clientes en <strong>Ansoáin</strong> lo saben: aquí encuentran un trato cercano, profesionalidad y la tranquilidad de estar en buenas manos. Eso es lo que nos mueve cada día.</p>
-      <div class="about-quote">"Lo importante no es solo lo que hacemos, sino cómo lo hacemos."</div>
+      <h2 class="stitle">Más que una tienda <em>de cartuchos</em>.</h2>
+      <p><strong>Tintacartuchos</strong> empezó como una tienda especializada en recarga de cartuchos de tinta en Ansoáin, y con los años ha crecido hasta convertirse en mucho más: hoy somos el sitio al que vienes cuando necesitas <strong>cualquier cosa de informática, telefonía, material de oficina o un regalo personalizado</strong>.</p>
+      <p>Desde el año pasado ofrecemos un servicio de <strong>sublimación</strong> que está encantando a nuestros clientes: diseñamos e imprimimos fotos y gráficos sobre tazas, piedras, azulejos, aluminio, madera, baberos, alfombrillas de ratón y mucho más. <strong>Personalización total, hecha aquí en Ansoáin.</strong></p>
+      <div class="about-quote">"Lo que empezó con tinta, hoy es un mundo de posibilidades."</div>
     </div>
   </div>
 </section>
 
-<section id="servicios" class="services-section">
-  <div style="max-width:1100px;margin:0 auto;text-align:center">
-    <p class="slabel">Lo que ofrecemos</p>
-    <h2 class="stitle">Nuestros <em>servicios</em></h2>
-    <p class="ssub" style="margin:0 auto 10px">Todo lo que necesitas, con la calidad que mereces.</p>
+<section id="servicios" class="srv-section">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Lo que hacemos</p>
+    <h2 class="stitle">Todos nuestros <em>servicios</em></h2>
   </div>
   <div class="srv-grid">
     <div class="srv-card fade-in">
-      <div class="srv-icon">⭐</div>
-      <h3>Experiencia</h3>
-      <p>Años de trayectoria nos respaldan. Conocemos nuestro oficio y lo demostramos cada día con resultados.</p>
+      <div class="srv-icon">🔄</div>
+      <h3>Recarga de cartuchos</h3>
+      <p>Recargamos tus cartuchos de tinta vacíos con tinta de calidad. Ahorra dinero sin perder calidad de impresión.</p>
     </div>
     <div class="srv-card fade-in">
-      <div class="srv-icon">🤝</div>
-      <h3>Atención personal</h3>
-      <p>Cada cliente es único. Te escuchamos, te asesoramos y buscamos la mejor solución para lo que necesitas.</p>
+      <div class="srv-icon">🖨️</div>
+      <h3>Cartuchos y tóner</h3>
+      <p>Reciclados, alternativos premium plus+ y originales. Para todas las marcas y modelos de impresora.</p>
     </div>
     <div class="srv-card fade-in">
-      <div class="srv-icon">✨</div>
-      <h3>Calidad garantizada</h3>
-      <p>Trabajamos solo con los mejores materiales y las mejores prácticas. Tu satisfacción es nuestra prioridad.</p>
+      <div class="srv-icon">💻</div>
+      <h3>Accesorios informática</h3>
+      <p>Cables, ratones, teclados, pendrives, auriculares y todo lo que necesitas para tu equipo.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">📱</div>
+      <h3>Accesorios telefonía</h3>
+      <p>Fundas, protectores de pantalla, cargadores, auriculares bluetooth y más para tu móvil.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">📎</div>
+      <h3>Material de oficina</h3>
+      <p>Papel, bolígrafos, archivadores, sobres, carpetas... Todo el material que tu oficina necesita, sin ir más lejos.</p>
+    </div>
+    <div class="srv-card fade-in">
+      <div class="srv-icon">🎨</div>
+      <h3>Sublimación</h3>
+      <p>Personalización de tazas, piedras, azulejos, aluminio, madera, baberos, alfombrillas y más. Diseño e impresión a medida.</p>
     </div>
   </div>
 </section>
 
-<div class="cta-section">
-  <h2>¿Hablamos? <em>Estamos cerca.</em></h2>
-  <p>Cuéntanos qué necesitas. Sin compromiso, sin letra pequeña. Estamos aquí para ayudarte.</p>
-  <div class="cta-actions">
-    <a href="tel:+34948147420" class="btn-p">📞 Llamar ahora</a>
-    <a href="mailto:cartuchosansoain@gmail.com" class="btn-o">✉️ Enviar email</a>
+<div class="sublimacion" id="sublimacion">
+  <div class="sub-inner">
+    <img src="images/sublimacion.jpg" alt="Sublimación Tintacartuchos" class="sub-img">
+    <div class="sub-text fade-in">
+      <p class="slabel">Nuevo servicio</p>
+      <h2 class="stitle">Sublimación <em>personalizada</em>.</h2>
+      <p>Desde el año pasado ofrecemos un servicio de <strong>sublimación</strong>: personalización, diseño e impresión de fotos y gráficos sobre materiales rígidos. Tú nos dices la idea y nosotros la hacemos realidad.</p>
+      <p>Perfecto para <strong>regalos únicos, recuerdos, merchandising para negocios o simplemente para darte un capricho</strong> con algo diferente.</p>
+      <div class="sub-tags">
+        <span class="sub-tag">Tazas</span>
+        <span class="sub-tag">Piedras</span>
+        <span class="sub-tag">Azulejos</span>
+        <span class="sub-tag">Aluminio</span>
+        <span class="sub-tag">Madera</span>
+        <span class="sub-tag">Baberos</span>
+        <span class="sub-tag">Alfombrillas</span>
+        <span class="sub-tag">Y más...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>¿Necesitas <em>tinta, tecnología o un regalo único</em>?</h2>
+  <p>Pásate por la tienda o llámanos. Estamos en Lapurbide 1, en el centro de Ansoáin. Te asesoramos sin compromiso.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
+    <a href="tel:+34948147420" class="btn-p">📞 948 147 420</a>
+    <a href="mailto:cartuchosansoain@gmail.com" class="btn-o">✉️ Email</a>
   </div>
 </div>
 
 <section id="contacto">
-  <div style="max-width:1100px;margin:0 auto;text-align:center">
-    <p class="slabel">Contacto</p>
-    <h2 class="stitle">Encuéntranos en <em>Ansoáin</em></h2>
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p class="slabel">Encuéntranos</p>
+    <h2 class="stitle">Estamos en <em>Ansoáin</em></h2>
   </div>
   <div class="contacto-grid">
     <div class="contacto-card">
       <div class="contacto-icon">📍</div>
       <div>
-        <h4>Ubicación</h4>
-        <p>Ansoáin, Navarra</p>
+        <h4>Dirección</h4>
+        <p>C/ Lapurbide, 1 Bajo<br>31013 Ansoáin, Navarra</p>
       </div>
     </div>
     <div class="contacto-card">
@@ -258,12 +312,10 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">Tintacartuchos Ansoáin <span>·</span></div>
-    <div class="footer-copy">&copy; 2025 Tintacartuchos Ansoáin · Ansoáin, Navarra · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
+    <div class="footer-brand">Tintacartuchos <span>Ansoáin</span></div>
+    <div class="footer-copy">&copy; 2025 Tintacartuchos Ansoáin · Navarra · Web por <a href="https://ggelcano.es">G&G Elcano</a></div>
   </div>
 </footer>
-
-
 
 <script>
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)});
