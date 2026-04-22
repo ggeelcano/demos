@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lasai · Restaurante Bilbao — Una estrella Michelin · 3 Soles Repsol</title>
+  <meta name="description" content="Lasai Restaurante Bilbao. Cocina contemporánea vasca arraigada en el producto y el fuego. Una estrella Michelin, tres soles Repsol. David García · Baladi Goiburu.">
+  <meta property="og:title" content="Lasai · Restaurante Bilbao">
+  <meta property="og:description" content="Una estrella Michelin. Tres soles Repsol. Cocina contemporánea vasca.">
+  <meta property="og:image" content="https://lasaibilbao.com/wp-content/uploads/2022/11/el_espacio-1024x682.jpeg">
+  <link rel="icon" href="https://lasaibilbao.com/wp-content/uploads/2022/10/cropped-LASAI-REST-NEGRO-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian: #0B0A08;
+      --ink: #141210;
+      --ink-2: #1E1B17;
+      --ink-3: #2A2520;
+      --bone: #EFE8DC;
+      --bone-soft: #D9D0BD;
+      --copper: #C8935A;
+      --copper-deep: #A67742;
+      --copper-soft: #E4BA86;
+      --ember: #B44730;
+      --line: rgba(239,232,220,0.12);
+      --font-serif: 'Fraunces', serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--bone);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--copper); color: var(--obsidian); }
+
+    /* ─── CUSTOM CURSOR ─── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      .cursor {
+        position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+        background: var(--copper); border-radius: 50%;
+        pointer-events: none; z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: transform 0.12s, width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth), background 0.3s;
+        mix-blend-mode: difference;
+      }
+      .cursor.big { width: 48px; height: 48px; background: var(--bone); }
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 56px;
+      transition: background 0.45s, padding 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(11,10,8,0.88);
+      backdrop-filter: blur(18px);
+      padding: 16px 56px;
+      border-bottom-color: var(--line);
+    }
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 1.6rem; font-weight: 400;
+      letter-spacing: 0.4em; color: var(--bone);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand::after {
+      content: '·'; color: var(--copper); font-size: 1.4rem;
+    }
+    .brand-tag {
+      font-family: var(--font-sans); font-size: 0.62rem;
+      letter-spacing: 0.3em; color: var(--copper); font-weight: 500;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(239,232,220,0.65);
+      font-weight: 400; transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: ''; position: absolute; inset: auto 0 -6px 0; height: 1px;
+      background: var(--copper); transform: scaleX(0);
+      transition: transform 0.35s var(--ease); transform-origin: right;
+    }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:not(.nav-cta):hover { color: var(--bone); }
+    .nav-cta {
+      border: 1px solid var(--copper); color: var(--copper) !important;
+      padding: 10px 24px;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--copper); color: var(--obsidian) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 8px;
+    }
+    .hamburger span { width: 22px; height: 1px; background: var(--bone); transition: 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--obsidian); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-serif); font-size: 1.6rem;
+      color: var(--bone); letter-spacing: 0.1em;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 760px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2022/11/gastronomia1-768x1024.jpeg') center/cover no-repeat;
+      transform: scale(1.12);
+      transition: transform 10s var(--ease);
+      filter: brightness(0.55) contrast(1.1) saturate(0.9);
+    }
+    .hero-bg.loaded { transform: scale(1.02); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(11,10,8,0.5) 0%, rgba(11,10,8,0.2) 40%, rgba(11,10,8,0.85) 100%),
+        radial-gradient(ellipse at center, transparent 30%, rgba(11,10,8,0.5) 100%);
+    }
+
+    /* Michelin badge */
+    .hero-awards {
+      position: absolute; top: 100px; right: 56px; z-index: 3;
+      display: flex; gap: 24px; align-items: center;
+      opacity: 0; animation: fadeIn 1.2s 1.8s ease forwards;
+    }
+    .hero-award {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      background: rgba(11,10,8,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(239,232,220,0.75); font-weight: 500;
+    }
+    .hero-award strong { color: var(--copper-soft); }
+
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 0 40px; max-width: 1200px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 18px;
+      font-size: 0.7rem; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 36px; font-weight: 500;
+      opacity: 0; transform: translateY(12px);
+      animation: fadeUp 1.1s 0.3s var(--ease) forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 50px; height: 1px; background: var(--copper);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(5rem, 14vw, 14rem);
+      font-weight: 300; line-height: 0.88;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px; color: var(--bone);
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.4s 0.55s var(--ease) forwards;
+      font-variation-settings: 'opsz' 144;
+    }
+    .hero-title em { font-style: italic; color: var(--copper); font-weight: 300; }
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+      font-style: italic; font-weight: 300;
+      color: rgba(239,232,220,0.82);
+      max-width: 700px; margin: 0 auto 52px;
+      line-height: 1.6;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 1.1s 0.95s var(--ease) forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 1.1s 1.2s var(--ease) forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 17px 40px;
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      font-weight: 500; border: 1px solid transparent;
+      transition: all 0.38s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 12px; height: 12px; stroke: currentColor; transition: transform 0.3s; }
+    .btn:hover svg { transform: translateX(5px); }
+    .btn-primary { background: var(--copper); color: var(--obsidian); border-color: var(--copper); }
+    .btn-primary:hover { background: var(--copper-deep); border-color: var(--copper-deep); transform: translateY(-2px); box-shadow: 0 14px 40px rgba(200,147,90,0.3); }
+    .btn-ghost { color: var(--bone); border-color: rgba(239,232,220,0.35); }
+    .btn-ghost:hover { border-color: var(--bone); background: rgba(239,232,220,0.05); }
+    .btn-ink { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+    .btn-ink:hover { background: var(--copper); border-color: var(--copper); color: var(--obsidian); }
+
+    .hero-scroll {
+      position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0; animation: fadeIn 1s 2s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(239,232,220,0.5);
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--copper), transparent);
+      animation: scrollPulse 2.3s infinite;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      overflow: hidden; padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 45s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 28px;
+      padding: 0 38px;
+      font-family: var(--font-serif); font-size: 1.25rem;
+      font-style: italic; font-weight: 300;
+      color: rgba(239,232,220,0.3);
+    }
+    .marquee-item .star {
+      width: 14px; height: 14px; color: var(--copper);
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 140px 56px; position: relative; }
+    .container { max-width: 1320px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--copper); font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--copper);
+    }
+    .eyebrow.center::before, .eyebrow.center::after {
+      content: ''; width: 32px; height: 1px; background: var(--copper);
+    }
+    .s-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .s-title em { font-style: italic; color: var(--copper); font-weight: 300; }
+
+    /* ─── PHILOSOPHY / 4 ELEMENTS ─── */
+    .phil-section {
+      background: var(--obsidian);
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      padding: 0;
+    }
+    .phil-content {
+      padding: 140px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .phil-content .s-title { margin: 16px 0 36px; }
+    .phil-body {
+      font-family: var(--font-serif);
+      font-size: 1.2rem; line-height: 1.85;
+      color: rgba(239,232,220,0.75); margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .phil-body strong { color: var(--bone); font-weight: 400; }
+    .elements-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: var(--line); margin-top: 24px;
+    }
+    .element {
+      padding: 30px 28px; background: var(--obsidian);
+      transition: background 0.4s var(--ease);
+      position: relative;
+    }
+    .element:hover { background: var(--ink-2); }
+    .element-symbol {
+      width: 36px; height: 36px; color: var(--copper);
+      margin-bottom: 18px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-family: var(--font-serif); font-style: italic;
+      border: 1px solid var(--copper); border-radius: 50%;
+    }
+    .element h4 {
+      font-family: var(--font-serif); font-size: 1.25rem;
+      font-weight: 500; margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .element p {
+      font-size: 0.85rem; color: rgba(239,232,220,0.55);
+      font-weight: 300; line-height: 1.55;
+    }
+    .phil-visual {
+      position: relative; overflow: hidden; min-height: 800px;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2022/11/gastronomia2-768x1024.jpeg') center/cover no-repeat;
+    }
+    .phil-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(11,10,8,0.4), transparent 40%);
+    }
+    .phil-visual-quote {
+      position: absolute; bottom: 50px; left: 50px; right: 50px; z-index: 2;
+      color: var(--bone);
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-style: italic; font-weight: 300;
+      line-height: 1.5;
+      padding-left: 24px;
+      border-left: 2px solid var(--copper);
+      max-width: 400px;
+    }
+
+    /* ─── AWARDS ─── */
+    .awards-section {
+      background: var(--ink);
+      padding: 80px 56px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .awards-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 50px; align-items: center;
+    }
+    .awards-divider { width: 1px; height: 80px; background: var(--line); }
+    .award-item {
+      text-align: center;
+    }
+    .award-num {
+      font-family: var(--font-serif); font-size: 4rem;
+      font-weight: 300; color: var(--copper); line-height: 1;
+      margin-bottom: 10px; letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .award-num .suffix { font-style: italic; }
+    .award-label {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(239,232,220,0.55); font-weight: 500;
+    }
+
+    /* ─── CARTA ─── */
+    .carta-section {
+      background: var(--obsidian);
+      padding: 160px 56px;
+    }
+    .carta-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      max-width: 1320px; margin: 0 auto 80px;
+      flex-wrap: wrap; gap: 40px;
+    }
+    .carta-header-left { max-width: 600px; }
+    .carta-tabs {
+      display: flex; gap: 2px; flex-wrap: wrap;
+    }
+    .carta-tab {
+      background: transparent; border: 1px solid var(--line);
+      padding: 13px 24px; color: rgba(239,232,220,0.65);
+      font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer;
+      transition: all 0.3s var(--ease);
+      font-family: var(--font-sans);
+    }
+    .carta-tab.active { background: var(--copper); border-color: var(--copper); color: var(--obsidian); }
+    .carta-tab:hover:not(.active) { border-color: var(--copper); color: var(--copper); }
+
+    .carta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 100px; max-width: 1200px; margin: 0 auto;
+    }
+    .carta-group { display: none; }
+    .carta-group.active { display: contents; }
+
+    .dish {
+      padding: 28px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .dish-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 14px; margin-bottom: 10px;
+    }
+    .dish-name {
+      font-family: var(--font-serif); font-size: 1.35rem;
+      font-weight: 400; color: var(--bone);
+      line-height: 1.3;
+    }
+    .dish-name em { font-style: italic; color: var(--copper); }
+    .dish-dots {
+      flex: 1; height: 1px; align-self: flex-end;
+      background-image: radial-gradient(circle, rgba(239,232,220,0.3) 1px, transparent 1px);
+      background-size: 7px 1px; margin-bottom: 6px;
+    }
+    .dish-price {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-weight: 400; color: var(--copper); white-space: nowrap;
+      font-variation-settings: 'opsz' 144;
+    }
+    .dish-desc {
+      font-size: 0.9rem; color: rgba(239,232,220,0.55);
+      line-height: 1.6; font-weight: 300;
+      max-width: 95%;
+    }
+    .dish-tags { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .dish-tag {
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--copper); padding: 3px 10px;
+      border: 1px solid var(--copper); border-radius: 40px;
+      font-weight: 500;
+    }
+    .dish-tag.veg { color: #94b874; border-color: #94b874; }
+
+    /* ─── MENÚS DEGUSTACIÓN ─── */
+    .menus-section {
+      background: var(--ink);
+      padding: 160px 56px;
+      position: relative; overflow: hidden;
+    }
+    .menus-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2022/11/gastronomia3-768x1024.jpeg') right center/cover no-repeat;
+      opacity: 0.1; filter: blur(3px);
+    }
+    .menus-inner {
+      max-width: 1320px; margin: 0 auto; position: relative; z-index: 2;
+    }
+    .menus-header {
+      text-align: center; margin-bottom: 80px;
+      max-width: 820px; margin-left: auto; margin-right: auto;
+    }
+    .menus-header .eyebrow { justify-content: center; }
+    .menus-header .eyebrow::before { display: none; }
+    .menus-header .eyebrow { gap: 14px; }
+    .menus-header .eyebrow::before, .menus-header .eyebrow::after {
+      content: ''; width: 30px; height: 1px; background: var(--copper); display: block;
+    }
+    .menus-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+    }
+    .menu-card {
+      background: var(--obsidian);
+      border: 1px solid var(--line);
+      padding: 70px 60px;
+      position: relative; overflow: hidden;
+      transition: transform 0.5s var(--ease), border-color 0.5s;
+    }
+    .menu-card:hover { transform: translateY(-6px); border-color: var(--copper); }
+    .menu-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle at top right, rgba(200,147,90,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .menu-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(200,147,90,0.12);
+      color: var(--copper);
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600; margin-bottom: 26px;
+    }
+    .menu-name {
+      font-family: var(--font-serif); font-size: 3rem;
+      font-weight: 300; color: var(--bone);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .menu-name em { font-style: italic; color: var(--copper); }
+    .menu-meta {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 0.95rem; color: rgba(239,232,220,0.55);
+      margin-bottom: 32px;
+    }
+    .menu-price {
+      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 40px;
+    }
+    .menu-price .amount {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; color: var(--copper); line-height: 1;
+      letter-spacing: -0.03em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .menu-price .per {
+      font-size: 0.82rem; color: rgba(239,232,220,0.55);
+      letter-spacing: 0.1em;
+    }
+    .menu-body {
+      font-family: var(--font-serif);
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(239,232,220,0.7);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    /* ─── ESPACIO / GALLERY ─── */
+    .space-section {
+      background: var(--obsidian);
+      padding: 0;
+    }
+    .space-header {
+      padding: 140px 56px 70px;
+      text-align: center;
+      max-width: 900px; margin: 0 auto;
+    }
+    .space-header .eyebrow { justify-content: center; }
+    .space-header .eyebrow::before { display: none; }
+    .space-header .eyebrow { gap: 14px; }
+    .space-header .eyebrow::before, .space-header .eyebrow::after {
+      content: ''; width: 30px; height: 1px; background: var(--copper); display: block;
+    }
+    .space-header p {
+      font-family: var(--font-serif);
+      font-size: 1.2rem; font-style: italic; font-weight: 300;
+      color: rgba(239,232,220,0.6); margin-top: 22px; line-height: 1.7;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 2px;
+      max-width: 1800px; margin: 0 auto; padding: 0 2px 140px;
+    }
+    .gallery-tile {
+      position: relative; overflow: hidden;
+    }
+    .gallery-tile.wide-3 { grid-column: span 3; }
+    .gallery-tile.wide-2 { grid-column: span 2; }
+    .gallery-tile.tall { grid-row: span 2; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1s var(--ease);
+      filter: saturate(0.88);
+    }
+    .gallery-tile:hover img { transform: scale(1.08); filter: saturate(1); }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,10,8,0.6), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 22px; left: 22px; z-index: 2;
+      color: var(--bone);
+      font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── CHEFS ─── */
+    .chef-section {
+      background: var(--ink);
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 0; padding: 0;
+      border-top: 1px solid var(--line);
+    }
+    .chef-visual {
+      position: relative; overflow: hidden; min-height: 780px;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2022/10/lobo_web_v4-1-768x823.jpg') center/cover no-repeat;
+      filter: grayscale(20%);
+    }
+    .chef-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(11,10,8,0.3), transparent 60%);
+    }
+    .chef-content {
+      padding: 140px 80px; display: flex; flex-direction: column; justify-content: center;
+      max-width: 720px;
+    }
+    .chef-content .s-title { margin: 16px 0 14px; }
+    .chef-role {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.1rem; color: var(--copper);
+      margin-bottom: 36px;
+    }
+    .chef-body {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; line-height: 1.85;
+      color: rgba(239,232,220,0.7);
+      margin-bottom: 40px; font-weight: 300;
+    }
+    .chef-body strong { color: var(--bone); font-weight: 400; }
+    .chef-names {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: var(--line); margin-top: 30px;
+    }
+    .chef-name-card {
+      padding: 28px 24px; background: var(--ink);
+      transition: background 0.4s;
+    }
+    .chef-name-card:hover { background: var(--ink-2); }
+    .chef-name-role {
+      font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 8px; font-weight: 600;
+    }
+    .chef-name-name {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      font-weight: 400; color: var(--bone);
+    }
+    .chef-name-tag {
+      font-size: 0.75rem; color: rgba(239,232,220,0.5);
+      margin-top: 4px; font-style: italic;
+      font-family: var(--font-serif);
+    }
+
+    /* ─── EVENT / AMAREN ─── */
+    .event-section {
+      background: var(--obsidian);
+      padding: 140px 56px;
+      position: relative;
+    }
+    .event-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .event-image {
+      min-height: 500px;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2026/03/AMAREN_foto-scaled.jpg') center/cover no-repeat;
+      position: relative;
+    }
+    .event-image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent, rgba(30,27,23,0.5));
+    }
+    .event-content { padding: 80px 70px; }
+    .event-date {
+      display: inline-flex; align-items: baseline; gap: 10px;
+      padding: 12px 20px;
+      background: rgba(200,147,90,0.1);
+      border: 1px solid var(--copper);
+      margin-bottom: 30px;
+    }
+    .event-date .day {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; color: var(--copper); line-height: 1;
+    }
+    .event-date .month {
+      font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--copper); font-weight: 500;
+    }
+    .event-title {
+      font-family: var(--font-serif); font-size: 2.6rem;
+      font-weight: 300; color: var(--bone); margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .event-title em { font-style: italic; color: var(--copper); }
+    .event-sub {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(239,232,220,0.6);
+      margin-bottom: 28px;
+    }
+    .event-body {
+      font-size: 0.95rem; color: rgba(239,232,220,0.65);
+      line-height: 1.7; margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .event-meta {
+      display: flex; gap: 30px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 34px;
+      padding-top: 22px; border-top: 1px solid var(--line);
+    }
+    .event-meta-item {
+      font-size: 0.8rem; color: rgba(239,232,220,0.6);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .event-meta-item svg { width: 16px; height: 16px; color: var(--copper); }
+    .event-meta-item strong { color: var(--bone); font-weight: 500; }
+
+    /* ─── HORARIOS ─── */
+    .hours-section {
+      background: var(--ink);
+      padding: 140px 56px;
+      border-top: 1px solid var(--line);
+    }
+    .hours-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hours-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .hours-title em { font-style: italic; color: var(--copper); }
+    .hours-body {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.15rem; color: rgba(239,232,220,0.6);
+      margin-top: 22px; line-height: 1.7;
+    }
+    .hours-list { list-style: none; }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .hours-row.closed { opacity: 0.4; }
+    .hours-day {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; font-weight: 400; color: var(--bone);
+    }
+    .hours-time {
+      font-size: 0.9rem; color: rgba(239,232,220,0.65);
+      letter-spacing: 0.04em; text-align: right;
+      font-weight: 300;
+    }
+    .hours-row.closed .hours-time {
+      color: var(--ember); font-style: italic; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    /* ─── RESERVATION ─── */
+    .reserve-section {
+      position: relative; padding: 160px 56px; overflow: hidden;
+      background: var(--obsidian);
+    }
+    .reserve-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://lasaibilbao.com/wp-content/uploads/2022/11/salon8-e1669232548771.jpeg') center/cover no-repeat;
+      opacity: 0.18; filter: blur(1px);
+    }
+    .reserve-section::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(11,10,8,0.75), rgba(11,10,8,0.95));
+    }
+    .reserve-inner {
+      position: relative; z-index: 2; max-width: 1000px; margin: 0 auto;
+      text-align: center;
+    }
+    .reserve-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300; color: var(--bone);
+      letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 30px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .reserve-title em { font-style: italic; color: var(--copper); }
+    .reserve-body {
+      font-family: var(--font-serif);
+      font-size: 1.3rem; font-style: italic; font-weight: 300;
+      color: rgba(239,232,220,0.72);
+      max-width: 620px; margin: 0 auto 52px;
+      line-height: 1.7;
+    }
+    .reserve-actions {
+      display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .reserve-contact {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; max-width: 900px; margin: 0 auto;
+    }
+    .reserve-contact-card {
+      padding: 32px 24px;
+      background: rgba(239,232,220,0.04);
+      border: 1px solid var(--line);
+      transition: all 0.3s;
+    }
+    .reserve-contact-card:hover { background: rgba(200,147,90,0.08); border-color: var(--copper); }
+    .rc-label {
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 12px; font-weight: 600;
+    }
+    .rc-value {
+      font-family: var(--font-serif); font-size: 1.15rem;
+      color: var(--bone); font-weight: 400;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060604;
+      color: rgba(239,232,220,0.55);
+      padding: 90px 56px 32px;
+    }
+    .footer-grid {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.3fr repeat(3, 1fr);
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-serif);
+      font-size: 2.5rem; font-weight: 400;
+      color: var(--bone); letter-spacing: 0.3em;
+      margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 22px; font-weight: 500;
+    }
+    .footer-brand p {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      max-width: 300px; margin-bottom: 24px;
+      color: rgba(239,232,220,0.45);
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 40px; height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(239,232,220,0.5);
+      transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--copper); color: var(--copper);
+      transform: translateY(-2px);
+    }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-col h5 {
+      font-family: var(--font-serif); font-size: 1.05rem;
+      color: var(--bone); font-weight: 500;
+      margin-bottom: 22px; letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col a, .footer-col li {
+      font-size: 0.85rem; color: rgba(239,232,220,0.45);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col a:hover { color: var(--copper); }
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.75rem; color: rgba(239,232,220,0.35);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav, nav.scrolled { padding: 18px 26px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 90px 26px; }
+      .hero-awards { top: 85px; right: 26px; gap: 12px; }
+      .hero-award { padding: 8px 12px; font-size: 0.58rem; }
+      .phil-section { grid-template-columns: 1fr; }
+      .phil-content { padding: 80px 30px; }
+      .phil-visual { min-height: 500px; }
+      .awards-inner { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .awards-divider { display: none; }
+      .carta-grid { grid-template-columns: 1fr; gap: 0; }
+      .menus-grid { grid-template-columns: 1fr; }
+      .menu-card { padding: 50px 36px; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 220px);
+      }
+      .gallery-tile.wide-3, .gallery-tile.wide-2, .gallery-tile.tall {
+        grid-column: auto; grid-row: auto;
+      }
+      .chef-section { grid-template-columns: 1fr; }
+      .chef-content { padding: 80px 30px; }
+      .chef-visual { min-height: 500px; }
+      .event-inner { grid-template-columns: 1fr; }
+      .event-content { padding: 50px 36px; }
+      .hours-inner { grid-template-columns: 1fr; gap: 50px; }
+      .reserve-contact { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .carta-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .hero-awards { flex-direction: column; gap: 8px; align-items: flex-end; }
+      .btn { padding: 14px 26px; font-size: 0.66rem; letter-spacing: 0.22em; }
+      .s-title { font-size: 2.2rem; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 220px); }
+      .elements-grid { grid-template-columns: 1fr; }
+      .chef-names { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .phil-visual-quote { left: 24px; right: 24px; bottom: 30px; font-size: 1.1rem; }
+      .menu-price .amount { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="#inicio" class="brand">
+    LASAI <span class="brand-tag">Bilbao</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#menus">Menús</a></li>
+    <li><a href="#espacio">Espacio</a></li>
+    <li><a href="#chef">Chef</a></li>
+    <li><a href="#reserva" class="nav-cta">Reservar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#filosofia">Filosofía</a>
+  <a href="#carta">Carta</a>
+  <a href="#menus">Menús</a>
+  <a href="#espacio">Espacio</a>
+  <a href="#chef">Chef</a>
+  <a href="#reserva">Reservar</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-awards">
+    <div class="hero-award">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--copper-soft);"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <strong>1&nbsp;★</strong> Michelin 2026
+    </div>
+    <div class="hero-award">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--copper-soft);"><circle cx="12" cy="12" r="5"/></svg>
+      <strong>3</strong> Soles Repsol
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Bilbao · Desde 2022</div>
+    <h1 class="hero-title">Lasai</h1>
+    <p class="hero-sub">Cocina contemporánea vasca, arraigada en la tradición, el producto y el fuego.</p>
+    <div class="hero-actions">
+      <a href="#reserva" class="btn btn-primary">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-ghost">
+        Ver carta
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Cocina contemporánea vasca<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Una estrella Michelin<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Producto y fuego<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Tres soles Repsol<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Calle Príncipe 4 · Bilbao<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">David García · Baladi Goiburu<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Cocina contemporánea vasca<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Una estrella Michelin<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Producto y fuego<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Tres soles Repsol<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  </div>
+</div>
+
+<!-- ─── FILOSOFÍA · 4 ELEMENTOS ─── -->
+<section class="phil-section" id="filosofia">
+  <div class="phil-content">
+    <div class="eyebrow">Nuestra filosofía</div>
+    <h2 class="s-title">La alquimia <em>de cuatro elementos</em></h2>
+    <p class="phil-body">
+      <strong>Lasai</strong> —<em>tranquilidad</em> en euskera— es el nombre y es el viaje. Una cocina arraigada en la tradición vasca, donde la técnica y el fuego son protagonistas. Mural de Pablo Gallo. Producto de temporada. Vinos seleccionados uno a uno.
+    </p>
+    <div class="elements-grid">
+      <div class="element">
+        <div class="element-symbol">△</div>
+        <h4>Fuego</h4>
+        <p>Brasas, parrillas, texturas tostadas. El alma de Euskadi.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">▽</div>
+        <h4>Agua</h4>
+        <p>Cantábrico y producto de lonja. Pescados del día, limpieza de sabores.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">⌂</div>
+        <h4>Tierra</h4>
+        <p>Huerta vasca, caza, setas y temporada. Kilómetro cero.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">◎</div>
+        <h4>Aire</h4>
+        <p>Espumas, ahumados y esencias. El matiz que eleva cada plato.</p>
+      </div>
+    </div>
+  </div>
+  <div class="phil-visual">
+    <div class="phil-visual-quote">
+      "La técnica y el fuego al servicio del producto. Sin ruido, sin artificios."
+    </div>
+  </div>
+</section>
+
+<!-- ─── AWARDS ─── -->
+<section class="awards-section">
+  <div class="awards-inner">
+    <div class="award-item">
+      <div class="award-num">1<span class="suffix">★</span></div>
+      <div class="award-label">Estrella Michelin 2026</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">3</div>
+      <div class="award-label">Soles Repsol</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">5</div>
+      <div class="award-label">Platos signature</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">100<span class="suffix">%</span></div>
+      <div class="award-label">Producto de temporada</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CARTA ─── -->
+<section class="carta-section" id="carta">
+  <div class="carta-header">
+    <div class="carta-header-left">
+      <div class="eyebrow">La carta</div>
+      <h2 class="s-title">Cocina <em>de temporada</em></h2>
+    </div>
+    <div class="carta-tabs">
+      <button class="carta-tab active" data-tab="entrantes">Entrantes</button>
+      <button class="carta-tab" data-tab="pescados">Pescados</button>
+      <button class="carta-tab" data-tab="carnes">Carnes</button>
+      <button class="carta-tab" data-tab="postres">Postres</button>
+    </div>
+  </div>
+
+  <div class="carta-grid">
+    <div class="carta-group active" data-group="entrantes">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Salteado de <em>setas de temporada</em>, cortezas de cerdo</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22€</div>
+        </div>
+        <p class="dish-desc">Setas salvajes salteadas a fuego vivo, cortezas crujientes de cerdo ibérico y perejil.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Vieiras asadas, alioli de coco</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Vieiras gallegas asadas al momento, emulsión de coco y lima, toque de curry suave.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Atún rojo, huevo asado, <em>sobrasada</em> de cerdo negro</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">28€</div>
+        </div>
+        <p class="dish-desc">Tataki de atún rojo de almadraba, yema asada a baja temperatura y sobrasada mallorquina artesana.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Alubias estofadas, callos de bacalao</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Alubias de Tolosa estofadas, callos de bacalao al pil-pil y guindilla de Ibarra.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Puerro asado, romesco de avellana</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">27€</div>
+        </div>
+        <p class="dish-desc">Puerro asado a la brasa, romesco de avellana tostada, vinagre de sidra y oxalis.</p>
+        <div class="dish-tags"><span class="dish-tag veg">Vegetariano</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Espárragos de Navarra, holandesa de <em>colmenillas</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">24€</div>
+        </div>
+        <p class="dish-desc">Espárragos blancos de Navarra pelados al momento, holandesa de colmenillas y tocineta ibérica.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Steak tartar, tuétano vegetal, emulsión de ostra</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">29€</div>
+        </div>
+        <p class="dish-desc">Vaca madurada picada a cuchillo, tuétano de calabaza, emulsión de ostra y mostaza antigua.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Guisantes de temporada, carabinero, <em>stracciatella</em> ahumada</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">27€</div>
+        </div>
+        <p class="dish-desc">Guisantes lágrima de Getaria salteados, cabeza de carabinero y stracciatella italiana ahumada.</p>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="pescados">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Lubina asada, <em>líquido de gilda</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">32€</div>
+        </div>
+        <p class="dish-desc">Lubina salvaje asada en su piel, esencia de gilda (aceituna, guindilla, anchoa) y piparra.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Chipirón Pelayo <em>en su tinta</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Chipirón del Cantábrico a la plancha, tinta reducida, cebolla pochada y pan crujiente.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tempura de merluza, suquet marinero y coco</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">30€</div>
+        </div>
+        <p class="dish-desc">Merluza del pincho en tempura ligera, suquet de marisco y leche de coco tostado.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Mero asado, <em>pilpil</em> de pájaro</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">31€</div>
+        </div>
+        <p class="dish-desc">Lomo de mero salvaje, pil-pil hecho con caldo de aves y nuestras hierbas aromáticas.</p>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="carnes">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Brisket de ternera <em>72h</em>, parmentier</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">31€</div>
+        </div>
+        <p class="dish-desc">Pecho de ternera a baja temperatura 72 horas, glaseado con su jugo, parmentier trufado.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tempura de cochinillo, escabeche de mejillón</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">32€</div>
+        </div>
+        <p class="dish-desc">Cochinillo confitado y frito en tempura, escabeche suave de mejillón de Galicia.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Solomillo madurado, pimiento del piquillo, <em>crème fraîche</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Solomillo de vaca madurada 45 días, pimiento del piquillo confitado y crème fraîche.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Wellington de <em>ternera</em>, puré de patata</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">62€ <span style="font-size:0.72rem;color:rgba(239,232,220,0.5);">/2 pers.</span></div>
+        </div>
+        <p class="dish-desc">Solomillo de vaca envuelto en duxelles de setas y hojaldre dorado. Servicio en sala. Mínimo 2 personas.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="postres">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Flan de <em>bollo de mantequilla</em>, chantilly de vainilla</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9€</div>
+        </div>
+        <p class="dish-desc">Flan cremoso elaborado con bollo de mantequilla bilbaíno, chantilly de vainilla Madagascar.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Torrija caramelizada, helado de oveja <em>ahumada</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">10€</div>
+        </div>
+        <p class="dish-desc">Torrija de brioche caramelizada, helado de leche de oveja latxa ahumada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Arroz con leche tradicional</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9€</div>
+        </div>
+        <p class="dish-desc">Receta familiar. Arroz bomba cocido lentamente en leche de vaca, canela y piel de limón.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">"Carolina, <em>trátame bien</em>" — chocolate y vainilla</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">10€</div>
+        </div>
+        <p class="dish-desc">Homenaje a la Carolina pastelería clásica bilbaína. Merengue, chocolate 70% y vainilla.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Fresa, chocolate y rosas con nata helada</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">10€</div>
+        </div>
+        <p class="dish-desc">Fresa de temporada, ganache de chocolate, esencia de pétalos de rosa y helado de nata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENÚS DEGUSTACIÓN ─── -->
+<section class="menus-section" id="menus">
+  <div class="menus-inner">
+    <div class="menus-header">
+      <div class="eyebrow center">Menús degustación</div>
+      <h2 class="s-title" style="margin-top:18px;">Dos viajes, <em>una cocina</em></h2>
+    </div>
+    <div class="menus-grid">
+      <div class="menu-card">
+        <span class="menu-badge">Menú Lasai</span>
+        <h3 class="menu-name">Lasai</h3>
+        <p class="menu-meta">6 pases · Bebidas no incluidas</p>
+        <div class="menu-price">
+          <div class="amount">76€</div>
+          <div class="per">por persona</div>
+        </div>
+        <p class="menu-body">La esencia de Lasai en seis pases. Un recorrido por nuestros platos más representativos, con el producto de temporada como protagonista.</p>
+        <a href="#reserva" class="btn btn-ink">
+          Reservar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="menu-card">
+        <span class="menu-badge" style="background: rgba(200,147,90,0.2);">Menú Crystal — El gran menú</span>
+        <h3 class="menu-name">Crystal</h3>
+        <p class="menu-meta">9 pases · Experiencia completa</p>
+        <div class="menu-price">
+          <div class="amount">89€</div>
+          <div class="per">por persona</div>
+        </div>
+        <p class="menu-body">Nueve pases que concentran toda la creatividad del equipo. La experiencia más completa de Lasai, con adaptación vegetariana bajo reserva.</p>
+        <a href="#reserva" class="btn btn-primary">
+          Reservar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESPACIO / GALERÍA ─── -->
+<section class="space-section" id="espacio">
+  <div class="space-header">
+    <div class="eyebrow center">El espacio</div>
+    <h2 class="s-title" style="margin-top:18px;">Un salón <em>de calma</em></h2>
+    <p>Calle Príncipe 4, corazón del Casco Viejo de Bilbao. El mural de Pablo Gallo recorre las paredes: una transformación alquímica en cuatro elementos.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile wide-3 tall">
+      <img src="https://lasaibilbao.com/wp-content/uploads/2022/11/el_espacio-1024x682.jpeg" alt="El espacio Lasai">
+      <div class="gallery-label">Sala principal · Mural Pablo Gallo</div>
+    </div>
+    <div class="gallery-tile wide-3">
+      <img src="https://lasaibilbao.com/wp-content/uploads/2022/11/salon8-e1669232548771.jpeg" alt="Salón Lasai">
+      <div class="gallery-label">Salón</div>
+    </div>
+    <div class="gallery-tile wide-2">
+      <img src="https://lasaibilbao.com/wp-content/uploads/2022/11/gastronomia2-768x1024.jpeg" alt="Plato Lasai">
+      <div class="gallery-label">Cocina</div>
+    </div>
+    <div class="gallery-tile">
+      <img src="https://lasaibilbao.com/wp-content/uploads/2022/11/carta3-1024x768.jpeg" alt="Plato">
+      <div class="gallery-label">Signature</div>
+    </div>
+    <div class="gallery-tile">
+      <img src="https://lasaibilbao.com/wp-content/uploads/2022/11/carta5-1024x768.jpeg" alt="Plato">
+      <div class="gallery-label">Producto</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CHEF ─── -->
+<section class="chef-section" id="chef">
+  <div class="chef-visual"></div>
+  <div class="chef-content">
+    <div class="eyebrow">El equipo</div>
+    <h2 class="s-title">David García &amp; <em>Baladi Goiburu</em></h2>
+    <p class="chef-role">Dirección gastronómica · Jefe de cocina</p>
+    <p class="chef-body">
+      <strong>David García</strong> lidera la dirección gastronómica. Su trayectoria —respaldada por una <strong>estrella Michelin</strong> y <strong>tres soles Repsol</strong>— se traduce en una cocina reconocible: técnica sin artificio, respeto por el producto y el fuego como eje. En los fogones, <strong>Baladi Goiburu Leis</strong>, chef ejecutivo, traduce esa visión plato a plato.
+    </p>
+    <div class="chef-names">
+      <div class="chef-name-card">
+        <div class="chef-name-role">Dirección gastronómica</div>
+        <div class="chef-name-name">David García</div>
+        <div class="chef-name-tag">1★ Michelin · 3 Soles Repsol</div>
+      </div>
+      <div class="chef-name-card">
+        <div class="chef-name-role">Chef de cocina</div>
+        <div class="chef-name-name">Baladi Goiburu</div>
+        <div class="chef-name-tag">Jefe ejecutivo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EVENT AMAREN ─── -->
+<section class="event-section">
+  <div class="event-inner">
+    <div class="event-image"></div>
+    <div class="event-content">
+      <div class="event-date">
+        <span class="day">22</span>
+        <span class="month">Abril · 20:00 h</span>
+      </div>
+      <h3 class="event-title">Cena maridaje <em>Bodegas Amaren</em></h3>
+      <p class="event-sub">Una noche a cuatro manos · Una cocina, un viñedo</p>
+      <p class="event-body">Menú exclusivo maridado con los vinos de Bodegas Amaren. Una noche única para descubrir cómo dialogan nuestra cocina y los grandes Rioja de una bodega familiar.</p>
+      <div class="event-meta">
+        <div class="event-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>20:00h — <strong>22 abril</strong></span>
+        </div>
+        <div class="event-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span><strong>75€</strong> maridaje incluido</span>
+        </div>
+      </div>
+      <a href="#reserva" class="btn btn-primary">
+        Reservar plaza
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HORARIOS ─── -->
+<section class="hours-section">
+  <div class="hours-inner">
+    <div>
+      <div class="eyebrow">Horarios</div>
+      <h2 class="hours-title">Abiertos <em>cuando importa</em></h2>
+      <p class="hours-body">Servicio de comida todos los días (martes cerrado). De jueves a sábado también servicio de cenas.</p>
+      <div style="margin-top: 36px; font-size: 0.82rem; color: rgba(239,232,220,0.55); line-height: 1.7;">
+        <strong style="color:var(--copper);display:block;margin-bottom:4px;letter-spacing:0.15em;text-transform:uppercase;font-size:0.68rem;">Atención telefónica</strong>
+        Lun–Jue · 10:00–18:00<br>
+        Vie–Sáb · 12:30–22:00
+      </div>
+    </div>
+    <div>
+      <ul class="hours-list">
+        <li class="hours-row">
+          <span class="hours-day">Lunes</span>
+          <span class="hours-time">13:30 — 15:15</span>
+        </li>
+        <li class="hours-row closed">
+          <span class="hours-day">Martes</span>
+          <span class="hours-time">Cerrado</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Miércoles</span>
+          <span class="hours-time">13:30 — 15:15</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Jueves</span>
+          <span class="hours-time">13:30 — 15:15 &nbsp;·&nbsp; 19:45 — 22:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Viernes</span>
+          <span class="hours-time">13:30 — 15:15 &nbsp;·&nbsp; 19:45 — 22:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">13:30 — 15:15 &nbsp;·&nbsp; 19:45 — 22:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">13:30 — 15:15</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESERVATION ─── -->
+<section class="reserve-section" id="reserva">
+  <div class="reserve-inner">
+    <div class="eyebrow center" style="justify-content:center;margin-bottom:26px;">Reservas</div>
+    <h2 class="reserve-title">Cena <em>con nosotros</em></h2>
+    <p class="reserve-body">Para grupos de 8 o más personas, escríbenos o llámanos para consultar disponibilidad. Cancelación mínima 24h antes.</p>
+    <div class="reserve-actions">
+      <a href="https://lasaibilbao.com" target="_blank" rel="noopener" class="btn btn-primary">
+        Reservar online
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+34944053736" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +34 944 05 37 36
+      </a>
+    </div>
+    <div class="reserve-contact">
+      <div class="reserve-contact-card">
+        <div class="rc-label">Dirección</div>
+        <div class="rc-value">Calle Príncipe 4<br>48001 · Bilbao</div>
+      </div>
+      <div class="reserve-contact-card">
+        <div class="rc-label">Teléfono</div>
+        <a href="tel:+34944053736" class="rc-value" style="color:var(--bone);">944 05 37 36</a>
+      </div>
+      <div class="reserve-contact-card">
+        <div class="rc-label">Email</div>
+        <a href="mailto:hola@lasaibilbao.com" class="rc-value" style="color:var(--bone);">hola@lasaibilbao.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">LASAI</div>
+      <div class="footer-brand-tag">Bilbao · Desde 2022</div>
+      <p>Cocina contemporánea vasca. Una estrella Michelin. Tres soles Repsol.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/lasaibilbao" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://twitter.com/lasaibilbao" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#menus">Menús degustación</a></li>
+        <li><a href="#chef">Chef</a></li>
+        <li><a href="#espacio">Espacio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Reservas</h5>
+      <ul>
+        <li><a href="#reserva">Reservar online</a></li>
+        <li>Grupos 8+ personas</li>
+        <li>Tarjetas regalo</li>
+        <li>Menús vegetarianos (24h)</li>
+        <li>Alérgenos</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Calle Príncipe 4</li>
+        <li>48001 · Bilbao</li>
+        <li><a href="tel:+34944053736">+34 944 05 37 36</a></li>
+        <li><a href="mailto:hola@lasaibilbao.com">hola@lasaibilbao.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2022–2026 · Lasai Restaurante Bilbao · ES · EN · EU</div>
+    <div>Aviso legal · Privacidad · Cookies</div>
+  </div>
+</footer>
+
+<script>
+  // Navbar
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Hero bg
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .gallery-tile, .menu-card, .carta-tab').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+    });
+  }
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Carta tabs
+  document.querySelectorAll('.carta-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.carta-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.carta-group').forEach(g => {
+        g.classList.toggle('active', g.dataset.group === target);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
