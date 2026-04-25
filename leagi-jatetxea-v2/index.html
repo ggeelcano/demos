@@ -157,16 +157,11 @@
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
-        linear-gradient(rgba(15,61,82,0.0), rgba(15,61,82,0.0)),
+        url('comedor-A.avif') center/cover no-repeat,
         url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/dc/ad/c3/restaurante-leagi.jpg') center/cover no-repeat;
       transform: scale(1.06);
       transition: transform 9s var(--ease);
       filter: brightness(0.78) saturate(1.05);
-    }
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2000&q=85') center/cover no-repeat;
-      z-index: -1;
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
@@ -363,12 +358,9 @@
 
     .story-visual {
       position: relative; min-height: 760px;
-      background: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/dc/ad/c4/restaurante-leagi.jpg') center/cover no-repeat;
-    }
-    .story-visual::before {
-      content: ''; position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85') center/cover no-repeat;
-      z-index: -1;
+      background:
+        url('comedor-A.avif') center/cover no-repeat,
+        url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/dc/ad/c4/restaurante-leagi.jpg') center/cover no-repeat;
     }
     .story-visual::after {
       content: ''; position: absolute; inset: 0;
@@ -1360,9 +1352,10 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-tile t1">
-      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/dc/ad/c3/restaurante-leagi.jpg" alt="Comedor de Leagi Jatetxea con vistas al Cantábrico"
-           referrerpolicy="no-referrer"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85';">
+      <picture>
+        <source srcset="comedor-A.avif" type="image/avif">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/dc/ad/c3/restaurante-leagi.jpg" alt="Comedor de Leagi Jatetxea con vistas al Cantábrico" referrerpolicy="no-referrer">
+      </picture>
       <div class="gallery-label">
         <span class="num">/01</span>
         Comedor con vistas al Cantábrico
