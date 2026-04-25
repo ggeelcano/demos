@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leagi Jatetxea — Restaurante con vistas a Lekeitio · Mendexa, Bizkaia</title>
+  <meta name="description" content="Leagi Jatetxea. Restaurante familiar con terraza y vistas a Lekeitio. Cocina vasca, hamburguesas caseras, bocadillos y platos combinados. Mendexa, Bizkaia.">
+  <meta property="og:title" content="Leagi Jatetxea · Mendexa">
+  <meta property="og:description" content="Cocina vasca con vistas al Cantábrico. Terraza, hamburguesas y plato del día.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cantabrico: #0F3D52;
+      --cantabrico-2: #155374;
+      --sea: #4A8AA8;
+      --sea-soft: #8FB6CB;
+      --sea-pale: #DCE7EE;
+      --foam: #F5F2EA;
+      --sand: #EDE4D0;
+      --sand-2: #E0D4B7;
+      --moss: #5C7A4F;
+      --moss-soft: #8DA77E;
+      --rust: #B85F3B;
+      --ivory: #FBF8F0;
+      --ink: #1A2832;
+      --ink-2: #38515E;
+      --mist: #6E8290;
+      --line: rgba(15,61,82,0.14);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', -apple-system, Helvetica, sans-serif;
+      --font-hand: 'Caveat', cursive;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--foam);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--cantabrico); color: var(--foam); }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--cantabrico); color: var(--foam);
+      padding: 10px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; overflow: hidden;
+    }
+    .topbar-item { display: inline-flex; align-items: center; gap: 8px; }
+    .topbar-item strong { color: var(--sea-soft); font-weight: 700; }
+    .topbar-sep { opacity: 0.4; }
+    @media (max-width: 800px) {
+      .topbar { gap: 18px; padding: 8px 14px; font-size: 0.6rem; }
+      .topbar-item:nth-child(n+3), .topbar-sep:nth-child(n+3) { display: none; }
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(245,242,234,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 44px;
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+      gap: 40px;
+      transition: padding 0.3s var(--ease);
+    }
+    nav.scrolled { padding: 12px 44px; }
+
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: var(--cantabrico); color: var(--foam);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.45rem; font-weight: 500;
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 0.95; gap: 4px; }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.65rem; font-weight: 500;
+      letter-spacing: -0.01em; color: var(--cantabrico);
+    }
+    .brand-tag {
+      font-family: var(--font-hand);
+      font-size: 0.92rem; color: var(--rust);
+      font-weight: 600; transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    .nav-links { display: flex; gap: 32px; align-items: center; justify-content: center; }
+    .nav-links a {
+      font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink);
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -7px;
+      height: 1.5px; background: var(--cantabrico);
+      transform: scaleX(0); transition: transform 0.3s var(--ease);
+      transform-origin: right;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:hover { color: var(--cantabrico); }
+
+    .nav-right { display: flex; gap: 14px; align-items: center; }
+    .nav-cta {
+      background: var(--cantabrico); color: var(--foam) !important;
+      padding: 12px 24px;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600; border-radius: 50px;
+      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .nav-cta:hover { background: var(--rust); transform: translateY(-1px); }
+    .nav-cta svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+    .hamburger { display: none; }
+    @media (max-width: 1024px) {
+      nav { grid-template-columns: auto auto auto; padding: 14px 20px; gap: 14px; }
+      .nav-links { display: none; }
+      .brand-name { font-size: 1.4rem; }
+      .brand-tag { font-size: 0.8rem; }
+      .hamburger { display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; }
+      .hamburger span, .hamburger span::before, .hamburger span::after {
+        content: ''; display: block; width: 20px; height: 1.5px; background: var(--ink);
+      }
+      .hamburger span { position: relative; }
+      .hamburger span::before { position: absolute; top: -6px; }
+      .hamburger span::after { position: absolute; top: 6px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: calc(100vh - 78px); min-height: 700px;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2000&q=85') center/cover no-repeat;
+      transform: scale(1.06);
+      transition: transform 9s var(--ease);
+      filter: brightness(0.78) saturate(1.05);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(15,61,82,0.4) 0%, rgba(15,61,82,0.05) 35%, rgba(15,61,82,0.85) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 80px 90px;
+      max-width: 1100px;
+      color: var(--foam);
+    }
+    .hero-handle {
+      font-family: var(--font-hand);
+      font-size: 1.5rem; color: var(--sand-2);
+      font-weight: 600; margin-bottom: 18px;
+      transform: rotate(-1.5deg); display: inline-block;
+      opacity: 0; transform: translateY(10px) rotate(-1.5deg);
+      animation: fadeUpRot 0.9s 0.2s var(--ease) forwards;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--foam); font-weight: 500;
+      margin-bottom: 30px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.9s 0.35s var(--ease) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 40px; height: 1px; background: var(--sand-2);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8.5vw, 9rem);
+      font-weight: 400; line-height: 0.92;
+      letter-spacing: -0.025em;
+      margin-bottom: 32px; color: var(--foam);
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.3s 0.45s var(--ease) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--sand-2); }
+    .hero-sub {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+      font-weight: 400; line-height: 1.6;
+      color: rgba(245,242,234,0.92);
+      max-width: 620px; margin-bottom: 50px;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s 0.75s var(--ease) forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUp 1s 1s var(--ease) forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 32px;
+      font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 600; border: 1.5px solid transparent;
+      border-radius: 50px;
+      transition: all 0.35s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2; transition: transform 0.3s; fill: none; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-foam { background: var(--foam); color: var(--cantabrico); border-color: var(--foam); }
+    .btn-foam:hover { background: var(--rust); border-color: var(--rust); color: var(--foam); transform: translateY(-2px); }
+    .btn-outline-foam { color: var(--foam); border-color: rgba(245,242,234,0.5); }
+    .btn-outline-foam:hover { background: var(--foam); color: var(--cantabrico); border-color: var(--foam); }
+    .btn-cantabrico { background: var(--cantabrico); color: var(--foam); border-color: var(--cantabrico); }
+    .btn-cantabrico:hover { background: var(--rust); border-color: var(--rust); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(184,95,59,0.35); }
+    .btn-outline-ink { color: var(--ink); border-color: var(--ink); }
+    .btn-outline-ink:hover { background: var(--ink); color: var(--foam); }
+    .btn-rust { background: var(--rust); color: var(--foam); border-color: var(--rust); }
+    .btn-rust:hover { background: var(--cantabrico); border-color: var(--cantabrico); }
+
+    .hero-corner {
+      position: absolute; top: 30px; right: 40px; z-index: 3;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      background: rgba(15,61,82,0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(245,242,234,0.18);
+      color: var(--foam);
+      font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .hero-corner svg { width: 12px; height: 12px; color: var(--sand-2); stroke: currentColor; stroke-width: 2; fill: none; }
+    @media (max-width: 700px) {
+      .hero-content { padding: 0 24px 60px; }
+      .hero-corner { top: 20px; right: 16px; padding: 8px 14px; font-size: 0.58rem; }
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUpRot { to { opacity: 1; transform: translateY(0) rotate(-1.5deg); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      background: var(--sand); color: var(--cantabrico);
+      overflow: hidden; padding: 22px 0;
+      border-top: 1px solid rgba(15,61,82,0.15);
+      border-bottom: 1px solid rgba(15,61,82,0.15);
+    }
+    .marquee-track {
+      display: flex; white-space: nowrap;
+      animation: scroll 38s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 22px;
+      padding: 0 36px;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--cantabrico);
+    }
+    .marquee-item .star { color: var(--rust); font-size: 1rem; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION ─── */
+    section { position: relative; }
+    .s-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--rust); font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .s-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--rust); }
+    .s-eyebrow.center { justify-content: center; }
+    .s-eyebrow.center::before, .s-eyebrow.center::after {
+      content: ''; width: 32px; height: 1px; background: var(--rust);
+    }
+    .s-handle {
+      font-family: var(--font-hand);
+      font-size: 1.3rem; color: var(--rust); font-weight: 600;
+      margin-bottom: 8px; transform: rotate(-1.5deg);
+      display: inline-block;
+    }
+    .s-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em; color: var(--cantabrico);
+    }
+    .s-title em { font-style: italic; color: var(--rust); }
+    .s-title.light { color: var(--foam); }
+    .s-title.light em { color: var(--sand-2); }
+
+    /* ─── HISTORIA ─── */
+    .story-section {
+      display: grid; grid-template-columns: 1fr 1.05fr; gap: 0;
+      background: var(--foam);
+    }
+    .story-content {
+      padding: 130px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .story-content .s-title { margin: 12px 0 32px; }
+    .story-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.85;
+      color: var(--ink-2); margin-bottom: 36px;
+    }
+    .story-body p { margin-bottom: 22px; }
+    .story-body strong { color: var(--cantabrico); font-weight: 500; font-style: normal; }
+    .story-body em { color: var(--rust); }
+    .story-features {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      padding: 30px 0; margin-bottom: 36px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      max-width: 580px;
+    }
+    .story-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .story-feature-icon {
+      width: 38px; height: 38px;
+      background: var(--sea-pale); color: var(--cantabrico);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .story-feature-icon svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .story-feature-text strong {
+      display: block; font-family: var(--font-display);
+      font-size: 1.05rem; color: var(--cantabrico); font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .story-feature-text span {
+      font-size: 0.82rem; color: var(--ink-2); line-height: 1.5;
+    }
+
+    .story-visual {
+      position: relative; min-height: 760px;
+      background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85') center/cover no-repeat;
+    }
+    .story-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(15,61,82,0.15), transparent 50%);
+    }
+    .story-visual-quote {
+      position: absolute; bottom: 50px; left: 50px; right: 50px; z-index: 2;
+      color: var(--foam);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.5rem; line-height: 1.5;
+      padding-left: 22px;
+      border-left: 3px solid var(--sand-2);
+      max-width: 460px;
+    }
+
+    /* ─── ESPECIALIDAD HAMBURGUESAS ─── */
+    .signature-section {
+      padding: 130px 56px;
+      background: var(--sand);
+      position: relative; overflow: hidden;
+    }
+    .signature-section::before {
+      content: ''; position: absolute;
+      top: -180px; right: -180px; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,95,59,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .signature-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.05fr;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .signature-visual {
+      aspect-ratio: 4/5;
+      background: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1000&q=85') center/cover no-repeat;
+      border-radius: 14px;
+      box-shadow: 0 30px 60px rgba(15,61,82,0.18);
+      position: relative;
+    }
+    .signature-stamp {
+      position: absolute; top: -22px; right: -22px; z-index: 3;
+      width: 130px; height: 130px;
+      background: var(--rust); color: var(--foam);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transform: rotate(10deg);
+      font-family: var(--font-display); font-style: italic;
+      box-shadow: 0 12px 24px rgba(184,95,59,0.35);
+      animation: stampWobble 5s ease-in-out infinite;
+    }
+    .signature-stamp strong {
+      font-size: 2rem; line-height: 1;
+      font-weight: 500;
+    }
+    .signature-stamp span {
+      font-family: var(--font-sans);
+      font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600; margin-top: 6px;
+    }
+    @keyframes stampWobble {
+      0%, 100% { transform: rotate(10deg); }
+      50% { transform: rotate(4deg); }
+    }
+    .signature-content .s-title { margin: 12px 0 28px; }
+    .signature-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.8;
+      color: var(--ink-2); margin-bottom: 36px;
+    }
+    .signature-body strong { color: var(--cantabrico); font-weight: 500; font-style: normal; }
+    .signature-list {
+      list-style: none; margin-bottom: 38px;
+    }
+    .signature-list li {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px dashed rgba(15,61,82,0.18);
+      font-family: var(--font-display);
+    }
+    .signature-list li .name {
+      font-size: 1.15rem; color: var(--cantabrico); font-weight: 500;
+    }
+    .signature-list li .name em { font-style: italic; color: var(--rust); }
+    .signature-list li .price {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: var(--rust); font-weight: 500;
+    }
+
+    /* ─── CARTA ─── */
+    .menu-section {
+      padding: 130px 56px;
+      background: var(--foam);
+    }
+    .menu-header {
+      max-width: 1320px; margin: 0 auto 60px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 30px;
+    }
+    .menu-tabs {
+      display: flex; gap: 4px; flex-wrap: wrap;
+    }
+    .menu-tab {
+      padding: 12px 22px;
+      border: 1px solid var(--line);
+      border-radius: 50px;
+      font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600; color: var(--ink-2);
+      transition: all 0.3s;
+    }
+    .menu-tab.active { background: var(--cantabrico); border-color: var(--cantabrico); color: var(--foam); }
+    .menu-tab:hover:not(.active) { border-color: var(--rust); color: var(--rust); }
+
+    .menu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 80px; max-width: 1200px; margin: 0 auto;
+    }
+    .menu-group { display: none; }
+    .menu-group.active { display: contents; }
+
+    .group-title {
+      grid-column: span 2;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; font-weight: 500;
+      color: var(--rust);
+      margin: 30px 0 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: baseline; gap: 14px;
+    }
+    .group-title:first-child { margin-top: 0; }
+    .group-title span {
+      font-family: var(--font-sans); font-style: normal;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    .dish {
+      padding: 22px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .dish-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; margin-bottom: 6px;
+    }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--cantabrico); line-height: 1.3;
+    }
+    .dish-name em { font-style: italic; color: var(--rust); }
+    .dish-dots {
+      flex: 1; height: 1px; align-self: flex-end;
+      background-image: radial-gradient(circle, rgba(15,61,82,0.3) 1px, transparent 1px);
+      background-size: 6px 1px; margin-bottom: 6px;
+    }
+    .dish-price {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.15rem; color: var(--rust); white-space: nowrap;
+      font-weight: 500;
+    }
+    .dish-desc {
+      font-size: 0.9rem; color: var(--ink-2);
+      line-height: 1.6; font-weight: 400;
+      font-style: italic; font-family: var(--font-display);
+    }
+    .dish-tag {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); padding: 2px 9px;
+      border: 1px solid var(--rust); border-radius: 40px;
+      font-weight: 600; margin-left: 8px; vertical-align: middle;
+      font-family: var(--font-sans);
+    }
+
+    /* ─── GALERÍA ─── */
+    .gallery-section { background: var(--cantabrico); padding: 130px 0 0; }
+    .gallery-header {
+      max-width: 1320px; margin: 0 auto 60px;
+      padding: 0 56px;
+      text-align: center;
+    }
+    .gallery-header .s-eyebrow { color: var(--sand-2); justify-content: center; }
+    .gallery-header .s-eyebrow::before, .gallery-header .s-eyebrow::after { background: var(--sand-2); }
+    .gallery-header .s-title { color: var(--foam); }
+    .gallery-header .s-title em { color: var(--sand-2); }
+    .gallery-header p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: rgba(245,242,234,0.7);
+      margin-top: 22px; line-height: 1.7;
+      max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 4px; padding: 0 4px 130px;
+    }
+    .gallery-tile { position: relative; overflow: hidden; background: var(--cantabrico-2); cursor: pointer; }
+    .gallery-tile.t1 { grid-column: span 3; grid-row: span 2; }
+    .gallery-tile.t2 { grid-column: span 3; }
+    .gallery-tile.t3 { grid-column: span 2; }
+    .gallery-tile.t4 { grid-column: span 1; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s var(--ease), filter 0.5s;
+      filter: saturate(0.95) brightness(0.95);
+    }
+    .gallery-tile:hover img { transform: scale(1.08); filter: saturate(1.1) brightness(1); }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,61,82,0.7), transparent 55%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 22px; left: 24px; z-index: 2;
+      color: var(--foam);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; letter-spacing: 0.02em;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-label .num {
+      font-family: var(--font-sans); font-style: normal;
+      font-size: 0.6rem; color: var(--sand-2);
+      letter-spacing: 0.24em; display: block; margin-bottom: 4px;
+      font-weight: 600; text-transform: uppercase;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── HORARIOS / RESERVA ─── */
+    .visit-section {
+      padding: 130px 56px;
+      background: var(--foam);
+    }
+    .visit-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px;
+      align-items: center;
+    }
+    .visit-content .s-title { margin: 12px 0 26px; }
+    .visit-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.7;
+      color: var(--ink-2); margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .visit-info {
+      display: flex; flex-direction: column; gap: 16px;
+      margin-bottom: 36px;
+    }
+    .visit-info-block {
+      display: flex; align-items: center; gap: 18px;
+      padding: 22px 26px;
+      background: var(--ivory);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      transition: all 0.3s;
+    }
+    .visit-info-block:hover { background: var(--sea-pale); transform: translateX(4px); }
+    .visit-info-icon {
+      width: 46px; height: 46px;
+      background: var(--cantabrico); color: var(--foam);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .visit-info-icon svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .visit-info-text { flex: 1; }
+    .visit-info-text span {
+      display: block; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--mist); font-weight: 600; margin-bottom: 4px;
+    }
+    .visit-info-text strong {
+      font-family: var(--font-display); font-size: 1.1rem;
+      color: var(--cantabrico); font-weight: 500;
+    }
+
+    .hours-card {
+      background: var(--cantabrico); color: var(--foam);
+      padding: 50px 44px;
+      border-radius: 24px;
+      position: relative; overflow: hidden;
+    }
+    .hours-card::before {
+      content: ''; position: absolute;
+      bottom: -120px; right: -120px; width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,95,59,0.3), transparent 70%);
+      pointer-events: none;
+    }
+    .hours-card-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 30px;
+      position: relative; z-index: 2;
+    }
+    .hours-card-head svg {
+      width: 32px; height: 32px;
+      color: var(--sand-2); stroke: currentColor; stroke-width: 1.6; fill: none;
+    }
+    .hours-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.9rem; color: var(--foam);
+      line-height: 1; font-weight: 500;
+    }
+    .hours-card h3 em { font-style: italic; color: var(--sand-2); }
+    .hours-list { list-style: none; position: relative; z-index: 2; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(245,242,234,0.12);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-family: var(--font-display);
+      font-size: 1.1rem; color: var(--foam); font-weight: 500;
+    }
+    .hours-time {
+      font-size: 0.92rem; color: rgba(245,242,234,0.78);
+    }
+    .hours-row.closed .hours-time {
+      color: var(--rust); font-style: italic;
+      letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .hours-cta {
+      margin-top: 30px; padding-top: 26px;
+      border-top: 1px solid rgba(245,242,234,0.15);
+      position: relative; z-index: 2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0A2A39; color: rgba(245,242,234,0.6);
+      padding: 90px 56px 30px;
+      border-top: 4px solid var(--rust);
+    }
+    .footer-grid {
+      max-width: 1320px; margin: 0 auto 60px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+    .footer-brand .brand-icon { background: var(--rust); width: 50px; height: 50px; font-size: 1.7rem; margin-bottom: 18px; }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 2.2rem; color: var(--foam); font-weight: 500;
+      line-height: 1; margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-family: var(--font-hand);
+      font-size: 1.2rem; color: var(--sand-2); font-weight: 600;
+      margin-bottom: 24px;
+      transform: rotate(-1.5deg); display: inline-block;
+    }
+    .footer-brand p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(245,242,234,0.5);
+      max-width: 320px; margin-bottom: 24px;
+    }
+    .footer-col h5 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; color: var(--foam);
+      font-weight: 500; margin-bottom: 22px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li, .footer-col ul li a {
+      font-size: 0.88rem; color: rgba(245,242,234,0.55);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col ul li a:hover { color: var(--sand-2); }
+
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(245,242,234,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.76rem; color: rgba(245,242,234,0.4);
+    }
+    .footer-bottom em { color: var(--sand-2); font-style: italic; }
+
+    /* ─── FAB CALL ─── */
+    .fab-call {
+      position: fixed; bottom: 24px; right: 24px; z-index: 998;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--rust); color: var(--foam);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 28px rgba(184,95,59,0.5);
+      transition: all 0.3s;
+      animation: pulseRust 2.5s ease-in-out infinite;
+    }
+    .fab-call:hover { transform: scale(1.1); }
+    .fab-call svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 2; fill: none; }
+    @keyframes pulseRust {
+      0%, 100% { box-shadow: 0 12px 28px rgba(184,95,59,0.5); }
+      50% { box-shadow: 0 12px 28px rgba(184,95,59,0.8), 0 0 0 14px rgba(184,95,59,0.18); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      section, .signature-section, .menu-section, .visit-section, .gallery-section { padding-left: 24px; padding-right: 24px; padding-top: 80px; padding-bottom: 80px; }
+      .gallery-section { padding-bottom: 0; }
+      .story-section { grid-template-columns: 1fr; }
+      .story-content { padding: 80px 24px; }
+      .story-visual { min-height: 460px; }
+      .signature-inner { grid-template-columns: 1fr; gap: 50px; }
+      .signature-visual { aspect-ratio: 4/4; }
+      .menu-grid { grid-template-columns: 1fr; gap: 0; }
+      .group-title { grid-column: auto; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 240px);
+        padding: 0 4px 80px;
+      }
+      .gallery-tile.t1, .gallery-tile.t2, .gallery-tile.t3, .gallery-tile.t4 {
+        grid-column: auto; grid-row: auto;
+      }
+      .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-grid > :first-child { grid-column: span 2; }
+      .menu-header { flex-direction: column; align-items: flex-start; }
+      .story-features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > :first-child { grid-column: auto; }
+      .btn { padding: 14px 24px; font-size: 0.66rem; }
+      .hours-card { padding: 36px 24px; }
+      .signature-stamp { width: 100px; height: 100px; }
+      .signature-stamp strong { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-item">Mendexa · <strong>vistas a Lekeitio</strong></div>
+  <span class="topbar-sep">·</span>
+  <div class="topbar-item">Reservas <strong>608 51 30 03</strong></div>
+  <span class="topbar-sep">·</span>
+  <div class="topbar-item">Terraza al aire libre</div>
+  <span class="topbar-sep">·</span>
+  <div class="topbar-item">Parking gratuito</div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#" class="brand">
+    <div class="brand-icon">L</div>
+    <div class="brand-text">
+      <span class="brand-name">Leagi Jatetxea</span>
+      <span class="brand-tag">vistas al Cantábrico ✿</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#historia">El restaurante</a>
+    <a href="#hamburguesas">Hamburguesas</a>
+    <a href="#carta">Carta</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <div class="nav-right">
+    <a href="tel:+34608513003" class="nav-cta">
+      Reservar
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <button class="hamburger" aria-label="Menú"><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-corner">
+    <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    Mendexa · Vistas a Lekeitio
+  </div>
+  <div class="hero-content">
+    <div class="hero-handle">~ Cocina vasca con vistas ~</div>
+    <div class="hero-eyebrow">Leagi Auzoa · Bizkaia</div>
+    <h1 class="hero-title">El sabor<br>del <em>Cantábrico</em>.</h1>
+    <p class="hero-sub">Restaurante familiar con terraza y vistas a Lekeitio. Cocina vasca de siempre, hamburguesas caseras, bocadillos y producto de mercado. Aquí se viene a comer bien.</p>
+    <div class="hero-actions">
+      <a href="tel:+34608513003" class="btn btn-foam">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-outline-foam">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Cocina vasca <span class="star">✦</span></div>
+    <div class="marquee-item">Hamburguesas caseras <span class="star">✦</span></div>
+    <div class="marquee-item">Vistas a Lekeitio <span class="star">✦</span></div>
+    <div class="marquee-item">Terraza al aire libre <span class="star">✦</span></div>
+    <div class="marquee-item">Plato del día <span class="star">✦</span></div>
+    <div class="marquee-item">Producto local <span class="star">✦</span></div>
+    <div class="marquee-item">4.3★ con 800+ reseñas <span class="star">✦</span></div>
+    <div class="marquee-item">Cocina vasca <span class="star">✦</span></div>
+    <div class="marquee-item">Hamburguesas caseras <span class="star">✦</span></div>
+    <div class="marquee-item">Vistas a Lekeitio <span class="star">✦</span></div>
+    <div class="marquee-item">Terraza al aire libre <span class="star">✦</span></div>
+    <div class="marquee-item">Plato del día <span class="star">✦</span></div>
+    <div class="marquee-item">Producto local <span class="star">✦</span></div>
+  </div>
+</div>
+
+<!-- ─── HISTORIA ─── -->
+<section class="story-section" id="historia">
+  <div class="story-content">
+    <span class="s-handle">El sitio</span>
+    <h2 class="s-title">Comer mirando <em>al mar</em>.</h2>
+    <div class="story-body">
+      <p>En el barrio de <strong>Leagi</strong>, en Mendexa, a un paso de Lekeitio. Una casa con terraza orientada al Cantábrico, parking propio y mesas para comer sin prisa.</p>
+      <p>Cocina <em>vasca de toda la vida</em>: hamburguesas hechas en casa, bocadillos generosos, plato del día, pescado fresco cuando lo hay y producto de la zona. Sin pretensiones —y precisamente por eso, bien.</p>
+    </div>
+    <div class="story-features">
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M4 5h16M4 19h16"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Vistas a Lekeitio</strong>
+          <span>Terraza con panorámica</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Plato del día</strong>
+          <span>De viernes a domingo</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/><path d="M5 11V7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Parking gratuito</strong>
+          <span>Junto al restaurante</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Para familias</strong>
+          <span>Accesible y con sitio</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="tel:+34608513003" class="btn btn-cantabrico">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-outline-ink">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="story-visual">
+    <div class="story-visual-quote">
+      "Aquí no se viene de paso. Se viene a quedarse, a mirar el mar y a comer bien."
+    </div>
+  </div>
+</section>
+
+<!-- ─── HAMBURGUESAS · SIGNATURE ─── -->
+<section class="signature-section" id="hamburguesas">
+  <div class="signature-inner">
+    <div class="signature-visual">
+      <div class="signature-stamp">
+        <strong>★</strong>
+        <span>Especialidad<br>de la casa</span>
+      </div>
+    </div>
+    <div class="signature-content">
+      <span class="s-handle">Lo que más se pide</span>
+      <h2 class="s-title">Hamburguesas <em>caseras</em></h2>
+      <p class="signature-body">
+        Pan brioche tostado, carne picada en casa, mucho ingrediente y todo el cariño del mundo. Las hamburguesas que te hacen volver a Leagi —y que se han convertido en <strong>nuestra firma</strong>.
+      </p>
+      <ul class="signature-list">
+        <li>
+          <span class="name">Hamburguesa <em>clásica</em></span>
+          <span class="price">9,50 €</span>
+        </li>
+        <li>
+          <span class="name">Hamburguesa con queso &amp; <em>cebolla</em></span>
+          <span class="price">10,50 €</span>
+        </li>
+        <li>
+          <span class="name">Hamburguesa <em>BBQ</em> &amp; bacon</span>
+          <span class="price">11,50 €</span>
+        </li>
+        <li>
+          <span class="name">Hamburguesa <em>Leagi</em> · queso payoyo, huevo, pimientos</span>
+          <span class="price">13,90 €</span>
+        </li>
+        <li>
+          <span class="name">Hamburguesa de <em>pollo</em> crujiente</span>
+          <span class="price">10,90 €</span>
+        </li>
+      </ul>
+      <a href="#carta" class="btn btn-cantabrico">
+        Ver carta completa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CARTA ─── -->
+<section class="menu-section" id="carta">
+  <div class="menu-header">
+    <div>
+      <span class="s-handle">La carta</span>
+      <h2 class="s-title">Cocina <em>de mercado</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-tab="entrantes">Entrantes</button>
+      <button class="menu-tab" data-tab="bocadillos">Bocadillos</button>
+      <button class="menu-tab" data-tab="combinados">Combinados</button>
+      <button class="menu-tab" data-tab="carta">A la carta</button>
+      <button class="menu-tab" data-tab="postres">Postres</button>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-group active" data-group="entrantes">
+      <h3 class="group-title">Para empezar <span>raciones para compartir</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Croquetas <em>caseras</em> de jamón</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8,50 €</div>
+        </div>
+        <p class="dish-desc">Bechamel cremosa, jamón ibérico. Hechas en casa.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Patatas <em>bravas</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6,50 €</div>
+        </div>
+        <p class="dish-desc">Salsa brava casera y alioli suave.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Calamares a la <em>andaluza</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">11 €</div>
+        </div>
+        <p class="dish-desc">Calamares en su tinta, harina, limón al aceite.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ensalada <em>mixta</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8 €</div>
+        </div>
+        <p class="dish-desc">Lechugas, tomate, cebolla, atún, huevo cocido y aceitunas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tabla de <em>quesos</em> e ibéricos</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14 €</div>
+        </div>
+        <p class="dish-desc">Selección de quesos, jamón ibérico, lomo y chorizo.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pimientos del <em>padrón</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7 €</div>
+        </div>
+        <p class="dish-desc">Pimientos fritos en aceite de oliva con sal gruesa.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="bocadillos">
+      <h3 class="group-title">Bocadillos <span>buenos, generosos, sin tonterías</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bocadillo de <em>jamón ibérico</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 €</div>
+        </div>
+        <p class="dish-desc">Jamón ibérico de bellota y pan de cristal con tomate.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bocadillo de <em>lomo</em> con queso</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6,90 €</div>
+        </div>
+        <p class="dish-desc">Lomo a la plancha, queso fundido y cebolla pochada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bocadillo de <em>calamares</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 €</div>
+        </div>
+        <p class="dish-desc">Calamares andaluza, mayonesa de la casa, limón.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bocadillo <em>vegetal</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6,50 €</div>
+        </div>
+        <p class="dish-desc">Lechuga, tomate, atún, huevo, pepinillos y mayonesa.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bocadillo de <em>tortilla</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 €</div>
+        </div>
+        <p class="dish-desc">Tortilla de patatas jugosa con o sin cebolla.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="combinados">
+      <h3 class="group-title">Platos combinados <span>menos de 20€ — la casa</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Combinado <em>1</em> · entrecot, huevos y patatas</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14,50 €</div>
+        </div>
+        <p class="dish-desc">Entrecot a la plancha, huevos fritos y patatas caseras.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Combinado <em>2</em> · lomo, croquetas y patatas</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12,50 €</div>
+        </div>
+        <p class="dish-desc">Lomo a la plancha, dos croquetas caseras y patatas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Combinado <em>3</em> · calamares, ensalada y patatas</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">13,50 €</div>
+        </div>
+        <p class="dish-desc">Calamares fritos, ensalada mixta y patatas fritas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Combinado <em>4</em> · pollo a la plancha &amp; verduras</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">11,90 €</div>
+        </div>
+        <p class="dish-desc">Pechuga a la plancha, verduras salteadas y arroz.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Combinado <em>5</em> · revuelto, jamón y patatas</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">11 €</div>
+        </div>
+        <p class="dish-desc">Revuelto de huevo con jamón ibérico y patatas.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="carta">
+      <h3 class="group-title">A la carta <span>cuando vienes a sentarte sin prisa</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Chuletón <em>vasco</em> a la brasa</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">52 €<span style="font-size:0.7em;color:var(--mist);"> /kg</span></div>
+        </div>
+        <p class="dish-desc">Chuletón de vaca vasca, sal en escamas, pimientos del piquillo.</p>
+        <div><span class="dish-tag">Recomendado</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pescado <em>del día</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">S/M</div>
+        </div>
+        <p class="dish-desc">Lubina, dorada o merluza según mercado. A la plancha o al horno.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Solomillo de <em>ternera</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19 €</div>
+        </div>
+        <p class="dish-desc">Solomillo a la plancha, salsa al gusto, guarnición de patatas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bacalao <em>al pil-pil</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">16 €</div>
+        </div>
+        <p class="dish-desc">Lomo de bacalao en pil-pil tradicional con guindilla y ajo.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Carrillera al <em>vino tinto</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">15 €</div>
+        </div>
+        <p class="dish-desc">Carrillera estofada al vino tinto, puré de patata.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Risotto de <em>setas</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">13 €</div>
+        </div>
+        <p class="dish-desc">Arroz cremoso con setas de temporada y parmesano.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="postres">
+      <h3 class="group-title">Postres caseros</h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tarta de <em>queso</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 €</div>
+        </div>
+        <p class="dish-desc">Cremosa, horneada, con mermelada de frutos rojos.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Goxua</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5 €</div>
+        </div>
+        <p class="dish-desc">Postre vasco tradicional. Bizcocho, nata y crema pastelera.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Arroz con <em>leche</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">4,50 €</div>
+        </div>
+        <p class="dish-desc">Receta tradicional, cremoso, con canela quemada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Coulant de <em>chocolate</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 €</div>
+        </div>
+        <p class="dish-desc">Bizcocho con corazón fundente y helado de vainilla.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Helado <em>artesano</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">3,50 €</div>
+        </div>
+        <p class="dish-desc">Bola simple. Vainilla, chocolate, fresa o turrón.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Fruta de <em>temporada</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">3 €</div>
+        </div>
+        <p class="dish-desc">Selección de fruta fresca laminada del día.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALERÍA ─── -->
+<section class="gallery-section" id="galeria">
+  <div class="gallery-header">
+    <span class="s-eyebrow center">El sitio</span>
+    <h2 class="s-title light">Donde se queda <em>la tarde</em></h2>
+    <p>Terraza con vistas, salón amplio para familias y mesas para venir solo a echar un trago. Esto es Leagi.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile t1">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85" alt="Restaurante con vistas al mar">
+      <div class="gallery-label">
+        <span class="num">/01</span>
+        Terraza con vistas a Lekeitio
+      </div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85" alt="Salón interior">
+      <div class="gallery-label">
+        <span class="num">/02</span>
+        Salón principal
+      </div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=85" alt="Hamburguesa">
+      <div class="gallery-label">
+        <span class="num">/03</span>
+        Hamburguesas caseras
+      </div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=85" alt="Cocina vasca">
+      <div class="gallery-label">
+        <span class="num">/04</span>
+        Plato del día
+      </div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&q=85" alt="Bocadillos">
+      <div class="gallery-label">
+        <span class="num">/05</span>
+        Bocadillos
+      </div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=85" alt="Costa vasca">
+      <div class="gallery-label">
+        <span class="num">/06</span>
+        Costa Cantábrica
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HORARIOS / CONTACTO ─── -->
+<section class="visit-section" id="contacto">
+  <div class="visit-inner">
+    <div class="visit-content">
+      <span class="s-handle">Cómo llegar</span>
+      <h2 class="s-title">Te esperamos <em>en Leagi</em>.</h2>
+      <p class="visit-body">A 5 minutos de Lekeitio, en pleno barrio de Leagi (Mendexa). Reserva por teléfono —especialmente fines de semana de verano. Parking propio gratuito.</p>
+      <div class="visit-info">
+        <a href="https://maps.google.com/?q=Leagi+Auzoa+4+Mendexa" target="_blank" rel="noopener" class="visit-info-block">
+          <div class="visit-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="visit-info-text">
+            <span>Dirección</span>
+            <strong>Leagi Auzoa, 4 · 48289 Mendexa, Bizkaia</strong>
+          </div>
+        </a>
+        <a href="tel:+34608513003" class="visit-info-block">
+          <div class="visit-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="visit-info-text">
+            <span>Reservas</span>
+            <strong>608 51 30 03 · 946 84 23 52</strong>
+          </div>
+        </a>
+        <a href="https://maps.google.com/?q=Leagi+Auzoa+Mendexa" target="_blank" rel="noopener" class="visit-info-block">
+          <div class="visit-info-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="visit-info-text">
+            <span>5 minutos de Lekeitio</span>
+            <strong>BI-2238 · Parking gratuito</strong>
+          </div>
+        </a>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="https://maps.google.com/?q=Leagi+Auzoa+4+Mendexa" target="_blank" rel="noopener" class="btn btn-cantabrico">
+          Abrir en Maps
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+34608513003" class="btn btn-rust">
+          Llamar ahora
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <div class="hours-card-head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h3>Horario de <em>servicio</em></h3>
+      </div>
+      <ul class="hours-list">
+        <li class="hours-row closed">
+          <span class="hours-day">Lun – Jue</span>
+          <span class="hours-time">Cerrado</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Viernes</span>
+          <span class="hours-time">12:00 — 23:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">10:00 — 23:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">10:00 — 20:00</span>
+        </li>
+      </ul>
+      <div class="hours-cta">
+        <a href="tel:+34608513003" class="btn btn-foam" style="width:100%; justify-content:center;">
+          Reservar mesa
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-icon">L</div>
+      <div class="footer-brand-name">Leagi Jatetxea</div>
+      <div class="footer-brand-tag">vistas al Cantábrico ✿</div>
+      <p>Restaurante familiar con terraza y vistas a Lekeitio. Cocina vasca, hamburguesas caseras y producto de mercado. Mendexa, Bizkaia.</p>
+    </div>
+    <div class="footer-col">
+      <h5>El restaurante</h5>
+      <ul>
+        <li><a href="#historia">El sitio</a></li>
+        <li><a href="#hamburguesas">Hamburguesas</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Cómo llegar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Leagi Auzoa, 4</li>
+        <li>48289 Mendexa · Bizkaia</li>
+        <li><a href="tel:+34608513003">608 51 30 03</a></li>
+        <li><a href="tel:+34946842352">946 84 23 52</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Horario</h5>
+      <ul>
+        <li>Lun – Jue · Cerrado</li>
+        <li>Viernes · 12:00–23:00</li>
+        <li>Sábado · 10:00–23:00</li>
+        <li>Domingo · 10:00–20:00</li>
+        <li>Parking gratuito</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Leagi Jatetxea · Mendexa · Bizkaia · <em>4.3★ con 800+ reseñas</em></div>
+    <div>Aviso legal · Privacidad · Cookies</div>
+  </div>
+</footer>
+
+<a href="tel:+34608513003" class="fab-call" aria-label="Llamar">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.menu-group').forEach(g => {
+        g.classList.toggle('active', g.dataset.group === target);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
