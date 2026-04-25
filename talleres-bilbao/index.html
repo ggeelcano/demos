@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talleres Bilbao — Mecánica multimarca, pre-ITV, neumáticos · Bilbao</title>
+  <meta name="description" content="Talleres Bilbao. Mecánica multimarca, electricidad del automóvil, pre-ITV, diagnosis, neumáticos y aire acondicionado. Presupuesto sin compromiso. Reserva tu cita online.">
+  <meta property="og:title" content="Talleres Bilbao · Mecánica multimarca">
+  <meta property="og:description" content="Mecánica que no falla. 25+ años en Bilbao. Pre-ITV, diagnosis, neumáticos, electricidad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0A0A0A;
+      --carbon: #131313;
+      --steel: #1E1E1E;
+      --steel-2: #2A2A2A;
+      --bone: #F4F1E8;
+      --ivory: #FAF7EE;
+      --orange: #FF6B1A;
+      --orange-bright: #FF8534;
+      --orange-deep: #D54E0A;
+      --yellow: #F5D300;
+      --yellow-bright: #FFE53D;
+      --safety: #FF3B3B;
+      --mist: #8A8A8A;
+      --fog: #B8B8B8;
+      --line: rgba(244,241,232,0.1);
+      --line-light: rgba(10,10,10,0.12);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-sans: 'Inter', -apple-system, Helvetica, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bone);
+      color: var(--black);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--orange); color: var(--black); }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--black); color: var(--bone);
+      padding: 11px 40px;
+      display: flex; align-items: center; justify-content: space-between; gap: 30px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.05em;
+      font-weight: 500;
+      overflow: hidden;
+    }
+    .topbar-left, .topbar-right { display: flex; align-items: center; gap: 28px; }
+    .topbar-item { display: inline-flex; align-items: center; gap: 8px; }
+    .topbar-item svg { width: 13px; height: 13px; stroke: var(--orange); stroke-width: 2; fill: none; }
+    .topbar-item.urgent { color: var(--orange); font-weight: 700; }
+    .topbar-item.urgent svg { stroke: var(--orange); }
+    .topbar-item strong { color: var(--yellow); font-weight: 700; }
+    .topbar-link { color: var(--bone); transition: color 0.3s; }
+    .topbar-link:hover { color: var(--yellow); }
+    @media (max-width: 900px) {
+      .topbar { padding: 9px 16px; font-size: 0.6rem; gap: 12px; }
+      .topbar-left .topbar-item:not(.urgent), .topbar-right .topbar-item:not(:first-child) { display: none; }
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--black); color: var(--bone);
+      border-bottom: 2px solid var(--orange);
+      padding: 16px 40px;
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+      gap: 40px;
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 10px 40px; }
+
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand-icon {
+      position: relative;
+      width: 46px; height: 46px;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      transform: rotate(-4deg);
+    }
+    .brand-icon svg { width: 24px; height: 24px; color: var(--black); fill: currentColor; stroke: none; }
+    .brand-icon::after {
+      content: '01'; position: absolute;
+      top: -6px; right: -10px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem; font-weight: 700;
+      color: var(--yellow); background: var(--black);
+      padding: 2px 5px;
+      transform: rotate(4deg);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 0.92; gap: 3px; }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.95rem; color: var(--bone);
+      letter-spacing: 0.02em;
+    }
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange); font-weight: 500;
+    }
+
+    .nav-links { display: flex; gap: 32px; align-items: center; justify-content: center; }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 0.14em;
+      color: var(--bone); transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -8px;
+      height: 2px; background: var(--orange);
+      transform: scaleX(0); transition: transform 0.3s var(--ease);
+      transform-origin: right;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-right { display: flex; gap: 12px; align-items: center; }
+    .nav-cta {
+      background: var(--orange); color: var(--black) !important;
+      padding: 13px 22px;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 0.14em;
+      font-weight: 400;
+      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+      padding-left: 26px; padding-right: 26px;
+    }
+    .nav-cta:hover { background: var(--yellow); transform: translateX(2px); }
+    .nav-cta svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+
+    .hamburger { display: none; }
+    @media (max-width: 1100px) {
+      nav { grid-template-columns: auto auto auto; padding: 12px 20px; gap: 14px; }
+      .nav-links { display: none; }
+      .brand-name { font-size: 1.6rem; }
+      .hamburger {
+        display: flex; width: 38px; height: 38px; align-items: center; justify-content: center;
+      }
+      .hamburger span, .hamburger span::before, .hamburger span::after {
+        content: ''; display: block; width: 22px; height: 2px; background: var(--bone);
+      }
+      .hamburger span { position: relative; }
+      .hamburger span::before { position: absolute; top: -7px; }
+      .hamburger span::after { position: absolute; top: 7px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: calc(100vh - 84px);
+      display: grid; grid-template-columns: 1.05fr 1fr;
+      overflow: hidden;
+      background: var(--carbon);
+      color: var(--bone);
+    }
+    .hero-content {
+      padding: 100px 90px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-content::before {
+      content: ''; position: absolute;
+      bottom: 0; right: 0; width: 70%; height: 70%;
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0px, transparent 28px,
+          rgba(255,107,26,0.07) 28px, rgba(255,107,26,0.07) 30px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 7px 14px;
+      background: var(--orange); color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 30px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.9s 0.2s var(--ease) forwards;
+    }
+    .hero-tag::before {
+      content: ''; width: 7px; height: 7px; background: var(--black);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 11vw, 11rem);
+      color: var(--bone); line-height: 0.85;
+      letter-spacing: 0.005em;
+      margin-bottom: 36px;
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.2s 0.4s var(--ease) forwards;
+    }
+    .hero-title em {
+      font-style: normal; color: var(--orange);
+      position: relative; display: inline-block;
+    }
+    .hero-title em::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 8px;
+      height: 6px; background: var(--yellow);
+      z-index: -1;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      line-height: 1.7;
+      color: rgba(244,241,232,0.78);
+      max-width: 520px; margin-bottom: 44px;
+      font-weight: 400;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s 0.7s var(--ease) forwards;
+    }
+    .hero-sub strong { color: var(--bone); font-weight: 600; }
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 60px;
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUp 1s 0.95s var(--ease) forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 30px;
+      font-family: var(--font-display);
+      font-size: 1rem; letter-spacing: 0.16em;
+      font-weight: 400;
+      transition: all 0.3s var(--ease-smooth);
+      background: transparent; border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; transition: transform 0.3s; fill: none; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-orange { background: var(--orange); color: var(--black); border-color: var(--orange); }
+    .btn-orange:hover { background: var(--yellow); border-color: var(--yellow); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,107,26,0.4); }
+    .btn-outline-bone { background: transparent; color: var(--bone); border-color: var(--bone); }
+    .btn-outline-bone:hover { background: var(--bone); color: var(--black); }
+    .btn-black { background: var(--black); color: var(--bone); border-color: var(--black); }
+    .btn-black:hover { background: var(--orange); border-color: var(--orange); color: var(--black); }
+    .btn-outline-black { background: transparent; color: var(--black); border-color: var(--black); }
+    .btn-outline-black:hover { background: var(--black); color: var(--bone); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      animation: fadeIn 1s 1.15s ease forwards;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem; color: var(--bone);
+      line-height: 1; margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    .hero-stat-num span { color: var(--orange); }
+    .hero-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mist); font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative; overflow: hidden;
+      background: var(--steel) url('https://images.unsplash.com/photo-1632823469850-1b7b1e8b7e6e?w=1200&q=80') center/cover;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.65), rgba(255,107,26,0.25)),
+        linear-gradient(135deg, var(--steel) 25%, var(--carbon) 100%);
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 30% 30%, rgba(255,107,26,0.4), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(245,211,0,0.3), transparent 50%);
+    }
+
+    /* SVG car illustration container */
+    .car-art {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px;
+    }
+    .car-art svg {
+      width: 80%; max-width: 600px;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+
+    .hero-meta {
+      position: absolute; bottom: 40px; right: 40px; z-index: 3;
+      background: var(--black); color: var(--bone);
+      padding: 22px 26px;
+      border-left: 4px solid var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.78rem; line-height: 1.7;
+      letter-spacing: 0.05em;
+      max-width: 280px;
+    }
+    .hero-meta strong { color: var(--orange); font-weight: 700; }
+    .hero-meta .label {
+      color: var(--mist); font-size: 0.62rem; letter-spacing: 0.2em;
+      text-transform: uppercase; display: block; margin-bottom: 6px;
+    }
+
+    .hero-corner {
+      position: absolute; top: 30px; right: 40px; z-index: 3;
+      font-family: var(--font-mono);
+      font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange); font-weight: 600;
+    }
+    .hero-corner::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; background: var(--orange);
+      margin-right: 8px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 60px 24px; }
+      .hero-visual { height: 420px; }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      background: var(--yellow); color: var(--black);
+      overflow: hidden; padding: 18px 0;
+      border-top: 3px solid var(--black);
+      border-bottom: 3px solid var(--black);
+    }
+    .marquee-track {
+      display: flex; white-space: nowrap;
+      animation: scroll 28s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 22px;
+      padding: 0 30px;
+      font-family: var(--font-display);
+      font-size: 1.6rem; color: var(--black);
+      letter-spacing: 0.04em;
+    }
+    .marquee-item .gear {
+      width: 18px; height: 18px;
+      background: var(--black);
+      mask: radial-gradient(circle at center, transparent 30%, black 30%, black 60%, transparent 60%, transparent 70%, black 70%);
+      animation: spin 4s linear infinite;
+    }
+    .marquee-item .star { color: var(--orange); font-size: 1.4rem; line-height: 1; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+    /* ─── SECTION ─── */
+    section { position: relative; }
+    .s-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--orange); font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .s-eyebrow::before {
+      content: ''; width: 28px; height: 2px; background: var(--orange);
+    }
+    .s-eyebrow.center { justify-content: center; }
+    .s-eyebrow.center::before, .s-eyebrow.center::after {
+      content: ''; width: 28px; height: 2px; background: var(--orange);
+    }
+    .s-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 6rem);
+      color: var(--black); line-height: 0.92;
+      letter-spacing: 0.005em;
+    }
+    .s-title em {
+      font-style: normal; color: var(--orange);
+      position: relative; display: inline-block;
+    }
+    .s-title em::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 6px;
+      height: 5px; background: var(--yellow);
+      z-index: -1;
+    }
+    .s-title.light { color: var(--bone); }
+    .s-title.light em::after { background: var(--orange); }
+
+    /* ─── SERVICES ─── */
+    .services-section { padding: 130px 0; background: var(--bone); }
+    .services-header {
+      text-align: center; max-width: 900px;
+      margin: 0 auto 70px; padding: 0 24px;
+    }
+    .services-header p {
+      font-size: 1.15rem; color: var(--steel);
+      margin-top: 22px; line-height: 1.65;
+      max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 1500px; margin: 0 auto; padding: 0 40px;
+      background: var(--line-light);
+      border-top: 2px solid var(--black);
+      border-left: 2px solid var(--black);
+      border-right: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+    }
+    .service-card {
+      background: var(--bone); padding: 44px 32px;
+      transition: all 0.4s var(--ease);
+      position: relative;
+      cursor: pointer;
+    }
+    .service-card:hover { background: var(--black); color: var(--bone); }
+    .service-card:hover .service-num { color: var(--yellow); }
+    .service-card:hover .service-icon { background: var(--orange); color: var(--black); }
+    .service-num {
+      font-family: var(--font-mono);
+      font-size: 0.66rem; letter-spacing: 0.2em;
+      color: var(--mist); font-weight: 700;
+      margin-bottom: 22px;
+    }
+    .service-icon {
+      width: 60px; height: 60px;
+      background: var(--black); color: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.4s;
+    }
+    .service-icon svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.7rem; color: inherit;
+      line-height: 1.05; margin-bottom: 12px;
+      letter-spacing: 0.005em;
+    }
+    .service-desc {
+      font-size: 0.88rem; color: var(--mist);
+      line-height: 1.6; font-weight: 400;
+    }
+    .service-card:hover .service-desc { color: rgba(244,241,232,0.7); }
+    .service-arrow {
+      position: absolute; bottom: 28px; right: 28px;
+      width: 36px; height: 36px;
+      border: 1.5px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translate(-8px, 8px);
+      transition: all 0.35s var(--ease);
+    }
+    .service-card:hover .service-arrow { opacity: 1; transform: translate(0,0); }
+    .service-arrow svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+    /* ─── PRE-ITV BANNER ─── */
+    .preitv-section {
+      background: var(--orange); color: var(--black);
+      padding: 80px 56px;
+      position: relative; overflow: hidden;
+    }
+    .preitv-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg,
+          transparent 0px, transparent 28px,
+          rgba(0,0,0,0.07) 28px, rgba(0,0,0,0.07) 30px);
+      pointer-events: none;
+    }
+    .preitv-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr;
+      gap: 60px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .preitv-text {
+      display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
+    }
+    .preitv-icon {
+      width: 90px; height: 90px;
+      background: var(--black); color: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .preitv-icon svg { width: 44px; height: 44px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+    .preitv-content h3 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      line-height: 0.95; color: var(--black);
+      margin-bottom: 8px;
+      letter-spacing: 0.005em;
+    }
+    .preitv-content p {
+      font-size: 1.05rem; color: var(--steel);
+      max-width: 540px; line-height: 1.55;
+    }
+    .preitv-content p strong { font-weight: 700; }
+    .preitv-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+
+    /* ─── PROCESO ─── */
+    .process-section {
+      background: var(--black); color: var(--bone);
+      padding: 130px 56px;
+      position: relative; overflow: hidden;
+    }
+    .process-section::before {
+      content: ''; position: absolute;
+      top: -200px; left: -200px; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,26,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .process-header {
+      text-align: center; max-width: 900px; margin: 0 auto 80px;
+      position: relative; z-index: 2;
+    }
+    .process-header p {
+      color: rgba(244,241,232,0.7); margin-top: 22px;
+      font-size: 1.1rem; line-height: 1.65;
+    }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1320px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .step {
+      position: relative;
+      padding: 36px 26px 30px;
+      background: var(--steel);
+      border-top: 3px solid var(--orange);
+      transition: all 0.3s;
+    }
+    .step:hover {
+      background: var(--steel-2);
+      transform: translateY(-4px);
+    }
+    .step:nth-child(2) { border-top-color: var(--yellow); }
+    .step:nth-child(3) { border-top-color: var(--orange-bright); }
+    .step:nth-child(4) { border-top-color: #4ade80; }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 4.5rem; color: var(--orange);
+      line-height: 0.85; margin-bottom: 22px;
+      letter-spacing: 0.005em;
+    }
+    .step:nth-child(2) .step-num { color: var(--yellow); }
+    .step:nth-child(3) .step-num { color: var(--orange-bright); }
+    .step:nth-child(4) .step-num { color: #4ade80; }
+    .step h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; color: var(--bone);
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .step p {
+      font-size: 0.9rem; color: rgba(244,241,232,0.7);
+      line-height: 1.6;
+    }
+
+    /* ─── BRANDS / MARCAS ─── */
+    .brands-section { padding: 130px 56px; background: var(--bone); }
+    .brands-header { text-align: center; max-width: 900px; margin: 0 auto 60px; }
+    .brands-header p {
+      color: var(--mist); margin-top: 22px;
+      font-size: 1.1rem; line-height: 1.65;
+    }
+    .brands-grid {
+      display: grid; grid-template-columns: repeat(8, 1fr);
+      gap: 1px;
+      max-width: 1400px; margin: 0 auto;
+      background: var(--line-light);
+      border: 2px solid var(--black);
+    }
+    .brand-cell {
+      background: var(--bone);
+      padding: 32px 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.6rem; color: var(--black);
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+      min-height: 100px;
+      text-align: center;
+    }
+    .brand-cell:hover {
+      background: var(--black); color: var(--orange);
+      transform: scale(1.04); z-index: 2;
+    }
+
+    /* ─── REVIEW STRIP ─── */
+    .review-section {
+      background: var(--carbon); color: var(--bone);
+      padding: 130px 56px;
+      position: relative; overflow: hidden;
+    }
+    .review-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(135deg,
+          transparent 0px, transparent 28px,
+          rgba(255,107,26,0.04) 28px, rgba(255,107,26,0.04) 30px);
+      pointer-events: none;
+    }
+    .review-inner {
+      max-width: 1320px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .review-header { text-align: center; max-width: 900px; margin: 0 auto 70px; }
+    .review-header p {
+      color: rgba(244,241,232,0.65); margin-top: 22px;
+      font-size: 1.1rem; line-height: 1.65;
+    }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .review-card {
+      background: var(--steel);
+      padding: 40px 32px;
+      border-left: 3px solid var(--orange);
+      transition: all 0.4s;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      background: var(--steel-2);
+      border-left-color: var(--yellow);
+    }
+    .review-stars {
+      display: flex; gap: 3px; margin-bottom: 22px;
+    }
+    .review-stars svg { width: 16px; height: 16px; fill: var(--yellow); }
+    .review-quote {
+      font-size: 1.05rem; line-height: 1.7;
+      color: rgba(244,241,232,0.88);
+      margin-bottom: 28px; font-weight: 400;
+    }
+    .review-author {
+      padding-top: 22px; border-top: 1px solid var(--line);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .review-avatar {
+      width: 42px; height: 42px;
+      background: var(--orange); color: var(--black);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .review-who strong {
+      display: block; font-size: 0.94rem; color: var(--bone); font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .review-who span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.1em;
+      color: var(--mist);
+    }
+
+    /* ─── BOOK / CITA ─── */
+    .book-section {
+      padding: 130px 56px;
+      background: var(--yellow);
+      position: relative; overflow: hidden;
+    }
+    .book-section::before {
+      content: ''; position: absolute;
+      bottom: -200px; right: -200px; width: 500px; height: 500px;
+      background: var(--orange); opacity: 0.5;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    .book-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .book-left .s-eyebrow { color: var(--black); }
+    .book-left .s-eyebrow::before { background: var(--black); }
+    .book-left .s-title { color: var(--black); margin: 14px 0 28px; }
+    .book-left .s-title em { color: var(--orange); }
+    .book-left .s-title em::after { background: var(--black); }
+    .book-body {
+      font-size: 1.15rem; color: var(--steel);
+      line-height: 1.7; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .book-body strong { color: var(--black); font-weight: 700; }
+
+    .book-form {
+      background: var(--black); color: var(--bone);
+      padding: 44px;
+      border: 4px solid var(--black);
+      box-shadow: 12px 12px 0 var(--orange);
+    }
+    .book-form-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem; color: var(--bone);
+      margin-bottom: 6px;
+      letter-spacing: 0.005em;
+    }
+    .book-form-sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      color: var(--orange); text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .book-field {
+      margin-bottom: 16px;
+    }
+    .book-field label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mist); font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .book-field input, .book-field select {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--steel); color: var(--bone);
+      border: 1.5px solid transparent;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .book-field input:focus, .book-field select:focus { border-color: var(--orange); }
+    .book-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .book-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--orange); color: var(--black);
+      font-family: var(--font-display);
+      font-size: 1.1rem; letter-spacing: 0.16em;
+      transition: all 0.3s;
+      margin-top: 8px;
+      cursor: pointer;
+      border: none;
+    }
+    .book-submit:hover { background: var(--yellow); transform: translateY(-2px); }
+
+    /* ─── HOURS / LOCATION ─── */
+    .visit-section {
+      padding: 130px 56px; background: var(--bone);
+    }
+    .visit-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+    }
+    .visit-card {
+      background: var(--black); color: var(--bone);
+      padding: 50px 44px;
+      border-top: 6px solid var(--orange);
+    }
+    .visit-card h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem; color: var(--bone);
+      margin-bottom: 30px;
+      letter-spacing: 0.01em;
+    }
+    .visit-card h3 em { font-style: normal; color: var(--orange); }
+    .visit-info {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 30px;
+    }
+    .visit-info-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .visit-info-item svg {
+      width: 22px; height: 22px; color: var(--orange);
+      stroke: currentColor; stroke-width: 1.7; fill: none; flex-shrink: 0; margin-top: 3px;
+    }
+    .visit-info-item .label {
+      display: block; font-family: var(--font-mono);
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--mist); font-weight: 600; margin-bottom: 4px;
+    }
+    .visit-info-item .value {
+      font-family: var(--font-display);
+      font-size: 1.2rem; color: var(--bone);
+      letter-spacing: 0.005em; line-height: 1.15;
+    }
+
+    .hours-card {
+      background: var(--steel); color: var(--bone);
+      padding: 50px 40px;
+      border-top: 6px solid var(--yellow);
+    }
+    .hours-card h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.01em; margin-bottom: 30px;
+    }
+    .hours-card h3 em { font-style: normal; color: var(--yellow); }
+    .hours-list { list-style: none; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-mono); font-size: 0.85rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bone); font-weight: 600;
+    }
+    .hours-time { color: rgba(244,241,232,0.75); font-weight: 500; }
+    .hours-row.closed .hours-time { color: var(--safety); font-weight: 700; text-transform: uppercase; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); color: rgba(244,241,232,0.6);
+      padding: 90px 56px 30px;
+      border-top: 4px solid var(--orange);
+      position: relative;
+    }
+    .footer-grid {
+      max-width: 1320px; margin: 0 auto 60px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+    .footer-brand .brand { margin-bottom: 26px; }
+    .footer-brand .brand-icon { background: var(--orange); }
+    .footer-brand .brand-name { color: var(--bone); }
+    .footer-brand p {
+      font-size: 0.95rem; line-height: 1.7;
+      color: rgba(244,241,232,0.55);
+      max-width: 320px; margin-bottom: 26px;
+    }
+    .footer-cert {
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .footer-cert span {
+      padding: 6px 12px;
+      background: var(--steel);
+      border: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 600; color: rgba(244,241,232,0.7);
+    }
+    .footer-col h5 {
+      font-family: var(--font-display);
+      font-size: 1.15rem; color: var(--bone);
+      letter-spacing: 0.01em;
+      margin-bottom: 22px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li, .footer-col ul li a {
+      font-size: 0.88rem; color: rgba(244,241,232,0.55);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col ul li a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.06em;
+      color: rgba(244,241,232,0.4);
+    }
+
+    /* ─── FAB CALL ─── */
+    .fab-call {
+      position: fixed; bottom: 24px; right: 24px; z-index: 998;
+      width: 64px; height: 64px;
+      background: var(--orange); color: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(255,107,26,0.5);
+      transition: all 0.3s;
+      animation: callPulse 2.5s ease-in-out infinite;
+    }
+    .fab-call:hover { transform: scale(1.1) rotate(-8deg); background: var(--yellow); }
+    .fab-call svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+    @keyframes callPulse {
+      0%, 100% { box-shadow: 0 12px 30px rgba(255,107,26,0.5); }
+      50% { box-shadow: 0 12px 30px rgba(255,107,26,0.8), 0 0 0 14px rgba(255,107,26,0.18); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1200px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); padding: 0 24px; }
+      .brands-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      section, .preitv-section, .process-section, .review-section, .book-section, .visit-section, .brands-section { padding-left: 24px; padding-right: 24px; padding-top: 80px; padding-bottom: 80px; }
+      .preitv-inner { grid-template-columns: 1fr; gap: 30px; }
+      .preitv-actions { justify-content: flex-start; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .book-inner { grid-template-columns: 1fr; gap: 50px; }
+      .visit-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-grid > :first-child { grid-column: span 2; }
+      footer { padding: 70px 24px 28px; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .brands-grid { grid-template-columns: repeat(3, 1fr); }
+      .process-grid { grid-template-columns: 1fr; }
+      .visit-info { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > :first-child { grid-column: auto; }
+      .book-form { padding: 30px 22px; box-shadow: 8px 8px 0 var(--orange); }
+      .book-row { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .btn { padding: 14px 24px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-item urgent">
+      <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      Urgencias 24h
+    </span>
+    <span class="topbar-item">Pre-ITV <strong>desde 39€</strong></span>
+    <span class="topbar-item">Diagnosis <strong>gratis</strong> con reparación</span>
+  </div>
+  <div class="topbar-right">
+    <a href="tel:+34944000000" class="topbar-item topbar-link">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      944 00 00 00
+    </a>
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#" class="brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.121 2.121 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">TALLERES BILBAO</span>
+      <span class="brand-tag">Mecánica · ITV · Diagnosis</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#preitv">Pre-ITV</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#marcas">Marcas</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="nav-right">
+    <a href="#cita" class="nav-cta">
+      Pedir cita
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="hamburger" aria-label="Menú"><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">EN BILBAO · DESDE 1998</div>
+    <h1 class="hero-title">MECÁNICA<br>QUE NO <em>FALLA</em>.</h1>
+    <p class="hero-sub">Taller multimarca con <strong>+25 años</strong> en Bilbao. Mecánica general, electricidad, pre-ITV, diagnosis OBD, neumáticos y aire acondicionado. <strong>Presupuesto sin compromiso</strong> — y si no arreglamos, no cobramos diagnóstico.</p>
+    <div class="hero-actions">
+      <a href="#cita" class="btn btn-orange">
+        Pedir cita online
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+34944000000" class="btn btn-outline-bone">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Llamar ahora
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">25<span>+</span></div>
+        <div class="hero-stat-label">Años en Bilbao</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">12.000<span>+</span></div>
+        <div class="hero-stat-label">Vehículos atendidos</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9<span>★</span></div>
+        <div class="hero-stat-label">Google · 380 reseñas</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-corner">SISTEMA OPERATIVO · ABIERTO</div>
+    <div class="car-art">
+      <svg viewBox="0 0 600 360" fill="none">
+        <!-- Sombra coche -->
+        <ellipse cx="300" cy="290" rx="240" ry="14" fill="rgba(0,0,0,0.45)"/>
+        <!-- Cuerpo coche -->
+        <path d="M 80 230 Q 90 180 130 170 L 200 155 Q 230 130 280 125 L 380 125 Q 430 135 460 165 L 510 175 Q 535 185 535 215 L 535 250 Q 535 265 520 265 L 490 265 Q 480 290 460 290 Q 440 290 430 265 L 195 265 Q 185 290 165 290 Q 145 290 135 265 L 95 265 Q 80 265 80 250 Z" fill="#FF6B1A" stroke="#0A0A0A" stroke-width="3"/>
+        <!-- Ventanas -->
+        <path d="M 220 155 L 270 130 L 380 130 L 425 165 L 415 215 L 215 215 Z" fill="#0A0A0A" opacity="0.85"/>
+        <path d="M 230 158 L 275 137 L 320 137 L 320 210 L 225 210 Z" fill="#FFE53D" opacity="0.25"/>
+        <path d="M 332 137 L 380 137 L 415 165 L 410 210 L 332 210 Z" fill="#FFE53D" opacity="0.25"/>
+        <!-- División ventanas -->
+        <line x1="326" y1="135" x2="326" y2="215" stroke="#0A0A0A" stroke-width="3"/>
+        <!-- Faros -->
+        <path d="M 460 170 L 510 178 L 510 200 L 480 200 Z" fill="#FFE53D" stroke="#0A0A0A" stroke-width="2"/>
+        <circle cx="495" cy="190" r="6" fill="#fff" opacity="0.9"/>
+        <!-- Faro trasero -->
+        <rect x="85" y="185" width="20" height="22" fill="#F5D300" stroke="#0A0A0A" stroke-width="2"/>
+        <!-- Manijas / línea cuerpo -->
+        <line x1="155" y1="232" x2="450" y2="232" stroke="#0A0A0A" stroke-width="2" opacity="0.5"/>
+        <!-- Rueda izquierda -->
+        <circle cx="165" cy="270" r="38" fill="#0A0A0A"/>
+        <circle cx="165" cy="270" r="22" fill="#1E1E1E" stroke="#F5D300" stroke-width="2"/>
+        <circle cx="165" cy="270" r="6" fill="#F5D300"/>
+        <!-- Rueda derecha -->
+        <circle cx="460" cy="270" r="38" fill="#0A0A0A"/>
+        <circle cx="460" cy="270" r="22" fill="#1E1E1E" stroke="#F5D300" stroke-width="2"/>
+        <circle cx="460" cy="270" r="6" fill="#F5D300"/>
+        <!-- Rayo decorativo en puerta -->
+        <path d="M 340 175 L 320 215 L 340 215 L 325 245" stroke="#F5D300" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="hero-meta">
+      <span class="label">Próxima cita libre</span>
+      <strong>Mañana · 09:30h</strong><br>
+      Bilbao Centro · Tel. directo
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">PRE-ITV <span class="star">★</span></div>
+    <div class="marquee-item">DIAGNOSIS OBD <span class="star">★</span></div>
+    <div class="marquee-item">FRENOS <span class="star">★</span></div>
+    <div class="marquee-item">NEUMÁTICOS <span class="star">★</span></div>
+    <div class="marquee-item">ELECTRICIDAD DEL AUTOMÓVIL <span class="star">★</span></div>
+    <div class="marquee-item">AIRE ACONDICIONADO <span class="star">★</span></div>
+    <div class="marquee-item">EMBRAGUES <span class="star">★</span></div>
+    <div class="marquee-item">MECÁNICA GENERAL <span class="star">★</span></div>
+    <div class="marquee-item">PRE-ITV <span class="star">★</span></div>
+    <div class="marquee-item">DIAGNOSIS OBD <span class="star">★</span></div>
+    <div class="marquee-item">FRENOS <span class="star">★</span></div>
+    <div class="marquee-item">NEUMÁTICOS <span class="star">★</span></div>
+    <div class="marquee-item">ELECTRICIDAD DEL AUTOMÓVIL <span class="star">★</span></div>
+    <div class="marquee-item">AIRE ACONDICIONADO <span class="star">★</span></div>
+    <div class="marquee-item">EMBRAGUES <span class="star">★</span></div>
+  </div>
+</div>
+
+<!-- ─── SERVICIOS ─── -->
+<section class="services-section" id="servicios">
+  <div class="services-header">
+    <div class="s-eyebrow center">Lo que hacemos</div>
+    <h2 class="s-title">SERVICIOS <em>COMPLETOS</em></h2>
+    <p>De la diagnosis a la reparación final. Todo bajo el mismo techo, sin pasar tu coche de un sitio a otro.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">/01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h3 class="service-name">MECÁNICA GENERAL</h3>
+      <p class="service-desc">Distribución, embrague, suspensión, dirección, escape. Reparación integral con repuesto original o equivalente.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3 class="service-name">ELECTRICIDAD AUTO</h3>
+      <p class="service-desc">Baterías, alternadores, motores de arranque, cableado, electrónica. Especialistas en sistemas modernos start/stop.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <h3 class="service-name">PRE-ITV</h3>
+      <p class="service-desc">Revisamos tu coche antes de la ITV. Si algo falla, lo arreglamos. Pasa la ITV a la primera o no pagas nuestra revisión.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <h3 class="service-name">NEUMÁTICOS</h3>
+      <p class="service-desc">Las primeras marcas: Michelin, Bridgestone, Continental, Pirelli. Equilibrado, alineación y geometría con maquinaria 3D.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      </div>
+      <h3 class="service-name">DIAGNOSIS OBD</h3>
+      <p class="service-desc">Equipos profesionales multimarca. Lectura de errores, calibración de inyección, codificación de centralitas.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+      </div>
+      <h3 class="service-name">AIRE ACONDICIONADO</h3>
+      <p class="service-desc">Recarga, limpieza de circuito, sustitución de compresores y filtros. Mantén tu coche fresco todo el verano.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/07</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <h3 class="service-name">FRENOS &amp; ABS</h3>
+      <p class="service-desc">Pastillas, discos, líquido, latiguillos, ABS. Tu seguridad no espera —diagnóstico el mismo día.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">/08</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3 class="service-name">MANTENIMIENTO</h3>
+      <p class="service-desc">Cambio de aceite, filtros, distribución y revisiones según fabricante. Sin perder garantía oficial.</p>
+      <span class="service-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRE-ITV BANNER ─── -->
+<section class="preitv-section" id="preitv">
+  <div class="preitv-inner">
+    <div class="preitv-text">
+      <div class="preitv-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="preitv-content">
+        <h3>PRE-ITV DESDE 39€</h3>
+        <p>Revisamos los <strong>14 puntos críticos</strong> de la ITV: frenos, luces, suspensión, escape, dirección y emisiones. Si pasas la ITV a la primera, vuelves contento. Si no pasas, te lo dejamos listo.</p>
+      </div>
+    </div>
+    <div class="preitv-actions">
+      <a href="#cita" class="btn btn-black">
+        Reservar pre-ITV
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESO ─── -->
+<section class="process-section" id="proceso">
+  <div class="process-header">
+    <div class="s-eyebrow center">Cómo trabajamos</div>
+    <h2 class="s-title light">DEL FALLO <em>A LA SOLUCIÓN</em></h2>
+    <p>Sin sorpresas, sin letra pequeña. Te contamos qué tiene tu coche, cuánto cuesta y cuándo lo tienes listo. Si no autorizas, no tocamos nada.</p>
+  </div>
+  <div class="process-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>DIAGNÓSTICO</h4>
+      <p>Lectura OBD, prueba de carretera y revisión visual. Detectamos qué falla exactamente.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>PRESUPUESTO</h4>
+      <p>Te llamamos con el coste exacto y los plazos. Solo empezamos cuando tú dices sí.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>REPARACIÓN</h4>
+      <p>Mecánicos titulados, repuestos de calidad y herramienta profesional. Sin atajos.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>ENTREGA</h4>
+      <p>Te lo entregamos limpio, con prueba final y factura clara. Garantía por escrito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARCAS ─── -->
+<section class="brands-section" id="marcas">
+  <div class="brands-header">
+    <div class="s-eyebrow center">Multimarca</div>
+    <h2 class="s-title">CUALQUIER <em>MARCA</em></h2>
+    <p>Trabajamos con las principales marcas del mercado, sin perder garantía oficial.</p>
+  </div>
+  <div class="brands-grid">
+    <a href="#" class="brand-cell">VOLKSWAGEN</a>
+    <a href="#" class="brand-cell">SEAT</a>
+    <a href="#" class="brand-cell">ŠKODA</a>
+    <a href="#" class="brand-cell">AUDI</a>
+    <a href="#" class="brand-cell">BMW</a>
+    <a href="#" class="brand-cell">MERCEDES</a>
+    <a href="#" class="brand-cell">PEUGEOT</a>
+    <a href="#" class="brand-cell">CITROËN</a>
+    <a href="#" class="brand-cell">RENAULT</a>
+    <a href="#" class="brand-cell">FORD</a>
+    <a href="#" class="brand-cell">OPEL</a>
+    <a href="#" class="brand-cell">TOYOTA</a>
+    <a href="#" class="brand-cell">HONDA</a>
+    <a href="#" class="brand-cell">NISSAN</a>
+    <a href="#" class="brand-cell">HYUNDAI</a>
+    <a href="#" class="brand-cell">KIA</a>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section class="review-section" id="opiniones">
+  <div class="review-inner">
+    <div class="review-header">
+      <div class="s-eyebrow center">Opiniones reales</div>
+      <h2 class="s-title light">4.9★ EN <em>GOOGLE</em></h2>
+      <p>Más de 380 reseñas verificadas. Esto es lo que dicen los que ya nos han confiado su coche.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"El coche me daba problemas eléctricos desde hacía meses. Lo dejé a las 9, a las 5 lo tenía de vuelta arreglado. Presupuesto exacto, sin sorpresas. Estos saben."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div class="review-who">
+            <strong>Ander Etxebarria</strong>
+            <span>BMW SERIE 3 · BILBAO</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"Pasé la pre-ITV con ellos y la ITV oficial al día siguiente. Ni una sola incidencia. Honrados, claros y rápidos. No vuelvo al concesionario."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div class="review-who">
+            <strong>María Sánchez</strong>
+            <span>SEAT LEÓN · DEUSTO</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"Llevo 8 años con todos los coches de la familia aquí. Los nuevos, los viejos, los del trabajo. Confianza total. Nunca un fallo en la factura, nunca una pieza que sobrara."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div class="review-who">
+            <strong>Jon Aranburu</strong>
+            <span>FLOTA EMPRESA · BILBAO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOK / CITA ─── -->
+<section class="book-section" id="cita">
+  <div class="book-inner">
+    <div class="book-left">
+      <div class="s-eyebrow">Pide tu cita</div>
+      <h2 class="s-title">RESERVA EN <em>2 MINUTOS</em></h2>
+      <p class="book-body">Dinos qué le pasa a tu coche y cuándo te viene bien. Te confirmamos la cita en <strong>menos de 1 hora</strong>. Diagnosis sin compromiso.</p>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:14px; max-width: 480px;">
+        <li style="display:flex; align-items:center; gap:14px; font-size:1rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong style="font-weight:700;">Presupuesto cerrado antes de empezar</strong>
+        </li>
+        <li style="display:flex; align-items:center; gap:14px; font-size:1rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong style="font-weight:700;">Garantía por escrito en cada reparación</strong>
+        </li>
+        <li style="display:flex; align-items:center; gap:14px; font-size:1rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong style="font-weight:700;">Coche de cortesía en reparaciones largas</strong>
+        </li>
+        <li style="display:flex; align-items:center; gap:14px; font-size:1rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong style="font-weight:700;">Si no arreglamos, no cobramos diagnóstico</strong>
+        </li>
+      </ul>
+    </div>
+    <form class="book-form" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='RECIBIDO ✓ TE LLAMAMOS HOY'; this.querySelector('button[type=submit]').style.background='#4ade80';">
+      <div class="book-form-title">RESERVAR CITA</div>
+      <div class="book-form-sub">FORMULARIO 002 — RESPUESTA EN &lt;1H</div>
+      <div class="book-row">
+        <div class="book-field">
+          <label>Nombre</label>
+          <input type="text" required placeholder="Tu nombre">
+        </div>
+        <div class="book-field">
+          <label>Teléfono</label>
+          <input type="tel" required placeholder="688 123 456">
+        </div>
+      </div>
+      <div class="book-row">
+        <div class="book-field">
+          <label>Marca y modelo</label>
+          <input type="text" required placeholder="VW Golf, BMW S3...">
+        </div>
+        <div class="book-field">
+          <label>Matrícula</label>
+          <input type="text" placeholder="0000 ABC">
+        </div>
+      </div>
+      <div class="book-field">
+        <label>Servicio</label>
+        <select required>
+          <option value="">Elige el servicio</option>
+          <option>Pre-ITV</option>
+          <option>Diagnosis OBD</option>
+          <option>Mantenimiento / cambio aceite</option>
+          <option>Frenos</option>
+          <option>Neumáticos</option>
+          <option>Aire acondicionado</option>
+          <option>Electricidad</option>
+          <option>Mecánica general</option>
+          <option>Otro / no lo sé</option>
+        </select>
+      </div>
+      <div class="book-field">
+        <label>Cuándo te viene bien</label>
+        <input type="date">
+      </div>
+      <button type="submit" class="book-submit">SOLICITAR CITA →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ─── HOURS / LOCATION ─── -->
+<section class="visit-section" id="contacto">
+  <div class="visit-inner">
+    <div class="visit-card">
+      <h3>VEN A <em>VERNOS</em></h3>
+      <div class="visit-info">
+        <div class="visit-info-item">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div>
+            <span class="label">Dirección</span>
+            <span class="value">Bilbao Centro</span>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <span class="label">Teléfono</span>
+            <span class="value">944 00 00 00</span>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <div>
+            <span class="label">Email</span>
+            <span class="value" style="font-size:1.1rem;">info@talleresbilbao.es</span>
+          </div>
+        </div>
+        <div class="visit-info-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <span class="label">Urgencias</span>
+            <span class="value" style="color:var(--orange);">24h · 365 días</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="tel:+34944000000" class="btn btn-orange">
+          Llamar ahora
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a href="https://maps.google.com/?q=Talleres+Bilbao" target="_blank" rel="noopener" class="btn btn-outline-bone">
+          Cómo llegar
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <h3>HORARIO <em>OFICINA</em></h3>
+      <ul class="hours-list">
+        <li class="hours-row">
+          <span class="hours-day">Lun – Vie · MAÑANA</span>
+          <span class="hours-time">08:30 — 13:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Lun – Vie · TARDE</span>
+          <span class="hours-time">15:00 — 19:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">09:00 — 13:00</span>
+        </li>
+        <li class="hours-row closed">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">Cerrado</span>
+        </li>
+        <li class="hours-row" style="margin-top:16px; border-top:2px solid var(--orange); padding-top:18px;">
+          <span class="hours-day" style="color:var(--orange);">URGENCIAS · GRÚA</span>
+          <span class="hours-time" style="color:var(--orange); font-weight:700;">24h / 365</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.121 2.121 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="currentColor"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">TALLERES BILBAO</span>
+          <span class="brand-tag">Mecánica · ITV · Diagnosis</span>
+        </div>
+      </a>
+      <p>Taller multimarca con +25 años en Bilbao. Mecánica honesta, presupuesto cerrado y garantía por escrito.</p>
+      <div class="footer-cert">
+        <span>RGI · 48-2345</span>
+        <span>ATE Certificado</span>
+        <span>Bosch Service</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>SERVICIOS</h5>
+      <ul>
+        <li><a href="#servicios">Mecánica general</a></li>
+        <li><a href="#preitv">Pre-ITV</a></li>
+        <li><a href="#servicios">Diagnosis OBD</a></li>
+        <li><a href="#servicios">Neumáticos</a></li>
+        <li><a href="#servicios">Aire acondicionado</a></li>
+        <li><a href="#servicios">Electricidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>TALLER</h5>
+      <ul>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#marcas">Marcas</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#cita">Pedir cita</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>CONTACTO</h5>
+      <ul>
+        <li>Bilbao Centro</li>
+        <li><a href="tel:+34944000000">944 00 00 00</a></li>
+        <li><a href="mailto:info@talleresbilbao.es">info@talleresbilbao.es</a></li>
+        <li>L–V · 08:30–19:00</li>
+        <li>Sáb · 09:00–13:00</li>
+        <li style="color:var(--orange);">Urgencias 24/7</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 TALLERES BILBAO · CIF B12345678 · BILBAO · BIZKAIA</div>
+    <div>AVISO LEGAL · PRIVACIDAD · COOKIES</div>
+  </div>
+</footer>
+
+<a href="tel:+34944000000" class="fab-call" aria-label="Llamar">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>
