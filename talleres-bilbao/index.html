@@ -288,28 +288,27 @@
 
     .hero-visual {
       position: relative; overflow: hidden;
-      background: var(--steel) url('https://images.unsplash.com/photo-1632823469850-1b7b1e8b7e6e?w=1200&q=80') center/cover;
-      background:
-        linear-gradient(135deg, rgba(10,10,10,0.65), rgba(255,107,26,0.25)),
-        linear-gradient(135deg, var(--steel) 25%, var(--carbon) 100%);
+      background: var(--steel);
     }
+    .hero-visual-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 9s var(--ease);
+      transform: scale(1.05);
+      filter: brightness(0.78) contrast(1.05) saturate(0.95);
+    }
+    .hero-visual-img.loaded { transform: scale(1); }
     .hero-visual::before {
       content: '';
-      position: absolute; inset: 0;
-      background-image:
-        radial-gradient(circle at 30% 30%, rgba(255,107,26,0.4), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(245,211,0,0.3), transparent 50%);
+      position: absolute; inset: 0; z-index: 2;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.1) 40%, rgba(255,107,26,0.2) 100%);
+      pointer-events: none;
     }
-
-    /* SVG car illustration container */
-    .car-art {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      padding: 60px;
-    }
-    .car-art svg {
-      width: 80%; max-width: 600px;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    .hero-visual::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background-image: repeating-linear-gradient(45deg, transparent 0px, transparent 30px, rgba(245,211,0,0.04) 30px, rgba(245,211,0,0.04) 32px);
+      pointer-events: none;
     }
 
     .hero-meta {
@@ -611,6 +610,82 @@
     .brand-cell:hover {
       background: var(--black); color: var(--orange);
       transform: scale(1.04); z-index: 2;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      background: var(--bone);
+      padding: 130px 0 0;
+    }
+    .gallery-header {
+      max-width: 1320px; margin: 0 auto 60px;
+      padding: 0 56px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .gallery-header p {
+      font-size: 1.05rem; color: var(--steel);
+      margin-top: 18px; max-width: 540px; line-height: 1.65;
+    }
+    .gallery-meta {
+      font-family: var(--font-mono);
+      font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mist); font-weight: 600;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 18px;
+      border: 1.5px solid var(--black);
+    }
+    .gallery-meta strong { color: var(--orange); font-weight: 700; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 4px;
+      padding: 0 4px 130px;
+    }
+    .gallery-tile { position: relative; overflow: hidden; background: var(--steel); cursor: pointer; }
+    .gallery-tile.t1 { grid-column: span 3; grid-row: span 2; }
+    .gallery-tile.t2 { grid-column: span 3; }
+    .gallery-tile.t3 { grid-column: span 2; }
+    .gallery-tile.t4 { grid-column: span 1; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s var(--ease), filter 0.5s;
+      filter: saturate(0.92) brightness(0.95);
+    }
+    .gallery-tile:hover img {
+      transform: scale(1.08); filter: saturate(1.1) brightness(1);
+    }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.7), transparent 50%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 22px; left: 24px; z-index: 2;
+      color: var(--bone);
+      font-family: var(--font-display);
+      font-size: 1.1rem; letter-spacing: 0.04em;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-label .num {
+      font-family: var(--font-mono);
+      font-size: 0.66rem; color: var(--orange);
+      letter-spacing: 0.2em; display: block; margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1024px) {
+      .gallery-header { padding: 0 24px; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 240px);
+      }
+      .gallery-tile.t1, .gallery-tile.t2, .gallery-tile.t3, .gallery-tile.t4 {
+        grid-column: auto; grid-row: auto;
+      }
     }
 
     /* ─── REVIEW STRIP ─── */
@@ -976,7 +1051,7 @@
     <a href="#servicios">Servicios</a>
     <a href="#preitv">Pre-ITV</a>
     <a href="#proceso">Proceso</a>
-    <a href="#marcas">Marcas</a>
+    <a href="#taller">El taller</a>
     <a href="#opiniones">Opiniones</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -1021,38 +1096,8 @@
     </div>
   </div>
   <div class="hero-visual">
+    <img class="hero-visual-img" id="heroImg" src="https://images.unsplash.com/photo-1632823471565-1ecb6c39aef8?w=1400&q=80" alt="Taller mecánico Bilbao">
     <div class="hero-corner">SISTEMA OPERATIVO · ABIERTO</div>
-    <div class="car-art">
-      <svg viewBox="0 0 600 360" fill="none">
-        <!-- Sombra coche -->
-        <ellipse cx="300" cy="290" rx="240" ry="14" fill="rgba(0,0,0,0.45)"/>
-        <!-- Cuerpo coche -->
-        <path d="M 80 230 Q 90 180 130 170 L 200 155 Q 230 130 280 125 L 380 125 Q 430 135 460 165 L 510 175 Q 535 185 535 215 L 535 250 Q 535 265 520 265 L 490 265 Q 480 290 460 290 Q 440 290 430 265 L 195 265 Q 185 290 165 290 Q 145 290 135 265 L 95 265 Q 80 265 80 250 Z" fill="#FF6B1A" stroke="#0A0A0A" stroke-width="3"/>
-        <!-- Ventanas -->
-        <path d="M 220 155 L 270 130 L 380 130 L 425 165 L 415 215 L 215 215 Z" fill="#0A0A0A" opacity="0.85"/>
-        <path d="M 230 158 L 275 137 L 320 137 L 320 210 L 225 210 Z" fill="#FFE53D" opacity="0.25"/>
-        <path d="M 332 137 L 380 137 L 415 165 L 410 210 L 332 210 Z" fill="#FFE53D" opacity="0.25"/>
-        <!-- División ventanas -->
-        <line x1="326" y1="135" x2="326" y2="215" stroke="#0A0A0A" stroke-width="3"/>
-        <!-- Faros -->
-        <path d="M 460 170 L 510 178 L 510 200 L 480 200 Z" fill="#FFE53D" stroke="#0A0A0A" stroke-width="2"/>
-        <circle cx="495" cy="190" r="6" fill="#fff" opacity="0.9"/>
-        <!-- Faro trasero -->
-        <rect x="85" y="185" width="20" height="22" fill="#F5D300" stroke="#0A0A0A" stroke-width="2"/>
-        <!-- Manijas / línea cuerpo -->
-        <line x1="155" y1="232" x2="450" y2="232" stroke="#0A0A0A" stroke-width="2" opacity="0.5"/>
-        <!-- Rueda izquierda -->
-        <circle cx="165" cy="270" r="38" fill="#0A0A0A"/>
-        <circle cx="165" cy="270" r="22" fill="#1E1E1E" stroke="#F5D300" stroke-width="2"/>
-        <circle cx="165" cy="270" r="6" fill="#F5D300"/>
-        <!-- Rueda derecha -->
-        <circle cx="460" cy="270" r="38" fill="#0A0A0A"/>
-        <circle cx="460" cy="270" r="22" fill="#1E1E1E" stroke="#F5D300" stroke-width="2"/>
-        <circle cx="460" cy="270" r="6" fill="#F5D300"/>
-        <!-- Rayo decorativo en puerta -->
-        <path d="M 340 175 L 320 215 L 340 215 L 325 245" stroke="#F5D300" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
     <div class="hero-meta">
       <span class="label">Próxima cita libre</span>
       <strong>Mañana · 09:30h</strong><br>
@@ -1248,6 +1293,65 @@
     <a href="#" class="brand-cell">NISSAN</a>
     <a href="#" class="brand-cell">HYUNDAI</a>
     <a href="#" class="brand-cell">KIA</a>
+  </div>
+</section>
+
+<!-- ─── GALLERY · EL TALLER ─── -->
+<section class="gallery-section" id="taller">
+  <div class="gallery-header">
+    <div>
+      <div class="s-eyebrow">El taller</div>
+      <h2 class="s-title">ESTO ES <em>LA CASA</em></h2>
+      <p>Más de 600 m² equipados con maquinaria profesional. Elevadores, alineadora 3D, equipos de diagnosis multimarca y la herramienta que hace falta para hacer las cosas bien.</p>
+    </div>
+    <div class="gallery-meta">
+      <span style="display:inline-block; width:8px; height:8px; background:var(--orange); animation: blink 1.5s infinite;"></span>
+      EN DIRECTO · <strong>3 elevadores libres ahora</strong>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile t1">
+      <img src="https://images.unsplash.com/photo-1632823471565-1ecb6c39aef8?w=1200&q=80" alt="Nave principal del taller">
+      <div class="gallery-label">
+        <span class="num">/01</span>
+        Nave principal · 600 m²
+      </div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1000&q=80" alt="Mecánico trabajando">
+      <div class="gallery-label">
+        <span class="num">/02</span>
+        Mecánicos titulados · Bosch Service
+      </div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1000&q=80" alt="Diagnosis OBD">
+      <div class="gallery-label">
+        <span class="num">/03</span>
+        Diagnosis OBD multimarca
+      </div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1000&q=80" alt="Equilibrado y neumáticos">
+      <div class="gallery-label">
+        <span class="num">/04</span>
+        Equilibrado &amp; alineación 3D
+      </div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1605618826115-fb5db1ac5fa5?w=600&q=80" alt="Frenos y discos">
+      <div class="gallery-label">
+        <span class="num">/05</span>
+        Frenos
+      </div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=80" alt="Herramienta profesional">
+      <div class="gallery-label">
+        <span class="num">/06</span>
+        Herramienta pro
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1529,6 +1633,10 @@
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  window.addEventListener('load', () => {
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) heroImg.classList.add('loaded');
   });
 </script>
 
