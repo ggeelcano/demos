@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2D4A3E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=yes">
+  <title>Argia Bar Restaurante — Leioa · Pintxos, terraza y postres caseros</title>
+  <meta name="description" content="Argia Bar Restaurante en Leioa. Pintxos, terraza, menú del día, especiales de fin de semana y postres caseros. Sabino Arana 20. Reservas: 666 68 76 93.">
+  <meta name="keywords" content="Argia Leioa, restaurante Leioa, terraza Leioa, pintxos Leioa, menú del día Leioa, postres caseros Bizkaia">
+  <link rel="canonical" href="https://ggeelcano.github.io/demos/argia-leioa/">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Argia Bar Restaurante · Leioa">
+  <meta property="og:title" content="Argia Bar Restaurante · Leioa">
+  <meta property="og:description" content="Pintxos, terraza, menú del día y postres caseros en Sabino Arana 20. Reservas 666 68 76 93.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="Argia Bar Restaurante Leioa">
+  <meta property="og:url" content="https://ggeelcano.github.io/demos/argia-leioa/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Argia Bar Restaurante · Leioa">
+  <meta name="twitter:description" content="Pintxos, terraza y postres caseros. 666 68 76 93.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232D4A3E'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='%23F5EDE0' font-family='Georgia,serif' font-style='italic'%3EA%3C/text%3E%3Ccircle cx='75' cy='28' r='8' fill='%23D67A56'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232D4A3E'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='%23F5EDE0' font-family='Georgia,serif' font-style='italic'%3EA%3C/text%3E%3Ccircle cx='75' cy='28' r='8' fill='%23D67A56'/%3E%3C/svg%3E">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Restaurant","name":"Argia Bar Restaurante","address":{"@type":"PostalAddress","streetAddress":"Avenida Sabino Arana Etorbidea, 20","addressLocality":"Leioa","postalCode":"48940","addressRegion":"Bizkaia","addressCountry":"ES"},"telephone":"+34666687693","servesCuisine":["Vasca","Pintxos"],"priceRange":"€10-20","aggregateRating":{"@type":"AggregateRating","ratingValue":"3.8","reviewCount":"114"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:30","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"10:30","closes":"00:00"}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=85">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bottle: #2D4A3E;
+      --bottle-deep: #1F3329;
+      --bottle-soft: #4A6B5C;
+      --moss: #6F8B7A;
+      --coral: #D67A56;
+      --coral-soft: #E59A78;
+      --coral-deep: #B05A38;
+      --salmon: #F0C8B0;
+      --cream: #F5EDE0;
+      --ivory: #FBF6EC;
+      --kraft: #E5D9C2;
+      --gold: #C9A961;
+      --ink: #2A1F12;
+      --ink-2: #4A3826;
+      --mist: #7A6957;
+      --line: rgba(42,31,18,0.13);
+      --font-display: 'DM Serif Display', serif;
+      --font-sans: 'Inter', -apple-system, Helvetica, sans-serif;
+      --font-hand: 'Caveat', cursive;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-sans); font-weight: 400; line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--bottle); color: var(--cream); }
+
+    /* TOPBAR */
+    .topbar { background: var(--bottle); color: var(--cream); padding: 9px 22px; display: flex; align-items: center; justify-content: center; gap: 26px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; overflow: hidden; }
+    .topbar-item { display: inline-flex; align-items: center; gap: 8px; }
+    .topbar-item strong { color: var(--coral-soft); font-weight: 700; }
+    .topbar-sep { opacity: 0.45; }
+    @media (max-width: 700px) { .topbar { gap: 14px; padding: 8px 14px; font-size: 0.6rem; } .topbar-item:nth-child(n+3), .topbar-sep:nth-child(n+3) { display: none; } }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 1000; background: rgba(245,237,224,0.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 16px 24px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 26px; transition: padding 0.3s; }
+    nav.scrolled { padding: 11px 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon { position: relative; width: 46px; height: 46px; background: var(--bottle); display: flex; align-items: center; justify-content: center; border-radius: 50%; font-family: var(--font-display); font-style: italic; font-size: 1.55rem; color: var(--cream); }
+    .brand-icon::after { content: ''; position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: var(--coral); border-radius: 50%; box-shadow: 0 0 12px rgba(214,122,86,0.6); }
+    .brand-text { display: flex; flex-direction: column; line-height: 0.95; gap: 3px; }
+    .brand-name { font-family: var(--font-display); font-size: 1.55rem; color: var(--ink); letter-spacing: -0.005em; }
+    .brand-tag { font-family: var(--font-hand); font-size: 0.95rem; color: var(--coral-deep); font-weight: 600; transform: rotate(-2deg); display: inline-block; }
+    .nav-links { display: flex; gap: 28px; align-items: center; justify-content: center; }
+    .nav-links a { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; color: var(--ink); transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 1.5px; background: var(--coral); transform: scaleX(0); transition: transform 0.3s var(--ease); transform-origin: right; }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:hover { color: var(--coral-deep); }
+    .nav-cta { background: var(--coral); color: var(--cream) !important; padding: 12px 22px; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; border-radius: 50px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .nav-cta:hover { background: var(--bottle); }
+    .nav-cta svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+    .hamburger { display: none; }
+    @media (max-width: 1024px) {
+      nav, nav.scrolled { padding: 12px 16px; gap: 12px; grid-template-columns: auto auto auto; }
+      .nav-links { display: none; }
+      .brand-name { font-size: 1.4rem; }
+      .brand-tag { font-size: 0.82rem; }
+      .hamburger { display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; }
+      .hamburger span, .hamburger span::before, .hamburger span::after { content: ''; display: block; width: 22px; height: 1.5px; background: var(--ink); }
+      .hamburger span { position: relative; }
+      .hamburger span::before { position: absolute; top: -7px; }
+      .hamburger span::after { position: absolute; top: 7px; }
+    }
+
+    /* HERO */
+    .hero { position: relative; height: calc(100vh - 80px); min-height: 620px; max-height: 880px; display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=85'); background-size: cover; background-position: center; transform: scale(1.05); transition: transform 8s var(--ease); filter: brightness(0.65) saturate(1.1); }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(31,51,41,0.4) 0%, rgba(31,51,41,0.1) 30%, rgba(31,51,41,0.92) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 56px 70px; max-width: 1100px; color: var(--cream); }
+    .hero-handle { font-family: var(--font-hand); font-size: 1.5rem; color: var(--coral-soft); font-weight: 600; transform: rotate(-1.5deg); display: inline-block; margin-bottom: 16px; opacity: 0; animation: fadeUpRot 0.9s 0.2s var(--ease) forwards; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--coral-soft); margin-bottom: 26px; opacity: 0; transform: translateY(10px); animation: fadeUp 0.9s 0.35s var(--ease) forwards; }
+    .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--coral-soft); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(4rem, 10.5vw, 10.5rem); line-height: 0.92; letter-spacing: -0.025em; margin-bottom: 28px; color: var(--cream); opacity: 0; transform: translateY(28px); animation: fadeUp 1.2s 0.45s var(--ease) forwards; }
+    .hero-title em { font-style: italic; color: var(--coral-soft); }
+    .hero-sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 1.6vw, 1.5rem); line-height: 1.55; color: rgba(245,237,224,0.92); max-width: 580px; margin-bottom: 42px; opacity: 0; transform: translateY(16px); animation: fadeUp 1s 0.7s var(--ease) forwards; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(15px); animation: fadeUp 1s 0.95s var(--ease) forwards; }
+
+    .btn { display: inline-flex; align-items: center; gap: 12px; padding: 15px 30px; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; border: 1.5px solid transparent; border-radius: 50px; transition: all 0.32s var(--ease-smooth); background: transparent; min-height: 48px; }
+    .btn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2; transition: transform 0.3s; fill: none; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-coral { background: var(--coral); color: var(--cream); border-color: var(--coral); }
+    .btn-coral:hover { background: var(--coral-deep); border-color: var(--coral-deep); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(214,122,86,0.4); }
+    .btn-bottle { background: var(--bottle); color: var(--cream); border-color: var(--bottle); }
+    .btn-bottle:hover { background: var(--bottle-deep); border-color: var(--bottle-deep); transform: translateY(-2px); }
+    .btn-ghost-cream { color: var(--cream); border-color: rgba(245,237,224,0.5); }
+    .btn-ghost-cream:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .btn-outline-ink { color: var(--ink); border-color: var(--ink); }
+    .btn-outline-ink:hover { background: var(--ink); color: var(--cream); }
+    .btn-cream { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .btn-cream:hover { background: transparent; color: var(--cream); border-color: var(--cream); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUpRot { to { opacity: 1; transform: translateY(0) rotate(-1.5deg); } }
+
+    /* MARQUEE */
+    .marquee { background: var(--coral); color: var(--ink); overflow: hidden; padding: 16px 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+    .marquee-track { display: flex; white-space: nowrap; animation: scroll 32s linear infinite; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 22px; padding: 0 30px; font-family: var(--font-display); font-style: italic; font-size: 1.5rem; }
+    .marquee-item .dot { width: 8px; height: 8px; background: var(--bottle); border-radius: 50%; flex-shrink: 0; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTION COMMON */
+    section { position: relative; }
+    .s-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.68rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--coral-deep); font-weight: 600; margin-bottom: 18px; }
+    .s-eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--coral-deep); }
+    .s-eyebrow.center { justify-content: center; }
+    .s-eyebrow.center::before, .s-eyebrow.center::after { content: ''; width: 32px; height: 1.5px; background: var(--coral-deep); }
+    .s-handle { font-family: var(--font-hand); font-size: 1.35rem; color: var(--coral-deep); font-weight: 600; margin-bottom: 6px; transform: rotate(-1.5deg); display: inline-block; }
+    .s-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5.5vw, 5.2rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+    .s-title em { font-style: italic; color: var(--bottle); }
+    .s-title.light { color: var(--cream); }
+    .s-title.light em { color: var(--coral-soft); }
+
+    /* TRUST STATS */
+    .stats-section { background: var(--ivory); padding: 50px 24px; border-bottom: 3px solid var(--coral); }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    .stat { text-align: center; padding: 0 12px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--bottle); line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .stat-num em { font-style: italic; color: var(--coral); }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); font-weight: 600; }
+
+    /* HISTORIA */
+    .story-section { display: grid; grid-template-columns: 1fr 1.05fr; background: var(--cream); }
+    .story-content { padding: 110px 70px; display: flex; flex-direction: column; justify-content: center; }
+    .story-content .s-title { margin: 12px 0 26px; }
+    .story-body { font-family: var(--font-display); font-style: italic; font-size: 1.18rem; line-height: 1.85; color: var(--ink-2); margin-bottom: 30px; }
+    .story-body p { margin-bottom: 18px; }
+    .story-body strong { color: var(--ink); font-weight: 500; font-style: normal; }
+    .story-body em { color: var(--bottle); }
+    .story-features { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 30px; max-width: 580px; }
+    .story-feature { display: flex; align-items: flex-start; gap: 14px; }
+    .story-feature-icon { width: 38px; height: 38px; background: var(--bottle); color: var(--coral-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 10px; }
+    .story-feature-icon svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .story-feature-text strong { display: block; font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); line-height: 1.2; margin-bottom: 3px; }
+    .story-feature-text span { font-size: 0.82rem; color: var(--ink-2); line-height: 1.5; }
+    .story-visual { position: relative; min-height: 720px; background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85'); background-size: cover; background-position: center; }
+    .story-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(31,51,41,0.18), transparent 50%); }
+    .story-quote { position: absolute; bottom: 40px; left: 40px; right: 40px; z-index: 2; color: var(--cream); font-family: var(--font-display); font-style: italic; font-size: 1.4rem; line-height: 1.5; padding-left: 20px; border-left: 3px solid var(--coral); max-width: 470px; }
+
+    /* TERRAZA SIGNATURE */
+    .terrace-section { background: var(--bottle); color: var(--cream); padding: 110px 24px; position: relative; overflow: hidden; }
+    .terrace-section::before { content: ''; position: absolute; top: -200px; left: -180px; width: 540px; height: 540px; border-radius: 50%; background: radial-gradient(circle, rgba(214,122,86,0.32), transparent 65%); pointer-events: none; }
+    .terrace-section::after { content: ''; position: absolute; bottom: -200px; right: -180px; width: 540px; height: 540px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,97,0.22), transparent 65%); pointer-events: none; }
+    .terrace-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; position: relative; z-index: 2; }
+    .terrace-content .s-eyebrow { color: var(--coral-soft); }
+    .terrace-content .s-eyebrow::before, .terrace-content .s-eyebrow::after { background: var(--coral-soft); }
+    .terrace-content .s-title { color: var(--cream); margin: 12px 0 24px; }
+    .terrace-content .s-title em { color: var(--coral-soft); }
+    .terrace-body { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; line-height: 1.75; color: rgba(245,237,224,0.85); margin-bottom: 30px; max-width: 540px; }
+    .terrace-body strong { color: var(--cream); font-weight: 500; font-style: normal; }
+    .terrace-points { list-style: none; margin-bottom: 36px; padding: 22px 0; border-top: 1px solid rgba(245,237,224,0.18); border-bottom: 1px solid rgba(245,237,224,0.18); }
+    .terrace-points li { display: flex; align-items: flex-start; gap: 14px; padding: 8px 0; }
+    .terrace-points li svg { width: 20px; height: 20px; color: var(--coral-soft); stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; margin-top: 3px; }
+    .terrace-points li span { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: rgba(245,237,224,0.88); }
+    .terrace-points li strong { color: var(--coral-soft); font-weight: 500; font-style: normal; }
+    .terrace-visual { aspect-ratio: 4/5; background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=85'); background-size: cover; background-position: center; border: 4px solid var(--coral); position: relative; }
+    .terrace-stamp { position: absolute; top: -22px; right: -22px; width: 130px; height: 130px; background: var(--coral); color: var(--cream); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(8deg); font-family: var(--font-display); font-style: italic; box-shadow: 0 14px 28px rgba(0,0,0,0.25); animation: stampWobble 5s ease-in-out infinite; }
+    .terrace-stamp strong { font-size: 1.7rem; line-height: 1; }
+    .terrace-stamp span { font-family: var(--font-sans); font-style: normal; font-size: 0.55rem; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 700; margin-top: 6px; text-align: center; line-height: 1.2; }
+    @keyframes stampWobble { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(3deg); } }
+
+    /* CARTA */
+    .menu-section { padding: 110px 24px; background: var(--ivory); }
+    .menu-inner { max-width: 1320px; margin: 0 auto; }
+    .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 28px; }
+    .menu-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+    .menu-tab { padding: 11px 20px; border: 1.5px solid var(--line); border-radius: 50px; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-2); transition: all 0.3s; }
+    .menu-tab.active { background: var(--bottle); border-color: var(--bottle); color: var(--cream); }
+    .menu-tab:hover:not(.active) { border-color: var(--coral); color: var(--coral-deep); }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 70px; max-width: 1200px; margin: 0 auto; }
+    .menu-group { display: none; }
+    .menu-group.active { display: contents; }
+    .group-title { grid-column: span 2; font-family: var(--font-display); font-style: italic; font-size: 1.55rem; color: var(--bottle); margin: 28px 0 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 14px; }
+    .group-title:first-child { margin-top: 0; }
+    .group-title span { font-family: var(--font-sans); font-style: normal; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); }
+
+    .dish { padding: 18px 0; border-bottom: 1px dashed var(--line); }
+    .dish-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 5px; }
+    .dish-name { font-family: var(--font-display); font-size: 1.18rem; color: var(--ink); line-height: 1.3; }
+    .dish-name em { font-style: italic; color: var(--coral-deep); }
+    .dish-dots { flex: 1; height: 1px; align-self: flex-end; background-image: radial-gradient(circle, rgba(42,31,18,0.3) 1px, transparent 1px); background-size: 6px 1px; margin-bottom: 6px; }
+    .dish-price { font-family: var(--font-display); font-style: italic; font-size: 1.18rem; color: var(--coral-deep); white-space: nowrap; }
+    .dish-desc { font-size: 0.9rem; color: var(--ink-2); line-height: 1.55; font-style: italic; font-family: var(--font-display); }
+    .dish-tag { display: inline-block; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-deep); padding: 2px 9px; border: 1px solid var(--coral-deep); border-radius: 40px; font-weight: 700; margin-left: 8px; vertical-align: middle; font-family: var(--font-sans); }
+    .dish-tag.veg { color: var(--moss); border-color: var(--moss); }
+    .dish-tag.signature { color: var(--cream); background: var(--bottle); border-color: var(--bottle); }
+    .dish-tag.dulce { color: var(--cream); background: var(--coral); border-color: var(--coral); }
+
+    /* MENU DEL DÍA Y FIN DE SEMANA */
+    .menus-special { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1200px; margin: 60px auto 0; }
+    .menu-special-card { background: var(--ink); color: var(--cream); padding: 36px 32px; border-left: 6px solid var(--coral); display: flex; flex-direction: column; gap: 18px; }
+    .menu-special-card.weekend { background: var(--bottle); border-left-color: var(--gold); }
+    .menu-special-card .label { font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; }
+    .menu-special-card.weekend .label { color: var(--gold); }
+    .menu-special-card h3 { font-family: var(--font-display); font-size: 2rem; line-height: 1; }
+    .menu-special-card h3 em { font-style: italic; color: var(--coral-soft); }
+    .menu-special-card.weekend h3 em { color: var(--gold); }
+    .menu-special-card p { font-family: var(--font-display); font-style: italic; font-size: 0.98rem; color: rgba(245,237,224,0.78); line-height: 1.55; }
+    .menu-special-card .price { font-family: var(--font-display); font-size: 3rem; color: var(--coral-soft); line-height: 0.9; letter-spacing: -0.01em; margin-top: auto; }
+    .menu-special-card.weekend .price { color: var(--gold); }
+    .menu-special-card .price small { font-family: var(--font-display); font-style: italic; font-size: 0.95rem; color: rgba(245,237,224,0.65); display: block; margin-top: 4px; }
+
+    /* GALERÍA */
+    .gallery-section { padding: 110px 0 0; background: var(--kraft); }
+    .gallery-header { text-align: center; max-width: 900px; margin: 0 auto 50px; padding: 0 24px; }
+    .gallery-header p { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink-2); margin-top: 16px; line-height: 1.65; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 240px 240px; gap: 4px; padding: 0 4px 110px; }
+    .gallery-tile { position: relative; overflow: hidden; background: var(--bottle-soft); cursor: pointer; }
+    .gallery-tile.t1 { grid-column: span 3; grid-row: span 2; }
+    .gallery-tile.t2 { grid-column: span 3; }
+    .gallery-tile.t3 { grid-column: span 2; }
+    .gallery-tile.t4 { grid-column: span 1; }
+    .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); filter: saturate(0.95); }
+    .gallery-tile:hover img { transform: scale(1.06); filter: saturate(1.1); }
+    .gallery-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(31,51,41,0.7), transparent 55%); opacity: 0; transition: opacity 0.4s; }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label { position: absolute; bottom: 18px; left: 20px; z-index: 2; color: var(--cream); font-family: var(--font-display); font-style: italic; font-size: 1.08rem; opacity: 0; transform: translateY(8px); transition: all 0.4s; }
+    .gallery-label .num { display: block; font-family: var(--font-sans); font-style: normal; font-size: 0.6rem; color: var(--coral-soft); letter-spacing: 0.24em; margin-bottom: 4px; font-weight: 700; text-transform: uppercase; }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* CONTACTO / HORARIOS */
+    .visit-section { padding: 110px 24px; background: var(--cream); }
+    .visit-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+    .visit-content .s-title { margin: 12px 0 22px; }
+    .visit-body { font-family: var(--font-display); font-style: italic; font-size: 1.18rem; line-height: 1.7; color: var(--ink-2); margin-bottom: 32px; max-width: 480px; }
+    .visit-info { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .visit-info-block { display: flex; align-items: center; gap: 18px; padding: 20px 24px; background: var(--ivory); border: 1px solid var(--line); border-radius: 14px; transition: all 0.3s; }
+    .visit-info-block:hover { background: var(--salmon); transform: translateX(4px); border-color: var(--coral); }
+    .visit-info-icon { width: 44px; height: 44px; background: var(--bottle); color: var(--coral-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 12px; }
+    .visit-info-icon svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .visit-info-text { flex: 1; }
+    .visit-info-text span { display: block; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); font-weight: 600; margin-bottom: 4px; }
+    .visit-info-text strong { font-family: var(--font-display); font-size: 1.1rem; color: var(--ink); line-height: 1.25; }
+
+    .hours-card { background: var(--bottle); color: var(--cream); padding: 48px 40px; border-radius: 22px; position: relative; overflow: hidden; border-top: 6px solid var(--coral); }
+    .hours-card::before { content: ''; position: absolute; bottom: -120px; right: -120px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(214,122,86,0.3), transparent 70%); pointer-events: none; }
+    .hours-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; position: relative; z-index: 2; }
+    .hours-card-head svg { width: 30px; height: 30px; color: var(--coral-soft); stroke: currentColor; stroke-width: 1.6; fill: none; }
+    .hours-card h3 { font-family: var(--font-display); font-size: 1.85rem; color: var(--cream); line-height: 1; }
+    .hours-card h3 em { font-style: italic; color: var(--coral-soft); }
+    .hours-list { list-style: none; position: relative; z-index: 2; }
+    .hours-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(245,237,224,0.12); }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { font-family: var(--font-display); font-size: 1.08rem; color: var(--cream); }
+    .hours-day em { font-style: italic; color: var(--coral-soft); }
+    .hours-time { font-size: 0.92rem; color: rgba(245,237,224,0.78); }
+    .hours-row.weekend { background: linear-gradient(90deg, transparent, rgba(214,122,86,0.1)); }
+    .hours-cta { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(245,237,224,0.18); position: relative; z-index: 2; }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(245,237,224,0.55); padding: 80px 24px 28px; border-top: 4px solid var(--coral); }
+    .footer-grid { max-width: 1320px; margin: 0 auto 60px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 46px; }
+    .footer-brand .brand-icon { background: var(--coral); width: 50px; height: 50px; font-size: 1.85rem; margin-bottom: 18px; color: var(--cream); }
+    .footer-brand .brand-icon::after { background: var(--bottle); box-shadow: 0 0 12px rgba(45,74,62,0.7); }
+    .footer-brand-name { font-family: var(--font-display); font-size: 2rem; color: var(--cream); line-height: 1; margin-bottom: 4px; }
+    .footer-brand-tag { font-family: var(--font-hand); font-size: 1.2rem; color: var(--coral-soft); margin-bottom: 22px; transform: rotate(-1.5deg); display: inline-block; }
+    .footer-brand p { font-family: var(--font-display); font-style: italic; font-size: 0.98rem; line-height: 1.65; color: rgba(245,237,224,0.5); max-width: 320px; }
+    .footer-col h5 { font-family: var(--font-display); font-size: 1.15rem; color: var(--cream); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li, .footer-col ul li a { font-size: 0.86rem; color: rgba(245,237,224,0.55); transition: color 0.3s; line-height: 1.55; }
+    .footer-col ul li a:hover { color: var(--coral-soft); }
+    .footer-bottom { max-width: 1320px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(245,237,224,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; font-size: 0.74rem; color: rgba(245,237,224,0.4); }
+    .footer-bottom em { color: var(--coral-soft); font-style: italic; }
+
+    /* FAB CALL */
+    .fab-call { position: fixed; bottom: 22px; right: 22px; z-index: 998; width: 58px; height: 58px; border-radius: 50%; background: var(--coral); color: var(--cream); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px rgba(214,122,86,0.5); transition: transform 0.3s; animation: pulseCoral 2.5s ease-in-out infinite; }
+    .fab-call:hover { transform: scale(1.08); }
+    .fab-call svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 2; fill: none; }
+    @keyframes pulseCoral { 0%, 100% { box-shadow: 0 10px 28px rgba(214,122,86,0.5); } 50% { box-shadow: 0 10px 28px rgba(214,122,86,0.8), 0 0 0 14px rgba(214,122,86,0.16); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      section, .menu-section, .visit-section, .terrace-section, .gallery-section, .stats-section { padding-left: 22px; padding-right: 22px; padding-top: 80px; padding-bottom: 80px; }
+      .stats-section { padding: 40px 22px; }
+      .gallery-section { padding-bottom: 0; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 26px; }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+      .story-section { grid-template-columns: 1fr; }
+      .story-content { padding: 70px 24px; }
+      .story-visual { min-height: 400px; }
+      .story-quote { font-size: 1.15rem; bottom: 28px; left: 28px; right: 28px; }
+      .terrace-inner { grid-template-columns: 1fr; gap: 50px; }
+      .terrace-visual { aspect-ratio: 4/4; }
+      .menu-grid { grid-template-columns: 1fr; gap: 0; }
+      .group-title { grid-column: auto; }
+      .menus-special { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 220px); padding-bottom: 80px; }
+      .gallery-tile.t1, .gallery-tile.t2, .gallery-tile.t3, .gallery-tile.t4 { grid-column: auto; grid-row: auto; }
+      .visit-inner { grid-template-columns: 1fr; gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-grid > :first-child { grid-column: span 2; }
+      .menu-header { flex-direction: column; align-items: flex-start; }
+      .story-features { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .topbar { font-size: 0.58rem; padding: 7px 12px; letter-spacing: 0.15em; }
+      nav, nav.scrolled { padding: 11px 14px; }
+      .brand-icon { width: 40px; height: 40px; font-size: 1.3rem; }
+      .brand-name { font-size: 1.2rem; }
+      .brand-tag { font-size: 0.78rem; }
+      .nav-cta { padding: 10px 14px; font-size: 0.62rem; letter-spacing: 0.16em; }
+      .nav-cta svg { display: none; }
+
+      .hero { height: auto; min-height: 86vh; }
+      .hero-content { padding: 0 22px 44px; }
+      .hero-handle { font-size: 1.25rem; }
+      .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.32em; margin-bottom: 20px; }
+      .hero-title { font-size: 3.4rem; line-height: 0.92; margin-bottom: 22px; }
+      .hero-sub { font-size: 1rem; line-height: 1.55; margin-bottom: 28px; }
+      .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 15px 22px; }
+
+      section, .menu-section, .visit-section, .terrace-section { padding: 65px 16px !important; }
+      .gallery-section { padding: 65px 0 0; }
+      .stats-section { padding: 36px 16px; }
+      .stats-inner { gap: 18px; }
+      .stat-num { font-size: 2.1rem; }
+      .stat-label { font-size: 0.62rem; letter-spacing: 0.16em; }
+
+      .s-title { font-size: 2rem !important; line-height: 1.05; }
+      .s-handle { font-size: 1.15rem; }
+
+      .story-content { padding: 50px 16px; }
+      .story-visual { min-height: 280px; }
+      .story-features { gap: 12px; padding: 20px 0; margin-bottom: 24px; }
+      .story-feature-icon { width: 34px; height: 34px; }
+      .story-feature-text strong { font-size: 0.94rem; }
+      .story-feature-text span { font-size: 0.76rem; }
+
+      .terrace-stamp { width: 90px; height: 90px; top: -16px; right: -10px; }
+      .terrace-stamp strong { font-size: 1.3rem; }
+      .terrace-stamp span { font-size: 0.5rem; letter-spacing: 0.2em; }
+
+      .menu-tabs { gap: 6px; overflow-x: auto; padding-bottom: 4px; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; width: 100%; }
+      .menu-tabs::-webkit-scrollbar { display: none; }
+      .menu-tab { padding: 9px 14px; font-size: 0.62rem; letter-spacing: 0.16em; flex-shrink: 0; white-space: nowrap; }
+      .group-title { font-size: 1.3rem; flex-direction: column; align-items: flex-start; gap: 4px; margin: 22px 0 10px; }
+      .group-title span { font-size: 0.6rem; letter-spacing: 0.16em; }
+      .dish { padding: 16px 0; }
+      .dish-name { font-size: 1.02rem; line-height: 1.3; }
+      .dish-price { font-size: 1.05rem; }
+      .dish-desc { font-size: 0.84rem; line-height: 1.5; }
+      .dish-tag { font-size: 0.55rem; padding: 2px 7px; margin-left: 5px; letter-spacing: 0.14em; }
+
+      .menu-special-card { padding: 26px 22px; }
+      .menu-special-card h3 { font-size: 1.6rem; }
+      .menu-special-card .price { font-size: 2.3rem; }
+
+      .gallery-grid { grid-template-rows: repeat(4, 200px); gap: 4px; padding-bottom: 60px; }
+      .gallery-label { font-size: 0.95rem; }
+
+      .visit-info-block { padding: 16px 18px; gap: 14px; }
+      .visit-info-icon { width: 40px; height: 40px; }
+      .visit-info-text strong { font-size: 1rem; }
+      .hours-card { padding: 32px 22px; }
+      .hours-card h3 { font-size: 1.5rem; }
+
+      .marquee { padding: 14px 0; }
+      .marquee-item { font-size: 1.15rem; padding: 0 22px; gap: 18px; }
+
+      footer { padding: 50px 18px 22px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+      .footer-grid > :first-child { grid-column: auto; }
+
+      .btn { padding: 14px 22px; font-size: 0.66rem; min-height: 48px; letter-spacing: 0.18em; }
+      .fab-call { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+
+      @media (hover: none) { .visit-info-block:hover, .gallery-tile:hover img { transform: none; } }
+    }
+
+    @media (max-width: 360px) {
+      .hero-title { font-size: 2.7rem; }
+      .s-title { font-size: 1.75rem !important; }
+      section, .menu-section, .visit-section, .terrace-section { padding: 55px 12px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-item">Leioa · <strong>Bizkaia</strong></div>
+  <span class="topbar-sep">·</span>
+  <div class="topbar-item">Reservas <strong>666 68 76 93</strong></div>
+  <span class="topbar-sep">·</span>
+  <div class="topbar-item">Terraza <strong>abierta</strong></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="brand">
+    <div class="brand-icon">A</div>
+    <div class="brand-text">
+      <span class="brand-name">Argia</span>
+      <span class="brand-tag">terraza · Leioa</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#historia">El bar</a>
+    <a href="#terraza">Terraza</a>
+    <a href="#carta">Carta</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a href="tel:+34666687693" class="nav-cta">
+    Reservar
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-handle">~ Argia · Leioa ~</div>
+    <div class="hero-eyebrow">Pintxos · Terraza · Postres caseros</div>
+    <h1 class="hero-title">Bar Restaurante<br><em>de barrio</em>.</h1>
+    <p class="hero-sub">Pintxos en la barra, menú del día, especiales de fin de semana y los <em>postres caseros</em> que nos hacen volver. Y una terraza para todo el año.</p>
+    <div class="hero-actions">
+      <a href="tel:+34666687693" class="btn btn-coral">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-ghost-cream">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Menú del día <span class="dot"></span></div>
+    <div class="marquee-item">Postres caseros <span class="dot"></span></div>
+    <div class="marquee-item">Terraza abierta <span class="dot"></span></div>
+    <div class="marquee-item">Pintxos <span class="dot"></span></div>
+    <div class="marquee-item">Especial fin de semana <span class="dot"></span></div>
+    <div class="marquee-item">Cenas J–S <span class="dot"></span></div>
+    <div class="marquee-item">Sabino Arana 20 · Leioa <span class="dot"></span></div>
+    <div class="marquee-item">Menú del día <span class="dot"></span></div>
+    <div class="marquee-item">Postres caseros <span class="dot"></span></div>
+    <div class="marquee-item">Terraza abierta <span class="dot"></span></div>
+    <div class="marquee-item">Pintxos <span class="dot"></span></div>
+    <div class="marquee-item">Especial fin de semana <span class="dot"></span></div>
+    <div class="marquee-item">Cenas J–S <span class="dot"></span></div>
+    <div class="marquee-item">Sabino Arana 20 · Leioa <span class="dot"></span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">7.6<em>★</em></div>
+      <div class="stat-label">114 reseñas Google</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">9:30</div>
+      <div class="stat-label">Abrimos cada día</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100<em>%</em></div>
+      <div class="stat-label">Postres caseros</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">365</div>
+      <div class="stat-label">Días al año</div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="story-section" id="historia">
+  <div class="story-content">
+    <span class="s-handle">El bar</span>
+    <h2 class="s-title">El sitio <em>de cada día</em></h2>
+    <div class="story-body">
+      <p><strong>Argia</strong> —<em>la luz</em> en euskera— es el bar restaurante de barrio en Sabino Arana, abierto los <strong>365 días</strong>. Para venir a desayunar a las 9:30, comer el menú del día, picar un pintxo o cenar de jueves a sábado.</p>
+      <p>Cocina sencilla y de mercado, terraza con sitio y nuestros <em>postres caseros</em> —los irresistibles que hacen que la sobremesa se alargue. Eso es Argia.</p>
+    </div>
+    <div class="story-features">
+      <div class="story-feature">
+        <div class="story-feature-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+        <div class="story-feature-text"><strong>Menú del día</strong><span>De lunes a viernes</span></div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg></div>
+        <div class="story-feature-text"><strong>Terraza al aire libre</strong><span>Cuando el tiempo acompaña</span></div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="story-feature-text"><strong>Postres caseros</strong><span>Hechos cada día</span></div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="story-feature-text"><strong>Cenas J–S</strong><span>Hasta cierre fin de semana</span></div>
+      </div>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="tel:+34666687693" class="btn btn-bottle">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-outline-ink">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="story-visual">
+    <div class="story-quote">"Donde se viene cada día. Pintxos, menú, terraza y unos postres que no fallan."</div>
+  </div>
+</section>
+
+<!-- TERRAZA SIGNATURE -->
+<section class="terrace-section" id="terraza">
+  <div class="terrace-inner">
+    <div class="terrace-content">
+      <div class="s-eyebrow">Lo que nos diferencia</div>
+      <h2 class="s-title light">La <em>terraza</em><br>de Sabino Arana</h2>
+      <p class="terrace-body">Una de <strong>las mejores terrazas de Leioa</strong>. Para el café de la mañana, la caña al sol, el aperitivo del sábado o esa cena de viernes que siempre se alarga.</p>
+      <ul class="terrace-points">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Calefacción</strong> en invierno</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Aforo amplio</strong> — sitio para grupos</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Carta completa</strong> también en la terraza</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Música</strong> los fines de semana</span></li>
+      </ul>
+      <a href="tel:+34666687693" class="btn btn-coral">
+        Reserva en terraza
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="terrace-visual">
+      <div class="terrace-stamp">
+        <strong>365</strong>
+        <span>Días<br>abierto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="menu-section" id="carta">
+  <div class="menu-inner">
+    <div class="menu-header">
+      <div>
+        <span class="s-handle">A la carta</span>
+        <h2 class="s-title">Carta &amp; <em>pintxos</em></h2>
+      </div>
+      <div class="menu-tabs">
+        <button class="menu-tab active" data-tab="pintxos">Pintxos</button>
+        <button class="menu-tab" data-tab="raciones">Raciones</button>
+        <button class="menu-tab" data-tab="bocadillos">Bocadillos</button>
+        <button class="menu-tab" data-tab="postres">Postres ★</button>
+        <button class="menu-tab" data-tab="bebidas">Bebidas</button>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-group active" data-group="pintxos">
+        <h3 class="group-title">Pintxos de la barra <span>los clásicos</span></h3>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tortilla de <em>patata</em></h4><div class="dish-dots"></div><div class="dish-price">2€</div></div>
+          <p class="dish-desc">Jugosa, hecha en casa cada mañana.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Patatas bravas <em>Argia</em><span class="dish-tag signature">Signature</span></h4><div class="dish-dots"></div><div class="dish-price">3,50€</div></div>
+          <p class="dish-desc">El plato de patata por el que somos conocidos. Salsa brava de la casa y alioli.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Croqueta <em>casera</em></h4><div class="dish-dots"></div><div class="dish-price">1,80€</div></div>
+          <p class="dish-desc">Bechamel cremosa con jamón ibérico.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Anchoa con <em>piparra</em></h4><div class="dish-dots"></div><div class="dish-price">2,50€</div></div>
+          <p class="dish-desc">Anchoa del Cantábrico, piparra, tomate y pan de cristal.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Solomillo con <em>foie</em></h4><div class="dish-dots"></div><div class="dish-price">3€</div></div>
+          <p class="dish-desc">Pintxo caliente. Solomillo a la plancha y foie con cebolla pochada.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Bacalao con <em>pimiento</em></h4><div class="dish-dots"></div><div class="dish-price">2,80€</div></div>
+          <p class="dish-desc">Bacalao confitado sobre piquillo asado.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Pintxo <em>vegetariano</em></h4><div class="dish-dots"></div><div class="dish-price">2€</div></div>
+          <p class="dish-desc">Hojaldre con verduras de temporada, queso de cabra y miel.</p>
+          <div><span class="dish-tag veg">Veg</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tortilla de <em>bacalao</em></h4><div class="dish-dots"></div><div class="dish-price">2,50€</div></div>
+          <p class="dish-desc">Tortilla jugosa con bacalao desmigado y cebolla pochada.</p>
+        </div>
+      </div>
+
+      <div class="menu-group" data-group="raciones">
+        <h3 class="group-title">Raciones <span>para compartir</span></h3>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Patatas bravas <em>grandes</em></h4><div class="dish-dots"></div><div class="dish-price">7€</div></div>
+          <p class="dish-desc">Ración entera. Las que nos hacen famosos.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Calamares a la <em>andaluza</em></h4><div class="dish-dots"></div><div class="dish-price">11€</div></div>
+          <p class="dish-desc">Calamares en harina, fritos al momento, limón y mayonesa.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Croquetas caseras</h4><div class="dish-dots"></div><div class="dish-price">9€</div></div>
+          <p class="dish-desc">8 unidades. Jamón, bacalao o pollo.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tabla de <em>quesos</em></h4><div class="dish-dots"></div><div class="dish-price">12€</div></div>
+          <p class="dish-desc">Idiazabal, cabra y oveja curada con membrillo.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Ensalada <em>mixta</em></h4><div class="dish-dots"></div><div class="dish-price">8€</div></div>
+          <p class="dish-desc">Lechugas, tomate, cebolla, atún, huevo y aceitunas.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tabla de <em>ibéricos</em></h4><div class="dish-dots"></div><div class="dish-price">13€</div></div>
+          <p class="dish-desc">Jamón ibérico, lomo, salchichón y chorizo.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Pulpo <em>a la brasa</em></h4><div class="dish-dots"></div><div class="dish-price">15€</div></div>
+          <p class="dish-desc">Pulpo a la parrilla con parmentier y pimentón.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Pimientos del <em>padrón</em></h4><div class="dish-dots"></div><div class="dish-price">7€</div></div>
+          <p class="dish-desc">Fritos en aceite de oliva con sal gruesa.</p>
+        </div>
+      </div>
+
+      <div class="menu-group" data-group="bocadillos">
+        <h3 class="group-title">Bocadillos &amp; sandwiches</h3>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Bocadillo de <em>jamón ibérico</em></h4><div class="dish-dots"></div><div class="dish-price">6€</div></div>
+          <p class="dish-desc">Jamón ibérico y pan con tomate.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Bocadillo de <em>lomo</em> con queso</h4><div class="dish-dots"></div><div class="dish-price">5,50€</div></div>
+          <p class="dish-desc">Lomo a la plancha con queso fundido.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Bocadillo de <em>calamares</em></h4><div class="dish-dots"></div><div class="dish-price">5,50€</div></div>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Bocadillo <em>vegetal</em></h4><div class="dish-dots"></div><div class="dish-price">5€</div></div>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Sandwich <em>mixto</em></h4><div class="dish-dots"></div><div class="dish-price">4€</div></div>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Sandwich <em>club</em></h4><div class="dish-dots"></div><div class="dish-price">6€</div></div>
+          <p class="dish-desc">Pollo, beicon, lechuga, tomate y mayonesa.</p>
+        </div>
+      </div>
+
+      <div class="menu-group" data-group="postres">
+        <h3 class="group-title">Postres caseros <span>nuestra signature</span></h3>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tarta de <em>queso</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">5€</div></div>
+          <p class="dish-desc">Cremosa, horneada cada día, mermelada de frutos rojos.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Goxua <em>tradicional</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">4,50€</div></div>
+          <p class="dish-desc">Postre vasco. Bizcocho, nata y crema pastelera. Hecho en casa.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Coulant de <em>chocolate</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">5,50€</div></div>
+          <p class="dish-desc">Bizcocho con corazón fundente y helado de vainilla.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Tarta de <em>manzana</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">4,50€</div></div>
+          <p class="dish-desc">Hojaldre artesano, manzana caramelizada y helado.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Pantxineta<span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">4,50€</div></div>
+          <p class="dish-desc">Hojaldre, crema y almendras. El clásico vasco hecho aquí.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Arroz con <em>leche</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">4€</div></div>
+          <p class="dish-desc">Cremoso, con canela quemada en la mesa.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Flan <em>de la abuela</em><span class="dish-tag dulce">Casero</span></h4><div class="dish-dots"></div><div class="dish-price">4€</div></div>
+          <p class="dish-desc">Flan de huevo con caramelo y nata montada.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-head"><h4 class="dish-name">Helado <em>artesano</em></h4><div class="dish-dots"></div><div class="dish-price">3,50€</div></div>
+          <p class="dish-desc">Vainilla, chocolate, fresa o turrón.</p>
+        </div>
+      </div>
+
+      <div class="menu-group" data-group="bebidas">
+        <h3 class="group-title">Bebidas</h3>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Caña</h4><div class="dish-dots"></div><div class="dish-price">1,80€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Vino tinto / blanco <em>de la casa</em></h4><div class="dish-dots"></div><div class="dish-price">1,80€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Café · cortado</h4><div class="dish-dots"></div><div class="dish-price">1,40€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Refrescos</h4><div class="dish-dots"></div><div class="dish-price">2€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Vermut <em>de grifo</em></h4><div class="dish-dots"></div><div class="dish-price">2,50€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Cubatas</h4><div class="dish-dots"></div><div class="dish-price">6€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Gintonic</h4><div class="dish-dots"></div><div class="dish-price">7€</div></div></div>
+        <div class="dish"><div class="dish-head"><h4 class="dish-name">Mojito</h4><div class="dish-dots"></div><div class="dish-price">7€</div></div></div>
+      </div>
+    </div>
+
+    <div class="menus-special">
+      <div class="menu-special-card">
+        <div class="label">DE LUNES A VIERNES</div>
+        <h3>Menú <em>del día</em></h3>
+        <p>Primero a elegir + segundo a elegir + postre o café. Bebida y pan incluidos. Lo cocinamos cada día con producto fresco.</p>
+        <div class="price">12,50€<small>por persona</small></div>
+      </div>
+      <div class="menu-special-card weekend">
+        <div class="label">VIERNES · SÁBADO · DOMINGO</div>
+        <h3>Menú <em>fin de semana</em></h3>
+        <p>Más completo. Entrante para compartir, principal a elegir, nuestros postres caseros y bebida. Reserva conviene.</p>
+        <div class="price">22,50€<small>por persona</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery-section" id="galeria">
+  <div class="gallery-header">
+    <span class="s-eyebrow center">El sitio</span>
+    <h2 class="s-title">El día <em>a día</em></h2>
+    <p>La barra, la terraza, los pintxos del finde y los postres que nos definen.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile t1">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=85" alt="Argia Bar Restaurante Leioa" loading="eager" decoding="async" fetchpriority="high">
+      <div class="gallery-label"><span class="num">/01</span>EL BAR · ARGIA LEIOA</div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1000&q=85" alt="Plato Argia" loading="lazy" decoding="async">
+      <div class="gallery-label"><span class="num">/02</span>COCINA DEL DÍA</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85" alt="Terraza" loading="lazy" decoding="async">
+      <div class="gallery-label"><span class="num">/03</span>TERRAZA</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900&q=85" alt="Pintxos" loading="lazy" decoding="async">
+      <div class="gallery-label"><span class="num">/04</span>PINTXOS DE LA BARRA</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85" alt="Postres" loading="lazy" decoding="async">
+      <div class="gallery-label"><span class="num">/05</span>POSTRES</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=85" alt="Patatas bravas" loading="lazy" decoding="async">
+      <div class="gallery-label"><span class="num">/06</span>PATATAS</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="visit-section" id="contacto">
+  <div class="visit-inner">
+    <div class="visit-content">
+      <span class="s-handle">Cómo llegar</span>
+      <h2 class="s-title">En Sabino Arana <em>20</em></h2>
+      <p class="visit-body">Avenida Sabino Arana, en pleno Leioa. Reserva por teléfono — fines de semana se llena. Cocina abierta todo el día.</p>
+      <div class="visit-info">
+        <a href="https://maps.google.com/?q=Avenida+Sabino+Arana+20+Leioa" target="_blank" rel="noopener" class="visit-info-block">
+          <div class="visit-info-icon"><svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div class="visit-info-text"><span>Dirección</span><strong>Avenida Sabino Arana Etorbidea, 20 · 48940 Leioa</strong></div>
+        </a>
+        <a href="tel:+34666687693" class="visit-info-block">
+          <div class="visit-info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="visit-info-text"><span>Reservas · móvil</span><strong>666 68 76 93</strong></div>
+        </a>
+        <a href="tel:+34946075275" class="visit-info-block">
+          <div class="visit-info-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/></svg></div>
+          <div class="visit-info-text"><span>Fijo</span><strong>946 075 275</strong></div>
+        </a>
+        <a href="https://wa.me/34666687693" target="_blank" rel="noopener" class="visit-info-block">
+          <div class="visit-info-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div class="visit-info-text"><span>WhatsApp</span><strong>Reserva por mensaje</strong></div>
+        </a>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="https://maps.google.com/?q=Avenida+Sabino+Arana+20+Leioa" target="_blank" rel="noopener" class="btn btn-bottle">
+          Abrir en Maps
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+34666687693" class="btn btn-outline-ink">
+          Llamar ahora
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <div class="hours-card-head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h3>Horario <em>de servicio</em></h3>
+      </div>
+      <ul class="hours-list">
+        <li class="hours-row">
+          <span class="hours-day">Lunes</span>
+          <span class="hours-time">9:30 — 23:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Martes</span>
+          <span class="hours-time">9:30 — 23:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Miércoles</span>
+          <span class="hours-time">9:30 — 23:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Jueves</span>
+          <span class="hours-time">9:30 — 23:00</span>
+        </li>
+        <li class="hours-row weekend">
+          <span class="hours-day"><em>Viernes</em></span>
+          <span class="hours-time">9:30 — 23:00</span>
+        </li>
+        <li class="hours-row weekend">
+          <span class="hours-day"><em>Sábado</em></span>
+          <span class="hours-time">10:30 — 00:00</span>
+        </li>
+        <li class="hours-row weekend">
+          <span class="hours-day"><em>Domingo</em></span>
+          <span class="hours-time">10:30 — 00:00</span>
+        </li>
+      </ul>
+      <div class="hours-cta">
+        <a href="tel:+34666687693" class="btn btn-cream" style="width:100%; justify-content:center;">
+          Reservar mesa
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-icon">A</div>
+      <div class="footer-brand-name">Argia</div>
+      <div class="footer-brand-tag">terraza · Leioa ✿</div>
+      <p>Bar restaurante en Sabino Arana 20. Pintxos, menú del día, terraza y los postres caseros que nos hacen volver.</p>
+    </div>
+    <div class="footer-col">
+      <h5>El bar</h5>
+      <ul>
+        <li><a href="#historia">El bar</a></li>
+        <li><a href="#terraza">Terraza</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Cómo llegar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Av. Sabino Arana, 20</li>
+        <li>48940 Leioa · Bizkaia</li>
+        <li><a href="tel:+34666687693">666 68 76 93</a></li>
+        <li><a href="tel:+34946075275">946 075 275</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Horario</h5>
+      <ul>
+        <li>L-V · 9:30–23:00</li>
+        <li>S-D · 10:30–00:00</li>
+        <li>Cenas J-S</li>
+        <li>Terraza abierta</li>
+        <li>365 días al año</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Argia Bar Restaurante · Leioa · Bizkaia · <em>365 días abierto</em></div>
+    <div>Aviso legal · Privacidad · Cookies</div>
+  </div>
+</footer>
+
+<a href="tel:+34666687693" class="fab-call" aria-label="Llamar al bar">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+  window.addEventListener('load', () => { document.getElementById('heroBg').classList.add('loaded'); });
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.menu-group').forEach(g => g.classList.toggle('active', g.dataset.group === target));
+    });
+  });
+</script>
+
+</body>
+</html>
