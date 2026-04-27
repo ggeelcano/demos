@@ -10,7 +10,7 @@
 <meta property="og:type" content="restaurant">
 <meta property="og:title" content="Asador Motabarri · Brasa, txuletón y caserío">
 <meta property="og:description" content="Caserío del siglo XIX en la carretera de Leioa-Unbe. Txuletón a la brasa. Menú 15€/18€.">
-<meta property="og:image" content="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d3/2f/50/caption.jpg">
+<meta property="og:image" content="https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w1200-h800-k-no">
 <meta property="og:url" content="https://ggeelcano.github.io/demos/motabarri-leioa/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","image":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d3/2f/50/caption.jpg","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"3.7","reviewCount":"16243"}}
+{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","image":"https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w1200-h800-k-no","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"3.7","reviewCount":"16243"}}
 </script>
 
 <style>
@@ -40,6 +40,17 @@
   --gris:#7A6E5E;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* Splash bienvenida */
+.splash{position:fixed;inset:0;z-index:9999;background:var(--carbon);display:grid;place-items:center;animation:splashOut 2.6s ease-in forwards;pointer-events:none}
+.splash::before{content:"";position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2000-h1300-k-no') center/cover no-repeat;opacity:0;animation:splashImg 2.6s ease-in forwards}
+.splash::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.35) 0%,rgba(22,17,13,.85) 100%)}
+.splash-text{position:relative;z-index:2;text-align:center;color:var(--crema);animation:splashTxt 2.6s ease-in forwards;opacity:0}
+.splash-text small{font-family:'Caveat',cursive;font-size:30px;color:var(--brasa);display:block;margin-bottom:6px}
+.splash-text b{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:900;font-size:clamp(40px,8vw,90px);display:block;line-height:.9;letter-spacing:-.02em}
+.splash-text i{font-style:normal;display:block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase;margin-top:18px;opacity:.7;font-weight:500}
+@keyframes splashImg{0%{opacity:0}25%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes splashTxt{0%{opacity:0;transform:translateY(20px)}25%{opacity:1;transform:translateY(0)}80%{opacity:1}100%{opacity:0}}
+@keyframes splashOut{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}100%{opacity:0;visibility:hidden;display:none}}
 body{font-family:'Inter',sans-serif;background:var(--piedra);color:var(--carbon);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none}
@@ -67,8 +78,8 @@ nav{position:sticky;top:0;background:rgba(232,223,207,.96);backdrop-filter:blur(
 
 /* Hero */
 .hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;background:var(--carbon)}
-.hero-img{position:absolute;inset:0;background:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d3/2f/50/caption.jpg') center/cover no-repeat;filter:brightness(.5) saturate(1.05)}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.4) 0%,rgba(22,17,13,.85) 100%)}
+.hero-img{position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2000-h1300-k-no') center/cover no-repeat;filter:brightness(.72) saturate(1.05)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.15) 0%,rgba(22,17,13,.55) 60%,rgba(22,17,13,.92) 100%)}
 .hero-content{position:relative;z-index:2;text-align:center;color:var(--crema);padding:70px 24px;max-width:920px}
 .hero-eyebrow{font-family:'Caveat',cursive;font-size:32px;color:var(--brasa);margin-bottom:6px;display:block;letter-spacing:.04em}
 .hero h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(50px,9.2vw,128px);line-height:.92;letter-spacing:-.02em;margin-bottom:26px}
@@ -159,6 +170,7 @@ section{padding:110px 24px}
 .gal-item{position:relative;overflow:hidden;background:var(--madera-2)}
 .gal-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
 .gal-item:hover img{transform:scale(1.08)}
+.gal-tag{position:absolute;bottom:14px;left:14px;background:var(--brasa);color:var(--carbon);padding:8px 14px;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.02em;z-index:2}
 .gal-tall{grid-row:span 2}
 .gal-wide{grid-column:span 2}
 
@@ -193,6 +205,23 @@ section{padding:110px 24px}
 .amenities{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:30px}
 .amenity{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brasa);font-weight:600;padding:8px 14px;border:1px solid rgba(217,96,26,.4)}
 
+/* Mapa */
+.map-section{padding:0;background:var(--madera-2)}
+.map-wrap{display:grid;grid-template-columns:1fr 1.6fr;min-height:520px}
+.map-side{padding:70px 50px;color:var(--crema);background:var(--carbon);display:flex;flex-direction:column;justify-content:center}
+.map-side .eyebrow{color:var(--brasa)}
+.map-side h2{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:clamp(34px,4.5vw,52px);line-height:1.05;margin-bottom:22px;color:var(--crema)}
+.map-side h2 b{font-style:normal;font-weight:900;color:var(--brasa)}
+.map-side p{font-size:15.5px;font-weight:300;opacity:.85;margin-bottom:30px;line-height:1.6}
+.map-side .btn{margin-top:6px;align-self:flex-start}
+.map-coords{margin-top:24px;padding-top:24px;border-top:1px solid rgba(245,239,226,.15);display:flex;flex-direction:column;gap:10px;font-size:12.5px;letter-spacing:.06em}
+.map-coords div{display:flex;gap:14px;align-items:center}
+.map-coords i{font-style:normal;color:var(--brasa);font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;min-width:24px;font-size:18px}
+.map-frame{position:relative;background:var(--madera);overflow:hidden}
+.map-frame iframe{width:100%;height:100%;border:0;filter:saturate(.85) contrast(1.05)}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);background:var(--brasa);color:var(--carbon);padding:10px 18px;font-family:'Bodoni Moda',serif;font-weight:900;font-size:14px;letter-spacing:.04em;box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:none;z-index:2}
+.map-pin::after{content:"";position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--brasa)}
+
 /* Footer */
 footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:center}
 .foot-brand{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:900;font-size:36px;color:var(--brasa);margin-bottom:6px}
@@ -203,6 +232,9 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
 /* Mobile */
 @media(max-width:1024px){
   .nav-links{display:none}
+  .map-wrap{grid-template-columns:1fr;min-height:auto}
+  .map-frame{height:380px}
+  .map-side{padding:50px 28px}
   .story,.brasa-grid,.contact-grid,.menu-banner{grid-template-columns:1fr;gap:50px}
   .menu-grid{grid-template-columns:1fr;gap:24px}
   .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
@@ -243,6 +275,14 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
 </head>
 <body>
 
+<div class="splash" aria-hidden="true">
+  <div class="splash-text">
+    <small>caserío del XIX</small>
+    <b>Motabarri.</b>
+    <i>Leioa-Unbe · Bizkaia</i>
+  </div>
+</div>
+
 <div class="topbar"><span>CASERÍO DEL <b>SIGLO XIX</b></span><span>·</span><span>TXULETÓN A LA <b>BRASA</b></span><span>·</span><span>MENÚ <b>15€</b> · FINDE <b>18€</b></span></div>
 
 <nav>
@@ -257,6 +297,7 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
       <a href="#carta">Carta</a>
       <a href="#reseñas">Reseñas</a>
       <a href="#contacto">Contacto</a>
+      <a href="#mapa">Cómo llegar</a>
     </div>
     <a href="tel:+34944670768" class="nav-cta">Reservar</a>
   </div>
@@ -267,7 +308,7 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
   <div class="hero-divider"></div>
   <div class="hero-content">
     <span class="hero-eyebrow">caserío del XIX · rehabilitado en 1992</span>
-    <h1>Brasa, txuletón<em>y caserío.</em></h1>
+    <h1>Asador Motabarri.<em>Brasa y caserío.</em></h1>
     <p>Asador en un caserío vasco del XIX, entre Leioa y Erandio. Carnes a la parrilla, bacalao al pil-pil y producto de la tierra. Mesa amplia, terraza, jardín, parking y zona para los txikis.</p>
     <div class="hero-ctas">
       <a href="tel:+34944670768" class="btn btn-primary">Llamar y reservar</a>
@@ -304,7 +345,7 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
       </div>
     </div>
     <div class="story-img">
-      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/9a/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80'" alt="Caserío Motabarri">
+      <img src="https://lh5.googleusercontent.com/p/AF1QipPTkwDzd51ZwmIUVMMPys7x8tSemfiWSrwWvLtc=w900-h1100-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80'" alt="Caserío Motabarri">
       <div class="year-stamp">XIX<small>desde el siglo</small></div>
       <div class="story-tag">Brasa siempre encendida</div>
     </div>
@@ -405,12 +446,12 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
   </div>
   <div class="wrap">
     <div class="gal-grid">
-      <div class="gal-item gal-tall gal-wide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a1/6d/fe/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80'" alt="Asador Motabarri"></div>
-      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/06/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80'" alt="Comedor Motabarri"></div>
-      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/02/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80'" alt="Plato Motabarri"></div>
-      <div class="gal-item gal-wide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a1/6d/fd/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80'" alt="Sala Motabarri"></div>
-      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/3c/ad/2d/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80'" alt="Mesa Motabarri"></div>
-      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/b6/e7/c3/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=600&q=80'" alt="Brasa Motabarri"></div>
+      <div class="gal-item gal-tall gal-wide"><img src="https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w1200-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'" alt="Caserío Motabarri exterior"><div class="gal-tag">El caserío</div></div>
+      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipMRvY1rey6ROuwrnQ9muUfpbhVYy1FYEJhm48I=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80'" alt="Comedor Motabarri"></div>
+      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipMlI8j4Hsmry-pTc8asT3Ukv8wj2TJROS0LZ6SM=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80'" alt="Plato Motabarri"></div>
+      <div class="gal-item gal-wide"><img src="https://lh5.googleusercontent.com/p/AF1QipMEcs9LQRmZzqPih1ubsvZ630tR0Zn-oGxZqp9l=w900-h450-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80'" alt="Sala Motabarri"></div>
+      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipManQ9949ncCYVFnQkBFAP87ygs3mWxGH8LtEf5=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80'" alt="Mesa Motabarri"></div>
+      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a1/6d/fe/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=600&q=80'" alt="Brasa Motabarri"></div>
     </div>
   </div>
 </section>
@@ -471,6 +512,25 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
       <h3>Reserva mesa<br><b>en el caserío.</b></h3>
       <p>Mejor con tiempo: los fines de semana volamos. Comidas de empresa, cuadrillas y celebraciones, pídenos menú a medida.</p>
       <a href="tel:+34944670768" class="btn btn-primary" style="background:var(--brasa);color:var(--carbon);border-color:var(--brasa)">Llamar al asador</a>
+    </div>
+  </div>
+</section>
+
+<section id="mapa" class="map-section">
+  <div class="map-wrap">
+    <div class="map-side">
+      <span class="eyebrow">cómo llegar</span>
+      <h2>En la <b>carretera de Unbe</b>, km 32.</h2>
+      <p>A 5 minutos de Leioa subiendo el monte Unbe. A 10 minutos del Bilbao Exhibition Centre y a 15 del centro de Bilbao. Parking propio gratuito en la misma puerta del caserío.</p>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Asador+Motabarri+Erandio" target="_blank" rel="noopener" class="btn btn-primary">Abrir en Google Maps</a>
+      <div class="map-coords">
+        <div><i>@</i><span>Leioa-Unbe Errepidea, 32 · 48950 Erandio · Bizkaia</span></div>
+        <div><i>P</i><span>Parking propio gratuito</span></div>
+        <div><i>★</i><span>Salida 117 de la BI-637</span></div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps?q=Asador+Motabarri,+Leioa-Unbe+Errepidea+32,+48950+Erandio,+Bizkaia&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ubicación Asador Motabarri"></iframe>
     </div>
   </div>
 </section>
