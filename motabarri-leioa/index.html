@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Asador Motabarri · Caserío del XIX · Leioa-Unbe</title>
+<meta name="description" content="Asador en caserío del siglo XIX entre Leioa y Erandio. Txuletón a la brasa, bacalao y carnes a la parrilla. Menú diario 15€ · finde 18€. Terraza y jardín.">
+<meta name="theme-color" content="#3A2A1E">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Asador Motabarri · Brasa, txuletón y caserío">
+<meta property="og:description" content="Caserío del siglo XIX en la carretera de Leioa-Unbe. Txuletón a la brasa. Menú 15€/18€.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/motabarri-leioa/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='28' fill='%233A2A1E'/%3E%3Ctext x='90' y='120' font-family='Georgia,serif' font-size='110' font-weight='700' fill='%23D9601A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%233A2A1E'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23D9601A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","image":"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"3.7","reviewCount":"16243"}}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --piedra:#E8DFCF;
+  --piedra-2:#DCD0BB;
+  --madera:#3A2A1E;
+  --madera-2:#231811;
+  --carbon:#16110D;
+  --brasa:#D9601A;
+  --brasa-2:#A8410B;
+  --caserio:#4A6442;
+  --crema:#F5EFE2;
+  --gris:#7A6E5E;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--piedra);color:var(--carbon);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Bodoni Moda',Georgia,serif}
+.hand{font-family:'Caveat',cursive}
+
+/* Topbar */
+.topbar{background:var(--madera-2);color:var(--piedra);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 0;text-align:center;font-weight:500}
+.topbar b{color:var(--brasa);font-weight:700}
+.topbar span{margin:0 14px}
+
+/* Nav */
+nav{position:sticky;top:0;background:rgba(232,223,207,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(58,42,30,.18);z-index:100}
+.nav-inner{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:46px;height:46px;background:var(--madera);color:var(--brasa);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:900;font-size:26px;border:1.5px solid var(--brasa)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Bodoni Moda',serif;font-size:21px;font-weight:700;color:var(--madera-2);letter-spacing:.02em}
+.brand-text small{font-size:9.5px;letter-spacing:.28em;color:var(--gris);margin-top:5px;text-transform:uppercase}
+.nav-links{display:flex;gap:30px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--brasa-2)}
+.nav-cta{background:var(--brasa);color:var(--carbon);padding:11px 22px;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:.25s;white-space:nowrap;border:1.5px solid var(--brasa)}
+.nav-cta:hover{background:transparent;color:var(--brasa-2)}
+
+/* Hero */
+.hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;background:var(--carbon)}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;filter:brightness(.45) saturate(1.1)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.4) 0%,rgba(22,17,13,.85) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--crema);padding:70px 24px;max-width:920px}
+.hero-eyebrow{font-family:'Caveat',cursive;font-size:32px;color:var(--brasa);margin-bottom:6px;display:block;letter-spacing:.04em}
+.hero h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(50px,9.2vw,128px);line-height:.92;letter-spacing:-.02em;margin-bottom:26px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--brasa);display:block}
+.hero p{font-size:clamp(15px,2vw,19px);max-width:600px;margin:0 auto 38px;opacity:.9;font-weight:300}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{padding:15px 32px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.25s;display:inline-flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border:1.5px solid transparent}
+.btn-primary{background:var(--brasa);color:var(--carbon);border-color:var(--brasa)}
+.btn-primary:hover{background:transparent;color:var(--brasa);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--crema);border-color:rgba(245,239,226,.45)}
+.btn-ghost:hover{background:var(--crema);color:var(--madera-2);border-color:var(--crema)}
+.hero-meta{position:absolute;bottom:32px;left:0;right:0;display:flex;justify-content:center;gap:36px;color:var(--crema);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;flex-wrap:wrap;padding:0 20px;z-index:2}
+.hero-meta b{color:var(--brasa);font-weight:700;letter-spacing:.06em}
+.hero-divider{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;padding:0 5%;z-index:1;opacity:.15}
+.hero-divider::before,.hero-divider::after{content:"";display:block;width:30%;height:1px;background:var(--brasa)}
+
+/* Marquee */
+.marquee{background:var(--madera-2);color:var(--brasa);overflow:hidden;padding:14px 0;border-top:1px solid var(--brasa);border-bottom:1px solid var(--brasa)}
+.marquee-track{display:flex;gap:60px;animation:scroll 36s linear infinite;white-space:nowrap;font-family:'Bodoni Moda',serif;font-style:italic;font-size:22px;font-weight:400}
+.marquee-track span::before{content:"§";color:var(--piedra);opacity:.5;margin-right:60px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Section */
+section{padding:110px 24px}
+.wrap{max-width:1180px;margin:0 auto}
+.eyebrow{font-family:'Caveat',cursive;font-size:30px;color:var(--brasa-2);display:block;margin-bottom:4px}
+.section-title{font-family:'Bodoni Moda',serif;font-weight:700;font-size:clamp(36px,5.6vw,64px);line-height:1.02;letter-spacing:-.02em;color:var(--madera-2);margin-bottom:24px}
+.section-title em{font-style:italic;font-weight:400;color:var(--brasa-2)}
+
+/* Story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-text p{font-size:17px;color:var(--carbon);margin-bottom:18px;font-weight:300}
+.story-text p strong{font-weight:700;color:var(--madera-2)}
+.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;padding-top:34px;border-top:1px solid rgba(58,42,30,.25)}
+.stat b{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:46px;color:var(--brasa-2);line-height:1}
+.stat span{font-size:10.5px;color:var(--gris);letter-spacing:.18em;text-transform:uppercase;margin-top:8px;display:block;font-weight:600}
+.story-img{position:relative;aspect-ratio:4/5;overflow:hidden;box-shadow:0 30px 80px rgba(58,42,30,.3)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img::before{content:"";position:absolute;inset:18px;border:1.5px solid rgba(245,239,226,.4);z-index:2;pointer-events:none}
+.story-tag{position:absolute;bottom:30px;right:30px;background:var(--brasa);color:var(--carbon);padding:14px 22px;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:18px;z-index:3;letter-spacing:.02em}
+.year-stamp{position:absolute;top:30px;left:30px;color:var(--crema);font-family:'Bodoni Moda',serif;font-size:48px;font-weight:900;font-style:italic;text-shadow:0 4px 20px rgba(0,0,0,.6);z-index:3;letter-spacing:-.02em;line-height:.9}
+.year-stamp small{display:block;font-size:11px;letter-spacing:.3em;font-weight:400;font-style:normal;opacity:.85;margin-top:4px}
+
+/* Brasa section */
+.brasa-section{background:var(--carbon);color:var(--crema);position:relative;overflow:hidden}
+.brasa-section::before{content:"";position:absolute;top:-50%;right:-20%;width:80%;height:200%;background:radial-gradient(circle,rgba(217,96,26,.18) 0%,transparent 50%);pointer-events:none}
+.brasa-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+.brasa-eyebrow{font-family:'Caveat',cursive;font-size:32px;color:var(--brasa)}
+.brasa-title{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(42px,6.5vw,80px);font-weight:400;line-height:.95;margin:6px 0 22px;color:var(--crema)}
+.brasa-title b{font-style:normal;font-weight:900;color:var(--brasa)}
+.brasa-text{font-size:17px;font-weight:300;opacity:.88;margin-bottom:34px;max-width:460px}
+.brasa-list{list-style:none}
+.brasa-list li{display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(245,239,226,.12);align-items:center}
+.brasa-list li:last-child{border-bottom:1px solid rgba(245,239,226,.12)}
+.brasa-list i{font-style:normal;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:30px;color:var(--brasa);min-width:50px;line-height:1}
+.brasa-list b{display:block;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:var(--crema);margin-bottom:4px;letter-spacing:.01em}
+.brasa-list small{font-size:13px;opacity:.65;display:block;font-weight:300;line-height:1.5}
+.brasa-img{aspect-ratio:1/1;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.brasa-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.05)}
+.brasa-stamp{position:absolute;width:130px;height:130px;border-radius:50%;background:var(--brasa);color:var(--madera-2);display:grid;place-items:center;text-align:center;font-family:'Bodoni Moda',serif;font-weight:900;font-size:13px;line-height:1.1;top:-22px;right:-22px;transform:rotate(8deg);box-shadow:0 10px 30px rgba(0,0,0,.5);padding:18px;letter-spacing:.04em}
+
+/* Carta */
+.carta{background:var(--piedra-2)}
+.carta-head{text-align:center;margin-bottom:50px}
+.menu-toggle{display:inline-flex;background:var(--crema);padding:6px;border:1px solid rgba(58,42,30,.15);margin-bottom:36px}
+.menu-toggle button{padding:11px 22px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gris);cursor:pointer;border:none;background:transparent;transition:.2s}
+.menu-toggle button.active{background:var(--madera);color:var(--brasa)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 70px}
+.menu-panel{display:none}
+.menu-panel.active{display:contents;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dish{padding-bottom:18px;border-bottom:1px dashed rgba(58,42,30,.25)}
+.dish-head{display:flex;justify-content:space-between;gap:14px;align-items:baseline;margin-bottom:6px}
+.dish-name{font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:var(--madera-2);letter-spacing:.005em}
+.dish-name .star{color:var(--brasa);margin-left:5px}
+.dish-price{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;color:var(--brasa-2);font-size:18px;white-space:nowrap}
+.dish-desc{font-size:13.5px;color:var(--gris);font-weight:300;line-height:1.55}
+.menu-banner{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.menu-card{background:var(--madera);color:var(--crema);padding:36px;text-align:center;border:1px solid var(--brasa)}
+.menu-card.weekend{background:var(--brasa);color:var(--carbon);border-color:var(--brasa)}
+.menu-card span{font-family:'Caveat',cursive;font-size:24px;display:block;opacity:.85}
+.menu-card b{font-family:'Bodoni Moda',serif;font-weight:900;font-size:48px;display:block;margin:6px 0 4px;line-height:1}
+.menu-card small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+
+/* Galería */
+.gallery{background:var(--piedra)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:8px;margin-top:50px}
+.gal-item{position:relative;overflow:hidden;background:var(--madera-2)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-tall{grid-row:span 2}
+.gal-wide{grid-column:span 2}
+
+/* Reseñas */
+.reviews{background:var(--madera-2);color:var(--crema)}
+.reviews-head{text-align:center;margin-bottom:60px}
+.score-block{display:inline-flex;align-items:center;gap:24px;padding:20px 36px;background:rgba(245,239,226,.05);border:1px solid rgba(217,96,26,.3);margin-top:20px}
+.score-num{font-family:'Bodoni Moda',serif;font-weight:900;font-size:64px;color:var(--brasa);line-height:1}
+.score-block .stars{color:var(--brasa);font-size:18px;letter-spacing:3px}
+.score-block small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:4px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.review{background:rgba(245,239,226,.04);border:1px solid rgba(245,239,226,.1);padding:32px;position:relative}
+.review::before{content:"\201C";font-family:'Bodoni Moda',serif;font-size:80px;color:var(--brasa);position:absolute;top:-15px;left:18px;line-height:1;font-style:italic}
+.review-stars{color:var(--brasa);font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.review p{font-family:'Bodoni Moda',serif;font-style:italic;font-size:17px;font-weight:400;line-height:1.55;margin-bottom:20px}
+.review-author{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.65;font-family:'Inter',sans-serif;font-style:normal;font-weight:600}
+
+/* Contacto */
+.contact{background:var(--piedra)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-card{background:var(--crema);padding:50px;box-shadow:0 20px 60px rgba(58,42,30,.1);border-top:4px solid var(--brasa)}
+.contact-row{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(58,42,30,.12);align-items:flex-start}
+.contact-row:last-child{border:none}
+.contact-row .ico{width:46px;height:46px;background:var(--madera);color:var(--brasa);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:20px;flex-shrink:0;border:1px solid var(--brasa)}
+.contact-row b{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-bottom:5px;font-weight:700}
+.contact-row span{font-family:'Bodoni Moda',serif;font-size:18px;color:var(--madera-2);font-weight:500;line-height:1.4}
+.contact-row a{color:var(--madera-2);font-family:'Bodoni Moda',serif;font-size:18px;font-weight:500}
+.cta-block{background:var(--carbon);color:var(--crema);padding:50px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;border-top:4px solid var(--brasa)}
+.cta-block h3{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:38px;margin-bottom:14px;line-height:1.1;color:var(--crema)}
+.cta-block h3 b{font-style:normal;font-weight:900;color:var(--brasa);display:block}
+.cta-block p{font-size:15px;opacity:.85;margin-bottom:32px;font-weight:300;max-width:340px}
+.amenities{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.amenity{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brasa);font-weight:600;padding:8px 14px;border:1px solid rgba(217,96,26,.4)}
+
+/* Footer */
+footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:center}
+.foot-brand{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:900;font-size:36px;color:var(--brasa);margin-bottom:6px}
+.foot-tag{font-family:'Caveat',cursive;font-size:22px;opacity:.65;margin-bottom:24px}
+.foot-row{font-size:13px;opacity:.6;letter-spacing:.06em;margin-bottom:6px}
+.foot-row a{color:var(--brasa)}
+
+/* Mobile */
+@media(max-width:1024px){
+  .nav-links{display:none}
+  .story,.brasa-grid,.contact-grid,.menu-banner{grid-template-columns:1fr;gap:50px}
+  .menu-grid{grid-template-columns:1fr;gap:24px}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .reviews-grid{grid-template-columns:1fr;gap:24px}
+  section{padding:74px 20px}
+  .brasa-stamp{width:110px;height:110px;font-size:11px;top:-12px;right:-12px}
+  .year-stamp{font-size:36px;top:24px;left:24px}
+}
+@media(max-width:480px){
+  .topbar{font-size:10px;padding:8px 0}
+  .topbar span{margin:0 8px}
+  .nav-inner{padding:12px 16px}
+  .brand-mark{width:40px;height:40px;font-size:23px}
+  .brand-text b{font-size:18px}
+  .nav-cta{padding:10px 14px;font-size:11px}
+  .hero{min-height:84vh}
+  .hero-content{padding:46px 18px}
+  .hero-meta{gap:14px;font-size:10px;bottom:20px}
+  .marquee-track{font-size:17px;gap:40px}
+  .marquee-track span::before{margin-right:40px}
+  section{padding:60px 18px}
+  .stat b{font-size:34px}
+  .menu-toggle button{padding:10px 16px;font-size:11px;letter-spacing:.12em}
+  .menu-card{padding:28px}
+  .menu-card b{font-size:38px}
+  .contact-card,.cta-block{padding:32px 22px}
+  .cta-block h3{font-size:28px}
+  .gal-grid{grid-auto-rows:130px}
+  .review{padding:26px 22px}
+  .review p{font-size:15px}
+  .btn{padding:13px 22px;font-size:11.5px;letter-spacing:.12em}
+  .score-num{font-size:48px}
+}
+@media(max-width:360px){
+  .hero h1{font-size:42px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>CASERÍO DEL <b>SIGLO XIX</b></span><span>·</span><span>TXULETÓN A LA <b>BRASA</b></span><span>·</span><span>MENÚ <b>15€</b> · FINDE <b>18€</b></span></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text"><b>Motabarri</b><small>Asador · Leioa-Unbe</small></div>
+    </div>
+    <div class="nav-links">
+      <a href="#caserio">El caserío</a>
+      <a href="#brasa">La brasa</a>
+      <a href="#carta">Carta</a>
+      <a href="#reseñas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="tel:+34944670768" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-divider"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">desde el siglo XIX en la carretera de Unbe</span>
+    <h1>Brasa, txuletón<em>y caserío.</em></h1>
+    <p>Asador en un caserío vasco del XIX, entre Leioa y Erandio. Carnes a la parrilla, bacalao al pil-pil y producto de la tierra. Mesa amplia, terraza, jardín, parking y zona para los txikis.</p>
+    <div class="hero-ctas">
+      <a href="tel:+34944670768" class="btn btn-primary">Llamar y reservar</a>
+      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span>★ 3.7 · <b>16.000+ RESEÑAS</b></span>
+    <span>MENÚ DIARIO <b>15€</b></span>
+    <span>KM 32 · LEIOA-UNBE</span>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Txuletón a la brasa</span><span>Bacalao al pil-pil</span><span>Almejas a la marinera</span><span>Lubina a la sal</span><span>Cordero al horno</span><span>Postres caseros</span><span>Vinos de la casa</span>
+    <span>Txuletón a la brasa</span><span>Bacalao al pil-pil</span><span>Almejas a la marinera</span><span>Lubina a la sal</span><span>Cordero al horno</span><span>Postres caseros</span><span>Vinos de la casa</span>
+  </div>
+</div>
+
+<section id="caserio">
+  <div class="wrap story">
+    <div class="story-text">
+      <span class="eyebrow">la casa</span>
+      <h2 class="section-title">Un caserío del XIX <em>convertido en asador.</em></h2>
+      <p><strong>En la carretera entre Leioa y Erandio</strong>, kilómetro 32, donde la ciudad da paso al monte. Aquí, en un caserío de piedra y madera de hace más de cien años, lleva años funcionando uno de los asadores más queridos de la comarca.</p>
+      <p>La brasa siempre encendida, el txuletón a la vista, una bodega bien surtida y una sala que respira historia. Familias, cuadrillas, comidas de empresa y domingos de sobremesa larga. Aquí cabe todo el mundo.</p>
+      <p>Tenemos <strong>terraza, jardín, parking propio, zona de juegos infantil</strong> y bien recibimos a los perros. Vienes a comer a gusto y a tomarte tu tiempo.</p>
+      <div class="story-stats">
+        <div class="stat"><b>+100</b><span>años de caserío</span></div>
+        <div class="stat"><b>16k+</b><span>reseñas</span></div>
+        <div class="stat"><b>15€</b><span>menú diario</span></div>
+      </div>
+    </div>
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" loading="lazy" decoding="async" alt="Caserío Motabarri">
+      <div class="year-stamp">XIX<small>desde el siglo</small></div>
+      <div class="story-tag">Brasa siempre encendida</div>
+    </div>
+  </div>
+</section>
+
+<section id="brasa" class="brasa-section">
+  <div class="wrap brasa-grid">
+    <div>
+      <span class="brasa-eyebrow">la especialidad</span>
+      <h2 class="brasa-title">El <b>txuletón</b><br>a la brasa.</h2>
+      <p class="brasa-text">Carne madurada, vuelta y vuelta sobre brasa de carbón vegetal. Sal gorda, punto al gusto, pimiento asado al lado. Sin trucos, sin aderezos. Lo que tiene que ser.</p>
+      <ul class="brasa-list">
+        <li><i>I.</i><div><b>Selección de carne madurada</b><small>Vacuno mayor, maduración mínima 30 días.</small></div></li>
+        <li><i>II.</i><div><b>Brasa de carbón vegetal</b><small>Encina y roble. Calor lento, denso, justo.</small></div></li>
+        <li><i>III.</i><div><b>Sal gorda y reposo</b><small>Vuelta y vuelta, descanso 5 minutos. A mesa.</small></div></li>
+        <li><i>IV.</i><div><b>Pimiento asado y patata</b><small>Pimiento del piquillo asado y patata vieja al rescoldo.</small></div></li>
+      </ul>
+    </div>
+    <div class="brasa-img">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" loading="lazy" decoding="async" alt="Txuletón a la brasa">
+      <div class="brasa-stamp">A LA<br>BRASA<br>DESDE 1800s</div>
+    </div>
+  </div>
+</section>
+
+<section id="carta" class="carta">
+  <div class="carta-head wrap">
+    <span class="eyebrow">cocina vasca a la brasa</span>
+    <h2 class="section-title">La <em>carta</em>.</h2>
+  </div>
+  <div class="wrap" style="text-align:center">
+    <div class="menu-toggle">
+      <button class="active" data-tab="entrantes">Entrantes</button>
+      <button data-tab="brasa">Brasa &amp; carnes</button>
+      <button data-tab="pescados">Pescados</button>
+      <button data-tab="postres">Postres</button>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="menu-grid">
+      <div class="menu-panel active" data-panel="entrantes">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Almejas a la marinera <span class="star">★</span></span><span class="dish-price">18 €</span></div><p class="dish-desc">Almejas de Carril, ajo, perejil, vino blanco. Pan para mojar.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pimientos de piquillo rellenos</span><span class="dish-price">14 €</span></div><p class="dish-desc">Rellenos de bacalao, salsa de la casa.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Croquetas caseras</span><span class="dish-price">9 €</span></div><p class="dish-desc">De jamón ibérico o de bacalao. Bechamel densa, fritas al momento.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Hongos a la plancha</span><span class="dish-price">16 €</span></div><p class="dish-desc">Boletus de temporada con yema y aceite.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Tabla de ibéricos</span><span class="dish-price">19 €</span></div><p class="dish-desc">Jamón, lomo, chorizo y salchichón. Cortado a cuchillo.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada Motabarri</span><span class="dish-price">12 €</span></div><p class="dish-desc">Lechuga, ventresca, anchoas, tomate, cebolla, aceitunas, espárragos.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="brasa">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Txuletón a la brasa <span class="star">★</span></span><span class="dish-price">62 €/kg</span></div><p class="dish-desc">Vacuno mayor madurado. Brasa de encina. Pimientos y patata.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Solomillo a la parrilla</span><span class="dish-price">26 €</span></div><p class="dish-desc">Solomillo de buey, salsa al gusto (pimienta, foie, roquefort).</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Cordero asado al horno</span><span class="dish-price">22 €</span></div><p class="dish-desc">Pierna de lechazo, lento al horno de leña. Ensalada de tomate.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Costillar de cerdo a la brasa</span><span class="dish-price">17 €</span></div><p class="dish-desc">Marinado 24h, brasa lenta. Salsa BBQ aparte.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Entrecot de buey</span><span class="dish-price">24 €</span></div><p class="dish-desc">Sal gorda, brasa, pimiento del piquillo asado.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pollo de caserío al carbón</span><span class="dish-price">15 €</span></div><p class="dish-desc">Pollo de corral, brasa, ajos asados.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="pescados">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Bacalao al pil-pil <span class="star">★</span></span><span class="dish-price">22 €</span></div><p class="dish-desc">Lomo de bacalao, ajo, guindilla. Salsa montada al ritmo del cazuelo.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Lubina a la sal</span><span class="dish-price">26 €</span></div><p class="dish-desc">Lubina entera asada en costra de sal. 2 personas.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Bacalao a la vizcaína</span><span class="dish-price">21 €</span></div><p class="dish-desc">Receta tradicional, salsa vizcaína de pimiento choricero.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Merluza en salsa verde</span><span class="dish-price">23 €</span></div><p class="dish-desc">Lomo de merluza, almejas, espárragos verdes.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Rape a la plancha</span><span class="dish-price">25 €</span></div><p class="dish-desc">Lomo de rape, refrito de ajos.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Calamares en su tinta</span><span class="dish-price">19 €</span></div><p class="dish-desc">Calamares enteros con su tinta y arroz blanco.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="postres">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Tarta de queso al horno <span class="star">★</span></span><span class="dish-price">6 €</span></div><p class="dish-desc">Cremosa por dentro, ligeramente quemada por arriba.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Cuajada de oveja con miel</span><span class="dish-price">5 €</span></div><p class="dish-desc">Cuajada artesana de oveja latxa con miel del monte.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pantxineta de hojaldre</span><span class="dish-price">5,50 €</span></div><p class="dish-desc">Hojaldre crujiente, crema pastelera y almendra tostada.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Arroz con leche</span><span class="dish-price">5 €</span></div><p class="dish-desc">Cremoso, canela y limón.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Goxua</span><span class="dish-price">5,50 €</span></div><p class="dish-desc">Postre vasco: nata, bizcocho, crema y caramelo.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Tabla de quesos</span><span class="dish-price">12 €</span></div><p class="dish-desc">Idiazábal, cabra, azul. Membrillo y nueces.</p></div>
+      </div>
+    </div>
+
+    <div class="menu-banner">
+      <div class="menu-card">
+        <span>menú diario</span>
+        <b>15 €</b>
+        <small>Lunes a Viernes · Mediodía</small>
+      </div>
+      <div class="menu-card weekend">
+        <span>menú fin de semana</span>
+        <b>18 €</b>
+        <small>Sábados, Domingos &amp; Festivos</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">imágenes del asador</span>
+    <h2 class="section-title">Caserío, <em>brasa y mesa</em>.</h2>
+  </div>
+  <div class="wrap">
+    <div class="gal-grid">
+      <div class="gal-item gal-tall gal-wide"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" loading="lazy" decoding="async" alt="Txuletón"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Comedor"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Bacalao"></div>
+      <div class="gal-item gal-wide"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80" loading="lazy" decoding="async" alt="Sala"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Mesa"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Brasa"></div>
+    </div>
+  </div>
+</section>
+
+<section id="reseñas" class="reviews">
+  <div class="wrap reviews-head">
+    <span class="eyebrow" style="color:var(--brasa)">lo que dice la gente</span>
+    <h2 class="section-title" style="color:var(--crema)">Más de <em style="color:var(--brasa)">16.000 reseñas</em>.</h2>
+    <div class="score-block">
+      <div class="score-num">3.7</div>
+      <div>
+        <div class="stars">★★★★☆</div>
+        <small>16.243 valoraciones</small>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>Excelente txuletón con patatas asadas y pimientos rojos. Postres muy ricos y atención atenta de Ramón. Volveremos seguro.</p>
+        <div class="review-author">— Cliente Google</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>Sitio rural muy familiar, espacioso, con zona para los críos. El menú diario es de los mejores de la comarca por el precio que tiene.</p>
+        <div class="review-author">— Cliente Google</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★☆</div>
+        <p>Las almejas a la marinera y la lubina a la sal, brutales. Mucho ambiente los fines de semana, mejor reservar siempre con tiempo.</p>
+        <div class="review-author">— Cliente Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">cómo llegar</span>
+    <h2 class="section-title">En la <em>carretera de Unbe</em>, km 32.</h2>
+  </div>
+  <div class="wrap contact-grid">
+    <div class="contact-card">
+      <div class="contact-row"><div class="ico">@</div><div><b>Dónde estamos</b><span>Carretera Leioa-Unbe<br>Errepidea, Km 32 · 48950 Erandio</span></div></div>
+      <div class="contact-row"><div class="ico">☏</div><div><b>Reservas</b><a href="tel:+34944670768">944 67 07 68</a></div></div>
+      <div class="contact-row"><div class="ico">P</div><div><b>Servicios</b><span style="font-size:14px">Parking propio · Terraza · Jardín<br>Zona infantil · Pet-friendly</span></div></div>
+      <div class="contact-row"><div class="ico">€</div><div><b>Precio medio</b><span>Menú diario 15 € · Finde 18 €<br>Carta 30-40 €/persona</span></div></div>
+      <div class="amenities">
+        <div class="amenity">★ Parking</div>
+        <div class="amenity">★ Terraza</div>
+        <div class="amenity">★ Jardín</div>
+        <div class="amenity">★ Zona infantil</div>
+        <div class="amenity">★ Pet-friendly</div>
+      </div>
+    </div>
+    <div class="cta-block">
+      <h3>Reserva mesa<br><b>en el caserío.</b></h3>
+      <p>Mejor con tiempo: los fines de semana volamos. Comidas de empresa, cuadrillas y celebraciones, pídenos menú a medida.</p>
+      <a href="tel:+34944670768" class="btn btn-primary" style="background:var(--brasa);color:var(--carbon);border-color:var(--brasa)">Llamar al asador</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">Asador Motabarri</div>
+  <div class="foot-tag">— brasa, txuletón y caserío —</div>
+  <div class="foot-row">Carretera Leioa-Unbe, Km 32 · 48950 Erandio · Bizkaia</div>
+  <div class="foot-row"><a href="tel:+34944670768">944 67 07 68</a></div>
+  <div class="foot-row" style="margin-top:20px;opacity:.4">© 2026 Asador Motabarri</div>
+</footer>
+
+<script>
+const tabs=document.querySelectorAll('.menu-toggle button'),panels=document.querySelectorAll('.menu-panel');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));
+  panels.forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelector(`.menu-panel[data-panel="${t.dataset.tab}"]`).classList.add('active');
+}));
+</script>
+
+</body>
+</html>
