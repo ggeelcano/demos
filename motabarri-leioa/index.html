@@ -42,7 +42,7 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 /* Splash bienvenida */
 .splash{position:fixed;inset:0;z-index:9999;background:var(--carbon);display:grid;place-items:center;animation:splashOut 2.6s ease-in forwards;pointer-events:none}
-.splash::before{content:"";position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2000-h1300-k-no') center/cover no-repeat;opacity:0;animation:splashImg 2.6s ease-in forwards}
+.splash::before{content:"";position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2400-h1300-k-no') center 30%/cover no-repeat;opacity:0;animation:splashImg 2.6s ease-in forwards}
 .splash::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.35) 0%,rgba(22,17,13,.85) 100%)}
 .splash-text{position:relative;z-index:2;text-align:center;color:var(--crema);animation:splashTxt 2.6s ease-in forwards;opacity:0}
 .splash-text small{font-family:'Caveat',cursive;font-size:30px;color:var(--brasa);display:block;margin-bottom:6px}
@@ -76,25 +76,30 @@ nav{position:sticky;top:0;background:rgba(232,223,207,.96);backdrop-filter:blur(
 .nav-cta{background:var(--brasa);color:var(--carbon);padding:11px 22px;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:.25s;white-space:nowrap;border:1.5px solid var(--brasa)}
 .nav-cta:hover{background:transparent;color:var(--brasa-2)}
 
-/* Hero */
-.hero{position:relative;min-height:90vh;display:grid;place-items:center;overflow:hidden;background:var(--carbon)}
-.hero-img{position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2000-h1300-k-no') center/cover no-repeat;filter:brightness(.72) saturate(1.05)}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.15) 0%,rgba(22,17,13,.55) 60%,rgba(22,17,13,.92) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;color:var(--crema);padding:70px 24px;max-width:920px}
-.hero-eyebrow{font-family:'Caveat',cursive;font-size:32px;color:var(--brasa);margin-bottom:6px;display:block;letter-spacing:.04em}
-.hero h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(50px,9.2vw,128px);line-height:.92;letter-spacing:-.02em;margin-bottom:26px}
+/* Hero panorámico */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--carbon)}
+.hero-img{position:absolute;inset:0;background:url('https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w2400-h1300-k-no') center 30%/cover no-repeat;filter:saturate(1.08) contrast(1.02);animation:heroZoom 14s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,17,13,.05) 0%,rgba(22,17,13,.1) 40%,rgba(22,17,13,.55) 75%,rgba(22,17,13,.95) 100%)}
+.hero-frame{position:absolute;top:24px;left:24px;right:24px;bottom:24px;border:1px solid rgba(245,239,226,.25);pointer-events:none;z-index:2}
+.hero-content{position:relative;z-index:3;text-align:left;color:var(--crema);padding:0 56px 70px;max-width:1240px;margin:0 auto;width:100%}
+.hero-eyebrow{font-family:'Caveat',cursive;font-size:34px;color:var(--brasa);margin-bottom:4px;display:block;letter-spacing:.04em}
+.hero h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(54px,10vw,140px);line-height:.88;letter-spacing:-.025em;margin-bottom:22px;text-shadow:0 8px 40px rgba(0,0,0,.5)}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--brasa);display:block}
-.hero p{font-size:clamp(15px,2vw,19px);max-width:600px;margin:0 auto 38px;opacity:.9;font-weight:300}
-.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero p{font-size:clamp(15px,2vw,19px);max-width:600px;margin:0 0 36px;opacity:.95;font-weight:300}
+.hero-ctas{display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap}
 .btn{padding:15px 32px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.25s;display:inline-flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border:1.5px solid transparent}
 .btn-primary{background:var(--brasa);color:var(--carbon);border-color:var(--brasa)}
 .btn-primary:hover{background:transparent;color:var(--brasa);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--crema);border-color:rgba(245,239,226,.45)}
 .btn-ghost:hover{background:var(--crema);color:var(--madera-2);border-color:var(--crema)}
-.hero-meta{position:absolute;bottom:32px;left:0;right:0;display:flex;justify-content:center;gap:36px;color:var(--crema);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;flex-wrap:wrap;padding:0 20px;z-index:2}
+.hero-meta{position:absolute;top:24px;right:0;left:0;display:flex;justify-content:flex-end;gap:24px;color:var(--crema);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.95;flex-wrap:wrap;padding:18px 80px;z-index:4;font-weight:600}
+.hero-meta span{display:flex;align-items:center;gap:8px;background:rgba(22,17,13,.55);backdrop-filter:blur(6px);padding:8px 14px;border:1px solid rgba(245,239,226,.18)}
 .hero-meta b{color:var(--brasa);font-weight:700;letter-spacing:.06em}
-.hero-divider{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;padding:0 5%;z-index:1;opacity:.15}
-.hero-divider::before,.hero-divider::after{content:"";display:block;width:30%;height:1px;background:var(--brasa)}
+.hero-tag{position:absolute;left:80px;top:140px;z-index:3;background:var(--brasa);color:var(--carbon);padding:10px 18px;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:900;font-size:14px;letter-spacing:.04em;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.hero-scroll{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);color:var(--crema);font-size:10px;letter-spacing:.4em;text-transform:uppercase;opacity:.6;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:600}
+.hero-scroll::after{content:"";width:1px;height:30px;background:var(--brasa);animation:scrollLine 1.8s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{height:10px;opacity:.3}50%{height:30px;opacity:1}}
 
 /* Marquee */
 .marquee{background:var(--madera-2);color:var(--brasa);overflow:hidden;padding:14px 0;border-top:1px solid var(--brasa);border-bottom:1px solid var(--brasa)}
@@ -243,6 +248,13 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
   .brasa-stamp{width:110px;height:110px;font-size:11px;top:-12px;right:-12px}
   .year-stamp{font-size:36px;top:24px;left:24px}
 }
+@media(max-width:1024px){
+  .hero{height:auto;min-height:90vh}
+  .hero-content{padding:0 28px 70px;text-align:left}
+  .hero-meta{padding:14px 28px;gap:10px;font-size:10px}
+  .hero-tag{left:28px;top:120px;font-size:12px;padding:8px 14px}
+  .hero-frame{top:14px;left:14px;right:14px;bottom:14px}
+}
 @media(max-width:480px){
   .topbar{font-size:10px;padding:8px 0}
   .topbar span{margin:0 8px}
@@ -250,9 +262,14 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
   .brand-mark{width:40px;height:40px;font-size:23px}
   .brand-text b{font-size:18px}
   .nav-cta{padding:10px 14px;font-size:11px}
-  .hero{min-height:84vh}
-  .hero-content{padding:46px 18px}
-  .hero-meta{gap:14px;font-size:10px;bottom:20px}
+  .hero{min-height:88vh}
+  .hero-content{padding:0 22px 56px}
+  .hero h1{font-size:48px}
+  .hero p{font-size:14.5px}
+  .hero-meta{gap:8px;font-size:9px;padding:12px 18px;justify-content:flex-start}
+  .hero-meta span{padding:6px 10px}
+  .hero-tag{left:18px;top:auto;bottom:auto;display:none}
+  .hero-scroll{display:none}
   .marquee-track{font-size:17px;gap:40px}
   .marquee-track span::before{margin-right:40px}
   section{padding:60px 18px}
@@ -305,22 +322,23 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
 
 <header class="hero">
   <div class="hero-img"></div>
-  <div class="hero-divider"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-meta">
+    <span>★ <b>3.7</b> · 16K+ RESEÑAS</span>
+    <span>MENÚ <b>15€</b></span>
+    <span>KM 32 · LEIOA-UNBE</span>
+  </div>
+  <div class="hero-tag">Caserío del XIX</div>
   <div class="hero-content">
-    <span class="hero-eyebrow">caserío del XIX · rehabilitado en 1992</span>
-    <h1>Asador Motabarri.<em>Brasa y caserío.</em></h1>
-    <p>Asador en un caserío vasco del XIX, entre Leioa y Erandio. Carnes a la parrilla, bacalao al pil-pil y producto de la tierra. Mesa amplia, terraza, jardín, parking y zona para los txikis.</p>
+    <span class="hero-eyebrow">brasa, txuletón y terraza</span>
+    <h1>Asador<br>Motabarri.<em>Desde 1992.</em></h1>
+    <p>Caserío de piedra del siglo XIX entre Leioa y Erandio. Carnes a la brasa, bacalao al pil-pil, alubias con sacramentos y txuletón de vacuno mayor. Terraza, jardín, parking y zona infantil.</p>
     <div class="hero-ctas">
       <a href="tel:+34944670768" class="btn btn-primary">Llamar y reservar</a>
       <a href="#carta" class="btn btn-ghost">Ver la carta</a>
     </div>
   </div>
-  <div class="hero-meta">
-    <span>★ 3.7 · <b>16.000+ RESEÑAS</b></span>
-    <span>MENÚ DIARIO <b>15€</b></span>
-    <span>KM 32 · LEIOA-UNBE</span>
-    <span>BARRIO MOTA · GOIERRI</span>
-  </div>
+  <div class="hero-scroll">scroll</div>
 </header>
 
 <div class="marquee">
@@ -446,12 +464,12 @@ footer{background:#0E0A07;color:var(--crema);padding:60px 24px 30px;text-align:c
   </div>
   <div class="wrap">
     <div class="gal-grid">
-      <div class="gal-item gal-tall gal-wide"><img src="https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w1200-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'" alt="Caserío Motabarri exterior"><div class="gal-tag">El caserío</div></div>
-      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipMRvY1rey6ROuwrnQ9muUfpbhVYy1FYEJhm48I=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80'" alt="Comedor Motabarri"></div>
-      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipMlI8j4Hsmry-pTc8asT3Ukv8wj2TJROS0LZ6SM=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80'" alt="Plato Motabarri"></div>
+      <div class="gal-item gal-tall gal-wide"><img src="https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w1400-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'" alt="Caserío Motabarri exterior con terraza"><div class="gal-tag">El caserío</div></div>
+      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipPTkwDzd51ZwmIUVMMPys7x8tSemfiWSrwWvLtc=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80'" alt="Comedor Motabarri"></div>
+      <div class="gal-item"><img src="https://foto1.sluurpy.com/locali/es/1933765/67380163.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80'" alt="Plato Motabarri"></div>
       <div class="gal-item gal-wide"><img src="https://lh5.googleusercontent.com/p/AF1QipMEcs9LQRmZzqPih1ubsvZ630tR0Zn-oGxZqp9l=w900-h450-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80'" alt="Sala Motabarri"></div>
-      <div class="gal-item"><img src="https://lh5.googleusercontent.com/p/AF1QipManQ9949ncCYVFnQkBFAP87ygs3mWxGH8LtEf5=w600-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80'" alt="Mesa Motabarri"></div>
-      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a1/6d/fe/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=600&q=80'" alt="Brasa Motabarri"></div>
+      <div class="gal-item"><img src="https://foto1.sluurpy.com/locali/es/1933765/67380161.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80'" alt="Plato Motabarri"></div>
+      <div class="gal-item"><img src="https://foto1.sluurpy.com/locali/es/1933765/67380164.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=600&q=80'" alt="Mesa Motabarri"></div>
     </div>
   </div>
 </section>
