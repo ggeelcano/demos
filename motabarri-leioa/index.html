@@ -44,7 +44,6 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:'Inter',sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:400}
 img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none}
-.serif{font-family:'Cormorant Garamond',Georgia,serif}
 
 /* Topbar */
 .topbar{background:var(--tierra-2);color:var(--crema);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:9px 0;text-align:center;font-weight:500}
@@ -65,7 +64,7 @@ nav{position:sticky;top:0;background:rgba(251,247,239,.96);backdrop-filter:blur(
 .nav-cta{background:var(--tierra);color:var(--crema);padding:12px 24px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:.25s;white-space:nowrap;border:1.5px solid var(--tierra)}
 .nav-cta:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
 
-/* HERO con la foto del caserío */
+/* HERO */
 .hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--tierra-2);display:flex;flex-direction:column;justify-content:flex-end}
 .hero-img{position:absolute;inset:0;background:url('caserio.png') center center/cover no-repeat;filter:saturate(1.1) contrast(1.04);animation:heroBreath 16s ease-in-out infinite alternate}
 @keyframes heroBreath{from{transform:scale(1)}to{transform:scale(1.07)}}
@@ -108,22 +107,17 @@ section{padding:130px 28px;position:relative}
 
 /* SECCIÓN 1: EL CASERÍO (EXTERIOR) */
 .exterior{background:var(--hueso)}
-.exterior-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;align-items:end}
-.exterior-main{position:relative;aspect-ratio:5/4;overflow:hidden;box-shadow:0 30px 80px rgba(42,31,24,.18)}
+.exterior-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;align-items:stretch;min-height:560px}
+.exterior-main{position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(42,31,24,.18)}
 .exterior-main img{width:100%;height:100%;object-fit:cover;transition:.6s}
 .exterior-main:hover img{transform:scale(1.04)}
-.exterior-side{display:grid;grid-template-rows:1fr 1fr;gap:14px;height:100%}
-.exterior-side > div{position:relative;overflow:hidden;box-shadow:0 18px 50px rgba(42,31,24,.15)}
+.exterior-side{position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(42,31,24,.18)}
 .exterior-side img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.exterior-side > div:hover img{transform:scale(1.05)}
-.exterior-cap{position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--crema);font-size:18px;text-shadow:0 2px 12px rgba(0,0,0,.6);z-index:2}
-.exterior-cap::before{content:"";display:block;width:30px;height:1px;background:var(--brasa);margin-bottom:6px}
-.exterior-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.exterior-bottom > div{position:relative;aspect-ratio:1/1;overflow:hidden;box-shadow:0 14px 40px rgba(42,31,24,.12)}
-.exterior-bottom img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.exterior-bottom > div:hover img{transform:scale(1.06)}
+.exterior-side:hover img{transform:scale(1.04)}
+.exterior-cap{position:absolute;bottom:24px;left:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--crema);font-size:22px;text-shadow:0 2px 14px rgba(0,0,0,.7);z-index:2;letter-spacing:.01em}
+.exterior-cap::before{content:"";display:block;width:36px;height:1.5px;background:var(--brasa);margin-bottom:8px}
 
-/* Pull quote / esencia */
+/* Pull quote */
 .pull{background:var(--crema);padding:120px 28px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
 .pull-inner{max-width:920px;margin:0 auto;text-align:center}
 .pull-mark{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:88px;line-height:1;margin-bottom:-30px}
@@ -147,24 +141,15 @@ section{padding:130px 28px;position:relative}
 .spaces-pic{aspect-ratio:4/5;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(42,31,24,.2)}
 .spaces-pic img{width:100%;height:100%;object-fit:cover}
 .spaces-pic-tag{position:absolute;bottom:24px;left:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--crema);font-size:22px;text-shadow:0 2px 14px rgba(0,0,0,.7);z-index:2}
-
-.spaces-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:80px}
-.spaces-row > div{position:relative;aspect-ratio:4/5;overflow:hidden;box-shadow:0 14px 40px rgba(42,31,24,.15)}
-.spaces-row img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.spaces-row > div:hover img{transform:scale(1.05)}
-.spaces-row-cap{position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--crema);font-size:17px;text-shadow:0 2px 12px rgba(0,0,0,.7);z-index:2;letter-spacing:.01em}
+.spaces-pic-tag::before{content:"";display:block;width:36px;height:1.5px;background:var(--brasa);margin-bottom:8px}
 
 /* Sobre nosotros */
 .about{background:var(--crema)}
-.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:90px;align-items:center}
-.about-img{aspect-ratio:4/5;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(42,31,24,.2)}
-.about-img img{width:100%;height:100%;object-fit:cover}
-.about-img::before{content:"";position:absolute;inset:18px;border:1px solid rgba(244,237,224,.45);pointer-events:none;z-index:2}
-.about-stamp{position:absolute;bottom:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:var(--tierra);color:var(--brasa);display:grid;place-items:center;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:14px;line-height:1.2;padding:22px;z-index:3;box-shadow:0 14px 30px rgba(0,0,0,.3)}
-.about-stamp em{display:block;font-size:42px;font-style:italic;font-weight:700;line-height:1;margin-bottom:4px}
-.about-text p{font-size:16.5px;color:var(--gris);margin-bottom:20px;line-height:1.75;font-weight:400}
+.about-inner{max-width:920px;margin:0 auto;text-align:center}
+.about-inner .section-title{font-size:clamp(34px,4.4vw,56px)}
+.about-text p{font-size:17px;color:var(--gris);margin-bottom:20px;line-height:1.75;font-weight:400}
 .about-text strong{color:var(--tierra);font-weight:600}
-.about-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;color:var(--tierra);margin:30px 0;padding-left:24px;border-left:2px solid var(--brasa);line-height:1.4;font-weight:500}
+.about-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;color:var(--tierra);margin:36px auto;max-width:680px;padding:0 30px;border-left:2px solid var(--brasa);text-align:left;line-height:1.4;font-weight:500}
 .about-sign{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa-2);font-size:20px;margin-top:14px;font-weight:500}
 
 /* Menú destacado */
@@ -185,15 +170,21 @@ section{padding:130px 28px;position:relative}
 
 /* SECCIÓN 3: LA COCINA (FOOD) */
 .cocina{background:var(--hueso)}
-.signatures{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
-.sig-dish{display:flex;flex-direction:column}
-.sig-pic{aspect-ratio:4/5;overflow:hidden;margin-bottom:18px;position:relative;box-shadow:0 14px 40px rgba(42,31,24,.12)}
-.sig-pic img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.sig-dish:hover .sig-pic img{transform:scale(1.06)}
-.sig-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;color:var(--brasa);font-size:14px;letter-spacing:.06em;display:block;margin-bottom:6px}
-.sig-dish h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--tierra);line-height:1.15;margin-bottom:6px}
-.sig-dish h4 em{font-style:italic;font-weight:500}
-.sig-dish p{font-size:13.5px;color:var(--gris);line-height:1.55}
+.cocina-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.cocina-pic{position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(42,31,24,.25);aspect-ratio:4/3}
+.cocina-pic img{width:100%;height:100%;object-fit:cover}
+.cocina-pic-tag{position:absolute;bottom:24px;left:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;color:var(--crema);font-size:24px;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:2;letter-spacing:.01em}
+.cocina-pic-tag::before{content:"";display:block;width:36px;height:1.5px;background:var(--brasa);margin-bottom:8px}
+.cocina-text h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;color:var(--tierra);margin-bottom:14px;line-height:1.1}
+.cocina-text h3 em{font-style:italic;font-weight:600;color:var(--brasa-2)}
+.cocina-text p{font-size:17px;color:var(--gris);margin-bottom:18px;line-height:1.7;font-weight:400}
+.cocina-text strong{color:var(--tierra);font-weight:600}
+.cocina-list{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+.cocina-list-item{display:flex;gap:18px;padding:14px 0;border-top:1px solid var(--linea);align-items:flex-start}
+.cocina-list-item:last-child{border-bottom:1px solid var(--linea)}
+.cocina-list-item i{font-style:normal;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:22px;font-weight:600;min-width:34px;line-height:1.2}
+.cocina-list-item b{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--tierra);display:block;margin-bottom:3px}
+.cocina-list-item span{font-size:13.5px;color:var(--gris);line-height:1.5}
 
 /* Carta */
 .carta{background:var(--crema);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
@@ -223,7 +214,7 @@ section{padding:130px 28px;position:relative}
 .review-stars{color:var(--brasa);font-size:14px;letter-spacing:2px;margin-bottom:14px}
 .review p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:18.5px;line-height:1.45;margin-bottom:20px;color:var(--crema)}
 .review-author{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;font-family:'Inter',sans-serif;font-style:normal;font-weight:600}
-.score-block{margin-top:50px;display:flex;justify-content:center;align-items:center;gap:30px;padding:24px 36px;border:1px solid rgba(244,237,224,.18);max-width:480px;margin-left:auto;margin-right:auto}
+.score-block{margin:50px auto 0;display:flex;justify-content:center;align-items:center;gap:30px;padding:24px 36px;border:1px solid rgba(244,237,224,.18);max-width:480px}
 .score-block .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:60px;color:var(--brasa);line-height:1}
 .score-block .stars{color:var(--brasa);font-size:18px;letter-spacing:3px}
 .score-block small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px}
@@ -266,13 +257,10 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .stats-inner{grid-template-columns:repeat(2,1fr);gap:32px}
   section{padding:90px 22px}
   .head{margin-bottom:60px}
-  .exterior-grid{grid-template-columns:1fr;gap:30px}
-  .exterior-side{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto}
-  .exterior-side > div{aspect-ratio:1/1}
-  .spaces-grid,.about-grid{grid-template-columns:1fr;gap:50px}
-  .about-img{max-width:480px;margin:0 auto}
-  .signatures{grid-template-columns:repeat(2,1fr);gap:18px}
-  .menu-grid{grid-template-columns:1fr;gap:24px}
+  .exterior-grid{grid-template-columns:1fr;gap:18px;min-height:auto}
+  .exterior-main,.exterior-side{aspect-ratio:5/4}
+  .spaces-grid,.cocina-grid{grid-template-columns:1fr;gap:50px}
+  .spaces-pic,.cocina-pic{max-width:520px;margin:0 auto}
   .mq-inner{grid-template-columns:1fr;gap:18px}
   .reviews-grid{grid-template-columns:1fr;gap:20px}
   .contact-wrap{grid-template-columns:1fr;min-height:auto}
@@ -281,6 +269,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .foot-inner{grid-template-columns:1fr 1fr;gap:36px}
   .pull{padding:90px 22px}
   .menus-quick{padding:60px 22px}
+  .menu-grid{grid-template-columns:1fr;gap:24px}
 }
 @media(max-width:480px){
   .topbar{font-size:10px;padding:8px 0}
@@ -305,10 +294,6 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .pull{padding:70px 18px}
   .pull-mark{font-size:60px;margin-bottom:-18px}
   .head{margin-bottom:42px}
-  .exterior-bottom,.spaces-row{grid-template-columns:1fr 1fr;gap:10px}
-  .signatures{grid-template-columns:1fr 1fr;gap:14px}
-  .about-stamp{width:120px;height:120px;font-size:11px;bottom:-18px;right:-18px;padding:18px}
-  .about-stamp em{font-size:32px}
   .menus-quick{padding:50px 18px}
   .mq-card{padding:36px 26px}
   .mq-card b{font-size:48px}
@@ -320,6 +305,8 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .foot-inner{grid-template-columns:1fr;gap:30px}
   .foot-bottom{flex-direction:column;text-align:center}
   .btn{padding:13px 22px;font-size:11px;letter-spacing:.14em}
+  .about-quote{font-size:20px;padding:0 18px}
+  .cocina-text h3{font-size:30px}
 }
 </style>
 </head>
@@ -336,7 +323,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <div class="nav-links">
       <a href="#caserio">El caserío</a>
       <a href="#espacios">Los espacios</a>
-      <a href="#nosotros">Sobre nosotros</a>
+      <a href="#cocina">La cocina</a>
       <a href="#carta">La carta</a>
       <a href="#mapa">Cómo llegar</a>
     </div>
@@ -380,7 +367,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <div class="head">
       <span class="eyebrow">— el caserío</span>
       <h2 class="section-title">Una casa de piedra<br>de <em>hace más de cien años</em>.</h2>
-      <p class="section-lead">El caserío de la familia <strong>Landa Etxebarria</strong>, en el barrio Mota de Goiherri, fue durante generaciones hogar y tierra cultivable. En 1992 se rehabilitó conservando piedra, vigas y alma, y se transformó en lo que hoy conocéis. Está exactamente igual de cuidado que entonces.</p>
+      <p class="section-lead">El caserío de la familia <strong>Landa Etxebarria</strong>, en el barrio Mota de Goiherri, fue durante generaciones hogar y tierra cultivable. En 1992 se rehabilitó conservando piedra, vigas y alma, y se transformó en lo que hoy conocéis. La terraza al sol, el jardín y las puestas de sol siguen igual.</p>
     </div>
     <div class="exterior-grid">
       <div class="exterior-main">
@@ -388,20 +375,9 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
         <div class="exterior-cap">El caserío y la terraza</div>
       </div>
       <div class="exterior-side">
-        <div>
-          <img src="https://lh5.googleusercontent.com/p/AF1QipPwWy0Lc9ujdtysWOLaSGcJn8YT6oHazjnMtmF9=w900-h700-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Caserío Motabarri vista 1">
-          <div class="exterior-cap">Vista lateral</div>
-        </div>
-        <div>
-          <img src="https://lh5.googleusercontent.com/p/AF1QipPTkwDzd51ZwmIUVMMPys7x8tSemfiWSrwWvLtc=w900-h700-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Caserío Motabarri vista 2">
-          <div class="exterior-cap">Entrada principal</div>
-        </div>
+        <img src="terraza.png" alt="Atardecer en la terraza del Motabarri" loading="lazy" decoding="async">
+        <div class="exterior-cap">Atardecer en terraza</div>
       </div>
-    </div>
-    <div class="exterior-bottom">
-      <div><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d3/2f/50/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Exterior caserío"></div>
-      <div><img src="https://lh5.googleusercontent.com/p/AF1QipMEcs9LQRmZzqPih1ubsvZ630tR0Zn-oGxZqp9l=w900-h900-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Jardín y terraza"></div>
-      <div><img src="https://foto1.sluurpy.com/locali/es/1933765/47597249.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Terraza Motabarri"></div>
     </div>
   </div>
 </section>
@@ -421,38 +397,24 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <div class="head">
       <span class="eyebrow">— los espacios</span>
       <h2 class="section-title">Dos comedores, terraza<br>y <em>jardín para todos</em>.</h2>
-      <p class="section-lead">El caserío tiene dos plantas con su propio carácter, una terraza para los días de sol y un jardín amplio con zona infantil. También dos carpas para celebraciones más grandes. Aquí cabe la familia, la cuadrilla y la comida de empresa.</p>
+      <p class="section-lead">El caserío tiene dos plantas con su propio carácter, una terraza para los días de sol y un jardín amplio con zona infantil. También dos carpas climatizadas para celebraciones más grandes. Aquí cabe la familia, la cuadrilla y la comida de empresa.</p>
     </div>
     <div class="spaces-grid">
       <div class="spaces-text">
         <h3>Una sala que <em>respira historia</em>.</h3>
-        <p>Vigas de madera vista, piedra original y mesas robustas. Arriba, el comedor principal con vistas al verde. Abajo, una sala con más recogimiento. Capacidades pensadas para que comas a gusto, no apretado.</p>
-        <p>Tenemos <strong>parking propio</strong>, mesa pet-friendly, zona de juegos para los críos y dos carpas exteriores para celebraciones. Todo a 5 minutos de Leioa, 10 del BEC y 15 del centro de Bilbao.</p>
+        <p>Vigas de madera vista, piedra original y mesas robustas. Arriba, el comedor principal con vistas al verde. Abajo, una sala con más recogimiento. <strong>Carpas con chimenea y calefacción</strong> en el jardín para que cualquier época del año sea buena para venir.</p>
+        <p>Tenemos <strong>parking propio</strong>, mesa pet-friendly, zona de juegos para los críos y dos carpas exteriores climatizadas para celebraciones. A 5 minutos de Leioa, 10 del BEC y 15 del centro de Bilbao.</p>
         <div class="spaces-list">
           <div class="spaces-list-item"><b>Comedor principal</b><span>1ª planta · 70 comensales</span></div>
           <div class="spaces-list-item"><b>Sala íntima</b><span>Planta baja · 55 comensales</span></div>
-          <div class="spaces-list-item"><b>Carpa exterior I</b><span>Jardín · 65 comensales</span></div>
-          <div class="spaces-list-item"><b>Carpa exterior II</b><span>Jardín · 65 comensales</span></div>
+          <div class="spaces-list-item"><b>Carpa con chimenea</b><span>Jardín · 65 comensales</span></div>
+          <div class="spaces-list-item"><b>Segunda carpa</b><span>Jardín · 65 comensales</span></div>
           <div class="spaces-list-item"><b>Terraza</b><span>Mesa al aire libre</span></div>
         </div>
       </div>
       <div class="spaces-pic">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/9a/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Comedor Motabarri">
-        <div class="spaces-pic-tag">Comedor principal</div>
-      </div>
-    </div>
-    <div class="spaces-row">
-      <div>
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/06/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Sala Motabarri">
-        <div class="spaces-row-cap">Sala íntima · planta baja</div>
-      </div>
-      <div>
-        <img src="https://lh5.googleusercontent.com/p/AF1QipMRvY1rey6ROuwrnQ9muUfpbhVYy1FYEJhm48I=w800-h1000-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Mesas Motabarri">
-        <div class="spaces-row-cap">Mesas y vigas</div>
-      </div>
-      <div>
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/02/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Carpa exterior">
-        <div class="spaces-row-cap">Carpa de jardín</div>
+        <img src="carpa.png" alt="Carpa con chimenea Motabarri" loading="lazy" decoding="async">
+        <div class="spaces-pic-tag">Carpa con chimenea</div>
       </div>
     </div>
   </div>
@@ -460,14 +422,10 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
 
 <!-- SOBRE NOSOTROS -->
 <section id="nosotros" class="about">
-  <div class="wrap about-grid">
-    <div class="about-img">
-      <img src="https://lh5.googleusercontent.com/p/AF1QipManQ9949ncCYVFnQkBFAP87ygs3mWxGH8LtEf5=w900-h1100-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='caserio.png'" alt="Equipo Motabarri">
-      <div class="about-stamp"><em>+30</em>años en<br>Motabarri</div>
-    </div>
+  <div class="wrap about-inner">
+    <span class="eyebrow">— sobre nosotros</span>
+    <h2 class="section-title">El asador que <em>empezó como caserío</em>.</h2>
     <div class="about-text">
-      <span class="eyebrow">— sobre nosotros</span>
-      <h2 class="section-title" style="font-size:clamp(34px,4.4vw,56px);margin-bottom:30px">El asador que <em>empezó como caserío</em>.</h2>
       <p>El caserío era hogar, tierra cultivable y ganado de la familia <strong>Landa Etxebarria</strong>. En 1992, José María Uriguen, María Teresa Urrutia y su hija <strong>Eguzkiñe</strong> rehabilitaron la casa y la transformaron en asador. Hoy Eguzkiñe sigue al frente.</p>
       <p>Más de tres décadas después, la cocina sigue siendo la misma: producto de la zona, brasa de carbón vegetal y recetas de aquí. <strong>Txuletón de vacuno mayor</strong>, <strong>alubias con sacramentos</strong> y la tarta de queso al horno como cierre.</p>
       <div class="about-quote">"Lo que más nos dicen los clientes es que aquí vienen a comer tranquilos. Eso es lo que mejor sabemos hacer: dejaros comer a gusto y a vuestro ritmo."</div>
@@ -500,38 +458,29 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   </div>
 </section>
 
-<!-- SECCIÓN 3: LA COCINA - SIGNATURE DISHES -->
+<!-- SECCIÓN 3: LA COCINA - FOOD -->
 <section id="cocina" class="cocina">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">— la cocina</span>
       <h2 class="section-title">Brasa, producto<br>y <em>recetas de aquí</em>.</h2>
-      <p class="section-lead">Las cuatro cosas que mejor sabemos hacer y por las que vienen los que repiten.</p>
+      <p class="section-lead">Lo que mejor sabemos hacer y por lo que vienen los que repiten.</p>
     </div>
-    <div class="signatures">
-      <div class="sig-dish">
-        <div class="sig-pic"><img src="https://img02.restaurantguru.com/cc76-Asador-Restaurante-Motabarri-Erandio-meals.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80'" alt="Txuletón a la brasa"></div>
-        <span class="sig-num">— 01</span>
-        <h4>Txuletón <em>a la brasa</em></h4>
-        <p>Vacuno mayor madurado mínimo 30 días. Brasa de encina y roble, sal gorda y reposo.</p>
+    <div class="cocina-grid">
+      <div class="cocina-pic">
+        <img src="txuleton.png" alt="Txuletón a la brasa Motabarri" loading="lazy" decoding="async">
+        <div class="cocina-pic-tag">Txuletón a la brasa</div>
       </div>
-      <div class="sig-dish">
-        <div class="sig-pic"><img src="https://foto1.sluurpy.com/locali/es/1933765/67380163.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=600&q=80'" alt="Alubias con sacramentos"></div>
-        <span class="sig-num">— 02</span>
-        <h4>Alubias <em>con sacramentos</em></h4>
-        <p>Alubia roja con morcilla, chorizo, costilla y berza. La otra especialidad de la casa.</p>
-      </div>
-      <div class="sig-dish">
-        <div class="sig-pic"><img src="https://img02.restaurantguru.com/c513-Asador-Restaurante-Motabarri-Erandio-dishes.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80'" alt="Bacalao al pil-pil"></div>
-        <span class="sig-num">— 03</span>
-        <h4>Bacalao <em>al pil-pil</em></h4>
-        <p>Lomo de bacalao, ajo, guindilla. Salsa montada al ritmo del cazuelo, con pan para mojar.</p>
-      </div>
-      <div class="sig-dish">
-        <div class="sig-pic"><img src="https://foto1.sluurpy.com/locali/es/1933765/67380164.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80'" alt="Tarta de queso al horno"></div>
-        <span class="sig-num">— 04</span>
-        <h4>Tarta <em>de queso al horno</em></h4>
-        <p>Cremosa por dentro, ligeramente quemada por arriba. Receta tradicional de la casa.</p>
+      <div class="cocina-text">
+        <h3>El <em>txuletón</em> es la casa.</h3>
+        <p>Vacuno mayor, brasa de encina y carbón vegetal. Sal gorda, vuelta y vuelta, reposo. Pimientos asados y patata vieja al rescoldo. Lo que tiene que ser un txuletón.</p>
+        <p>Junto al txuletón, la otra columna de la cocina: <strong>alubias con sacramentos</strong>, <strong>bacalao al pil-pil</strong> y la <strong>tarta de queso al horno</strong> como punto y final.</p>
+        <div class="cocina-list">
+          <div class="cocina-list-item"><i>I</i><div><b>Txuletón a la brasa</b><span>Vacuno mayor madurado mínimo 30 días.</span></div></div>
+          <div class="cocina-list-item"><i>II</i><div><b>Alubias con sacramentos</b><span>Alubia roja con morcilla, chorizo, costilla y berza.</span></div></div>
+          <div class="cocina-list-item"><i>III</i><div><b>Bacalao al pil-pil</b><span>Lomo de bacalao, ajo y guindilla. Salsa montada al cazuelo.</span></div></div>
+          <div class="cocina-list-item"><i>IV</i><div><b>Tarta de queso al horno</b><span>Cremosa por dentro, ligeramente quemada por arriba.</span></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -597,12 +546,12 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <div class="reviews-grid">
       <div class="review">
         <div class="review-stars">★★★★★</div>
-        <p>Excelente txuletón con patatas y pimientos asados. Postres muy ricos y atención atenta de Ramón. Volveremos seguro.</p>
+        <p>Excelente txuletón con patatas y pimientos asados. Postres muy ricos y atención atenta. Volveremos seguro.</p>
         <div class="review-author">— Cliente Google</div>
       </div>
       <div class="review">
         <div class="review-stars">★★★★★</div>
-        <p>Sitio rural muy familiar, espacioso, con zona para los críos. El menú diario es de los mejores de la comarca por el precio que tiene.</p>
+        <p>Sitio rural muy familiar, espacioso, con zona para los críos. El menú diario es de los mejores de la comarca por el precio.</p>
         <div class="review-author">— Cliente Google</div>
       </div>
       <div class="review">
@@ -667,7 +616,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <ul>
         <li><a href="#caserio">El caserío</a></li>
         <li><a href="#espacios">Los espacios</a></li>
-        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#cocina">La cocina</a></li>
         <li><a href="#carta">La carta</a></li>
       </ul>
     </div>
@@ -682,7 +631,6 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <h5>Síguenos</h5>
       <ul>
         <li><a href="https://www.facebook.com/asador.motabarri/" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://www.instagram.com/asador_motabarri/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.google.com/maps/dir/?api=1&destination=Asador+Motabarri+Erandio" target="_blank" rel="noopener">Google Maps</a></li>
       </ul>
     </div>
