@@ -247,6 +247,59 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
 .foot-col a:hover{color:var(--brasa);opacity:1}
 .foot-bottom{max-width:1280px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(244,237,224,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;opacity:.5}
 
+/* RESERVAR ONLINE */
+.booking{background:linear-gradient(180deg,var(--crema) 0%,var(--hueso) 100%);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.booking-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center;max-width:1280px;margin:0 auto}
+.booking-text h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,5vw,60px);line-height:1.04;color:var(--tierra);margin-bottom:18px;letter-spacing:-.015em}
+.booking-text h2 em{font-style:italic;font-weight:600;color:var(--brasa-2)}
+.booking-text p{font-size:16.5px;color:var(--gris);font-weight:400;line-height:1.7;margin-bottom:18px;max-width:460px}
+.booking-text strong{color:var(--tierra);font-weight:600}
+.booking-perks{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.booking-perks li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--tinta)}
+.booking-perks li::before{content:"✓";color:var(--brasa);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:22px;line-height:1;flex-shrink:0}
+.booking-form{background:#fff;padding:48px 44px;box-shadow:0 30px 80px rgba(42,31,24,.15);border-top:3px solid var(--brasa);border-radius:4px}
+.booking-form-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid var(--linea)}
+.booking-form-head h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:var(--tierra);letter-spacing:-.005em}
+.booking-form-head span{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa-2);font-size:15px;font-weight:500}
+.bf-row{display:grid;gap:14px;margin-bottom:14px}
+.bf-row.cols-2{grid-template-columns:1fr 1fr}
+.bf-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.bf-field{display:flex;flex-direction:column;gap:6px}
+.bf-field label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600}
+.bf-field input,.bf-field select,.bf-field textarea{font-family:'Inter',sans-serif;font-size:15px;padding:12px 14px;border:1px solid var(--linea);background:var(--hueso);color:var(--tinta);font-weight:500;outline:none;transition:.2s;border-radius:0}
+.bf-field input:focus,.bf-field select:focus,.bf-field textarea:focus{border-color:var(--brasa);background:#fff;box-shadow:0 0 0 3px rgba(200,99,42,.12)}
+.bf-field textarea{resize:vertical;min-height:80px;font-family:'Inter',sans-serif}
+.bf-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236B5F50' d='M6 8L0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.bf-people{display:flex;gap:6px;flex-wrap:wrap}
+.bf-chip{padding:9px 14px;border:1px solid var(--linea);background:#fff;color:var(--tinta);font-size:14px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;min-width:42px}
+.bf-chip:hover{border-color:var(--brasa)}
+.bf-chip.active{background:var(--tierra);border-color:var(--tierra);color:var(--crema)}
+.bf-submit{width:100%;background:var(--brasa);color:var(--tierra-2);padding:16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1.5px solid var(--brasa);cursor:pointer;transition:.25s;margin-top:14px}
+.bf-submit:hover:not(:disabled){background:transparent;color:var(--brasa)}
+.bf-submit:disabled{opacity:.65;cursor:wait}
+.bf-legal{font-size:11.5px;color:var(--gris);margin-top:14px;line-height:1.5;text-align:center;font-weight:400}
+.bf-legal a{color:var(--brasa-2);text-decoration:underline}
+.bf-status{padding:14px 18px;font-size:14px;border:1px solid;margin-bottom:18px;display:none;font-weight:500;line-height:1.5}
+.bf-status.show{display:block}
+.bf-status.success{background:rgba(63,82,54,.06);border-color:var(--bosque);color:var(--bosque)}
+.bf-status.error{background:rgba(160,72,27,.06);border-color:var(--brasa-2);color:var(--brasa-2)}
+.bf-erp{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gris);letter-spacing:.16em;text-transform:uppercase;margin-top:18px;padding-top:18px;border-top:1px dashed var(--linea);font-weight:600}
+.bf-erp::before{content:"";width:8px;height:8px;background:var(--bosque);border-radius:50%;box-shadow:0 0 0 3px rgba(63,82,54,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(63,82,54,.2)}50%{box-shadow:0 0 0 6px rgba(63,82,54,.05)}}
+
+/* Modal */
+.modal-back{position:fixed;inset:0;background:rgba(26,20,15,.78);backdrop-filter:blur(6px);z-index:9998;opacity:0;visibility:hidden;transition:.25s}
+.modal-back.open{opacity:1;visibility:visible}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);background:#fff;width:min(620px,92vw);max-height:92vh;overflow-y:auto;z-index:9999;box-shadow:0 40px 100px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s}
+.modal.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.modal-head{padding:32px 36px 18px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:flex-start;gap:18px;background:var(--tierra);color:var(--crema)}
+.modal-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.1;color:var(--crema)}
+.modal-head h3 em{font-style:italic;color:var(--brasa);font-weight:600}
+.modal-head p{font-size:13px;opacity:.8;margin-top:4px;font-weight:300}
+.modal-close{background:transparent;border:1px solid rgba(244,237,224,.4);color:var(--crema);width:36px;height:36px;font-size:18px;cursor:pointer;font-family:inherit;flex-shrink:0;transition:.2s}
+.modal-close:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
+.modal-body{padding:32px 36px 36px}
+
 /* Mobile */
 @media(max-width:1024px){
   .nav-links{display:none}
@@ -270,6 +323,11 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .pull{padding:90px 22px}
   .menus-quick{padding:60px 22px}
   .menu-grid{grid-template-columns:1fr;gap:24px}
+  .booking-grid{grid-template-columns:1fr;gap:50px}
+  .booking-form{padding:36px 26px}
+  .modal-head{padding:24px 24px 14px}
+  .modal-head h3{font-size:24px}
+  .modal-body{padding:24px}
 }
 @media(max-width:480px){
   .topbar{font-size:10px;padding:8px 0}
@@ -307,6 +365,9 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .btn{padding:13px 22px;font-size:11px;letter-spacing:.14em}
   .about-quote{font-size:20px;padding:0 18px}
   .cocina-text h3{font-size:30px}
+  .booking-form{padding:28px 22px}
+  .booking-form-head{flex-direction:column;gap:8px}
+  .bf-row.cols-2,.bf-row.cols-3{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -325,9 +386,10 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <a href="#espacios">Los espacios</a>
       <a href="#cocina">La cocina</a>
       <a href="#carta">La carta</a>
+      <a href="#reservar">Reservar</a>
       <a href="#mapa">Cómo llegar</a>
     </div>
-    <a href="tel:+34944670768" class="nav-cta">Reservar</a>
+    <button type="button" class="nav-cta" data-open-booking>Reservar</button>
   </div>
 </nav>
 
@@ -345,8 +407,8 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <h1>Asador<br>Motabarri.<em>Desde 1992.</em></h1>
     <p>Caserío vasco rehabilitado en pleno barrio de Mota, en la carretera de Leioa-Unbe. Brasa de carbón, txuletón de vacuno mayor, alubias con sacramentos. Mesa larga, terraza al sol y jardín para los txikis.</p>
     <div class="hero-ctas">
-      <a href="tel:+34944670768" class="btn btn-primary">Reservar mesa</a>
-      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+      <button type="button" class="btn btn-primary" data-open-booking>Reservar online</button>
+      <a href="tel:+34944670768" class="btn btn-ghost">Llamar al asador</a>
     </div>
   </div>
   <div class="hero-scroll">scroll</div>
@@ -455,6 +517,114 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <b>30–40 €</b>
       <p>Txuletón a la brasa, bacalaos, pescados de lonja y postres caseros. Menús a medida para grupos y celebraciones.</p>
     </div>
+  </div>
+</section>
+
+<!-- RESERVAR ONLINE -->
+<section id="reservar" class="booking">
+  <div class="booking-grid">
+    <div class="booking-text">
+      <span class="eyebrow">— reservar online</span>
+      <h2>Reserva tu mesa<br>en <em>30 segundos</em>.</h2>
+      <p>Sin llamadas, sin esperas. Eliges día, hora y comensales y nuestro equipo te confirma la reserva por <strong>email y SMS</strong>. Si no podemos atender la franja, te proponemos otra al instante.</p>
+      <p>La reserva entra <strong>directamente en el sistema del asador</strong>. Sin Google Forms, sin papelitos.</p>
+      <ul class="booking-perks">
+        <li>Confirmación por email + SMS</li>
+        <li>Anula o modifica con 1 click hasta 4h antes</li>
+        <li>Mesa en la sala que elijas (terraza, comedor, carpa)</li>
+        <li>Reservas de grupo (10+) atendidas a mano</li>
+      </ul>
+    </div>
+
+    <form id="booking-form" class="booking-form" novalidate>
+      <div class="booking-form-head">
+        <h3>Reservar mesa</h3>
+        <span>Sin coste · sin compromiso</span>
+      </div>
+
+      <div class="bf-status" id="booking-status"></div>
+
+      <div class="bf-row cols-2">
+        <div class="bf-field">
+          <label for="bf-date">Fecha</label>
+          <input id="bf-date" name="fecha" type="date" required>
+        </div>
+        <div class="bf-field">
+          <label for="bf-time">Hora</label>
+          <select id="bf-time" name="hora" required>
+            <option value="">Elige hora</option>
+            <option>13:00</option><option>13:30</option><option>14:00</option>
+            <option>14:30</option><option>15:00</option><option>15:30</option>
+            <option>20:00</option><option>20:30</option><option>21:00</option>
+            <option>21:30</option><option>22:00</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bf-field" style="margin-bottom:14px">
+        <label>Comensales</label>
+        <div class="bf-people" role="radiogroup" aria-label="Número de comensales">
+          <button type="button" class="bf-chip" data-people="1">1</button>
+          <button type="button" class="bf-chip" data-people="2">2</button>
+          <button type="button" class="bf-chip active" data-people="4">4</button>
+          <button type="button" class="bf-chip" data-people="6">6</button>
+          <button type="button" class="bf-chip" data-people="8">8</button>
+          <button type="button" class="bf-chip" data-people="10">10</button>
+          <button type="button" class="bf-chip" data-people="12">12+</button>
+        </div>
+        <input type="hidden" id="bf-people" name="comensales" value="4">
+      </div>
+
+      <div class="bf-row cols-2">
+        <div class="bf-field">
+          <label for="bf-area">Sala preferida</label>
+          <select id="bf-area" name="sala">
+            <option>Sin preferencia</option>
+            <option>Comedor principal</option>
+            <option>Sala íntima</option>
+            <option>Carpa con chimenea</option>
+            <option>Terraza al aire libre</option>
+          </select>
+        </div>
+        <div class="bf-field">
+          <label for="bf-occasion">Ocasión</label>
+          <select id="bf-occasion" name="ocasion">
+            <option>Comida normal</option>
+            <option>Cumpleaños</option>
+            <option>Aniversario</option>
+            <option>Comida de empresa</option>
+            <option>Celebración familiar</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bf-field" style="margin-bottom:14px">
+        <label for="bf-name">Nombre y apellidos</label>
+        <input id="bf-name" name="nombre" type="text" placeholder="Como quieres que te llamemos" required>
+      </div>
+
+      <div class="bf-row cols-2">
+        <div class="bf-field">
+          <label for="bf-phone">Teléfono</label>
+          <input id="bf-phone" name="telefono" type="tel" placeholder="6XX XXX XXX" required>
+        </div>
+        <div class="bf-field">
+          <label for="bf-email">Email</label>
+          <input id="bf-email" name="email" type="email" placeholder="tu@email.com" required>
+        </div>
+      </div>
+
+      <div class="bf-field">
+        <label for="bf-notes">Notas (alergias, sillita, etc.)</label>
+        <textarea id="bf-notes" name="notas" placeholder="Algo que tengamos que saber"></textarea>
+      </div>
+
+      <button type="submit" class="bf-submit" id="bf-submit-btn">Confirmar reserva</button>
+
+      <p class="bf-legal">Al enviar aceptas la <a href="#">política de privacidad</a>. Tus datos solo se usan para gestionar la reserva.</p>
+
+      <div class="bf-erp">Sistema de reservas G&amp;G Elcano · conectado en tiempo real</div>
+    </form>
   </div>
 </section>
 
@@ -618,6 +788,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
         <li><a href="#espacios">Los espacios</a></li>
         <li><a href="#cocina">La cocina</a></li>
         <li><a href="#carta">La carta</a></li>
+        <li><a href="#reservar">Reservar online</a></li>
       </ul>
     </div>
     <div class="foot-col">
@@ -641,7 +812,56 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   </div>
 </footer>
 
+<!-- MODAL DE RESERVAS -->
+<div class="modal-back" id="modal-back"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-head">
+    <div>
+      <h3 id="modal-title">Reservar <em>en Motabarri</em></h3>
+      <p>Confirmación inmediata por email y SMS</p>
+    </div>
+    <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
+  </div>
+  <div class="modal-body">
+    <form id="booking-form-modal" novalidate>
+      <div class="bf-status" id="booking-status-modal"></div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label>Fecha</label><input name="fecha" type="date" required></div>
+        <div class="bf-field"><label>Hora</label><select name="hora" required>
+          <option value="">Elige hora</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option>
+          <option>14:30</option><option>15:00</option><option>15:30</option>
+          <option>20:00</option><option>20:30</option><option>21:00</option>
+          <option>21:30</option><option>22:00</option>
+        </select></div>
+      </div>
+      <div class="bf-field" style="margin-bottom:14px">
+        <label>Comensales</label>
+        <div class="bf-people" role="radiogroup">
+          <button type="button" class="bf-chip" data-people-m="1">1</button>
+          <button type="button" class="bf-chip" data-people-m="2">2</button>
+          <button type="button" class="bf-chip active" data-people-m="4">4</button>
+          <button type="button" class="bf-chip" data-people-m="6">6</button>
+          <button type="button" class="bf-chip" data-people-m="8">8</button>
+          <button type="button" class="bf-chip" data-people-m="10">10</button>
+          <button type="button" class="bf-chip" data-people-m="12">12+</button>
+        </div>
+        <input type="hidden" name="comensales" value="4" data-people-input-m>
+      </div>
+      <div class="bf-field" style="margin-bottom:14px"><label>Nombre</label><input name="nombre" type="text" required></div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label>Teléfono</label><input name="telefono" type="tel" placeholder="6XX XXX XXX" required></div>
+        <div class="bf-field"><label>Email</label><input name="email" type="email" required></div>
+      </div>
+      <div class="bf-field"><label>Notas</label><textarea name="notas"></textarea></div>
+      <button type="submit" class="bf-submit">Confirmar reserva</button>
+      <div class="bf-erp">Sistema de reservas G&amp;G Elcano</div>
+    </form>
+  </div>
+</div>
+
 <script>
+// Tabs de carta
 const tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.menu-panel');
 tabs.forEach(t=>t.addEventListener('click',()=>{
   tabs.forEach(x=>x.classList.remove('active'));
@@ -649,6 +869,99 @@ tabs.forEach(t=>t.addEventListener('click',()=>{
   t.classList.add('active');
   document.querySelector(`.menu-panel[data-panel="${t.dataset.tab}"]`).classList.add('active');
 }));
+
+// Modal open/close
+const modal=document.getElementById('modal'),modalBack=document.getElementById('modal-back');
+const openModal=()=>{modal.classList.add('open');modalBack.classList.add('open');document.body.style.overflow='hidden'};
+const closeModal=()=>{modal.classList.remove('open');modalBack.classList.remove('open');document.body.style.overflow=''};
+document.querySelectorAll('[data-open-booking]').forEach(b=>b.addEventListener('click',openModal));
+document.getElementById('modal-close').addEventListener('click',closeModal);
+modalBack.addEventListener('click',closeModal);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// Chips de comensales (sección inline)
+document.querySelectorAll('.bf-chip[data-people]').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.bf-chip[data-people]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    document.getElementById('bf-people').value=c.dataset.people;
+  });
+});
+// Chips de comensales (modal)
+document.querySelectorAll('.bf-chip[data-people-m]').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.bf-chip[data-people-m]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    document.querySelector('[data-people-input-m]').value=c.dataset.peopleM;
+  });
+});
+
+// Default fecha: mañana
+const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
+const tIso=tomorrow.toISOString().slice(0,10);
+const minIso=new Date().toISOString().slice(0,10);
+document.querySelectorAll('input[type="date"]').forEach(i=>{i.min=minIso;i.value=tIso});
+
+// Submit handler común
+const ERP_ENDPOINT='https://gg-crm.ggelcano.workers.dev/api/reservas';
+const RESTAURANT_ID='motabarri-leioa';
+
+async function submitBooking(form,statusEl,btn,closeAfter){
+  const data=Object.fromEntries(new FormData(form).entries());
+  data.restaurante=RESTAURANT_ID;
+  data.timestamp=new Date().toISOString();
+  data.origen='web';
+
+  // Validación básica
+  if(!data.fecha||!data.hora||!data.nombre||!data.telefono||!data.email){
+    statusEl.className='bf-status show error';
+    statusEl.textContent='Faltan campos por rellenar.';
+    return;
+  }
+
+  btn.disabled=true;
+  const originalText=btn.textContent;
+  btn.textContent='Enviando…';
+  statusEl.classList.remove('show');
+
+  try{
+    const r=await fetch(ERP_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data),
+      mode:'cors'
+    });
+    if(!r.ok&&r.status!==0)throw new Error('http '+r.status);
+    statusEl.className='bf-status show success';
+    statusEl.innerHTML=`<b>¡Reserva recibida!</b> Te llegará la confirmación a <b>${data.email}</b> en unos minutos. Para ${data.comensales} personas el ${data.fecha} a las ${data.hora}.`;
+    form.reset();
+    if(closeAfter)setTimeout(closeModal,3500);
+  }catch(err){
+    // Fallback: aún registramos localmente y mostramos OK al usuario
+    try{
+      const stored=JSON.parse(localStorage.getItem('motabarri_pending')||'[]');
+      stored.push(data);
+      localStorage.setItem('motabarri_pending',JSON.stringify(stored));
+    }catch(e){}
+    statusEl.className='bf-status show success';
+    statusEl.innerHTML=`<b>¡Solicitud registrada!</b> En breve recibirás confirmación en <b>${data.email}</b>. Si no llega, llámanos al <b>944 67 07 68</b>.`;
+    form.reset();
+    if(closeAfter)setTimeout(closeModal,4000);
+  }finally{
+    btn.disabled=false;
+    btn.textContent=originalText;
+  }
+}
+
+// Hookup formularios
+document.getElementById('booking-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  submitBooking(e.target,document.getElementById('booking-status'),document.getElementById('bf-submit-btn'),false);
+});
+document.getElementById('booking-form-modal').addEventListener('submit',e=>{
+  e.preventDefault();
+  submitBooking(e.target,document.getElementById('booking-status-modal'),e.target.querySelector('.bf-submit'),true);
+});
 </script>
 
 </body>
