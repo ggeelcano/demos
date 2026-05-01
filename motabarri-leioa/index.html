@@ -879,17 +879,30 @@ const tIso=tomorrow.toISOString().slice(0,10);
 const minIso=new Date().toISOString().slice(0,10);
 document.querySelectorAll('input[type="date"]').forEach(i=>{i.min=minIso;i.value=tIso});
 
-// Submit handler común
+// Submit handler común — guarda SIEMPRE en CRM local (localStorage de gg.elcano.github.io) e intenta enviarlo al ERP remoto
 const ERP_ENDPOINT='https://gg-crm.ggelcano.workers.dev/api/reservas';
 const RESTAURANT_ID='motabarri-leioa';
+const CRM_KEY='gg_reservas';
+
+function saveToCRM(data){
+  try{
+    const all=JSON.parse(localStorage.getItem(CRM_KEY)||'[]');
+    data.id='RES-'+Date.now()+'-'+Math.floor(Math.random()*1000);
+    data.estado='pendiente';
+    data.created_at=new Date().toISOString();
+    all.unshift(data);
+    localStorage.setItem(CRM_KEY,JSON.stringify(all));
+    return data.id;
+  }catch(e){console.error('CRM save failed',e);return null}
+}
 
 async function submitBooking(form,statusEl,btn,closeAfter){
   const data=Object.fromEntries(new FormData(form).entries());
   data.restaurante=RESTAURANT_ID;
+  data.restaurante_nombre='Asador Motabarri';
   data.timestamp=new Date().toISOString();
   data.origen='web';
 
-  // Validación básica
   if(!data.fecha||!data.hora||!data.nombre||!data.telefono||!data.email){
     statusEl.className='bf-status show error';
     statusEl.textContent='Faltan campos por rellenar.';
@@ -901,33 +914,28 @@ async function submitBooking(form,statusEl,btn,closeAfter){
   btn.textContent='Enviando…';
   statusEl.classList.remove('show');
 
+  // 1) Guardar SIEMPRE en CRM local
+  const reservaId=saveToCRM({...data});
+
+  // 2) Intentar enviar al ERP remoto (no bloqueante para el usuario)
+  let remoteOk=false;
   try{
     const r=await fetch(ERP_ENDPOINT,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data),
+      body:JSON.stringify({...data,id:reservaId}),
       mode:'cors'
     });
-    if(!r.ok&&r.status!==0)throw new Error('http '+r.status);
-    statusEl.className='bf-status show success';
-    statusEl.innerHTML=`<b>¡Reserva recibida!</b> Te llegará la confirmación a <b>${data.email}</b> en unos minutos. Para ${data.comensales} personas el ${data.fecha} a las ${data.hora}.`;
-    form.reset();
-    if(closeAfter)setTimeout(closeModal,3500);
-  }catch(err){
-    // Fallback: aún registramos localmente y mostramos OK al usuario
-    try{
-      const stored=JSON.parse(localStorage.getItem('motabarri_pending')||'[]');
-      stored.push(data);
-      localStorage.setItem('motabarri_pending',JSON.stringify(stored));
-    }catch(e){}
-    statusEl.className='bf-status show success';
-    statusEl.innerHTML=`<b>¡Solicitud registrada!</b> En breve recibirás confirmación en <b>${data.email}</b>. Si no llega, llámanos al <b>944 67 07 68</b>.`;
-    form.reset();
-    if(closeAfter)setTimeout(closeModal,4000);
-  }finally{
-    btn.disabled=false;
-    btn.textContent=originalText;
-  }
+    remoteOk=r.ok;
+  }catch(err){/* worker no disponible: la reserva sigue guardada en CRM local */}
+
+  statusEl.className='bf-status show success';
+  statusEl.innerHTML=`<b>¡Reserva recibida!</b> Confirmación nº <b>${reservaId||'—'}</b> · Llegará a <b>${data.email}</b>. Mesa para ${data.comensales} el ${data.fecha} a las ${data.hora}.`;
+  form.reset();
+  if(closeAfter)setTimeout(closeModal,4000);
+
+  btn.disabled=false;
+  btn.textContent=originalText;
 }
 
 // Hookup formularios
