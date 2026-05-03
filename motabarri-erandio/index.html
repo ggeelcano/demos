@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Asador Motabarri · Caserío del XIX en Erandio · Brasa y txuletón</title>
+<meta name="description" content="Asador en caserío vasco del siglo XIX entre Leioa y Erandio. Carnes a la brasa, txuletón de vacuno mayor, alubias con sacramentos. Terraza, jardín y parking propio.">
+<meta name="theme-color" content="#2A1F18">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Asador Motabarri · Caserío del XIX en Erandio">
+<meta property="og:description" content="Brasa, txuletón y alubias con sacramentos. Caserío rehabilitado en 1992, en pleno barrio de Mota de Goiherri.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/motabarri-erandio/portada.png">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/motabarri-erandio/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='28' fill='%232A1F18'/%3E%3Ctext x='90' y='118' font-family='Georgia,serif' font-style='italic' font-size='100' font-weight='700' fill='%23C8632A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%232A1F18'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='38' font-weight='700' fill='%23C8632A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","image":"https://ggeelcano.github.io/demos/motabarri-erandio/portada.png","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"}}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --crema:#F4EDE0;
+  --hueso:#FBF7EF;
+  --tierra:#2A1F18;
+  --tierra-2:#1B1310;
+  --carbon:#0F0A07;
+  --tinta:#1A140F;
+  --gris:#6B5F50;
+  --linea:#D8CDB6;
+  --brasa:#C8632A;
+  --brasa-2:#A0481B;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:400}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+
+.topbar{background:var(--tierra-2);color:var(--crema);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:9px 0;text-align:center;font-weight:500}
+.topbar b{color:var(--brasa);font-weight:700}
+.topbar span{margin:0 14px}
+
+nav{position:sticky;top:0;background:rgba(251,247,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea);z-index:100}
+.nav-inner{max-width:1280px;margin:0 auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:48px;height:48px;border:1.5px solid var(--tierra);color:var(--tierra);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:28px}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--tierra)}
+.brand-text small{font-size:9.5px;letter-spacing:.36em;color:var(--gris);margin-top:5px;text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:30px;font-size:13px;letter-spacing:.04em;font-weight:500;color:var(--tierra)}
+.nav-links a{padding:6px 0;transition:.2s;border-bottom:1px solid transparent}
+.nav-links a:hover{color:var(--brasa-2);border-bottom-color:var(--brasa)}
+.nav-cta{background:var(--tierra);color:var(--crema);padding:12px 24px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:.25s;border:1.5px solid var(--tierra);cursor:pointer;font-family:inherit}
+.nav-cta:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--tierra-2);display:flex;flex-direction:column;justify-content:flex-end}
+.hero-img{position:absolute;inset:0;background:url('portada.png') center center/cover no-repeat;filter:saturate(1.18) contrast(1.08);animation:heroBreath 16s ease-in-out infinite alternate}
+@keyframes heroBreath{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,15,.05) 0%,rgba(26,20,15,.1) 45%,rgba(26,20,15,.55) 78%,rgba(26,20,15,.95) 100%)}
+.hero-frame{position:absolute;top:30px;left:30px;right:30px;bottom:30px;border:1px solid rgba(244,237,224,.22);pointer-events:none;z-index:2}
+.hero-meta{position:absolute;top:30px;right:30px;left:30px;display:flex;justify-content:flex-end;gap:14px;z-index:4;flex-wrap:wrap;padding:18px 28px}
+.hero-meta span{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--crema);background:rgba(26,20,15,.55);backdrop-filter:blur(6px);padding:8px 16px;border:1px solid rgba(244,237,224,.18);font-weight:600}
+.hero-meta b{color:var(--brasa);font-weight:700}
+.hero-tag{position:absolute;top:130px;left:80px;z-index:3;background:var(--brasa);color:var(--tierra-2);padding:9px 18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.04em;box-shadow:0 14px 36px rgba(0,0,0,.4)}
+.hero-content{position:relative;z-index:3;color:var(--crema);padding:0 80px 90px;max-width:1280px;margin:0 auto;width:100%}
+.hero-eye{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--brasa);margin-bottom:6px;display:block;font-weight:500}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(54px,9vw,128px);line-height:.92;letter-spacing:-.015em;margin-bottom:24px;text-shadow:0 8px 40px rgba(0,0,0,.5)}
+.hero h1 em{font-style:italic;color:var(--brasa);font-weight:600;display:block}
+.hero p{font-size:clamp(15px,1.7vw,18px);max-width:580px;margin:0 0 36px;opacity:.92;font-weight:300;line-height:1.6}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:15px 32px;font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:.25s;display:inline-flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border:1.5px solid transparent;font-family:inherit}
+.btn-primary{background:var(--brasa);color:var(--tierra-2);border-color:var(--brasa)}
+.btn-primary:hover{background:transparent;color:var(--brasa);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--crema);border-color:rgba(244,237,224,.4)}
+.btn-ghost:hover{background:var(--crema);color:var(--tierra-2);border-color:var(--crema)}
+.hero-scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);color:var(--crema);font-size:10px;letter-spacing:.5em;text-transform:uppercase;opacity:.65;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:500}
+.hero-scroll::after{content:"";width:1px;height:30px;background:var(--brasa);animation:sl 2s ease-in-out infinite}
+@keyframes sl{0%,100%{height:8px;opacity:.3}50%{height:30px;opacity:1}}
+
+.stats{background:var(--tierra-2);color:var(--crema);padding:36px 28px;border-top:1px solid var(--brasa)}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat b{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:42px;color:var(--brasa);line-height:1;margin-bottom:6px}
+.stat span{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.85;font-weight:600}
+
+section{padding:130px 28px;position:relative}
+.wrap{max-width:1280px;margin:0 auto}
+.head{margin-bottom:80px;max-width:780px}
+.eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--brasa-2);display:block;margin-bottom:14px;font-weight:500;letter-spacing:.04em}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,5.4vw,72px);line-height:1.02;letter-spacing:-.018em;color:var(--tierra);margin-bottom:24px}
+.section-title em{font-style:italic;font-weight:600;color:var(--brasa-2)}
+.section-lead{font-size:17px;color:var(--gris);font-weight:400;line-height:1.65;max-width:620px}
+
+.pull{background:var(--crema);padding:130px 28px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.pull-inner{max-width:920px;margin:0 auto;text-align:center}
+.pull-mark{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:88px;line-height:1;margin-bottom:-30px}
+.pull blockquote{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(28px,3.6vw,46px);line-height:1.18;color:var(--tierra);margin-bottom:36px}
+.pull blockquote b{font-style:normal;font-weight:600;color:var(--brasa-2)}
+.pull-author{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);font-weight:600}
+.pull-author::before{content:"";display:inline-block;width:30px;height:1px;background:var(--brasa);vertical-align:middle;margin-right:14px}
+
+.cocina{background:var(--hueso)}
+.cocina-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:60px 80px;margin-top:50px}
+.dish-card{display:flex;flex-direction:column;gap:8px}
+.dish-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;color:var(--brasa);font-size:14px;letter-spacing:.04em}
+.dish-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--tierra);line-height:1.05}
+.dish-card h3 em{font-style:italic;color:var(--brasa-2);font-weight:600}
+.dish-card p{font-size:15px;color:var(--gris);line-height:1.65;margin-top:4px}
+
+.menus{background:var(--tierra);color:var(--crema);padding:90px 28px;position:relative;overflow:hidden}
+.menus::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(200,99,42,.16) 0%,transparent 60%)}
+.mq-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;position:relative}
+.mq-card{padding:50px 38px;border:1px solid rgba(244,237,224,.18);background:rgba(244,237,224,.03);transition:.3s}
+.mq-card:hover{transform:translateY(-4px);background:rgba(244,237,224,.06)}
+.mq-card.feat{background:var(--brasa);color:var(--tierra-2);border-color:var(--brasa)}
+.mq-card span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--brasa);font-weight:500}
+.mq-card.feat span{color:var(--tierra-2);opacity:.7}
+.mq-card h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;margin:6px 0 12px;line-height:1.1;color:var(--crema)}
+.mq-card.feat h4{color:var(--tierra-2)}
+.mq-card b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:64px;color:var(--brasa);display:block;margin:18px 0 10px;line-height:1}
+.mq-card.feat b{color:var(--tierra-2)}
+.mq-card p{font-size:14px;opacity:.8;line-height:1.6}
+.mq-card.feat p{opacity:.85}
+
+.booking{background:linear-gradient(180deg,var(--crema) 0%,var(--hueso) 100%);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.booking-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center;max-width:1280px;margin:0 auto}
+.booking-text h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,5vw,60px);line-height:1.04;color:var(--tierra);margin-bottom:18px}
+.booking-text h2 em{font-style:italic;font-weight:600;color:var(--brasa-2)}
+.booking-text p{font-size:16.5px;color:var(--gris);line-height:1.7;margin-bottom:18px;max-width:460px}
+.booking-text strong{color:var(--tierra);font-weight:600}
+.booking-perks{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.booking-perks li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--tinta)}
+.booking-perks li::before{content:"✓";color:var(--brasa);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:22px;flex-shrink:0}
+.booking-form{background:#fff;padding:48px 44px;box-shadow:0 30px 80px rgba(42,31,24,.15);border-top:3px solid var(--brasa)}
+.booking-form-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid var(--linea)}
+.booking-form-head h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:var(--tierra)}
+.booking-form-head span{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa-2);font-size:15px;font-weight:500}
+.bf-row{display:grid;gap:14px;margin-bottom:14px}
+.bf-row.cols-2{grid-template-columns:1fr 1fr}
+.bf-field{display:flex;flex-direction:column;gap:6px}
+.bf-field label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600}
+.bf-field input,.bf-field select,.bf-field textarea{font-family:'Inter',sans-serif;font-size:15px;padding:12px 14px;border:1px solid var(--linea);background:var(--hueso);color:var(--tinta);font-weight:500;outline:none;transition:.2s}
+.bf-field input:focus,.bf-field select:focus,.bf-field textarea:focus{border-color:var(--brasa);background:#fff;box-shadow:0 0 0 3px rgba(200,99,42,.12)}
+.bf-field textarea{resize:vertical;min-height:80px}
+.bf-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236B5F50' d='M6 8L0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.bf-people{display:flex;gap:6px;flex-wrap:wrap}
+.bf-chip{padding:9px 14px;border:1px solid var(--linea);background:#fff;color:var(--tinta);font-size:14px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;min-width:42px}
+.bf-chip:hover{border-color:var(--brasa)}
+.bf-chip.active{background:var(--tierra);border-color:var(--tierra);color:var(--crema)}
+.bf-submit{width:100%;background:var(--brasa);color:var(--tierra-2);padding:16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1.5px solid var(--brasa);cursor:pointer;transition:.25s;margin-top:14px}
+.bf-submit:hover:not(:disabled){background:transparent;color:var(--brasa)}
+.bf-submit:disabled{opacity:.65;cursor:wait}
+.bf-legal{font-size:11.5px;color:var(--gris);margin-top:14px;line-height:1.5;text-align:center;font-weight:400}
+.bf-legal a{color:var(--brasa-2);text-decoration:underline}
+.bf-status{padding:14px 18px;font-size:14px;border:1px solid;margin-bottom:18px;display:none;font-weight:500;line-height:1.5}
+.bf-status.show{display:block}
+.bf-status.success{background:rgba(63,82,54,.06);border-color:#3F7A4A;color:#3F7A4A}
+.bf-status.error{background:rgba(160,72,27,.06);border-color:var(--brasa-2);color:var(--brasa-2)}
+.bf-erp{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gris);letter-spacing:.16em;text-transform:uppercase;margin-top:18px;padding-top:18px;border-top:1px dashed var(--linea);font-weight:600}
+.bf-erp::before{content:"";width:8px;height:8px;background:#3F7A4A;border-radius:50%;box-shadow:0 0 0 3px rgba(63,122,74,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(63,122,74,.2)}50%{box-shadow:0 0 0 6px rgba(63,122,74,.05)}}
+
+.contact{padding:0;background:var(--tierra-2)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.3fr;min-height:560px}
+.contact-side{padding:80px 60px;color:var(--crema);background:var(--tierra);display:flex;flex-direction:column;justify-content:center}
+.contact-side .eyebrow{color:var(--brasa)}
+.contact-side h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,4.5vw,56px);line-height:1.05;margin-bottom:24px;color:var(--crema)}
+.contact-side h2 em{font-style:italic;font-weight:600;color:var(--brasa)}
+.contact-info{margin-top:14px;padding-top:32px;border-top:1px solid rgba(244,237,224,.18);display:flex;flex-direction:column;gap:18px}
+.contact-row{display:flex;gap:18px;align-items:flex-start}
+.contact-row .ico{width:42px;height:42px;border:1.5px solid var(--brasa);color:var(--brasa);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:18px;flex-shrink:0}
+.contact-row b{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brasa);margin-bottom:4px;font-weight:700}
+.contact-row span,.contact-row a{font-size:15px;color:var(--crema);line-height:1.5}
+.contact-row a:hover{color:var(--brasa)}
+.contact-map{position:relative;background:#000;overflow:hidden}
+.contact-map iframe{width:100%;height:100%;border:0;min-height:560px}
+
+footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
+.foot-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;margin-bottom:36px}
+.foot-brand .brand-mark{margin-bottom:16px;border-color:var(--brasa);color:var(--brasa)}
+.foot-brand p{font-size:14px;opacity:.65;line-height:1.7;margin-top:14px;max-width:320px}
+.foot-col h5{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:20px;color:var(--brasa);margin-bottom:16px}
+.foot-col ul{list-style:none}
+.foot-col li{font-size:14px;opacity:.7;margin-bottom:9px;line-height:1.55}
+.foot-col a:hover{color:var(--brasa);opacity:1}
+.foot-bottom{max-width:1280px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(244,237,224,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;opacity:.5}
+
+.modal-back{position:fixed;inset:0;background:rgba(26,20,15,.78);backdrop-filter:blur(6px);z-index:9998;opacity:0;visibility:hidden;transition:.25s}
+.modal-back.open{opacity:1;visibility:visible}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);background:#fff;width:min(620px,92vw);max-height:92vh;overflow-y:auto;z-index:9999;box-shadow:0 40px 100px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s}
+.modal.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.modal-head{padding:32px 36px 18px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:flex-start;gap:18px;background:var(--tierra);color:var(--crema)}
+.modal-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.1;color:var(--crema)}
+.modal-head h3 em{font-style:italic;color:var(--brasa);font-weight:600}
+.modal-head p{font-size:13px;opacity:.8;margin-top:4px;font-weight:300}
+.modal-close{background:transparent;border:1px solid rgba(244,237,224,.4);color:var(--crema);width:36px;height:36px;font-size:18px;cursor:pointer;font-family:inherit;flex-shrink:0;transition:.2s}
+.modal-close:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
+.modal-body{padding:32px 36px 36px}
+
+@media(max-width:1024px){
+  .nav-links{display:none}
+  .hero-content{padding:0 32px 70px}
+  .hero-tag{left:32px;top:120px;font-size:13px;padding:7px 14px}
+  .hero-frame{top:14px;left:14px;right:14px;bottom:14px}
+  .hero-meta{padding:14px 22px;gap:8px}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:32px}
+  section{padding:90px 22px}
+  .head{margin-bottom:60px}
+  .cocina-grid{grid-template-columns:1fr;gap:40px}
+  .mq-inner{grid-template-columns:1fr;gap:18px}
+  .booking-grid{grid-template-columns:1fr;gap:50px}
+  .booking-form{padding:36px 26px}
+  .contact-wrap{grid-template-columns:1fr;min-height:auto}
+  .contact-side{padding:54px 32px}
+  .contact-map iframe{min-height:380px}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:34px}
+  .pull{padding:90px 22px}
+  .menus{padding:60px 22px}
+  .modal-head{padding:24px 24px 14px}
+  .modal-head h3{font-size:24px}
+  .modal-body{padding:24px}
+}
+@media(max-width:480px){
+  .topbar{font-size:10px;padding:8px 0}
+  .topbar span{margin:0 7px}
+  .nav-inner{padding:14px 18px}
+  .brand-mark{width:42px;height:42px;font-size:23px}
+  .brand-text b{font-size:20px}
+  .nav-cta{padding:10px 14px;font-size:11px}
+  .hero{min-height:88vh}
+  .hero-content{padding:0 22px 60px}
+  .hero h1{font-size:46px}
+  .hero-eye{font-size:18px}
+  .hero p{font-size:14.5px}
+  .hero-tag{display:none}
+  .hero-meta{padding:10px 18px;gap:6px;justify-content:flex-start}
+  .hero-meta span{padding:6px 10px;font-size:9px;letter-spacing:.14em}
+  .hero-scroll{display:none}
+  .stats{padding:28px 18px}
+  .stat b{font-size:32px}
+  .stat span{font-size:9.5px}
+  section{padding:70px 18px}
+  .pull{padding:70px 18px}
+  .pull-mark{font-size:60px;margin-bottom:-18px}
+  .head{margin-bottom:42px}
+  .menus{padding:50px 18px}
+  .mq-card{padding:36px 26px}
+  .mq-card b{font-size:48px}
+  .booking-form{padding:28px 22px}
+  .contact-side{padding:42px 22px}
+  .foot-inner{grid-template-columns:1fr;gap:30px}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .btn{padding:13px 22px;font-size:11px;letter-spacing:.14em}
+  .bf-row.cols-2{grid-template-columns:1fr}
+  .booking-form-head{flex-direction:column;gap:8px}
+  .dish-card h3{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>CASERÍO DEL <b>SIGLO XIX</b></span><span>·</span><span>BRASA &amp; TXULETÓN</span><span>·</span><span>MENÚ <b>15€</b> · FINDE <b>18€</b></span></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text"><b>Motabarri</b><small>Asador · Erandio</small></div>
+    </a>
+    <div class="nav-links">
+      <a href="#cocina">La cocina</a>
+      <a href="#menus">Menús</a>
+      <a href="#reservar">Reservar</a>
+      <a href="#mapa">Cómo llegar</a>
+    </div>
+    <button type="button" class="nav-cta" data-open-booking>Reservar</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-meta">
+    <span>★ <b>3.7</b> · 16K+ RESEÑAS</span>
+    <span>MENÚ <b>15€</b></span>
+    <span>KM 32 · LEIOA-UNBE</span>
+  </div>
+  <div class="hero-tag">Caserío del XIX</div>
+  <div class="hero-content">
+    <span class="hero-eye">brasa, terraza y caserío de piedra</span>
+    <h1>Asador<br>Motabarri.<em>Desde 1992.</em></h1>
+    <p>Caserío vasco rehabilitado en pleno barrio de Mota, en la carretera de Leioa-Unbe. Brasa de carbón, txuletón de vacuno mayor, alubias con sacramentos. Mesa larga, terraza al sol y jardín para los txikis.</p>
+    <div class="hero-ctas">
+      <button type="button" class="btn btn-primary" data-open-booking>Reservar online</button>
+      <a href="tel:+34944670768" class="btn btn-ghost">Llamar al asador</a>
+    </div>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</header>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><b>1992</b><span>caserío rehabilitado</span></div>
+    <div class="stat"><b>16K+</b><span>reseñas</span></div>
+    <div class="stat"><b>200</b><span>comensales</span></div>
+    <div class="stat"><b>15€</b><span>menú diario</span></div>
+  </div>
+</div>
+
+<div class="pull">
+  <div class="pull-inner">
+    <div class="pull-mark">"</div>
+    <blockquote>Más de tres décadas haciendo lo mismo: <b>brasa de carbón, producto de aquí y mesa para sentarse a gusto</b>. Sin pretensiones, sin postureo, sin prisa.</blockquote>
+    <div class="pull-author">Familia Landa Etxebarria · Motabarri</div>
+  </div>
+</div>
+
+<section id="cocina" class="cocina">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">— la cocina</span>
+      <h2 class="section-title">Brasa, producto<br>y <em>recetas de aquí</em>.</h2>
+      <p class="section-lead">Lo que mejor sabemos hacer y por lo que vienen los que repiten. Producto del país, brasa de encina y la receta que aprendieron las abuelas.</p>
+    </div>
+    <div class="cocina-grid">
+      <div class="dish-card">
+        <span class="dish-num">— 01</span>
+        <h3>Txuletón <em>a la brasa</em></h3>
+        <p>Vacuno mayor madurado mínimo 30 días. Brasa de encina y carbón vegetal. Sal gorda, vuelta y vuelta, reposo. Pimientos asados y patata vieja al rescoldo.</p>
+      </div>
+      <div class="dish-card">
+        <span class="dish-num">— 02</span>
+        <h3>Alubias <em>con sacramentos</em></h3>
+        <p>Alubia roja con morcilla, chorizo, costilla y berza. La otra especialidad de la casa. La que pides en otoño y aún en abril cuando hace frío.</p>
+      </div>
+      <div class="dish-card">
+        <span class="dish-num">— 03</span>
+        <h3>Bacalao <em>al pil-pil</em></h3>
+        <p>Lomo de bacalao, ajo, guindilla. Salsa montada al ritmo del cazuelo, con su pan al lado para mojar bien.</p>
+      </div>
+      <div class="dish-card">
+        <span class="dish-num">— 04</span>
+        <h3>Tarta <em>de queso al horno</em></h3>
+        <p>Cremosa por dentro, ligeramente quemada por arriba. Receta tradicional de la casa. El cierre que casi nadie se salta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menus" class="menus">
+  <div class="mq-inner">
+    <div class="mq-card">
+      <span>menú diario</span>
+      <h4>Lunes a viernes</h4>
+      <b>15 €</b>
+      <p>Comida casera de mediodía. Primer plato, segundo, postre, pan y bebida. Cada día algo distinto.</p>
+    </div>
+    <div class="mq-card feat">
+      <span>menú fin de semana</span>
+      <h4>Sábado, domingo y festivos</h4>
+      <b>18 €</b>
+      <p>Más completo, con más variedad y producto de mercado. Para que la comida del finde no se acabe nunca.</p>
+    </div>
+    <div class="mq-card">
+      <span>carta &amp; eventos</span>
+      <h4>A la carta</h4>
+      <b>30–40 €</b>
+      <p>Txuletón a la brasa, bacalaos, pescados de lonja y postres caseros. Menús a medida para grupos y celebraciones.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reservar" class="booking">
+  <div class="booking-grid">
+    <div class="booking-text">
+      <span class="eyebrow">— reservar online</span>
+      <h2>Reserva tu mesa<br>en <em>30 segundos</em>.</h2>
+      <p>Sin llamadas, sin esperas. Eliges día, hora y comensales y te confirmamos por <strong>email y SMS</strong>. Si no podemos atender la franja, te proponemos otra al instante.</p>
+      <p>La reserva entra <strong>directamente al sistema del asador</strong>. Sin Google Forms, sin papelitos.</p>
+      <ul class="booking-perks">
+        <li>Confirmación por email + SMS</li>
+        <li>Anula o modifica con 1 click hasta 4h antes</li>
+        <li>Reservas de grupo (10+) atendidas a mano</li>
+      </ul>
+    </div>
+
+    <form id="booking-form" class="booking-form" novalidate>
+      <div class="booking-form-head">
+        <h3>Reservar mesa</h3>
+        <span>Sin coste · sin compromiso</span>
+      </div>
+      <div class="bf-status" id="booking-status"></div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label for="bf-date">Fecha</label><input id="bf-date" name="fecha" type="date" required></div>
+        <div class="bf-field"><label for="bf-time">Hora</label><select id="bf-time" name="hora" required>
+          <option value="">Elige hora</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option>
+          <option>14:30</option><option>15:00</option><option>15:30</option>
+          <option>20:00</option><option>20:30</option><option>21:00</option>
+          <option>21:30</option><option>22:00</option>
+        </select></div>
+      </div>
+      <div class="bf-field" style="margin-bottom:14px">
+        <label>Comensales</label>
+        <div class="bf-people">
+          <button type="button" class="bf-chip" data-people="1">1</button>
+          <button type="button" class="bf-chip" data-people="2">2</button>
+          <button type="button" class="bf-chip active" data-people="4">4</button>
+          <button type="button" class="bf-chip" data-people="6">6</button>
+          <button type="button" class="bf-chip" data-people="8">8</button>
+          <button type="button" class="bf-chip" data-people="10">10</button>
+          <button type="button" class="bf-chip" data-people="12">12+</button>
+        </div>
+        <input type="hidden" id="bf-people" name="comensales" value="4">
+      </div>
+      <div class="bf-field" style="margin-bottom:14px">
+        <label for="bf-name">Nombre y apellidos</label>
+        <input id="bf-name" name="nombre" type="text" required>
+      </div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label for="bf-phone">Teléfono</label><input id="bf-phone" name="telefono" type="tel" placeholder="6XX XXX XXX" required></div>
+        <div class="bf-field"><label for="bf-email">Email</label><input id="bf-email" name="email" type="email" placeholder="tu@email.com" required></div>
+      </div>
+      <div class="bf-field"><label for="bf-notes">Notas (alergias, sillita, etc.)</label><textarea id="bf-notes" name="notas"></textarea></div>
+      <button type="submit" class="bf-submit" id="bf-submit-btn">Confirmar reserva</button>
+      <p class="bf-legal">Al enviar aceptas la <a href="#">política de privacidad</a>.</p>
+      <div class="bf-erp">Sistema de reservas G&amp;G Elcano · conectado en tiempo real</div>
+    </form>
+  </div>
+</section>
+
+<section id="mapa" class="contact">
+  <div class="contact-wrap">
+    <div class="contact-side">
+      <span class="eyebrow">— cómo llegar</span>
+      <h2>En la <em>carretera de Unbe</em>.</h2>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="ico">@</div>
+          <div><b>Dirección</b><span>Carretera Leioa-Unbe Errepidea, Km 32<br>48950 Erandio · Bizkaia</span></div>
+        </div>
+        <div class="contact-row">
+          <div class="ico">☏</div>
+          <div><b>Teléfono</b><a href="tel:+34944670768">944 67 07 68</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="ico">⏱</div>
+          <div><b>Horario</b><span>Abierto todos los días · Recomendamos reservar</span></div>
+        </div>
+        <div class="contact-row">
+          <div class="ico">P</div>
+          <div><b>Servicios</b><span>Parking propio · Terraza · Jardín · Zona infantil · Pet-friendly</span></div>
+        </div>
+      </div>
+      <div style="margin-top:30px"><a href="https://www.google.com/maps/dir/?api=1&destination=Asador+Motabarri+Erandio" target="_blank" rel="noopener" class="btn btn-primary">Abrir en Google Maps</a></div>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps?q=Asador+Motabarri,+Leioa-Unbe+Errepidea+32,+48950+Erandio,+Bizkaia&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ubicación Asador Motabarri"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="brand-mark">M</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brasa);margin-bottom:4px">Motabarri</div>
+      <div style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:rgba(244,237,224,.55);font-weight:600">Asador · Erandio</div>
+      <p>Caserío vasco del XIX rehabilitado en 1992. Brasa, txuletón y producto del país en la carretera Leioa-Unbe.</p>
+    </div>
+    <div class="foot-col">
+      <h5>El asador</h5>
+      <ul>
+        <li><a href="#cocina">La cocina</a></li>
+        <li><a href="#menus">Menús</a></li>
+        <li><a href="#reservar">Reservar online</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Reservas</h5>
+      <ul>
+        <li>Carretera Leioa-Unbe<br>Km 32 · 48950 Erandio</li>
+        <li><a href="tel:+34944670768">944 67 07 68</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Asador Motabarri · Caserío del XIX</span>
+    <span>Familia Landa Etxebarria</span>
+  </div>
+</footer>
+
+<div class="modal-back" id="modal-back"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-head">
+    <div>
+      <h3>Reservar <em>en Motabarri</em></h3>
+      <p>Confirmación inmediata por email y SMS</p>
+    </div>
+    <button type="button" class="modal-close" id="modal-close">×</button>
+  </div>
+  <div class="modal-body">
+    <form id="booking-form-modal" novalidate>
+      <div class="bf-status" id="booking-status-modal"></div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label>Fecha</label><input name="fecha" type="date" required></div>
+        <div class="bf-field"><label>Hora</label><select name="hora" required>
+          <option value="">Elige hora</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option>
+          <option>14:30</option><option>15:00</option><option>15:30</option>
+          <option>20:00</option><option>20:30</option><option>21:00</option>
+          <option>21:30</option><option>22:00</option>
+        </select></div>
+      </div>
+      <div class="bf-field" style="margin-bottom:14px">
+        <label>Comensales</label>
+        <div class="bf-people">
+          <button type="button" class="bf-chip" data-people-m="1">1</button>
+          <button type="button" class="bf-chip" data-people-m="2">2</button>
+          <button type="button" class="bf-chip active" data-people-m="4">4</button>
+          <button type="button" class="bf-chip" data-people-m="6">6</button>
+          <button type="button" class="bf-chip" data-people-m="8">8</button>
+          <button type="button" class="bf-chip" data-people-m="10">10</button>
+          <button type="button" class="bf-chip" data-people-m="12">12+</button>
+        </div>
+        <input type="hidden" name="comensales" value="4" data-people-input-m>
+      </div>
+      <div class="bf-field" style="margin-bottom:14px"><label>Nombre</label><input name="nombre" type="text" required></div>
+      <div class="bf-row cols-2">
+        <div class="bf-field"><label>Teléfono</label><input name="telefono" type="tel" required></div>
+        <div class="bf-field"><label>Email</label><input name="email" type="email" required></div>
+      </div>
+      <div class="bf-field"><label>Notas</label><textarea name="notas"></textarea></div>
+      <button type="submit" class="bf-submit">Confirmar reserva</button>
+      <div class="bf-erp">Sistema de reservas G&amp;G Elcano</div>
+    </form>
+  </div>
+</div>
+
+<script>
+const modal=document.getElementById('modal'),modalBack=document.getElementById('modal-back');
+const openModal=()=>{modal.classList.add('open');modalBack.classList.add('open');document.body.style.overflow='hidden'};
+const closeModal=()=>{modal.classList.remove('open');modalBack.classList.remove('open');document.body.style.overflow=''};
+document.querySelectorAll('[data-open-booking]').forEach(b=>b.addEventListener('click',openModal));
+document.getElementById('modal-close').addEventListener('click',closeModal);
+modalBack.addEventListener('click',closeModal);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+document.querySelectorAll('.bf-chip[data-people]').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.bf-chip[data-people]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    document.getElementById('bf-people').value=c.dataset.people;
+  });
+});
+document.querySelectorAll('.bf-chip[data-people-m]').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.bf-chip[data-people-m]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    document.querySelector('[data-people-input-m]').value=c.dataset.peopleM;
+  });
+});
+
+const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
+document.querySelectorAll('input[type="date"]').forEach(i=>{
+  i.min=new Date().toISOString().slice(0,10);
+  i.value=tomorrow.toISOString().slice(0,10);
+});
+
+const ERP_ENDPOINT='https://gg-crm.ggelcano.workers.dev/api/reservas';
+const RESTAURANT_ID='motabarri-erandio';
+const CRM_KEY='gg_reservas';
+
+function saveToCRM(data){
+  try{
+    const all=JSON.parse(localStorage.getItem(CRM_KEY)||'[]');
+    data.id='RES-'+Date.now()+'-'+Math.floor(Math.random()*1000);
+    data.estado='pendiente';
+    data.created_at=new Date().toISOString();
+    all.unshift(data);
+    localStorage.setItem(CRM_KEY,JSON.stringify(all));
+    return data.id;
+  }catch(e){return null}
+}
+
+async function submitBooking(form,statusEl,btn,closeAfter){
+  const data=Object.fromEntries(new FormData(form).entries());
+  data.restaurante=RESTAURANT_ID;
+  data.restaurante_nombre='Asador Motabarri';
+  data.timestamp=new Date().toISOString();
+  data.origen='web';
+
+  if(!data.fecha||!data.hora||!data.nombre||!data.telefono||!data.email){
+    statusEl.className='bf-status show error';
+    statusEl.textContent='Faltan campos por rellenar.';
+    return;
+  }
+
+  btn.disabled=true;
+  const original=btn.textContent;
+  btn.textContent='Enviando…';
+  statusEl.classList.remove('show');
+
+  const id=saveToCRM({...data});
+  try{
+    await fetch(ERP_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...data,id}),mode:'cors'});
+  }catch(err){}
+
+  statusEl.className='bf-status show success';
+  statusEl.innerHTML=`<b>¡Reserva recibida!</b> Confirmación nº <b>${id||'—'}</b> · Llegará a <b>${data.email}</b>. Mesa para ${data.comensales} el ${data.fecha} a las ${data.hora}.`;
+  form.reset();
+  if(closeAfter)setTimeout(closeModal,4000);
+  btn.disabled=false;
+  btn.textContent=original;
+}
+
+document.getElementById('booking-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  submitBooking(e.target,document.getElementById('booking-status'),document.getElementById('bf-submit-btn'),false);
+});
+document.getElementById('booking-form-modal').addEventListener('submit',e=>{
+  e.preventDefault();
+  submitBooking(e.target,document.getElementById('booking-status-modal'),e.target.querySelector('.bf-submit'),true);
+});
+</script>
+
+</body>
+</html>
