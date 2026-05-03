@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Reservas · G&G Elcano</title>
+<meta name="theme-color" content="#0F0A07">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230F0A07'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23C8632A' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --tierra:#2A1F18;
+  --tierra-2:#1B1310;
+  --carbon:#0F0A07;
+  --crema:#F4EDE0;
+  --bosque:#3F7A4A;
+  --brasa:#C8632A;
+  --linea:#3F2F22;
+  --gris:#7A7060;
+}
+body{font-family:'Inter',sans-serif;background:var(--carbon);color:var(--crema);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.topbar{background:var(--tierra-2);border-bottom:1px solid var(--linea);padding:14px 28px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:38px;height:38px;background:var(--tierra);color:var(--brasa);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:22px;border:1px solid var(--brasa)}
+.brand-text b{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;display:block;line-height:1}
+.brand-text small{font-size:9px;letter-spacing:.32em;color:var(--gris);margin-top:4px;text-transform:uppercase;font-weight:600}
+
+main{padding:80px 28px;max-width:1100px;margin:0 auto}
+.head{margin-bottom:60px}
+.eye{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:18px;font-weight:500;margin-bottom:8px;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(40px,5vw,64px);line-height:1.05;letter-spacing:-.015em;margin-bottom:14px}
+h1 em{font-style:italic;color:var(--brasa);font-weight:600}
+.lead{font-size:16px;opacity:.7;max-width:620px;line-height:1.65;font-weight:300}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.card{background:var(--tierra-2);border:1px solid var(--linea);padding:32px 28px;transition:.25s;cursor:pointer;display:block;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--brasa);transform:scaleY(0);transform-origin:top;transition:.3s}
+.card:hover{border-color:var(--brasa);transform:translateY(-4px);background:var(--tierra)}
+.card:hover::before{transform:scaleY(1)}
+.card-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--brasa);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card-tag::before{content:"";width:7px;height:7px;background:var(--bosque);border-radius:50%;box-shadow:0 0 0 3px rgba(63,122,74,.2)}
+.card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:var(--crema);letter-spacing:-.005em;margin-bottom:6px;line-height:1.1}
+.card h3 em{font-style:italic;color:var(--brasa)}
+.card-loc{font-size:13px;color:var(--gris);font-weight:400;margin-bottom:20px}
+.card-stats{display:flex;gap:24px;padding-top:18px;border-top:1px dashed var(--linea)}
+.card-stats div{flex:1}
+.card-stats b{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:24px;color:var(--brasa);line-height:1}
+.card-stats span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-top:4px;display:block}
+.card-link{margin-top:22px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brasa);font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.card-link::after{content:"→";font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;line-height:1}
+
+.empty-card{background:var(--tierra-2);border:1px dashed var(--linea);padding:32px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--gris);min-height:240px}
+.empty-card span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:42px;color:var(--brasa);opacity:.4;margin-bottom:8px}
+.empty-card b{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--crema);font-size:18px;margin-bottom:6px}
+.empty-card p{font-size:13px;line-height:1.6;font-weight:400}
+
+@media(max-width:480px){
+  main{padding:50px 18px}
+  .head{margin-bottom:40px}
+  .grid{grid-template-columns:1fr;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">G</div>
+    <div class="brand-text"><b>G&amp;G Elcano · CRM Reservas</b><small>Sistema central</small></div>
+  </div>
+  <div style="font-size:12px;color:var(--gris);letter-spacing:.16em;text-transform:uppercase;font-weight:600">Multi-restaurante</div>
+</div>
+
+<main>
+  <div class="head">
+    <span class="eye">— restaurantes activos</span>
+    <h1>CRM <em>Reservas</em>.</h1>
+    <p class="lead">Panel central de reservas online de los restaurantes en la red G&amp;G Elcano. Cada restaurante tiene su perfil aislado con sus reservas, KPIs y gestión.</p>
+  </div>
+
+  <div class="grid" id="grid">
+    <a href="motabarri-erandio/" class="card">
+      <div class="card-tag">activo · web conectada</div>
+      <h3>Asador <em>Motabarri</em></h3>
+      <div class="card-loc">Erandio · Bizkaia</div>
+      <div class="card-stats">
+        <div><b id="m-pendientes">0</b><span>pendientes</span></div>
+        <div><b id="m-conf">0</b><span>confirmadas</span></div>
+        <div><b id="m-hoy">0</b><span>hoy</span></div>
+      </div>
+      <div class="card-link">Abrir perfil</div>
+    </a>
+
+    <div class="empty-card">
+      <span>+</span>
+      <b>Añadir restaurante</b>
+      <p>Crea un perfil nuevo para conectarlo con la web del cliente.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+const CRM_KEY='gg_reservas';
+function loadAll(){try{return JSON.parse(localStorage.getItem(CRM_KEY)||'[]')}catch(e){return[]}}
+const all=loadAll();
+const motabarri=all.filter(r=>r.restaurante==='motabarri-erandio');
+const today=new Date().toISOString().slice(0,10);
+document.getElementById('m-pendientes').textContent=motabarri.filter(r=>!r.estado||r.estado==='pendiente').length;
+document.getElementById('m-conf').textContent=motabarri.filter(r=>r.estado==='confirmada').length;
+document.getElementById('m-hoy').textContent=motabarri.filter(r=>r.fecha===today&&r.estado!=='cancelada').length;
+</script>
+</body>
+</html>

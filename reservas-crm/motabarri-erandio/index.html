@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Reservas · Motabarri · G&G Elcano</title>
+<meta name="theme-color" content="#1B1310">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231B1310'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23C8632A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --tierra:#2A1F18;
+  --tierra-2:#1B1310;
+  --carbon:#0F0A07;
+  --crema:#F4EDE0;
+  --hueso:#FBF7EF;
+  --bosque:#3F5236;
+  --brasa:#C8632A;
+  --brasa-2:#A0481B;
+  --gris:#6B5F50;
+  --linea:#D8CDB6;
+  --linea-2:#3F2F22;
+  --rojo:#B14A2E;
+  --verde:#3F7A4A;
+  --ambar:#B89046;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--carbon);color:var(--crema);line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:400;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* Topbar */
+.topbar{background:var(--tierra-2);border-bottom:1px solid var(--linea-2);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;gap:24px;position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:38px;height:38px;background:var(--tierra);color:var(--brasa);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:22px;border:1px solid var(--brasa)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--crema)}
+.brand-text small{font-size:9px;letter-spacing:.32em;color:var(--gris);margin-top:4px;text-transform:uppercase;font-weight:600}
+.crm-badge{display:flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(63,82,54,.18);border:1px solid var(--bosque);color:var(--bosque);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.crm-badge::before{content:"";width:7px;height:7px;background:var(--bosque);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(63,122,74,.5)}50%{box-shadow:0 0 0 5px rgba(63,122,74,0)}}
+.topbar-right{display:flex;gap:14px;align-items:center}
+.user-info{font-size:12px;color:var(--gris);text-align:right;line-height:1.35}
+.user-info b{display:block;color:var(--crema);font-weight:600;font-size:13px}
+
+/* Layout */
+.app{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 67px)}
+aside{background:var(--tierra-2);border-right:1px solid var(--linea-2);padding:28px 0}
+aside h6{padding:0 24px;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gris);font-weight:700;margin-bottom:14px}
+aside nav{display:flex;flex-direction:column;margin-bottom:30px}
+aside nav a{padding:11px 24px;display:flex;align-items:center;gap:12px;font-size:13.5px;color:rgba(244,237,224,.75);transition:.2s;font-weight:500;border-left:2px solid transparent}
+aside nav a:hover{background:rgba(200,99,42,.06);color:var(--crema)}
+aside nav a.active{background:rgba(200,99,42,.12);color:var(--brasa);border-left-color:var(--brasa)}
+aside nav a i{font-style:normal;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--brasa);font-size:16px;min-width:20px}
+
+/* Main */
+main{padding:36px 40px}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.head h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--crema);letter-spacing:-.01em;line-height:1.1}
+.head h1 em{font-style:italic;color:var(--brasa);font-weight:600}
+.head p{font-size:14px;color:var(--gris);margin-top:6px}
+.head-actions{display:flex;gap:10px}
+.btn{padding:10px 20px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--linea-2);background:transparent;color:var(--crema);cursor:pointer;transition:.2s}
+.btn:hover{border-color:var(--brasa);color:var(--brasa)}
+.btn-primary{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
+.btn-primary:hover{background:transparent;color:var(--brasa)}
+.btn-danger:hover{border-color:var(--rojo);color:var(--rojo)}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+.kpi{background:var(--tierra-2);padding:24px 22px;border:1px solid var(--linea-2);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--brasa)}
+.kpi.alt::before{background:var(--bosque)}
+.kpi.alt2::before{background:var(--ambar)}
+.kpi.alt3::before{background:var(--rojo)}
+.kpi-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);font-weight:700;margin-bottom:10px}
+.kpi-val{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:42px;color:var(--brasa);line-height:1}
+.kpi.alt .kpi-val{color:var(--bosque)}
+.kpi.alt2 .kpi-val{color:var(--ambar)}
+.kpi.alt3 .kpi-val{color:var(--rojo)}
+.kpi-sub{font-size:12px;color:var(--gris);margin-top:6px}
+
+/* Filters */
+.filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.filter{padding:9px 16px;border:1px solid var(--linea-2);background:transparent;color:rgba(244,237,224,.75);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.04em}
+.filter:hover{border-color:var(--brasa);color:var(--brasa)}
+.filter.active{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
+.filter-search{flex:1;min-width:200px;background:var(--tierra-2);border:1px solid var(--linea-2);padding:9px 14px;color:var(--crema);font-family:inherit;font-size:13px;outline:none}
+.filter-search:focus{border-color:var(--brasa)}
+
+/* Table */
+.table-wrap{background:var(--tierra-2);border:1px solid var(--linea-2);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead{background:rgba(200,99,42,.06)}
+th{text-align:left;padding:14px 18px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brasa);font-weight:700;border-bottom:1px solid var(--linea-2);white-space:nowrap}
+td{padding:14px 18px;border-bottom:1px solid var(--linea-2);color:rgba(244,237,224,.85);vertical-align:middle}
+tbody tr{transition:.15s}
+tbody tr:hover{background:rgba(200,99,42,.03)}
+.cell-id{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gris);font-size:12px;font-weight:500;letter-spacing:.04em}
+.cell-name{color:var(--crema);font-weight:600}
+.cell-name small{display:block;color:var(--gris);font-size:11.5px;font-weight:400;margin-top:2px}
+.cell-when{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--crema);font-size:15px}
+.cell-when small{display:block;color:var(--brasa);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-family:'Inter',sans-serif;margin-top:2px}
+.cell-people{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;color:var(--brasa);font-size:24px}
+.cell-people sup{font-size:10px;color:var(--gris);margin-left:3px;font-style:normal;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.status-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:1px solid}
+.status-pendiente{color:var(--ambar);border-color:rgba(184,144,70,.4);background:rgba(184,144,70,.08)}
+.status-confirmada{color:var(--bosque);border-color:rgba(63,82,54,.4);background:rgba(63,82,54,.1)}
+.status-cancelada{color:var(--rojo);border-color:rgba(177,74,46,.4);background:rgba(177,74,46,.08)}
+.status-llegado{color:var(--brasa);border-color:rgba(200,99,42,.4);background:rgba(200,99,42,.08)}
+.row-actions{display:flex;gap:6px}
+.icon-btn{width:32px;height:32px;border:1px solid var(--linea-2);background:transparent;color:rgba(244,237,224,.65);cursor:pointer;display:grid;place-items:center;font-size:14px;transition:.2s;font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic}
+.icon-btn:hover{border-color:var(--brasa);color:var(--brasa)}
+.icon-btn.del:hover{border-color:var(--rojo);color:var(--rojo)}
+.empty{padding:80px 20px;text-align:center;color:var(--gris)}
+.empty h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:32px;margin-bottom:10px;font-weight:600}
+.empty p{font-size:14px;max-width:420px;margin:0 auto;line-height:1.6}
+.empty a{color:var(--brasa);border-bottom:1px solid var(--brasa)}
+
+/* Detail panel */
+.detail-back{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:99;opacity:0;visibility:hidden;transition:.2s}
+.detail-back.open{opacity:1;visibility:visible}
+.detail{position:fixed;top:0;right:0;height:100vh;width:min(520px,92vw);background:var(--tierra-2);z-index:100;border-left:1px solid var(--linea-2);transform:translateX(100%);transition:.3s ease;display:flex;flex-direction:column}
+.detail.open{transform:translateX(0)}
+.detail-head{padding:24px 28px;border-bottom:1px solid var(--linea-2);display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.detail-head h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:26px;color:var(--crema);line-height:1.1}
+.detail-head h2 em{color:var(--brasa);font-style:italic}
+.detail-head p{font-size:11px;color:var(--gris);letter-spacing:.16em;text-transform:uppercase;margin-top:6px;font-weight:600}
+.detail-close{background:transparent;border:1px solid var(--linea-2);color:var(--crema);width:34px;height:34px;cursor:pointer;font-size:18px;flex-shrink:0;transition:.2s}
+.detail-close:hover{border-color:var(--brasa);color:var(--brasa)}
+.detail-body{flex:1;padding:28px;overflow-y:auto}
+.detail-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dashed var(--linea-2);gap:14px}
+.detail-row:last-child{border:none}
+.detail-row b{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);font-weight:700;flex-shrink:0;padding-top:3px}
+.detail-row span{text-align:right;color:var(--crema);font-weight:500}
+.detail-row span a{color:var(--brasa);text-decoration:underline}
+.detail-actions{padding:24px 28px;border-top:1px solid var(--linea-2);display:flex;gap:10px;flex-wrap:wrap}
+
+@media(max-width:1024px){
+  .app{grid-template-columns:1fr}
+  aside{display:none}
+  main{padding:24px 18px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .head{flex-direction:column}
+  th,td{padding:11px 12px;font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">M</div>
+    <div class="brand-text"><b>Asador Motabarri</b><small>CRM Reservas · G&G Elcano</small></div>
+  </div>
+  <div class="topbar-right">
+    <div class="crm-badge" id="connection-badge">CRM ACTIVO</div>
+    <div class="user-info"><b>Eguzkiñe</b>Motabarri · Admin</div>
+  </div>
+</div>
+
+<div class="app">
+
+  <aside>
+    <h6>Restaurante</h6>
+    <nav>
+      <a class="active"><i>R</i> Reservas</a>
+      <a><i>M</i> Mesas y salas</a>
+      <a><i>C</i> Carta</a>
+      <a><i>K</i> Cocina</a>
+    </nav>
+    <h6>Análisis</h6>
+    <nav>
+      <a><i>D</i> Dashboard</a>
+      <a><i>I</i> Informes</a>
+      <a><i>O</i> Ocupación</a>
+    </nav>
+    <h6>Configuración</h6>
+    <nav>
+      <a><i>H</i> Horarios</a>
+      <a><i>U</i> Usuarios</a>
+      <a><i>S</i> Sincronización ERP</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="head">
+      <div>
+        <h1>Reservas <em>de hoy y futuras</em></h1>
+        <p id="updated-at">Actualizado hace un momento · sincronizado con web Motabarri</p>
+      </div>
+      <div class="head-actions">
+        <button class="btn" id="btn-demo">Insertar reserva demo</button>
+        <button class="btn btn-primary" id="btn-refresh">Actualizar</button>
+        <button class="btn btn-danger" id="btn-clear" title="Solo demo">Vaciar CRM</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-label">Hoy</div><div class="kpi-val" id="kpi-today">0</div><div class="kpi-sub">reservas para el día de hoy</div></div>
+      <div class="kpi alt"><div class="kpi-label">Confirmadas</div><div class="kpi-val" id="kpi-conf">0</div><div class="kpi-sub">listas para servir</div></div>
+      <div class="kpi alt2"><div class="kpi-label">Pendientes</div><div class="kpi-val" id="kpi-pen">0</div><div class="kpi-sub">esperan confirmación</div></div>
+      <div class="kpi alt3"><div class="kpi-label">Comensales (semana)</div><div class="kpi-val" id="kpi-people">0</div><div class="kpi-sub">próximos 7 días</div></div>
+    </div>
+
+    <div class="filters">
+      <button class="filter active" data-filter="todas">Todas</button>
+      <button class="filter" data-filter="pendiente">Pendientes</button>
+      <button class="filter" data-filter="confirmada">Confirmadas</button>
+      <button class="filter" data-filter="cancelada">Canceladas</button>
+      <button class="filter" data-filter="hoy">Hoy</button>
+      <button class="filter" data-filter="futuras">Futuras</button>
+      <input type="search" class="filter-search" id="search" placeholder="Buscar nombre, teléfono o email…">
+    </div>
+
+    <div class="table-wrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>ID</th><th>Cliente</th><th>Día y hora</th><th>Comensales</th><th>Estado</th><th style="width:1%">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty" id="empty" style="display:none">
+        <h3>No hay reservas todavía</h3>
+        <p>Cuando alguien reserve mesa desde la web del Motabarri, aparecerá aquí. Pulsa <b>"Insertar reserva demo"</b> para ver cómo funciona o ve a la <a href="../../motabarri-erandio/" target="_blank">web del restaurante</a> y reserva tú mismo.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Detail panel -->
+<div class="detail-back" id="dbg"></div>
+<aside class="detail" id="detail" aria-hidden="true">
+  <div class="detail-head">
+    <div>
+      <h2 id="d-name">—</h2>
+      <p id="d-id">RES-—</p>
+    </div>
+    <button class="detail-close" id="d-close">×</button>
+  </div>
+  <div class="detail-body" id="d-body"></div>
+  <div class="detail-actions">
+    <button class="btn btn-primary" data-set="confirmada">Confirmar</button>
+    <button class="btn" data-set="llegado">Marcar llegada</button>
+    <button class="btn btn-danger" data-set="cancelada">Cancelar</button>
+  </div>
+</aside>
+
+<script>
+const CRM_KEY='gg_reservas';
+const RESTAURANT_FILTER='motabarri-erandio';
+const ERP_ENDPOINT='https://gg-crm.ggelcano.workers.dev/api/reservas';
+
+let state={filter:'todas',search:'',selected:null};
+
+function loadAll(){
+  try{
+    return JSON.parse(localStorage.getItem(CRM_KEY)||'[]')
+      .filter(r=>r.restaurante===RESTAURANT_FILTER);
+  }catch(e){return[]}
+}
+function saveAll(arr){
+  // Hay que mezclar con reservas de otros restaurantes
+  let other=[];
+  try{other=JSON.parse(localStorage.getItem(CRM_KEY)||'[]').filter(r=>r.restaurante!==RESTAURANT_FILTER);}catch(e){}
+  localStorage.setItem(CRM_KEY,JSON.stringify([...arr,...other]));
+}
+
+function fmtDate(iso){
+  if(!iso)return'—';
+  const d=new Date(iso+'T00:00:00');
+  return d.toLocaleDateString('es-ES',{weekday:'short',day:'2-digit',month:'short'}).replace('.','');
+}
+function isToday(iso){
+  if(!iso)return false;
+  return iso===new Date().toISOString().slice(0,10);
+}
+function isFuture(iso){
+  if(!iso)return false;
+  return iso>=new Date().toISOString().slice(0,10);
+}
+function statusPill(s){
+  const map={pendiente:'Pendiente',confirmada:'Confirmada',cancelada:'Cancelada',llegado:'Han llegado'};
+  return `<span class="status-pill status-${s||'pendiente'}">${map[s]||'Pendiente'}</span>`;
+}
+
+function render(){
+  const all=loadAll();
+  // KPIs
+  const today=all.filter(r=>isToday(r.fecha)&&r.estado!=='cancelada');
+  document.getElementById('kpi-today').textContent=today.length;
+  document.getElementById('kpi-conf').textContent=all.filter(r=>r.estado==='confirmada').length;
+  document.getElementById('kpi-pen').textContent=all.filter(r=>!r.estado||r.estado==='pendiente').length;
+  const weekFrom=new Date().toISOString().slice(0,10);
+  const weekTo=new Date(Date.now()+7*86400000).toISOString().slice(0,10);
+  document.getElementById('kpi-people').textContent=all
+    .filter(r=>r.fecha>=weekFrom&&r.fecha<=weekTo&&r.estado!=='cancelada')
+    .reduce((s,r)=>s+(parseInt(r.comensales)||0),0);
+
+  // Filter
+  let list=all.slice();
+  if(state.filter==='pendiente')list=list.filter(r=>!r.estado||r.estado==='pendiente');
+  if(state.filter==='confirmada')list=list.filter(r=>r.estado==='confirmada');
+  if(state.filter==='cancelada')list=list.filter(r=>r.estado==='cancelada');
+  if(state.filter==='hoy')list=list.filter(r=>isToday(r.fecha));
+  if(state.filter==='futuras')list=list.filter(r=>isFuture(r.fecha));
+  if(state.search){
+    const q=state.search.toLowerCase();
+    list=list.filter(r=>(r.nombre||'').toLowerCase().includes(q)||(r.telefono||'').includes(q)||(r.email||'').toLowerCase().includes(q));
+  }
+  // Sort: fecha asc, hora asc
+  list.sort((a,b)=>(a.fecha+' '+a.hora).localeCompare(b.fecha+' '+b.hora));
+
+  const tbody=document.getElementById('tbody');
+  if(!list.length){
+    tbody.innerHTML='';
+    document.getElementById('empty').style.display='block';
+    return;
+  }
+  document.getElementById('empty').style.display='none';
+  tbody.innerHTML=list.map(r=>`
+    <tr data-id="${r.id}">
+      <td class="cell-id">${(r.id||'—').replace('RES-','#').slice(0,12)}</td>
+      <td class="cell-name">${escapeHtml(r.nombre||'—')}<small>${escapeHtml(r.email||'')} · ${escapeHtml(r.telefono||'')}</small></td>
+      <td class="cell-when">${fmtDate(r.fecha)}<small>${r.hora||'—'}</small></td>
+      <td><span class="cell-people">${r.comensales||'—'}<sup>pax</sup></span></td>
+      <td>${statusPill(r.estado)}</td>
+      <td><div class="row-actions"><button class="icon-btn open" title="Ver">›</button></div></td>
+    </tr>`).join('');
+  document.querySelectorAll('#tbody tr').forEach(tr=>{
+    tr.addEventListener('click',()=>openDetail(tr.dataset.id));
+  });
+  // Refresh updated-at
+  document.getElementById('updated-at').textContent='Actualizado hace un momento · sincronizado con web Motabarri';
+}
+
+function escapeHtml(s){return(s+'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function openDetail(id){
+  const all=loadAll();
+  const r=all.find(x=>x.id===id);
+  if(!r)return;
+  state.selected=id;
+  document.getElementById('d-name').innerHTML=escapeHtml(r.nombre||'—')+' <em>· '+(r.comensales||'?')+' pax</em>';
+  document.getElementById('d-id').textContent=r.id||'—';
+  document.getElementById('d-body').innerHTML=`
+    <div class="detail-row"><b>Estado</b><span>${statusPill(r.estado)}</span></div>
+    <div class="detail-row"><b>Fecha</b><span>${fmtDate(r.fecha)}</span></div>
+    <div class="detail-row"><b>Hora</b><span>${r.hora||'—'}</span></div>
+    <div class="detail-row"><b>Comensales</b><span>${r.comensales||'—'}</span></div>
+    <div class="detail-row"><b>Teléfono</b><span><a href="tel:${r.telefono}">${escapeHtml(r.telefono||'—')}</a></span></div>
+    <div class="detail-row"><b>Email</b><span><a href="mailto:${r.email}">${escapeHtml(r.email||'—')}</a></span></div>
+    <div class="detail-row"><b>Notas</b><span>${escapeHtml(r.notas||'—')}</span></div>
+    <div class="detail-row"><b>Origen</b><span>${escapeHtml(r.origen||'web')}</span></div>
+    <div class="detail-row"><b>Recibida</b><span>${r.created_at?new Date(r.created_at).toLocaleString('es-ES'):'—'}</span></div>`;
+  document.getElementById('detail').classList.add('open');
+  document.getElementById('dbg').classList.add('open');
+}
+
+function closeDetail(){
+  document.getElementById('detail').classList.remove('open');
+  document.getElementById('dbg').classList.remove('open');
+  state.selected=null;
+}
+
+function setStatus(estado){
+  if(!state.selected)return;
+  const all=loadAll();
+  const r=all.find(x=>x.id===state.selected);
+  if(!r)return;
+  r.estado=estado;
+  r.updated_at=new Date().toISOString();
+  saveAll(all);
+  // Try to sync to ERP (best-effort)
+  fetch(ERP_ENDPOINT+'/'+r.id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({estado}),mode:'cors'}).catch(()=>{});
+  closeDetail();
+  render();
+}
+
+document.getElementById('d-close').addEventListener('click',closeDetail);
+document.getElementById('dbg').addEventListener('click',closeDetail);
+document.querySelectorAll('[data-set]').forEach(b=>b.addEventListener('click',()=>setStatus(b.dataset.set)));
+
+document.querySelectorAll('.filter[data-filter]').forEach(f=>{
+  f.addEventListener('click',()=>{
+    document.querySelectorAll('.filter[data-filter]').forEach(x=>x.classList.remove('active'));
+    f.classList.add('active');
+    state.filter=f.dataset.filter;
+    render();
+  });
+});
+document.getElementById('search').addEventListener('input',e=>{state.search=e.target.value;render()});
+document.getElementById('btn-refresh').addEventListener('click',()=>{
+  // Try fetch from worker
+  fetch(ERP_ENDPOINT+'?restaurante='+RESTAURANT_FILTER,{mode:'cors'})
+    .then(r=>r.ok?r.json():null)
+    .then(data=>{
+      if(data&&Array.isArray(data)){
+        let other=[];
+        try{other=JSON.parse(localStorage.getItem(CRM_KEY)||'[]').filter(r=>r.restaurante!==RESTAURANT_FILTER);}catch(e){}
+        localStorage.setItem(CRM_KEY,JSON.stringify([...data,...other]));
+      }
+    })
+    .catch(()=>{})
+    .finally(render);
+});
+document.getElementById('btn-clear').addEventListener('click',()=>{
+  if(!confirm('¿Borrar TODAS las reservas locales del Motabarri? (Solo afecta a tu navegador)'))return;
+  let other=[];
+  try{other=JSON.parse(localStorage.getItem(CRM_KEY)||'[]').filter(r=>r.restaurante!==RESTAURANT_FILTER);}catch(e){}
+  localStorage.setItem(CRM_KEY,JSON.stringify(other));
+  render();
+});
+document.getElementById('btn-demo').addEventListener('click',()=>{
+  const names=['Iñigo Bilbao','Maite Etxeberria','Jon Aranguren','Nora Lopez','Aitor Mendoza','Itziar Garmendia','Mikel Sanchez'];
+  const today=new Date();
+  const offsets=[0,0,1,1,2,3,4];
+  const offset=offsets[Math.floor(Math.random()*offsets.length)];
+  const d=new Date(today.getTime()+offset*86400000);
+  const fecha=d.toISOString().slice(0,10);
+  const horas=['13:00','13:30','14:00','14:30','21:00','21:30'];
+  const r={
+    id:'RES-'+Date.now()+'-'+Math.floor(Math.random()*1000),
+    restaurante:RESTAURANT_FILTER,
+    restaurante_nombre:'Asador Motabarri',
+    nombre:names[Math.floor(Math.random()*names.length)],
+    fecha,
+    hora:horas[Math.floor(Math.random()*horas.length)],
+    comensales:[2,2,4,4,4,6,8][Math.floor(Math.random()*7)],
+    telefono:'6'+(Math.floor(Math.random()*100000000)+'').padStart(8,'0'),
+    email:'cliente'+Math.floor(Math.random()*999)+'@gmail.com',
+    notas:'',
+    estado:'pendiente',
+    origen:'web',
+    created_at:new Date().toISOString()
+  };
+  const all=loadAll();
+  all.unshift(r);
+  saveAll(all);
+  render();
+});
+
+// Connection check
+fetch(ERP_ENDPOINT+'/ping',{mode:'cors'}).then(r=>{
+  document.getElementById('connection-badge').textContent=r.ok?'CRM CONECTADO ERP':'CRM LOCAL · ERP OFFLINE';
+}).catch(()=>{
+  document.getElementById('connection-badge').textContent='CRM LOCAL';
+});
+
+// Storage events: si hay otra pestaña abierta de la web del Motabarri, refresca al recibir reservas
+window.addEventListener('storage',e=>{if(e.key===CRM_KEY)render()});
+
+render();
+</script>
+</body>
+</html>
