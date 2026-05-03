@@ -544,17 +544,23 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
         </select></div>
       </div>
       <div class="bf-field" style="margin-bottom:14px">
-        <label>Comensales</label>
-        <div class="bf-people">
-          <button type="button" class="bf-chip" data-people="1">1</button>
-          <button type="button" class="bf-chip" data-people="2">2</button>
-          <button type="button" class="bf-chip active" data-people="4">4</button>
-          <button type="button" class="bf-chip" data-people="6">6</button>
-          <button type="button" class="bf-chip" data-people="8">8</button>
-          <button type="button" class="bf-chip" data-people="10">10</button>
-          <button type="button" class="bf-chip" data-people="12">12+</button>
-        </div>
-        <input type="hidden" id="bf-people" name="comensales" value="4">
+        <label for="bf-people">Comensales</label>
+        <select id="bf-people" name="comensales" required>
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4" selected>4 personas</option>
+          <option value="5">5 personas</option>
+          <option value="6">6 personas</option>
+          <option value="7">7 personas</option>
+          <option value="8">8 personas</option>
+          <option value="9">9 personas</option>
+          <option value="10">10 personas</option>
+          <option value="11">11 personas</option>
+          <option value="12">12 personas</option>
+          <option value="13">13 personas</option>
+          <option value="14">14 personas</option>
+        </select>
       </div>
       <div class="bf-field" style="margin-bottom:14px">
         <label for="bf-name">Nombre y apellidos</label>
@@ -657,16 +663,22 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       </div>
       <div class="bf-field" style="margin-bottom:14px">
         <label>Comensales</label>
-        <div class="bf-people">
-          <button type="button" class="bf-chip" data-people-m="1">1</button>
-          <button type="button" class="bf-chip" data-people-m="2">2</button>
-          <button type="button" class="bf-chip active" data-people-m="4">4</button>
-          <button type="button" class="bf-chip" data-people-m="6">6</button>
-          <button type="button" class="bf-chip" data-people-m="8">8</button>
-          <button type="button" class="bf-chip" data-people-m="10">10</button>
-          <button type="button" class="bf-chip" data-people-m="12">12+</button>
-        </div>
-        <input type="hidden" name="comensales" value="4" data-people-input-m>
+        <select name="comensales" required>
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4" selected>4 personas</option>
+          <option value="5">5 personas</option>
+          <option value="6">6 personas</option>
+          <option value="7">7 personas</option>
+          <option value="8">8 personas</option>
+          <option value="9">9 personas</option>
+          <option value="10">10 personas</option>
+          <option value="11">11 personas</option>
+          <option value="12">12 personas</option>
+          <option value="13">13 personas</option>
+          <option value="14">14 personas</option>
+        </select>
       </div>
       <div class="bf-field" style="margin-bottom:14px"><label>Nombre</label><input name="nombre" type="text" required></div>
       <div class="bf-row cols-2">
@@ -718,21 +730,6 @@ document.querySelectorAll('.carta-tab').forEach(t=>t.addEventListener('click',()
   // Scroll suave para que la cabecera de la carta quede arriba
   document.getElementById('carta').scrollIntoView({behavior:'smooth',block:'start'});
 }));
-
-document.querySelectorAll('.bf-chip[data-people]').forEach(c=>{
-  c.addEventListener('click',()=>{
-    document.querySelectorAll('.bf-chip[data-people]').forEach(x=>x.classList.remove('active'));
-    c.classList.add('active');
-    document.getElementById('bf-people').value=c.dataset.people;
-  });
-});
-document.querySelectorAll('.bf-chip[data-people-m]').forEach(c=>{
-  c.addEventListener('click',()=>{
-    document.querySelectorAll('.bf-chip[data-people-m]').forEach(x=>x.classList.remove('active'));
-    c.classList.add('active');
-    document.querySelector('[data-people-input-m]').value=c.dataset.peopleM;
-  });
-});
 
 const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
 document.querySelectorAll('input[type="date"]').forEach(i=>{
