@@ -115,6 +115,20 @@ section{padding:130px 28px;position:relative}
 .dish-card h3 em{font-style:italic;color:var(--brasa-2);font-weight:600}
 .dish-card p{font-size:15px;color:var(--gris);line-height:1.65;margin-top:4px}
 
+/* Galería */
+.galeria{background:var(--crema)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:10px;margin-top:50px}
+.gal-item{position:relative;overflow:hidden;background:var(--tierra);box-shadow:0 14px 40px rgba(42,31,24,.12)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-item:hover img{transform:scale(1.06)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(26,20,15,.6) 100%);opacity:0;transition:.3s;pointer-events:none}
+.gal-item:hover::after{opacity:1}
+.gal-tall{grid-row:span 2}
+.gal-wide{grid-column:span 2}
+.gal-cap{position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--crema);font-size:18px;text-shadow:0 2px 12px rgba(0,0,0,.7);z-index:2;letter-spacing:.01em;opacity:0;transition:.3s;pointer-events:none}
+.gal-cap::before{content:"";display:block;width:30px;height:1px;background:var(--brasa);margin-bottom:6px}
+.gal-item:hover .gal-cap{opacity:1}
+
 .menus{background:var(--tierra);color:var(--crema);padding:90px 28px;position:relative;overflow:hidden}
 .menus::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(200,99,42,.16) 0%,transparent 60%)}
 .mq-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;position:relative}
@@ -258,6 +272,8 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .foot-inner{grid-template-columns:1fr 1fr;gap:34px}
   .pull{padding:90px 22px}
   .menus{padding:60px 22px}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;gap:8px}
+  .gal-cap{font-size:15px}
   .carta-grid{grid-template-columns:1fr;gap:24px}
   .menu-fixed{padding:32px 26px}
   .menu-fixed-head{flex-direction:row;align-items:center}
@@ -316,6 +332,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     </a>
     <div class="nav-links">
       <a href="#cocina">La cocina</a>
+      <a href="#galeria">El asador</a>
       <a href="#menus">Menús</a>
       <a href="carta/">Carta</a>
       <a href="#reservar">Reservar</a>
@@ -390,6 +407,63 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
         <span class="dish-num">— 04</span>
         <h3>Tarta <em>de queso al horno</em></h3>
         <p>Cremosa por dentro, ligeramente quemada por arriba. Receta tradicional de la casa. El cierre que casi nadie se salta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA DE FOTOS DEL ASADOR -->
+<section id="galeria" class="galeria">
+  <div class="wrap">
+    <div class="head" style="text-align:center;margin-left:auto;margin-right:auto;max-width:780px">
+      <span class="eyebrow">— el asador en imágenes</span>
+      <h2 class="section-title">Caserío, brasa <em>y mesa larga</em>.</h2>
+      <p class="section-lead" style="margin:0 auto">Así somos. Sin filtros, sin postureo: el caserío, los comedores, la terraza al sol y la brasa siempre encendida.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item gal-tall gal-wide">
+        <img src="portada.png" alt="Caserío Motabarri exterior con terraza" loading="lazy" decoding="async">
+        <div class="gal-cap">El caserío y la terraza</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://lh5.googleusercontent.com/p/AF1QipPTkwDzd51ZwmIUVMMPys7x8tSemfiWSrwWvLtc=w800-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Vista lateral Motabarri">
+        <div class="gal-cap">Vista lateral</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/9a/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Comedor principal Motabarri">
+        <div class="gal-cap">Comedor principal</div>
+      </div>
+      <div class="gal-item gal-wide">
+        <img src="https://lh5.googleusercontent.com/p/AF1QipMEcs9LQRmZzqPih1ubsvZ630tR0Zn-oGxZqp9l=w1200-h600-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Sala Motabarri">
+        <div class="gal-cap">Sala con vigas</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/a6/67/06/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Sala íntima">
+        <div class="gal-cap">Sala íntima</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://lh5.googleusercontent.com/p/AF1QipMRvY1rey6ROuwrnQ9muUfpbhVYy1FYEJhm48I=w800-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Mesas Motabarri">
+        <div class="gal-cap">Mesas y vigas</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://img02.restaurantguru.com/cc76-Asador-Restaurante-Motabarri-Erandio-meals.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Txuletón a la brasa">
+        <div class="gal-cap">Txuletón a la brasa</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://lh5.googleusercontent.com/p/AF1QipManQ9949ncCYVFnQkBFAP87ygs3mWxGH8LtEf5=w800-h800-k-no" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Carpa exterior Motabarri">
+        <div class="gal-cap">Carpa de jardín</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://img02.restaurantguru.com/c513-Asador-Restaurante-Motabarri-Erandio-dishes.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Bacalao al pil-pil">
+        <div class="gal-cap">Bacalao al pil-pil</div>
+      </div>
+      <div class="gal-item gal-wide">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/a1/6d/fe/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Vista del asador">
+        <div class="gal-cap">El asador por dentro</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://foto1.sluurpy.com/locali/es/1933765/67380161.thumb.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'" alt="Plato Motabarri">
+        <div class="gal-cap">Producto de la zona</div>
       </div>
     </div>
   </div>
