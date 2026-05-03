@@ -61,11 +61,13 @@ nav{position:sticky;top:0;background:rgba(251,247,239,.96);backdrop-filter:blur(
 .nav-cta:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--tierra-2);display:flex;flex-direction:column;justify-content:flex-end}
-.hero-img{position:absolute;inset:0;background:linear-gradient(135deg,var(--tierra) 0%,var(--tierra-2) 50%,var(--carbon) 100%);animation:heroBreath 16s ease-in-out infinite alternate}
-.hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(200,99,42,.18) 0%,transparent 60%),radial-gradient(circle at 80% 80%,rgba(200,99,42,.12) 0%,transparent 60%);pointer-events:none}
-.hero-img::before,.hero-watermark{font-family:'Cormorant Garamond',serif;font-style:italic}
-.hero-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(280px,40vw,560px);font-weight:600;color:rgba(200,99,42,.06);line-height:1;z-index:1;pointer-events:none}
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:linear-gradient(135deg,var(--tierra) 0%,var(--tierra-2) 50%,var(--carbon) 100%);display:flex;flex-direction:column;justify-content:flex-end}
+.hero-bg-radial{position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(200,99,42,.18) 0%,transparent 60%),radial-gradient(circle at 80% 80%,rgba(200,99,42,.12) 0%,transparent 60%);pointer-events:none;z-index:0}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:heroBreath 16s ease-in-out infinite alternate;z-index:1}
+.hero-photo[data-loaded] ~ .hero-watermark,.hero-photo[data-loaded] ~ .hero-photo-tag{display:none}
+.hero-photo[data-loaded] ~ .hero-img-overlay{opacity:1}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,15,.05) 0%,rgba(26,20,15,.1) 45%,rgba(26,20,15,.55) 78%,rgba(26,20,15,.95) 100%);z-index:2;opacity:0;transition:.3s}
+.hero-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(280px,40vw,560px);font-weight:600;color:rgba(200,99,42,.06);line-height:1;z-index:1;pointer-events:none}
 .hero-photo-tag{position:absolute;top:130px;right:80px;z-index:3;background:rgba(244,237,224,.08);border:1px dashed rgba(244,237,224,.35);color:var(--crema);padding:8px 16px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;backdrop-filter:blur(6px)}
 @keyframes heroBreath{from{transform:scale(1)}to{transform:scale(1.06)}}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,15,.05) 0%,rgba(26,20,15,.1) 45%,rgba(26,20,15,.55) 78%,rgba(26,20,15,.95) 100%)}
@@ -360,7 +362,9 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
 </nav>
 
 <header class="hero">
-  <div class="hero-img"></div>
+  <div class="hero-bg-radial"></div>
+  <img class="hero-photo" src="img/portada/foto.jpg" alt="" onload="this.dataset.loaded=true" onerror="this.remove()">
+  <div class="hero-img-overlay"></div>
   <div class="hero-watermark">M</div>
   <div class="hero-frame"></div>
   <div class="hero-meta">
@@ -440,19 +444,19 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <p class="section-lead" style="margin:0 auto">Así somos. Sin filtros, sin postureo: el caserío, los comedores, la terraza al sol y la brasa siempre encendida.</p>
     </div>
     <div class="gal-grid">
-      <div class="gal-item gal-ph gal-tall gal-wide"><span class="ph-tag">Portada</span><span class="ph-icon">M</span><div class="ph-title">El caserío y la terraza<br><span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-style:normal;color:var(--brasa);display:inline-block;margin-top:6px">— foto principal</span></div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Vista lateral del caserío</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Comedor principal</div></div>
-      <div class="gal-item gal-ph gal-wide"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Sala con vigas y piedra vista</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Sala íntima · planta baja</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Mesas y candelabros</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Txuletón a la brasa</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Carpa con chimenea</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Bacalao al pil-pil</div></div>
-      <div class="gal-item gal-ph gal-wide"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Brasa siempre encendida</div></div>
-      <div class="gal-item gal-ph"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Alubias con sacramentos</div></div>
+      <div class="gal-item gal-ph gal-tall gal-wide" data-img="img/portada/foto.jpg"><span class="ph-tag">Portada</span><span class="ph-icon">M</span><div class="ph-title">El caserío y la terraza<br><span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-style:normal;color:var(--brasa);display:inline-block;margin-top:6px">— img/portada/foto.jpg</span></div></div>
+      <div class="gal-item gal-ph" data-img="img/exterior/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Vista lateral del caserío</div></div>
+      <div class="gal-item gal-ph" data-img="img/comedor/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Comedor principal</div></div>
+      <div class="gal-item gal-ph gal-wide" data-img="img/sala-grande/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Sala con vigas y piedra vista</div></div>
+      <div class="gal-item gal-ph" data-img="img/sala-intima/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Sala íntima · planta baja</div></div>
+      <div class="gal-item gal-ph" data-img="img/mesas/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Mesas y candelabros</div></div>
+      <div class="gal-item gal-ph" data-img="img/txuleton/foto.jpg"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Txuletón a la brasa</div></div>
+      <div class="gal-item gal-ph" data-img="img/carpa/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Carpa con chimenea</div></div>
+      <div class="gal-item gal-ph" data-img="img/bacalao/foto.jpg"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Bacalao al pil-pil</div></div>
+      <div class="gal-item gal-ph gal-wide" data-img="img/brasa/foto.jpg"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Brasa siempre encendida</div></div>
+      <div class="gal-item gal-ph" data-img="img/alubias/foto.jpg"><span class="ph-tag">Plato</span><span class="ph-icon">M</span><div class="ph-title">Alubias con sacramentos</div></div>
     </div>
-    <div class="gal-note"><b>Galería pendiente de fotos</b>Solo la portada está cargada. Pásame las fotos del caserío, los comedores, la carpa y los platos (drag &amp; drop al folder de la web) y las coloco en cada hueco.</div>
+    <div class="gal-note"><b>¿Cómo añado las fotos?</b>Cada hueco tiene su carpeta en <code style="background:var(--crema-2);padding:2px 7px;font-family:'Courier New',monospace;font-size:13px;color:var(--brasa-2);font-weight:600">img/[nombre]/</code>. Mete tu foto con el nombre <b style="color:var(--brasa-2);font-style:normal;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:0">foto.jpg</b> dentro de la carpeta y aparece sola al recargar. Carpetas: <i>portada · exterior · comedor · sala-grande · sala-intima · mesas · txuleton · carpa · bacalao · brasa · alubias</i></div>
   </div>
 </section>
 
@@ -655,6 +659,30 @@ document.querySelectorAll('[data-open-booking]').forEach(b=>b.addEventListener('
 document.getElementById('modal-close').addEventListener('click',closeModal);
 modalBack.addEventListener('click',closeModal);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// Auto-cargar fotos de galería: cada .gal-ph[data-img] intenta cargar la imagen.
+// Si existe → reemplaza el placeholder por la foto. Si no → se queda el placeholder.
+document.querySelectorAll('.gal-item[data-img]').forEach(item=>{
+  const probe=new Image();
+  probe.onload=()=>{
+    const img=document.createElement('img');
+    img.src=item.dataset.img;
+    img.alt=item.querySelector('.ph-title')?.textContent.split('—')[0].trim()||'Motabarri';
+    img.loading='lazy';
+    img.decoding='async';
+    item.classList.remove('gal-ph');
+    item.classList.add('has-img');
+    // Quitar overlays del placeholder
+    item.querySelectorAll('.ph-tag, .ph-icon, .ph-title').forEach(el=>el.remove());
+    item.appendChild(img);
+    // Re-inyectar caption normal
+    const cap=document.createElement('div');
+    cap.className='gal-cap';
+    cap.textContent=img.alt;
+    item.appendChild(cap);
+  };
+  probe.src=item.dataset.img;
+});
 
 // Carta tabs
 document.querySelectorAll('.carta-tab').forEach(t=>t.addEventListener('click',()=>{
