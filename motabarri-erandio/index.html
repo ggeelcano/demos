@@ -10,7 +10,6 @@
 <meta property="og:type" content="restaurant">
 <meta property="og:title" content="Asador Motabarri · Caserío del XIX en Erandio">
 <meta property="og:description" content="Brasa, txuletón y alubias con sacramentos. Caserío rehabilitado en 1992, en pleno barrio de Mota de Goiherri.">
-<meta property="og:image" content="https://ggeelcano.github.io/demos/motabarri-erandio/portada.png">
 <meta property="og:url" content="https://ggeelcano.github.io/demos/motabarri-erandio/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -22,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","image":"https://ggeelcano.github.io/demos/motabarri-erandio/portada.png","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"}}
+{"@context":"https://schema.org","@type":"Restaurant","name":"Asador Motabarri","servesCuisine":["Asador","Vasca","Parrilla"],"priceRange":"€€","telephone":"+34944670768","address":{"@type":"PostalAddress","streetAddress":"Carretera Leioa-Unbe Errepidea, Km 32","addressLocality":"Erandio","postalCode":"48950","addressCountry":"ES"}}
 </script>
 
 <style>
@@ -63,7 +62,11 @@ nav{position:sticky;top:0;background:rgba(251,247,239,.96);backdrop-filter:blur(
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:var(--tierra-2);display:flex;flex-direction:column;justify-content:flex-end}
-.hero-img{position:absolute;inset:0;background:url('portada.png') center center/cover no-repeat;filter:saturate(1.18) contrast(1.08);animation:heroBreath 16s ease-in-out infinite alternate}
+.hero-img{position:absolute;inset:0;background:linear-gradient(135deg,var(--tierra) 0%,var(--tierra-2) 50%,var(--carbon) 100%);animation:heroBreath 16s ease-in-out infinite alternate}
+.hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(200,99,42,.18) 0%,transparent 60%),radial-gradient(circle at 80% 80%,rgba(200,99,42,.12) 0%,transparent 60%);pointer-events:none}
+.hero-img::before,.hero-watermark{font-family:'Cormorant Garamond',serif;font-style:italic}
+.hero-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(280px,40vw,560px);font-weight:600;color:rgba(200,99,42,.06);line-height:1;z-index:1;pointer-events:none}
+.hero-photo-tag{position:absolute;top:130px;right:80px;z-index:3;background:rgba(244,237,224,.08);border:1px dashed rgba(244,237,224,.35);color:var(--crema);padding:8px 16px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;backdrop-filter:blur(6px)}
 @keyframes heroBreath{from{transform:scale(1)}to{transform:scale(1.06)}}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,15,.05) 0%,rgba(26,20,15,.1) 45%,rgba(26,20,15,.55) 78%,rgba(26,20,15,.95) 100%)}
 .hero-frame{position:absolute;top:30px;left:30px;right:30px;bottom:30px;border:1px solid rgba(244,237,224,.22);pointer-events:none;z-index:2}
@@ -358,6 +361,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
 
 <header class="hero">
   <div class="hero-img"></div>
+  <div class="hero-watermark">M</div>
   <div class="hero-frame"></div>
   <div class="hero-meta">
     <span>★ <b>3.7</b> · 16K+ RESEÑAS</span>
@@ -365,6 +369,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <span>KM 32 · LEIOA-UNBE</span>
   </div>
   <div class="hero-tag">Caserío del XIX</div>
+  <div class="hero-photo-tag">Foto de portada pendiente</div>
   <div class="hero-content">
     <span class="hero-eye">brasa, terraza y caserío de piedra</span>
     <h1>Asador<br>Motabarri.<em>Desde 1992.</em></h1>
@@ -435,10 +440,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <p class="section-lead" style="margin:0 auto">Así somos. Sin filtros, sin postureo: el caserío, los comedores, la terraza al sol y la brasa siempre encendida.</p>
     </div>
     <div class="gal-grid">
-      <div class="gal-item has-img gal-tall gal-wide">
-        <img src="portada.png" alt="Caserío Motabarri exterior con terraza" loading="lazy" decoding="async">
-        <div class="gal-cap">El caserío y la terraza</div>
-      </div>
+      <div class="gal-item gal-ph gal-tall gal-wide"><span class="ph-tag">Portada</span><span class="ph-icon">M</span><div class="ph-title">El caserío y la terraza<br><span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-style:normal;color:var(--brasa);display:inline-block;margin-top:6px">— foto principal</span></div></div>
       <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Vista lateral del caserío</div></div>
       <div class="gal-item gal-ph"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Comedor principal</div></div>
       <div class="gal-item gal-ph gal-wide"><span class="ph-tag">Foto</span><span class="ph-icon">M</span><div class="ph-title">Sala con vigas y piedra vista</div></div>
