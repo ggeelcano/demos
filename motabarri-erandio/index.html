@@ -363,7 +363,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
 
 <header class="hero">
   <div class="hero-bg-radial"></div>
-  <img class="hero-photo" src="img/portada/foto.jpg" alt="" onload="this.dataset.loaded=true" onerror="this.remove()">
+  <img class="hero-photo" alt="" data-folder="portada" onload="this.dataset.loaded=true">
   <div class="hero-img-overlay"></div>
   <div class="hero-watermark">M</div>
   <div class="hero-frame"></div>
@@ -660,28 +660,47 @@ document.getElementById('modal-close').addEventListener('click',closeModal);
 modalBack.addEventListener('click',closeModal);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-// Auto-cargar fotos de galería: cada .gal-ph[data-img] intenta cargar la imagen.
-// Si existe → reemplaza el placeholder por la foto. Si no → se queda el placeholder.
-document.querySelectorAll('.gal-item[data-img]').forEach(item=>{
+// Auto-cargar fotos: prueba varios nombres de archivo en cada carpeta hasta encontrar uno.
+// Acepta foto.jpg, foto.png, foto.jpeg, <carpeta>.jpg, <carpeta>.png, <carpeta>.jpeg
+function tryLoadFromFolder(folder,onSuccess){
+  const candidates=['foto.jpg','foto.jpeg','foto.png','foto.JPG','foto.JPEG','foto.PNG',`${folder}.jpg`,`${folder}.jpeg`,`${folder}.png`];
+  let i=0;
   const probe=new Image();
-  probe.onload=()=>{
+  probe.onload=()=>onSuccess(`img/${folder}/${candidates[i]}`);
+  probe.onerror=()=>{ i++; if(i<candidates.length){ probe.src=`img/${folder}/${candidates[i]}?t=${Date.now()}`; } };
+  probe.src=`img/${folder}/${candidates[0]}?t=${Date.now()}`;
+}
+
+// Hero
+const heroPhoto=document.querySelector('.hero-photo[data-folder]');
+if(heroPhoto){
+  tryLoadFromFolder(heroPhoto.dataset.folder,url=>{
+    heroPhoto.src=url;
+    heroPhoto.dataset.loaded='true';
+  });
+}
+
+// Galería
+document.querySelectorAll('.gal-item[data-img]').forEach(item=>{
+  // data-img es "img/portada/foto.jpg" → extraer el folder
+  const m=item.dataset.img.match(/^img\/([^/]+)\//);
+  if(!m)return;
+  const folder=m[1];
+  tryLoadFromFolder(folder,url=>{
     const img=document.createElement('img');
-    img.src=item.dataset.img;
+    img.src=url;
     img.alt=item.querySelector('.ph-title')?.textContent.split('—')[0].trim()||'Motabarri';
     img.loading='lazy';
     img.decoding='async';
     item.classList.remove('gal-ph');
     item.classList.add('has-img');
-    // Quitar overlays del placeholder
     item.querySelectorAll('.ph-tag, .ph-icon, .ph-title').forEach(el=>el.remove());
     item.appendChild(img);
-    // Re-inyectar caption normal
     const cap=document.createElement('div');
     cap.className='gal-cap';
     cap.textContent=img.alt;
     item.appendChild(cap);
-  };
-  probe.src=item.dataset.img;
+  });
 });
 
 // Carta tabs
