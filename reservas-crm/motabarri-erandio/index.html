@@ -14,20 +14,21 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --tierra:#2A1F18;
-  --tierra-2:#1B1310;
-  --carbon:#0F0A07;
-  --crema:#F4EDE0;
-  --hueso:#FBF7EF;
-  --bosque:#3F5236;
+  --tierra:#FAF1E2;       /* hover bg / acento claro */
+  --tierra-2:#FFFFFF;     /* cards, topbar, aside */
+  --carbon:#FAF6EE;       /* body background blanco roto */
+  --crema:#2A1F18;        /* texto principal oscuro */
+  --hueso:#F4ECDD;
+  --bosque:#3F7A4A;
   --brasa:#C8632A;
   --brasa-2:#A0481B;
-  --gris:#6B5F50;
-  --linea:#D8CDB6;
-  --linea-2:#3F2F22;
+  --gris:#7A6E5B;
+  --linea:#E5DBC4;
+  --linea-2:#E5DBC4;
   --rojo:#B14A2E;
   --verde:#3F7A4A;
   --ambar:#B89046;
+  --shadow:0 14px 40px rgba(42,31,24,.06);
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--carbon);color:var(--crema);line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:400;min-height:100vh}
@@ -52,7 +53,7 @@ a{color:inherit;text-decoration:none}
 aside{background:var(--tierra-2);border-right:1px solid var(--linea-2);padding:28px 0}
 aside h6{padding:0 24px;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gris);font-weight:700;margin-bottom:14px}
 aside nav{display:flex;flex-direction:column;margin-bottom:30px}
-aside nav a{padding:11px 24px;display:flex;align-items:center;gap:12px;font-size:13.5px;color:rgba(244,237,224,.75);transition:.2s;font-weight:500;border-left:2px solid transparent}
+aside nav a{padding:11px 24px;display:flex;align-items:center;gap:12px;font-size:13.5px;color:rgba(42,31,24,.75);transition:.2s;font-weight:500;border-left:2px solid transparent}
 aside nav a:hover{background:rgba(200,99,42,.06);color:var(--crema)}
 aside nav a.active{background:rgba(200,99,42,.12);color:var(--brasa);border-left-color:var(--brasa)}
 aside nav a i{font-style:normal;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--brasa);font-size:16px;min-width:20px}
@@ -86,7 +87,7 @@ main{padding:36px 40px}
 
 /* Filters */
 .filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
-.filter{padding:9px 16px;border:1px solid var(--linea-2);background:transparent;color:rgba(244,237,224,.75);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.04em}
+.filter{padding:9px 16px;border:1px solid var(--linea-2);background:transparent;color:rgba(42,31,24,.75);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.04em}
 .filter:hover{border-color:var(--brasa);color:var(--brasa)}
 .filter.active{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2)}
 .filter-search{flex:1;min-width:200px;background:var(--tierra-2);border:1px solid var(--linea-2);padding:9px 14px;color:var(--crema);font-family:inherit;font-size:13px;outline:none}
@@ -97,7 +98,7 @@ main{padding:36px 40px}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 thead{background:rgba(200,99,42,.06)}
 th{text-align:left;padding:14px 18px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brasa);font-weight:700;border-bottom:1px solid var(--linea-2);white-space:nowrap}
-td{padding:14px 18px;border-bottom:1px solid var(--linea-2);color:rgba(244,237,224,.85);vertical-align:middle}
+td{padding:14px 18px;border-bottom:1px solid var(--linea-2);color:rgba(42,31,24,.85);vertical-align:middle}
 tbody tr{transition:.15s}
 tbody tr:hover{background:rgba(200,99,42,.03)}
 .cell-id{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gris);font-size:12px;font-weight:500;letter-spacing:.04em}
@@ -113,7 +114,7 @@ tbody tr:hover{background:rgba(200,99,42,.03)}
 .status-cancelada{color:var(--rojo);border-color:rgba(177,74,46,.4);background:rgba(177,74,46,.08)}
 .status-llegado{color:var(--brasa);border-color:rgba(200,99,42,.4);background:rgba(200,99,42,.08)}
 .row-actions{display:flex;gap:6px}
-.icon-btn{width:32px;height:32px;border:1px solid var(--linea-2);background:transparent;color:rgba(244,237,224,.65);cursor:pointer;display:grid;place-items:center;font-size:14px;transition:.2s;font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic}
+.icon-btn{width:32px;height:32px;border:1px solid var(--linea-2);background:transparent;color:rgba(42,31,24,.6);cursor:pointer;display:grid;place-items:center;font-size:14px;transition:.2s;font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic}
 .icon-btn:hover{border-color:var(--brasa);color:var(--brasa)}
 .icon-btn.del:hover{border-color:var(--rojo);color:var(--rojo)}
 .empty{padding:80px 20px;text-align:center;color:var(--gris)}
@@ -159,9 +160,20 @@ tbody tr:hover{background:rgba(200,99,42,.03)}
   </div>
   <div class="topbar-right">
     <div class="crm-badge" id="connection-badge">CRM ACTIVO</div>
-    <div class="user-info"><b>Eguzkiñe</b>Motabarri · Admin</div>
+    <div class="user-info"><b id="auth-user-name">—</b><span id="auth-user-role">—</span></div>
+    <button class="btn" id="auth-logout" style="padding:8px 16px;font-size:11px">Salir</button>
   </div>
 </div>
+
+<script src="../auth.js"></script>
+<script>
+const _session=authRequire({allowedRoles:['admin','rest'],requiredSlug:'motabarri-erandio',loginUrl:'../login.html'});
+if(_session){
+  document.getElementById('auth-user-name').textContent=_session.nombre.split('·')[0].trim()||_session.user;
+  document.getElementById('auth-user-role').textContent=_session.role==='admin'?'Admin G&G':'Cliente';
+  document.getElementById('auth-logout').addEventListener('click',authLogout);
+}
+</script>
 
 <div class="app">
 
