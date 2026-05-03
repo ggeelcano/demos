@@ -130,6 +130,40 @@ section{padding:130px 28px;position:relative}
 .mq-card p{font-size:14px;opacity:.8;line-height:1.6}
 .mq-card.feat p{opacity:.85}
 
+/* CARTA */
+.carta{background:var(--hueso);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.carta-tabs{display:flex;justify-content:center;gap:0;margin:30px auto 60px;border-bottom:1px solid var(--linea);overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:1280px}
+.carta-tab{padding:18px 22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;color:var(--gris);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;letter-spacing:.02em}
+.carta-tab.active{color:var(--tierra);border-bottom-color:var(--brasa);font-weight:600}
+.carta-tab:hover{color:var(--tierra)}
+.carta-panel{display:none;animation:fade .35s}
+.carta-panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.carta-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 80px;max-width:1100px;margin:0 auto}
+.carta-grid.single{grid-template-columns:1fr;max-width:760px}
+.carta-section{margin-bottom:50px}
+.carta-section:last-child{margin-bottom:0}
+.carta-section h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--brasa-2);font-size:24px;margin-bottom:24px;padding-bottom:10px;border-bottom:1px solid var(--linea);max-width:760px;margin-left:auto;margin-right:auto;text-align:center}
+.dish{padding-bottom:20px;border-bottom:1px dashed var(--linea)}
+.dish-head{display:flex;justify-content:space-between;gap:14px;align-items:baseline;margin-bottom:6px}
+.dish-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--tierra);letter-spacing:.005em;line-height:1.25}
+.dish-price{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--brasa-2);font-size:19px;white-space:nowrap;flex-shrink:0}
+.dish-desc{font-size:13.5px;color:var(--gris);font-weight:400;line-height:1.55}
+.menu-fixed{background:#fff;padding:42px 44px;border:1px solid var(--linea);border-top:3px solid var(--brasa);max-width:680px;margin:0 auto 26px;box-shadow:0 18px 50px rgba(42,31,24,.08)}
+.menu-fixed:last-child{margin-bottom:0}
+.menu-fixed-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;padding-bottom:18px;border-bottom:1px dashed var(--linea);flex-wrap:wrap;gap:12px}
+.menu-fixed-head h4{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--tierra);font-size:30px;line-height:1.05}
+.menu-fixed-head h4 em{font-style:normal;font-weight:600;color:var(--brasa-2);display:block;font-size:16px;letter-spacing:.04em;margin-top:4px;font-style:italic}
+.menu-fixed-price{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:42px;color:var(--brasa);line-height:1}
+.menu-fixed h5{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--brasa-2);margin:18px 0 10px;font-style:normal}
+.menu-fixed h5:first-child{margin-top:0}
+.menu-fixed ul{list-style:none}
+.menu-fixed li{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--tierra);font-weight:500;padding:5px 0;line-height:1.4}
+.menu-fixed li small{display:block;font-size:11px;color:var(--gris);font-style:italic;letter-spacing:.04em;font-family:'Inter',sans-serif;font-weight:400;margin-top:1px}
+.menu-fixed-footer{margin-top:18px;padding-top:14px;border-top:1px dashed var(--linea);font-size:12.5px;color:var(--gris);line-height:1.6;font-style:italic;font-family:'Cormorant Garamond',serif}
+.menu-fixed-footer b{color:var(--tierra);font-weight:600;font-style:normal;font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:.04em}
+.carta-note{text-align:center;max-width:680px;margin:30px auto 0;font-size:13.5px;color:var(--gris);font-style:italic;line-height:1.6}
+
 .booking{background:linear-gradient(180deg,var(--crema) 0%,var(--hueso) 100%);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
 .booking-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center;max-width:1280px;margin:0 auto}
 .booking-text h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,5vw,60px);line-height:1.04;color:var(--tierra);margin-bottom:18px}
@@ -224,6 +258,11 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
   .foot-inner{grid-template-columns:1fr 1fr;gap:34px}
   .pull{padding:90px 22px}
   .menus{padding:60px 22px}
+  .carta-grid{grid-template-columns:1fr;gap:24px}
+  .menu-fixed{padding:32px 26px}
+  .menu-fixed-head{flex-direction:row;align-items:center}
+  .menu-fixed-head h4{font-size:24px}
+  .menu-fixed-price{font-size:36px}
   .modal-head{padding:24px 24px 14px}
   .modal-head h3{font-size:24px}
   .modal-body{padding:24px}
@@ -278,6 +317,7 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
     <div class="nav-links">
       <a href="#cocina">La cocina</a>
       <a href="#menus">Menús</a>
+      <a href="#carta">Carta</a>
       <a href="#reservar">Reservar</a>
       <a href="#mapa">Cómo llegar</a>
     </div>
@@ -375,6 +415,283 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <b>30–40 €</b>
       <p>Txuletón a la brasa, bacalaos, pescados de lonja y postres caseros. Menús a medida para grupos y celebraciones.</p>
     </div>
+  </div>
+</section>
+
+<!-- CARTA COMPLETA -->
+<section id="carta" class="carta">
+  <div class="wrap">
+    <div class="head" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow">— la carta</span>
+      <h2 class="section-title">Carta <em>completa</em>.</h2>
+      <p class="section-lead" style="margin:0 auto">Carta general, menús cerrados para grupos, menús infantiles y la carta especial de viernes y sábado noche con hamburguesas, raciones y bocadillos.</p>
+    </div>
+
+    <div class="carta-tabs">
+      <button class="carta-tab active" data-carta="general">A la carta</button>
+      <button class="carta-tab" data-carta="menus">Menús cerrados</button>
+      <button class="carta-tab" data-carta="ninos">Menú infantil</button>
+      <button class="carta-tab" data-carta="noche">Viernes &amp; sábado noche</button>
+    </div>
+
+    <!-- A LA CARTA -->
+    <div class="carta-panel active" data-carta-panel="general">
+      <div class="carta-section">
+        <h3>Entrantes</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Zamburiñas</span><span class="dish-price">2,50 €/u</span></div><p class="dish-desc">Mínimo 4 unidades.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Almejas</span><span class="dish-price">20 €</span></div><p class="dish-desc">A la plancha o en salsa verde (24 €).</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Gambas</span><span class="dish-price">18 €/docena</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Langostinos a la plancha</span><span class="dish-price">18 €/docena</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Jamón ibérico con tostas y tumaca</span><span class="dish-price">20 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Anchoas del Cantábrico</span><span class="dish-price">14 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Foie con mermelada y frutos rojos</span><span class="dish-price">14 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pulpo a la brasa con alioli</span><span class="dish-price">22 €</span></div><p class="dish-desc">Y vinagreta picante.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Chipirones del Cantábrico con cebolla</span><span class="dish-price">14 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensaladilla Motabarri</span><span class="dish-price">10 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada de tomate y ventresca</span><span class="dish-price">16 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada de ventresca</span><span class="dish-price">16 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada mixta</span><span class="dish-price">15 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Espárragos con mahonesa y vinagreta</span><span class="dish-price">14 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hongos salteados</span><span class="dish-price">15 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hongos salteados con foie</span><span class="dish-price">20 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hongos con gorringo</span><span class="dish-price">18 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Revuelto de hongos</span><span class="dish-price">17 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pimientos rellenos de changurro</span><span class="dish-price">14 €</span></div></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Pescados</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Merluza a la plancha</span><span class="dish-price">25 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Rodaballo (ración)</span><span class="dish-price">20 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Lubina (ración)</span><span class="dish-price">18 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pescado del día</span><span class="dish-price">S/M</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Almejas a la plancha</span><span class="dish-price">20 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Almejas en salsa verde</span><span class="dish-price">24 €</span></div></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Carnes a la brasa</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Chuletón</span><span class="dish-price">36 €/kg</span></div><p class="dish-desc">Vacuno mayor a la brasa de encina.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Solomillo</span><span class="dish-price">22 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Entrecot</span><span class="dish-price">18 €</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚS CERRADOS -->
+    <div class="carta-panel" data-carta-panel="menus">
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú Chuletón<em>para compartir</em></h4>
+          <span class="menu-fixed-price">64 €</span>
+        </div>
+        <h5>Primero (a elegir)</h5>
+        <ul>
+          <li>Croquetas de jamón caseras<small>contiene gluten · huevos · lácteos</small></li>
+          <li>Ensalada templada de ibéricos<small>contiene lácteos · sulfitos</small></li>
+        </ul>
+        <h5>Para compartir</h5>
+        <ul>
+          <li>Chuletón a la brasa de 1.200 kg<small>con patatas y pimientos · contiene gluten · lácteos · sulfitos</small></li>
+        </ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua, pan y vino (crianza, verdejo, txakoli o cava). Cervezas y refrescos no incluidos. IVA incluido.</div>
+      </div>
+
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú Rodaballo<em>para compartir</em></h4>
+          <span class="menu-fixed-price">60 €</span>
+        </div>
+        <h5>Primero (a elegir)</h5>
+        <ul>
+          <li>Anchoas en salazón con pimientos del piquillo<small>contiene crustáceos · pescado · moluscos</small></li>
+          <li>Foie con tostas y mermelada</li>
+          <li>Ensalada de tomate con ventresca y cebolleta<small>contiene pescado</small></li>
+        </ul>
+        <h5>Para compartir</h5>
+        <ul><li>Rodaballo con refrito<small>contiene pescado</small></li></ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua, pan y vino crianza, txakoli, verdejo o cava. Cervezas y refrescos no incluidos.</div>
+      </div>
+
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú Pescado<em>para dos</em></h4>
+          <span class="menu-fixed-price">52 €</span>
+        </div>
+        <h5>Primero (a elegir)</h5>
+        <ul>
+          <li>Ensalada de ventresca<small>contiene pescado · sulfitos</small></li>
+          <li>Revuelto de setas y gambas<small>contiene crustáceos · huevos · pescado · moluscos</small></li>
+        </ul>
+        <h5>Segundo (a elegir)</h5>
+        <ul>
+          <li>Lubina a la espalda con patata panadera<small>contiene pescado · sulfitos</small></li>
+        </ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua, pan y vino crianza, txakoli, verdejo o cava. Cervezas y refrescos no incluidos.</div>
+      </div>
+
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú Motabarri</h4>
+          <span class="menu-fixed-price">38 €</span>
+        </div>
+        <h5>Para compartir</h5>
+        <ul>
+          <li>Croquetas de jamón caseras<small>contiene gluten · huevos · lácteos</small></li>
+          <li>Revuelto de setas y gambas<small>contiene crustáceos · huevos · pescado · moluscos</small></li>
+          <li>Ensalada de ventresca<small>contiene pescado</small></li>
+        </ul>
+        <h5>Segundo (a elegir)</h5>
+        <ul>
+          <li>Entrecot con guarnición</li>
+          <li>Pimientos rellenos de changurro<small>contiene gluten · crustáceos · huevos · pescado · sulfitos · moluscos</small></li>
+          <li>Lubina con patata panadera<small>contiene pescado · sulfitos</small></li>
+        </ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua, pan y vino crianza. Cervezas y refrescos no incluidos.</div>
+      </div>
+
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Alubiada</h4>
+          <span class="menu-fixed-price">22 €</span>
+        </div>
+        <h5>Plato único</h5>
+        <ul>
+          <li>Alubias rojas con sus sacramentos<small>chorizo, morcilla, tocino y costilla · contiene sulfitos</small></li>
+          <li>Berza</li>
+        </ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua, pan y vino crianza, verdejo o cava. Cervezas y refrescos no incluidos. <b>Envases para llevar +0,50 €.</b></div>
+      </div>
+    </div>
+
+    <!-- MENÚ INFANTIL -->
+    <div class="carta-panel" data-carta-panel="ninos">
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú niños<em>número uno</em></h4>
+          <span class="menu-fixed-price">15 €</span>
+        </div>
+        <h5>Primero</h5>
+        <ul><li>Macarrones con tomate<small>contiene gluten · huevos · lácteos · sulfitos</small></li></ul>
+        <h5>Segundo (a elegir)</h5>
+        <ul>
+          <li>Lomo con patatas<small>contiene gluten · huevos</small></li>
+          <li>Pechuga con patatas<small>contiene gluten · huevos</small></li>
+        </ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua y pan. Menú compartido <b>18 €</b>.</div>
+      </div>
+
+      <div class="menu-fixed">
+        <div class="menu-fixed-head">
+          <h4>Menú niños<em>número dos</em></h4>
+          <span class="menu-fixed-price">20 €</span>
+        </div>
+        <h5>Primero (a elegir)</h5>
+        <ul>
+          <li>Jamón ibérico</li>
+          <li>Croquetas de jamón caseras<small>contiene gluten · huevos · lácteos</small></li>
+          <li>Rabas<small>contiene gluten · huevos · lácteos</small></li>
+        </ul>
+        <h5>Segundo</h5>
+        <ul><li>Pechuga con patatas<small>contiene gluten · huevos</small></li></ul>
+        <h5>Postre</h5>
+        <ul><li>Postre a elegir</li></ul>
+        <div class="menu-fixed-footer"><b>Incluye:</b> agua y pan. Menú compartido <b>22 €</b>.</div>
+      </div>
+    </div>
+
+    <!-- VIERNES Y SÁBADO NOCHE -->
+    <div class="carta-panel" data-carta-panel="noche">
+      <p class="carta-note" style="margin-bottom:50px;font-size:15px;color:var(--brasa-2);font-weight:500"><b style="font-style:normal;font-family:'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--brasa-2);font-size:11.5px">Solo viernes y sábado noche</b><br>Carta especial: hamburguesas, platos combinados, raciones y bocadillos. Para venir de cuadrilla, después del trabajo o a cenar rápido.</p>
+
+      <div class="carta-section">
+        <h3>Hamburguesas</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Alemana</span><span class="dish-price">5,50 €</span></div><p class="dish-desc">Lechuga, tomate y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Holandesa</span><span class="dish-price">6,00 €</span></div><p class="dish-desc">Lechuga, tomate, queso y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Berlinesa</span><span class="dish-price">6,00 €</span></div><p class="dish-desc">Lechuga, tomate, pepinillo y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hamburguesa con huevo</span><span class="dish-price">6,00 €</span></div><p class="dish-desc">Lechuga, tomate, huevo y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hamburguesa con pimientos rojos</span><span class="dish-price">6,50 €</span></div><p class="dish-desc">Lechuga, tomate y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ibérica</span><span class="dish-price">8,00 €</span></div><p class="dish-desc">Tomate, lechuga, jamón ibérico y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hamburguesa doble</span><span class="dish-price">7,50 €</span></div><p class="dish-desc">Lechuga, tomate, doble carne y patatas.</p></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Platos combinados</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Lomo</span><span class="dish-price">11,50 €</span></div><p class="dish-desc">Huevos, lechuga, tomate, croquetas y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pechuga</span><span class="dish-price">11,50 €</span></div><p class="dish-desc">Huevos, tomate, croquetas y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Hamburguesa</span><span class="dish-price">10,00 €</span></div><p class="dish-desc">Huevos, lechuga, tomate y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Huevos con patatas</span><span class="dish-price">6,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Huevos con patatas y chorizo</span><span class="dish-price">9,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Huevos con patatas y morcilla</span><span class="dish-price">9,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Huevos con patatas y pimientos rojos</span><span class="dish-price">9,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Tortilla al gusto</span><span class="dish-price">9,50 €</span></div><p class="dish-desc">Con ensalada y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Entrecot</span><span class="dish-price">15,00 €</span></div><p class="dish-desc">Con pimientos rojos y ensalada.</p></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Ensaladas</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada de ventresca</span><span class="dish-price">15,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada mixta</span><span class="dish-price">10,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada templada</span><span class="dish-price">14,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Espárragos dos salsas</span><span class="dish-price">13,00 €</span></div></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Raciones</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Revuelto de setas y gambas</span><span class="dish-price">10,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Revuelto de hongos</span><span class="dish-price">12,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Croquetas de jamón</span><span class="dish-price">8,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Morcilla y pimientos rojos</span><span class="dish-price">7,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Chorizo</span><span class="dish-price">5,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Alitas de pollo</span><span class="dish-price">5,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Finger de pollo</span><span class="dish-price">5,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Patatas fritas</span><span class="dish-price">4,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Jamón ibérico</span><span class="dish-price">15,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Langostinos a la plancha</span><span class="dish-price">13,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Queso Idiazabal</span><span class="dish-price">5,50 €</span></div></div>
+        </div>
+      </div>
+
+      <div class="carta-section">
+        <h3>Bocadillos</h3>
+        <div class="carta-grid">
+          <div class="dish"><div class="dish-head"><span class="dish-name">Lomo y patatas</span><span class="dish-price">5,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Lomo, queso y patatas</span><span class="dish-price">6,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Bacon, queso y patatas</span><span class="dish-price">5,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Vegetal</span><span class="dish-price">5,00 €</span></div><p class="dish-desc">Lechuga, tomate, cebolla, espárrago y patatas.</p></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pechuga con patatas</span><span class="dish-price">6,00 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Lomo, pimientos y patatas</span><span class="dish-price">6,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Pechuga, queso y patatas</span><span class="dish-price">6,50 €</span></div></div>
+          <div class="dish"><div class="dish-head"><span class="dish-name">Tortilla variada</span><span class="dish-price">5,00 €</span></div><p class="dish-desc">Jamón, chorizo, queso, bonito.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="carta-note">Precios con IVA incluido · Carta sujeta a disponibilidad de mercado · Para alérgenos consulta a tu camarero/a</p>
   </div>
 </section>
 
@@ -480,7 +797,8 @@ footer{background:#15100C;color:var(--crema);padding:70px 28px 30px}
       <h5>El asador</h5>
       <ul>
         <li><a href="#cocina">La cocina</a></li>
-        <li><a href="#menus">Menús</a></li>
+        <li><a href="#menus">Menús del día</a></li>
+        <li><a href="#carta">Carta completa</a></li>
         <li><a href="#reservar">Reservar online</a></li>
       </ul>
     </div>
@@ -553,6 +871,16 @@ document.querySelectorAll('[data-open-booking]').forEach(b=>b.addEventListener('
 document.getElementById('modal-close').addEventListener('click',closeModal);
 modalBack.addEventListener('click',closeModal);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// Carta tabs
+document.querySelectorAll('.carta-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.carta-tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.carta-panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelector(`.carta-panel[data-carta-panel="${t.dataset.carta}"]`).classList.add('active');
+  // Scroll suave para que la cabecera de la carta quede arriba
+  document.getElementById('carta').scrollIntoView({behavior:'smooth',block:'start'});
+}));
 
 document.querySelectorAll('.bf-chip[data-people]').forEach(c=>{
   c.addEventListener('click',()=>{
