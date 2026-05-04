@@ -141,6 +141,109 @@ tbody tr:hover{background:rgba(200,99,42,.03)}
 .detail-row span a{color:var(--brasa);text-decoration:underline}
 .detail-actions{padding:24px 28px;border-top:1px solid var(--linea-2);display:flex;gap:10px;flex-wrap:wrap}
 
+/* TABS PANELS */
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.tab-panel h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--crema);margin-bottom:6px;letter-spacing:-.005em}
+.tab-panel h2 em{font-style:italic;color:var(--brasa);font-weight:600}
+.tab-panel-sub{font-size:14px;color:var(--gris);margin-bottom:30px}
+
+/* CALENDARIO semanal */
+.cal-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:14px}
+.cal-nav{display:flex;gap:8px;align-items:center}
+.cal-nav-btn{background:transparent;border:1px solid var(--linea-2);padding:8px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--crema);font-weight:600;font-size:15px;cursor:pointer;transition:.2s}
+.cal-nav-btn:hover{border-color:var(--brasa);color:var(--brasa)}
+.cal-nav-btn.today{background:var(--brasa);border-color:var(--brasa);color:var(--tierra-2);font-style:normal;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.cal-range{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:600;color:var(--crema)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;background:var(--tierra-2);border:1px solid var(--linea-2);overflow:hidden}
+.cal-day{background:var(--tierra-2);min-height:300px;padding:12px;display:flex;flex-direction:column;border-right:1px dashed var(--linea-2);border-bottom:1px dashed var(--linea-2)}
+.cal-day:nth-child(7n){border-right:none}
+.cal-day.today{background:rgba(200,99,42,.04);border-top:2px solid var(--brasa)}
+.cal-day.weekend{background:rgba(245,239,227,.4)}
+.cal-day-head{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--linea-2)}
+.cal-day-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:22px;color:var(--crema);display:inline-block;margin-right:6px}
+.cal-day.today .cal-day-num{color:var(--brasa)}
+.cal-day-count{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brasa);font-weight:700;margin-left:6px;font-style:normal;font-family:'Inter',sans-serif}
+.cal-events{display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden}
+.cal-evt{background:var(--tierra);color:var(--crema);padding:6px 8px;font-size:11px;border-left:2px solid var(--brasa);cursor:pointer;transition:.15s;line-height:1.3;display:flex;flex-direction:column;gap:2px}
+.cal-evt:hover{background:rgba(200,99,42,.1);transform:translateX(1px)}
+.cal-evt b{color:var(--brasa);font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:13px}
+.cal-evt span{font-weight:500;color:var(--crema);font-size:11px}
+.cal-evt small{font-size:9.5px;color:var(--gris);font-weight:600;letter-spacing:.04em}
+.cal-evt.confirmada{border-left-color:var(--bosque)}
+.cal-evt.confirmada b{color:var(--bosque)}
+.cal-evt.cancelada{opacity:.45;text-decoration:line-through;border-left-color:var(--rojo)}
+.cal-evt.llegado{border-left-color:var(--brasa);background:rgba(200,99,42,.08)}
+.cal-empty-day{font-size:11px;color:var(--gris);font-style:italic;padding:8px 0;text-align:center;opacity:.5}
+
+/* OCUPACIÓN */
+.occ-controls{display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+.occ-controls input[type="date"]{background:var(--tierra-2);border:1px solid var(--linea-2);color:var(--crema);padding:9px 12px;font-family:inherit;font-size:13.5px;outline:none}
+.occ-controls input[type="date"]:focus{border-color:var(--brasa)}
+.occ-bars{background:var(--tierra-2);border:1px solid var(--linea-2);padding:32px 28px}
+.occ-row{display:grid;grid-template-columns:60px 1fr 60px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--linea-2)}
+.occ-row:last-child{border:none}
+.occ-time{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;color:var(--brasa)}
+.occ-bar{height:18px;background:rgba(200,99,42,.08);position:relative;overflow:hidden}
+.occ-bar-fill{height:100%;background:linear-gradient(90deg,var(--brasa) 0%,var(--brasa-2) 100%);transition:width .5s cubic-bezier(.16,1,.3,1);min-width:0}
+.occ-bar-fill.empty{background:transparent}
+.occ-count{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;color:var(--crema);font-size:18px;text-align:right}
+.occ-count small{font-size:9.5px;color:var(--gris);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-family:'Inter',sans-serif;font-style:normal;display:block;margin-top:-2px}
+.occ-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.occ-summary .kpi{margin-bottom:0}
+
+/* INFORMES */
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.report-card{background:var(--tierra-2);border:1px solid var(--linea-2);padding:32px 28px;position:relative}
+.report-card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--brasa)}
+.report-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:22px;color:var(--crema);margin-bottom:18px;letter-spacing:-.005em}
+.report-card h3 em{color:var(--brasa);font-style:italic}
+.report-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--linea-2);align-items:center;font-size:13.5px}
+.report-row:last-child{border:none}
+.report-row b{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-weight:700;font-size:20px}
+.report-row span{color:var(--crema);font-weight:500}
+
+/* HORARIOS */
+.hor-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;background:var(--tierra-2);border:1px solid var(--linea-2);padding:18px}
+.hor-day{display:flex;flex-direction:column;gap:6px}
+.hor-day-head{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brasa);font-weight:700;padding-bottom:6px;border-bottom:1px dashed var(--linea-2);text-align:center}
+.hor-slot{padding:7px 10px;font-size:12px;font-weight:600;color:var(--crema);background:transparent;border:1px solid var(--linea-2);cursor:pointer;transition:.15s;font-family:inherit;text-align:center}
+.hor-slot.on{background:rgba(200,99,42,.16);border-color:var(--brasa);color:var(--brasa)}
+.hor-slot:hover{border-color:var(--brasa)}
+.hor-info{margin-top:18px;padding:18px 22px;background:var(--tierra-2);border:1px dashed var(--linea-2);font-size:13px;color:var(--gris);line-height:1.7;font-style:italic;font-family:'Cormorant Garamond',serif}
+.hor-info b{font-style:normal;font-family:'Inter',sans-serif;color:var(--brasa);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+/* Mesas y salas */
+.salas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.sala{background:var(--tierra-2);border:1px solid var(--linea-2);padding:32px 28px;position:relative;border-top:3px solid var(--brasa)}
+.sala h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:24px;color:var(--crema);margin-bottom:8px}
+.sala h3 em{color:var(--brasa);font-style:italic}
+.sala-cap{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa);font-size:42px;font-weight:700;line-height:1;margin:14px 0 6px}
+.sala-cap small{font-size:11px;color:var(--gris);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-family:'Inter',sans-serif;font-style:normal;margin-left:6px}
+.sala p{font-size:13.5px;color:var(--gris);line-height:1.6;margin-top:6px}
+
+/* MODAL nueva reserva */
+.modal-new-back{position:fixed;inset:0;background:rgba(26,20,15,.78);backdrop-filter:blur(4px);z-index:120;opacity:0;visibility:hidden;transition:.2s}
+.modal-new-back.open{opacity:1;visibility:visible}
+.modal-new{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%) scale(.97);background:#fff;width:min(560px,92vw);max-height:92vh;overflow-y:auto;z-index:121;box-shadow:0 40px 100px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.25s}
+.modal-new.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.modal-new-head{padding:28px 32px 18px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:flex-start;gap:14px;background:var(--tierra);color:var(--crema)}
+.modal-new-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-style:italic;font-size:26px;line-height:1.1;color:#fff}
+.modal-new-head h3 em{color:var(--brasa)}
+.modal-new-head p{font-size:12px;opacity:.8;margin-top:4px;font-weight:300}
+.modal-new-close{background:transparent;border:1px solid rgba(244,237,224,.4);color:#fff;width:32px;height:32px;font-size:16px;cursor:pointer;flex-shrink:0;transition:.2s}
+.modal-new-close:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra)}
+.modal-new-body{padding:28px 32px}
+.mn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.mn-row.single{grid-template-columns:1fr}
+.mn-field{display:flex;flex-direction:column;gap:5px}
+.mn-field label{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7A6E5B;font-weight:600}
+.mn-field input,.mn-field select,.mn-field textarea{font-family:'Inter',sans-serif;font-size:14.5px;padding:11px 13px;border:1px solid #E5DBC4;background:#FAF6EE;color:var(--tierra);font-weight:500;outline:none;transition:.2s}
+.mn-field input:focus,.mn-field select:focus,.mn-field textarea:focus{border-color:var(--brasa);background:#fff;box-shadow:0 0 0 3px rgba(200,99,42,.12)}
+.mn-field textarea{resize:vertical;min-height:60px}
+.mn-submit{width:100%;background:var(--tierra);color:var(--crema);padding:14px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1.5px solid var(--tierra);cursor:pointer;transition:.25s;margin-top:8px}
+.mn-submit:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tierra)}
+
 @media(max-width:1024px){
   .app{grid-template-columns:1fr}
   aside{display:none}
@@ -148,6 +251,13 @@ tbody tr:hover{background:rgba(200,99,42,.03)}
   .kpis{grid-template-columns:repeat(2,1fr)}
   .head{flex-direction:column}
   th,td{padding:11px 12px;font-size:12.5px}
+  .cal-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+  .cal-day{min-height:160px}
+  .hor-grid{grid-template-columns:repeat(2,1fr)}
+  .salas-grid{grid-template-columns:1fr}
+  .report-grid{grid-template-columns:1fr}
+  .occ-summary{grid-template-columns:1fr}
+  .mn-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -180,70 +290,255 @@ if(_session){
   <aside>
     <h6>Restaurante</h6>
     <nav>
-      <a class="active"><i>R</i> Reservas</a>
-      <a><i>M</i> Mesas y salas</a>
-      <a><i>C</i> Carta</a>
-      <a><i>K</i> Cocina</a>
+      <a class="active" data-tab="reservas" href="#"><i>R</i> Reservas</a>
+      <a data-tab="calendario" href="#"><i>K</i> Calendario</a>
+      <a data-tab="salas" href="#"><i>M</i> Mesas y salas</a>
+      <a href="../../motabarri-erandio/carta/" target="_blank"><i>C</i> Carta del cliente ↗</a>
     </nav>
     <h6>Análisis</h6>
     <nav>
-      <a><i>D</i> Dashboard</a>
-      <a><i>I</i> Informes</a>
-      <a><i>O</i> Ocupación</a>
+      <a data-tab="ocupacion" href="#"><i>O</i> Ocupación</a>
+      <a data-tab="informes" href="#"><i>I</i> Informes</a>
     </nav>
     <h6>Configuración</h6>
     <nav>
-      <a><i>H</i> Horarios</a>
-      <a><i>U</i> Usuarios</a>
-      <a><i>S</i> Sincronización ERP</a>
+      <a data-tab="horarios" href="#"><i>H</i> Horarios</a>
+      <a data-tab="erp" href="#"><i>S</i> Sincronización ERP</a>
     </nav>
   </aside>
 
   <main>
-    <div class="head">
-      <div>
-        <h1>Reservas <em>de hoy y futuras</em></h1>
-        <p id="updated-at">Actualizado hace un momento · sincronizado con web Motabarri</p>
+
+    <!-- TAB: RESERVAS (default) -->
+    <div class="tab-panel active" data-tab-panel="reservas">
+      <div class="head">
+        <div>
+          <h1>Reservas <em>de hoy y futuras</em></h1>
+          <p id="updated-at">Actualizado hace un momento · sincronizado con web Motabarri</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn btn-primary" id="btn-new">+ Nueva reserva</button>
+          <button class="btn" id="btn-demo">Insertar demo</button>
+          <button class="btn" id="btn-refresh">Actualizar</button>
+        </div>
       </div>
-      <div class="head-actions">
-        <button class="btn" id="btn-demo">Insertar reserva demo</button>
-        <button class="btn btn-primary" id="btn-refresh">Actualizar</button>
-        <button class="btn btn-danger" id="btn-clear" title="Solo demo">Vaciar CRM</button>
+
+      <div class="kpis">
+        <div class="kpi"><div class="kpi-label">Hoy</div><div class="kpi-val" id="kpi-today">0</div><div class="kpi-sub">reservas para el día de hoy</div></div>
+        <div class="kpi alt"><div class="kpi-label">Confirmadas</div><div class="kpi-val" id="kpi-conf">0</div><div class="kpi-sub">listas para servir</div></div>
+        <div class="kpi alt2"><div class="kpi-label">Pendientes</div><div class="kpi-val" id="kpi-pen">0</div><div class="kpi-sub">esperan confirmación</div></div>
+        <div class="kpi alt3"><div class="kpi-label">Comensales (semana)</div><div class="kpi-val" id="kpi-people">0</div><div class="kpi-sub">próximos 7 días</div></div>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-filter="todas">Todas</button>
+        <button class="filter" data-filter="pendiente">Pendientes</button>
+        <button class="filter" data-filter="confirmada">Confirmadas</button>
+        <button class="filter" data-filter="cancelada">Canceladas</button>
+        <button class="filter" data-filter="hoy">Hoy</button>
+        <button class="filter" data-filter="futuras">Futuras</button>
+        <input type="search" class="filter-search" id="search" placeholder="Buscar nombre, teléfono o email…">
+      </div>
+
+      <div class="table-wrap">
+        <table id="tbl">
+          <thead>
+            <tr>
+              <th>ID</th><th>Cliente</th><th>Día y hora</th><th>Comensales</th><th>Estado</th><th style="width:1%">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div class="empty" id="empty" style="display:none">
+          <h3>No hay reservas todavía</h3>
+          <p>Pulsa <b>"+ Nueva reserva"</b> para apuntar una llamada o <b>"Insertar demo"</b> para ver cómo funciona.</p>
+        </div>
       </div>
     </div>
 
-    <div class="kpis">
-      <div class="kpi"><div class="kpi-label">Hoy</div><div class="kpi-val" id="kpi-today">0</div><div class="kpi-sub">reservas para el día de hoy</div></div>
-      <div class="kpi alt"><div class="kpi-label">Confirmadas</div><div class="kpi-val" id="kpi-conf">0</div><div class="kpi-sub">listas para servir</div></div>
-      <div class="kpi alt2"><div class="kpi-label">Pendientes</div><div class="kpi-val" id="kpi-pen">0</div><div class="kpi-sub">esperan confirmación</div></div>
-      <div class="kpi alt3"><div class="kpi-label">Comensales (semana)</div><div class="kpi-val" id="kpi-people">0</div><div class="kpi-sub">próximos 7 días</div></div>
+    <!-- TAB: CALENDARIO -->
+    <div class="tab-panel" data-tab-panel="calendario">
+      <h2>Calendario <em>semanal</em></h2>
+      <p class="tab-panel-sub">Vista de las reservas de la semana. Cliquea sobre una para verla y gestionarla.</p>
+      <div class="cal-bar">
+        <div class="cal-nav">
+          <button class="cal-nav-btn today" id="cal-today">Hoy</button>
+          <button class="cal-nav-btn" id="cal-prev">←</button>
+          <button class="cal-nav-btn" id="cal-next">→</button>
+        </div>
+        <div class="cal-range" id="cal-range">—</div>
+        <button class="btn btn-primary" id="cal-new">+ Nueva reserva</button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
     </div>
 
-    <div class="filters">
-      <button class="filter active" data-filter="todas">Todas</button>
-      <button class="filter" data-filter="pendiente">Pendientes</button>
-      <button class="filter" data-filter="confirmada">Confirmadas</button>
-      <button class="filter" data-filter="cancelada">Canceladas</button>
-      <button class="filter" data-filter="hoy">Hoy</button>
-      <button class="filter" data-filter="futuras">Futuras</button>
-      <input type="search" class="filter-search" id="search" placeholder="Buscar nombre, teléfono o email…">
-    </div>
-
-    <div class="table-wrap">
-      <table id="tbl">
-        <thead>
-          <tr>
-            <th>ID</th><th>Cliente</th><th>Día y hora</th><th>Comensales</th><th>Estado</th><th style="width:1%">Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-      <div class="empty" id="empty" style="display:none">
-        <h3>No hay reservas todavía</h3>
-        <p>Cuando alguien reserve mesa desde la web del Motabarri, aparecerá aquí. Pulsa <b>"Insertar reserva demo"</b> para ver cómo funciona o ve a la <a href="../../motabarri-erandio/" target="_blank">web del restaurante</a> y reserva tú mismo.</p>
+    <!-- TAB: MESAS Y SALAS -->
+    <div class="tab-panel" data-tab-panel="salas">
+      <h2>Mesas <em>y salas</em></h2>
+      <p class="tab-panel-sub">Capacidad y configuración de los espacios del Motabarri.</p>
+      <div class="salas-grid">
+        <div class="sala">
+          <h3>Comedor <em>principal</em></h3>
+          <div class="sala-cap">70<small>comensales</small></div>
+          <p>1ª planta · vigas vistas y mesa de madera. Ideal para grupos grandes y comidas de empresa.</p>
+        </div>
+        <div class="sala">
+          <h3>Sala <em>íntima</em></h3>
+          <div class="sala-cap">55<small>comensales</small></div>
+          <p>Planta baja · más recogida. Para parejas, familias y comidas tranquilas.</p>
+        </div>
+        <div class="sala">
+          <h3>Carpa <em>con chimenea</em></h3>
+          <div class="sala-cap">65<small>comensales</small></div>
+          <p>Jardín · climatizada todo el año. Perfecta para celebraciones, bodas pequeñas y eventos privados.</p>
+        </div>
+        <div class="sala">
+          <h3>Terraza</h3>
+          <div class="sala-cap">∞<small>al aire libre</small></div>
+          <p>Mesas al sol durante los meses cálidos. Ambiente informal con sillas rojas.</p>
+        </div>
       </div>
     </div>
+
+    <!-- TAB: OCUPACIÓN -->
+    <div class="tab-panel" data-tab-panel="ocupacion">
+      <h2>Ocupación <em>por hora</em></h2>
+      <p class="tab-panel-sub">Distribución de comensales por franja horaria del día seleccionado.</p>
+      <div class="occ-controls">
+        <input type="date" id="occ-date">
+        <button class="btn btn-primary" id="occ-today">Hoy</button>
+      </div>
+      <div class="occ-bars" id="occ-bars"></div>
+      <div class="occ-summary">
+        <div class="kpi"><div class="kpi-label">Reservas día</div><div class="kpi-val" id="occ-resv">0</div></div>
+        <div class="kpi alt"><div class="kpi-label">Comensales</div><div class="kpi-val" id="occ-pax">0</div></div>
+        <div class="kpi alt2"><div class="kpi-label">Pico horario</div><div class="kpi-val" id="occ-peak">—</div></div>
+      </div>
+    </div>
+
+    <!-- TAB: INFORMES -->
+    <div class="tab-panel" data-tab-panel="informes">
+      <h2>Informes <em>y métricas</em></h2>
+      <p class="tab-panel-sub">Resumen rápido del estado del negocio.</p>
+      <div class="report-grid">
+        <div class="report-card">
+          <h3>Esta <em>semana</em></h3>
+          <div class="report-row"><span>Reservas totales</span><b id="rep-w-resv">0</b></div>
+          <div class="report-row"><span>Confirmadas</span><b id="rep-w-conf">0</b></div>
+          <div class="report-row"><span>Comensales</span><b id="rep-w-pax">0</b></div>
+          <div class="report-row"><span>Tasa cancelación</span><b id="rep-w-canc">0%</b></div>
+        </div>
+        <div class="report-card">
+          <h3>Este <em>mes</em></h3>
+          <div class="report-row"><span>Reservas totales</span><b id="rep-m-resv">0</b></div>
+          <div class="report-row"><span>Confirmadas</span><b id="rep-m-conf">0</b></div>
+          <div class="report-row"><span>Comensales</span><b id="rep-m-pax">0</b></div>
+          <div class="report-row"><span>Media comensales/reserva</span><b id="rep-m-avg">—</b></div>
+        </div>
+        <div class="report-card">
+          <h3>Origen <em>de las reservas</em></h3>
+          <div class="report-row"><span>Web</span><b id="rep-o-web">0</b></div>
+          <div class="report-row"><span>Manual (teléfono)</span><b id="rep-o-manual">0</b></div>
+          <div class="report-row"><span>Demo / pruebas</span><b id="rep-o-demo">0</b></div>
+        </div>
+        <div class="report-card">
+          <h3>Top <em>franjas horarias</em></h3>
+          <div id="rep-top-hours"><div class="report-row"><span>—</span><b>0</b></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: HORARIOS -->
+    <div class="tab-panel" data-tab-panel="horarios">
+      <h2>Horarios <em>de la web</em></h2>
+      <p class="tab-panel-sub">Selecciona qué franjas pueden reservar los clientes desde la web. Click en cada franja para activarla o desactivarla.</p>
+      <div class="hor-grid" id="hor-grid"></div>
+      <div class="hor-info"><b>Cómo funciona</b>Las franjas activas aparecen como opción en el formulario de la web del Motabarri. Las desactivadas no se ofrecen al cliente. Los cambios se guardan automáticamente.</div>
+    </div>
+
+    <!-- TAB: ERP -->
+    <div class="tab-panel" data-tab-panel="erp">
+      <h2>Sincronización <em>ERP</em></h2>
+      <p class="tab-panel-sub">Estado de la conexión con el sistema central G&G Elcano.</p>
+      <div class="report-grid">
+        <div class="report-card">
+          <h3>Endpoint <em>conectado</em></h3>
+          <div class="report-row"><span>URL del worker</span><b style="font-size:13px;font-family:'Courier New',monospace;font-style:normal;color:var(--gris)">/api/reservas</b></div>
+          <div class="report-row"><span>Estado</span><b id="erp-status">—</b></div>
+          <div class="report-row"><span>Reservas locales</span><b id="erp-local">0</b></div>
+          <div class="report-row"><span>Restaurante</span><b style="font-size:14px">motabarri-erandio</b></div>
+        </div>
+        <div class="report-card">
+          <h3>Acciones</h3>
+          <p style="font-size:13px;color:var(--gris);line-height:1.6;margin-bottom:14px">Las reservas se guardan en local + se intentan enviar al ERP en tiempo real.</p>
+          <button class="btn btn-primary" id="erp-ping" style="width:100%">Comprobar conexión</button>
+          <div id="erp-log" style="margin-top:14px;font-size:12px;font-family:'Courier New',monospace;color:var(--gris);max-height:120px;overflow-y:auto"></div>
+        </div>
+      </div>
+    </div>
+
   </main>
+</div>
+
+<!-- Modal NUEVA reserva manual -->
+<div class="modal-new-back" id="modal-new-back"></div>
+<div class="modal-new" id="modal-new">
+  <div class="modal-new-head">
+    <div>
+      <h3>Nueva <em>reserva</em></h3>
+      <p>Apunta una reserva por teléfono o paso a paso</p>
+    </div>
+    <button type="button" class="modal-new-close" id="modal-new-close">×</button>
+  </div>
+  <div class="modal-new-body">
+    <form id="nrform" novalidate>
+      <div class="mn-row single">
+        <div class="mn-field"><label>Nombre del cliente</label><input name="nombre" type="text" required placeholder="Iñigo · Maite García..."></div>
+      </div>
+      <div class="mn-row">
+        <div class="mn-field"><label>Fecha</label><input name="fecha" type="date" required></div>
+        <div class="mn-field"><label>Hora</label><select name="hora" required>
+          <option value="">Elige hora</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option>
+          <option>14:30</option><option>15:00</option><option>15:30</option>
+          <option>20:00</option><option>20:30</option><option>21:00</option>
+          <option>21:30</option><option>22:00</option>
+        </select></div>
+      </div>
+      <div class="mn-row">
+        <div class="mn-field"><label>Comensales</label><select name="comensales" required>
+          <option value="1">1 persona</option><option value="2" selected>2 personas</option>
+          <option value="3">3 personas</option><option value="4">4 personas</option>
+          <option value="5">5 personas</option><option value="6">6 personas</option>
+          <option value="7">7 personas</option><option value="8">8 personas</option>
+          <option value="9">9 personas</option><option value="10">10 personas</option>
+          <option value="11">11 personas</option><option value="12">12 personas</option>
+          <option value="13">13 personas</option><option value="14">14 personas</option>
+        </select></div>
+        <div class="mn-field"><label>Sala</label><select name="sala">
+          <option value="">Sin preferencia</option>
+          <option>Comedor principal</option>
+          <option>Sala íntima</option>
+          <option>Carpa con chimenea</option>
+          <option>Terraza</option>
+        </select></div>
+      </div>
+      <div class="mn-row">
+        <div class="mn-field"><label>Teléfono</label><input name="telefono" type="tel" required placeholder="6XX XXX XXX"></div>
+        <div class="mn-field"><label>Email (opcional)</label><input name="email" type="email"></div>
+      </div>
+      <div class="mn-row single">
+        <div class="mn-field"><label>Notas (alergias, sillita, evento, etc.)</label><textarea name="notas" placeholder="Sin gluten · cumpleaños..."></textarea></div>
+      </div>
+      <div class="mn-row single">
+        <div class="mn-field"><label>Estado inicial</label><select name="estado">
+          <option value="confirmada" selected>Confirmada (apuntada por nosotros)</option>
+          <option value="pendiente">Pendiente (a confirmar)</option>
+        </select></div>
+      </div>
+      <button type="submit" class="mn-submit">Guardar reserva</button>
+    </form>
+  </div>
 </div>
 
 <!-- Detail panel -->
@@ -422,13 +717,6 @@ document.getElementById('btn-refresh').addEventListener('click',()=>{
     .catch(()=>{})
     .finally(render);
 });
-document.getElementById('btn-clear').addEventListener('click',()=>{
-  if(!confirm('¿Borrar TODAS las reservas locales del Motabarri? (Solo afecta a tu navegador)'))return;
-  let other=[];
-  try{other=JSON.parse(localStorage.getItem(CRM_KEY)||'[]').filter(r=>r.restaurante!==RESTAURANT_FILTER);}catch(e){}
-  localStorage.setItem(CRM_KEY,JSON.stringify(other));
-  render();
-});
 document.getElementById('btn-demo').addEventListener('click',()=>{
   const names=['Iñigo Bilbao','Maite Etxeberria','Jon Aranguren','Nora Lopez','Aitor Mendoza','Itziar Garmendia','Mikel Sanchez'];
   const today=new Date();
@@ -459,14 +747,225 @@ document.getElementById('btn-demo').addEventListener('click',()=>{
 });
 
 // Connection check
-fetch(ERP_ENDPOINT+'/ping',{mode:'cors'}).then(r=>{
-  document.getElementById('connection-badge').textContent=r.ok?'CRM CONECTADO ERP':'CRM LOCAL · ERP OFFLINE';
-}).catch(()=>{
-  document.getElementById('connection-badge').textContent='CRM LOCAL';
+function checkERP(cb){
+  fetch(ERP_ENDPOINT+'/ping',{mode:'cors'}).then(r=>{
+    document.getElementById('connection-badge').textContent=r.ok?'CRM CONECTADO ERP':'CRM LOCAL · ERP OFFLINE';
+    cb&&cb(r.ok);
+  }).catch(()=>{
+    document.getElementById('connection-badge').textContent='CRM LOCAL';
+    cb&&cb(false);
+  });
+}
+checkERP();
+
+// Storage events: refresca al recibir reservas desde la web
+window.addEventListener('storage',e=>{if(e.key===CRM_KEY){render();renderAll()}});
+
+/* ─── TABS DEL SIDEBAR ─── */
+const TAB_TITLES={
+  reservas:'Reservas',
+  calendario:'Calendario',
+  salas:'Mesas y salas',
+  ocupacion:'Ocupación',
+  informes:'Informes',
+  horarios:'Horarios',
+  erp:'Sincronización ERP'
+};
+function switchTab(tab){
+  document.querySelectorAll('aside nav a').forEach(a=>a.classList.toggle('active',a.dataset.tab===tab));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.tabPanel===tab));
+  // Refresh data del tab si toca
+  if(tab==='calendario')renderCal();
+  if(tab==='ocupacion')renderOcc();
+  if(tab==='informes')renderRep();
+  if(tab==='horarios')renderHor();
+  if(tab==='erp')renderERP();
+}
+document.querySelectorAll('aside nav a[data-tab]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();switchTab(a.dataset.tab)});
 });
 
-// Storage events: si hay otra pestaña abierta de la web del Motabarri, refresca al recibir reservas
-window.addEventListener('storage',e=>{if(e.key===CRM_KEY)render()});
+/* ─── NUEVA RESERVA MANUAL ─── */
+function openNew(){document.getElementById('modal-new').classList.add('open');document.getElementById('modal-new-back').classList.add('open');document.body.style.overflow='hidden';
+  // Default: hoy + próximos 30 minutos redondeados
+  const now=new Date();
+  const fechaInput=document.querySelector('#nrform [name="fecha"]');
+  if(fechaInput&&!fechaInput.value)fechaInput.value=now.toISOString().slice(0,10);
+}
+function closeNew(){document.getElementById('modal-new').classList.remove('open');document.getElementById('modal-new-back').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('btn-new').addEventListener('click',openNew);
+document.getElementById('cal-new').addEventListener('click',openNew);
+document.getElementById('modal-new-close').addEventListener('click',closeNew);
+document.getElementById('modal-new-back').addEventListener('click',closeNew);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNew()});
+
+document.getElementById('nrform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  const data=Object.fromEntries(new FormData(f).entries());
+  if(!data.nombre||!data.fecha||!data.hora||!data.telefono){alert('Faltan datos: nombre, fecha, hora y teléfono.');return}
+  const r={
+    id:'RES-'+Date.now()+'-'+Math.floor(Math.random()*1000),
+    restaurante:RESTAURANT_FILTER,
+    restaurante_nombre:'Asador Motabarri',
+    nombre:data.nombre,
+    fecha:data.fecha,
+    hora:data.hora,
+    comensales:parseInt(data.comensales)||2,
+    telefono:data.telefono,
+    email:data.email||'',
+    notas:data.notas||'',
+    sala:data.sala||'',
+    estado:data.estado||'confirmada',
+    origen:'manual',
+    created_at:new Date().toISOString()
+  };
+  // Guardar local
+  let other=[];
+  try{other=JSON.parse(localStorage.getItem(CRM_KEY)||'[]').filter(x=>x.restaurante!==RESTAURANT_FILTER);}catch(e){}
+  localStorage.setItem(CRM_KEY,JSON.stringify([r,...loadAll(),...other]));
+  // Intentar enviar al ERP
+  fetch(ERP_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r),mode:'cors'}).catch(()=>{});
+  f.reset();
+  closeNew();
+  render();
+  renderAll();
+});
+
+/* ─── CALENDARIO SEMANAL ─── */
+let calStart=startOfWeek(new Date());
+function startOfWeek(d){const x=new Date(d);const day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);x.setHours(0,0,0,0);return x}
+function fmtRange(start){
+  const end=new Date(start.getTime()+6*86400000);
+  const opt={day:'numeric',month:'short'};
+  return start.toLocaleDateString('es-ES',opt).replace('.','')+' — '+end.toLocaleDateString('es-ES',opt).replace('.','');
+}
+function renderCal(){
+  document.getElementById('cal-range').textContent=fmtRange(calStart);
+  const grid=document.getElementById('cal-grid');
+  grid.innerHTML='';
+  const today=new Date().toISOString().slice(0,10);
+  const all=loadAll();
+  for(let i=0;i<7;i++){
+    const d=new Date(calStart.getTime()+i*86400000);
+    const iso=d.toISOString().slice(0,10);
+    const dayName=d.toLocaleDateString('es-ES',{weekday:'short'}).replace('.','');
+    const dayNum=d.getDate();
+    const isToday=iso===today;
+    const isWeekend=[5,6].includes((d.getDay()+6)%7);
+    const events=all.filter(r=>r.fecha===iso).sort((a,b)=>(a.hora||'').localeCompare(b.hora||''));
+    const totalPax=events.filter(r=>r.estado!=='cancelada').reduce((s,r)=>s+(parseInt(r.comensales)||0),0);
+    const evtsHtml=events.length
+      ? events.map(r=>`<div class="cal-evt ${r.estado||'pendiente'}" data-id="${r.id}"><b>${r.hora||'?'}</b><span>${escapeHtml(r.nombre||'—')}</span><small>${r.comensales||'?'} pax</small></div>`).join('')
+      : '<div class="cal-empty-day">— sin reservas —</div>';
+    grid.insertAdjacentHTML('beforeend',`
+      <div class="cal-day ${isToday?'today':''} ${isWeekend?'weekend':''}">
+        <div class="cal-day-head"><span class="cal-day-num">${dayNum}</span> ${dayName}${events.length?`<span class="cal-day-count">${events.length} · ${totalPax}p</span>`:''}</div>
+        <div class="cal-events">${evtsHtml}</div>
+      </div>`);
+  }
+  grid.querySelectorAll('.cal-evt').forEach(el=>el.addEventListener('click',()=>openDetail(el.dataset.id)));
+}
+document.getElementById('cal-prev').addEventListener('click',()=>{calStart=new Date(calStart.getTime()-7*86400000);renderCal()});
+document.getElementById('cal-next').addEventListener('click',()=>{calStart=new Date(calStart.getTime()+7*86400000);renderCal()});
+document.getElementById('cal-today').addEventListener('click',()=>{calStart=startOfWeek(new Date());renderCal()});
+
+/* ─── OCUPACIÓN ─── */
+const SLOTS=['13:00','13:30','14:00','14:30','15:00','15:30','20:00','20:30','21:00','21:30','22:00'];
+function renderOcc(){
+  const dateInput=document.getElementById('occ-date');
+  if(!dateInput.value)dateInput.value=new Date().toISOString().slice(0,10);
+  const fecha=dateInput.value;
+  const all=loadAll().filter(r=>r.fecha===fecha&&r.estado!=='cancelada');
+  const totalPax=all.reduce((s,r)=>s+(parseInt(r.comensales)||0),0);
+  let maxPax=0,peakHour='—';
+  const bars=document.getElementById('occ-bars');
+  bars.innerHTML='';
+  SLOTS.forEach(h=>{
+    const inSlot=all.filter(r=>r.hora===h);
+    const pax=inSlot.reduce((s,r)=>s+(parseInt(r.comensales)||0),0);
+    if(pax>maxPax){maxPax=pax;peakHour=h}
+    const pct=Math.min(100,(pax/40)*100); // 40 pax como capacidad ref
+    bars.insertAdjacentHTML('beforeend',`<div class="occ-row"><div class="occ-time">${h}</div><div class="occ-bar"><div class="occ-bar-fill ${pax===0?'empty':''}" style="width:${pct}%"></div></div><div class="occ-count">${pax}<small>pax</small></div></div>`);
+  });
+  document.getElementById('occ-resv').textContent=all.length;
+  document.getElementById('occ-pax').textContent=totalPax;
+  document.getElementById('occ-peak').textContent=peakHour;
+}
+document.getElementById('occ-date').addEventListener('change',renderOcc);
+document.getElementById('occ-today').addEventListener('click',()=>{document.getElementById('occ-date').value=new Date().toISOString().slice(0,10);renderOcc()});
+
+/* ─── INFORMES ─── */
+function renderRep(){
+  const all=loadAll();
+  const today=new Date();
+  const wkStart=startOfWeek(today);
+  const wkEnd=new Date(wkStart.getTime()+7*86400000);
+  const mStart=new Date(today.getFullYear(),today.getMonth(),1);
+  const mEnd=new Date(today.getFullYear(),today.getMonth()+1,1);
+  const inWk=all.filter(r=>{const d=new Date(r.fecha);return d>=wkStart&&d<wkEnd});
+  const inMo=all.filter(r=>{const d=new Date(r.fecha);return d>=mStart&&d<mEnd});
+  const sumPax=arr=>arr.filter(r=>r.estado!=='cancelada').reduce((s,r)=>s+(parseInt(r.comensales)||0),0);
+  document.getElementById('rep-w-resv').textContent=inWk.length;
+  document.getElementById('rep-w-conf').textContent=inWk.filter(r=>r.estado==='confirmada').length;
+  document.getElementById('rep-w-pax').textContent=sumPax(inWk);
+  const cancW=inWk.filter(r=>r.estado==='cancelada').length;
+  document.getElementById('rep-w-canc').textContent=inWk.length?Math.round(cancW/inWk.length*100)+'%':'0%';
+  document.getElementById('rep-m-resv').textContent=inMo.length;
+  document.getElementById('rep-m-conf').textContent=inMo.filter(r=>r.estado==='confirmada').length;
+  document.getElementById('rep-m-pax').textContent=sumPax(inMo);
+  const conf=inMo.filter(r=>r.estado!=='cancelada');
+  document.getElementById('rep-m-avg').textContent=conf.length?(sumPax(conf)/conf.length).toFixed(1):'—';
+  document.getElementById('rep-o-web').textContent=all.filter(r=>r.origen==='web').length;
+  document.getElementById('rep-o-manual').textContent=all.filter(r=>r.origen==='manual').length;
+  document.getElementById('rep-o-demo').textContent=all.filter(r=>!r.origen||(r.origen!=='web'&&r.origen!=='manual')).length;
+  // Top horas (hist mes)
+  const byHour={};
+  inMo.filter(r=>r.estado!=='cancelada').forEach(r=>{byHour[r.hora]=(byHour[r.hora]||0)+1});
+  const top=Object.entries(byHour).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  document.getElementById('rep-top-hours').innerHTML=top.length
+    ? top.map(([h,c])=>`<div class="report-row"><span>${h}</span><b>${c}</b></div>`).join('')
+    : '<div class="report-row"><span>Sin datos</span><b>—</b></div>';
+}
+
+/* ─── HORARIOS (editor de slots por día) ─── */
+const HOR_KEY='gg_horarios_motabarri';
+const DEFAULT_HOR=()=>{const o={};['L','M','X','J','V','S','D'].forEach(d=>o[d]={});SLOTS.forEach(h=>['L','M','X','J','V','S','D'].forEach(d=>o[d][h]=true));return o};
+function loadHor(){try{return JSON.parse(localStorage.getItem(HOR_KEY))||DEFAULT_HOR()}catch(e){return DEFAULT_HOR()}}
+function saveHor(h){localStorage.setItem(HOR_KEY,JSON.stringify(h))}
+function renderHor(){
+  const grid=document.getElementById('hor-grid');
+  const data=loadHor();
+  const days=['L','M','X','J','V','S','D'];
+  const dayNames={L:'Lun',M:'Mar',X:'Mié',J:'Jue',V:'Vie',S:'Sáb',D:'Dom'};
+  grid.innerHTML=days.map(d=>`<div class="hor-day"><div class="hor-day-head">${dayNames[d]}</div>${SLOTS.map(h=>`<button class="hor-slot ${data[d]&&data[d][h]?'on':''}" data-d="${d}" data-h="${h}">${h}</button>`).join('')}</div>`).join('');
+  grid.querySelectorAll('.hor-slot').forEach(btn=>btn.addEventListener('click',()=>{
+    const d=loadHor();
+    if(!d[btn.dataset.d])d[btn.dataset.d]={};
+    d[btn.dataset.d][btn.dataset.h]=!d[btn.dataset.d][btn.dataset.h];
+    saveHor(d);
+    btn.classList.toggle('on');
+  }));
+}
+
+/* ─── ERP STATUS ─── */
+function renderERP(){
+  document.getElementById('erp-local').textContent=loadAll().length;
+  checkERP(ok=>{
+    document.getElementById('erp-status').textContent=ok?'✓ Conectado':'✕ Sin conexión (local)';
+    document.getElementById('erp-status').style.color=ok?'var(--bosque)':'var(--rojo)';
+  });
+}
+document.getElementById('erp-ping').addEventListener('click',()=>{
+  const log=document.getElementById('erp-log');
+  log.innerHTML='[ '+new Date().toLocaleTimeString('es-ES')+' ] Pingeando...<br>'+log.innerHTML;
+  checkERP(ok=>{
+    log.innerHTML='[ '+new Date().toLocaleTimeString('es-ES')+' ] '+(ok?'✓ ERP responde OK':'✕ ERP no responde — modo local')+'<br>'+log.innerHTML;
+    renderERP();
+  });
+});
+
+function renderAll(){render();renderCal();renderOcc();renderRep()}
 
 render();
 </script>
