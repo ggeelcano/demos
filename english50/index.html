@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a0618">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>English 50 — Aprende 50 palabras nuevas cada semana</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇬🇧</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🇬🇧</div>
+      <div>
+        <div class="logo-text">English 50</div>
+        <div class="logo-sub">50 palabras / semana · 10 semanas</div>
+      </div>
+    </div>
+    <div class="user-xp">
+      <div class="xp-level" id="xp-level">1</div>
+      <div>
+        <div class="xp-text" id="xp-text">0/200 XP</div>
+        <div class="xp-bar"><div class="xp-bar-fill" id="xp-bar-fill" style="width: 0%"></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ========== DASHBOARD ========== -->
+  <section class="view active" id="view-dashboard">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-icon">📚</div>
+        <div class="stat-value" id="stat-learned">0</div>
+        <div class="stat-label">Dominadas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">📅</div>
+        <div class="stat-value" id="stat-week">1</div>
+        <div class="stat-label">Semana</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-value" id="stat-streak">0</div>
+        <div class="stat-label">Racha</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-value" id="stat-xp">0</div>
+        <div class="stat-label">XP total</div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span class="section-title-bar">📖 Tus semanas</span>
+    </div>
+    <div id="weeks-list"></div>
+  </section>
+
+  <!-- ========== SEMANA / ESTUDIO ========== -->
+  <section class="view" id="view-week">
+    <button class="back-btn" onclick="goDashboard()">← Volver</button>
+    <h2 id="week-title-h" style="margin-bottom: 4px; font-size: 22px;"></h2>
+    <div id="week-sub-h" style="color: var(--muted); font-size: 14px; margin-bottom: 18px;"></div>
+
+    <div class="mode-bar">
+      <button class="mode-btn active" data-mode="flash" onclick="setMode('flash')">
+        <div class="mode-ico">🎴</div>Flash
+      </button>
+      <button class="mode-btn" data-mode="quiz" onclick="setMode('quiz')">
+        <div class="mode-ico">❓</div>Quiz
+      </button>
+      <button class="mode-btn" data-mode="write" onclick="setMode('write')">
+        <div class="mode-ico">✍️</div>Escribir
+      </button>
+      <button class="mode-btn" data-mode="listen" onclick="setMode('listen')">
+        <div class="mode-ico">👂</div>Listen
+      </button>
+    </div>
+    <div class="mode-bar" style="margin-top: -10px;">
+      <button class="mode-btn" data-mode="list" onclick="setMode('list')" style="grid-column: span 4;">
+        <div class="mode-ico">📋</div>Ver lista completa
+      </button>
+    </div>
+
+    <div id="mode-flash"></div>
+    <div id="mode-quiz" style="display: none;"></div>
+    <div id="mode-write" style="display: none;"></div>
+    <div id="mode-listen" style="display: none;"></div>
+    <div id="mode-list" style="display: none;"></div>
+  </section>
+
+  <!-- ========== PROGRESO ========== -->
+  <section class="view" id="view-progress">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-icon">📚</div>
+        <div class="stat-value" id="p-total">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value" id="p-learned">0</div>
+        <div class="stat-label">Dominadas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">📊</div>
+        <div class="stat-value" id="p-pct">0%</div>
+        <div class="stat-label">Progreso</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-value" id="p-xp">0</div>
+        <div class="stat-label">XP</div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span class="section-title-bar">🔥 Actividad últimas 7 semanas</span>
+    </div>
+    <div class="heatmap" id="heatmap"></div>
+    <div class="heatmap-legend">
+      <span>Menos</span>
+      <div class="cells">
+        <div class="heatmap-legend-cell"></div>
+        <div class="heatmap-legend-cell" style="background: rgba(168,85,247,0.25);"></div>
+        <div class="heatmap-legend-cell" style="background: rgba(168,85,247,0.5);"></div>
+        <div class="heatmap-legend-cell" style="background: rgba(168,85,247,0.75);"></div>
+        <div class="heatmap-legend-cell" style="background: var(--p1);"></div>
+      </div>
+      <span>Más</span>
+    </div>
+
+    <div class="section-title">
+      <span class="section-title-bar">🏆 Logros</span>
+    </div>
+    <div class="achievements-grid" id="achievements-grid"></div>
+
+    <div class="section-title">
+      <span class="section-title-bar">📅 Resumen por semana</span>
+    </div>
+    <div id="progress-list"></div>
+  </section>
+
+  <!-- ========== AJUSTES ========== -->
+  <section class="view" id="view-settings">
+    <div class="section-title">
+      <span class="section-title-bar">⚙️ Ajustes</span>
+    </div>
+    <div id="settings-list"></div>
+
+    <div class="section-title" style="margin-top: 30px;">
+      <span class="section-title-bar">ℹ️ Sobre la app</span>
+    </div>
+    <div class="settings-item" style="cursor: default;">
+      <div class="settings-item-left">
+        <div class="settings-icon">🇬🇧</div>
+        <div class="settings-info">
+          <div class="title">English 50</div>
+          <div class="sub">v2.0 · 500 palabras · 10 semanas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bottom">
+  <button class="nav-btn active" data-view="dashboard" onclick="showView('dashboard')">
+    <div class="icon">📚</div>
+    Inicio
+  </button>
+  <button class="nav-btn" data-view="progress" onclick="showView('progress')">
+    <div class="icon">📊</div>
+    Progreso
+  </button>
+  <button class="nav-btn" data-view="settings" onclick="showView('settings')">
+    <div class="icon">⚙️</div>
+    Ajustes
+  </button>
+  <button class="nav-btn" onclick="speak('Hello, how are you today?')">
+    <div class="icon">🔊</div>
+    Test audio
+  </button>
+</nav>
+
+<script src="palabras.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
