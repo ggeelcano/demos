@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fontanería Y.H. — Fontaneros 24h en Mungia y Bizkaia</title>
+  <meta name="description" content="Fontanería Y.H. en Mungia. Urgencias 24 horas en toda Bizkaia. Desatascos, fugas, calderas, reformas de baño. Llama al 692 63 24 34. 4.8★ en Google.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a2540;
+      --navy-light: #14365e;
+      --navy-dark: #051628;
+      --accent: #ffb800;
+      --accent-dark: #e6a500;
+      --bg: #ffffff;
+      --bg-alt: #f4f6fa;
+      --bg-dark: #0a2540;
+      --text: #1a1a2e;
+      --text-light: #5b6473;
+      --border: #e1e6ef;
+      --font: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 400; line-height: 1.7; }
+
+    /* TOP BAR */
+    .topbar { background: var(--navy-dark); color: rgba(255,255,255,0.85); padding: 8px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; }
+    .topbar-left { display: flex; gap: 24px; }
+    .topbar-left span { display: flex; align-items: center; gap: 6px; }
+    .topbar-right { color: var(--accent); font-weight: 600; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(10,37,64,0.08); }
+    .nav-brand { font-family: var(--font); font-size: 1.7rem; color: var(--navy); text-decoration: none; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+    .nav-brand::before { content: ''; display: inline-block; width: 8px; height: 28px; background: var(--accent); }
+    .nav-brand span { color: var(--text-light); font-weight: 400; font-size: 0.95rem; font-family: var(--font-body); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent-dark); }
+    .nav-cta { background: var(--accent); color: var(--navy-dark) !important; padding: 12px 24px; border-radius: 4px; font-weight: 700; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { position: relative; padding: 100px 60px 120px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: #fff; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: url('images/hero.jpg') center/cover; opacity: 0.35; mask-image: linear-gradient(to left, #000 40%, transparent 100%); -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 100%); }
+    .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,184,0,0.15); border: 1px solid rgba(255,184,0,0.4); color: var(--accent); padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 24px; }
+    .hero-badge .pulse { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+    .hero h1 { font-family: var(--font); font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.95; letter-spacing: 0.01em; margin-bottom: 24px; max-width: 750px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; max-width: 560px; color: rgba(255,255,255,0.85); margin-bottom: 36px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--navy-dark); text-decoration: none; padding: 16px 36px; border-radius: 4px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(255,184,0,0.3); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff; text-decoration: none; padding: 16px 36px; border-radius: 4px; font-size: 0.95rem; font-weight: 600; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--bg-alt); padding: 36px 60px; border-bottom: 1px solid var(--border); }
+    .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; align-items: center; }
+    .trust-item { text-align: center; }
+    .trust-item-num { font-family: var(--font); font-size: 2.6rem; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .trust-item-num span { color: var(--accent-dark); }
+    .trust-item-label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+
+    /* SECTION */
+    section { padding: 100px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 12px; font-weight: 700; }
+    .section-title { font-family: var(--font); font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1.05; color: var(--navy); margin-bottom: 20px; letter-spacing: 0.01em; }
+    .section-title span { color: var(--accent-dark); }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+
+    /* SERVICES */
+    .services-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 36px 32px; transition: all 0.35s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform 0.35s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,37,64,0.1); border-color: var(--accent); }
+    .service-card:hover::before { transform: scaleY(1); }
+    .service-icon { width: 56px; height: 56px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 24px; }
+    .service-card h3 { font-family: var(--font); font-size: 1.6rem; color: var(--navy); margin-bottom: 12px; letter-spacing: 0.02em; }
+    .service-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+
+    /* ABOUT */
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 480px; object-fit: cover; border-radius: 8px; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .about-text strong { color: var(--navy); font-weight: 600; }
+    .about-features { list-style: none; margin-top: 28px; }
+    .about-features li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .about-features li:last-child { border-bottom: none; }
+    .about-features svg { color: var(--accent-dark); flex-shrink: 0; margin-top: 2px; }
+    .about-features span { color: var(--text); font-weight: 500; font-size: 0.95rem; }
+
+    /* CTA URGENT */
+    .cta-urgent { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); padding: 80px 60px; text-align: center; color: #fff; position: relative; overflow: hidden; }
+    .cta-urgent::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); }
+    .cta-urgent .label { display: inline-block; background: var(--accent); color: var(--navy-dark); padding: 6px 16px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .cta-urgent h2 { font-family: var(--font); font-size: clamp(2.4rem, 4vw, 3.6rem); margin-bottom: 16px; letter-spacing: 0.01em; }
+    .cta-urgent p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 36px 28px; }
+    .testimonial-stars { color: var(--accent); font-size: 1.05rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testimonial-quote { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+    .testimonial-author { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+
+    /* CONTACT */
+    .contact-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--bg-alt); border-radius: 8px; border-left: 4px solid var(--accent); }
+    .contact-item-icon { width: 44px; height: 44px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+    .contact-item h4 { font-family: var(--font); font-size: 1.25rem; color: var(--navy); margin-bottom: 4px; letter-spacing: 0.02em; }
+    .contact-item p, .contact-item a { font-size: 0.92rem; color: var(--text-light); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent-dark); }
+    .map-wrapper { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 420px; border: 0; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--navy-dark); padding: 60px 60px 40px; color: rgba(255,255,255,0.5); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: rgba(255,255,255,0.9); letter-spacing: 0.04em; }
+    .footer-brand span { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 62px; height: 62px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; }
+      .topbar-left { flex-direction: column; gap: 4px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 70px 24px 90px; }
+      .hero::before { display: none; }
+      .trust-bar { padding: 28px 24px; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      section { padding: 70px 24px; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { height: 320px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .cta-urgent { padding: 60px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Iruña Kalea 1, Mungia</span>
+    <span>🕐 Disponibles 24h · 365 días</span>
+  </div>
+  <div class="topbar-right">⚡ URGENCIAS 24H — 692 63 24 34</div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">FONTANERÍA Y.H. <span>Mungia</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34692632434" class="nav-cta">📱 WhatsApp</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="pulse"></span> URGENCIAS 24 HORAS · TODA BIZKAIA</div>
+    <h1>FONTANEROS<br>EN MUNGIA<br><span>RÁPIDOS Y DE FIAR</span></h1>
+    <p>Llevamos años solucionando fugas, atascos y averías en toda Bizkaia. Trabajo garantizado, presupuesto sin compromiso y atención 24 horas, 365 días al año.</p>
+    <div class="hero-actions">
+      <a href="tel:+34692632434" class="btn-primary">📞 LLAMAR AHORA</a>
+      <a href="https://wa.me/34692632434" class="btn-secondary">💬 WhatsApp directo</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-item-num">4.8<span>★</span></div>
+      <div class="trust-item-label">Valoración Google</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">52<span>+</span></div>
+      <div class="trust-item-label">Reseñas verificadas</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">24<span>h</span></div>
+      <div class="trust-item-label">Servicio urgencias</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-num">100<span>%</span></div>
+      <div class="trust-item-label">Trabajo garantizado</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Nuestros Servicios</p>
+    <h2 class="section-title">LO QUE <span>HACEMOS</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Desde una fuga goteando hasta una reforma completa de baño. Cubrimos todo lo que tu instalación necesite, en casa o en negocio.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>URGENCIAS 24 HORAS</h3>
+      <p>Tubería rota, baño inundado, fuga grave… Llamamos en cualquier momento del día o la noche. Llegamos rápido a toda Bizkaia.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>DESATASCOS</h3>
+      <p>Tuberías, fregaderos, inodoros, bajantes generales. Equipos profesionales y técnicas no destructivas. Sin obras innecesarias.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12s4-8 9-8 9 8 9 8-4 8-9 8-9-8-9-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>DETECCIÓN DE FUGAS</h3>
+      <p>Localizamos fugas ocultas con tecnología sin romper paredes ni suelos. Ahorra dinero en obra y evita daños mayores.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+      </div>
+      <h3>CALDERAS Y CALENTADORES</h3>
+      <p>Instalación, reparación y mantenimiento de calderas, termos y calentadores de gas y eléctricos. Todas las marcas.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+      </div>
+      <h3>REFORMAS DE BAÑO</h3>
+      <p>Cambio de bañera por plato de ducha, sustitución de grifería, alicatado, mamparas. Reformas completas o parciales.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+      </div>
+      <h3>INSTALACIONES NUEVAS</h3>
+      <p>Fontanería de obra nueva, ampliaciones, redistribución de tuberías, conexiones de electrodomésticos. Trabajo limpio y certificado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <img src="images/about.jpg" alt="Fontanería Y.H. Mungia" class="about-img fade-in">
+    <div class="about-text fade-in">
+      <p class="section-label">Quiénes somos</p>
+      <h2 class="section-title">FONTANEROS DE <span>VERDAD</span></h2>
+      <p>Fontanería Y.H. lleva años dando servicio en <strong>Mungia y toda Bizkaia</strong>. Empresa local, pequeña y cercana. Cuando llamas, hablas con quien va a ir a tu casa, no con un call-center que te marea.</p>
+      <p>Nuestro objetivo es simple: <strong>arreglar las cosas bien a la primera</strong>, dejar el sitio limpio y darte un precio justo. Sin sustos, sin trampas y sin recargos absurdos por venir un sábado.</p>
+      <ul class="about-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Presupuesto sin compromiso y por escrito</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Trabajo garantizado y factura legal</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Servicio 24h también fines de semana y festivos</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Sin recargos por desplazamiento dentro de Bizkaia</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA URGENT -->
+<div class="cta-urgent">
+  <div class="label">⚡ URGENCIA</div>
+  <h2>¿TIENES UNA AVERÍA AHORA MISMO?</h2>
+  <p>Llámanos o escríbenos por WhatsApp. Te respondemos en minutos y vamos a tu casa hoy mismo.</p>
+  <div class="cta-buttons">
+    <a href="tel:+34692632434" class="btn-primary">📞 692 63 24 34</a>
+    <a href="https://wa.me/34692632434" class="btn-secondary">💬 ABRIR WHATSAPP</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="opiniones">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Opiniones reales</p>
+    <h2 class="section-title">LO QUE DICEN <span>NUESTROS CLIENTES</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Más de 50 reseñas verificadas en Google con 4.8 estrellas de media. Estos son algunos comentarios reales.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Tuve una fuga un domingo por la tarde y me atendieron al momento. Llegaron en menos de una hora, lo arreglaron rápido y el precio fue muy razonable. Súper recomendables."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Muy buen trato, puntuales y profesionales. Hicimos una reforma de baño completa y quedó perfecto. Sin sorpresas en el presupuesto. Volveré a llamarles seguro."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Llevábamos meses con un atasco que no había forma de quitar. Vinieron, lo solucionaron sin romper nada y dejaron todo limpio. Gente honesta y currante."</p>
+      <div class="testimonial-author">— Reseña verificada Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" style="background: var(--bg-alt);">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">¿NECESITAS UN <span>FONTANERO?</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Llámanos, escríbenos por WhatsApp o pásate por el local. Atendemos en toda Bizkaia.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>TELÉFONO 24H</h4>
+          <a href="tel:+34692632434">692 63 24 34</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </div>
+        <div>
+          <h4>WHATSAPP</h4>
+          <a href="https://wa.me/34692632434">692 63 24 34 — clic para chatear</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>DIRECCIÓN</h4>
+          <p>Iruña Kalea, 1, Local 2<br>48100 Mungia, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>HORARIO</h4>
+          <p>Urgencias 24h, 365 días al año<br>Oficina: L-V 9:00 — 19:00</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Iru%C3%B1a+Kalea+1+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">FONTANERÍA Y.H. <span>· MUNGIA</span></div>
+    <p class="footer-copy">© 2026 Fontanería Y.H. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34692632434" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

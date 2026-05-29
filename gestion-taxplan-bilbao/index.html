@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Taxplan · Asesoría fiscal, contable y laboral en Bilbao</title>
+<meta name="description" content="Asesoría en Bilbao especializada en empresas, autónomos y particulares. Fiscal, contable, laboral y mercantil. Más de 10 años defendiendo a nuestros clientes en Hurtado de Amézaga.">
+<meta name="theme-color" content="#0F2240">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Taxplan · Asesoría en Bilbao">
+<meta property="og:description" content="Fiscal, contable y laboral. Más de 10 años defendiendo a empresas y particulares en Bilbao.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/gestion-taxplan-bilbao/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='30' fill='%230F2240'/%3E%3Ctext x='90' y='118' font-family='Georgia,serif' font-size='100' font-weight='700' fill='%23C7A14A' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230F2240'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23C7A14A' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AccountingService","name":"Taxplan Asesores","image":"https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80","priceRange":"€€","telephone":"+34944794195","address":{"@type":"PostalAddress","streetAddress":"Hurtado de Amézaga 20, 3ª","addressLocality":"Bilbao","postalCode":"48008","addressCountry":"ES"},"areaServed":"Bizkaia"}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2240;
+  --navy-2:#0A1828;
+  --navy-3:#162E55;
+  --gold:#C7A14A;
+  --gold-2:#A88534;
+  --crema:#F7F4EE;
+  --crema-2:#EFE9DC;
+  --tinta:#0E1A2E;
+  --gris:#5A6273;
+  --gris-2:#9099A8;
+  --linea:#E2DDD0;
+  --bn:#FFFFFF;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--bn);color:var(--tinta);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Playfair Display',Georgia,serif}
+
+/* Topbar */
+.topbar{background:var(--navy-2);color:#fff;font-size:12.5px;padding:10px 0}
+.topbar-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.topbar-left{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.topbar-left span{display:flex;align-items:center;gap:8px;opacity:.85}
+.topbar-left b{color:var(--gold);font-weight:600}
+.topbar-right{display:flex;gap:18px;align-items:center}
+.topbar-right a{font-weight:500;letter-spacing:.04em;transition:color .2s}
+.topbar-right a:hover{color:var(--gold)}
+
+/* Nav */
+nav{background:#fff;border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:100;transition:.3s}
+.nav-inner{max-width:1240px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:48px;height:48px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:900;font-size:26px;border:1.5px solid var(--gold)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--navy);letter-spacing:.005em}
+.brand-text small{font-size:10px;letter-spacing:.32em;color:var(--gris);margin-top:5px;text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:32px;font-size:13.5px;letter-spacing:.02em;font-weight:500;color:var(--navy)}
+.nav-links a{position:relative;padding:8px 0;transition:color .2s}
+.nav-links a:hover{color:var(--gold-2)}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transition:.25s;transform-origin:center}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--navy);color:#fff;padding:13px 24px;font-size:13px;font-weight:600;letter-spacing:.05em;transition:.25s;white-space:nowrap;border:1.5px solid var(--navy)}
+.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-2)}
+
+/* Hero */
+.hero{background:#fff;position:relative;padding:90px 24px 70px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;right:-10%;width:60%;height:100%;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;opacity:.18;clip-path:polygon(20% 0,100% 0,100% 100%,0 100%)}
+.hero-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.hero-eye{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-bottom:22px}
+.hero-eye::before{content:"";width:36px;height:1.5px;background:var(--gold)}
+.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(44px,5.6vw,68px);line-height:1.04;letter-spacing:-.012em;color:var(--navy);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--gold-2);font-weight:500}
+.hero-lead{font-size:17.5px;color:var(--gris);font-weight:400;line-height:1.6;margin-bottom:36px;max-width:540px}
+.hero-lead strong{color:var(--navy);font-weight:600}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:15px 30px;font-size:13.5px;font-weight:600;letter-spacing:.06em;transition:.25s;display:inline-flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border:1.5px solid transparent}
+.btn svg{transition:transform .25s}
+.btn:hover svg{transform:translateX(4px)}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-primary:hover{background:var(--gold-2);border-color:var(--gold-2)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.hero-img{position:relative;aspect-ratio:4/5;background:url('https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;box-shadow:0 30px 80px rgba(15,34,64,.15)}
+.hero-img::before{content:"";position:absolute;inset:14px;border:1.5px solid rgba(255,255,255,.4);pointer-events:none;z-index:2}
+.hero-card{position:absolute;bottom:-30px;left:-30px;background:var(--navy);color:#fff;padding:24px 28px;max-width:280px;box-shadow:0 18px 50px rgba(15,34,64,.3);z-index:3;border-left:3px solid var(--gold)}
+.hero-card b{display:block;font-family:'Playfair Display',serif;font-size:36px;color:var(--gold);font-weight:700;line-height:1;margin-bottom:6px}
+.hero-card span{font-size:13px;opacity:.85;line-height:1.4;display:block}
+
+/* Trust strip */
+.trust{background:var(--crema);padding:50px 24px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.trust-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.trust-item b{display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:46px;color:var(--navy);line-height:1;margin-bottom:8px}
+.trust-item b em{font-style:italic;color:var(--gold-2)}
+.trust-item span{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600}
+
+/* Section base */
+section{padding:110px 24px;position:relative}
+.wrap{max-width:1240px;margin:0 auto}
+.head{text-align:center;max-width:720px;margin:0 auto 70px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-bottom:18px}
+.eyebrow::before,.eyebrow::after{content:"";width:30px;height:1.5px;background:var(--gold)}
+.section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(34px,4.6vw,52px);line-height:1.05;letter-spacing:-.01em;color:var(--navy);margin-bottom:18px}
+.section-title em{font-style:italic;color:var(--gold-2);font-weight:500}
+.section-lead{font-size:16.5px;color:var(--gris);font-weight:400;line-height:1.6}
+
+/* Servicios */
+.services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--linea);border-left:1px solid var(--linea)}
+.service{padding:48px 36px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);transition:.3s;position:relative;cursor:pointer;background:#fff}
+.service::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.4s}
+.service:hover{background:var(--crema)}
+.service:hover::before{transform:scaleX(1)}
+.service-num{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:14px;color:var(--gold-2);margin-bottom:24px;display:block;letter-spacing:.04em}
+.service-icon{width:56px;height:56px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:900;font-size:26px;margin-bottom:24px;transition:.3s}
+.service:hover .service-icon{background:var(--gold);color:var(--navy)}
+.service h3{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:var(--navy);margin-bottom:12px;letter-spacing:-.005em}
+.service p{font-size:14.5px;color:var(--gris);line-height:1.6;margin-bottom:18px}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.service-list li{font-size:13.5px;color:var(--tinta);display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.service-list li::before{content:"";width:6px;height:6px;background:var(--gold);margin-top:9px;flex-shrink:0;border-radius:50%}
+.service-link{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:inline-flex;align-items:center;gap:8px;transition:gap .25s}
+.service-link:hover{color:var(--gold-2);gap:14px}
+
+/* Por qué */
+.why{background:var(--crema)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-img{aspect-ratio:1/1;background:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;position:relative;box-shadow:0 30px 80px rgba(15,34,64,.18)}
+.why-img::before{content:"";position:absolute;inset:18px;border:1.5px solid rgba(199,161,74,.5);pointer-events:none}
+.why-stamp{position:absolute;top:-20px;right:-20px;width:140px;height:140px;background:var(--navy);color:var(--gold);border-radius:50%;display:grid;place-items:center;text-align:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;line-height:1.1;padding:18px;box-shadow:0 14px 30px rgba(15,34,64,.3);font-style:italic}
+.why-stamp em{display:block;font-size:36px;font-style:italic;color:var(--gold);margin-bottom:2px;font-weight:900}
+.why-list{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+.why-item{display:flex;gap:20px;padding-bottom:24px;border-bottom:1px solid var(--linea)}
+.why-item:last-child{border:none;padding-bottom:0}
+.why-item .num{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;color:var(--gold-2);min-width:60px;line-height:.9}
+.why-item h4{font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:var(--navy);margin-bottom:6px}
+.why-item p{font-size:14.5px;color:var(--gris);line-height:1.6;margin:0}
+
+/* CTA banner */
+.cta-band{background:var(--navy);color:#fff;padding:80px 24px;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;top:0;right:-100px;width:500px;height:100%;background:radial-gradient(circle,rgba(199,161,74,.18) 0%,transparent 60%);pointer-events:none}
+.cta-band-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center;position:relative}
+.cta-band h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(32px,4vw,46px);line-height:1.1;letter-spacing:-.01em;margin-bottom:14px}
+.cta-band h2 em{font-style:italic;color:var(--gold);font-weight:500}
+.cta-band p{font-size:16px;opacity:.85;font-weight:300;max-width:540px;line-height:1.6}
+.cta-band-r{display:flex;flex-direction:column;gap:16px}
+.cta-band-r .phone{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--gold);letter-spacing:.01em}
+.cta-band-r small{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;margin-bottom:-8px;font-weight:600}
+
+/* Equipo */
+.team{background:#fff}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:30px}
+.team-text p{font-size:16px;color:var(--gris);margin-bottom:18px;line-height:1.7}
+.team-text p strong{color:var(--navy);font-weight:600}
+.team-quote{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:24px;color:var(--navy);line-height:1.4;margin:30px 0;padding-left:30px;border-left:3px solid var(--gold)}
+.team-quote span{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-style:normal;font-weight:700;margin-top:18px;font-family:'Inter',sans-serif}
+.team-pic{aspect-ratio:4/5;background:url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;box-shadow:0 30px 80px rgba(15,34,64,.18);position:relative}
+.team-pic::before{content:"";position:absolute;inset:14px;border:1.5px solid rgba(255,255,255,.5);pointer-events:none}
+
+/* Mapa */
+.map-section{padding:0;background:var(--navy-2)}
+.map-wrap{display:grid;grid-template-columns:1fr 1.5fr;min-height:540px}
+.map-side{padding:80px 50px;color:#fff;background:var(--navy);display:flex;flex-direction:column;justify-content:center}
+.map-side .eyebrow{color:var(--gold)}
+.map-side .eyebrow::before,.map-side .eyebrow::after{background:var(--gold)}
+.map-side h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(34px,4.5vw,50px);line-height:1.05;margin-bottom:20px;color:#fff}
+.map-side h2 em{font-style:italic;color:var(--gold);font-weight:500}
+.map-info{margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;gap:18px}
+.map-row{display:flex;gap:18px;align-items:flex-start}
+.map-row .ico{width:42px;height:42px;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;flex-shrink:0;font-style:italic}
+.map-row b{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:700}
+.map-row span,.map-row a{font-size:15px;color:#fff;font-weight:400;line-height:1.5}
+.map-row a:hover{color:var(--gold)}
+.map-frame{position:relative;background:var(--navy-3);overflow:hidden}
+.map-frame iframe{width:100%;height:100%;border:0}
+
+/* Footer */
+footer{background:#08111E;color:#fff;padding:70px 24px 30px}
+.foot-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:40px}
+.foot-brand-block .brand-mark{margin-bottom:16px}
+.foot-brand-block p{font-size:14px;opacity:.7;margin-top:14px;line-height:1.7}
+.foot-col h5{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--gold);margin-bottom:18px}
+.foot-col ul{list-style:none}
+.foot-col li{font-size:14px;opacity:.75;margin-bottom:9px}
+.foot-col a:hover{color:var(--gold);opacity:1}
+.foot-bottom{max-width:1240px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:12.5px;opacity:.55;flex-wrap:wrap;gap:14px}
+
+/* Mobile */
+@media(max-width:1024px){
+  .topbar-left{font-size:11.5px}
+  .topbar-left span:nth-child(n+3){display:none}
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:60px}
+  .hero-img{max-width:420px;margin:0 auto}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:36px}
+  .services-grid{grid-template-columns:1fr;border-left:none}
+  .service{border-right:none}
+  .why-grid,.team-grid,.cta-band-inner{grid-template-columns:1fr;gap:40px}
+  .map-wrap{grid-template-columns:1fr;min-height:auto}
+  .map-frame{height:380px}
+  .map-side{padding:50px 28px}
+  section{padding:74px 20px}
+  .why-img{max-width:480px;margin:0 auto}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media(max-width:480px){
+  .topbar{font-size:11px}
+  .topbar-right a:not(.tel){display:none}
+  .nav-inner{padding:14px 16px}
+  .brand-mark{width:42px;height:42px;font-size:22px}
+  .brand-text b{font-size:20px}
+  .nav-cta{padding:11px 16px;font-size:12px}
+  .hero{padding:50px 20px 50px}
+  .hero h1{font-size:38px}
+  .hero-lead{font-size:15.5px}
+  .hero-card{position:static;margin-top:24px;max-width:none}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .trust-item b{font-size:34px}
+  section{padding:60px 18px}
+  .head{margin-bottom:50px}
+  .service{padding:36px 26px}
+  .why-stamp{width:110px;height:110px;font-size:12px;top:-12px;right:-12px}
+  .why-stamp em{font-size:28px}
+  .cta-band{padding:60px 22px}
+  .cta-band-r .phone{font-size:28px}
+  .team-quote{font-size:19px;padding-left:18px}
+  .map-side h2{font-size:30px}
+  .foot-inner{grid-template-columns:1fr;gap:30px;text-align:left}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .btn{padding:13px 22px;font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><b>★</b> Más de 10 años de experiencia en Bilbao</span>
+      <span>L–V · 9:00–14:00 · 16:00–19:00</span>
+      <span>Hurtado de Amézaga 20, 3ª · Abando</span>
+    </div>
+    <div class="topbar-right">
+      <a class="tel" href="tel:+34944794195"><b style="color:var(--gold)">☏</b> 944 79 41 95</a>
+      <a href="mailto:info@asesoriataxplan.es">info@asesoriataxplan.es</a>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">T</div>
+      <div class="brand-text"><b>Taxplan</b><small>Asesores · Bilbao</small></div>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#porque">Por qué Taxplan</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#mapa">Cómo llegar</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Quiero saber más</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eye">Asesoría en Bilbao desde hace más de 10 años</span>
+      <h1>Tu asesoría<br>de confianza<br><em>en Abando.</em></h1>
+      <p class="hero-lead"><strong>Taxplan</strong> acompaña a empresas, autónomos y particulares en su día a día fiscal, contable y laboral. Te ahorramos trámites, defendemos tus derechos ante la Administración y te dejamos hacer lo que de verdad importa: <strong>tu negocio</strong>.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-primary">Quiero saber más <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        <a href="tel:+34944794195" class="btn btn-ghost">Llamar al despacho</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="hero-card">
+        <b>+10</b>
+        <span>años defendiendo a empresas, autónomos y particulares en Bilbao.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-item"><b>+10</b><span>Años de trayectoria</span></div>
+    <div class="trust-item"><b>+500</b><span>Clientes activos</span></div>
+    <div class="trust-item"><b>4</b><span>Áreas integradas</span></div>
+    <div class="trust-item"><b>100<em>%</em></b><span>Atención personalizada</span></div>
+  </div>
+</section>
+
+<section id="servicios" class="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Áreas de servicio</span>
+      <h2 class="section-title">Lo que hacemos por <em>tu negocio</em>.</h2>
+      <p class="section-lead">Cuatro áreas integradas y un equipo coordinado que trabaja en común para que tú no tengas que hablar con tres personas distintas para resolver lo mismo.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service">
+        <span class="service-num">— 01</span>
+        <div class="service-icon">€</div>
+        <h3>Fiscal</h3>
+        <p>Optimización tributaria dentro del marco legal: IRPF, IVA, Sociedades, Patrimonio, Sucesiones y Donaciones. Atendemos requerimientos y representamos al cliente ante Hacienda Foral.</p>
+        <ul class="service-list">
+          <li>Declaraciones trimestrales y anuales</li>
+          <li>Planificación fiscal de empresas</li>
+          <li>Recursos y reclamaciones</li>
+          <li>Inspecciones tributarias</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service">
+        <span class="service-num">— 02</span>
+        <div class="service-icon">∑</div>
+        <h3>Contable</h3>
+        <p>Llevanza contable mensual, libros oficiales, cuentas anuales, depósito en el Registro Mercantil y análisis financiero. Te damos la foto real de cómo va tu negocio cada mes.</p>
+        <ul class="service-list">
+          <li>Contabilidad de empresas y autónomos</li>
+          <li>Cuentas anuales y memoria</li>
+          <li>Análisis económico-financiero</li>
+          <li>Auditorías de gestión</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service">
+        <span class="service-num">— 03</span>
+        <div class="service-icon">L</div>
+        <h3>Laboral</h3>
+        <p>Altas, bajas, nóminas, contratos, despidos, ERTEs y todo lo que te genera la relación con la Seguridad Social. Defensa ante Inspección de Trabajo cuando hace falta.</p>
+        <ul class="service-list">
+          <li>Nóminas y seguros sociales</li>
+          <li>Contratos y bonificaciones</li>
+          <li>Despidos y conciliaciones</li>
+          <li>Asesoramiento en convenios</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service">
+        <span class="service-num">— 04</span>
+        <div class="service-icon">M</div>
+        <h3>Mercantil</h3>
+        <p>Constitución de sociedades, modificaciones estatutarias, juntas, fusiones, escisiones y disolución. Toda la vida societaria de tu empresa, ordenada y a tiempo.</p>
+        <ul class="service-list">
+          <li>Constitución de S.L. y S.A.</li>
+          <li>Modificaciones estatutarias</li>
+          <li>Juntas y libros societarios</li>
+          <li>Fusiones y escisiones</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service">
+        <span class="service-num">— 05</span>
+        <div class="service-icon">+</div>
+        <h3>Subvenciones</h3>
+        <p>Detectamos las ayudas públicas y privadas a las que tu empresa puede optar, redactamos la memoria, gestionamos el expediente y nos ocupamos de la justificación.</p>
+        <ul class="service-list">
+          <li>Diputación Foral y Gobierno Vasco</li>
+          <li>SPRI, BEAZ, Lanbide</li>
+          <li>Ayudas estatales y europeas</li>
+          <li>Justificaciones técnicas</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service">
+        <span class="service-num">— 06</span>
+        <div class="service-icon">P</div>
+        <h3>Particulares</h3>
+        <p>Renta, herencias, donaciones, plusvalías, alquileres, autoliquidaciones forales y todo lo que un particular necesita para no liarse con la Hacienda de Bizkaia.</p>
+        <ul class="service-list">
+          <li>Renta y patrimonio</li>
+          <li>Herencias y donaciones</li>
+          <li>Operaciones inmobiliarias</li>
+          <li>Reclamaciones y devoluciones</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="porque" class="why">
+  <div class="wrap why-grid">
+    <div class="why-img">
+      <div class="why-stamp"><em>+10</em>años en<br>Bilbao</div>
+    </div>
+    <div>
+      <span class="eyebrow" style="justify-content:flex-start"><span style="display:inline-block;width:30px;height:1.5px;background:var(--gold)"></span>Por qué Taxplan</span>
+      <h2 class="section-title">Trato directo, <em>despacho cercano</em>, respuestas claras.</h2>
+      <p class="section-lead">Aquí no vas a hablar con un call center ni a esperar tres días por una respuesta. Llamas al despacho y te coge alguien que conoce tu caso por su nombre.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="num">01</span>
+          <div>
+            <h4>Trayectoria contrastada</h4>
+            <p>Más de 10 años en Bilbao defendiendo a empresas y particulares ante Hacienda Foral, Seguridad Social e Inspección de Trabajo.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="num">02</span>
+          <div>
+            <h4>Especialización en Bizkaia</h4>
+            <p>Conocemos la normativa foral al detalle: hablamos el mismo idioma que la Hacienda Foral de Bizkaia y sabemos cómo plantear cada operación.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="num">03</span>
+          <div>
+            <h4>Equipo coordinado</h4>
+            <p>Fiscal, contable y laboral trabajan en la misma mesa. Lo que decidimos en una área tiene sentido en las otras dos.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="num">04</span>
+          <div>
+            <h4>Defensa real ante la Administración</h4>
+            <p>No nos limitamos a presentar papeles: si toca recurrir, recurrimos. Si toca ir a una inspección, vamos contigo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div>
+      <h2>¿Quieres saber qué <em>podemos hacer</em> por tu negocio?</h2>
+      <p>Llámanos o escríbenos. Te invitamos a una primera reunión gratuita, sin compromiso, para entender tu situación y proponerte cómo podemos ayudarte.</p>
+    </div>
+    <div class="cta-band-r">
+      <small>Atención directa</small>
+      <a href="tel:+34944794195" class="phone">944 79 41 95</a>
+      <a href="mailto:info@asesoriataxplan.es" class="btn btn-primary" style="background:var(--gold);border-color:var(--gold);color:var(--navy-2);align-self:flex-start">Escribir al despacho <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section id="equipo" class="team">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Nuestro despacho</span>
+      <h2 class="section-title">Un equipo pequeño, <em>cercano y técnico</em>.</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-text">
+        <p>Taxplan nace en Bilbao con una idea sencilla: <strong>llevar al día las obligaciones de nuestros clientes y, sobre todo, defenderles cuando hace falta</strong>. Más de una década después, nuestra carta de presentación son los clientes que nos siguen confiando su negocio año tras año.</p>
+        <p>Trabajamos con empresas pequeñas y medianas, con autónomos que arrancan y con familias que necesitan poner orden en su patrimonio. Nuestro tamaño es nuestra ventaja: <strong>aquí no eres un número</strong>.</p>
+        <div class="team-quote">
+          "Lo que más valoran nuestros clientes es saber que pueden llamar y hablar con la persona que conoce su caso. Sin esperas, sin protocolos, sin que les vuelvan a contar lo mismo cada vez."
+          <span>— Equipo Taxplan</span>
+        </div>
+        <p>El despacho está en pleno <strong>Abando</strong>, a dos pasos de la estación de Abando-Indalecio Prieto, con todas las instituciones forales, judiciales y registrales a un paseo. Fácil de llegar, fácil de aparcar.</p>
+      </div>
+      <div class="team-pic"></div>
+    </div>
+  </div>
+</section>
+
+<section id="mapa" class="map-section">
+  <div class="map-wrap">
+    <div class="map-side">
+      <span class="eyebrow">Visítanos</span>
+      <h2 id="contacto">En el corazón de <em>Abando</em>.</h2>
+      <div class="map-info">
+        <div class="map-row">
+          <div class="ico">@</div>
+          <div><b>Dirección</b><span>Hurtado de Amézaga 20, 3ª planta<br>48008 Abando · Bilbao · Bizkaia</span></div>
+        </div>
+        <div class="map-row">
+          <div class="ico">☏</div>
+          <div><b>Teléfono</b><a href="tel:+34944794195">944 79 41 95</a></div>
+        </div>
+        <div class="map-row">
+          <div class="ico">✉</div>
+          <div><b>Email</b><a href="mailto:info@asesoriataxplan.es">info@asesoriataxplan.es</a></div>
+        </div>
+        <div class="map-row">
+          <div class="ico">⏱</div>
+          <div><b>Horario</b><span>Lunes a Viernes<br>9:00 – 14:00 · 16:00 – 19:00</span></div>
+        </div>
+        <div class="map-row">
+          <div class="ico">M</div>
+          <div><b>Cómo llegar</b><span>Metro Abando · Cercanías Abando-Indalecio Prieto · Bilbobus líneas 18, 27, 38</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps?q=Calle+Hurtado+de+Am%C3%A9zaga+20,+48008+Bilbao&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ubicación Taxplan"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand-block">
+      <div class="brand-mark" style="margin-bottom:14px">T</div>
+      <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold);margin-bottom:4px">Taxplan</div>
+      <div style="font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.6)">Asesores · Bilbao</div>
+      <p>Asesoría fiscal, contable y laboral en Bilbao desde hace más de 10 años. Empresas, autónomos y particulares.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios">Fiscal</a></li>
+        <li><a href="#servicios">Contable</a></li>
+        <li><a href="#servicios">Laboral</a></li>
+        <li><a href="#servicios">Mercantil</a></li>
+        <li><a href="#servicios">Subvenciones</a></li>
+        <li><a href="#servicios">Particulares</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Despacho</h5>
+      <ul>
+        <li>Hurtado de Amézaga 20, 3ª</li>
+        <li>48008 Bilbao · Bizkaia</li>
+        <li><a href="tel:+34944794195">944 79 41 95</a></li>
+        <li><a href="mailto:info@asesoriataxplan.es">info@asesoriataxplan.es</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Horario</h5>
+      <ul>
+        <li>Lunes a Viernes</li>
+        <li>9:00 – 14:00</li>
+        <li>16:00 – 19:00</li>
+        <li>Sábados cerrado</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Taxplan Asesores · Todos los derechos reservados</span>
+    <span>Aviso legal · Política de privacidad · Cookies</span>
+  </div>
+</footer>
+
+</body>
+</html>

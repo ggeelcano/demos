@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uragarden — Servicios integrales en Mungia y Bizkaia</title>
+  <meta name="description" content="Uragarden en Mungia. Jardinería, mantenimiento de piscinas, fontanería, climatización y limpieza. Una sola empresa para cuidar tu casa o negocio. Oletalde 33.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest: #2d5f3f;
+      --forest-dark: #1f4429;
+      --forest-light: #3e7a54;
+      --water: #4a90b5;
+      --water-dark: #356f8f;
+      --cream: #f7f4ec;
+      --cream-dark: #ece6d4;
+      --bg: #fdfbf5;
+      --bg-alt: #f3efe2;
+      --text: #1f2a22;
+      --text-light: #5a665e;
+      --text-mute: #8a948c;
+      --border: #dcd5c0;
+      --font: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 400; line-height: 1.7; }
+
+    /* TOP BAR */
+    .topbar { background: var(--forest-dark); color: var(--cream); padding: 10px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; }
+    .topbar-left { display: flex; gap: 26px; }
+    .topbar-left span { display: flex; align-items: center; gap: 6px; }
+    .topbar-right { color: var(--cream); font-weight: 600; }
+    .topbar-right a { color: var(--cream); text-decoration: none; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; width: 100%; z-index: 100; background: rgba(253,251,245,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(45,95,63,0.08); }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-brand-mark { width: 46px; height: 46px; background: var(--forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .nav-brand-mark svg { color: var(--cream); }
+    .nav-brand-text { font-family: var(--font); font-size: 1.6rem; color: var(--forest-dark); font-weight: 600; line-height: 1; letter-spacing: -0.01em; }
+    .nav-brand-sub { font-size: 0.68rem; color: var(--water); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; font-weight: 500; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--forest); }
+    .nav-cta { background: var(--forest); color: var(--cream) !important; padding: 12px 26px; border-radius: 50px; font-weight: 600 !important; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--forest-dark); transform: translateY(-1px); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; z-index: 0; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(31,68,41,0.92) 0%, rgba(31,68,41,0.65) 50%, rgba(31,68,41,0.3) 100%); z-index: 1; }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; padding: 10px 22px; background: rgba(247,244,236,0.12); border: 1px solid rgba(247,244,236,0.25); border-radius: 50px; color: var(--cream); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; margin-bottom: 32px; }
+    .hero-eyebrow .dot { width: 8px; height: 8px; background: var(--water); border-radius: 50%; }
+    .hero h1 { font-family: var(--font); font-size: clamp(3rem, 6.5vw, 5.8rem); font-weight: 500; line-height: 1.05; color: var(--cream); margin-bottom: 30px; letter-spacing: -0.02em; max-width: 880px; }
+    .hero h1 em { font-style: italic; color: var(--water); font-weight: 400; }
+    .hero p { font-size: 1.2rem; max-width: 580px; color: rgba(247,244,236,0.92); margin-bottom: 44px; line-height: 1.75; font-weight: 300; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); color: var(--forest-dark); text-decoration: none; padding: 18px 40px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--water); color: var(--cream); transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--cream); text-decoration: none; padding: 18px 40px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; border: 1.5px solid rgba(247,244,236,0.4); transition: all 0.3s; }
+    .btn-outline:hover { background: var(--cream); color: var(--forest-dark); border-color: var(--cream); }
+
+    /* SERVICES TICKER */
+    .ticker { background: var(--forest); color: var(--cream); padding: 22px 0; overflow: hidden; }
+    .ticker-track { display: flex; gap: 60px; animation: ticker 40s linear infinite; white-space: nowrap; }
+    .ticker-item { font-family: var(--font); font-size: 1.5rem; font-style: italic; font-weight: 400; }
+    .ticker-item::after { content: '✦'; margin-left: 60px; color: var(--water); }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* SECTION COMMON */
+    section { padding: 130px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--water); margin-bottom: 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 14px; }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--water); }
+    .section-title { font-family: var(--font); font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 500; line-height: 1.05; color: var(--forest-dark); margin-bottom: 26px; letter-spacing: -0.015em; }
+    .section-title em { font-style: italic; color: var(--water); font-weight: 400; }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 640px; line-height: 1.85; }
+
+    /* SERVICES */
+    .servicios { background: var(--bg-alt); }
+    .servicios-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .servicio-card { background: #fff; border-radius: 16px; overflow: hidden; transition: all 0.4s; border: 1px solid var(--border); }
+    .servicio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(45,95,63,0.12); }
+    .servicio-img { width: 100%; height: 220px; object-fit: cover; }
+    .servicio-body { padding: 36px 32px; }
+    .servicio-icon { width: 52px; height: 52px; background: var(--cream); color: var(--forest); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .servicio-card h3 { font-family: var(--font); font-size: 1.65rem; color: var(--forest-dark); font-weight: 600; margin-bottom: 12px; line-height: 1.2; }
+    .servicio-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+    .servicio-card.no-img .servicio-body { padding-top: 44px; }
+
+    /* ABOUT */
+    .about-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; align-items: center; }
+    .about-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--forest-dark); font-weight: 600; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; height: 580px; object-fit: cover; border-radius: 20px; }
+    .about-badge { position: absolute; bottom: -24px; left: -24px; background: var(--water); color: var(--cream); padding: 28px 36px; border-radius: 16px; box-shadow: 0 20px 40px rgba(74,144,181,0.3); }
+    .about-badge-num { font-family: var(--font); font-size: 2.8rem; line-height: 1; font-weight: 600; }
+    .about-badge-text { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; opacity: 0.95; }
+    .about-features { list-style: none; margin-top: 28px; }
+    .about-features li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+    .about-features li:last-child { border-bottom: none; }
+    .about-features svg { color: var(--forest); flex-shrink: 0; margin-top: 3px; }
+    .about-features span { color: var(--text); font-weight: 500; font-size: 0.96rem; }
+
+    /* PROCESO */
+    .proceso { background: var(--forest-dark); color: var(--cream); }
+    .proceso .section-title { color: var(--cream); }
+    .proceso .section-label { color: var(--water); }
+    .proceso .section-label::before { background: var(--water); }
+    .proceso .section-sub { color: rgba(247,244,236,0.7); margin: 0 auto; }
+    .proceso-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .proceso-grid { margin-top: 70px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
+    .proceso-step { text-align: left; position: relative; padding-top: 36px; }
+    .proceso-step::before { content: ''; position: absolute; top: 0; left: 0; width: 50px; height: 3px; background: var(--water); }
+    .proceso-num { font-family: var(--font); font-size: 0.9rem; color: var(--water); letter-spacing: 0.15em; margin-bottom: 14px; font-style: italic; }
+    .proceso-step h3 { font-family: var(--font); font-size: 1.5rem; color: var(--cream); margin-bottom: 12px; font-weight: 500; line-height: 1.25; }
+    .proceso-step p { font-size: 0.92rem; color: rgba(247,244,236,0.7); line-height: 1.75; }
+
+    /* B2B SECTOR */
+    .b2b { background: var(--cream); }
+    .b2b-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .b2b-img { width: 100%; height: 520px; object-fit: cover; border-radius: 20px; }
+    .b2b-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.95; margin-bottom: 20px; }
+    .b2b-list { list-style: none; margin-top: 28px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .b2b-list li { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #fff; border-radius: 10px; border-left: 3px solid var(--water); }
+    .b2b-list li svg { color: var(--forest); flex-shrink: 0; }
+    .b2b-list li span { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+
+    /* TESTIMONIOS */
+    .testimonios { background: var(--bg-alt); }
+    .testimonios-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonio { background: #fff; padding: 44px 36px; border-radius: 16px; border-top: 4px solid var(--water); }
+    .testimonio-stars { color: var(--water); font-size: 1rem; margin-bottom: 18px; letter-spacing: 4px; }
+    .testimonio-quote { font-family: var(--font); font-style: italic; font-size: 1.1rem; color: var(--text); line-height: 1.65; margin-bottom: 22px; font-weight: 400; }
+    .testimonio-author { font-size: 0.82rem; font-weight: 600; color: var(--forest); letter-spacing: 0.05em; }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%); padding: 130px 60px; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(74,144,181,0.2) 0%, transparent 70%); }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.8rem, 5vw, 4.4rem); margin-bottom: 24px; font-weight: 500; line-height: 1.05; letter-spacing: -0.015em; position: relative; }
+    .cta h2 em { font-style: italic; color: var(--water); }
+    .cta p { color: rgba(247,244,236,0.85); font-size: 1.1rem; max-width: 580px; margin: 0 auto 44px; line-height: 1.85; position: relative; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* CONTACT */
+    .contacto-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 22px; }
+    .contacto-item { display: flex; gap: 22px; align-items: flex-start; padding: 28px; background: var(--bg-alt); border-radius: 14px; border-left: 4px solid var(--forest); }
+    .contacto-item-icon { width: 48px; height: 48px; background: var(--forest); color: var(--cream); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contacto-item h4 { font-family: var(--font); font-size: 1.2rem; color: var(--forest-dark); font-weight: 600; margin-bottom: 4px; }
+    .contacto-item p, .contacto-item a { font-size: 0.95rem; color: var(--text-light); text-decoration: none; line-height: 1.6; }
+    .contacto-item a:hover { color: var(--forest); }
+    .map-wrapper { border-radius: 16px; overflow: hidden; border: 2px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 480px; border: 0; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--forest-dark); padding: 60px 60px 40px; color: rgba(247,244,236,0.5); }
+    .footer-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: var(--cream); font-weight: 600; }
+    .footer-brand span { color: var(--water); font-style: italic; font-weight: 400; }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(247,244,236,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--water); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; font-size: 0.72rem; }
+      .topbar-left { flex-direction: column; gap: 4px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 80px 24px; min-height: 80vh; }
+      .ticker-item { font-size: 1.1rem; }
+      section { padding: 80px 24px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .about-inner, .b2b-inner, .contacto-grid { grid-template-columns: 1fr; gap: 50px; }
+      .about-img, .b2b-img { height: 360px; }
+      .about-badge { left: 20px; bottom: -16px; padding: 22px 28px; }
+      .about-badge-num { font-size: 2.2rem; }
+      .proceso-grid { grid-template-columns: 1fr; gap: 40px; }
+      .b2b-list { grid-template-columns: 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .cta { padding: 80px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Oletalde 33 · Mungia, Bizkaia</span>
+    <span>🕐 Lunes a Viernes · 8:00 — 19:00</span>
+  </div>
+  <div class="topbar-right">📞 <a href="tel:+34946746898">946 74 68 98</a></div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-mark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L8 6h3v6H8l4 4 4-4h-3V6h3z"/><path d="M3 22h18"/></svg>
+    </div>
+    <div>
+      <div class="nav-brand-text">Uragarden</div>
+      <div class="nav-brand-sub">Servicios integrales · Mungia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#sobre">Empresa</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34946746898" class="nav-cta">📱 Pedir presupuesto</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> Servicios integrales en Bizkaia</div>
+    <h1>Una sola empresa<br>para cuidar tu <em>casa o negocio.</em></h1>
+    <p>Jardinería, mantenimiento de piscinas, fontanería, climatización y limpieza. Olvídate de coordinar varios profesionales — en Uragarden lo tienes todo bajo un mismo techo.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34946746898" class="btn-primary">Pedir presupuesto →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Jardinería</span>
+    <span class="ticker-item">Mantenimiento de piscinas</span>
+    <span class="ticker-item">Fontanería</span>
+    <span class="ticker-item">Climatización</span>
+    <span class="ticker-item">Limpieza profesional</span>
+    <span class="ticker-item">Servicios integrales</span>
+    <span class="ticker-item">Jardinería</span>
+    <span class="ticker-item">Mantenimiento de piscinas</span>
+    <span class="ticker-item">Fontanería</span>
+    <span class="ticker-item">Climatización</span>
+    <span class="ticker-item">Limpieza profesional</span>
+    <span class="ticker-item">Servicios integrales</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="servicios" id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Cinco servicios,<br>una <em>sola llamada.</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Cubrimos todo lo que tu casa, comunidad o negocio necesita para funcionar. Equipo propio, herramientas profesionales y atención cercana.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card fade-in">
+      <img src="images/service-jardin.jpg" alt="Jardinería profesional Uragarden" class="servicio-img">
+      <div class="servicio-body">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20"/><path d="M12 12c-4-2-7-6-7-10 4 0 8 3 7 10z"/><path d="M12 12c4-2 7-6 7-10-4 0-8 3-7 10z"/></svg>
+        </div>
+        <h3>Jardinería</h3>
+        <p>Mantenimiento de jardines, poda de árboles, siega, riego, plantación, diseño y reformas exteriores. Servicio puntual o contrato anual.</p>
+      </div>
+    </div>
+    <div class="servicio-card fade-in">
+      <img src="images/service-piscina.jpg" alt="Mantenimiento de piscinas Uragarden" class="servicio-img">
+      <div class="servicio-body">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 14s2-2 5-2 5 2 10 2 5-2 5-2"/><path d="M2 8s2-2 5-2 5 2 10 2 5-2 5-2"/></svg>
+        </div>
+        <h3>Mantenimiento de piscinas</h3>
+        <p>Limpieza, control químico del agua, puesta en marcha, invernaje, reparaciones y sustitución de bombas y filtros. Particulares y comunidades.</p>
+      </div>
+    </div>
+    <div class="servicio-card fade-in">
+      <div class="servicio-body" style="padding-top: 44px;">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2L8 8l-4 4 6 6 4-4 6-6z"/><path d="M14 2l4 4M8 8l4 4"/></svg>
+        </div>
+        <h3>Fontanería</h3>
+        <p>Reparaciones, instalaciones nuevas, detección de fugas, desatascos, cambio de griferías, sustitución de bañeras por platos de ducha y reformas de baño completas.</p>
+      </div>
+    </div>
+    <div class="servicio-card fade-in">
+      <div class="servicio-body" style="padding-top: 44px;">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5 5l14 14M19 5L5 19"/></svg>
+        </div>
+        <h3>Climatización</h3>
+        <p>Instalación y mantenimiento de aire acondicionado, calefacción, calderas, aerotermia y bombas de calor. Todas las marcas y modelos.</p>
+      </div>
+    </div>
+    <div class="servicio-card fade-in">
+      <div class="servicio-body" style="padding-top: 44px;">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+        </div>
+        <h3>Limpieza profesional</h3>
+        <p>Limpieza de comunidades, oficinas, locales comerciales, obra fina y limpiezas profundas. Personal cualificado y productos profesionales.</p>
+      </div>
+    </div>
+    <div class="servicio-card fade-in">
+      <div class="servicio-body" style="padding-top: 44px;">
+        <div class="servicio-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3>Servicios integrales</h3>
+        <p>Contrato global de mantenimiento para comunidades de vecinos, empresas y particulares con necesidades recurrentes. Una sola factura, un solo interlocutor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre Uragarden</p>
+      <h2 class="section-title">Una empresa<br>de <em>Mungia</em>, para Bizkaia.</h2>
+      <p>Uragarden nace en Mungia con una idea muy clara: <strong>simplificar el día a día de quien tiene casa, jardín, piscina o un negocio que mantener</strong>. En lugar de llamar a cinco profesionales distintos, nos llamas a nosotros y nos encargamos de todo.</p>
+      <p>Nuestro equipo cubre <strong>jardinería, piscinas, fontanería, climatización y limpieza</strong>, con experiencia técnica real y precios honestos. Trabajamos con particulares, comunidades de vecinos y empresas en toda la zona de Mungia, Uribe-Butroe y Bizkaia.</p>
+      <ul class="about-features">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Equipo propio cualificado y con seguro</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Presupuestos sin compromiso y por escrito</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Contratos de mantenimiento o servicios puntuales</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Empresa local con factura y trato cercano</span>
+        </li>
+      </ul>
+    </div>
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Equipo Uragarden Mungia" class="about-img">
+      <div class="about-badge">
+        <div class="about-badge-num">5</div>
+        <div class="about-badge-text">Servicios bajo<br>el mismo techo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="proceso-inner">
+    <p class="section-label">Cómo trabajamos</p>
+    <h2 class="section-title">Sin sorpresas,<br><em>sin complicaciones.</em></h2>
+    <p class="section-sub">Cuatro pasos sencillos desde tu primera llamada hasta el trabajo terminado y dejado limpio.</p>
+    <div class="proceso-grid">
+      <div class="proceso-step fade-in">
+        <div class="proceso-num">— Paso 01</div>
+        <h3>Nos llamas</h3>
+        <p>Por teléfono o WhatsApp. Nos cuentas qué necesitas — sea una urgencia o un mantenimiento anual — y te respondemos al momento.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="proceso-num">— Paso 02</div>
+        <h3>Visitamos y valoramos</h3>
+        <p>Vamos a verlo en persona si hace falta. Sin compromiso. Te explicamos lo que se puede hacer y cómo, sin tecnicismos absurdos.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="proceso-num">— Paso 03</div>
+        <h3>Presupuesto claro</h3>
+        <p>Te entregamos un presupuesto por escrito, con materiales, mano de obra y plazos. Sin letra pequeña, sin extras escondidos.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="proceso-num">— Paso 04</div>
+        <h3>Trabajo y limpieza</h3>
+        <p>Ejecutamos el servicio en el plazo acordado, con materiales de calidad, y dejamos el sitio limpio antes de irnos. Como debe ser.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B -->
+<section class="b2b">
+  <div class="b2b-inner">
+    <img src="images/service-piscina.jpg" alt="Mantenimiento profesional comunidades" class="b2b-img fade-in">
+    <div class="b2b-text fade-in">
+      <p class="section-label">Comunidades y empresas</p>
+      <h2 class="section-title">Un solo<br>interlocutor para <em>todo.</em></h2>
+      <p>Si gestionas una comunidad de vecinos, un local comercial o una empresa, sabes lo que cuesta tener cinco proveedores distintos y coordinarlos a todos. Con Uragarden tienes <strong>un único interlocutor para todos tus servicios de mantenimiento</strong>.</p>
+      <p>Una sola factura, un solo contrato y un equipo que ya conoce las particularidades de tus instalaciones. Más simple, más barato y más rápido.</p>
+      <ul class="b2b-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Comunidades de vecinos</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Locales comerciales</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Oficinas y empresas</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Hoteles y restaurantes</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Lo que dicen</p>
+    <h2 class="section-title">Clientes <em>contentos</em></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Tenemos contratado el mantenimiento del jardín y la piscina con ellos desde hace tiempo. Súper formales, puntuales y profesionales. Llamas y vienen."</p>
+      <div class="testimonio-author">— Cliente verificado</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Nos hicieron una reforma de baño y luego les contratamos el mantenimiento del aire acondicionado. Trabajo limpio, presupuesto que cumplen y trato cercano."</p>
+      <div class="testimonio-author">— Cliente verificado</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Como administradora de fincas, llevo años trabajando con Uragarden para varias comunidades. Resuelven todo sin agobiar y los vecinos están encantados."</p>
+      <div class="testimonio-author">— Cliente verificado</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>¿Necesitas algo<br>en <em>tu casa o negocio?</em></h2>
+  <p>Llámanos o escríbenos por WhatsApp. Te respondemos al momento, te visitamos sin compromiso y te damos presupuesto claro.</p>
+  <div class="cta-actions">
+    <a href="tel:+34946746898" class="btn-primary">📞 946 74 68 98</a>
+    <a href="https://wa.me/34946746898" class="btn-outline">💬 WhatsApp directo</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en <em>Mungia</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-info fade-in">
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Calle Oletalde, 33<br>48100 Mungia, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Teléfono / WhatsApp</h4>
+          <a href="https://wa.me/34946746898">946 74 68 98</a>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes a Viernes: 8:00 — 19:00<br>Sábado: bajo demanda</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div>
+          <h4>Zona de cobertura</h4>
+          <p>Mungia, Uribe-Butroe<br>y toda Bizkaia</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Oletalde+33+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Uragarden <span>· Mungia</span></div>
+    <p class="footer-copy">© 2026 Uragarden SL. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34946746898" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

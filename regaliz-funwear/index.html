@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regaliz Funwear — The TrendSetter Store · Las Palmas de Gran Canaria</title>
+  <meta name="description" content="Regaliz Funwear. Las marcas que te gustan, todas en la misma tienda. Veja, Deus Ex Machina, Edmmond, Fred Perry, Yuxus y +50 marcas. Dos tiendas en Las Palmas.">
+  <meta property="og:title" content="Regaliz Funwear · The TrendSetter Store">
+  <meta property="og:description" content="Las marcas que te gustan, todas en la misma tienda. +50 marcas internacionales.">
+  <meta property="og:image" content="https://regalizfunwear.es/wp-content/uploads/2026/02/DEUS-GORRAS.jpeg">
+  <link rel="icon" href="https://regalizfunwear.es/wp-content/uploads/2023/07/cropped-Logo-rayo-Regaliz-Funwear-2023-web.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --ink: #0A0A0A;
+      --ash: #1A1A1A;
+      --smoke: #5C5C5C;
+      --mist: #9A9A9A;
+      --fog: #D9D9D9;
+      --silver: #EFEFEF;
+      --white: #FFFFFF;
+      --sand: #F5F1EA;
+      --accent: #FF4F1F;
+      --font-display: 'Fraunces', serif;
+      --font-sans: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--ink); color: var(--white); }
+
+    /* ─── TOP BANNER ─── */
+    .topbar {
+      background: var(--ink); color: var(--white);
+      padding: 10px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 60px;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500;
+      overflow: hidden; height: 38px;
+    }
+    .topbar-item {
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0.9;
+    }
+    .topbar-item svg { width: 12px; height: 12px; stroke: currentColor; }
+    .topbar-item strong { color: var(--accent); font-weight: 700; }
+    @media (max-width: 800px) {
+      .topbar { gap: 30px; padding: 10px 16px; }
+      .topbar-item:not(:first-child) { display: none; }
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--silver);
+      padding: 18px 40px;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      gap: 40px;
+      transition: padding 0.3s var(--ease);
+    }
+    nav.scrolled { padding: 12px 40px; }
+
+    .nav-left { display: flex; gap: 38px; align-items: center; }
+    .nav-left a {
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-left a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -8px;
+      height: 1px; background: var(--ink);
+      transform: scaleX(0); transition: transform 0.3s var(--ease);
+      transform-origin: right;
+    }
+    .nav-left a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-left a.active::after { transform: scaleX(1); }
+
+    .brand {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.7rem; font-weight: 500;
+      letter-spacing: -0.01em;
+      font-variation-settings: 'opsz' 144;
+      line-height: 0.95;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .brand-tag {
+      font-family: var(--font-sans);
+      font-size: 0.55rem; letter-spacing: 0.45em;
+      color: var(--smoke); font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .brand .bolt { color: var(--accent); }
+
+    .nav-right { display: flex; gap: 24px; justify-content: flex-end; align-items: center; }
+    .nav-icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .nav-icon:hover { background: var(--silver); }
+    .nav-icon svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+    .nav-icon .badge {
+      position: absolute; top: 4px; right: 4px;
+      background: var(--accent); color: var(--white);
+      font-size: 0.58rem; font-weight: 700;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hamburger { display: none; }
+
+    @media (max-width: 900px) {
+      nav { grid-template-columns: auto auto auto; padding: 14px 20px; }
+      .nav-left { display: none; }
+      .brand { font-size: 1.4rem; }
+      .hamburger {
+        display: flex; width: 40px; height: 40px;
+        align-items: center; justify-content: center;
+      }
+      .hamburger span {
+        position: relative; width: 20px; height: 1.5px; background: var(--ink);
+        display: block;
+      }
+      .hamburger span::before, .hamburger span::after {
+        content: ''; position: absolute; left: 0; right: 0; height: 1.5px;
+        background: var(--ink);
+      }
+      .hamburger span::before { top: -6px; }
+      .hamburger span::after { top: 6px; }
+      .nav-right { gap: 12px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: calc(100vh - 76px); min-height: 680px;
+      overflow: hidden;
+      background: var(--sand);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://regalizfunwear.es/wp-content/uploads/2026/02/DEUS-GORRAS.jpeg') center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 8s var(--ease);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 30%, rgba(0,0,0,0.35) 100%);
+    }
+    .hero-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 60px 56px 80px;
+      color: var(--white);
+    }
+    .hero-label {
+      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 24px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.9s 0.2s var(--ease) forwards;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight: 300;
+      line-height: 0.92; letter-spacing: -0.03em;
+      max-width: 1100px; margin-bottom: 34px;
+      font-variation-settings: 'opsz' 144;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.2s 0.4s var(--ease) forwards;
+    }
+    .hero-title em { font-style: italic; font-weight: 300; }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUp 1s 0.8s var(--ease) forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 32px;
+      font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500; border: 1px solid transparent;
+      transition: all 0.35s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.5; transition: transform 0.3s; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-light { background: var(--white); color: var(--ink); border-color: var(--white); }
+    .btn-light:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .btn-dark { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .btn-dark:hover { background: transparent; color: var(--ink); }
+    .btn-outline-dark { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.6); }
+    .btn-outline-dark:hover { background: var(--white); color: var(--ink); }
+    .btn-outline-ink { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline-ink:hover { background: var(--ink); color: var(--white); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ─── MARQUEE BRANDS ─── */
+    .marquee {
+      background: var(--ink); color: var(--white);
+      overflow: hidden; padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .marquee-track {
+      display: flex; white-space: nowrap;
+      animation: scroll 45s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 30px;
+      padding: 0 42px;
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 300;
+      letter-spacing: 0.02em;
+      font-variation-settings: 'opsz' 144;
+      color: rgba(255,255,255,0.75);
+    }
+    .marquee-item em { font-style: italic; color: var(--accent); }
+    .marquee-item .sep {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION HEADER ─── */
+    section { position: relative; }
+    .section-header {
+      padding: 90px 56px 30px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300; line-height: 0.98;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; }
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--smoke); font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .section-meta {
+      display: flex; gap: 32px; align-items: center;
+    }
+    .section-meta a {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink); font-weight: 500;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 3px;
+      transition: gap 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .section-meta a:hover { gap: 14px; }
+
+    /* ─── NEW IN / PRODUCTS GRID ─── */
+    .products-section { padding-bottom: 90px; }
+    .filters {
+      padding: 0 56px 30px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .filter-chip {
+      padding: 10px 20px;
+      border: 1px solid var(--fog);
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500; color: var(--smoke);
+      transition: all 0.3s;
+    }
+    .filter-chip.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+    .filter-chip:hover:not(.active) { border-color: var(--ink); color: var(--ink); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .product {
+      position: relative;
+      background: var(--silver);
+    }
+    .product-img {
+      aspect-ratio: 3/4;
+      width: 100%; overflow: hidden;
+      position: relative;
+      background: var(--sand);
+    }
+    .product-img img, .product-img .img-el {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: opacity 0.6s var(--ease), transform 1.2s var(--ease);
+    }
+    .product-img .img-alt { opacity: 0; }
+    .product:hover .product-img .img-main { opacity: 0; }
+    .product:hover .product-img .img-alt { opacity: 1; }
+    .product:hover .product-img img { transform: scale(1.03); }
+
+    .product-tag {
+      position: absolute; top: 14px; left: 14px; z-index: 2;
+      background: var(--white); color: var(--ink);
+      padding: 5px 10px;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600;
+    }
+    .product-tag.new { background: var(--ink); color: var(--white); }
+    .product-tag.sale { background: var(--accent); color: var(--white); }
+    .product-tag.eco { background: #3F6B3A; color: var(--white); }
+
+    .product-fav {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      width: 36px; height: 36px;
+      background: var(--white); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(-8px);
+      transition: all 0.35s var(--ease);
+    }
+    .product:hover .product-fav { opacity: 1; transform: translateY(0); }
+    .product-fav svg { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 1.5; fill: none; }
+    .product-fav:hover svg { fill: var(--accent); stroke: var(--accent); }
+
+    .product-quick {
+      position: absolute; bottom: 14px; left: 14px; right: 14px; z-index: 2;
+      padding: 12px 16px;
+      background: var(--ink); color: var(--white);
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600;
+      text-align: center;
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.35s var(--ease);
+      cursor: pointer;
+    }
+    .product:hover .product-quick { opacity: 1; transform: translateY(0); }
+    .product-quick:hover { background: var(--accent); }
+
+    .product-info {
+      padding: 18px 18px 24px;
+      background: var(--white);
+    }
+    .product-brand {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--smoke); font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 400;
+      line-height: 1.25; color: var(--ink);
+      margin-bottom: 10px;
+      min-height: 2.5em;
+    }
+    .product-name em { font-style: italic; }
+    .product-price-row {
+      display: flex; align-items: baseline; gap: 10px;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-size: 0.95rem; font-weight: 600; color: var(--ink);
+    }
+    .product-price-old {
+      font-size: 0.85rem; color: var(--mist);
+      text-decoration: line-through; font-weight: 400;
+      margin-left: 6px;
+    }
+    .product-colors {
+      display: flex; gap: 6px;
+    }
+    .color-swatch {
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 1px solid var(--fog);
+    }
+
+    /* ─── COLLECTIONS (editorial cards) ─── */
+    .collections {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+    .collection {
+      position: relative; aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--silver);
+    }
+    .collection.tall { grid-row: span 2; aspect-ratio: 3/7; }
+    .collection img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.4s var(--ease);
+    }
+    .collection:hover img { transform: scale(1.05); }
+    .collection::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 40%, transparent 70%);
+    }
+    .collection-content {
+      position: absolute; inset: 0; z-index: 2;
+      padding: 50px; color: var(--white);
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .collection-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.34em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 16px; opacity: 0.85;
+    }
+    .collection-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 300; line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .collection-title em { font-style: italic; }
+    .collection-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500; padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.6);
+      width: fit-content;
+      transition: all 0.35s var(--ease);
+    }
+    .collection:hover .collection-cta { gap: 18px; border-bottom-color: var(--white); }
+
+    /* ─── EDITORIAL / LOOKBOOK ─── */
+    .editorial {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      background: var(--sand);
+    }
+    .editorial-visual {
+      position: relative; min-height: 720px;
+      background: url('https://regalizfunwear.es/wp-content/uploads/2026/02/zapatillas-Mizuno-Wave-Rider-10-white-silver-teal-blue-1.jpg') center/cover no-repeat;
+    }
+    .editorial-content {
+      padding: 120px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .editorial-label {
+      font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--smoke); font-weight: 600;
+      margin-bottom: 30px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .editorial-label::before { content: ''; width: 30px; height: 1px; background: var(--smoke); }
+    .editorial-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 300; line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .editorial-title em { font-style: italic; color: var(--accent); }
+    .editorial-body {
+      font-family: var(--font-display);
+      font-size: 1.15rem; line-height: 1.7;
+      color: var(--smoke); margin-bottom: 44px;
+      max-width: 480px; font-weight: 300;
+    }
+    .editorial-body strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── BRANDS WALL ─── */
+    .brands-section { padding: 100px 0 120px; background: var(--white); }
+    .brands-wall {
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      border-top: 1px solid var(--silver);
+      border-left: 1px solid var(--silver);
+    }
+    .brand-cell {
+      padding: 40px 24px;
+      border-right: 1px solid var(--silver);
+      border-bottom: 1px solid var(--silver);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 400;
+      letter-spacing: 0.02em; text-align: center;
+      color: var(--smoke);
+      transition: all 0.3s var(--ease);
+      min-height: 110px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .brand-cell:hover {
+      background: var(--ink); color: var(--white);
+      transform: scale(1.02); z-index: 2;
+    }
+    .brand-cell em { font-style: italic; }
+
+    /* ─── STORES ─── */
+    .stores-section {
+      background: var(--ink); color: var(--white);
+      padding: 120px 56px;
+    }
+    .stores-header {
+      text-align: center; max-width: 900px; margin: 0 auto 80px;
+    }
+    .stores-header .section-label { color: var(--accent); }
+    .stores-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      font-weight: 300; line-height: 1;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+      margin-bottom: 24px;
+    }
+    .stores-header h2 em { font-style: italic; }
+    .stores-header p {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 1.2rem; color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .stores-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; max-width: 1280px; margin: 0 auto;
+    }
+    .store {
+      padding: 56px 44px;
+      background: var(--ash);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.4s var(--ease);
+    }
+    .store:hover { background: #252525; border-color: var(--accent); }
+    .store-badge {
+      font-size: 0.68rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .store-name {
+      font-family: var(--font-display);
+      font-size: 2.4rem; font-weight: 400;
+      margin-bottom: 10px; line-height: 1;
+      font-variation-settings: 'opsz' 144;
+    }
+    .store-name em { font-style: italic; }
+    .store-area {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 34px;
+    }
+    .store-info {
+      display: flex; flex-direction: column; gap: 14px;
+      padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 32px;
+    }
+    .store-info-row {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.9rem; color: rgba(255,255,255,0.8);
+    }
+    .store-info-row svg { width: 16px; height: 16px; color: var(--accent); stroke: currentColor; stroke-width: 1.5; fill: none; flex-shrink: 0; }
+    .store-hours {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 0.95rem; line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+    }
+    .store-hours strong { color: var(--white); font-weight: 500; font-style: normal; }
+
+    /* ─── NEWSLETTER ─── */
+    .newsletter {
+      padding: 140px 56px;
+      background: var(--sand);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .newsletter-label {
+      font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .newsletter h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 1100px; margin: 0 auto 30px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .newsletter h2 em { font-style: italic; }
+    .newsletter p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: var(--smoke);
+      max-width: 560px; margin: 0 auto 50px;
+      line-height: 1.7; font-weight: 300;
+    }
+    .newsletter-form {
+      display: flex; gap: 0; max-width: 560px; margin: 0 auto;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .newsletter-form input {
+      flex: 1; padding: 18px 6px;
+      background: transparent; border: none; outline: none;
+      font-family: var(--font-sans); font-size: 0.92rem;
+      color: var(--ink); font-weight: 400;
+    }
+    .newsletter-form input::placeholder {
+      color: var(--mist); letter-spacing: 0.02em;
+    }
+    .newsletter-form button {
+      padding: 18px 30px;
+      font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase;
+      font-weight: 600; color: var(--ink);
+      transition: color 0.3s;
+    }
+    .newsletter-form button:hover { color: var(--accent); }
+    .newsletter-discount {
+      margin-top: 30px;
+      font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--smoke); font-weight: 500;
+    }
+    .newsletter-discount strong { color: var(--accent); font-weight: 700; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink); color: var(--white);
+      padding: 100px 56px 30px;
+    }
+    .footer-top {
+      max-width: 1400px; margin: 0 auto 80px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 2.6rem; font-weight: 400;
+      letter-spacing: -0.01em; line-height: 1;
+      margin-bottom: 6px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .footer-brand-name .bolt { color: var(--accent); font-style: italic; }
+    .footer-brand-tag {
+      font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .footer-brand-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 340px; margin-bottom: 28px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .footer-social svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+    .footer-col h5 {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--white); font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6);
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1400px; margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-pay { display: flex; gap: 10px; align-items: center; }
+    .footer-pay span {
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.64rem; letter-spacing: 0.16em;
+      font-weight: 500; color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1200px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .brands-wall { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-header { padding: 70px 24px 22px; }
+      .filters { padding: 0 24px 22px; }
+      .hero-content { padding: 40px 24px 60px; }
+      .collections { grid-template-columns: 1fr; }
+      .collection, .collection.tall { grid-row: auto; aspect-ratio: 4/5; }
+      .editorial { grid-template-columns: 1fr; }
+      .editorial-visual { min-height: 480px; }
+      .editorial-content { padding: 70px 24px; }
+      .brands-wall { grid-template-columns: repeat(3, 1fr); padding: 40px 24px; }
+      .brand-cell { padding: 30px 16px; min-height: 90px; font-size: 0.95rem; }
+      .stores-section { padding: 80px 24px; }
+      .stores-grid { grid-template-columns: 1fr; }
+      .store { padding: 40px 28px; }
+      .newsletter { padding: 90px 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-top > :first-child { grid-column: span 2; }
+      footer { padding: 70px 24px 28px; }
+    }
+    @media (max-width: 600px) {
+      .brands-wall { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top > :first-child { grid-column: auto; }
+      .btn { padding: 13px 24px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-item">
+    <strong>–10%</strong> en tu primera compra online
+  </div>
+  <div class="topbar-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l1 7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-7M3 9l2-5h14l2 5M3 9h18" stroke-linecap="round"/></svg>
+    Envío gratis desde 60€
+  </div>
+  <div class="topbar-item">
+    Devoluciones en 30 días
+  </div>
+  <div class="topbar-item">
+    2 tiendas en Las Palmas G.C.
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="nav-left">
+    <a href="#new" class="active">New In</a>
+    <a href="#collections">Colecciones</a>
+    <a href="#brands">Marcas</a>
+    <a href="#sustainable">Eco</a>
+    <a href="#stores">Tiendas</a>
+  </div>
+  <a href="#" class="brand">
+    Regaliz<span class="bolt">⚡</span>Funwear
+    <span class="brand-tag">The TrendSetter Store</span>
+  </a>
+  <div class="nav-right">
+    <button class="nav-icon" aria-label="Buscar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <button class="nav-icon" aria-label="Cuenta">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <button class="nav-icon" aria-label="Favoritos">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <button class="nav-icon" aria-label="Carrito">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="badge">2</span>
+    </button>
+    <button class="hamburger" aria-label="Menú"><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Nueva temporada — Otoño/Invierno 2026</div>
+    <h1 class="hero-title">Las marcas que <em>te gustan</em>,<br>todas en la <em>misma tienda</em>.</h1>
+    <div class="hero-actions">
+      <a href="#new" class="btn btn-light">
+        Descubrir New In
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#collections" class="btn btn-outline-dark">
+        Ver colecciones
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE BRANDS ─── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Veja <em>·</em> Deus Ex Machina <span class="sep"></span></div>
+    <div class="marquee-item">Edmmond Studios <span class="sep"></span></div>
+    <div class="marquee-item">Fred Perry <span class="sep"></span></div>
+    <div class="marquee-item">Yuxus <span class="sep"></span></div>
+    <div class="marquee-item">Komono <span class="sep"></span></div>
+    <div class="marquee-item">Blundstone <span class="sep"></span></div>
+    <div class="marquee-item">Topo Designs <span class="sep"></span></div>
+    <div class="marquee-item">Herschel <span class="sep"></span></div>
+    <div class="marquee-item">Thinking Mu <span class="sep"></span></div>
+    <div class="marquee-item">Scotta 1985 <span class="sep"></span></div>
+    <div class="marquee-item">Gola <span class="sep"></span></div>
+    <div class="marquee-item">Katin <span class="sep"></span></div>
+    <div class="marquee-item">Chela Clo <span class="sep"></span></div>
+    <div class="marquee-item">Veja <em>·</em> Deus Ex Machina <span class="sep"></span></div>
+    <div class="marquee-item">Edmmond Studios <span class="sep"></span></div>
+    <div class="marquee-item">Fred Perry <span class="sep"></span></div>
+    <div class="marquee-item">Yuxus <span class="sep"></span></div>
+    <div class="marquee-item">Komono <span class="sep"></span></div>
+    <div class="marquee-item">Blundstone <span class="sep"></span></div>
+    <div class="marquee-item">Topo Designs <span class="sep"></span></div>
+    <div class="marquee-item">Herschel <span class="sep"></span></div>
+    <div class="marquee-item">Thinking Mu <span class="sep"></span></div>
+  </div>
+</div>
+
+<!-- ─── NEW IN ─── -->
+<section class="products-section" id="new">
+  <div class="section-header">
+    <div>
+      <div class="section-label">—— Novedades</div>
+      <h2 class="section-title">New <em>In</em></h2>
+    </div>
+    <div class="section-meta">
+      <a href="#">
+        Ver todo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-chip active">Todo</button>
+    <button class="filter-chip">Hombre</button>
+    <button class="filter-chip">Mujer</button>
+    <button class="filter-chip">Calzado</button>
+    <button class="filter-chip">Accesorios</button>
+    <button class="filter-chip">Outlet</button>
+  </div>
+
+  <div class="products-grid">
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag new">New</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisetas-unicas.png" alt="Yuxus deepsea Azure">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/DEUS-GORRAS.jpeg" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Yuxus</div>
+        <h3 class="product-name">Camiseta <em>Deepsea Azure</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">42,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#1E3A5F;"></span>
+            <span class="color-swatch" style="background:#F5F1EA;"></span>
+            <span class="color-swatch" style="background:#2A2A2A;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag new">New</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/zapatillas-Mizuno-Wave-Rider-10-white-silver-teal-blue-1.jpg" alt="Mizuno Wave Rider 10">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisetas-unicas.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Mizuno</div>
+        <h3 class="product-name">Wave Rider 10 <em>White Silver Teal</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">135,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#F0F0F0;"></span>
+            <span class="color-swatch" style="background:#3DA5A8;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag">Restock</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/DEUS-GORRAS.jpeg" alt="Deus gorra">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisas.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Deus Ex Machina</div>
+        <h3 class="product-name">Gorra <em>Venice Trucker</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">45,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#1A1A1A;"></span>
+            <span class="color-swatch" style="background:#8B6F47;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag eco">Sustainable</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Productos-sostenibles.png" alt="Productos sostenibles">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisas.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Thinking Mu</div>
+        <h3 class="product-name">Hemp <em>Organic Tee</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">39,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#E8E3D6;"></span>
+            <span class="color-swatch" style="background:#3F6B3A;"></span>
+            <span class="color-swatch" style="background:#2A2A2A;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag">Bestseller</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Mochilas.png" alt="Mochila Herschel">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/DEUS-GORRAS.jpeg" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Herschel</div>
+        <h3 class="product-name">Mochila <em>Little America</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">110,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#1A1A1A;"></span>
+            <span class="color-swatch" style="background:#5C4033;"></span>
+            <span class="color-swatch" style="background:#1B3A5C;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag new">New</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisas.png" alt="Camisa">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Abrigos.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Edmmond Studios</div>
+        <h3 class="product-name">Camisa <em>Oxford Classic</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">89,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#F5F5F5;"></span>
+            <span class="color-swatch" style="background:#4A5D7E;"></span>
+            <span class="color-swatch" style="background:#E8D9B5;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag sale">–30%</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Abrigos.png" alt="Abrigo">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisas.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Scotta 1985</div>
+        <h3 class="product-name">Parka <em>Classic Olive</em></h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">139,00 €</span>
+            <span class="product-price-old">199,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#5D6B42;"></span>
+            <span class="color-swatch" style="background:#1A1A1A;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">
+        <span class="product-tag">Accesorios</span>
+        <button class="product-fav" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <img class="img-el img-main" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Todo-para-chicas.png" alt="Komono">
+        <img class="img-el img-alt" src="https://regalizfunwear.es/wp-content/uploads/2026/02/Mochilas.png" alt="">
+        <button class="product-quick">Añadir al carrito</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Komono</div>
+        <h3 class="product-name">Gafas <em>Lulu Steel</em> White Gold Havana</h3>
+        <div class="product-price-row">
+          <div>
+            <span class="product-price">79,00 €</span>
+          </div>
+          <div class="product-colors">
+            <span class="color-swatch" style="background:#E8C896;"></span>
+            <span class="color-swatch" style="background:#1A1A1A;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COLLECTIONS ─── -->
+<section id="collections">
+  <div class="section-header">
+    <div>
+      <div class="section-label">—— Colecciones</div>
+      <h2 class="section-title">Shop by <em>collection</em></h2>
+    </div>
+    <div class="section-meta">
+      <a href="#">
+        Ver todas
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="collections">
+    <a href="#" class="collection tall">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Abrigos.png" alt="Abrigos">
+      <div class="collection-content">
+        <div class="collection-eyebrow">AW26 — Outerwear</div>
+        <h3 class="collection-title">Abrigos<br>&amp; <em>chaquetas</em></h3>
+        <span class="collection-cta">
+          Ver colección
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="#" class="collection">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Todo-para-chicas.png" alt="Colección mujer">
+      <div class="collection-content">
+        <div class="collection-eyebrow">Women</div>
+        <h3 class="collection-title">Todo <em>para ellas</em></h3>
+        <span class="collection-cta">
+          Descubrir
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="#" class="collection">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Productos-sostenibles.png" alt="Productos sostenibles">
+      <div class="collection-content">
+        <div class="collection-eyebrow">Eco · Sustainable</div>
+        <h3 class="collection-title">Moda <em>con conciencia</em></h3>
+        <span class="collection-cta">
+          Ver productos eco
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+  <div class="collections" style="grid-template-columns: 1fr 1fr 1fr; margin-top:0;">
+    <a href="#" class="collection">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Camisetas-unicas.png" alt="Camisetas">
+      <div class="collection-content">
+        <div class="collection-eyebrow">Essentials</div>
+        <h3 class="collection-title">Camisetas <em>únicas</em></h3>
+        <span class="collection-cta">
+          Shop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="#" class="collection">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Mochilas.png" alt="Mochilas">
+      <div class="collection-content">
+        <div class="collection-eyebrow">Bags &amp; Travel</div>
+        <h3 class="collection-title">Mochilas &amp; <em>bolsos</em></h3>
+        <span class="collection-cta">
+          Shop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+    <a href="#" class="collection">
+      <img src="https://regalizfunwear.es/wp-content/uploads/2026/02/Para-ninos.png" alt="Niños">
+      <div class="collection-content">
+        <div class="collection-eyebrow">Kids</div>
+        <h3 class="collection-title">Para los <em>peques</em></h3>
+        <span class="collection-cta">
+          Shop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── EDITORIAL ─── -->
+<section class="editorial" id="sustainable">
+  <div class="editorial-visual"></div>
+  <div class="editorial-content">
+    <div class="editorial-label">Nuestra filosofía</div>
+    <h2 class="editorial-title">Moda que <em>cuida el planeta</em>.</h2>
+    <p class="editorial-body">
+      Llevamos años apostando por <strong>marcas sostenibles</strong>: algodón orgánico, cáñamo, reciclaje de tejidos y producción local. De Veja y Thinking Mu a Edmmond Studios — cada pieza tiene detrás una historia que queremos contarte.
+    </p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="#" class="btn btn-dark">
+        Descubrir marcas eco
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#" class="btn btn-outline-ink">
+        Leer el blog
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRANDS WALL ─── -->
+<section class="brands-section" id="brands">
+  <div class="section-header">
+    <div>
+      <div class="section-label">—— +50 marcas seleccionadas</div>
+      <h2 class="section-title">Las marcas <em>que amamos</em></h2>
+    </div>
+    <div class="section-meta">
+      <a href="#">
+        Ver todas
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="brands-wall">
+    <a href="#" class="brand-cell">Veja</a>
+    <a href="#" class="brand-cell"><em>Deus</em> Ex Machina</a>
+    <a href="#" class="brand-cell">Edmmond Studios</a>
+    <a href="#" class="brand-cell">Fred Perry</a>
+    <a href="#" class="brand-cell">Yuxus</a>
+    <a href="#" class="brand-cell">Komono</a>
+    <a href="#" class="brand-cell">Blundstone</a>
+    <a href="#" class="brand-cell">Topo Designs</a>
+    <a href="#" class="brand-cell">Herschel</a>
+    <a href="#" class="brand-cell"><em>Thinking</em> Mu</a>
+    <a href="#" class="brand-cell">Scotta 1985</a>
+    <a href="#" class="brand-cell">Gola</a>
+    <a href="#" class="brand-cell">Katin</a>
+    <a href="#" class="brand-cell">Mizuno</a>
+    <a href="#" class="brand-cell">Chela Clo</a>
+    <a href="#" class="brand-cell">NWHR</a>
+    <a href="#" class="brand-cell">Revolution</a>
+    <a href="#" class="brand-cell"><em>+ 34 más</em></a>
+  </div>
+</section>
+
+<!-- ─── STORES ─── -->
+<section class="stores-section" id="stores">
+  <div class="stores-header">
+    <div class="section-label" style="color:var(--accent);">—— Visítanos</div>
+    <h2>Dos tiendas en <em>Las Palmas</em></h2>
+    <p>Ven a tocar, probarte, descubrir. El mejor sitio para ver lo que amamos — y lo que vas a amar tú.</p>
+  </div>
+  <div class="stores-grid">
+    <div class="store">
+      <div class="store-badge">Flagship · Triana</div>
+      <h3 class="store-name">Regaliz <em>Triana</em></h3>
+      <div class="store-area">El corazón histórico de Las Palmas</div>
+      <div class="store-info">
+        <div class="store-info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>C/ Cano, 5 · 35002 Las Palmas G.C.</span>
+        </div>
+        <div class="store-info-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>928 38 16 56 · WhatsApp</span>
+        </div>
+      </div>
+      <div class="store-hours">
+        <strong>L–V</strong> · 10:30–14:30 · 16:30–20:30<br>
+        <strong>Sábados</strong> · 10:30–14:30 · 17:00–19:30
+      </div>
+    </div>
+    <div class="store">
+      <div class="store-badge">Mesa y López</div>
+      <h3 class="store-name">Regaliz <em>Mesa y López</em></h3>
+      <div class="store-area">La gran avenida comercial</div>
+      <div class="store-info">
+        <div class="store-info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>C/ Juan Manuel Durán, 33 · 35007 Las Palmas G.C.</span>
+        </div>
+        <div class="store-info-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>928 38 16 56 · WhatsApp</span>
+        </div>
+      </div>
+      <div class="store-hours">
+        <strong>L–V</strong> · 10:30–14:30 · 16:30–20:30<br>
+        <strong>Sábados</strong> · 10:30–14:30 · 17:00–20:00
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ─── -->
+<section class="newsletter">
+  <div class="newsletter-label">—— Newsletter</div>
+  <h2>Sé el <em>primero</em> en saberlo.</h2>
+  <p>Nuevas colecciones, drops exclusivos y las historias detrás de cada marca. Directo a tu bandeja —nunca spam.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Gracias ✓';">
+    <input type="email" placeholder="Tu email" required>
+    <button type="submit">Suscribirme</button>
+  </form>
+  <div class="newsletter-discount">Usa código <strong>BIENVENIDA10</strong> — 10% descuento 1ª compra online</div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Regaliz<span class="bolt">⚡</span>Funwear</div>
+      <div class="footer-brand-tag">The TrendSetter Store</div>
+      <p class="footer-brand-body">Las marcas que te gustan, todas en la misma tienda. +50 marcas seleccionadas. Dos tiendas físicas en Las Palmas de Gran Canaria.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/regalizfunwear/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@regalizfunwear" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.321 5.562a5.124 5.124 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.849-.971-1.165-1.956-1.281-2.645h.004C16.368 1.132 16.405 1 16.405 1h-3.391v13.094c0 .188 0 .374-.008.557v.053c0 .03-.003.06-.005.09v.008a2.99 2.99 0 0 1-1.506 2.37 2.946 2.946 0 0 1-1.457.385c-1.631 0-2.953-1.331-2.953-2.977s1.322-2.977 2.953-2.977c.31 0 .608.048.888.138v-3.453a6.335 6.335 0 0 0-.888-.062c-3.491 0-6.322 2.853-6.322 6.372s2.83 6.372 6.322 6.372c3.491 0 6.322-2.853 6.322-6.372V8.644a9.593 9.593 0 0 0 5.556 1.771V7.025a5.462 5.462 0 0 1-2.595-1.463z"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029VbB2ZtB05MUfbNzvhx0M" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@regalizfunwear" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Tienda</h5>
+      <ul>
+        <li><a href="#new">New In</a></li>
+        <li><a href="#collections">Colecciones</a></li>
+        <li><a href="#brands">Marcas</a></li>
+        <li><a href="#sustainable">Sostenible</a></li>
+        <li><a href="#">Outlet</a></li>
+        <li><a href="#">Tarjeta regalo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ayuda</h5>
+      <ul>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Guía de tallas</a></li>
+        <li><a href="#">Pagos</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Tiendas</h5>
+      <ul>
+        <li>Triana · C/ Cano, 5</li>
+        <li>Mesa y López · J. M. Durán 33</li>
+        <li>35002 / 35007 Las Palmas</li>
+        <li><a href="tel:+34928381656">928 38 16 56</a></li>
+        <li><a href="mailto:info@regalizfunwear.es">info@regalizfunwear.es</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regaliz</h5>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Afiliados</a></li>
+        <li><a href="#">Trabaja con nosotros</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Regaliz Funwear · Todos los derechos reservados · Aviso legal · Privacidad · Cookies</div>
+    <div class="footer-pay">
+      <span>Visa</span>
+      <span>Mastercard</span>
+      <span>Amex</span>
+      <span>PayPal</span>
+      <span>Bizum</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hero bg load
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+
+  // Filter chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  // Favorite toggle
+  document.querySelectorAll('.product-fav').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const svg = btn.querySelector('svg');
+      const filled = svg.style.fill === 'currentcolor';
+      svg.style.fill = filled ? 'none' : 'currentcolor';
+      svg.style.stroke = filled ? 'currentcolor' : '#FF4F1F';
+      svg.style.color = filled ? '#0A0A0A' : '#FF4F1F';
+    });
+  });
+</script>
+
+</body>
+</html>

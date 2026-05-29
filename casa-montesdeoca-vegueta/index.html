@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Montesdeoca · Restaurante Vegueta — Cocina canaria con alma desde el corazón histórico de Las Palmas</title>
+  <meta name="description" content="Casa Montesdeoca Restaurante en Vegueta, Las Palmas de Gran Canaria. Cocina canaria tradicional con innovación. Chef Gustavo Carrasco. Edificio histórico con patio canario.">
+  <meta property="og:title" content="Casa Montesdeoca · Restaurante Vegueta">
+  <meta property="og:description" content="Cocina canaria con alma. Vegueta, Las Palmas de Gran Canaria.">
+  <meta property="og:image" content="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/04/terraza-interior-casa-montesdeoca.jpeg">
+  <link rel="icon" href="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/04/favicon-casa-montesdeoca-300x300.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian: #F7F1E4;
+      --ink: #EFE8D8;
+      --ink-2: #E5DCC8;
+      --ink-3: #D9CEB6;
+      --bone: #1A1612;
+      --bone-soft: #3A3228;
+      --copper: #A67742;
+      --copper-deep: #8A5F2F;
+      --copper-soft: #C8935A;
+      --ember: #B44730;
+      --line: rgba(26,22,18,0.12);
+      --font-serif: 'Fraunces', serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--bone);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--copper); color: var(--obsidian); }
+
+    /* ─── CUSTOM CURSOR ─── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      .cursor {
+        position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+        background: var(--copper); border-radius: 50%;
+        pointer-events: none; z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: transform 0.12s, width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth), background 0.3s;
+        mix-blend-mode: difference;
+      }
+      .cursor.big { width: 48px; height: 48px; background: var(--bone); }
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 56px;
+      transition: background 0.45s, padding 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(247,241,228,0.92);
+      backdrop-filter: blur(18px);
+      padding: 16px 56px;
+      border-bottom-color: var(--line);
+    }
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 1.6rem; font-weight: 400;
+      letter-spacing: 0.4em; color: var(--bone);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand::after {
+      content: '·'; color: var(--copper); font-size: 1.4rem;
+    }
+    .brand-tag {
+      font-family: var(--font-sans); font-size: 0.62rem;
+      letter-spacing: 0.3em; color: var(--copper); font-weight: 500;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(26,22,18,0.65);
+      font-weight: 400; transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: ''; position: absolute; inset: auto 0 -6px 0; height: 1px;
+      background: var(--copper); transform: scaleX(0);
+      transition: transform 0.35s var(--ease); transform-origin: right;
+    }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:not(.nav-cta):hover { color: var(--bone); }
+    .nav-cta {
+      border: 1px solid var(--copper); color: var(--copper) !important;
+      padding: 10px 24px;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--copper); color: var(--obsidian) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 8px;
+    }
+    .hamburger span { width: 22px; height: 1px; background: var(--bone); transition: 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--obsidian); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+      border-left: 1px solid var(--line);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-serif); font-size: 1.6rem;
+      color: var(--bone); letter-spacing: 0.1em;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 760px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/04/terraza-interior-casa-montesdeoca.jpeg') center/cover no-repeat;
+      transform: scale(1.12);
+      transition: transform 10s var(--ease);
+      filter: brightness(1.05) contrast(1) saturate(1);
+    }
+    .hero-bg.loaded { transform: scale(1.02); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(247,241,228,0.55) 0%, rgba(247,241,228,0.35) 40%, rgba(247,241,228,0.95) 100%),
+        radial-gradient(ellipse at center, rgba(247,241,228,0.25) 30%, rgba(247,241,228,0.55) 100%);
+    }
+
+    /* Michelin badge */
+    .hero-awards {
+      position: absolute; top: 100px; right: 56px; z-index: 3;
+      display: flex; gap: 24px; align-items: center;
+      opacity: 0; animation: fadeIn 1.2s 1.8s ease forwards;
+    }
+    .hero-award {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      background: rgba(247,241,228,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(26,22,18,0.75); font-weight: 500;
+    }
+    .hero-award strong { color: var(--copper-soft); }
+
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 0 40px; max-width: 1200px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 18px;
+      font-size: 0.7rem; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 36px; font-weight: 500;
+      opacity: 0; transform: translateY(12px);
+      animation: fadeUp 1.1s 0.3s var(--ease) forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 50px; height: 1px; background: var(--copper);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(5rem, 14vw, 14rem);
+      font-weight: 300; line-height: 0.88;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px; color: var(--bone);
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 1.4s 0.55s var(--ease) forwards;
+      font-variation-settings: 'opsz' 144;
+    }
+    .hero-title em { font-style: italic; color: var(--copper); font-weight: 300; }
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+      font-style: italic; font-weight: 300;
+      color: rgba(26,22,18,0.82);
+      max-width: 700px; margin: 0 auto 52px;
+      line-height: 1.6;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 1.1s 0.95s var(--ease) forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 1.1s 1.2s var(--ease) forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 17px 40px;
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      font-weight: 500; border: 1px solid transparent;
+      transition: all 0.38s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 12px; height: 12px; stroke: currentColor; transition: transform 0.3s; }
+    .btn:hover svg { transform: translateX(5px); }
+    .btn-primary { background: var(--copper); color: var(--obsidian); border-color: var(--copper); }
+    .btn-primary:hover { background: var(--copper-deep); border-color: var(--copper-deep); transform: translateY(-2px); box-shadow: 0 14px 40px rgba(200,147,90,0.3); }
+    .btn-ghost { color: var(--bone); border-color: rgba(26,22,18,0.35); }
+    .btn-ghost:hover { border-color: var(--bone); background: rgba(26,22,18,0.05); }
+    .btn-ink { background: var(--bone); color: var(--obsidian); border-color: var(--bone); }
+    .btn-ink:hover { background: var(--copper); border-color: var(--copper); color: var(--obsidian); }
+
+    .hero-scroll {
+      position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0; animation: fadeIn 1s 2s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(26,22,18,0.5);
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--copper), transparent);
+      animation: scrollPulse 2.3s infinite;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-section {
+      overflow: hidden; padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 45s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 28px;
+      padding: 0 38px;
+      font-family: var(--font-serif); font-size: 1.25rem;
+      font-style: italic; font-weight: 300;
+      color: rgba(26,22,18,0.3);
+    }
+    .marquee-item .star {
+      width: 14px; height: 14px; color: var(--copper);
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 140px 56px; position: relative; }
+    .container { max-width: 1320px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--copper); font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--copper);
+    }
+    .eyebrow.center::before, .eyebrow.center::after {
+      content: ''; width: 32px; height: 1px; background: var(--copper);
+    }
+    .s-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .s-title em { font-style: italic; color: var(--copper); font-weight: 300; }
+
+    /* ─── PHILOSOPHY / 4 ELEMENTS ─── */
+    .phil-section {
+      background: var(--obsidian);
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      padding: 0;
+    }
+    .phil-content {
+      padding: 140px 80px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .phil-content .s-title { margin: 16px 0 36px; }
+    .phil-body {
+      font-family: var(--font-serif);
+      font-size: 1.2rem; line-height: 1.85;
+      color: rgba(26,22,18,0.75); margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .phil-body strong { color: var(--bone); font-weight: 400; }
+    .elements-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: var(--line); margin-top: 24px;
+    }
+    .element {
+      padding: 30px 28px; background: var(--obsidian);
+      transition: background 0.4s var(--ease);
+      position: relative;
+    }
+    .element:hover { background: var(--ink-2); }
+    .element-symbol {
+      width: 36px; height: 36px; color: var(--copper);
+      margin-bottom: 18px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-family: var(--font-serif); font-style: italic;
+      border: 1px solid var(--copper); border-radius: 50%;
+    }
+    .element h4 {
+      font-family: var(--font-serif); font-size: 1.25rem;
+      font-weight: 500; margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .element p {
+      font-size: 0.85rem; color: rgba(26,22,18,0.55);
+      font-weight: 300; line-height: 1.55;
+    }
+    .phil-visual {
+      position: relative; overflow: hidden; min-height: 800px;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/preparaciones-culinarias-restaurante.jpg') center/cover no-repeat;
+    }
+    .phil-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(247,241,228,0.4), transparent 40%);
+    }
+    .phil-visual-quote {
+      position: absolute; bottom: 50px; left: 50px; right: 50px; z-index: 2;
+      color: var(--bone);
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-style: italic; font-weight: 300;
+      line-height: 1.5;
+      padding-left: 24px;
+      border-left: 2px solid var(--copper);
+      max-width: 400px;
+    }
+
+    /* ─── AWARDS ─── */
+    .awards-section {
+      background: var(--ink);
+      padding: 80px 56px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .awards-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 50px; align-items: center;
+    }
+    .awards-divider { width: 1px; height: 80px; background: var(--line); }
+    .award-item {
+      text-align: center;
+    }
+    .award-num {
+      font-family: var(--font-serif); font-size: 4rem;
+      font-weight: 300; color: var(--copper); line-height: 1;
+      margin-bottom: 10px; letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .award-num .suffix { font-style: italic; }
+    .award-label {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(26,22,18,0.55); font-weight: 500;
+    }
+
+    /* ─── CARTA ─── */
+    .carta-section {
+      background: var(--obsidian);
+      padding: 160px 56px;
+    }
+    .carta-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      max-width: 1320px; margin: 0 auto 80px;
+      flex-wrap: wrap; gap: 40px;
+    }
+    .carta-header-left { max-width: 600px; }
+    .carta-tabs {
+      display: flex; gap: 2px; flex-wrap: wrap;
+    }
+    .carta-tab {
+      background: transparent; border: 1px solid var(--line);
+      padding: 13px 24px; color: rgba(26,22,18,0.65);
+      font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer;
+      transition: all 0.3s var(--ease);
+      font-family: var(--font-sans);
+    }
+    .carta-tab.active { background: var(--copper); border-color: var(--copper); color: var(--obsidian); }
+    .carta-tab:hover:not(.active) { border-color: var(--copper); color: var(--copper); }
+
+    .carta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 100px; max-width: 1200px; margin: 0 auto;
+    }
+    .carta-group { display: none; }
+    .carta-group.active { display: contents; }
+
+    .dish {
+      padding: 28px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .dish-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 14px; margin-bottom: 10px;
+    }
+    .dish-name {
+      font-family: var(--font-serif); font-size: 1.35rem;
+      font-weight: 400; color: var(--bone);
+      line-height: 1.3;
+    }
+    .dish-name em { font-style: italic; color: var(--copper); }
+    .dish-dots {
+      flex: 1; height: 1px; align-self: flex-end;
+      background-image: radial-gradient(circle, rgba(26,22,18,0.3) 1px, transparent 1px);
+      background-size: 7px 1px; margin-bottom: 6px;
+    }
+    .dish-price {
+      font-family: var(--font-serif); font-size: 1.2rem;
+      font-weight: 400; color: var(--copper); white-space: nowrap;
+      font-variation-settings: 'opsz' 144;
+    }
+    .dish-desc {
+      font-size: 0.9rem; color: rgba(26,22,18,0.55);
+      line-height: 1.6; font-weight: 300;
+      max-width: 95%;
+    }
+    .dish-tags { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .dish-tag {
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--copper); padding: 3px 10px;
+      border: 1px solid var(--copper); border-radius: 40px;
+      font-weight: 500;
+    }
+    .dish-tag.veg { color: #94b874; border-color: #94b874; }
+
+    /* ─── MENÚS DEGUSTACIÓN ─── */
+    .menus-section {
+      background: var(--ink);
+      padding: 160px 56px;
+      position: relative; overflow: hidden;
+    }
+    .menus-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/2.jpg') right center/cover no-repeat;
+      opacity: 0.1; filter: blur(3px);
+    }
+    .menus-inner {
+      max-width: 1320px; margin: 0 auto; position: relative; z-index: 2;
+    }
+    .menus-header {
+      text-align: center; margin-bottom: 80px;
+      max-width: 820px; margin-left: auto; margin-right: auto;
+    }
+    .menus-header .eyebrow { justify-content: center; }
+    .menus-header .eyebrow::before { display: none; }
+    .menus-header .eyebrow { gap: 14px; }
+    .menus-header .eyebrow::before, .menus-header .eyebrow::after {
+      content: ''; width: 30px; height: 1px; background: var(--copper); display: block;
+    }
+    .menus-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+    }
+    .menu-card {
+      background: var(--obsidian);
+      border: 1px solid var(--line);
+      padding: 70px 60px;
+      position: relative; overflow: hidden;
+      transition: transform 0.5s var(--ease), border-color 0.5s;
+    }
+    .menu-card:hover { transform: translateY(-6px); border-color: var(--copper); }
+    .menu-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle at top right, rgba(200,147,90,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .menu-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(200,147,90,0.12);
+      color: var(--copper);
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600; margin-bottom: 26px;
+    }
+    .menu-name {
+      font-family: var(--font-serif); font-size: 3rem;
+      font-weight: 300; color: var(--bone);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .menu-name em { font-style: italic; color: var(--copper); }
+    .menu-meta {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 0.95rem; color: rgba(26,22,18,0.55);
+      margin-bottom: 32px;
+    }
+    .menu-price {
+      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 40px;
+    }
+    .menu-price .amount {
+      font-family: var(--font-serif); font-size: 4.5rem;
+      font-weight: 300; color: var(--copper); line-height: 1;
+      letter-spacing: -0.03em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .menu-price .per {
+      font-size: 0.82rem; color: rgba(26,22,18,0.55);
+      letter-spacing: 0.1em;
+    }
+    .menu-body {
+      font-family: var(--font-serif);
+      font-size: 1.05rem; line-height: 1.8;
+      color: rgba(26,22,18,0.7);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    /* ─── ESPACIO / GALLERY ─── */
+    .space-section {
+      background: var(--obsidian);
+      padding: 0;
+    }
+    .space-header {
+      padding: 140px 56px 70px;
+      text-align: center;
+      max-width: 900px; margin: 0 auto;
+    }
+    .space-header .eyebrow { justify-content: center; }
+    .space-header .eyebrow::before { display: none; }
+    .space-header .eyebrow { gap: 14px; }
+    .space-header .eyebrow::before, .space-header .eyebrow::after {
+      content: ''; width: 30px; height: 1px; background: var(--copper); display: block;
+    }
+    .space-header p {
+      font-family: var(--font-serif);
+      font-size: 1.2rem; font-style: italic; font-weight: 300;
+      color: rgba(26,22,18,0.6); margin-top: 22px; line-height: 1.7;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 2px;
+      max-width: 1800px; margin: 0 auto; padding: 0 2px 140px;
+    }
+    .gallery-tile {
+      position: relative; overflow: hidden;
+    }
+    .gallery-tile.wide-3 { grid-column: span 3; }
+    .gallery-tile.wide-2 { grid-column: span 2; }
+    .gallery-tile.tall { grid-row: span 2; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1s var(--ease);
+      filter: saturate(0.88);
+    }
+    .gallery-tile:hover img { transform: scale(1.08); filter: saturate(1); }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(247,241,228,0.6), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 22px; left: 22px; z-index: 2;
+      color: var(--bone);
+      font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── CHEFS ─── */
+    .chef-section {
+      background: var(--ink);
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 0; padding: 0;
+      border-top: 1px solid var(--line);
+    }
+    .chef-visual {
+      position: relative; overflow: hidden; min-height: 780px;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/round-image.jpg') center/cover no-repeat;
+      filter: grayscale(20%);
+    }
+    .chef-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(247,241,228,0.3), transparent 60%);
+    }
+    .chef-content {
+      padding: 140px 80px; display: flex; flex-direction: column; justify-content: center;
+      max-width: 720px;
+    }
+    .chef-content .s-title { margin: 16px 0 14px; }
+    .chef-role {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.1rem; color: var(--copper);
+      margin-bottom: 36px;
+    }
+    .chef-body {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; line-height: 1.85;
+      color: rgba(26,22,18,0.7);
+      margin-bottom: 40px; font-weight: 300;
+    }
+    .chef-body strong { color: var(--bone); font-weight: 400; }
+    .chef-names {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: var(--line); margin-top: 30px;
+    }
+    .chef-name-card {
+      padding: 28px 24px; background: var(--ink);
+      transition: background 0.4s;
+    }
+    .chef-name-card:hover { background: var(--ink-2); }
+    .chef-name-role {
+      font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 8px; font-weight: 600;
+    }
+    .chef-name-name {
+      font-family: var(--font-serif); font-size: 1.4rem;
+      font-weight: 400; color: var(--bone);
+    }
+    .chef-name-tag {
+      font-size: 0.75rem; color: rgba(26,22,18,0.5);
+      margin-top: 4px; font-style: italic;
+      font-family: var(--font-serif);
+    }
+
+    /* ─── EVENT / AMAREN ─── */
+    .event-section {
+      background: var(--obsidian);
+      padding: 140px 56px;
+      position: relative;
+    }
+    .event-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1px solid var(--line);
+      background: var(--ink);
+    }
+    .event-image {
+      min-height: 500px;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/1.jpg') center/cover no-repeat;
+      position: relative;
+    }
+    .event-image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent, rgba(30,27,23,0.5));
+    }
+    .event-content { padding: 80px 70px; }
+    .event-date {
+      display: inline-flex; align-items: baseline; gap: 10px;
+      padding: 12px 20px;
+      background: rgba(200,147,90,0.1);
+      border: 1px solid var(--copper);
+      margin-bottom: 30px;
+    }
+    .event-date .day {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 400; color: var(--copper); line-height: 1;
+    }
+    .event-date .month {
+      font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--copper); font-weight: 500;
+    }
+    .event-title {
+      font-family: var(--font-serif); font-size: 2.6rem;
+      font-weight: 300; color: var(--bone); margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .event-title em { font-style: italic; color: var(--copper); }
+    .event-sub {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.05rem; color: rgba(26,22,18,0.6);
+      margin-bottom: 28px;
+    }
+    .event-body {
+      font-size: 0.95rem; color: rgba(26,22,18,0.65);
+      line-height: 1.7; margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .event-meta {
+      display: flex; gap: 30px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 34px;
+      padding-top: 22px; border-top: 1px solid var(--line);
+    }
+    .event-meta-item {
+      font-size: 0.8rem; color: rgba(26,22,18,0.6);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .event-meta-item svg { width: 16px; height: 16px; color: var(--copper); }
+    .event-meta-item strong { color: var(--bone); font-weight: 500; }
+
+    /* ─── HORARIOS ─── */
+    .hours-section {
+      background: var(--ink);
+      padding: 140px 56px;
+      border-top: 1px solid var(--line);
+    }
+    .hours-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hours-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .hours-title em { font-style: italic; color: var(--copper); }
+    .hours-body {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.15rem; color: rgba(26,22,18,0.6);
+      margin-top: 22px; line-height: 1.7;
+    }
+    .hours-list { list-style: none; }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .hours-row.closed { opacity: 0.4; }
+    .hours-day {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; font-weight: 400; color: var(--bone);
+    }
+    .hours-time {
+      font-size: 0.9rem; color: rgba(26,22,18,0.65);
+      letter-spacing: 0.04em; text-align: right;
+      font-weight: 300;
+    }
+    .hours-row.closed .hours-time {
+      color: var(--ember); font-style: italic; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    /* ─── RESERVATION ─── */
+    .reserve-section {
+      position: relative; padding: 160px 56px; overflow: hidden;
+      background: var(--obsidian);
+    }
+    .reserve-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/contact-image-900.jpg') center/cover no-repeat;
+      opacity: 0.18; filter: blur(1px);
+    }
+    .reserve-section::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(247,241,228,0.82), rgba(247,241,228,0.96));
+    }
+    .reserve-inner {
+      position: relative; z-index: 2; max-width: 1000px; margin: 0 auto;
+      text-align: center;
+    }
+    .reserve-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300; color: var(--bone);
+      letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 30px;
+      font-variation-settings: 'opsz' 144;
+    }
+    .reserve-title em { font-style: italic; color: var(--copper); }
+    .reserve-body {
+      font-family: var(--font-serif);
+      font-size: 1.3rem; font-style: italic; font-weight: 300;
+      color: rgba(26,22,18,0.72);
+      max-width: 620px; margin: 0 auto 52px;
+      line-height: 1.7;
+    }
+    .reserve-actions {
+      display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .reserve-contact {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; max-width: 900px; margin: 0 auto;
+    }
+    .reserve-contact-card {
+      padding: 32px 24px;
+      background: rgba(26,22,18,0.04);
+      border: 1px solid var(--line);
+      transition: all 0.3s;
+    }
+    .reserve-contact-card:hover { background: rgba(200,147,90,0.08); border-color: var(--copper); }
+    .rc-label {
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 12px; font-weight: 600;
+    }
+    .rc-value {
+      font-family: var(--font-serif); font-size: 1.15rem;
+      color: var(--bone); font-weight: 400;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1A1612;
+      color: rgba(239,232,220,0.55);
+      padding: 90px 56px 32px;
+    }
+    footer .footer-col a, footer .footer-col li { color: rgba(239,232,220,0.55); }
+    footer .footer-col a:hover { color: var(--copper-soft); }
+    footer .footer-col h5 { color: #EFE8D8; }
+    footer .footer-brand-name { color: #EFE8D8; }
+    footer .footer-brand p { color: rgba(239,232,220,0.55); }
+    footer .footer-social a { border-color: rgba(239,232,220,0.15); color: rgba(239,232,220,0.55); }
+    footer .footer-social a:hover { border-color: var(--copper-soft); color: var(--copper-soft); }
+    footer .footer-bottom { border-color: rgba(239,232,220,0.12); color: rgba(239,232,220,0.4); }
+    .footer-grid {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.3fr repeat(3, 1fr);
+      gap: 60px; margin-bottom: 70px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-serif);
+      font-size: 2.5rem; font-weight: 400;
+      color: var(--bone); letter-spacing: 0.3em;
+      margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 22px; font-weight: 500;
+    }
+    .footer-brand p {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      max-width: 300px; margin-bottom: 24px;
+      color: rgba(26,22,18,0.45);
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 40px; height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(26,22,18,0.5);
+      transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--copper); color: var(--copper);
+      transform: translateY(-2px);
+    }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-col h5 {
+      font-family: var(--font-serif); font-size: 1.05rem;
+      color: var(--bone); font-weight: 500;
+      margin-bottom: 22px; letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col a, .footer-col li {
+      font-size: 0.85rem; color: rgba(26,22,18,0.45);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col a:hover { color: var(--copper); }
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.75rem; color: rgba(26,22,18,0.35);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav, nav.scrolled { padding: 18px 26px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 90px 26px; }
+      .hero-awards { top: 85px; right: 26px; gap: 12px; }
+      .hero-award { padding: 8px 12px; font-size: 0.58rem; }
+      .phil-section { grid-template-columns: 1fr; }
+      .phil-content { padding: 80px 30px; }
+      .phil-visual { min-height: 500px; }
+      .awards-inner { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .awards-divider { display: none; }
+      .carta-grid { grid-template-columns: 1fr; gap: 0; }
+      .menus-grid { grid-template-columns: 1fr; }
+      .menu-card { padding: 50px 36px; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 220px);
+      }
+      .gallery-tile.wide-3, .gallery-tile.wide-2, .gallery-tile.tall {
+        grid-column: auto; grid-row: auto;
+      }
+      .chef-section { grid-template-columns: 1fr; }
+      .chef-content { padding: 80px 30px; }
+      .chef-visual { min-height: 500px; }
+      .event-inner { grid-template-columns: 1fr; }
+      .event-content { padding: 50px 36px; }
+      .hours-inner { grid-template-columns: 1fr; gap: 50px; }
+      .reserve-contact { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .carta-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .hero-awards { flex-direction: column; gap: 8px; align-items: flex-end; }
+      .btn { padding: 14px 26px; font-size: 0.66rem; letter-spacing: 0.22em; }
+      .s-title { font-size: 2.2rem; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 220px); }
+      .elements-grid { grid-template-columns: 1fr; }
+      .chef-names { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .phil-visual-quote { left: 24px; right: 24px; bottom: 30px; font-size: 1.1rem; }
+      .menu-price .amount { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="#inicio" class="brand">
+    CASA MONTESDEOCA <span class="brand-tag">Vegueta</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#menus">Menús</a></li>
+    <li><a href="#espacio">La Casa</a></li>
+    <li><a href="#chef">Chef</a></li>
+    <li><a href="#reserva" class="nav-cta">Reservar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#filosofia">Filosofía</a>
+  <a href="#carta">Carta</a>
+  <a href="#menus">Menús</a>
+  <a href="#espacio">La Casa</a>
+  <a href="#chef">Chef</a>
+  <a href="#reserva">Reservar</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-awards">
+    <div class="hero-award">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--copper-soft);"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M12 7v10M7 12h10"/></svg>
+      <strong>Vegueta</strong> · Centro histórico
+    </div>
+    <div class="hero-award">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--copper-soft);"><circle cx="12" cy="12" r="5"/></svg>
+      <strong>Cocina canaria</strong> con alma
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Las Palmas de Gran Canaria</div>
+    <h1 class="hero-title">Casa Montesdeoca</h1>
+    <p class="hero-sub">Cocina canaria de tradición y vanguardia en una casa colonial del siglo XVIII, en el corazón histórico de Vegueta.</p>
+    <div class="hero-actions">
+      <a href="#reserva" class="btn btn-primary">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-ghost">
+        Ver carta
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Cocina canaria de autor<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Casa colonial siglo XVIII<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Producto local · km 0<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Chef Gustavo Carrasco<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Calle Montesdeoca 10 · Vegueta<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Patio canario · Vino canario<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Cocina canaria de autor<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Casa colonial siglo XVIII<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Producto local · km 0<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="marquee-item">Chef Gustavo Carrasco<svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  </div>
+</div>
+
+<!-- ─── FILOSOFÍA · 4 PILARES ─── -->
+<section class="phil-section" id="filosofia">
+  <div class="phil-content">
+    <div class="eyebrow">Nuestra filosofía</div>
+    <h2 class="s-title">Cuatro pilares <em>de la cocina canaria</em></h2>
+    <p class="phil-body">
+      <strong>Casa Montesdeoca</strong> nace de una familia con raíces en la tierra y el ganado canario. Una cocina que mira al <em>Atlántico</em>, honra la <em>huerta isleña</em> y se sirve en el patio colonial de una casona del siglo XVIII. Tradición y vanguardia, servicio cercano y producto de las islas.
+    </p>
+    <div class="elements-grid">
+      <div class="element">
+        <div class="element-symbol">≈</div>
+        <h4>Atlántico</h4>
+        <p>Pescado de costa canaria, atún rojo de almadraba, sama y cherne.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">⌂</div>
+        <h4>Huerta</h4>
+        <p>Papa antigua, gofio, millo, batata y tomate de Canarias.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">◉</div>
+        <h4>Quesos</h4>
+        <p>Majorero, flor de Guía, palmero. El alma láctea del archipiélago.</p>
+      </div>
+      <div class="element">
+        <div class="element-symbol">△</div>
+        <h4>Vino</h4>
+        <p>D.O. Gran Canaria, Lanzarote y Tenerife. Uvas volcánicas únicas.</p>
+      </div>
+    </div>
+  </div>
+  <div class="phil-visual">
+    <div class="phil-visual-quote">
+      "La cocina canaria tiene alma de puerto y raíz de volcán. Nada más, nada menos."
+    </div>
+  </div>
+</section>
+
+<!-- ─── AWARDS ─── -->
+<section class="awards-section">
+  <div class="awards-inner">
+    <div class="award-item">
+      <div class="award-num">XVIII</div>
+      <div class="award-label">Casa colonial · Vegueta</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">25<span class="suffix">+</span></div>
+      <div class="award-label">Años de tradición</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">1</div>
+      <div class="award-label">Patio canario</div>
+    </div>
+    <div class="awards-divider"></div>
+    <div class="award-item">
+      <div class="award-num">100<span class="suffix">%</span></div>
+      <div class="award-label">Producto canario</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CARTA ─── -->
+<section class="carta-section" id="carta">
+  <div class="carta-header">
+    <div class="carta-header-left">
+      <div class="eyebrow">La carta</div>
+      <h2 class="s-title">Cocina <em>de temporada</em></h2>
+    </div>
+    <div class="carta-tabs">
+      <button class="carta-tab active" data-tab="entrantes">Entrantes</button>
+      <button class="carta-tab" data-tab="pescados">Pescados</button>
+      <button class="carta-tab" data-tab="carnes">Carnes</button>
+      <button class="carta-tab" data-tab="postres">Postres</button>
+    </div>
+  </div>
+
+  <div class="carta-grid">
+    <div class="carta-group active" data-group="entrantes">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Escabeche de <em>atún rojo</em> de almadraba</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22€</div>
+        </div>
+        <p class="dish-desc">Atún rojo de almadraba en escabeche suave con pimienta palmera, aceite de oliva canario y cebolla morada.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tabla de quesos <em>canarios</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">18€</div>
+        </div>
+        <p class="dish-desc">Selección de Majorero D.O.P., flor de Guía y palmero ahumado. Mermelada de bienmesabe y pan de millo.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ropa vieja <em>de pulpo</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19€</div>
+        </div>
+        <p class="dish-desc">Reinterpretación del clásico canario. Pulpo de costa, garbanzos, papa negra y pimentón de la Vera.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Gofio <em>escaldado</em> con caldo de pescado</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14€</div>
+        </div>
+        <p class="dish-desc">Gofio tostado tradicional, caldo de pescado de roca, menta fresca y cebolleta.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Papas arrugadas <em>con mojos</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9€</div>
+        </div>
+        <p class="dish-desc">Papa antigua canaria arrugada con sal gruesa. Mojo rojo picón y mojo verde de cilantro.</p>
+        <div class="dish-tags"><span class="dish-tag veg">Vegetariano</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Croquetas de <em>cochino negro</em> canario</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14€</div>
+        </div>
+        <p class="dish-desc">Bechamel cremosa con cochino negro ibérico canario confitado. Seis unidades hechas al momento.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Carpaccio de gambas <em>de La Santa</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">24€</div>
+        </div>
+        <p class="dish-desc">Gamba roja de La Santa (Lanzarote) marinada, aceite de oliva, lima y flor de sal negra.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ensalada <em>de batata asada</em>, queso fresco y miel</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">15€</div>
+        </div>
+        <p class="dish-desc">Batata canaria asada, queso fresco majorero, miel de palma gomera y almendra tostada.</p>
+        <div class="dish-tags"><span class="dish-tag veg">Vegetariano</span></div>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="pescados">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pescado de <em>costa canaria</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">S/M</div>
+        </div>
+        <p class="dish-desc">Pieza del día de lonja: sama, cherne, bocinegro o vieja. A la espalda, a la sal o al horno. Consulte con el maître.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Sancocho canario <em>moderno</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">28€</div>
+        </div>
+        <p class="dish-desc">Cherne salado al vapor, papa arrugada, batata, gofio escaldado y mojo rojo picón.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Lomo de vieja <em>al horno</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Vieja del Atlántico al horno con refrito de ajo, pimentón y vinagre de palma. Verduras asadas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Caldereta de <em>bogavante canario</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">42€ <span style="font-size:0.72rem;color:rgba(26,22,18,0.5);">/pers.</span></div>
+        </div>
+        <p class="dish-desc">Caldereta tradicional con bogavante canario, arroz bomba, azafrán y hierbabuena. Mínimo 2 personas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tataki de <em>atún rojo</em>, mojo cítrico</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">29€</div>
+        </div>
+        <p class="dish-desc">Atún rojo sellado a la plancha, mojo verde cítrico, aguacate canario y sésamo tostado.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pulpo a la <em>parrilla</em> con puré de batata</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">27€</div>
+        </div>
+        <p class="dish-desc">Tentáculo de pulpo a la brasa, puré de batata canaria, mojo verde y crujiente de gofio.</p>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="carnes">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Cabrito <em>al horno</em> con papas</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">28€</div>
+        </div>
+        <p class="dish-desc">Pierna de cabrito canario asada lentamente al horno, papas panadera, cebolleta y pimientos asados.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Cochino negro <em>canario</em>, piña tropical</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Solomillo de cochino negro canario D.O.P., reducción de piña de El Hierro y papa dulce asada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Entraña de vaca <em>vieja</em>, mojo rojo</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">24€</div>
+        </div>
+        <p class="dish-desc">Entraña madurada a la parrilla, mojo rojo suave, papas arrugadas y pimientos de padrón fritos.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Carrillera de <em>ternera</em> al vino tinto canario</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">23€</div>
+        </div>
+        <p class="dish-desc">Carrillera estofada 6 horas en tinto de Tacoronte, puré trufado y zanahoria baby glaseada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Magret de <em>pato</em> con miel de palma</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">25€</div>
+        </div>
+        <p class="dish-desc">Magret de pato rosado, reducción de miel de palma gomera, higos confitados y puré de castaña.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ropa vieja <em>tradicional</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19€</div>
+        </div>
+        <p class="dish-desc">Garbanzos, ternera deshilachada, pollo, papa y chorizo canario. La receta de la abuela.</p>
+      </div>
+    </div>
+
+    <div class="carta-group" data-group="postres">
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tarta aérea de <em>queso y mandarina</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9€</div>
+        </div>
+        <p class="dish-desc">Mousse de queso fresco majorero, gel de mandarina canaria, base de galleta y tuile crujiente.</p>
+        <div class="dish-tags"><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bienmesabe <em>canario</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8€</div>
+        </div>
+        <p class="dish-desc">El clásico canario. Almendra molida, yema, miel y limón. Helado de canela.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Quesillo de <em>la abuela</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7€</div>
+        </div>
+        <p class="dish-desc">El quesillo canario de siempre con caramelo tostado, galleta María y nata montada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Príncipe Alberto</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9€</div>
+        </div>
+        <p class="dish-desc">Tarta tradicional grancanaria. Chocolate, avellana, licor y bizcocho.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Helado de <em>gofio</em> con miel de palma</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7€</div>
+        </div>
+        <p class="dish-desc">Helado artesano de gofio tostado, miel de palma gomera y almendra caramelizada.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Frutas tropicales <em>canarias</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8€</div>
+        </div>
+        <p class="dish-desc">Piña de El Hierro, mango de la isla, papaya y fruta de la pasión. Sorbete de lima.</p>
+        <div class="dish-tags"><span class="dish-tag veg">Vegano</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENÚS DEGUSTACIÓN ─── -->
+<section class="menus-section" id="menus">
+  <div class="menus-inner">
+    <div class="menus-header">
+      <div class="eyebrow center">Menús degustación</div>
+      <h2 class="s-title" style="margin-top:18px;">Dos viajes, <em>una isla</em></h2>
+    </div>
+    <div class="menus-grid">
+      <div class="menu-card">
+        <span class="menu-badge">Menú Vegueta</span>
+        <h3 class="menu-name">Vegueta</h3>
+        <p class="menu-meta">6 pases · Bebidas no incluidas</p>
+        <div class="menu-price">
+          <div class="amount">48€</div>
+          <div class="per">por persona</div>
+        </div>
+        <p class="menu-body">La esencia de Casa Montesdeoca en seis pases. Un paseo por los sabores clásicos de Gran Canaria reinterpretados por el chef Gustavo Carrasco.</p>
+        <a href="#reserva" class="btn btn-ink">
+          Reservar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="menu-card">
+        <span class="menu-badge" style="background: rgba(166,119,66,0.2);">Menú Montesdeoca — El gran menú</span>
+        <h3 class="menu-name">Montesdeoca</h3>
+        <p class="menu-meta">9 pases · Experiencia completa</p>
+        <div class="menu-price">
+          <div class="amount">68€</div>
+          <div class="per">por persona</div>
+        </div>
+        <p class="menu-body">Nueve pases que concentran tradición e innovación. La experiencia más completa de la casa, con maridaje opcional de vinos canarios (+22€).</p>
+        <a href="#reserva" class="btn btn-primary">
+          Reservar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESPACIO / GALERÍA ─── -->
+<section class="space-section" id="espacio">
+  <div class="space-header">
+    <div class="eyebrow center">La casa</div>
+    <h2 class="s-title" style="margin-top:18px;">Un patio <em>colonial</em></h2>
+    <p>Calle Montesdeoca 10, en el corazón de Vegueta —centro histórico de Las Palmas, Patrimonio de la Humanidad—. Una casa del siglo XVIII con patio interior, arcos de piedra volcánica y balcones de tea canaria.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile wide-3 tall">
+      <img src="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/04/terraza-interior-casa-montesdeoca.jpeg" alt="Patio canario Casa Montesdeoca">
+      <div class="gallery-label">Patio canario · Casa colonial s. XVIII</div>
+    </div>
+    <div class="gallery-tile wide-3">
+      <img src="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/contact-image-900.jpg" alt="Comedor principal">
+      <div class="gallery-label">Comedor principal</div>
+    </div>
+    <div class="gallery-tile wide-2">
+      <img src="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/preparaciones-culinarias-restaurante.jpg" alt="Cocina Casa Montesdeoca">
+      <div class="gallery-label">Cocina</div>
+    </div>
+    <div class="gallery-tile">
+      <img src="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/3.jpg" alt="Plato signature">
+      <div class="gallery-label">Signature</div>
+    </div>
+    <div class="gallery-tile">
+      <img src="https://restaurantecasamontesdeoca.com/wp-content/uploads/2023/03/4.jpg" alt="Producto canario">
+      <div class="gallery-label">Producto canario</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CHEF ─── -->
+<section class="chef-section" id="chef">
+  <div class="chef-visual"></div>
+  <div class="chef-content">
+    <div class="eyebrow">Nuestro chef</div>
+    <h2 class="s-title">Gustavo <em>Carrasco</em></h2>
+    <p class="chef-role">Chef ejecutivo · Casa Montesdeoca</p>
+    <p class="chef-body">
+      <strong>Gustavo Carrasco</strong> lidera los fogones de Casa Montesdeoca con una visión clara: honrar la cocina canaria de siempre y abrirle la puerta a la innovación. Formación clásica, alma isleña. De la papa arrugada al carpaccio de gamba de La Santa, de la tarta de queso mandarina a las caldereta de bogavante: una cocina con <strong>raíz atlántica</strong> y <strong>mirada contemporánea</strong>.
+    </p>
+    <div class="chef-names">
+      <div class="chef-name-card">
+        <div class="chef-name-role">Chef ejecutivo</div>
+        <div class="chef-name-name">Gustavo Carrasco</div>
+        <div class="chef-name-tag">Cocina canaria de autor</div>
+      </div>
+      <div class="chef-name-card">
+        <div class="chef-name-role">Casa familiar</div>
+        <div class="chef-name-name">Montesdeoca</div>
+        <div class="chef-name-tag">Raíces agrícolas y ganaderas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EVENT · NOCHE CANARIA ─── -->
+<section class="event-section">
+  <div class="event-inner">
+    <div class="event-image"></div>
+    <div class="event-content">
+      <div class="event-date">
+        <span class="day">15</span>
+        <span class="month">Mayo · 20:30 h</span>
+      </div>
+      <h3 class="event-title">Noche <em>Bodegas Canarias</em></h3>
+      <p class="event-sub">Una cena maridada · Vino volcánico, cocina isleña</p>
+      <p class="event-body">Menú degustación maridado con vinos de las D.O. canarias: Gran Canaria, Lanzarote y Tacoronte-Acentejo. Sumiller en sala para descubrir las uvas únicas del archipiélago.</p>
+      <div class="event-meta">
+        <div class="event-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>20:30h — <strong>15 mayo</strong></span>
+        </div>
+        <div class="event-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span><strong>85€</strong> maridaje incluido</span>
+        </div>
+      </div>
+      <a href="#reserva" class="btn btn-primary">
+        Reservar plaza
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HORARIOS ─── -->
+<section class="hours-section">
+  <div class="hours-inner">
+    <div>
+      <div class="eyebrow">Horarios</div>
+      <h2 class="hours-title">Abiertos <em>todos los días</em></h2>
+      <p class="hours-body">Servicio de comida todos los días. Cenas de lunes a sábado. Domingo solo comidas.</p>
+      <div style="margin-top: 36px; font-size: 0.82rem; color: rgba(26,22,18,0.55); line-height: 1.7;">
+        <strong style="color:var(--copper);display:block;margin-bottom:4px;letter-spacing:0.15em;text-transform:uppercase;font-size:0.68rem;">Reservas</strong>
+        Recomendamos reservar con antelación.<br>
+        Grupos 8+ personas · escríbenos por email.
+      </div>
+    </div>
+    <div>
+      <ul class="hours-list">
+        <li class="hours-row">
+          <span class="hours-day">Lunes</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Martes</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Miércoles</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Jueves</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Viernes</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">13:30 — 16:30 &nbsp;·&nbsp; 19:30 — 23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">13:30 — 16:30</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESERVATION ─── -->
+<section class="reserve-section" id="reserva">
+  <div class="reserve-inner">
+    <div class="eyebrow center" style="justify-content:center;margin-bottom:26px;">Reservas</div>
+    <h2 class="reserve-title">Cena <em>con nosotros</em></h2>
+    <p class="reserve-body">Para grupos de 8 o más personas, escríbenos por email para consultar disponibilidad. Cancelación mínima 24h antes.</p>
+    <div class="reserve-actions">
+      <a href="https://restaurantecasamontesdeoca.com/contacto/" target="_blank" rel="noopener" class="btn btn-primary">
+        Reservar online
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+34928208643" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +34 928 20 86 43
+      </a>
+    </div>
+    <div class="reserve-contact">
+      <div class="reserve-contact-card">
+        <div class="rc-label">Dirección</div>
+        <div class="rc-value">Calle Montesdeoca, 10<br>35001 · Las Palmas de G.C.</div>
+      </div>
+      <div class="reserve-contact-card">
+        <div class="rc-label">Teléfono</div>
+        <a href="tel:+34928208643" class="rc-value" style="color:var(--bone);">928 20 86 43</a>
+      </div>
+      <div class="reserve-contact-card">
+        <div class="rc-label">Email</div>
+        <a href="mailto:info@restaurantecasamontesdeoca.com" class="rc-value" style="color:var(--bone);font-size:0.95rem;">info@restaurantecasamontesdeoca.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">CASA MONTESDEOCA</div>
+      <div class="footer-brand-tag">Vegueta · Las Palmas G.C.</div>
+      <p>Cocina canaria de autor. Casa colonial siglo XVIII. Chef Gustavo Carrasco.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/casamontesdeoca" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/casamontesdeoca" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#menus">Menús degustación</a></li>
+        <li><a href="#chef">Chef</a></li>
+        <li><a href="#espacio">Espacio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Reservas</h5>
+      <ul>
+        <li><a href="#reserva">Reservar online</a></li>
+        <li>Grupos 8+ personas</li>
+        <li>Tarjetas regalo</li>
+        <li>Menús vegetarianos (24h)</li>
+        <li>Alérgenos</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Calle Montesdeoca, 10</li>
+        <li>35001 · Las Palmas de G.C.</li>
+        <li><a href="tel:+34928208643">+34 928 20 86 43</a></li>
+        <li><a href="mailto:info@restaurantecasamontesdeoca.com">info@restaurantecasamontesdeoca.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2022–2026 · Casa Montesdeoca · Vegueta · Las Palmas de Gran Canaria</div>
+    <div>Aviso legal · Privacidad · Cookies</div>
+  </div>
+</footer>
+
+<script>
+  // Navbar
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Hero bg
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .gallery-tile, .menu-card, .carta-tab').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+    });
+  }
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Carta tabs
+  document.querySelectorAll('.carta-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.carta-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.carta-group').forEach(g => {
+        g.classList.toggle('active', g.dataset.group === target);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

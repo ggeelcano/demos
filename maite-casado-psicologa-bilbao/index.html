@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maite Casado — Psicóloga en Bilbao</title>
+  <meta name="description" content="Maite Casado, psicóloga en Bilbao. Terapia individual, de pareja y familiar. Ansiedad, depresión, estrés y crecimiento personal. Egaña 17.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #249ca0;
+      --teal-light: #38a2b7;
+      --teal-dark: #1a7a7d;
+      --bg: #ffffff;
+      --bg-alt: #f5f8f8;
+      --bg-card: #ffffff;
+      --text: #3a3a3a;
+      --text-light: #6b7280;
+      --text-lighter: #9ca3af;
+      --border: #e5e7eb;
+      --font: 'Fira Sans Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-brand { font-family: var(--font); font-size: 1.4rem; font-weight: 600; color: var(--teal); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-brand span { color: var(--text); font-weight: 300; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta { background: var(--teal); color: #fff !important; padding: 10px 24px; border-radius: 6px; font-weight: 500; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--teal-dark); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { padding: 160px 60px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-text h1 { font-family: var(--font); font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.15; color: var(--text); margin-bottom: 24px; }
+    .hero-text h1 em { font-style: normal; color: var(--teal); font-weight: 600; }
+    .hero-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(36,156,160,0.25); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--teal); text-decoration: none; padding: 14px 32px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; border: 1.5px solid var(--teal); transition: all 0.3s; }
+    .btn-outline:hover { background: var(--teal); color: #fff; }
+    .hero-img { width: 100%; border-radius: 16px; overflow: hidden; }
+    .hero-img img { width: 100%; height: 500px; object-fit: cover; border-radius: 16px; }
+
+    /* SECTION COMMON */
+    section { padding: 100px 60px; }
+    .section-label { font-family: var(--font); font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; font-weight: 600; }
+    .section-title { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; color: var(--text); margin-bottom: 20px; }
+    .section-title em { font-style: normal; color: var(--teal); font-weight: 600; }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+
+    /* ABOUT */
+    .about { background: var(--bg-alt); }
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; height: 450px; object-fit: cover; border-radius: 12px; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-highlight { display: flex; gap: 40px; margin-top: 32px; }
+    .about-stat { text-align: center; }
+    .about-stat-num { font-family: var(--font); font-size: 2.4rem; font-weight: 600; color: var(--teal); line-height: 1; }
+    .about-stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; letter-spacing: 0.05em; }
+
+    /* SERVICES */
+    .services-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 40px 32px; transition: all 0.35s; }
+    .service-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(36,156,160,0.1); }
+    .service-icon { width: 48px; height: 48px; background: rgba(36,156,160,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--teal); margin-bottom: 24px; }
+    .service-card h3 { font-family: var(--font); font-size: 1.25rem; font-weight: 500; margin-bottom: 12px; color: var(--text); }
+    .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--bg-alt); }
+    .testimonials-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 36px 28px; }
+    .testimonial-stars { color: var(--teal); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testimonial-quote { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+    .testimonial-author { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+
+    /* CTA */
+    .cta { background: var(--teal); padding: 80px 60px; text-align: center; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; color: #fff; margin-bottom: 16px; }
+    .cta p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 32px; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--teal); text-decoration: none; padding: 14px 36px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* CONTACT */
+    .contact-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-item-icon { width: 44px; height: 44px; background: rgba(36,156,160,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--teal); flex-shrink: 0; }
+    .contact-item h4 { font-family: var(--font); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+    .contact-item p, .contact-item a { font-size: 0.88rem; color: var(--text-light); text-decoration: none; }
+    .contact-item a:hover { color: var(--teal); }
+    .map-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .map-wrapper iframe { width: 100%; height: 380px; border: 0; }
+
+    /* FOOTER */
+    footer { background: #1a2332; padding: 60px 60px 40px; color: rgba(255,255,255,0.5); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.2rem; color: rgba(255,255,255,0.8); font-weight: 500; }
+    .footer-brand span { color: var(--teal); }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--teal); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 140px 24px 60px; gap: 40px; }
+      .hero-img img { height: 300px; }
+      section { padding: 70px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .about-highlight { gap: 24px; }
+      .cta { padding: 60px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">Maite Casado <span>| Psicóloga</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34687951502" class="nav-cta">687 95 15 02</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-in">
+    <h1>Tu espacio para <em>sentirte mejor</em></h1>
+    <p>Soy Maite Casado, psicóloga en Bilbao. Te acompaño en un proceso terapéutico personalizado para que recuperes tu bienestar emocional y encuentres las herramientas que necesitas.</p>
+    <div class="hero-actions">
+      <a href="tel:+34687951502" class="btn-primary">Pedir cita →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-img fade-in">
+    <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&q=80" alt="Consulta de psicología Maite Casado Bilbao">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="about-inner">
+    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80" alt="Maite Casado psicóloga" class="about-img fade-in">
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre mí</p>
+      <h2 class="section-title">Psicóloga con <em>vocación</em></h2>
+      <p>Soy Maite Casado, psicóloga colegiada en Bilbao. Mi consulta está en la calle Egaña 17, en un espacio <strong>tranquilo y confidencial</strong> donde podrás sentirte cómodo/a desde el primer momento.</p>
+      <p>Trabajo desde un enfoque integrador, adaptando la terapia a cada persona y a cada momento vital. Mi objetivo es que encuentres tus propias respuestas y desarrolles las herramientas para <strong>gestionar tus emociones y mejorar tu calidad de vida</strong>.</p>
+      <p>Como comentaba en una entrevista en DEIA: "Con el aburrimiento aflora criticar lo que hacen los demás". Creo firmemente en la importancia del autoconocimiento y la gestión emocional.</p>
+      <div class="about-highlight">
+        <div class="about-stat">
+          <div class="about-stat-num">15+</div>
+          <div class="about-stat-label">Años de experiencia</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">500+</div>
+          <div class="about-stat-label">Pacientes atendidos</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Confidencialidad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Servicios</p>
+    <h2 class="section-title">¿En qué puedo <em>ayudarte</em>?</h2>
+    <p class="section-sub" style="margin:0 auto;">Cada persona es única. Ofrezco un acompañamiento terapéutico personalizado adaptado a tus necesidades.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+      </div>
+      <h3>Terapia Individual</h3>
+      <p>Ansiedad, depresión, estrés, duelo, baja autoestima, gestión emocional y crecimiento personal. Un espacio seguro para ti.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Terapia de Pareja</h3>
+      <p>Problemas de comunicación, crisis, celos, dependencia emocional. Trabajamos juntos para fortalecer vuestra relación.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+      </div>
+      <h3>Terapia Familiar</h3>
+      <p>Conflictos familiares, crianza, adolescencia, cambios vitales. Mejorar la dinámica familiar para el bienestar de todos.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Ansiedad y Estrés</h3>
+      <p>Ataques de pánico, ansiedad generalizada, fobias, estrés laboral. Herramientas para recuperar el control.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Autoestima</h3>
+      <p>Inseguridad, autocrítica excesiva, dificultad para poner límites. Reconecta con tu valor y aprende a quererte.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/></svg>
+      </div>
+      <h3>Duelo y Pérdidas</h3>
+      <p>Pérdida de un ser querido, rupturas, cambios vitales. Te acompaño en el proceso de duelo con respeto y cuidado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Testimonios</p>
+    <h2 class="section-title">Lo que dicen mis <em>pacientes</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Maite me ha ayudado a entender cosas de mí misma que llevaba años sin ver. Su forma de escuchar y su cercanía hacen que te sientas en un espacio seguro desde el primer día."</p>
+      <div class="testimonial-author">— Paciente verificada</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Empecé con mucha ansiedad y en pocas sesiones ya noté cambios reales. Maite te da herramientas prácticas que funcionan. Muy agradecido."</p>
+      <div class="testimonial-author">— Paciente verificado</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Fuimos mi pareja y yo con problemas de comunicación y fue lo mejor que hicimos. Maite nos ayudó a entendernos y a reconectar. Totalmente recomendable."</p>
+      <div class="testimonial-author">— Pacientes verificados</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>¿Damos el primer paso?</h2>
+  <p>La primera sesión es para conocernos. Sin compromiso, sin prisas. Tu bienestar empieza aquí.</p>
+  <a href="tel:+34687951502" class="btn-white">Pedir cita — 687 95 15 02</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntrame en <em>Bilbao</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Egaña Kalea, 17, 4º, oficina 2<br>48010 Bilbao, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Teléfono / WhatsApp</h4>
+          <a href="tel:+34687951502">687 95 15 02</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes a Viernes: 9:00 — 20:00<br>Sábado y Domingo: Cerrado</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Ega%C3%B1a+Kalea+17+Bilbao&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Maite Casado <span>| Psicóloga</span></div>
+    <p class="footer-copy">© 2026 Maite Casado. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  // Fade in on scroll
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estetika Izarra — Centro de Estética en Mungia</title>
+  <meta name="description" content="Estetika Izarra en Mungia. Tratamientos faciales, depilación, manicura, pedicura, diseño de cejas, bronceado. Trato familiar y precios ajustados. Erribide 3.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #b8956a;
+      --gold-light: #d4b686;
+      --gold-dark: #8a6f4d;
+      --nude: #f5ede2;
+      --nude-light: #faf5ee;
+      --bg: #fffcf8;
+      --bg-alt: #f5ede2;
+      --text: #2e2620;
+      --text-light: #6b5e52;
+      --text-lighter: #a89889;
+      --border: #ebe1d2;
+      --font: 'Italiana', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,252,248,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(184,149,106,0.1); }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-brand-text { font-family: var(--font); font-size: 1.7rem; color: var(--gold-dark); letter-spacing: 0.06em; line-height: 1; }
+    .nav-brand-sub { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--text-lighter); text-transform: uppercase; margin-top: 4px; }
+    .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-cta { background: var(--gold); color: #fff !important; padding: 12px 26px; letter-spacing: 0.1em !important; font-weight: 500; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 140px 60px 80px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; z-index: 0; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(46,38,32,0.72) 0%, rgba(46,38,32,0.35) 60%, transparent 100%); z-index: 1; }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
+    .hero-content { max-width: 640px; color: #fff; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 28px; font-weight: 400; }
+    .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold-light); }
+    .hero h1 { font-family: var(--font); font-size: clamp(3rem, 6.5vw, 5.8rem); font-weight: 400; line-height: 1.05; margin-bottom: 30px; letter-spacing: -0.005em; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.88); line-height: 1.85; margin-bottom: 40px; max-width: 520px; font-weight: 300; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: #fff; text-decoration: none; padding: 17px 38px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; border: 1px solid var(--gold); }
+    .btn-primary:hover { background: transparent; color: var(--gold-light); border-color: var(--gold-light); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff; text-decoration: none; padding: 17px 38px; font-size: 0.78rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: #fff; color: var(--text); border-color: #fff; }
+
+    /* SECTION COMMON */
+    section { padding: 120px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 18px; font-weight: 500; }
+    .section-title { font-family: var(--font); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 24px; letter-spacing: -0.005em; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub { font-size: 1rem; color: var(--text-light); max-width: 620px; line-height: 1.85; }
+
+    /* ABOUT */
+    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 90px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; height: 580px; object-fit: cover; }
+    .about-img-line { position: absolute; top: 30px; left: -30px; width: 100%; height: 100%; border: 1px solid var(--gold); z-index: -1; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-tagline { font-family: var(--font); font-style: italic; font-size: 1.4rem; color: var(--gold-dark); line-height: 1.5; padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 32px 0; }
+    .about-stats { display: flex; gap: 50px; margin-top: 32px; }
+    .about-stat-num { font-family: var(--font); font-size: 3rem; color: var(--gold); line-height: 1; font-weight: 400; }
+    .about-stat-label { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+
+    /* SERVICIOS */
+    .servicios { background: var(--nude-light); }
+    .servicios-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .servicio-item { display: flex; align-items: flex-start; gap: 28px; padding: 38px 32px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); transition: background 0.3s; }
+    .servicio-item:nth-child(even) { border-right: none; }
+    .servicio-item:nth-last-child(1), .servicio-item:nth-last-child(2) { border-bottom: none; }
+    .servicio-item:hover { background: rgba(255,255,255,0.5); }
+    .servicio-num { font-family: var(--font); font-size: 1.6rem; color: var(--gold); font-style: italic; line-height: 1; flex-shrink: 0; padding-top: 6px; min-width: 40px; }
+    .servicio-content h3 { font-family: var(--font); font-size: 1.6rem; color: var(--text); margin-bottom: 10px; font-weight: 400; line-height: 1.2; }
+    .servicio-content p { font-size: 0.92rem; color: var(--text-light); line-height: 1.75; }
+
+    /* PRECIOS / VALUE PROP */
+    .valores { background: var(--text); color: #fff; }
+    .valores-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .valores .section-title { color: #fff; }
+    .valores .section-label { color: var(--gold-light); }
+    .valores .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto; }
+    .valores-grid { margin-top: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+    .valor-card { padding: 0 20px; }
+    .valor-icon { width: 64px; height: 64px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-light); margin: 0 auto 24px; }
+    .valor-card h3 { font-family: var(--font); font-size: 1.5rem; color: var(--gold-light); margin-bottom: 12px; font-weight: 400; }
+    .valor-card p { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.75; }
+
+    /* TESTIMONIOS */
+    .testimonios { background: var(--bg-alt); }
+    .testimonios-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonio { background: #fff; padding: 44px 36px; border-top: 2px solid var(--gold); }
+    .testimonio-stars { color: var(--gold); font-size: 1rem; margin-bottom: 18px; letter-spacing: 4px; }
+    .testimonio-quote { font-family: var(--font); font-style: italic; font-size: 1.1rem; color: var(--text); line-height: 1.65; margin-bottom: 22px; }
+    .testimonio-author { font-size: 0.78rem; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); padding: 110px 60px; text-align: center; color: #fff; }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.4rem, 4.5vw, 4rem); margin-bottom: 22px; font-weight: 400; line-height: 1.1; }
+    .cta h2 em { font-style: italic; }
+    .cta p { color: rgba(255,255,255,0.92); font-size: 1.05rem; max-width: 540px; margin: 0 auto 40px; line-height: 1.85; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: var(--gold-dark); text-decoration: none; padding: 18px 44px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; border: 1px solid #fff; }
+    .btn-cta:hover { background: transparent; color: #fff; }
+
+    /* CONTACT */
+    .contacto-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 36px; }
+    .contacto-item { padding-left: 24px; border-left: 1px solid var(--gold); }
+    .contacto-item h4 { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark); font-weight: 600; margin-bottom: 8px; }
+    .contacto-item p, .contacto-item a { font-family: var(--font); font-size: 1.4rem; color: var(--text); text-decoration: none; line-height: 1.4; font-weight: 400; }
+    .contacto-item a:hover { color: var(--gold-dark); }
+    .map-wrapper { overflow: hidden; }
+    .map-wrapper iframe { width: 100%; height: 480px; border: 0; display: block; filter: grayscale(0.3) sepia(0.15); }
+
+    /* FOOTER */
+    footer { background: var(--text); padding: 60px 60px 40px; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.5rem; color: rgba(255,255,255,0.85); letter-spacing: 0.1em; }
+    .footer-brand span { color: var(--gold-light); }
+    .footer-copy { font-size: 0.72rem; letter-spacing: 0.05em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.72rem; transition: color 0.3s; letter-spacing: 0.05em; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 110px 24px 70px; min-height: 80vh; }
+      section { padding: 80px 24px; }
+      .about-inner, .contacto-inner { grid-template-columns: 1fr; gap: 50px; }
+      .about-img { height: 380px; }
+      .about-img-line { display: none; }
+      .about-stats { gap: 30px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .servicio-item { border-right: none; padding: 30px 20px; }
+      .servicio-item:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+      .valores-grid, .testimonios-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cta { padding: 80px 24px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div>
+      <div class="nav-brand-text">Izarra</div>
+      <div class="nav-brand-sub">Estetika · Mungia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre nosotras</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34678698840" class="nav-cta">Pedir cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Centro de Estética · Mungia</p>
+      <h1>Belleza con<br><em>esencia familiar</em></h1>
+      <p>Llevamos años cuidando a las mujeres de Mungia con tratamientos pensados, precios justos y un trato cercano. Aquí no eres una clienta más — eres parte de Izarra.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/34678698840" class="btn-primary">Pedir cita</a>
+        <a href="#servicios" class="btn-outline">Ver tratamientos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="sobre">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/about.jpg" alt="Centro Estetika Izarra Mungia" class="about-img">
+      <div class="about-img-line"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="section-label">— Sobre Izarra</p>
+      <h2 class="section-title">Un rincón <em>cuidado</em><br>para cuidarte</h2>
+      <p>Estetika Izarra es un centro de estética <strong>familiar y de barrio</strong>, en el corazón de Mungia. Llevamos años ofreciendo tratamientos faciales, depilación, manicura, pedicura y cuidados específicos para todo tipo de pieles.</p>
+      <p>Lo que nos diferencia no es la tecnología más cara ni los productos de marca de moda. Es <strong>el tiempo que le dedicamos a cada persona</strong>, el conocimiento que damos antes de cualquier tratamiento y los precios honestos que mantenemos desde el primer día.</p>
+      <div class="about-tagline">"Aquí venís cuando queréis sentiros bien — no cuando os toca."</div>
+      <div class="about-stats">
+        <div>
+          <div class="about-stat-num">15+</div>
+          <div class="about-stat-label">Años en Mungia</div>
+        </div>
+        <div>
+          <div class="about-stat-num">6</div>
+          <div class="about-stat-label">Especialidades</div>
+        </div>
+        <div>
+          <div class="about-stat-num">★★★★★</div>
+          <div class="about-stat-label">Trato familiar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Tratamientos</p>
+    <h2 class="section-title">Nuestros <em>servicios</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Una gama completa de tratamientos pensados para cuidarte de los pies a la cabeza, sin prisas y sin presión.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-item">
+      <div class="servicio-num">01</div>
+      <div class="servicio-content">
+        <h3>Tratamientos faciales</h3>
+        <p>Limpieza profunda, hidratación, antiedad, manchas. Adaptamos los productos y técnicas a tu tipo de piel y a la época del año.</p>
+      </div>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-num">02</div>
+      <div class="servicio-content">
+        <h3>Depilación</h3>
+        <p>Cera tibia, caliente o láser. Facial y corporal. Técnica delicada y precisa, con productos calmantes para piel sensible.</p>
+      </div>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-num">03</div>
+      <div class="servicio-content">
+        <h3>Diseño de cejas</h3>
+        <p>Diseño personalizado según la forma de tu cara, depilación con hilo o cera y tinte vegetal. Realza tu mirada de forma natural.</p>
+      </div>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-num">04</div>
+      <div class="servicio-content">
+        <h3>Manicura y pedicura</h3>
+        <p>Manicura básica, semipermanente, con diseño. Pedicura completa con tratamiento de durezas. Productos cuidadosos con la cutícula.</p>
+      </div>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-num">05</div>
+      <div class="servicio-content">
+        <h3>Bronceado</h3>
+        <p>Cabina de rayos UVA con filtros de seguridad y tiempos personalizados. Bronceado uniforme y natural durante todo el año.</p>
+      </div>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-num">06</div>
+      <div class="servicio-content">
+        <h3>Tratamientos corporales</h3>
+        <p>Drenajes, anticelulíticos, masajes relajantes. Cuidamos también la espalda, brazos y piernas con productos profesionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores">
+  <div class="valores-inner">
+    <p class="section-label">— Por qué Izarra</p>
+    <h2 class="section-title">Lo que nos hace <em>diferentes</em></h2>
+    <p class="section-sub">No queremos ser el centro más grande ni el más moderno. Queremos ser el sitio al que las clientas vuelven año tras año porque saben que estarán bien.</p>
+    <div class="valores-grid">
+      <div class="valor-card fade-in">
+        <div class="valor-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Trato familiar</h3>
+        <p>No somos una franquicia. Conocemos a nuestras clientas por su nombre y sabemos qué les funciona en cada piel.</p>
+      </div>
+      <div class="valor-card fade-in">
+        <div class="valor-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg>
+        </div>
+        <h3>Precios honestos</h3>
+        <p>Sin extras escondidos, sin presiones para que te lleves productos. Pagas por lo que necesitas, ni más ni menos.</p>
+      </div>
+      <div class="valor-card fade-in">
+        <div class="valor-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+        </div>
+        <h3>Sin prisas</h3>
+        <p>Tu cita es tu cita. No solapamos clientas ni hacemos las cosas a medias. Te dedicamos el tiempo que necesitas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="opiniones">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">— Opiniones reales</p>
+    <h2 class="section-title">Lo que dicen nuestras <em>clientas</em></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Tratamientos excelentes, precios ajustados y un ambiente súper familiar. Llevo años yendo y nunca me han defraudado. La gente de Izarra es de lo mejor."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Muy buenos tratamientos, totalmente recomendable. Te tratan con cariño y se nota que saben lo que hacen. Mi sitio favorito en Mungia para cuidarme."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Profesionales, cercanas y honradas. No te venden nada que no necesites y siempre te explican todo. El sitio es pequeño pero tiene todo lo que hace falta."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Reserva tu <em>cita</em></h2>
+  <p>Escríbenos por WhatsApp y te asesoramos sobre el tratamiento que mejor encaja contigo. Sin compromiso.</p>
+  <a href="https://wa.me/34678698840" class="btn-cta">📱 WhatsApp · 678 69 88 40</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">— Contacto</p>
+    <h2 class="section-title">Visítanos en <em>Mungia</em></h2>
+  </div>
+  <div class="contacto-inner" style="margin-top: 60px;">
+    <div class="contacto-info fade-in">
+      <div class="contacto-item">
+        <h4>Dirección</h4>
+        <p>Erribide Kalea, 3<br>48100 Mungia, Bizkaia</p>
+      </div>
+      <div class="contacto-item">
+        <h4>Teléfono / WhatsApp</h4>
+        <a href="https://wa.me/34678698840">678 69 88 40</a>
+      </div>
+      <div class="contacto-item">
+        <h4>Horario</h4>
+        <p>Martes a Viernes: 10:00 — 19:00<br>Sábados: con cita previa</p>
+      </div>
+      <div class="contacto-item">
+        <h4>Cómo reservar</h4>
+        <p>Llámanos o escríbenos<br>por WhatsApp directamente</p>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Erribide+3+Mungia&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Izarra <span>· Estetika</span></div>
+    <p class="footer-copy">© 2026 Estetika Izarra. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34678698840" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

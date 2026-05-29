@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso · CRM Reservas · G&G Elcano</title>
+<meta name="theme-color" content="#FAF6EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23C8632A' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF6EE;
+  --card:#FFFFFF;
+  --tinta:#2A1F18;
+  --gris:#7A6E5B;
+  --linea:#E5DBC4;
+  --brasa:#C8632A;
+  --brasa-2:#A0481B;
+  --rojo:#B14A2E;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tinta);min-height:100vh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"M";position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:60vmin;line-height:1;color:rgba(200,99,42,.04);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+
+.login{background:var(--card);border:1px solid var(--linea);max-width:440px;width:100%;padding:48px 44px;box-shadow:0 30px 80px rgba(42,31,24,.08);position:relative;z-index:1;border-top:3px solid var(--brasa)}
+.login-head{text-align:center;margin-bottom:34px}
+.login-mark{width:54px;height:54px;background:var(--tinta);color:var(--brasa);display:inline-grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:30px;border:1.5px solid var(--brasa);margin-bottom:18px}
+.login-eye{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--brasa-2);font-size:16px;font-weight:500;margin-bottom:4px;display:block}
+.login h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--tinta);letter-spacing:-.005em;line-height:1.1;margin-bottom:8px}
+.login h1 em{font-style:italic;color:var(--brasa)}
+.login-sub{font-size:13.5px;color:var(--gris);font-weight:400}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600}
+.field input{font-family:'Inter',sans-serif;font-size:15px;padding:13px 14px;border:1px solid var(--linea);background:var(--bg);color:var(--tinta);font-weight:500;outline:none;transition:.2s}
+.field input:focus{border-color:var(--brasa);background:#fff;box-shadow:0 0 0 3px rgba(200,99,42,.12)}
+
+.btn{width:100%;background:var(--tinta);color:#fff;padding:15px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1.5px solid var(--tinta);cursor:pointer;transition:.25s;margin-top:6px}
+.btn:hover{background:var(--brasa);border-color:var(--brasa);color:var(--tinta)}
+.btn:disabled{opacity:.6;cursor:wait}
+
+.error{display:none;padding:12px 16px;background:rgba(177,74,46,.08);border:1px solid rgba(177,74,46,.4);color:var(--rojo);font-size:13px;margin-bottom:16px;line-height:1.5}
+.error.show{display:block}
+
+.foot{text-align:center;margin-top:24px;font-size:11.5px;color:var(--gris);font-weight:500;letter-spacing:.04em;line-height:1.6}
+.foot a{color:var(--brasa-2);text-decoration:underline}
+
+.hint{margin-top:18px;padding:14px 16px;background:var(--bg);border:1px dashed var(--linea);font-size:12px;color:var(--gris);line-height:1.6;font-style:italic}
+.hint b{font-style:normal;color:var(--tinta);font-weight:600;letter-spacing:.04em;font-size:11px;text-transform:uppercase;display:block;margin-bottom:4px;font-family:'Inter',sans-serif}
+.hint code{background:#fff;padding:1px 7px;font-family:'Courier New',monospace;font-size:11.5px;color:var(--brasa-2);font-weight:600;border:1px solid var(--linea)}
+</style>
+</head>
+<body>
+
+<form class="login" id="loginForm">
+  <div class="login-head">
+    <div class="login-mark">G</div>
+    <span class="login-eye">— acceso restringido</span>
+    <h1>CRM <em>Reservas</em></h1>
+    <p class="login-sub">G&amp;G Elcano · Sistema de gestión multi-restaurante</p>
+  </div>
+
+  <div class="error" id="error"></div>
+
+  <div class="field">
+    <label for="user">Usuario</label>
+    <input id="user" name="user" type="text" autocapitalize="off" autocorrect="off" required autofocus>
+  </div>
+
+  <div class="field">
+    <label for="pwd">Contraseña</label>
+    <input id="pwd" name="pwd" type="password" required>
+  </div>
+
+  <button type="submit" class="btn" id="btn">Entrar</button>
+
+  <div class="hint" id="hint">
+    <b>Demo · Credenciales de prueba</b>
+    Cliente Motabarri: <code>motabarri</code> / <code>Motabarri2026!</code><br>
+    Admin G&amp;G: <code>admin</code> / <code>GGElcano2026!</code>
+  </div>
+
+  <div class="foot">
+    ¿Has olvidado tu contraseña? Contacta con G&amp;G Elcano:<br>
+    <a href="mailto:accounting@ggelcano.com">accounting@ggelcano.com</a>
+  </div>
+</form>
+
+<script src="auth.js"></script>
+<script>
+const form=document.getElementById('loginForm');
+const errorEl=document.getElementById('error');
+
+// Si ya hay sesión activa, redirigir según rol
+const existing=authSession();
+if(existing){
+  if(existing.role==='admin'){location.replace('index.html');}
+  else if(existing.role==='rest'&&existing.slug){location.replace(existing.slug+'/');}
+}
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  errorEl.classList.remove('show');
+  const user=document.getElementById('user').value.trim();
+  const pwd=document.getElementById('pwd').value;
+  const btn=document.getElementById('btn');
+  btn.disabled=true;
+  btn.textContent='Entrando…';
+
+  // Pequeño delay para sentir UX
+  setTimeout(()=>{
+    const session=authLogin(user,pwd);
+    if(!session){
+      errorEl.textContent='Usuario o contraseña incorrectos';
+      errorEl.classList.add('show');
+      btn.disabled=false;
+      btn.textContent='Entrar';
+      return;
+    }
+    if(session.role==='admin'){location.replace('index.html');}
+    else if(session.role==='rest'&&session.slug){location.replace(session.slug+'/');}
+    else{location.replace('index.html');}
+  },300);
+});
+</script>
+</body>
+</html>

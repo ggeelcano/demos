@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>La Fonda Larrauri · Pollo asado y mesa larga · Mungia</title>
+<meta name="description" content="Fonda familiar en Larrauri (Mungia). Pollo asado de leña, croquetas caseras y rabas. Sábados y domingos al mediodía. 15€ por barba.">
+<meta name="theme-color" content="#2F4A2A">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="La Fonda Larrauri · Pollo asado de toda la vida">
+<meta property="og:description" content="Sábados y domingos. Pollo asado, croquetas, rabas. Larrauri, Mungia. 15€/barba.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/fonda-larrauri-mungia/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%232F4A2A'/%3E%3Ctext x='90' y='118' font-family='Georgia,serif' font-style='italic' font-size='110' font-weight='700' fill='%23F4ECDD' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%232F4A2A'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='40' font-weight='700' fill='%23F4ECDD' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"La Fonda Larrauri","image":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/99/0b/64/la-fonda.jpg","servesCuisine":["Vasca","Asador","Casera"],"priceRange":"€€","telephone":"+34946744641","address":{"@type":"PostalAddress","streetAddress":"Bermeo Bidea 46, Larrauri","addressLocality":"Mungia","postalCode":"48100","addressCountry":"ES"},"openingHours":["Sa 13:00-18:00","Su 13:00-18:00"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.2","reviewCount":"118"}}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --crema:#F4ECDD;
+  --crema-2:#EBE0CB;
+  --bosque:#2F4A2A;
+  --bosque-2:#1F3320;
+  --asado:#C9923B;
+  --asado-2:#A57628;
+  --teja:#A04A29;
+  --tinta:#1A1610;
+  --gris:#6B6358;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--crema);color:var(--tinta);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Fraunces',Georgia,serif}
+.hand{font-family:'Caveat',cursive}
+
+/* Decoración papel */
+body::before{content:"";position:fixed;inset:0;background:
+  radial-gradient(circle at 10% 20%,rgba(201,146,59,.06),transparent 40%),
+  radial-gradient(circle at 90% 80%,rgba(47,74,42,.05),transparent 40%);
+  pointer-events:none;z-index:-1}
+
+/* Topbar */
+.topbar{background:var(--bosque-2);color:var(--crema);font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;text-align:center;font-weight:500}
+.topbar span{margin:0 12px;opacity:.85}
+
+/* Nav */
+nav{position:sticky;top:0;background:rgba(244,236,221,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(47,74,42,.15);z-index:100}
+.nav-inner{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:42px;height:42px;border-radius:50%;background:var(--bosque);color:var(--crema);display:grid;place-items:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:24px}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Fraunces',serif;font-style:italic;font-size:20px;font-weight:700;color:var(--bosque)}
+.brand-text small{font-size:10px;letter-spacing:.22em;color:var(--gris);margin-top:3px;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.nav-links a{position:relative;padding:6px 0;transition:color .2s}
+.nav-links a:hover{color:var(--asado-2)}
+.nav-cta{background:var(--bosque);color:var(--crema);padding:11px 22px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.06em;transition:.25s;white-space:nowrap}
+.nav-cta:hover{background:var(--asado-2);transform:translateY(-1px)}
+
+/* Hero */
+.hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;background:var(--bosque-2)}
+.hero-img{position:absolute;inset:0;background:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/99/0b/64/la-fonda.jpg') center/cover no-repeat;filter:brightness(.55) saturate(1.05);transform:scale(1.05)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,51,32,.35) 0%,rgba(26,22,16,.6) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--crema);padding:60px 24px;max-width:880px}
+.hero-eyebrow{font-family:'Caveat',cursive;font-size:30px;color:var(--asado);margin-bottom:8px;display:block}
+.hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(48px,9vw,120px);line-height:.95;letter-spacing:-.02em;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--asado);display:block}
+.hero p{font-size:clamp(15px,2vw,19px);max-width:580px;margin:0 auto 36px;opacity:.92;font-weight:300}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{padding:15px 32px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:.25s;display:inline-flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border:none}
+.btn-primary{background:var(--asado);color:var(--bosque-2)}
+.btn-primary:hover{background:var(--crema);transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,146,59,.4)}
+.btn-ghost{background:transparent;color:var(--crema);border:1.5px solid rgba(244,236,221,.5)}
+.btn-ghost:hover{background:var(--crema);color:var(--bosque-2);border-color:var(--crema)}
+.hero-meta{position:absolute;bottom:30px;left:0;right:0;display:flex;justify-content:center;gap:40px;color:var(--crema);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;flex-wrap:wrap;padding:0 20px;z-index:2}
+.hero-meta b{color:var(--asado);font-weight:600}
+
+/* Marquee */
+.marquee{background:var(--bosque);color:var(--crema);overflow:hidden;padding:18px 0;border-top:2px solid var(--asado);border-bottom:2px solid var(--asado)}
+.marquee-track{display:flex;gap:60px;animation:scroll 32s linear infinite;white-space:nowrap;font-family:'Fraunces',serif;font-style:italic;font-size:24px;font-weight:500}
+.marquee-track span::before{content:"·";color:var(--asado);margin-right:60px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Section base */
+section{padding:100px 24px}
+.wrap{max-width:1180px;margin:0 auto}
+.eyebrow{font-family:'Caveat',cursive;font-size:28px;color:var(--asado-2);display:block;margin-bottom:6px}
+.section-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(34px,5.4vw,60px);line-height:1.05;letter-spacing:-.015em;color:var(--bosque-2);margin-bottom:24px}
+.section-title em{font-style:italic;color:var(--teja)}
+
+/* Story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-text p{font-size:17px;color:var(--tinta);margin-bottom:18px;font-weight:300}
+.story-text p strong{font-weight:600;color:var(--bosque-2)}
+.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;padding-top:32px;border-top:1px solid rgba(47,74,42,.2)}
+.stat b{display:block;font-family:'Fraunces',serif;font-style:italic;font-size:42px;color:var(--asado-2);font-weight:700;line-height:1}
+.stat span{font-size:11px;color:var(--gris);letter-spacing:.14em;text-transform:uppercase;margin-top:6px;display:block}
+.story-img{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(31,51,32,.25)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img::before{content:"";position:absolute;inset:14px;border:1px solid rgba(244,236,221,.5);z-index:2;pointer-events:none}
+.story-tag{position:absolute;bottom:30px;left:30px;background:var(--asado);color:var(--bosque-2);padding:14px 22px;border-radius:4px;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:18px;z-index:3}
+
+/* Signature dish */
+.signature{background:linear-gradient(160deg,var(--bosque-2) 0%,var(--bosque) 100%);color:var(--crema);position:relative;overflow:hidden}
+.signature::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,146,59,.15) 0%,transparent 70%)}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+.sig-eyebrow{font-family:'Caveat',cursive;font-size:30px;color:var(--asado)}
+.sig-title{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(40px,6vw,72px);font-weight:700;line-height:.95;margin:8px 0 20px}
+.sig-text{font-size:17px;font-weight:300;opacity:.9;margin-bottom:30px;max-width:440px}
+.sig-features{display:flex;flex-direction:column;gap:14px}
+.sig-feature{display:flex;gap:16px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid rgba(244,236,221,.15)}
+.sig-feature i{font-style:normal;color:var(--asado);font-family:'Fraunces',serif;font-weight:700;font-size:24px;min-width:30px}
+.sig-feature b{display:block;font-weight:600;font-size:15px;margin-bottom:4px}
+.sig-feature small{font-size:13px;opacity:.7;font-weight:300;display:block;line-height:1.5}
+.sig-img{aspect-ratio:1/1;border-radius:50%;overflow:hidden;position:relative;box-shadow:0 0 0 16px rgba(201,146,59,.15),0 30px 80px rgba(0,0,0,.4)}
+.sig-img img{width:100%;height:100%;object-fit:cover}
+.sig-stamp{position:absolute;width:140px;height:140px;border-radius:50%;background:var(--asado);color:var(--bosque-2);display:grid;place-items:center;text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:14px;line-height:1.1;top:-20px;right:-20px;transform:rotate(-15deg);box-shadow:0 10px 30px rgba(0,0,0,.3);padding:20px}
+
+/* Carta */
+.carta{background:var(--crema-2)}
+.tabs{display:flex;justify-content:center;gap:0;margin:36px 0 50px;border-bottom:2px solid rgba(47,74,42,.15);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab{padding:14px 22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gris);cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab.active{color:var(--bosque-2);border-bottom-color:var(--asado)}
+.tab:hover{color:var(--bosque-2)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 60px}
+.menu-panel{display:none}
+.menu-panel.active{display:contents;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dish{padding-bottom:18px;border-bottom:1px dashed rgba(47,74,42,.2)}
+.dish-head{display:flex;justify-content:space-between;gap:14px;align-items:baseline;margin-bottom:6px}
+.dish-name{font-family:'Fraunces',serif;font-weight:700;font-size:19px;color:var(--bosque-2)}
+.dish-name .star{color:var(--asado);margin-left:4px}
+.dish-price{font-family:'Fraunces',serif;font-style:italic;font-weight:700;color:var(--teja);font-size:18px;white-space:nowrap}
+.dish-desc{font-size:13.5px;color:var(--gris);font-weight:300;line-height:1.55}
+.menu-note{margin-top:50px;padding:24px;background:var(--bosque);color:var(--crema);border-radius:6px;text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:18px}
+.menu-note b{display:block;color:var(--asado);font-size:32px;font-weight:700;font-style:italic;margin-bottom:4px}
+
+/* Galería */
+.gallery{background:var(--crema)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:8px;margin-top:50px}
+.gal-item{position:relative;overflow:hidden;border-radius:4px;background:var(--bosque-2)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(31,51,32,.5) 100%);opacity:0;transition:.3s}
+.gal-item:hover::after{opacity:1}
+.gal-tall{grid-row:span 2}
+.gal-wide{grid-column:span 2}
+
+/* Reseñas */
+.reviews{background:var(--bosque-2);color:var(--crema)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.review{background:rgba(244,236,221,.05);border:1px solid rgba(244,236,221,.1);padding:30px;border-radius:6px;position:relative}
+.review::before{content:"\201C";font-family:'Fraunces',serif;font-size:80px;color:var(--asado);position:absolute;top:-20px;left:20px;line-height:1;font-style:italic}
+.review-stars{color:var(--asado);font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.review p{font-family:'Fraunces',serif;font-style:italic;font-size:17px;font-weight:500;line-height:1.5;margin-bottom:18px}
+.review-author{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-family:'Inter',sans-serif;font-style:normal}
+
+/* Contacto */
+.contact{background:var(--crema)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-card{background:white;padding:50px;border-radius:8px;box-shadow:0 20px 60px rgba(31,51,32,.08)}
+.contact-row{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(47,74,42,.1);align-items:flex-start}
+.contact-row:last-child{border:none}
+.contact-row .ico{width:44px;height:44px;border-radius:50%;background:var(--bosque);color:var(--asado);display:grid;place-items:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:20px;flex-shrink:0}
+.contact-row b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin-bottom:4px;font-weight:600}
+.contact-row span{font-family:'Fraunces',serif;font-size:18px;color:var(--bosque-2);font-weight:500}
+.contact-row a{color:var(--bosque-2);font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+.hours-table{margin-top:14px}
+.hours-table div{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;border-bottom:1px dotted rgba(47,74,42,.15)}
+.hours-table div span:first-child{font-weight:500;color:var(--bosque-2)}
+.hours-table div span:last-child{color:var(--gris);font-family:'Fraunces',serif;font-style:italic}
+.hours-table div.open{color:var(--bosque-2)}
+.hours-table div.closed span:last-child{color:#B14A2E;text-transform:uppercase;font-size:11px;letter-spacing:.1em;font-style:normal}
+.cta-block{background:var(--bosque-2);color:var(--crema);padding:50px;border-radius:8px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.cta-block h3{font-family:'Fraunces',serif;font-style:italic;font-size:36px;margin-bottom:12px;line-height:1.1}
+.cta-block p{font-size:15px;opacity:.85;margin-bottom:30px;font-weight:300}
+
+/* Footer */
+footer{background:#0F1A10;color:var(--crema);padding:60px 24px 30px;text-align:center}
+.foot-brand{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:32px;color:var(--asado);margin-bottom:8px}
+.foot-tag{font-family:'Caveat',cursive;font-size:22px;opacity:.7;margin-bottom:24px}
+.foot-row{font-size:13px;opacity:.6;letter-spacing:.06em;margin-bottom:6px}
+.foot-row a{color:var(--asado)}
+
+/* Mobile */
+@media(max-width:1024px){
+  .nav-links{display:none}
+  .story,.sig-grid,.contact-grid,.reviews-grid{grid-template-columns:1fr;gap:50px}
+  .menu-grid{grid-template-columns:1fr;gap:24px}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .reviews-grid{grid-template-columns:1fr}
+  section{padding:70px 20px}
+  .sig-stamp{width:110px;height:110px;font-size:12px;top:-10px;right:-10px}
+}
+@media(max-width:480px){
+  .topbar{font-size:10px;padding:7px 0}
+  .topbar span{margin:0 8px}
+  .nav-inner{padding:12px 16px}
+  .brand-mark{width:38px;height:38px;font-size:21px}
+  .brand-text b{font-size:17px}
+  .nav-cta{padding:10px 16px;font-size:12px}
+  .hero{min-height:82vh}
+  .hero-content{padding:40px 18px}
+  .hero-meta{gap:18px;font-size:10.5px;bottom:18px}
+  .marquee-track{font-size:18px;gap:40px}
+  .marquee-track span::before{margin-right:40px}
+  section{padding:56px 18px}
+  .stat b{font-size:34px}
+  .menu-note{font-size:15px;padding:20px}
+  .menu-note b{font-size:26px}
+  .contact-card,.cta-block{padding:30px 22px}
+  .cta-block h3{font-size:28px}
+  .gal-grid{grid-auto-rows:130px}
+  .review{padding:24px 22px}
+  .review p{font-size:15px}
+  .btn{padding:13px 22px;font-size:12.5px}
+}
+@media(max-width:360px){
+  .hero h1{font-size:42px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>SÁBADOS Y DOMINGOS</span><span>·</span><span>POLLO ASADO DE LEÑA</span><span>·</span><span>15€ POR BARBA</span></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div class="brand-text"><b>La Fonda</b><small>Larrauri · Mungia</small></div>
+    </div>
+    <div class="nav-links">
+      <a href="#fonda">La fonda</a>
+      <a href="#pollo">El pollo</a>
+      <a href="#carta">Carta</a>
+      <a href="#reseñas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="tel:+34946744641" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">desde toda la vida en Larrauri</span>
+    <h1>Pollo asado<em>y mesa larga.</em></h1>
+    <p>Una fonda de fin de semana, de las de antes. Pollo a la leña, croquetas que están riquísimas, rabas, patatas y vino de la casa. Sin pretensiones, sin reservas online, sin postureo.</p>
+    <div class="hero-ctas">
+      <a href="tel:+34946744641" class="btn btn-primary">Llamar para reservar</a>
+      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span>★ 4.2 · 118 RESEÑAS</span>
+    <span>SÁB &amp; DOM <b>13:00 – 18:00</b></span>
+    <span>BERMEO BIDEA 46 · MUNGIA</span>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Pollo asado a la leña</span><span>Croquetas caseras</span><span>Rabas crujientes</span><span>Patatas fritas de las buenas</span><span>Vino de la casa</span><span>Mesa larga, comida tranquila</span>
+    <span>Pollo asado a la leña</span><span>Croquetas caseras</span><span>Rabas crujientes</span><span>Patatas fritas de las buenas</span><span>Vino de la casa</span><span>Mesa larga, comida tranquila</span>
+  </div>
+</div>
+
+<section id="fonda" class="story-section">
+  <div class="wrap story">
+    <div class="story-text">
+      <span class="eyebrow">la casa</span>
+      <h2 class="section-title">Una fonda <em>de las de verdad</em>, en pleno barrio de Larrauri.</h2>
+      <p><strong>Fines de semana al mediodía y poco más.</strong> Vienes con la familia, con los txikis, con la cuadrilla. Te sientas en mesa larga, pides pollo asado y un par de raciones para compartir, y te tomas tu tiempo.</p>
+      <p>Llevamos años haciendo lo mismo: el pollo en la leña, las croquetas a mano y las patatas como Dios manda. Servicio cercano, espacio amplio dentro y fuera, y zona de juegos para que los críos hagan su vida.</p>
+      <p>Si lo que buscas es un sitio bonito de Instagram, no es aquí. Si lo que buscas es <strong>comer rico, barato y a gusto</strong>, ya puedes ir reservando.</p>
+      <div class="story-stats">
+        <div class="stat"><b>15€</b><span>por barba</span></div>
+        <div class="stat"><b>4.2★</b><span>en Tripadvisor</span></div>
+        <div class="stat"><b>118</b><span>reseñas</span></div>
+      </div>
+    </div>
+    <div class="story-img">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/99/0b/9a/la-fonda.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1551218372-a8789b81b253?auto=format&fit=crop&w=900&q=80'" alt="Fonda Larrauri">
+      <div class="story-tag">Sólo fines de semana</div>
+    </div>
+  </div>
+</section>
+
+<section id="pollo" class="signature">
+  <div class="wrap sig-grid">
+    <div>
+      <span class="sig-eyebrow">la especialidad</span>
+      <h2 class="sig-title">El pollo asado.<br>Punto.</h2>
+      <p class="sig-text">Pollo entero asado a leña, dorado por fuera, jugoso por dentro. Con sus patatas, su pan, su jugo, y poco más. Es lo que la gente viene a buscar y es lo que sabemos hacer mejor.</p>
+      <div class="sig-features">
+        <div class="sig-feature"><i>1</i><div><b>Marinado por la mañana</b><small>Hierbas, ajo, sal gorda. Nada raro.</small></div></div>
+        <div class="sig-feature"><i>2</i><div><b>A la leña, lento</b><small>Vuelta y vuelta hasta que la piel quede como tiene que quedar.</small></div></div>
+        <div class="sig-feature"><i>3</i><div><b>A la mesa con sus patatas</b><small>De acompañamiento, patatas fritas hechas en casa. Las mejores que vas a probar.</small></div></div>
+      </div>
+    </div>
+    <div class="sig-img">
+      <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=80" loading="lazy" decoding="async" alt="Pollo asado de leña">
+      <div class="sig-stamp">A LA LEÑA<br>DESDE<br>SIEMPRE</div>
+    </div>
+  </div>
+</section>
+
+<section id="carta" class="carta">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">para compartir</span>
+    <h2 class="section-title">La <em>carta</em> de fin de semana.</h2>
+  </div>
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab active" data-tab="picar">Para picar</button>
+      <button class="tab" data-tab="principal">Lo principal</button>
+      <button class="tab" data-tab="extras">Acompañamientos</button>
+      <button class="tab" data-tab="postres">Postres &amp; vino</button>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-panel active" data-panel="picar">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Croquetas caseras <span class="star">★</span></span><span class="dish-price">8 €</span></div><p class="dish-desc">De jamón, de pollo o del puchero del día. Hechas a mano, bechamel densa, fritas en el momento.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Rabas de calamar <span class="star">★</span></span><span class="dish-price">12 €</span></div><p class="dish-desc">Calamar fresco, harina justa, frito en aceite limpio. Limón al lado y a comer con las manos.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Chorizo a la sidra</span><span class="dish-price">7 €</span></div><p class="dish-desc">Chorizo de pueblo cocinado en sidra natural. Para mojar pan a saco.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pimientos del piquillo rellenos</span><span class="dish-price">9 €</span></div><p class="dish-desc">Rellenos de bacalao y servidos con su salsita.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Tabla de jamón ibérico</span><span class="dish-price">14 €</span></div><p class="dish-desc">Cortado a cuchillo, picos y aceite. Para empezar bien la sobremesa.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Ensalada de la casa</span><span class="dish-price">9 €</span></div><p class="dish-desc">Lechuga, tomate, atún, aceitunas, cebolla, espárrago. La de toda la vida.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="principal">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pollo asado a la leña <span class="star">★</span></span><span class="dish-price">14 €</span></div><p class="dish-desc">Medio pollo o entero (24€). Con patatas. La estrella de la casa.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Chuletón de vaca a la brasa</span><span class="dish-price">28 €/kg</span></div><p class="dish-desc">Madurado, a la brasa, punto al gusto. Pimientos asados de guarnición.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Bacalao al pil-pil</span><span class="dish-price">18 €</span></div><p class="dish-desc">Lomo de bacalao, ajo y guindilla. Salsa montada al ritmo del cazuelo.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Costilla de cerdo a la barbacoa</span><span class="dish-price">15 €</span></div><p class="dish-desc">Costillar tierno marinado y cocinado lento. Salsa BBQ aparte.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Bacalao a la vizcaína</span><span class="dish-price">17 €</span></div><p class="dish-desc">Receta de la abuela. Salsa de la mejor.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Cordero asado al horno</span><span class="dish-price">19 €</span></div><p class="dish-desc">Pierna de lechazo, lento al horno. Ensalada de acompañamiento.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="extras">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Patatas fritas de la casa <span class="star">★</span></span><span class="dish-price">5 €</span></div><p class="dish-desc">Cortadas a mano, fritas en aceite limpio, sal por encima. Doradas. Crujientes.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pimientos del padrón</span><span class="dish-price">7 €</span></div><p class="dish-desc">Sal gorda y aceite. A ver cuál pica.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Setas a la plancha</span><span class="dish-price">9 €</span></div><p class="dish-desc">Boletus o de temporada. Ajo y perejil.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Pan, oliva y aceite</span><span class="dish-price">3 €</span></div><p class="dish-desc">Para mojar, pellizcar, robar al de al lado.</p></div>
+      </div>
+
+      <div class="menu-panel" data-panel="postres">
+        <div class="dish"><div class="dish-head"><span class="dish-name">Tarta de queso de la casa</span><span class="dish-price">5 €</span></div><p class="dish-desc">Cremosa, ligeramente quemada por arriba. Receta secreta.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Cuajada con miel y nueces</span><span class="dish-price">4 €</span></div><p class="dish-desc">Cuajada artesana de oveja. Con miel del valle.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Arroz con leche</span><span class="dish-price">4,50 €</span></div><p class="dish-desc">Cremoso, con su canela y su corteza de limón.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Vino de la casa (botella)</span><span class="dish-price">9 €</span></div><p class="dish-desc">Crianza de Rioja. Sencillo y rico.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Txakoli de Bizkaia</span><span class="dish-price">11 €</span></div><p class="dish-desc">Frío, fresco, escanciado. Como aquí mandan.</p></div>
+        <div class="dish"><div class="dish-head"><span class="dish-name">Sidra natural</span><span class="dish-price">6 €</span></div><p class="dish-desc">Botella de sidra del año. ¡Aupa!</p></div>
+      </div>
+    </div>
+
+    <div class="menu-note"><b>≈ 15€ por barba</b>de los precios más honestos de Bizkaia.</div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">la fonda en imágenes</span>
+    <h2 class="section-title">Sin filtros, <em>sin postureo</em>.</h2>
+  </div>
+  <div class="wrap">
+    <div class="gal-grid">
+      <div class="gal-item gal-tall gal-wide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/99/0b/64/la-fonda.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'" alt="Comedor"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Pollo asado"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Croquetas"></div>
+      <div class="gal-item gal-wide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/a8/60/33/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80'" alt="Plato"></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1604908554027-99540ce82d28?auto=format&fit=crop&w=600&q=80" loading="lazy" decoding="async" alt="Patatas"></div>
+      <div class="gal-item"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/a8/60/35/caption.jpg" referrerpolicy="no-referrer" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1576020799627-aeac74d58064?auto=format&fit=crop&w=600&q=80'" alt="Mesa"></div>
+    </div>
+  </div>
+</section>
+
+<section id="reseñas" class="reviews">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow" style="color:var(--asado)">lo que dice la gente</span>
+    <h2 class="section-title" style="color:var(--crema)">4.2 estrellas en <em style="color:var(--asado)">Tripadvisor</em>.</h2>
+  </div>
+  <div class="wrap">
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>Sencillo pero muy bien preparado. El pollo asado es brutal y las patatas, fenomenales. La relación calidad-precio, excepcional.</p>
+        <div class="review-author">— Cliente Tripadvisor</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>Vamos en familia siempre que podemos. Trato cercano, la zona de juegos para los críos es ideal y el pollo no falla nunca.</p>
+        <div class="review-author">— Cliente Tripadvisor</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★☆</div>
+        <p>15€ por barba comiendo así de bien es difícil. Croquetas, rabas y un pollo a compartir. Salimos contentísimos.</p>
+        <div class="review-author">— Cliente Tripadvisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">vente</span>
+    <h2 class="section-title">A 5 minutos de Mungia, <em>en Larrauri</em>.</h2>
+  </div>
+  <div class="wrap contact-grid">
+    <div class="contact-card">
+      <div class="contact-row"><div class="ico">@</div><div><b>Dónde estamos</b><span>Bermeo Bidea 46<br>Larrauri · 48100 Mungia</span></div></div>
+      <div class="contact-row"><div class="ico">☏</div><div><b>Reservas</b><a href="tel:+34946744641">946 74 46 41</a><br><a href="tel:+34685727519" style="font-size:15px;color:var(--gris)">685 72 75 19</a></div></div>
+      <div class="contact-row"><div class="ico">✉</div><div><b>Email</b><a href="mailto:fondalarrauri@yahoo.es">fondalarrauri@yahoo.es</a></div></div>
+      <div class="contact-row"><div class="ico">⏱</div><div style="flex:1"><b>Horarios</b>
+        <div class="hours-table">
+          <div class="closed"><span>Lunes</span><span>Cerrado</span></div>
+          <div class="closed"><span>Martes</span><span>Cerrado</span></div>
+          <div class="closed"><span>Miércoles</span><span>Cerrado</span></div>
+          <div class="closed"><span>Jueves</span><span>Cerrado</span></div>
+          <div class="closed"><span>Viernes</span><span>Cerrado</span></div>
+          <div class="open"><span>Sábado</span><span>13:00 – 18:00</span></div>
+          <div class="open"><span>Domingo</span><span>13:00 – 18:00</span></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="cta-block">
+      <h3>Reserva mesa<br>antes del fin de semana.</h3>
+      <p>Vamos llenos casi siempre. Llama y reserva con tiempo, sobre todo si venís en grupo grande.</p>
+      <a href="tel:+34946744641" class="btn btn-primary" style="background:var(--asado)">Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">La Fonda Larrauri</div>
+  <div class="foot-tag">— pollo asado y mesa larga —</div>
+  <div class="foot-row">Bermeo Bidea 46 · Larrauri · 48100 Mungia · Bizkaia</div>
+  <div class="foot-row"><a href="tel:+34946744641">946 74 46 41</a> · <a href="mailto:fondalarrauri@yahoo.es">fondalarrauri@yahoo.es</a></div>
+  <div class="foot-row" style="margin-top:20px;opacity:.4">© 2026 La Fonda Larrauri</div>
+</footer>
+
+<script>
+const tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.menu-panel');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));
+  panels.forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelector(`.menu-panel[data-panel="${t.dataset.tab}"]`).classList.add('active');
+}));
+</script>
+
+</body>
+</html>

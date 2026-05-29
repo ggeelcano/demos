@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventuno · Cocktail bar italiano en Santa Catalina, Palma de Mallorca</title>
+  <meta name="description" content="Ventuno Bar, Santa Catalina · Palma de Mallorca. Cócteles italianos de autor, aperitivos, pizzette y dolce vita mediterránea. Carrer de Sant Magí 60.">
+  <meta property="og:title" content="Ventuno · Cocktail bar · Palma de Mallorca">
+  <meta property="og:description" content="Dolce vita en Santa Catalina. Cócteles italianos, aperitivos y pizzette.">
+  <meta property="og:image" content="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-cocktails-scaled.jpg">
+  <link rel="icon" href="https://www.ventunobar.com/wp-content/uploads/2022/01/cropped-ventuno-bar-santa-catalina-palma-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --campari: #C6302C;
+      --campari-deep: #9F241F;
+      --campari-glow: #E64540;
+      --cream: #F4EFE2;
+      --cream-2: #EDE4CD;
+      --ivory: #FBF7EC;
+      --terracotta: #D1704A;
+      --olive: #3E4A2B;
+      --ink: #1A1410;
+      --ink-2: #2A221C;
+      --gold: #C9A961;
+      --line: rgba(26,20,16,0.12);
+      --font-display: 'DM Serif Display', serif;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--campari); color: var(--ivory); }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--campari); color: var(--ivory);
+      padding: 9px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500;
+      overflow: hidden;
+    }
+    .topbar em { font-style: italic; font-family: var(--font-serif); letter-spacing: 0; text-transform: none; font-size: 0.95rem; font-weight: 500; }
+    .topbar-sep { opacity: 0.5; }
+    @media (max-width: 700px) { .topbar { gap: 16px; font-size: 0.62rem; padding: 8px 16px; } .topbar-sep { display: none; } }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(244,239,226,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 40px;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      gap: 40px;
+      transition: padding 0.35s var(--ease);
+    }
+    nav.scrolled { padding: 12px 40px; }
+
+    .nav-left, .nav-right {
+      display: flex; gap: 34px; align-items: center;
+    }
+    .nav-right { justify-content: flex-end; }
+    nav a:not(.brand):not(.nav-cta) {
+      font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink);
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav a:not(.brand):not(.nav-cta)::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
+      height: 1px; background: var(--campari);
+      transform: scaleX(0); transition: transform 0.35s var(--ease);
+      transform-origin: right;
+    }
+    nav a:not(.brand):not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
+    nav a:not(.brand):not(.nav-cta):hover { color: var(--campari); }
+
+    .brand {
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+      line-height: 0.9;
+    }
+    .brand-mark {
+      font-family: var(--font-display);
+      font-size: 1.9rem; font-weight: 400; font-style: italic;
+      color: var(--campari); letter-spacing: 0.02em;
+    }
+    .brand-tag {
+      font-family: var(--font-sans);
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      color: var(--ink); font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-cta {
+      background: var(--campari); color: var(--ivory) !important;
+      padding: 10px 22px;
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--campari-deep); }
+
+    .hamburger { display: none; }
+
+    @media (max-width: 900px) {
+      nav { grid-template-columns: auto auto auto; padding: 14px 20px; }
+      .nav-left { display: none; }
+      .nav-right .cta-mobile-hide { display: none; }
+      .brand-mark { font-size: 1.6rem; }
+      .hamburger { display: flex; width: 36px; height: 36px; align-items: center; justify-content: center; }
+      .hamburger span, .hamburger span::before, .hamburger span::after {
+        content: ''; display: block; width: 18px; height: 1.5px; background: var(--ink);
+      }
+      .hamburger span { position: relative; }
+      .hamburger span::before { position: absolute; top: -5px; }
+      .hamburger span::after { position: absolute; top: 5px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: calc(100vh - 78px);
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-content {
+      padding: 90px 80px 100px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-content::before {
+      content: '21'; position: absolute;
+      top: -30px; left: 40px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 32rem; line-height: 0.8;
+      color: rgba(198,48,44,0.06);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 16px;
+      font-size: 0.7rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: var(--campari); font-weight: 600;
+      margin-bottom: 36px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.9s 0.2s var(--ease) forwards;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 40px; height: 1px; background: var(--campari);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 10rem);
+      font-weight: 400; line-height: 0.88;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.3s 0.4s var(--ease) forwards;
+      position: relative; z-index: 2;
+    }
+    .hero-title em { font-style: italic; color: var(--campari); }
+    .hero-title .accent {
+      display: inline-block;
+      font-style: italic; color: var(--campari);
+      position: relative;
+    }
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+      font-style: italic; font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink-2);
+      max-width: 520px; margin-bottom: 52px;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s 0.7s var(--ease) forwards;
+      position: relative; z-index: 2;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUp 1s 0.95s var(--ease) forwards;
+      position: relative; z-index: 2;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 34px;
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600; border: 1.5px solid transparent;
+      transition: all 0.38s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; transition: transform 0.3s; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-red { background: var(--campari); color: var(--ivory); border-color: var(--campari); }
+    .btn-red:hover { background: var(--campari-deep); border-color: var(--campari-deep); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(198,48,44,0.3); }
+    .btn-outline { color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--ivory); }
+    .btn-cream { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+    .btn-cream:hover { background: transparent; color: var(--ivory); border-color: var(--ivory); }
+    .btn-outline-cream { color: var(--ivory); border-color: rgba(251,247,236,0.5); }
+    .btn-outline-cream:hover { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+
+    .hero-visual {
+      position: relative; overflow: hidden;
+      background: url('https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-cocktails-scaled.jpg') center/cover no-repeat;
+    }
+    .hero-visual-badge {
+      position: absolute; bottom: 40px; right: 40px; z-index: 3;
+      background: var(--ivory);
+      padding: 22px 26px;
+      border: 1px solid var(--campari);
+      max-width: 220px;
+    }
+    .hero-visual-badge strong {
+      display: block;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.5rem; color: var(--campari);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .hero-visual-badge span {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2); font-weight: 500;
+    }
+    .hero-rotate {
+      position: absolute; top: 50%; left: -40px;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center;
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--ivory); font-weight: 500;
+      z-index: 3; background: var(--campari);
+      padding: 10px 20px;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 60px 24px 70px; }
+      .hero-content::before { font-size: 18rem; top: -20px; left: 10px; }
+      .hero-visual { height: 500px; }
+      .hero-rotate { display: none; }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      background: var(--ink); color: var(--cream);
+      overflow: hidden; padding: 22px 0;
+      border-top: 2px solid var(--campari);
+      border-bottom: 2px solid var(--campari);
+    }
+    .marquee-track {
+      display: flex; white-space: nowrap;
+      animation: scroll 38s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 26px;
+      padding: 0 40px;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; font-weight: 400;
+      color: rgba(244,239,226,0.75);
+    }
+    .marquee-item .star { color: var(--campari); font-size: 1rem; flex-shrink: 0; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION ─── */
+    section { padding: 130px 56px; position: relative; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--campari); font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--campari);
+    }
+    .eyebrow.center { justify-content: center; }
+    .eyebrow.center::before, .eyebrow.center::after {
+      content: ''; width: 32px; height: 1px; background: var(--campari);
+    }
+    .s-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.5vw, 5.5rem);
+      font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .s-title em { font-style: italic; color: var(--campari); }
+    .s-title .script { font-family: var(--font-display); font-style: italic; }
+
+    /* ─── STORY ─── */
+    .story-section {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1.05fr;
+      gap: 0; padding: 0;
+    }
+    .story-visual {
+      position: relative; overflow: hidden; min-height: 780px;
+      background: url('https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-interior-bar.jpg') center/cover no-repeat;
+    }
+    .story-number {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 24rem; line-height: 1;
+      color: rgba(198,48,44,0.35);
+      text-shadow: 0 6px 40px rgba(0,0,0,0.2);
+      z-index: 2; pointer-events: none;
+    }
+    .story-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,20,16,0.2), rgba(26,20,16,0.5));
+    }
+    .story-content {
+      padding: 130px 80px; display: flex; flex-direction: column; justify-content: center;
+      max-width: 700px;
+      background: var(--cream);
+    }
+    .story-content .s-title { margin: 14px 0 36px; }
+    .story-body {
+      font-family: var(--font-serif);
+      font-size: 1.18rem; line-height: 1.85;
+      color: var(--ink-2); margin-bottom: 44px;
+      font-weight: 400;
+    }
+    .story-body p { margin-bottom: 22px; }
+    .story-body strong { color: var(--ink); font-weight: 600; }
+    .story-body em { color: var(--campari); font-style: italic; }
+    .story-tags {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      padding-top: 28px; border-top: 1px solid var(--line);
+    }
+    .story-tag {
+      padding: 8px 16px;
+      border: 1px solid var(--campari); color: var(--campari);
+      font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600; border-radius: 40px;
+    }
+
+    /* ─── APERITIVO ─── */
+    .aperitivo-section {
+      background: var(--ink); color: var(--cream);
+      position: relative; overflow: hidden;
+      padding: 140px 56px;
+    }
+    .aperitivo-section::before {
+      content: ''; position: absolute;
+      top: -200px; right: -200px; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(198,48,44,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .aperitivo-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; position: relative; z-index: 2;
+    }
+    .aperitivo-visual {
+      position: relative; aspect-ratio: 4/5;
+      background: url('https://www.ventunobar.com/wp-content/uploads/2022/03/campari.jpg') center/cover no-repeat;
+      border: 1px solid rgba(244,239,226,0.15);
+    }
+    .aperitivo-tag {
+      position: absolute; top: -20px; left: -20px; z-index: 3;
+      background: var(--campari); color: var(--ivory);
+      padding: 14px 26px;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.3rem;
+    }
+    .aperitivo-content .eyebrow { color: var(--campari-glow); }
+    .aperitivo-content .eyebrow::before { background: var(--campari-glow); }
+    .aperitivo-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ivory);
+      margin: 14px 0 32px;
+    }
+    .aperitivo-title em { font-style: italic; color: var(--campari-glow); }
+    .aperitivo-body {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; line-height: 1.75;
+      color: rgba(244,239,226,0.75);
+      margin-bottom: 44px; font-style: italic;
+      font-weight: 400;
+    }
+    .signature-cocktails {
+      list-style: none;
+      padding: 28px 0; margin-bottom: 40px;
+      border-top: 1px solid rgba(244,239,226,0.12);
+      border-bottom: 1px solid rgba(244,239,226,0.12);
+    }
+    .sc {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0;
+      font-family: var(--font-serif);
+      color: rgba(244,239,226,0.85);
+    }
+    .sc-name { font-size: 1.05rem; font-weight: 500; }
+    .sc-name em { font-style: italic; color: var(--campari-glow); }
+    .sc-price {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.15rem; color: var(--campari-glow);
+    }
+
+    /* ─── MENU ─── */
+    .menu-section { background: var(--cream); padding: 140px 56px; }
+    .menu-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      max-width: 1320px; margin: 0 auto 70px;
+      flex-wrap: wrap; gap: 30px;
+    }
+    .menu-tabs {
+      display: flex; gap: 4px; flex-wrap: wrap;
+    }
+    .menu-tab {
+      padding: 12px 22px;
+      border: 1px solid var(--line);
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600; color: var(--ink-2);
+      transition: all 0.3s;
+      font-family: var(--font-sans);
+    }
+    .menu-tab.active { background: var(--campari); border-color: var(--campari); color: var(--ivory); }
+    .menu-tab:hover:not(.active) { border-color: var(--campari); color: var(--campari); }
+
+    .menu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 90px; max-width: 1200px; margin: 0 auto;
+    }
+    .menu-group { display: none; }
+    .menu-group.active { display: contents; }
+
+    .group-title {
+      grid-column: span 2;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; font-weight: 400;
+      color: var(--campari); letter-spacing: 0.01em;
+      margin: 34px 0 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: baseline; gap: 14px;
+    }
+    .group-title:first-child { margin-top: 0; }
+    .group-title span {
+      font-family: var(--font-sans); font-style: normal;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .dish {
+      padding: 24px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .dish-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 14px; margin-bottom: 8px;
+    }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem; font-weight: 400;
+      color: var(--ink); line-height: 1.25;
+    }
+    .dish-name em { font-style: italic; color: var(--campari); }
+    .dish-dots {
+      flex: 1; height: 1px; align-self: flex-end;
+      background-image: radial-gradient(circle, rgba(26,20,16,0.25) 1px, transparent 1px);
+      background-size: 6px 1px; margin-bottom: 6px;
+    }
+    .dish-price {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.25rem; color: var(--campari); white-space: nowrap;
+    }
+    .dish-desc {
+      font-size: 0.9rem; color: var(--ink-2);
+      line-height: 1.6; font-weight: 400;
+      font-family: var(--font-serif); font-style: italic;
+    }
+    .dish-tag {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--campari); padding: 2px 9px;
+      border: 1px solid var(--campari); border-radius: 40px;
+      font-weight: 600; margin-left: 8px; vertical-align: middle;
+      font-family: var(--font-sans);
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      background: var(--ivory);
+      padding: 140px 0 0;
+    }
+    .gallery-header {
+      padding: 0 56px 70px; text-align: center;
+      max-width: 900px; margin: 0 auto;
+    }
+    .gallery-header p {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.2rem; color: var(--ink-2); margin-top: 20px; line-height: 1.7;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 3px; padding: 0 3px;
+    }
+    .gallery-tile {
+      position: relative; overflow: hidden;
+    }
+    .gallery-tile.t1 { grid-column: span 2; grid-row: span 2; }
+    .gallery-tile.t2 { grid-column: span 2; }
+    .gallery-tile.t3 { grid-column: span 2; }
+    .gallery-tile.t4 { grid-column: span 2; }
+    .gallery-tile.t5 { grid-column: span 2; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s var(--ease), filter 0.6s;
+      filter: saturate(0.95);
+    }
+    .gallery-tile:hover img { transform: scale(1.08); filter: saturate(1.15); }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,20,16,0.5), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 20px; left: 22px; z-index: 2;
+      color: var(--ivory);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.1rem;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── HOURS & RESERVATION ─── */
+    .reserve-section {
+      background: var(--campari); color: var(--ivory);
+      padding: 140px 56px;
+      position: relative; overflow: hidden;
+    }
+    .reserve-section::before {
+      content: '21'; position: absolute;
+      top: 50%; right: -120px; transform: translateY(-50%);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 38rem; line-height: 0.85;
+      color: rgba(251,247,236,0.08);
+      pointer-events: none;
+    }
+    .reserve-inner {
+      max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .reserve-left .eyebrow { color: rgba(251,247,236,0.85); }
+    .reserve-left .eyebrow::before { background: rgba(251,247,236,0.85); }
+    .reserve-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ivory);
+      margin: 14px 0 30px;
+    }
+    .reserve-title em { font-style: italic; }
+    .reserve-body {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.25rem; line-height: 1.7;
+      color: rgba(251,247,236,0.85);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .reserve-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .hours-card {
+      background: var(--ivory); color: var(--ink);
+      padding: 50px 44px;
+      border: 1px solid rgba(251,247,236,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .hours-card h3 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.8rem; color: var(--campari);
+      margin-bottom: 32px;
+    }
+    .hours-list { list-style: none; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-family: var(--font-serif); font-size: 1rem;
+      font-weight: 500; color: var(--ink);
+    }
+    .hours-time {
+      font-size: 0.88rem; color: var(--ink-2); font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .hours-contact {
+      margin-top: 32px; padding-top: 26px;
+      border-top: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .hours-contact-row {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.92rem; color: var(--ink-2);
+    }
+    .hours-contact-row svg {
+      width: 16px; height: 16px; color: var(--campari);
+      stroke: currentColor; stroke-width: 1.6; fill: none; flex-shrink: 0;
+    }
+    .hours-contact-row strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink); color: rgba(244,239,226,0.6);
+      padding: 90px 56px 30px;
+    }
+    .footer-top {
+      max-width: 1320px; margin: 0 auto 70px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+    .footer-brand-mark {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 3rem; color: var(--campari);
+      line-height: 1; margin-bottom: 10px;
+    }
+    .footer-brand-tag {
+      font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(244,239,226,0.5); font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .footer-brand p {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(244,239,226,0.5);
+      max-width: 340px; margin-bottom: 28px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(244,239,226,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(244,239,226,0.6);
+      transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--campari-glow); color: var(--campari-glow);
+      transform: translateY(-2px);
+    }
+    .footer-social svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+    .footer-col h5 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: var(--cream);
+      margin-bottom: 22px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li, .footer-col ul li a {
+      font-size: 0.88rem; color: rgba(244,239,226,0.5);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col ul li a:hover { color: var(--campari-glow); }
+
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(244,239,226,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.74rem; color: rgba(244,239,226,0.35);
+    }
+    .footer-bottom em { font-style: italic; color: var(--campari-glow); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      section { padding: 90px 24px; }
+      .aperitivo-inner { grid-template-columns: 1fr; gap: 50px; }
+      .aperitivo-visual { aspect-ratio: 4/4; }
+      .story-section { grid-template-columns: 1fr; }
+      .story-visual { min-height: 450px; }
+      .story-number { font-size: 16rem; }
+      .story-content { padding: 70px 24px; }
+      .menu-grid { grid-template-columns: 1fr; gap: 0; }
+      .group-title { grid-column: auto; }
+      .gallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 240px); }
+      .gallery-tile.t1, .gallery-tile.t2, .gallery-tile.t3, .gallery-tile.t4, .gallery-tile.t5 {
+        grid-column: auto; grid-row: auto;
+      }
+      .reserve-inner { grid-template-columns: 1fr; gap: 50px; }
+      .reserve-section::before { font-size: 22rem; right: -60px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-top > :first-child { grid-column: span 2; }
+      .menu-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .btn { padding: 14px 24px; font-size: 0.66rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top > :first-child { grid-column: auto; }
+      .hours-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <span>Santa Catalina · Palma de Mallorca</span>
+  <span class="topbar-sep">—</span>
+  <span><em>Aperitivo</em> · Cocktails · Pizzette</span>
+  <span class="topbar-sep">—</span>
+  <span>Aceptamos Bitcoin</span>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="nav-left">
+    <a href="#historia">Historia</a>
+    <a href="#aperitivo">Aperitivo</a>
+    <a href="#carta">Carta</a>
+    <a href="#galeria">Galería</a>
+  </div>
+  <a href="#" class="brand">
+    <span class="brand-mark">Ventuno</span>
+    <span class="brand-tag">Palma · Santa Catalina</span>
+  </a>
+  <div class="nav-right">
+    <a href="#galeria" class="cta-mobile-hide">Galería</a>
+    <a href="https://ventunobeachclub.myrestoo.net/" target="_blank" rel="noopener" class="nav-cta">Reservar</a>
+    <button class="hamburger" aria-label="Menú"><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Dolce vita — Palma</div>
+    <h1 class="hero-title"><em>Ventuno</em>.<br>Il tuo <span class="accent">aperitivo</span><br>preferito.</h1>
+    <p class="hero-sub">Un rincón italiano en el corazón de Santa Catalina. Cócteles de autor, aperitivos, pizzette y toda la <em>dolce vita</em> mediterránea.</p>
+    <div class="hero-actions">
+      <a href="https://ventunobeachclub.myrestoo.net/" target="_blank" rel="noopener" class="btn btn-red">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#carta" class="btn btn-outline">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-rotate">Santa Catalina · EST 2022</div>
+    <div class="hero-visual-badge">
+      <strong>21</strong>
+      <span>Número redondo<br>para empezar tu noche</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item"><em>Aperitivo Italiano</em><span class="star">✦</span></div>
+    <div class="marquee-item">Negroni <span class="star">✦</span></div>
+    <div class="marquee-item">Spritz <span class="star">✦</span></div>
+    <div class="marquee-item">Pizzette <span class="star">✦</span></div>
+    <div class="marquee-item">Carpaccio <span class="star">✦</span></div>
+    <div class="marquee-item">Vitello Tonnato <span class="star">✦</span></div>
+    <div class="marquee-item">Santa Catalina · Palma <span class="star">✦</span></div>
+    <div class="marquee-item"><em>La dolce vita</em><span class="star">✦</span></div>
+    <div class="marquee-item"><em>Aperitivo Italiano</em><span class="star">✦</span></div>
+    <div class="marquee-item">Negroni <span class="star">✦</span></div>
+    <div class="marquee-item">Spritz <span class="star">✦</span></div>
+    <div class="marquee-item">Pizzette <span class="star">✦</span></div>
+    <div class="marquee-item">Carpaccio <span class="star">✦</span></div>
+    <div class="marquee-item">Vitello Tonnato <span class="star">✦</span></div>
+    <div class="marquee-item">Santa Catalina · Palma <span class="star">✦</span></div>
+    <div class="marquee-item"><em>La dolce vita</em><span class="star">✦</span></div>
+  </div>
+</div>
+
+<!-- ─── HISTORIA ─── -->
+<section class="story-section" id="historia">
+  <div class="story-visual">
+    <div class="story-number">21</div>
+  </div>
+  <div class="story-content">
+    <div class="eyebrow">Nuestra historia</div>
+    <h2 class="s-title">Ventuno, <em>el veintiuno</em>.</h2>
+    <div class="story-body">
+      <p><strong>Ventuno</strong> —<em>veintiuno</em> en italiano— es más que un número. Es el momento exacto en que el día se rinde a la noche. La hora del aperitivo, del Negroni frío, de la conversación que se alarga.</p>
+      <p>Nacimos en <strong>Santa Catalina</strong>, el barrio más vivo de Palma, con una idea clara: traer el alma de un <em>bàcaro</em> veneciano y una <em>trattoria</em> romana al Mediterráneo balear. Mesas abiertas, cócteles hechos con oficio y una carta honesta.</p>
+      <p>Un lugar donde se empieza con un <em>spritz</em>, se sigue con una pizzetta y no sabes nunca a qué hora vuelves a casa.</p>
+    </div>
+    <div class="story-tags">
+      <span class="story-tag">Aperitivo</span>
+      <span class="story-tag">Cocktails</span>
+      <span class="story-tag">Pizzette</span>
+      <span class="story-tag">Vinos italianos</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── APERITIVO · CAMPARI ─── -->
+<section class="aperitivo-section" id="aperitivo">
+  <div class="aperitivo-inner">
+    <div class="aperitivo-visual">
+      <div class="aperitivo-tag">È l'ora del Campari</div>
+    </div>
+    <div class="aperitivo-content">
+      <div class="eyebrow">L'ora dell'aperitivo</div>
+      <h2 class="aperitivo-title">Cócteles <em>con alma italiana</em>.</h2>
+      <p class="aperitivo-body">
+        Negronis, Spritz, Americano, Boulevardier. Los clásicos del aperitivo italiano servidos como deben: hielo grande, cristalería afinada, proporciones exactas. Y cuando toca, creaciones de la casa que firmaría un bartender de Milán.
+      </p>
+      <ul class="signature-cocktails">
+        <li class="sc">
+          <div class="sc-name">Negroni <em>classico</em></div>
+          <div class="sc-price">12,00 €</div>
+        </li>
+        <li class="sc">
+          <div class="sc-name">Aperol <em>Spritz</em></div>
+          <div class="sc-price">9,50 €</div>
+        </li>
+        <li class="sc">
+          <div class="sc-name">Americano <em>di sera</em></div>
+          <div class="sc-price">11,00 €</div>
+        </li>
+        <li class="sc">
+          <div class="sc-name">Boulevardier</div>
+          <div class="sc-price">13,50 €</div>
+        </li>
+        <li class="sc">
+          <div class="sc-name">Garibaldi <em>& Mandarino</em></div>
+          <div class="sc-price">10,50 €</div>
+        </li>
+        <li class="sc">
+          <div class="sc-name">Ventuno <em>Signature</em></div>
+          <div class="sc-price">14,50 €</div>
+        </li>
+      </ul>
+      <a href="#carta" class="btn btn-cream">
+        Ver carta completa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENU ─── -->
+<section class="menu-section" id="carta">
+  <div class="menu-header">
+    <div>
+      <div class="eyebrow">La carta</div>
+      <h2 class="s-title">Cucina <em>italiana</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-tab="aperitivi">Aperitivi</button>
+      <button class="menu-tab" data-tab="pizzette">Pizzette</button>
+      <button class="menu-tab" data-tab="cocktails">Cocktails</button>
+      <button class="menu-tab" data-tab="vini">Vini</button>
+      <button class="menu-tab" data-tab="dolci">Dolci</button>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <!-- APERITIVI -->
+    <div class="menu-group active" data-group="aperitivi">
+      <h3 class="group-title">Aperitivi <span>entrantes italianos</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Carpaccio di <em>Bresaola al Tartufo</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22,50 €</div>
+        </div>
+        <p class="dish-desc">Láminas de bresaola de la Valtellina, rúcula, parmigiano reggiano y aceite de trufa negra italiana.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Vitello <em>Tonnato</em><span class="dish-tag">Signature</span></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">24,50 €</div>
+        </div>
+        <p class="dish-desc">El clásico piamontés: ternera a baja temperatura, salsa tonnata con atún, alcaparras y limón.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Burrata <em>di Puglia</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">16,50 €</div>
+        </div>
+        <p class="dish-desc">Burrata cremosa recién llegada de Apulia, tomate datterino y hojas de albahaca fresca.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tagliere <em>di Salumi</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19,00 €</div>
+        </div>
+        <p class="dish-desc">Tabla de embutidos italianos: prosciutto di Parma 24 meses, coppa, salame milano y finocchiona.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Parmigiana <em>di Melanzane</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14,50 €</div>
+        </div>
+        <p class="dish-desc">Lasaña napolitana de berenjena, tomate San Marzano, mozzarella fior di latte y parmigiano.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Crudo di <em>Gamberi Rossi</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26,00 €</div>
+        </div>
+        <p class="dish-desc">Gambas rojas crudas del Mediterráneo con limón de Amalfi, aceite de oliva Puglia y pimienta negra.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Olive <em>Ascolane</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9,50 €</div>
+        </div>
+        <p class="dish-desc">Aceitunas rellenas de ternera, fritas en tempura ligera. Receta tradicional de Le Marche.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Focaccia <em>Genovese</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 €</div>
+        </div>
+        <p class="dish-desc">Focaccia artesana, aceite de oliva extra virgen, romero fresco y sal gruesa.</p>
+      </div>
+    </div>
+
+    <!-- PIZZETTE -->
+    <div class="menu-group" data-group="pizzette">
+      <h3 class="group-title">Le Pizzette <span>pizza pequeña al estilo italiano</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Margherita</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 €</div>
+        </div>
+        <p class="dish-desc">Tomate San Marzano, mozzarella fior di latte, albahaca fresca y aceite de oliva.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Diavola</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9,50 €</div>
+        </div>
+        <p class="dish-desc">Salsa de tomate, mozzarella, salame piccante picante y pimienta negra.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Prosciutto e Burrata</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12,00 €</div>
+        </div>
+        <p class="dish-desc">Pizzetta blanca, burrata recién cortada, prosciutto di Parma y rúcula.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Quattro Formaggi</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">10,50 €</div>
+        </div>
+        <p class="dish-desc">Cuatro quesos: mozzarella, gorgonzola dolce, parmigiano y taleggio.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Tartufo Nero</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12,00 €</div>
+        </div>
+        <p class="dish-desc">Base blanca, mozzarella, crema de trufa negra italiana y parmigiano reggiano.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizzetta <em>Vegetariana</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8,50 €</div>
+        </div>
+        <p class="dish-desc">Tomate, mozzarella, calabacín, berenjena, pimiento asado y cebolla caramelizada.</p>
+      </div>
+    </div>
+
+    <!-- COCKTAILS -->
+    <div class="menu-group" data-group="cocktails">
+      <h3 class="group-title">Aperitivi <span>los clásicos del aperitivo</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Aperol <em>Spritz</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9,50 €</div>
+        </div>
+        <p class="dish-desc">Aperol, prosecco Valdobbiadene, soda y rodaja de naranja.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Negroni <em>classico</em><span class="dish-tag">Signature</span></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12,00 €</div>
+        </div>
+        <p class="dish-desc">Gin, Campari y vermouth rosso a partes iguales. Hielo grande, piel de naranja.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Americano <em>di sera</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">11,00 €</div>
+        </div>
+        <p class="dish-desc">Campari, vermouth rosso y soda. El aperitivo original de Milán, 1860.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Boulevardier</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">13,50 €</div>
+        </div>
+        <p class="dish-desc">El primo americano del Negroni: bourbon, Campari y vermouth rosso.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ventuno <em>Signature</em><span class="dish-tag">Casa</span></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14,50 €</div>
+        </div>
+        <p class="dish-desc">Creación de la casa: gin italiano, Cappelletti, prosecco rosé y espuma de pomelo rosa.</p>
+      </div>
+
+      <h3 class="group-title">Cocktails <span>los grandes clásicos</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Old <em>Fashioned</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">13,50 €</div>
+        </div>
+        <p class="dish-desc">Bourbon, azúcar, bitter Angostura y piel de naranja quemada.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Espresso <em>Martini</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12,50 €</div>
+        </div>
+        <p class="dish-desc">Vodka, licor de café, espresso italiano recién hecho y jarabe de azúcar.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Gin <em>Tonic</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">10,50 €</div>
+        </div>
+        <p class="dish-desc">Gin premium a elegir, tónica Fever-Tree, hielo cristal y botánicos de la casa.</p>
+      </div>
+    </div>
+
+    <!-- VINI -->
+    <div class="menu-group" data-group="vini">
+      <h3 class="group-title">Burbujas del mundo <span>bollicine</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Prosecco <em>Valdobbiadene</em> DOCG</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 € / 32 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Extra dry, burbuja fina, notas de manzana verde y glicinas.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Franciacorta <em>Brut</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12 € / 48 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. El champagne italiano de Lombardía. Método clásico, 24 meses sobre lías.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Moët & <em>Chandon Brut Impérial</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">15 € / 75 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Champagne clásico, el más reconocido del mundo.</p>
+      </div>
+
+      <h3 class="group-title">Blancos · Rosados <span>bianchi & rosati</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Vermentino <em>di Sardegna</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 € / 22 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Cítricos, hierbas mediterráneas, salino. Perfecto para aperitivo.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Gavi <em>di Gavi</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6,50 € / 28 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Blanco piamontés elegante con notas florales y mineralidad.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Rosato <em>della Puglia</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 € / 22 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Rosado italiano del sur, fresco y frutal, color salmón.</p>
+      </div>
+
+      <h3 class="group-title">Tintos <em>· rossi</em></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Chianti <em>Classico</em> DOCG</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6,50 € / 28 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Sangiovese toscano, cerezas, hierbas mediterráneas, tanino elegante.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Barolo <em>DOCG</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12 € / 52 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. El rey del Piamonte. Nebbiolo, 3 años de crianza, complejidad total.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Primitivo <em>di Manduria</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50 € / 24 €</div>
+        </div>
+        <p class="dish-desc">Copa / botella. Tinto potente de Apulia, fruta madura, especias y chocolate negro.</p>
+      </div>
+    </div>
+
+    <!-- DOLCI -->
+    <div class="menu-group" data-group="dolci">
+      <h3 class="group-title">Dolci <span>postres italianos</span></h3>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tiramisù <em>tradizionale</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8,50 €</div>
+        </div>
+        <p class="dish-desc">Mascarpone, café espresso, savoiardi y cacao amaro. La receta clásica véneta.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pizza <em>Nutella con Nocciole</em><span class="dish-tag">Dolce</span></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8,50 €</div>
+        </div>
+        <p class="dish-desc">Pizzetta dulce con Nutella y avellanas del Piamonte. Para compartir.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Panna <em>Cotta</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50 €</div>
+        </div>
+        <p class="dish-desc">Crema cocida con vainilla de Madagascar y coulis de frutos rojos del bosque.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Cannoli <em>siciliani</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">8,00 €</div>
+        </div>
+        <p class="dish-desc">Dos cannoli sicilianos rellenos de ricotta fresca, pistacho y naranja confitada.</p>
+      </div>
+
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Affogato <em>al caffè</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,00 €</div>
+        </div>
+        <p class="dish-desc">Helado de vainilla ahogado en un espresso italiano recién hecho.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALERÍA ─── -->
+<section class="gallery-section" id="galeria">
+  <div class="gallery-header">
+    <div class="eyebrow center">Santa Catalina</div>
+    <h2 class="s-title">El lugar donde <em>se queda la noche</em></h2>
+    <p>Terraza en la calle Sant Magí, interior con alma de bacaro veneciano y la mejor barra de cocktails del barrio más vivo de Palma.</p>
+  </div>
+  <div class="gallery">
+    <div class="gallery-tile t1">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-cocktails-scaled.jpg" alt="Cocktails Ventuno">
+      <div class="gallery-label">Cocktails de autor</div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-exterior.jpg" alt="Exterior">
+      <div class="gallery-label">Terraza Sant Magí</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-interior-bar.jpg" alt="Interior bar">
+      <div class="gallery-label">Barra principal</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-noches.jpg" alt="Noches Ventuno">
+      <div class="gallery-label">De noche</div>
+    </div>
+    <div class="gallery-tile t5">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-platos.jpg" alt="Platos">
+      <div class="gallery-label">Cucina italiana</div>
+    </div>
+  </div>
+  <div class="gallery" style="margin-top: 3px;">
+    <div class="gallery-tile t2">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-dia.jpg" alt="De día">
+      <div class="gallery-label">De día</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-interior-bar2.jpg" alt="Interior 2">
+      <div class="gallery-label">Interior</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-detalle-comida.jpg" alt="Detalle">
+      <div class="gallery-label">Producto</div>
+    </div>
+    <div class="gallery-tile t5">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-bebida.jpg" alt="Bebida">
+      <div class="gallery-label">Spritz hour</div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-exterior-2.jpg" alt="Exterior 2">
+      <div class="gallery-label">Sant Magí, 60</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://www.ventunobar.com/wp-content/uploads/2022/07/ventuno-bar-santa-catalina-exterior1.jpg" alt="Exterior 1">
+      <div class="gallery-label">Palma · Mallorca</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESERVA · HORARIOS ─── -->
+<section class="reserve-section" id="reserva">
+  <div class="reserve-inner">
+    <div class="reserve-left">
+      <div class="eyebrow">Reservas</div>
+      <h2 class="reserve-title"><em>Benvenuti</em>.<br>Te esperamos.</h2>
+      <p class="reserve-body">
+        Reserva online en un minuto o escríbenos directamente. Aceptamos Bitcoin. Para grupos o eventos privados, envíanos un mensaje y te preparamos algo especial.
+      </p>
+      <div class="reserve-actions">
+        <a href="https://ventunobeachclub.myrestoo.net/" target="_blank" rel="noopener" class="btn btn-cream">
+          Reservar online
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+34871773608" class="btn btn-outline-cream">
+          +34 871 77 36 08
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <h3>Horarios &amp; contacto</h3>
+      <ul class="hours-list">
+        <li class="hours-row">
+          <span class="hours-day">Lunes</span>
+          <span class="hours-time">18:00 — 01:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Martes</span>
+          <span class="hours-time">18:00 — 01:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Miércoles</span>
+          <span class="hours-time">18:00 — 01:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Jueves</span>
+          <span class="hours-time">18:00 — 02:00</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Viernes</span>
+          <span class="hours-time">18:00 — 02:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">18:00 — 02:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">18:00 — 00:00</span>
+        </li>
+      </ul>
+      <div class="hours-contact">
+        <div class="hours-contact-row">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span><strong>Carrer de Sant Magí, 60</strong><br>07013 Palma · Illes Balears</span>
+        </div>
+        <div class="hours-contact-row">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <a href="mailto:info@ventunobar.com" style="color:inherit;"><strong>info@ventunobar.com</strong></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-mark">Ventuno</div>
+      <div class="footer-brand-tag">Santa Catalina · Palma</div>
+      <p>Cocktail bar italiano en el corazón de Palma. Aperitivo, pizzette, dolce vita y las mejores noches del barrio.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/ventunobarmallorca/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/ventunobarmallorca" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://ventunobeachclub.myrestoo.net/" target="_blank" rel="noopener" aria-label="Reservas">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Ventuno</h5>
+      <ul>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#aperitivo">L'aperitivo</a></li>
+        <li><a href="#carta">La carta</a></li>
+        <li><a href="#galeria">Galería</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Carrer de Sant Magí, 60</li>
+        <li>07013 Palma · Mallorca</li>
+        <li><a href="tel:+34871773608">871 77 36 08</a></li>
+        <li><a href="mailto:info@ventunobar.com">info@ventunobar.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Reservas</h5>
+      <ul>
+        <li><a href="https://ventunobeachclub.myrestoo.net/" target="_blank" rel="noopener">Reservar online</a></li>
+        <li>Eventos privados</li>
+        <li>Aceptamos Bitcoin ₿</li>
+        <li>Yacht Service Palma</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2022–2026 · Ventuno Bar · <em>Fatto con amore a Palma</em></div>
+    <div>Aviso legal · Privacidad · Cookies</div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.menu-group').forEach(g => {
+        g.classList.toggle('active', g.dataset.group === target);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

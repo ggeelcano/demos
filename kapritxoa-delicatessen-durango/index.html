@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kapritxoa Delicatessen — Tienda gourmet en Durango</title>
+<meta name="description" content="Kapritxoa Delicatessen en Durango. Tienda gourmet con productos seleccionados, ibéricos, vinos y mucho más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#1e3a5f;--primary-dark:#11243d;--primary-light:#3a5d8a;--accent:#e8a05c;--bg:#fbf8f2;--bg-alt:#f3eee2;--cream:#faf6ee;--text:#1f1815;--text-light:#5c5048;--border:#e3d9c0;--font:'Cormorant Garamond',serif;--font-body:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.7}
+.topbar{background:var(--primary-dark);color:var(--cream);padding:10px 60px;font-size:.78rem;display:flex;justify-content:space-between}
+.topbar-right{color:var(--accent);font-weight:700}
+.topbar a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(251,248,242,.96);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);padding:22px 60px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font);font-size:1.7rem;color:var(--primary-dark);font-weight:600;text-decoration:none;line-height:1}
+.nav-brand span{color:var(--accent);font-style:italic;font-size:.62rem;font-family:var(--font-body);display:block;letter-spacing:.22em;text-transform:uppercase;margin-top:4px;font-weight:600}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--cream)!important;padding:12px 26px;font-weight:600;border-radius:4px}
+.nav-cta:hover{background:var(--primary-dark)}
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:100px 60px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('images/hero.jpg') center/cover}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,#11243deb,#11243d99 50%,#11243d40)}
+.hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2;width:100%}
+.hero-eyebrow{display:inline-block;padding:10px 24px;background:rgba(255,255,255,.1);border:1px solid var(--accent);color:var(--accent);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:32px;font-weight:600}
+.hero h1{font-family:var(--font);font-size:clamp(3rem,6.5vw,5.6rem);font-weight:600;line-height:1.05;color:var(--cream);margin-bottom:30px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:500}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,.9);max-width:580px;margin-bottom:40px;line-height:1.8}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--primary-dark);text-decoration:none;padding:17px 38px;font-size:.85rem;font-weight:700;letter-spacing:.06em;transition:all .3s}
+.btn-primary:hover{background:var(--cream);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--cream);text-decoration:none;padding:17px 38px;border:1.5px solid rgba(255,255,255,.45);font-size:.85rem;font-weight:500;transition:all .3s}
+.btn-outline:hover{background:var(--cream);color:var(--primary-dark);border-color:var(--cream)}
+section{padding:110px 60px}
+.section-label{font-family:var(--font-body);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:700}
+.section-title{font-family:var(--font);font-size:clamp(2.4rem,4.5vw,4rem);font-weight:600;line-height:1.1;color:var(--primary-dark);margin-bottom:24px}
+.section-title em{font-style:italic;color:var(--primary)}
+.section-sub{font-size:1rem;color:var(--text-light);max-width:620px;line-height:1.85}
+.servicios-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.servicio-card{background:#fff;padding:38px 32px;border:1px solid var(--border);transition:all .4s;border-radius:8px}
+.servicio-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);border-color:var(--accent)}
+.servicio-num{font-family:var(--font);font-size:1.4rem;color:var(--accent);font-style:italic;font-weight:700;margin-bottom:14px}
+.servicio-card h3{font-family:var(--font);font-size:1.55rem;color:var(--primary-dark);font-weight:600;margin-bottom:12px}
+.servicio-card p{font-size:.92rem;color:var(--text-light);line-height:1.7}
+.about{background:var(--cream)}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.about-text p{font-size:1.05rem;color:var(--text-light);line-height:1.95;margin-bottom:22px}
+.about-text strong{color:var(--primary-dark);font-weight:600}
+.about-quote{font-family:var(--font);font-style:italic;font-size:1.45rem;color:var(--primary);padding:26px 0;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);margin:32px 0;line-height:1.5}
+.about-img{width:100%;height:540px;object-fit:cover;border-radius:8px}
+.horario-section{background:var(--bg)}
+.horario-list{max-width:600px;margin:50px auto 0;background:#fff;border:2px solid var(--border);border-radius:8px}
+.horario-row{display:flex;justify-content:space-between;padding:18px 28px;border-bottom:1px dashed var(--border)}
+.horario-row:last-child{border-bottom:none;background:var(--bg-alt)}
+.horario-row .day{font-weight:600;color:var(--primary-dark);font-family:var(--font);font-size:1.1rem}
+.horario-row .hours{color:var(--accent);font-weight:600}
+.horario-row.cerrado .day,.horario-row.cerrado .hours{color:#aaa}
+.cta{background:linear-gradient(135deg,#11243d,#1e3a5f);padding:110px 60px;text-align:center;color:var(--cream);border-top:4px solid var(--accent);border-bottom:4px solid var(--accent)}
+.cta h2{font-family:var(--font);font-size:clamp(2.4rem,4.5vw,4rem);margin-bottom:22px;font-weight:600}
+.cta h2 em{font-style:italic;color:var(--accent)}
+.cta p{font-size:1.05rem;max-width:560px;margin:0 auto 38px;line-height:1.85;color:rgba(255,255,255,.85)}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--primary-dark);text-decoration:none;padding:18px 40px;font-size:.9rem;font-weight:700;transition:all .3s}
+.btn-cta:hover{background:var(--cream)}
+.btn-cta-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--cream);text-decoration:none;padding:18px 40px;border:2px solid rgba(255,255,255,.45);font-size:.9rem;font-weight:600;transition:all .3s}
+.btn-cta-outline:hover{background:var(--cream);color:var(--primary-dark);border-color:var(--cream)}
+.contacto-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contacto-info{display:flex;flex-direction:column;gap:22px}
+.contacto-item{padding:26px;background:var(--bg-alt);border-radius:8px;border-left:4px solid var(--primary)}
+.contacto-item h4{font-family:var(--font);font-size:1.2rem;color:var(--primary-dark);font-weight:600;margin-bottom:4px}
+.contacto-item p,.contacto-item a{color:var(--text-light);text-decoration:none;font-size:.95rem;line-height:1.6}
+.contacto-item a:hover{color:var(--primary)}
+.map-wrapper{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.map-wrapper iframe{width:100%;height:460px;border:0;display:block}
+footer{background:var(--primary-dark);padding:50px 60px 36px;color:rgba(255,255,255,.5);text-align:center}
+.footer-brand{font-family:var(--font);font-size:1.5rem;color:var(--cream);font-weight:600;margin-bottom:12px}
+.footer-brand span{color:var(--accent);font-style:italic;font-weight:400}
+.footer-copy{font-size:.78rem}
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:99;transition:transform .3s}
+.whatsapp-float:hover{transform:scale(1.08)}
+@media(max-width:900px){.topbar,nav{padding:12px 20px;flex-direction:column;gap:6px;text-align:center}.nav-links{display:none}.hero{padding:80px 24px}section{padding:70px 24px}.servicios-grid{grid-template-columns:1fr}.about-inner,.contacto-grid{grid-template-columns:1fr;gap:40px}.about-img{height:360px}.cta{padding:70px 24px}footer{padding:40px 24px 30px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div>📍 Durango · Durango (Bizkaia)</div><div class="topbar-right">📱 <a href="tel:+34642028734">642 028 734</a></div></div>
+<nav><a href="#" class="nav-brand">Kapritxoa Delicatessen<span>Delicatessen · Durango</span></a><ul class="nav-links"><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li><li><a href="mailto:kapritxoadelicatessen@gmail.com" class="nav-cta">📧 Contactar</a></li></ul></nav>
+<div class="hero"><div class="hero-inner"><div class="hero-eyebrow">Delicatessen · Durango</div><h1>Gourmet<br><em>sin tonterías</em></h1><p>Kapritxoa Delicatessen es tu tienda de productos gourmet en Durango. Ibéricos, quesos, vinos, conservas y todo lo bueno para celebraciones y caprichos.</p><div class="hero-actions"><a href="mailto:kapritxoadelicatessen@gmail.com" class="btn-primary">📧 Escríbenos</a><a href="#servicios" class="btn-outline">Ver servicios</a></div></div></div>
+<section id="servicios"><div style="max-width:1200px;margin:0 auto;text-align:center;"><p class="section-label">— Lo que hacemos</p><h2 class="section-title">Servicios <em>de la casa</em></h2><p class="section-sub" style="margin:0 auto;">Tienda gourmet con la atención y la calidad que se merece cada cliente.</p></div><div class="servicios-grid"><div class="servicio-card"><div class="servicio-num">— 01</div><h3>Ibéricos</h3><p>Jamones, embutidos, lomos. De productores que conocemos personalmente.</p></div><div class="servicio-card"><div class="servicio-num">— 02</div><h3>Quesos</h3><p>Selección de quesos nacionales e internacionales. Frescos y curados.</p></div><div class="servicio-card"><div class="servicio-num">— 03</div><h3>Vinos</h3><p>Bodegas pequeñas y grandes. Tintos, blancos, rosados y espumosos.</p></div><div class="servicio-card"><div class="servicio-num">— 04</div><h3>Conservas gourmet</h3><p>Anchoas, bonito, pimientos, mermeladas artesanas y patés.</p></div><div class="servicio-card"><div class="servicio-num">— 05</div><h3>Cestas de regalo</h3><p>Hacemos cestas personalizadas para regalar. Sin compromiso.</p></div><div class="servicio-card"><div class="servicio-num">— 06</div><h3>Cata y asesoramiento</h3><p>Te aconsejamos qué llevarte según el momento y el gusto.</p></div></div></section>
+<section class="about" id="nosotros"><div class="about-inner"><div class="about-text"><p class="section-label">— Sobre nosotros</p><h2 class="section-title">Selección <em>cuidada</em></h2><p>Kapritxoa Delicatessen es una tienda gourmet en Durango. <strong>Trabajamos con productores que cuidan lo que hacen</strong> y con marcas que cumplen lo que prometen. Aquí no hay relleno — todo está elegido con cabeza.</p><p>Ibéricos, quesos, conservas, vinos, dulces, aceites. <strong>Caprichos buenos</strong> para regalar, para celebrar o simplemente para darse el gusto. Pásate y déjate aconsejar.</p><div class="about-quote">"Un buen capricho no se vende todos los días — pero cuando se vende, hay que hacerlo bien."</div></div><img src="images/about.jpg" alt="Kapritxoa Delicatessen" class="about-img"></div></section>
+<section class="horario-section"><div style="max-width:1200px;margin:0 auto;text-align:center;"><p class="section-label">— Cuándo abrimos</p><h2 class="section-title">Horario de <em>la casa</em></h2></div><div class="horario-list"><div class="horario-row"><span class="day">Lunes — Viernes</span><span class="hours">10:00 — 14:00 · 17:00 — 20:30</span></div><div class="horario-row"><span class="day">Sábado</span><span class="hours">10:00 — 14:30</span></div><div class="horario-row cerrado"><span class="day">Domingo</span><span class="hours">Cerrado</span></div></div></section>
+<div class="cta"><h2>Contacta con <em>nosotros</em></h2><p>Llámanos, escríbenos o pásate por la tienda. Atención cercana y sin compromiso.</p><div class="cta-buttons"><a href="mailto:kapritxoadelicatessen@gmail.com" class="btn-cta">📧 kapritxoadelicatessen@gmail.com</a><a href="tel:+34642028734" class="btn-cta-outline">📞 642 028 734</a></div></div>
+<section id="contacto"><div style="max-width:1200px;margin:0 auto;text-align:center;"><p class="section-label">— Contacto</p><h2 class="section-title">Encuéntranos en <em>Durango</em></h2></div><div class="contacto-grid"><div class="contacto-info"><div class="contacto-item"><h4>Dirección</h4><p>Durango<br>Durango (Bizkaia)</p></div><div class="contacto-item"><h4>Teléfono</h4><a href="tel:+34642028734">642 028 734</a></div><div class="contacto-item"><h4>Email</h4><a href="mailto:kapritxoadelicatessen@gmail.com">kapritxoadelicatessen@gmail.com</a></div><div class="contacto-item"><h4>Horario</h4><p>Lunes — Viernes: 10:00 — 14:00 · 17:00 — 20:30<br>Sábado: 10:00 — 14:30<br>Domingo: Cerrado</p></div></div><div class="map-wrapper"><iframe src="https://maps.google.com/maps?q=Durango%20Durango%20(Bizkaia)&output=embed" allowfullscreen loading="lazy"></iframe></div></div></section>
+<footer><div class="footer-brand">Kapritxoa Delicatessen <span>· Durango</span></div><p class="footer-copy">© 2026 Kapritxoa Delicatessen · Diseño web por G&G Elcano</p></footer>
+</body></html>

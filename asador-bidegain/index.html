@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asador Bidegain — Parrilla vasca tradicional · Mungia, Bizkaia</title>
+  <meta name="description" content="Asador Bidegain. 4 metros de parrilla a carbón de encina, horno de brasa, txuletón y rodaballo salvaje. Tradición vasca entre Mungia y Bakio.">
+  <meta property="og:title" content="Asador Bidegain · Parrilla vasca">
+  <meta property="og:description" content="El sabor de la tradición vasca. Txuletón, rodaballo y producto local a la brasa.">
+  <meta property="og:image" content="https://static.wixstatic.com/media/c97521_710da46e977d4f528e0c3c2822cc1caf~mv2.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --carbon: #0E0B08;
+      --carbon-2: #1A1410;
+      --ash: #2C2520;
+      --ember: #C2452A;
+      --ember-glow: #E15A3A;
+      --ember-deep: #8E2E1B;
+      --gold: #C49A4F;
+      --gold-soft: #DCB66E;
+      --cream: #F1E9DA;
+      --cream-2: #E8DEC8;
+      --bone: #FAF5EA;
+      --ink: #1A1410;
+      --line: rgba(26,20,16,0.14);
+      --font-display: 'DM Serif Display', serif;
+      --font-sans: 'Inter', -apple-system, Helvetica, sans-serif;
+      --font-hand: 'Caveat', cursive;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bone);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+    ::selection { background: var(--ember); color: var(--bone); }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--carbon); color: var(--cream);
+      padding: 9px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500; overflow: hidden;
+    }
+    .topbar-item { display: inline-flex; align-items: center; gap: 8px; }
+    .topbar-item strong { color: var(--gold-soft); font-weight: 700; }
+    .topbar-sep { opacity: 0.4; }
+    @media (max-width: 800px) {
+      .topbar { gap: 16px; padding: 8px 14px; font-size: 0.6rem; }
+      .topbar-item:nth-child(n+3), .topbar-sep:nth-child(n+3) { display: none; }
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(250,245,234,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 48px;
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+      gap: 40px;
+      transition: padding 0.35s var(--ease);
+    }
+    nav.scrolled { padding: 12px 48px; }
+
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: var(--carbon); color: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.5rem;
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.7rem; font-weight: 400;
+      letter-spacing: 0.01em; color: var(--carbon);
+    }
+    .brand-tag {
+      font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--ember); font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .nav-links { display: flex; gap: 32px; align-items: center; justify-content: center; }
+    .nav-links a {
+      font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -7px;
+      height: 1.5px; background: var(--ember);
+      transform: scaleX(0); transition: transform 0.3s var(--ease);
+      transform-origin: right;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links a:hover { color: var(--ember); }
+
+    .nav-right { display: flex; gap: 14px; align-items: center; }
+    .nav-cta {
+      background: var(--ember); color: var(--bone) !important;
+      padding: 13px 24px;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .nav-cta:hover { background: var(--carbon); transform: translateY(-1px); }
+    .nav-cta svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+    .hamburger { display: none; }
+    @media (max-width: 1100px) {
+      nav { grid-template-columns: auto auto auto; padding: 14px 20px; gap: 16px; }
+      .nav-links { display: none; }
+      .brand-name { font-size: 1.4rem; }
+      .hamburger { display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; }
+      .hamburger span, .hamburger span::before, .hamburger span::after {
+        content: ''; display: block; width: 20px; height: 1.5px; background: var(--ink);
+      }
+      .hamburger span { position: relative; }
+      .hamburger span::before { position: absolute; top: -6px; }
+      .hamburger span::after { position: absolute; top: 6px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: calc(100vh - 80px);
+      display: flex; align-items: flex-end;
+      overflow: hidden; background: var(--carbon);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('https://static.wixstatic.com/media/c97521_710da46e977d4f528e0c3c2822cc1caf~mv2.jpg') center/cover no-repeat;
+      transform: scale(1.06);
+      transition: transform 8s var(--ease);
+      filter: brightness(0.65) contrast(1.05) saturate(1.05);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(14,11,8,0.4) 0%, rgba(14,11,8,0.1) 35%, rgba(14,11,8,0.95) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 80px 90px;
+      max-width: 1100px;
+      color: var(--bone);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold-soft); font-weight: 600;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp 0.9s 0.2s var(--ease) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 40px; height: 1.5px; background: var(--gold-soft);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight: 400; line-height: 0.92;
+      letter-spacing: -0.025em;
+      margin-bottom: 36px; color: var(--bone);
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.3s 0.4s var(--ease) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-soft); }
+    .hero-sub {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+      font-weight: 400; line-height: 1.6;
+      color: rgba(241,233,218,0.86);
+      max-width: 660px; margin-bottom: 50px;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s 0.7s var(--ease) forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUp 1s 0.95s var(--ease) forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 34px;
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600; border: 1.5px solid transparent;
+      transition: all 0.35s var(--ease-smooth);
+      background: transparent;
+    }
+    .btn svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; transition: transform 0.3s; fill: none; }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-ember { background: var(--ember); color: var(--bone); border-color: var(--ember); }
+    .btn-ember:hover { background: var(--ember-deep); border-color: var(--ember-deep); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(194,69,42,0.4); }
+    .btn-cream { background: var(--cream); color: var(--carbon); border-color: var(--cream); }
+    .btn-cream:hover { background: transparent; color: var(--cream); border-color: var(--cream); }
+    .btn-outline-cream { color: var(--cream); border-color: rgba(241,233,218,0.5); }
+    .btn-outline-cream:hover { background: var(--cream); color: var(--carbon); border-color: var(--cream); }
+    .btn-carbon { background: var(--carbon); color: var(--bone); border-color: var(--carbon); }
+    .btn-carbon:hover { background: var(--ember); border-color: var(--ember); transform: translateY(-2px); }
+    .btn-outline-ink { color: var(--ink); border-color: var(--ink); }
+    .btn-outline-ink:hover { background: var(--ink); color: var(--bone); }
+
+    .hero-trust {
+      position: absolute; bottom: 90px; right: 80px; z-index: 3;
+      display: flex; gap: 24px; align-items: center;
+      background: rgba(14,11,8,0.5);
+      backdrop-filter: blur(8px);
+      padding: 18px 28px;
+      border: 1px solid rgba(241,233,218,0.15);
+      opacity: 0; animation: fadeIn 1s 1.4s ease forwards;
+    }
+    .hero-trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(241,233,218,0.85); font-weight: 500;
+    }
+    .hero-trust-item strong { color: var(--gold-soft); font-weight: 700; }
+    .hero-trust-item svg { width: 14px; height: 14px; color: var(--gold-soft); stroke: currentColor; stroke-width: 1.7; fill: none; }
+    @media (max-width: 1100px) { .hero-trust { display: none; } }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media (max-width: 700px) { .hero-content { padding: 0 24px 60px; } }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+      background: var(--ember); color: var(--bone);
+      overflow: hidden; padding: 22px 0;
+      border-top: 2px solid var(--carbon);
+      border-bottom: 2px solid var(--carbon);
+    }
+    .marquee-track {
+      display: flex; white-space: nowrap;
+      animation: scroll 36s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 26px;
+      padding: 0 38px;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; font-weight: 400;
+      color: rgba(241,233,218,0.9);
+    }
+    .marquee-item .star {
+      color: var(--gold-soft); font-size: 1.1rem;
+    }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── HISTORIA / 4 METROS PARRILLA ─── */
+    .story-section {
+      padding: 0;
+      display: grid; grid-template-columns: 1fr 1.05fr;
+      background: var(--bone);
+    }
+    .story-content {
+      padding: 130px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .s-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--ember); font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .s-eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--ember); }
+    .s-eyebrow.center { justify-content: center; }
+    .s-eyebrow.center::before, .s-eyebrow.center::after {
+      content: ''; width: 32px; height: 1.5px; background: var(--ember);
+    }
+    .s-eyebrow.gold { color: var(--gold); }
+    .s-eyebrow.gold::before, .s-eyebrow.gold::after { background: var(--gold); }
+
+    .s-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.2vw, 5rem);
+      font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--carbon);
+    }
+    .s-title em { font-style: italic; color: var(--ember); }
+
+    .story-content .s-title { margin: 12px 0 32px; }
+    .story-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.85;
+      color: var(--ash);
+      margin-bottom: 36px;
+    }
+    .story-body p { margin-bottom: 22px; font-weight: 400; }
+    .story-body strong { color: var(--carbon); font-weight: 500; font-style: normal; }
+    .story-features {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+      padding: 30px 0; margin-bottom: 38px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      max-width: 580px;
+    }
+    .story-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .story-feature-icon {
+      width: 38px; height: 38px;
+      background: var(--carbon); color: var(--ember);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .story-feature-icon svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .story-feature-text strong {
+      display: block; font-family: var(--font-display);
+      font-size: 1.05rem; color: var(--carbon); font-weight: 500;
+      margin-bottom: 2px; line-height: 1.2;
+    }
+    .story-feature-text span {
+      font-size: 0.82rem; color: var(--ash); line-height: 1.45;
+    }
+
+    .story-visual {
+      position: relative; min-height: 800px;
+      background: url('https://static.wixstatic.com/media/c97521_8b71b2f475b84e84bb4e0dacb611b6c3~mv2.jpg') center/cover no-repeat;
+    }
+    .story-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(250,245,234,0.2), transparent 30%);
+    }
+    .story-visual-quote {
+      position: absolute; bottom: 50px; left: 50px; right: 50px; z-index: 2;
+      color: var(--bone);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.5rem; line-height: 1.5;
+      padding-left: 24px;
+      border-left: 3px solid var(--ember);
+      max-width: 480px;
+    }
+
+    /* ─── EITB VIDEO ─── */
+    .eitb-section {
+      padding: 130px 56px;
+      background: var(--ash);
+      color: var(--bone);
+      position: relative; overflow: hidden;
+    }
+    .eitb-section::before {
+      content: ''; position: absolute;
+      top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,154,79,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .eitb-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 70px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .eitb-content .s-title { color: var(--bone); margin: 14px 0 28px; }
+    .eitb-content .s-title em { color: var(--gold-soft); }
+    .eitb-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.8;
+      color: rgba(241,233,218,0.78);
+      margin-bottom: 26px; max-width: 480px;
+    }
+    .eitb-body strong { color: var(--bone); font-weight: 500; font-style: normal; }
+    .eitb-body em { color: var(--gold-soft); }
+    .video-wrapper {
+      position: relative;
+      aspect-ratio: 16/9;
+      width: 100%;
+      background: #000;
+      border: 1px solid rgba(241,233,218,0.15);
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      z-index: 2;
+    }
+    .video-fallback {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(135deg, rgba(14,11,8,0.55), rgba(194,69,42,0.4)),
+        url('https://static.wixstatic.com/media/c97521_217c89573b9e4f72a2be84766cefd5bd~mv2.jpg') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+      color: var(--bone);
+      transition: filter 0.4s;
+    }
+    .video-fallback:hover { filter: brightness(1.1); }
+    .video-fallback span {
+      font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-weight: 600;
+    }
+    .video-play {
+      width: 86px; height: 86px; border-radius: 50%;
+      background: var(--ember); color: var(--bone);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 14px 40px rgba(194,69,42,0.5);
+      animation: playPulse 2.5s ease-in-out infinite;
+    }
+    .video-play svg { width: 32px; height: 32px; margin-left: 4px; }
+    @keyframes playPulse {
+      0%, 100% { box-shadow: 0 14px 40px rgba(194,69,42,0.5); }
+      50% { box-shadow: 0 14px 40px rgba(194,69,42,0.7), 0 0 0 14px rgba(194,69,42,0.18); }
+    }
+    .eitb-credit {
+      margin-top: 22px;
+      padding: 16px 22px;
+      background: rgba(14,11,8,0.5);
+      border-left: 3px solid var(--gold-soft);
+      font-size: 0.85rem;
+      color: rgba(241,233,218,0.7);
+      font-family: var(--font-display); font-style: italic;
+    }
+    .eitb-credit strong {
+      color: var(--gold-soft);
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 1024px) {
+      .eitb-section { padding: 90px 24px; }
+      .eitb-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ─── DESTACADOS / TXULETÓN & RODABALLO ─── */
+    .featured-section {
+      padding: 130px 56px;
+      background: var(--carbon);
+      color: var(--bone);
+      position: relative; overflow: hidden;
+    }
+    .featured-section::before {
+      content: ''; position: absolute;
+      top: -200px; left: -200px; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(194,69,42,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .featured-header { text-align: center; max-width: 900px; margin: 0 auto 70px; position: relative; z-index: 2; }
+    .featured-header .s-title { color: var(--bone); }
+    .featured-header .s-title em { color: var(--gold-soft); }
+    .featured-header p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: rgba(241,233,218,0.7);
+      margin-top: 22px; line-height: 1.7;
+    }
+    .featured-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      max-width: 1320px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .featured-card {
+      position: relative; overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4/4.5;
+      background: var(--ash);
+    }
+    .featured-card img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.3s var(--ease);
+    }
+    .featured-card:hover img { transform: scale(1.05); }
+    .featured-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(14,11,8,0.85));
+    }
+    .featured-content {
+      position: absolute; inset: 0; z-index: 2;
+      padding: 50px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .featured-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--ember); color: var(--bone);
+      font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+    .featured-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400; line-height: 1;
+      color: var(--bone); margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .featured-name em { font-style: italic; color: var(--gold-soft); }
+    .featured-desc {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.05rem; line-height: 1.6;
+      color: rgba(241,233,218,0.85);
+      margin-bottom: 22px; max-width: 420px;
+    }
+    .featured-price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 22px;
+      border-top: 1px solid rgba(241,233,218,0.2);
+    }
+    .featured-price {
+      font-family: var(--font-display);
+      font-size: 2.2rem; font-style: italic;
+      color: var(--gold-soft); font-weight: 400;
+      line-height: 1;
+    }
+    .featured-price-unit {
+      font-size: 0.72rem; color: rgba(241,233,218,0.55);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ─── CARTA / MENÚS ─── */
+    .menu-section {
+      padding: 140px 56px;
+      background: var(--bone);
+    }
+    .menu-header {
+      max-width: 1320px; margin: 0 auto 70px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 30px;
+    }
+    .menu-header-left { max-width: 600px; }
+    .menu-tabs {
+      display: flex; gap: 4px; flex-wrap: wrap;
+    }
+    .menu-tab {
+      padding: 12px 22px;
+      border: 1px solid var(--line);
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 600; color: var(--ash);
+      transition: all 0.3s;
+      font-family: var(--font-sans);
+    }
+    .menu-tab.active { background: var(--carbon); border-color: var(--carbon); color: var(--bone); }
+    .menu-tab:hover:not(.active) { border-color: var(--ember); color: var(--ember); }
+
+    .menu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 80px; max-width: 1200px; margin: 0 auto;
+    }
+    .menu-group { display: none; }
+    .menu-group.active { display: contents; }
+
+    .group-title {
+      grid-column: span 2;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.6rem; font-weight: 400;
+      color: var(--ember);
+      margin: 36px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: baseline; gap: 14px;
+    }
+    .group-title:first-child { margin-top: 0; }
+    .group-title span {
+      font-family: var(--font-sans); font-style: normal;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .dish {
+      padding: 22px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .dish-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; margin-bottom: 6px;
+    }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 400;
+      color: var(--carbon); line-height: 1.3;
+    }
+    .dish-name em { font-style: italic; color: var(--ember); }
+    .dish-dots {
+      flex: 1; height: 1px; align-self: flex-end;
+      background-image: radial-gradient(circle, rgba(26,20,16,0.3) 1px, transparent 1px);
+      background-size: 6px 1px; margin-bottom: 6px;
+    }
+    .dish-price {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.15rem; color: var(--ember); white-space: nowrap;
+    }
+    .dish-desc {
+      font-size: 0.88rem; color: var(--ash);
+      line-height: 1.55; font-weight: 400;
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+    .dish-tag {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ember); padding: 2px 9px;
+      border: 1px solid var(--ember); border-radius: 40px;
+      font-weight: 600; margin-left: 8px; vertical-align: middle;
+      font-family: var(--font-sans);
+    }
+
+    .menu-cta {
+      max-width: 1200px; margin: 80px auto 0;
+      text-align: center;
+      padding: 50px 40px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+    }
+    .menu-cta h3 {
+      font-family: var(--font-display);
+      font-size: 2rem; color: var(--carbon);
+      margin-bottom: 12px;
+    }
+    .menu-cta h3 em { font-style: italic; color: var(--ember); }
+    .menu-cta p {
+      font-family: var(--font-display); font-style: italic;
+      color: var(--ash); margin-bottom: 26px;
+      font-size: 1.05rem;
+    }
+    .menu-cta-actions {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    }
+
+    /* ─── MENÚS PRECIO ─── */
+    .menus-section {
+      padding: 130px 56px;
+      background: var(--cream);
+    }
+    .menus-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1200px; margin: 60px auto 0;
+    }
+    .menu-card {
+      background: var(--bone);
+      border: 1px solid var(--line);
+      padding: 50px 38px;
+      transition: all 0.45s var(--ease);
+      text-align: left;
+    }
+    .menu-card:hover {
+      border-color: var(--ember);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(14,11,8,0.12);
+    }
+    .menu-card.featured {
+      background: var(--carbon);
+      color: var(--bone);
+      border-color: var(--carbon);
+    }
+    .menu-card-tag {
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--ember); font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .menu-card.featured .menu-card-tag { color: var(--gold-soft); }
+    .menu-card-name {
+      font-family: var(--font-display);
+      font-size: 2.2rem; font-weight: 400;
+      color: var(--carbon); line-height: 1;
+      margin-bottom: 12px; letter-spacing: -0.01em;
+    }
+    .menu-card.featured .menu-card-name { color: var(--bone); }
+    .menu-card-name em { font-style: italic; color: var(--ember); }
+    .menu-card.featured .menu-card-name em { color: var(--gold-soft); }
+    .menu-card-meta {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; color: var(--ash);
+      margin-bottom: 26px;
+    }
+    .menu-card.featured .menu-card-meta { color: rgba(241,233,218,0.7); }
+    .menu-card-price {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 30px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--line);
+    }
+    .menu-card.featured .menu-card-price { border-color: rgba(241,233,218,0.2); }
+    .menu-card-price .num {
+      font-family: var(--font-display);
+      font-size: 3.6rem; font-weight: 400;
+      color: var(--ember); line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .menu-card.featured .menu-card-price .num { color: var(--gold-soft); }
+    .menu-card-price .unit {
+      font-size: 0.85rem; color: var(--ash);
+      font-weight: 500; letter-spacing: 0.05em;
+    }
+    .menu-card.featured .menu-card-price .unit { color: rgba(241,233,218,0.65); }
+    .menu-card-features { list-style: none; margin-bottom: 30px; }
+    .menu-card-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 7px 0;
+      font-family: var(--font-display);
+      font-size: 1rem; color: var(--ash);
+    }
+    .menu-card.featured .menu-card-features li { color: rgba(241,233,218,0.9); }
+    .menu-card-features li svg {
+      width: 14px; height: 14px; color: var(--ember);
+      stroke: currentColor; stroke-width: 2.2; fill: none; flex-shrink: 0; margin-top: 4px;
+    }
+    .menu-card.featured .menu-card-features li svg { color: var(--gold-soft); }
+    .menu-card-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--carbon); font-weight: 600;
+      border-bottom: 1.5px solid var(--carbon);
+      padding-bottom: 4px;
+      transition: all 0.3s;
+    }
+    .menu-card.featured .menu-card-cta { color: var(--gold-soft); border-color: var(--gold-soft); }
+    .menu-card-cta:hover { color: var(--ember); border-color: var(--ember); gap: 14px; }
+
+    /* ─── GALERÍA ─── */
+    .gallery-section { padding: 130px 0 0; background: var(--bone); }
+    .gallery-header { text-align: center; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
+    .gallery-header p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.15rem; color: var(--ash); margin-top: 20px; line-height: 1.7;
+    }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 3px; padding: 0 3px 130px;
+    }
+    .gallery-tile { position: relative; overflow: hidden; }
+    .gallery-tile.t1 { grid-column: span 2; grid-row: span 2; }
+    .gallery-tile.t2 { grid-column: span 2; }
+    .gallery-tile.t3 { grid-column: span 2; }
+    .gallery-tile.t4 { grid-column: span 2; }
+    .gallery-tile.t5 { grid-column: span 2; }
+    .gallery-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s var(--ease), filter 0.5s;
+      filter: saturate(0.92);
+    }
+    .gallery-tile:hover img { transform: scale(1.08); filter: saturate(1.15); }
+    .gallery-tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(14,11,8,0.55), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-tile:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; bottom: 22px; left: 24px; z-index: 2;
+      color: var(--bone);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.1rem;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.4s;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── CÓMO LLEGAR / RESERVAS ─── */
+    .visit-section {
+      background: var(--carbon);
+      color: var(--bone);
+      padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    .visit-content {
+      padding: 130px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .visit-content .s-eyebrow { color: var(--gold-soft); }
+    .visit-content .s-eyebrow::before { background: var(--gold-soft); }
+    .visit-content .s-title { color: var(--bone); margin: 14px 0 28px; }
+    .visit-content .s-title em { color: var(--gold-soft); }
+    .visit-body {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; line-height: 1.8;
+      color: rgba(241,233,218,0.72);
+      margin-bottom: 36px; max-width: 460px;
+    }
+    .visit-info {
+      display: flex; flex-direction: column; gap: 18px;
+      padding: 28px 0;
+      border-top: 1px solid rgba(241,233,218,0.15);
+      border-bottom: 1px solid rgba(241,233,218,0.15);
+      margin-bottom: 36px;
+    }
+    .visit-info-row {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .visit-info-row svg {
+      width: 20px; height: 20px; color: var(--ember-glow);
+      stroke: currentColor; stroke-width: 1.7; fill: none; flex-shrink: 0; margin-top: 3px;
+    }
+    .visit-info-row strong {
+      display: block; font-family: var(--font-display);
+      font-size: 1.1rem; color: var(--bone); font-weight: 400;
+      margin-bottom: 3px;
+    }
+    .visit-info-row span {
+      font-size: 0.92rem; color: rgba(241,233,218,0.65);
+      line-height: 1.5;
+    }
+
+    .visit-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .visit-map {
+      position: relative; min-height: 700px;
+      background: url('https://static.wixstatic.com/media/c97521_79baa954f8464f35a015496bc3cca992~mv2_d_1716_1243_s_2.png') center/cover no-repeat;
+    }
+    .visit-map::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to left, transparent 60%, rgba(14,11,8,0.4));
+    }
+    .visit-map-pin {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 70px; height: 70px;
+      background: var(--ember);
+      border-radius: 50% 50% 50% 0;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(194,69,42,0.4);
+      animation: pinBounce 2.5s ease-in-out infinite;
+    }
+    .visit-map-pin::after {
+      content: ''; width: 22px; height: 22px;
+      background: var(--bone); border-radius: 50%;
+      transform: rotate(45deg);
+    }
+    @keyframes pinBounce {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-45deg); }
+      50% { transform: translate(-50%, -60%) rotate(-45deg); }
+    }
+
+    /* ─── HORARIOS / CONTACTO ─── */
+    .contact-section { padding: 130px 56px; background: var(--bone); }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 70px;
+      align-items: start;
+    }
+    .contact-left .s-title { margin: 14px 0 24px; }
+    .contact-left p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.2rem; color: var(--ash); line-height: 1.7;
+      margin-bottom: 38px; max-width: 480px;
+    }
+    .phones-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-bottom: 34px;
+    }
+    .phone-card {
+      padding: 26px 24px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      transition: all 0.3s;
+    }
+    .phone-card:hover { background: var(--carbon); border-color: var(--carbon); transform: translateY(-3px); }
+    .phone-card:hover .phone-card-label { color: var(--gold-soft); }
+    .phone-card:hover .phone-card-num { color: var(--bone); }
+    .phone-card-label {
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--ember); font-weight: 700; margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    .phone-card-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 400; color: var(--carbon);
+      transition: color 0.3s;
+    }
+
+    .hours-card {
+      background: var(--carbon); color: var(--bone);
+      padding: 50px 44px;
+      position: relative; overflow: hidden;
+    }
+    .hours-card::before {
+      content: ''; position: absolute;
+      bottom: -120px; right: -120px; width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(194,69,42,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .hours-card-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 30px; position: relative; z-index: 2;
+    }
+    .hours-card-head svg {
+      width: 32px; height: 32px;
+      color: var(--gold-soft); stroke: currentColor; stroke-width: 1.6; fill: none;
+    }
+    .hours-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.9rem; color: var(--bone);
+      line-height: 1;
+    }
+    .hours-card h3 em { font-style: italic; color: var(--gold-soft); }
+    .hours-list { list-style: none; position: relative; z-index: 2; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(241,233,218,0.12);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-family: var(--font-display);
+      font-size: 1.1rem; color: var(--bone);
+    }
+    .hours-time {
+      font-size: 0.9rem; color: rgba(241,233,218,0.75);
+      letter-spacing: 0.03em;
+    }
+    .hours-row.closed .hours-time {
+      color: rgba(241,233,218,0.4); font-style: italic;
+      letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem;
+    }
+    .hours-note {
+      margin-top: 22px; padding-top: 22px;
+      border-top: 1px solid rgba(241,233,218,0.12);
+      font-size: 0.82rem; color: var(--gold-soft);
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+      position: relative; z-index: 2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060503; color: rgba(241,233,218,0.55);
+      padding: 90px 56px 30px;
+      border-top: 4px solid var(--ember);
+    }
+    .footer-grid {
+      max-width: 1320px; margin: 0 auto 70px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+    .footer-brand .brand-icon {
+      background: var(--ember);
+      width: 52px; height: 52px; font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 2.4rem; color: var(--bone);
+      line-height: 1; margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-size: 0.66rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--gold-soft); font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .footer-brand p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(241,233,218,0.5);
+      max-width: 340px; margin-bottom: 24px;
+    }
+    .footer-col h5 {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-soft); font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li, .footer-col ul li a {
+      font-size: 0.88rem; color: rgba(241,233,218,0.55);
+      transition: color 0.3s; line-height: 1.55;
+    }
+    .footer-col ul li a:hover { color: var(--ember-glow); }
+
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(241,233,218,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-size: 0.76rem; color: rgba(241,233,218,0.4);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .story-section { grid-template-columns: 1fr; }
+      .story-content { padding: 80px 24px; }
+      .story-visual { min-height: 480px; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-card { aspect-ratio: 4/4; }
+      .menu-grid { grid-template-columns: 1fr; gap: 0; }
+      .group-title { grid-column: auto; }
+      .menus-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 220px); }
+      .gallery-tile.t1, .gallery-tile.t2, .gallery-tile.t3, .gallery-tile.t4, .gallery-tile.t5 {
+        grid-column: auto; grid-row: auto;
+      }
+      .visit-section { grid-template-columns: 1fr; }
+      .visit-content { padding: 80px 24px; }
+      .visit-map { min-height: 400px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-grid > :first-child { grid-column: span 2; }
+      section, .featured-section, .menu-section, .menus-section, .contact-section { padding-left: 24px; padding-right: 24px; }
+      .story-features { grid-template-columns: 1fr; }
+      .menu-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > :first-child { grid-column: auto; }
+      .btn { padding: 14px 26px; font-size: 0.66rem; }
+      .phones-grid { grid-template-columns: 1fr; }
+      .hours-card { padding: 36px 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-item">Mungia · Bakio · <strong>Bizkaia</strong></div>
+  <span class="topbar-sep">—</span>
+  <div class="topbar-item"><strong>4 metros</strong> de parrilla</div>
+  <span class="topbar-sep">—</span>
+  <div class="topbar-item">Reserva: <strong>946 155 931</strong></div>
+  <span class="topbar-sep">—</span>
+  <div class="topbar-item">Abierto V · S · D + festivos</div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#" class="brand">
+    <div class="brand-icon">B</div>
+    <div class="brand-text">
+      <span class="brand-name">Bidegain</span>
+      <span class="brand-tag">Asador · Bizkaia</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#historia">El restaurante</a>
+    <a href="https://www.asadorbidegain.com/menu" target="_blank">Carta</a>
+    <a href="#menus">Menús</a>
+    <a href="#prensa">EITB</a>
+    <a href="#galeria">Galería</a>
+    <a href="https://www.asadorbidegain.com/como-llegar" target="_blank">Cómo llegar</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="nav-right">
+    <a href="tel:+34946155931" class="nav-cta">
+      Reservar
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <button class="hamburger" aria-label="Menú"><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Asador tradicional · Bizkaia</div>
+    <h1 class="hero-title">El sabor<br>de la <em>tradición</em>.</h1>
+    <p class="hero-sub">Cuatro metros de parrilla a carbón de encina, horno de brasa y leña. Txuletón, rodaballo salvaje y producto local. Entre Mungia y Bakio, en pleno corazón de Uribe Kosta.</p>
+    <div class="hero-actions">
+      <a href="tel:+34946155931" class="btn btn-ember">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="btn btn-outline-cream">
+        Ver carta completa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-trust">
+    <div class="hero-trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <strong>Carbón</strong> de encina
+    </div>
+    <div class="hero-trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg>
+      <strong>4m</strong> de parrilla
+    </div>
+    <div class="hero-trust-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+      <strong>Horno</strong> de brasa
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Txuletón vasco superior <span class="star">✦</span></div>
+    <div class="marquee-item">Rodaballo salvaje <span class="star">✦</span></div>
+    <div class="marquee-item">Carbón de encina <span class="star">✦</span></div>
+    <div class="marquee-item">Producto local · km 0 <span class="star">✦</span></div>
+    <div class="marquee-item">Mungia · Bakio · Bizkaia <span class="star">✦</span></div>
+    <div class="marquee-item">El sabor de la tradición <span class="star">✦</span></div>
+    <div class="marquee-item">Txuletón vasco superior <span class="star">✦</span></div>
+    <div class="marquee-item">Rodaballo salvaje <span class="star">✦</span></div>
+    <div class="marquee-item">Carbón de encina <span class="star">✦</span></div>
+    <div class="marquee-item">Producto local · km 0 <span class="star">✦</span></div>
+    <div class="marquee-item">Mungia · Bakio · Bizkaia <span class="star">✦</span></div>
+    <div class="marquee-item">El sabor de la tradición <span class="star">✦</span></div>
+  </div>
+</div>
+
+<!-- ─── HISTORIA ─── -->
+<section class="story-section" id="historia">
+  <div class="story-content">
+    <div class="s-eyebrow">El restaurante</div>
+    <h2 class="s-title">Un asador <em>centenario</em>.</h2>
+    <div class="story-body">
+      <p><strong>Bidegain</strong> es una casa de larga tradición en el corazón de <em>Uribe Kosta</em>, entre Mungia y Bakio. Una parrilla de cuatro metros, horno de brasa, asador de pollos y un trato cercano que se hereda de padres a hijos.</p>
+      <p>Cocinamos como se ha cocinado siempre en Bizkaia: <strong>fuego de carbón de encina y leña</strong>, productos de mercado, tiempo y respeto. Nada más, nada menos.</p>
+    </div>
+    <div class="story-features">
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v8M12 14v8M4 12h16"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>4 metros de parrilla</strong>
+          <span>Carbón de encina y leña</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Horno de brasa</strong>
+          <span>Pescados y verduras</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Producto local</strong>
+          <span>Km 0 · Siempre fresco</span>
+        </div>
+      </div>
+      <div class="story-feature">
+        <div class="story-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="story-feature-text">
+          <strong>Entorno natural</strong>
+          <span>Comarca Uribe Kosta</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="btn btn-carbon">
+        Ver la carta
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://www.asadorbidegain.com/como-llegar" target="_blank" rel="noopener" class="btn btn-outline-ink">
+        Cómo llegar
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="story-visual">
+    <div class="story-visual-quote">
+      "El fuego, el producto y el tiempo. No hace falta más para hacer las cosas bien."
+    </div>
+  </div>
+</section>
+
+<!-- ─── EITB VIDEO ─── -->
+<section class="eitb-section" id="prensa">
+  <div class="eitb-inner">
+    <div class="eitb-content">
+      <div class="s-eyebrow gold">Como nos vieron en EITB</div>
+      <h2 class="s-title">"A Bocados" <em>en Bidegain</em></h2>
+      <p class="eitb-body">
+        El programa <strong>"A Bocados"</strong> de EITB visitó nuestro asador para grabar la receta de <em>merluza confitada con salsa verde de pimientos y mejillones</em>. Una mañana en la cocina, abriendo el horno y la parrilla. Disfrútalo ↓
+      </p>
+      <a href="https://www.eitb.eus/es/nahieran/gastronomia/a-bocados--7a-temporada/merluza-confitada-con-salsa-verde-de-pimientos-y-mejillones/detalle/8806/224193/" target="_blank" rel="noopener" class="btn btn-cream" style="margin-top: 8px;">
+        Ver en EITB
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="eitb-video">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.eitb.eus/es/embed/8806/224193/"
+          title="A Bocados Bidegain · EITB"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+        <a href="https://www.eitb.eus/es/nahieran/gastronomia/a-bocados--7a-temporada/merluza-confitada-con-salsa-verde-de-pimientos-y-mejillones/detalle/8806/224193/" target="_blank" rel="noopener" class="video-fallback">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span>Ver en EITB.eus</span>
+        </a>
+      </div>
+      <div class="eitb-credit">
+        <strong>EITB</strong> · A Bocados, 7ª temporada · <em>Merluza confitada con salsa verde de pimientos y mejillones</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DESTACADOS ─── -->
+<section class="featured-section">
+  <div class="featured-header">
+    <div class="s-eyebrow center gold">Especialidades de la casa</div>
+    <h2 class="s-title">Las dos <em>estrellas</em></h2>
+    <p>Nuestros dos platos más pedidos. Producto exclusivo, fuego de leña y nada de prisas. Lo que esperas de un asador vasco de verdad.</p>
+  </div>
+  <div class="featured-grid">
+    <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="featured-card">
+      <img src="https://static.wixstatic.com/media/c97521_710da46e977d4f528e0c3c2822cc1caf~mv2.jpg" alt="Txuletón vasco">
+      <div class="featured-content">
+        <span class="featured-tag">Signature</span>
+        <h3 class="featured-name">Txuletón vasco<br><em>superior</em></h3>
+        <p class="featured-desc">Vaca vasca de raza, maduración óptima. Brasa de carbón de encina, sal en escamas. El plato que nos hace.</p>
+        <div class="featured-price-row">
+          <div class="featured-price">58<span style="font-size:0.6em;">€</span></div>
+          <div class="featured-price-unit">precio / kg</div>
+        </div>
+      </div>
+    </a>
+    <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="featured-card">
+      <img src="https://static.wixstatic.com/media/c97521_a6c82e9bc1b44fd398bac122e6fa09e0~mv2.jpg" alt="Rodaballo salvaje">
+      <div class="featured-content">
+        <span class="featured-tag">Bajo reserva</span>
+        <h3 class="featured-name">Rodaballo<br>salvaje a la <em>brasa</em></h3>
+        <p class="featured-desc">Pieza salvaje del Cantábrico, brasa lenta. Servido entero, refrito de ajo y guindilla. Pedirlo es un acierto seguro.</p>
+        <div class="featured-price-row">
+          <div class="featured-price">58<span style="font-size:0.6em;">€</span></div>
+          <div class="featured-price-unit">precio / kg</div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── CARTA ─── -->
+<section class="menu-section" id="carta">
+  <div class="menu-header">
+    <div class="menu-header-left">
+      <div class="s-eyebrow">La carta</div>
+      <h2 class="s-title">Cocina <em>de mercado</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-tab="entrantes">Entrantes</button>
+      <button class="menu-tab" data-tab="pescados">Pescados</button>
+      <button class="menu-tab" data-tab="carnes">Carnes &amp; brasa</button>
+      <button class="menu-tab" data-tab="postres">Postres</button>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-group active" data-group="entrantes">
+      <h3 class="group-title">Fríos &amp; ensaladas <span>verduras y producto local</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Ensalada tomate, lechuga y cebolla <em>km 0</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9,50€</div>
+        </div>
+        <p class="dish-desc">Tomate de la huerta de Bizkaia, lechuga viva y cebolla morada. Aliño tradicional.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Jamón ibérico <em>de bellota</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19€</div>
+        </div>
+        <p class="dish-desc">Cortado a cuchillo, picos artesanos.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Queso curado <em>de oveja</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14€</div>
+        </div>
+        <p class="dish-desc">Queso de oveja vasco, membrillo y nueces.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Espárragos blancos <em>de Navarra</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">13,50€</div>
+        </div>
+        <p class="dish-desc">Pelados al momento, mayonesa de la casa.</p>
+      </div>
+
+      <h3 class="group-title">Calientes <span>directo de la cocina y la brasa</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Croquetas caseras <em>de jamón</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">9,50€</div>
+        </div>
+        <p class="dish-desc">Bechamel cremosa, jamón ibérico. Empanadas al momento.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pulpo a la brasa con <em>parmentier</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">23,50€</div>
+        </div>
+        <p class="dish-desc">Pulpo a la brasa sobre parmentier, mojo verde y mojo picón.</p>
+        <div><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Verduras <em>a la parrilla</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14€</div>
+        </div>
+        <p class="dish-desc">Pimiento, espárragos verdes, calabacín, cebolla. Aceite de oliva virgen.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Alubias <em>de Tolosa</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">12€</div>
+        </div>
+        <p class="dish-desc">Cocidas a fuego lento. Sus sacramentos: morcilla, chorizo y berza.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Revuelto de <em>perretxikos</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">18,50€</div>
+        </div>
+        <p class="dish-desc">Setas de temporada salteadas con huevo de caserío.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="pescados">
+      <h3 class="group-title">A la brasa &amp; al horno</h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Rodaballo <em>salvaje</em> a la brasa</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">58€<span style="font-size:0.7em;color:var(--ash);"> /kg</span></div>
+        </div>
+        <p class="dish-desc">Pieza entera del Cantábrico, brasa lenta, refrito de ajo y guindilla.</p>
+        <div><span class="dish-tag">Bajo reserva</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Lubina <em>salvaje</em> a la brasa</h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">38€</div>
+        </div>
+        <p class="dish-desc">Lubina del día abierta a la espalda, refrito al momento.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Merluza <em>en salsa verde</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Lomos de merluza del pincho con almejas, perejil y vino blanco.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bacalao <em>al pil-pil</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22€</div>
+        </div>
+        <p class="dish-desc">Lomo de bacalao desalado en casa, pil-pil con guindilla y ajo.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Bacalao <em>a la vizcaína</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22€</div>
+        </div>
+        <p class="dish-desc">Salsa vizcaína tradicional con pimiento choricero y cebolla.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pescado <em>del día</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">S/M</div>
+        </div>
+        <p class="dish-desc">Pieza fresca de lonja: cabracho, besugo o pargo. Consulte con el camarero.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="carnes">
+      <h3 class="group-title">A la parrilla <span>de carbón de encina y leña</span></h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Txuletón <em>vasco superior</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">58€<span style="font-size:0.7em;color:var(--ash);"> /kg</span></div>
+        </div>
+        <p class="dish-desc">Vaca vasca de raza, maduración óptima. Brasa de carbón, sal en escamas.</p>
+        <div><span class="dish-tag">Signature</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Entrecot <em>de buey</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">26€</div>
+        </div>
+        <p class="dish-desc">Entrecot a la brasa al punto, papas panadera y pimientos del piquillo.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Solomillo de <em>ternera</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">24€</div>
+        </div>
+        <p class="dish-desc">Solomillo a la parrilla, salsa al gusto, guarnición.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Cordero <em>al horno</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">22€</div>
+        </div>
+        <p class="dish-desc">Pierna de cordero asada lentamente al horno de leña.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Pollo asador <em>de caserío</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">14€</div>
+        </div>
+        <p class="dish-desc">Pollo de corral en nuestro asador. La receta de toda la vida.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Hamburguesa <em>Bidegain</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">15€</div>
+        </div>
+        <p class="dish-desc">Vaca picada al momento, queso, cebolla pochada, pan brioche, papas.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Cachopo <em>asturiano</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">19€</div>
+        </div>
+        <p class="dish-desc">Filetes de ternera con jamón y queso, empanados a la milanesa. Patatas.</p>
+      </div>
+    </div>
+
+    <div class="menu-group" data-group="postres">
+      <h3 class="group-title">Postres caseros</h3>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Arroz con leche <em>tradicional</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5€</div>
+        </div>
+        <p class="dish-desc">Cremoso, canela quemada y limón.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Torrija <em>caramelizada</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6€</div>
+        </div>
+        <p class="dish-desc">Torrija de brioche, leche infusionada, helado de vainilla.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tarta de <em>chocolate</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">6€</div>
+        </div>
+        <p class="dish-desc">Tarta casera de chocolate negro 70%.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Tarta de queso <em>de la casa</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">7,50€</div>
+        </div>
+        <p class="dish-desc">Tarta cremosa, mermelada de frutos rojos.</p>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Sorbete <em>de limón al cava</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">5,50€</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-head">
+          <h4 class="dish-name">Helado <em>artesano</em></h4>
+          <div class="dish-dots"></div>
+          <div class="dish-price">3,50€</div>
+        </div>
+        <p class="dish-desc">Bola simple. Vainilla, chocolate, fresa, turrón.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="menu-cta">
+    <h3>¿Quieres ver la <em>carta entera</em>?</h3>
+    <p>Esta es solo una selección. La carta completa está actualizada en la web original.</p>
+    <div class="menu-cta-actions">
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="btn btn-carbon">
+        Ver carta oficial
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="tel:+34946155931" class="btn btn-outline-ink">
+        Reservar mesa
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.11-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENÚS ─── -->
+<section class="menus-section" id="menus">
+  <div style="text-align:center; max-width:900px; margin: 0 auto;">
+    <div class="s-eyebrow center">Menús</div>
+    <h2 class="s-title">Cuatro maneras <em>de visitarnos</em></h2>
+    <p style="font-family: var(--font-display); font-style: italic; color: var(--ash); margin-top: 22px; font-size: 1.15rem; line-height: 1.7;">Del menú del día al especial txuletón. Elige el que más te apetezca —en todos vas a comer bien.</p>
+  </div>
+  <div class="menus-grid">
+    <div class="menu-card">
+      <div class="menu-card-tag">Lunes a viernes</div>
+      <h3 class="menu-card-name">Menú <em>del día</em></h3>
+      <p class="menu-card-meta">Solo en servicio de comidas</p>
+      <div class="menu-card-price">
+        <span class="num">16,50</span>
+        <span class="unit">€ / pers.</span>
+      </div>
+      <ul class="menu-card-features">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entrante a elegir</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Principal a elegir</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Postre, café e infusión</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bebida incluida</li>
+      </ul>
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="menu-card-cta">
+        Ver menú
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="menu-card featured">
+      <div class="menu-card-tag">Especialidad</div>
+      <h3 class="menu-card-name">Menú <em>txuletón</em></h3>
+      <p class="menu-card-meta">El plato estrella de la casa</p>
+      <div class="menu-card-price">
+        <span class="num">39,95</span>
+        <span class="unit">€ / pers.</span>
+      </div>
+      <ul class="menu-card-features">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entrantes para compartir</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Txuletón vasco a la brasa</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pimientos del piquillo</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Postre, café y bebida</li>
+      </ul>
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="menu-card-cta">
+        Ver menú
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-tag">Bajo reserva</div>
+      <h3 class="menu-card-name">Menú <em>rodaballo</em></h3>
+      <p class="menu-card-meta">Pieza salvaje del Cantábrico</p>
+      <div class="menu-card-price">
+        <span class="num">39,95</span>
+        <span class="unit">€ / pers.</span>
+      </div>
+      <ul class="menu-card-features">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entrantes para compartir</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Rodaballo salvaje a la brasa</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Patata panadera</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Postre, café y bebida</li>
+      </ul>
+      <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="menu-card-cta">
+        Ver menú
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 50px;">
+    <p style="font-family: var(--font-display); font-style: italic; color: var(--ash); font-size: 1.05rem;">
+      ¿Vienes en grupo? Tenemos <strong style="color:var(--ember); font-style: normal; font-weight: 500;">menús para grupos desde 26,95€</strong> (10+ adultos).
+    </p>
+  </div>
+</section>
+
+<!-- ─── GALERÍA ─── -->
+<section class="gallery-section" id="galeria">
+  <div class="gallery-header">
+    <div class="s-eyebrow center">El sitio</div>
+    <h2 class="s-title">El sabor <em>se vive</em></h2>
+    <p>Cuatro paredes con historia, una terraza con vistas y una parrilla que no se apaga. Así es Bidegain.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile t1">
+      <img src="https://static.wixstatic.com/media/c97521_8b71b2f475b84e84bb4e0dacb611b6c3~mv2.jpg" alt="Zona de brasa">
+      <div class="gallery-label">Zona de brasa · 4 metros</div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://static.wixstatic.com/media/c97521_da63933a82ee42b2b5c6f766c7af7b1b~mv2.jpg" alt="Vistas terraza">
+      <div class="gallery-label">Terraza con vistas</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://static.wixstatic.com/media/c97521_710da46e977d4f528e0c3c2822cc1caf~mv2.jpg" alt="Txuletón">
+      <div class="gallery-label">Txuletón vasco</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://static.wixstatic.com/media/c97521_a6c82e9bc1b44fd398bac122e6fa09e0~mv2.jpg" alt="Rodaballo">
+      <div class="gallery-label">Rodaballo salvaje</div>
+    </div>
+    <div class="gallery-tile t5">
+      <img src="https://static.wixstatic.com/media/c97521_c8335ae8197743eca660a9491c11d9f7~mv2.jpg" alt="Comedor">
+      <div class="gallery-label">Comedor principal</div>
+    </div>
+  </div>
+  <div class="gallery-grid" style="margin-top: 3px;">
+    <div class="gallery-tile t2">
+      <img src="https://static.wixstatic.com/media/c97521_069352112d4f4b2d894127cce823faa9~mv2.jpg" alt="Terraza">
+      <div class="gallery-label">Terraza</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://static.wixstatic.com/media/c97521_f6e045cd11a2463699cc83feb6a1bb6b~mv2.jpg" alt="Pulpo a la brasa">
+      <div class="gallery-label">Pulpo a la brasa</div>
+    </div>
+    <div class="gallery-tile t4">
+      <img src="https://static.wixstatic.com/media/c97521_59f8891593ab4cad868613834f06c326~mv2.jpg" alt="Entrecot">
+      <div class="gallery-label">Entrecot</div>
+    </div>
+    <div class="gallery-tile t5">
+      <img src="https://static.wixstatic.com/media/c97521_b9803ee3b21945ba9a5714217bed2792~mv2.jpg" alt="Entorno">
+      <div class="gallery-label">Uribe Kosta</div>
+    </div>
+    <div class="gallery-tile t2">
+      <img src="https://static.wixstatic.com/media/c97521_90b65af1447c407da6f9d13cca94f77b~mv2.jpg" alt="Alubias chimenea">
+      <div class="gallery-label">Alubias junto a la chimenea</div>
+    </div>
+    <div class="gallery-tile t3">
+      <img src="https://static.wixstatic.com/media/c97521_df3b87f994cc4095ac5b73767bc82acb~mv2.jpg" alt="Exterior">
+      <div class="gallery-label">Exterior · Larrauri</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CÓMO LLEGAR ─── -->
+<section class="visit-section">
+  <div class="visit-content">
+    <div class="s-eyebrow">Cómo llegar</div>
+    <h2 class="s-title">Entre Mungia <em>y Bakio</em>.</h2>
+    <p class="visit-body">
+      Estamos en pleno corazón de <em>Uribe Kosta</em>, en Larrauri/Markaida. Desde Mungia, dirección Bermeo/Bakio (BI-631). Tras coronar el alto, gira hacia Markaida en la rotonda de la urbanización Elordigane. Continúa unos 2 km y, a mano derecha, está nuestra calle: Txirro Bidea.
+    </p>
+    <div class="visit-info">
+      <div class="visit-info-row">
+        <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <strong>C/ Txirro Bidea, 17</strong>
+          <span>48100 Larrauri / Markaida · Bizkaia</span>
+        </div>
+      </div>
+      <div class="visit-info-row">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <div>
+          <strong>Comarca Uribe Kosta</strong>
+          <span>Entre Mungia y Bakio · BI-631</span>
+        </div>
+      </div>
+      <div class="visit-info-row">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/><path d="M5 11V7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4"/></svg>
+        <div>
+          <strong>Parking propio</strong>
+          <span>Aparcamiento gratuito en el restaurante</span>
+        </div>
+      </div>
+    </div>
+    <div class="visit-actions">
+      <a href="https://www.asadorbidegain.com/como-llegar" target="_blank" rel="noopener" class="btn btn-ember">
+        Ver indicaciones completas
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://maps.google.com/?q=Txirro+Bidea+17+48100+Larrauri" target="_blank" rel="noopener" class="btn btn-outline-cream">
+        Abrir en Maps
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="visit-map">
+    <div class="visit-map-pin"></div>
+  </div>
+</section>
+
+<!-- ─── HORARIOS / CONTACTO ─── -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="s-eyebrow">Reservas</div>
+      <h2 class="s-title">Te esperamos <em>en la brasa</em>.</h2>
+      <p>Reserva por teléfono. Para grupos de más de 10 personas, consulta menús específicos. La cocina cierra 30 min antes del fin del servicio.</p>
+      <div class="phones-grid">
+        <a href="tel:+34946155931" class="phone-card">
+          <div class="phone-card-label">Reservas</div>
+          <div class="phone-card-num">946 155 931</div>
+        </a>
+        <a href="tel:+34667297303" class="phone-card">
+          <div class="phone-card-label">Móvil</div>
+          <div class="phone-card-num">667 297 303</div>
+        </a>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener" class="btn btn-ember">
+          Ver carta oficial
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://www.asadorbidegain.com/como-llegar" target="_blank" rel="noopener" class="btn btn-outline-ink">
+          Cómo llegar
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <div class="hours-card-head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h3>Horario de <em>servicio</em></h3>
+      </div>
+      <ul class="hours-list">
+        <li class="hours-row closed">
+          <span class="hours-day">Lunes a jueves</span>
+          <span class="hours-time">Cerrado</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Viernes</span>
+          <span class="hours-time">13:00–17:00 · 20:00–23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Sábado</span>
+          <span class="hours-time">12:30–18:00 · 20:00–23:30</span>
+        </li>
+        <li class="hours-row">
+          <span class="hours-day">Domingo</span>
+          <span class="hours-time">12:30–18:00</span>
+        </li>
+      </ul>
+      <div class="hours-note">✦ Abierto festivos · Consulta días especiales</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-icon">B</div>
+      <div class="footer-brand-name">Bidegain</div>
+      <div class="footer-brand-tag">Asador · Bizkaia</div>
+      <p>Asador tradicional vasco con cuatro metros de parrilla, horno de brasa y producto local. El sabor de la tradición desde Larrauri.</p>
+    </div>
+    <div class="footer-col">
+      <h5>El restaurante</h5>
+      <ul>
+        <li><a href="#historia">El restaurante</a></li>
+        <li><a href="https://www.asadorbidegain.com/menu" target="_blank" rel="noopener">Carta</a></li>
+        <li><a href="#menus">Menús</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="https://www.asadorbidegain.com/como-llegar" target="_blank" rel="noopener">Cómo llegar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>C/ Txirro Bidea, 17</li>
+        <li>48100 Larrauri / Markaida</li>
+        <li>Bizkaia · Uribe Kosta</li>
+        <li><a href="tel:+34946155931">946 155 931</a></li>
+        <li><a href="tel:+34667297303">667 297 303</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Horario</h5>
+      <ul>
+        <li>Lun – Jue · Cerrado</li>
+        <li>Vie · 13:00–17:00 · 20:00–23:30</li>
+        <li>Sáb · 12:30–18:00 · 20:00–23:30</li>
+        <li>Dom · 12:30–18:00</li>
+        <li>Festivos · Abierto</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Asador Bidegain · Larrauri/Markaida · Bizkaia · Aviso legal · Privacidad</div>
+    <div>El sabor de la tradición ✦</div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.menu-group').forEach(g => {
+        g.classList.toggle('active', g.dataset.group === target);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

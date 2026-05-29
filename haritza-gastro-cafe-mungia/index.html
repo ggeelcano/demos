@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haritza Gastro & Café — Pintxos premiados en Mungia</title>
+  <meta name="description" content="Haritza Gastro & Café en Mungia. Pintxos de autor, menú del día y cocina de mercado. Subcampeón de Euskalherria y ganador en Madrid Fusión 2017. Aritz Bidea s/n.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --wine: #6b1a1a;
+      --wine-dark: #4d1010;
+      --wine-light: #8a2828;
+      --gold: #c9a35a;
+      --gold-light: #e0bd76;
+      --cream: #faf6ee;
+      --cream-dark: #f0e9d8;
+      --bg: #fdfbf5;
+      --bg-alt: #f5efde;
+      --black: #161210;
+      --text: #1f1815;
+      --text-light: #5c504a;
+      --text-mute: #8a7e76;
+      --border: #e3d9c0;
+      --font: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; }
+
+    /* TOP BAR */
+    .topbar { background: var(--black); color: var(--cream); padding: 10px 60px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.04em; }
+    .topbar-left { display: flex; gap: 28px; }
+    .topbar-right { color: var(--gold); font-weight: 600; }
+    .topbar-right a { color: var(--gold); text-decoration: none; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; width: 100%; z-index: 100; background: rgba(253,251,245,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 22px 60px; display: flex; align-items: center; justify-content: space-between; transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(107,26,26,0.08); }
+    .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+    .nav-brand-mark { width: 50px; height: 50px; background: var(--wine); display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--gold); }
+    .nav-brand-mark span { font-family: var(--font); color: var(--cream); font-size: 1.4rem; font-weight: 600; font-style: italic; }
+    .nav-brand-text { font-family: var(--font); font-size: 1.7rem; color: var(--wine-dark); font-weight: 600; line-height: 1; letter-spacing: 0.005em; }
+    .nav-brand-sub { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 4px; font-weight: 600; }
+    .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--wine); }
+    .nav-cta { background: var(--wine); color: var(--cream) !important; padding: 12px 26px; font-weight: 600 !important; transition: all 0.3s; border: 1px solid var(--wine); }
+    .nav-cta:hover { background: transparent; color: var(--wine) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 100px 60px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover; z-index: 0; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(22,18,16,0.92) 0%, rgba(22,18,16,0.7) 50%, rgba(22,18,16,0.35) 100%); z-index: 1; }
+    .hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; width: 100%; }
+    .hero-award { display: inline-flex; align-items: center; gap: 14px; padding: 12px 26px; background: rgba(201,163,90,0.15); border: 1px solid var(--gold); color: var(--gold-light); font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-bottom: 36px; }
+    .hero-award svg { color: var(--gold); }
+    .hero h1 { font-family: var(--font); font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 600; line-height: 1; color: var(--cream); margin-bottom: 32px; letter-spacing: -0.015em; max-width: 1000px; }
+    .hero h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
+    .hero p { font-size: 1.2rem; max-width: 580px; color: rgba(250,246,238,0.88); margin-bottom: 44px; line-height: 1.75; font-weight: 300; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--black); text-decoration: none; padding: 18px 40px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; border: 2px solid var(--gold); }
+    .btn-primary:hover { background: transparent; color: var(--gold-light); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--cream); text-decoration: none; padding: 18px 40px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border: 2px solid rgba(250,246,238,0.4); letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: var(--cream); color: var(--black); border-color: var(--cream); }
+
+    /* AWARDS BAND */
+    .awards { background: var(--wine); color: var(--cream); padding: 50px 60px; text-align: center; border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); }
+    .awards-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: center; }
+    .award-item { display: flex; align-items: center; gap: 20px; justify-content: center; }
+    .award-icon { color: var(--gold); flex-shrink: 0; }
+    .award-text { text-align: left; }
+    .award-text h4 { font-family: var(--font); font-size: 1.3rem; color: var(--cream); font-weight: 600; line-height: 1.2; margin-bottom: 4px; font-style: italic; }
+    .award-text p { font-size: 0.78rem; color: rgba(250,246,238,0.7); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* SECTION COMMON */
+    section { padding: 130px 60px; }
+    .section-label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 14px; }
+    .section-label::before, .section-label::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
+    .section-title { font-family: var(--font); font-size: clamp(2.8rem, 5.5vw, 4.8rem); font-weight: 600; line-height: 1.05; color: var(--wine-dark); margin-bottom: 26px; letter-spacing: -0.015em; }
+    .section-title em { font-style: italic; color: var(--wine); }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 640px; line-height: 1.85; }
+
+    /* ABOUT */
+    .about-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 90px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; height: 620px; object-fit: cover; }
+    .about-img-frame { position: absolute; top: 28px; left: -28px; width: 100%; height: 100%; border: 2px solid var(--gold); z-index: -1; }
+    .about-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.95; margin-bottom: 22px; }
+    .about-text strong { color: var(--wine-dark); font-weight: 600; }
+    .about-quote { font-family: var(--font); font-style: italic; font-size: 1.6rem; color: var(--wine); line-height: 1.5; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 36px 0; }
+    .about-stats { display: flex; gap: 50px; margin-top: 32px; }
+    .about-stat-num { font-family: var(--font); font-size: 3rem; color: var(--gold); line-height: 1; font-weight: 600; font-style: italic; }
+    .about-stat-label { font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; font-weight: 500; }
+
+    /* MENU */
+    .menu-section { background: var(--bg-alt); position: relative; }
+    .menu-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gold); }
+    .menu-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .menu-col h3 { font-family: var(--font); font-size: 2rem; color: var(--wine-dark); font-weight: 600; margin-bottom: 8px; font-style: italic; }
+    .menu-col-sub { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 32px; font-weight: 600; }
+    .menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px dashed var(--border); }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-info { flex: 1; padding-right: 20px; }
+    .menu-item h4 { font-family: var(--font); font-size: 1.2rem; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+    .menu-item p { font-size: 0.85rem; color: var(--text-mute); font-style: italic; }
+    .menu-item-price { font-family: var(--font); font-size: 1.4rem; color: var(--wine); font-weight: 600; flex-shrink: 0; }
+    .menu-note { max-width: 700px; margin: 60px auto 0; text-align: center; padding: 28px; background: #fff; border-left: 4px solid var(--gold); }
+    .menu-note p { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+    .menu-note strong { color: var(--wine-dark); font-style: normal; font-weight: 600; }
+
+    /* PINTXOS */
+    .pintxos { background: var(--black); color: var(--cream); position: relative; padding: 0; }
+    .pintxos-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; align-items: center; }
+    .pintxos-img { width: 100%; height: 100%; min-height: 600px; object-fit: cover; }
+    .pintxos-text { padding: 100px 80px; }
+    .pintxos-text .section-label { color: var(--gold); }
+    .pintxos-text .section-label::before, .pintxos-text .section-label::after { background: var(--gold); }
+    .pintxos-text .section-title { color: var(--cream); }
+    .pintxos-text .section-title em { color: var(--gold); }
+    .pintxos-text p { font-size: 1.05rem; color: rgba(250,246,238,0.8); line-height: 1.95; margin-bottom: 22px; }
+    .pintxos-text strong { color: var(--gold-light); font-weight: 600; }
+
+    /* CARTA / EXPERIENCIA */
+    .experiencia { background: var(--bg); }
+    .experiencia-grid { max-width: 1200px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+    .exp-card { text-align: center; padding: 0 20px; }
+    .exp-icon { width: 70px; height: 70px; margin: 0 auto 24px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--wine); }
+    .exp-card h3 { font-family: var(--font); font-size: 1.7rem; color: var(--wine-dark); font-weight: 600; margin-bottom: 14px; font-style: italic; }
+    .exp-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; }
+
+    /* TESTIMONIOS */
+    .testimonios { background: var(--bg-alt); }
+    .testimonios-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonio { background: #fff; padding: 44px 36px; border-top: 3px solid var(--gold); position: relative; }
+    .testimonio::before { content: '"'; position: absolute; top: 14px; right: 22px; font-family: var(--font); font-size: 4rem; color: var(--gold); line-height: 1; opacity: 0.5; }
+    .testimonio-stars { color: var(--gold); font-size: 1.05rem; margin-bottom: 18px; letter-spacing: 4px; }
+    .testimonio-quote { font-family: var(--font); font-style: italic; font-size: 1.1rem; color: var(--text); line-height: 1.65; margin-bottom: 22px; font-weight: 500; }
+    .testimonio-author { font-size: 0.78rem; color: var(--wine); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 100%); padding: 130px 60px; text-align: center; color: var(--cream); border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,163,90,0.15) 0%, transparent 70%); }
+    .cta h2 { font-family: var(--font); font-size: clamp(2.8rem, 5.5vw, 4.8rem); margin-bottom: 28px; font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; position: relative; }
+    .cta h2 em { font-style: italic; color: var(--gold); }
+    .cta p { color: rgba(250,246,238,0.85); font-size: 1.1rem; max-width: 580px; margin: 0 auto 44px; line-height: 1.85; position: relative; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* CONTACT */
+    .contacto-grid { max-width: 1300px; margin: 70px auto 0; display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; }
+    .contacto-info { display: flex; flex-direction: column; gap: 22px; }
+    .contacto-item { display: flex; gap: 22px; align-items: flex-start; padding: 28px; background: var(--bg-alt); border-left: 4px solid var(--wine); }
+    .contacto-item-icon { width: 48px; height: 48px; background: var(--wine); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contacto-item h4 { font-family: var(--font); font-size: 1.25rem; color: var(--wine-dark); font-weight: 600; margin-bottom: 4px; font-style: italic; }
+    .contacto-item p, .contacto-item a { font-size: 0.95rem; color: var(--text-light); text-decoration: none; line-height: 1.6; }
+    .contacto-item a:hover { color: var(--wine); }
+    .map-wrapper { overflow: hidden; border: 3px solid var(--gold); }
+    .map-wrapper iframe { width: 100%; height: 480px; border: 0; display: block; filter: sepia(0.15) contrast(1.05); }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 60px 60px 40px; color: rgba(250,246,238,0.5); border-top: 1px solid var(--gold); }
+    .footer-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--font); font-size: 1.6rem; color: var(--cream); font-weight: 600; font-style: italic; }
+    .footer-brand span { color: var(--gold); }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(250,246,238,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .topbar { padding: 8px 20px; flex-direction: column; gap: 6px; text-align: center; font-size: 0.72rem; }
+      .topbar-left { flex-direction: column; gap: 4px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 80px 24px; min-height: 80vh; }
+      .awards { padding: 36px 24px; }
+      .awards-inner { grid-template-columns: 1fr; gap: 24px; }
+      section { padding: 80px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 50px; }
+      .about-img { height: 400px; }
+      .about-img-frame { display: none; }
+      .menu-grid { grid-template-columns: 1fr; gap: 50px; }
+      .pintxos-inner { grid-template-columns: 1fr; }
+      .pintxos-img { min-height: 360px; height: 360px; }
+      .pintxos-text { padding: 70px 24px; }
+      .experiencia-grid { grid-template-columns: 1fr; gap: 36px; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .cta { padding: 80px 24px; }
+      .contacto-grid { grid-template-columns: 1fr; gap: 50px; }
+      footer { padding: 40px 24px 30px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Aritz Bidea s/n · C.C. Alcampo · Mungia</span>
+    <span>🕐 Lunes a Sábado · 9:00 — 22:00</span>
+  </div>
+  <div class="topbar-right">📞 <a href="tel:+34946947865">946 94 78 65</a></div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-mark"><span>H</span></div>
+    <div>
+      <div class="nav-brand-text">Haritza</div>
+      <div class="nav-brand-sub">Gastro · Café · Mungia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">El local</a></li>
+    <li><a href="#menu">Menú del día</a></li>
+    <li><a href="#pintxos">Pintxos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34946947865" class="nav-cta">📱 Reservar</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-award">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
+      Ganador Madrid Fusión 2017 · Subcampeón Euskalherria
+    </div>
+    <h1>Pintxos de autor.<br><em>Cocina de mercado.</em></h1>
+    <p>Haritza Gastro & Café es uno de los referentes en pintxos del País Vasco. 25 años creando bocados premiados, menús del día cuidados y un café como pocos, en el centro de Mungia.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34946947865" class="btn-primary">Reservar mesa →</a>
+      <a href="#menu" class="btn-outline">Ver menú del día</a>
+    </div>
+  </div>
+</div>
+
+<!-- AWARDS BAND -->
+<div class="awards">
+  <div class="awards-inner">
+    <div class="award-item">
+      <svg class="award-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 8 5-3 5 3-2-8"/></svg>
+      <div class="award-text">
+        <h4>Madrid Fusión 2017</h4>
+        <p>Pintxo ganador</p>
+      </div>
+    </div>
+    <div class="award-item">
+      <svg class="award-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15 8.5l7 1-5 5 1 7-6-3.5-6 3.5 1-7-5-5 7-1z"/></svg>
+      <div class="award-text">
+        <h4>Subcampeón</h4>
+        <p>Bizkaia y Euskalherria</p>
+      </div>
+    </div>
+    <div class="award-item">
+      <svg class="award-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div class="award-text">
+        <h4>25 años</h4>
+        <p>De cocina y café en Mungia</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="sobre">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-in">
+      <img src="images/hero.jpg" alt="Bar Haritza Mungia" class="about-img">
+      <div class="about-img-frame"></div>
+    </div>
+    <div class="about-text fade-in">
+      <p class="section-label">Sobre nosotros</p>
+      <h2 class="section-title">Una <em>historia</em><br>de pintxos y café.</h2>
+      <p>Haritza nació hace más de <strong>25 años en Mungia</strong> con la idea de hacer las cosas bien hechas — buen producto, buena ejecución y un trato que se note. Lo que empezó como un café se convirtió con los años en uno de los nombres importantes del pintxo en Euskadi.</p>
+      <p>Hemos sido <strong>subcampeones del Campeonato de Pintxos de Bizkaia y de Euskalherria</strong>, y en 2017 nos llevamos un primer premio en el certamen de tapas de Madrid Fusión. Pero lo que más nos importa sigue siendo la gente que cruza nuestra puerta cada mañana a desayunar, cada mediodía a comer el menú y cada tarde a tomarse un café.</p>
+      <div class="about-quote">"La cocina es paciencia, producto y respeto. Lo demás viene solo."</div>
+      <div class="about-stats">
+        <div>
+          <div class="about-stat-num">25+</div>
+          <div class="about-stat-label">Años de oficio</div>
+        </div>
+        <div>
+          <div class="about-stat-num">1º</div>
+          <div class="about-stat-label">Madrid Fusión 2017</div>
+        </div>
+        <div>
+          <div class="about-stat-num">★★★★★</div>
+          <div class="about-stat-label">Reseñas Tripadvisor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">La carta</p>
+    <h2 class="section-title">Menú del <em>día</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Cambia cada semana según el mercado. Cocina vasca de toda la vida, con producto fresco y guarniciones que se notan.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-col">
+      <h3>Primeros</h3>
+      <div class="menu-col-sub">— A elegir uno</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Ensalada de la casa</h4>
+          <p>Mezclum, queso, frutos secos y vinagreta de Módena</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Crema de calabaza asada</h4>
+          <p>Con crujiente de jamón y aceite de calabaza</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Alubias rojas de Tolosa</h4>
+          <p>Con sus sacramentos tradicionales</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Pasta del día</h4>
+          <p>Consultar elaboración con el equipo</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Revuelto de hongos</h4>
+          <p>De temporada, con su pan tostado</p>
+        </div>
+      </div>
+    </div>
+    <div class="menu-col">
+      <h3>Segundos</h3>
+      <div class="menu-col-sub">— A elegir uno</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Bacalao al pil-pil</h4>
+          <p>Receta tradicional vasca, en su punto</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Pescado del día</h4>
+          <p>A la plancha o al horno, según mercado</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Carrillera de ternera al vino tinto</h4>
+          <p>Cocción lenta con verduras y patatas</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Solomillo a la plancha</h4>
+          <p>Con guarnición del día</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h4>Pollo de caserío al horno</h4>
+          <p>Con patatas panaderas y romero</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-note">
+    <p>Postre o café incluido · Bebida (vino, agua, refresco o caña) · Pan</p>
+    <p style="margin-top:14px;"><strong>Lunes a Viernes: 12,90€</strong> · <strong>Sábado: 14,90€</strong></p>
+    <p style="margin-top:8px;font-size:0.78rem;">Carta orientativa · Los platos del día varían según mercado</p>
+  </div>
+</section>
+
+<!-- PINTXOS -->
+<section class="pintxos" id="pintxos">
+  <div class="pintxos-inner">
+    <img src="images/pintxos.jpg" alt="Pintxos de autor Haritza Mungia" class="pintxos-img">
+    <div class="pintxos-text">
+      <p class="section-label">Pintxos de autor</p>
+      <h2 class="section-title">Bocados que han<br>ganado <em>premios.</em></h2>
+      <p>Nuestra carta de pintxos es lo que nos ha llevado a competir — y ganar — en los principales certámenes del País Vasco y de España. Cada pintxo es una <strong>pieza pensada al detalle</strong>: el sabor, la textura, la presentación y el bocado en sí.</p>
+      <p>Pásate a probarlos en barra o llévatelos a la mesa. <strong>Cada visita es una excusa para probar algo nuevo</strong>, porque la carta evoluciona con la temporada y con la inspiración del equipo de cocina.</p>
+      <a href="https://wa.me/34946947865" class="btn-primary" style="margin-top:20px;">Reservar mesa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="experiencia">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Tres momentos</p>
+    <h2 class="section-title">Para todo el <em>día</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Desayuno, comida o café de la tarde — Haritza es ese sitio al que se vuelve sin pensarlo. Abrimos a las 9 y cerramos a las 22.</p>
+  </div>
+  <div class="experiencia-grid">
+    <div class="exp-card fade-in">
+      <div class="exp-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><path d="M6 2v3M10 2v3M14 2v3"/></svg>
+      </div>
+      <h3>Desayunos</h3>
+      <p>Café de tueste natural, tostadas, bollería casera y zumos frescos. Empezamos el día como debe ser, desde primera hora.</p>
+    </div>
+    <div class="exp-card fade-in">
+      <div class="exp-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18M6 11V8a6 6 0 0112 0v3M5 11v8a2 2 0 002 2h10a2 2 0 002-2v-8"/></svg>
+      </div>
+      <h3>Comidas</h3>
+      <p>Menú del día completo de lunes a sábado, con primero, segundo, postre o café y bebida incluida. Cocina vasca de mercado.</p>
+    </div>
+    <div class="exp-card fade-in">
+      <div class="exp-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <h3>Pintxos y cafés</h3>
+      <p>Por la tarde-noche, barra de pintxos cuidada y carta de cafés especiales. El sitio perfecto para reuniones, citas o pausas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Lo que dicen</p>
+    <h2 class="section-title">Voces de <em>la casa</em></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Los mejores pintxos de Mungia sin discusión. El cuidado por el detalle se nota en cada bocado. Vamos siempre que podemos y nunca defraudan."</p>
+      <div class="testimonio-author">Reseña verificada Tripadvisor</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Un menú del día espectacular por el precio que tiene. Producto fresco, presentación cuidada y trato cercano. Es nuestro restaurante de cabecera."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+    <div class="testimonio fade-in">
+      <div class="testimonio-stars">★★★★★</div>
+      <p class="testimonio-quote">"Café excelente, pintxos premiados y un equipo profesional que conoce a sus clientes. 25 años no se mantienen sin hacer las cosas muy bien. Imprescindible."</p>
+      <div class="testimonio-author">Reseña verificada Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ven a probar<br>la <em>casa.</em></h2>
+  <p>Reserva tu mesa por WhatsApp o llámanos. Para grupos, eventos o reuniones especiales, también nos adaptamos a lo que necesites.</p>
+  <div class="cta-actions">
+    <a href="tel:+34946947865" class="btn-primary">📞 946 94 78 65</a>
+    <a href="https://wa.me/34946947865" class="btn-outline">💬 WhatsApp</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Encuéntranos en <em>Mungia</em></h2>
+  </div>
+  <div class="contacto-grid">
+    <div class="contacto-info fade-in">
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Aritz Bidea s/n<br>Centro Comercial Alcampo<br>48100 Mungia, Bizkaia</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Reservas</h4>
+          <a href="tel:+34946947865">946 94 78 65</a>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes a Sábado: 9:00 — 22:00<br>Domingo: cerrado</p>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div>
+          <h4>Métodos de pago</h4>
+          <p>Tarjeta · Móvil · Efectivo · Vales restaurante</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrapper fade-in">
+      <iframe src="https://maps.google.com/maps?q=Aritz+Bidea+Mungia+Alcampo&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Haritza <span>· Gastro & Café</span></div>
+    <p class="footer-copy">© 2026 Haritza Gastro & Café. Todos los derechos reservados. Diseño web por G&G Elcano.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34946947865" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const fades = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
