@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>KONPA Mascotas · Tu tienda de mascotas online · Para cada mascota</title>
+<meta name="description" content="Tienda online de productos para mascotas: piensos, comida, accesorios e higiene para perros, gatos, roedores, pájaros y peces. Las mejores marcas, envío gratis a partir de 49€ y ofertas cada semana.">
+<meta name="theme-color" content="#1F8A55">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="KONPA Mascotas · Tu tienda de mascotas online">
+<meta property="og:description" content="Piensos, comida y accesorios para perros, gatos y más. Marcas de calidad, envío gratis +49€ y ofertas cada semana.">
+<meta property="og:url" content="https://konpamascotas.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='38' fill='%231F8A55'/%3E%3Ctext x='90' y='120' font-family='Arial,sans-serif' font-size='86' font-weight='800' fill='%23fff' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F8A55'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='800' fill='%23fff' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"PetStore","name":"KONPA Mascotas","description":"Tienda online de productos para mascotas. Perros, gatos, roedores, pájaros y peces.","telephone":"+34674023497","email":"info@konpamascotas.com","url":"https://konpamascotas.com/","sameAs":["https://www.instagram.com/konpamascotas/","https://www.facebook.com/konpamascotas"]}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2EA86B;
+  --green-d:#1C7E4E;
+  --green-l:#EAF6EF;
+  --ink:#16241D;
+  --text:#2B3A32;
+  --muted:#6E7E74;
+  --cream:#FBFAF6;
+  --paper:#FFFFFF;
+  --line:#E7EDE8;
+  --coral:#F2603C;
+  --amber:#F6A609;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Baloo 2',cursive;font-weight:700;line-height:1.1;color:var(--ink)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* TOPBAR */
+.topbar{background:var(--green-d);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:9px 14px;letter-spacing:.01em}
+.topbar b{font-weight:800}
+.topbar .sep{opacity:.5;margin:0 12px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff;font-family:'Baloo 2',cursive;font-weight:800;font-size:24px;box-shadow:0 6px 16px rgba(46,168,107,.35)}
+.brand-name{font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:var(--ink);letter-spacing:.01em}
+.brand-name span{color:var(--green)}
+.nav-links{display:flex;gap:26px;font-size:15px;font-weight:600;color:var(--text)}
+.nav-links a{transition:.2s;position:relative;padding:4px 0}
+.nav-links a:hover{color:var(--green)}
+.nav-links a.hot{color:var(--coral)}
+.nav-cta{background:var(--green);color:#fff;padding:11px 22px;border-radius:999px;font-size:14px;font-weight:700;transition:.25s;border:none;cursor:pointer;font-family:inherit;box-shadow:0 6px 16px rgba(46,168,107,.3)}
+.nav-cta:hover{background:var(--green-d);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s;display:block}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:30px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);font-family:'Baloo 2',cursive;font-weight:700;font-size:28px;padding:8px 0}
+.mobile-menu a.hot{color:var(--coral)}
+.mobile-menu .mm-cta{background:var(--green);color:#fff;border-radius:999px;padding:13px 32px;font-size:18px;margin-top:16px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#EAF6EF 0%,#FBFAF6 60%)}
+.hero-inner{max-width:1240px;margin:0 auto;padding:70px 26px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:var(--green-d);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px;box-shadow:0 4px 14px rgba(22,36,29,.05)}
+.hero h1{font-size:clamp(38px,5.6vw,68px);margin-bottom:18px;color:var(--ink)}
+.hero h1 span{color:var(--green)}
+.hero p{font-size:clamp(16px,1.5vw,19px);color:var(--muted);max-width:480px;margin-bottom:30px}
+.hero-ctas{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:700;cursor:pointer;transition:.25s;border:2px solid transparent;font-family:inherit}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 8px 20px rgba(46,168,107,.3)}
+.btn-green:hover{background:var(--green-d);border-color:var(--green-d);transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.hero-trust{display:flex;gap:22px;flex-wrap:wrap}
+.hero-trust .ht{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--text)}
+.hero-trust .ht svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:2}
+.hero-art{position:relative;display:grid;place-items:center}
+.hero-blob{width:min(440px,90%);aspect-ratio:1;background:radial-gradient(circle at 50% 40%,#fff 0%,#EAF6EF 70%);border-radius:46% 54% 52% 48%/52% 46% 54% 48%;display:grid;place-items:center;box-shadow:inset 0 0 0 2px rgba(46,168,107,.15),0 30px 60px rgba(22,36,29,.1);animation:morph 12s ease-in-out infinite}
+@keyframes morph{0%,100%{border-radius:46% 54% 52% 48%/52% 46% 54% 48%}50%{border-radius:54% 46% 48% 52%/46% 54% 46% 54%}}
+.hero-blob .emoji{font-size:clamp(120px,20vw,190px);line-height:1;filter:drop-shadow(0 14px 24px rgba(22,36,29,.18))}
+.hero-chip{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 30px rgba(22,36,29,.12);display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--ink)}
+.hero-chip .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:20px}
+.hero-chip.c1{top:14%;left:-2%;animation:float 5s ease-in-out infinite}
+.hero-chip.c2{bottom:16%;right:-2%;animation:float 5s ease-in-out infinite .8s}
+.hero-chip.c1 .ic{background:#FDEBD2}
+.hero-chip.c2 .ic{background:var(--green-l)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* SECTION BASE */
+section{padding:84px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+.eyebrow{display:inline-block;color:var(--green);font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.sec-head h2{font-size:clamp(30px,4.2vw,48px)}
+.sec-head h2 span{color:var(--green)}
+.sec-head p{font-size:16.5px;color:var(--muted);margin-top:12px}
+
+/* CATEGORÍAS */
+.cats{background:var(--paper)}
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.cat-card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:30px 18px;text-align:center;transition:.3s;cursor:pointer}
+.cat-card:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(22,36,29,.1);border-color:var(--green);background:#fff}
+.cat-emoji{font-size:54px;line-height:1;margin-bottom:14px;display:block;transition:.3s}
+.cat-card:hover .cat-emoji{transform:scale(1.12) rotate(-5deg)}
+.cat-card h3{font-size:20px;margin-bottom:4px}
+.cat-card span{font-size:13px;color:var(--muted);font-weight:600}
+
+/* OFERTAS */
+.ofertas{background:var(--cream)}
+.filt{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:38px}
+.filt-chip{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--text);font-size:14px;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit}
+.filt-chip:hover{border-color:var(--green)}
+.filt-chip.active{background:var(--green);border-color:var(--green);color:#fff}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.prod{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.3s;position:relative}
+.prod:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(22,36,29,.1);border-color:#D6E3DA}
+.prod-imgwrap{position:relative;aspect-ratio:1;background:#fff;display:grid;place-items:center;padding:20px;border-bottom:1px solid var(--line)}
+.prod-imgwrap img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s}
+.prod:hover .prod-imgwrap img{transform:scale(1.06)}
+.prod-disc{position:absolute;top:12px;left:12px;background:var(--coral);color:#fff;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;font-family:'Baloo 2',cursive;z-index:2}
+.prod-tag{position:absolute;top:12px;right:12px;background:var(--green-l);color:var(--green-d);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;z-index:2}
+.prod-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.prod-brand{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:5px}
+.prod-name{font-size:15px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:14px;min-height:40px}
+.prod-foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.prod-price b{font-family:'Baloo 2',cursive;font-weight:800;font-size:23px;color:var(--ink);display:block;line-height:1}
+.prod-price s{font-size:13px;color:var(--muted);font-weight:500}
+.prod-btn{background:var(--ink);color:#fff;border:none;border-radius:999px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;transition:.25s;flex-shrink:0}
+.prod-btn:hover{background:var(--green)}
+.prod-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+.ofertas-cta{text-align:center;margin-top:42px}
+
+/* CUPÓN */
+.cupon-wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+.cupon{background:linear-gradient(120deg,var(--green) 0%,var(--green-d) 100%);border-radius:26px;padding:54px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cupon::before,.cupon::after{content:"🐾";position:absolute;font-size:120px;opacity:.12}
+.cupon::before{top:-10px;left:20px;transform:rotate(-20deg)}
+.cupon::after{bottom:-26px;right:24px;transform:rotate(15deg)}
+.cupon h2{color:#fff;font-size:clamp(28px,4vw,46px);margin-bottom:10px;position:relative}
+.cupon p{position:relative;font-size:17px;opacity:.92;margin-bottom:24px}
+.cupon-code{position:relative;display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.15);border:2px dashed rgba(255,255,255,.6);border-radius:14px;padding:14px 26px;font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;letter-spacing:.1em;cursor:pointer;transition:.2s}
+.cupon-code:hover{background:rgba(255,255,255,.25)}
+.cupon-code small{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;opacity:.85;text-transform:uppercase}
+
+/* MARCAS */
+.marcas{background:var(--paper)}
+.marcas-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.marca{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 26px;font-family:'Baloo 2',cursive;font-weight:700;font-size:18px;color:var(--text);transition:.25s}
+.marca:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
+
+/* POR QUÉ */
+.why{background:var(--green-l)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-card{background:#fff;border-radius:20px;padding:32px 26px;text-align:center}
+.why-ico{width:60px;height:60px;border-radius:50%;background:var(--green-l);display:grid;place-items:center;margin:0 auto 18px;font-size:28px}
+.why-card h3{font-size:19px;margin-bottom:8px}
+.why-card p{font-size:14px;color:var(--muted)}
+
+/* CONTACTO */
+.contacto{background:var(--paper)}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.contacto-text h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:16px}
+.contacto-text h2 span{color:var(--green)}
+.contacto-text p{font-size:16px;color:var(--muted);margin-bottom:24px;max-width:440px}
+.ci-list{display:flex;flex-direction:column;gap:14px}
+.ci-row{display:flex;gap:14px;align-items:center}
+.ci-ico{width:46px;height:46px;border-radius:13px;background:var(--green-l);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.ci-row b{display:block;font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.ci-row a,.ci-row span{font-size:17px;color:var(--ink);font-weight:700}
+.ci-row a:hover{color:var(--green)}
+.contacto-card{background:linear-gradient(160deg,#EAF6EF,#fff);border:1px solid var(--line);border-radius:24px;padding:40px;text-align:center}
+.contacto-card .big{font-size:64px;margin-bottom:10px}
+.contacto-card h3{font-size:24px;margin-bottom:8px}
+.contacto-card p{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-brand .brand-name{color:#fff}
+.foot-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:12px;max-width:280px}
+.foot-social{display:flex;gap:11px;margin-top:16px}
+.foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;font-size:16px;transition:.25s}
+.foot-social a:hover{background:var(--green);border-color:var(--green)}
+.foot-col h5{font-family:'Baloo 2',cursive;font-size:17px;color:#fff;margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:9px}
+.foot-col a,.foot-col span{font-size:14px;color:rgba(255,255,255,.55);transition:.2s}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.4)}
+
+/* LOADER */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .5s,visibility .5s}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader .paw{font-size:60px;animation:bounce 1s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.loader .ltxt{font-family:'Baloo 2',cursive;font-weight:800;font-size:26px;color:#fff;letter-spacing:.04em}
+
+@media(max-width:980px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:30px;padding:48px 26px 56px}
+  .hero-art{order:-1}
+  .hero-blob{width:min(320px,80%)}
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .contacto-grid{grid-template-columns:1fr;gap:36px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  section{padding:64px 0}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .prod-name{font-size:13.5px;min-height:36px}
+  .prod-price b{font-size:20px}
+  .why-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .topbar .sep{display:none}
+  .topbar span{display:block;margin:1px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader"><div class="paw">🐾</div><div class="ltxt">KONPA Mascotas</div></div>
+<script>
+document.body.style.overflow='hidden';
+function hideLoader(){document.body.style.overflow='';var l=document.getElementById('loader');if(l){l.classList.add('hidden');setTimeout(function(){l.remove()},550)}}
+window.addEventListener('load',function(){setTimeout(hideLoader,300)});
+setTimeout(hideLoader,3000);
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar"><span>🚚 <b>Envío gratis</b> a partir de 49€</span><span class="sep">·</span><span>🏷️ Cupón <b>HOLAKONPA</b> &nbsp;-20% en tu primera compra +20€</span><span class="sep">·</span><span>🔒 Pago 100% seguro</span></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">K</div>
+      <div class="brand-name">KONPA<span>.</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#categorias">Mascotas</a>
+      <a href="#ofertas" class="hot">Ofertas</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#porque">Por qué Konpa</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button type="button" class="nav-cta" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})">Ver ofertas</button>
+    <button type="button" class="hamburger" id="hb" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mm">
+  <a href="#categorias" data-mmc>Mascotas</a>
+  <a href="#ofertas" class="hot" data-mmc>Ofertas</a>
+  <a href="#marcas" data-mmc>Marcas</a>
+  <a href="#porque" data-mmc>Por qué Konpa</a>
+  <a href="#contacto" data-mmc>Contacto</a>
+  <a href="#ofertas" class="mm-cta" data-mmc>Ver ofertas</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text reveal">
+      <span class="hero-badge">🐾 Tu tienda de mascotas online</span>
+      <h1>Para cada mascota, <span>lo mejor</span>.</h1>
+      <p>Piensos, comida y accesorios de las mejores marcas para perros, gatos, roedores, pájaros y peces. Con ofertas cada semana y envío gratis a partir de 49€.</p>
+      <div class="hero-ctas">
+        <a href="#ofertas" class="btn btn-green">Ver ofertas 🏷️</a>
+        <a href="#categorias" class="btn btn-ghost">Comprar por mascota</a>
+      </div>
+      <div class="hero-trust">
+        <div class="ht"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Envío gratis +49€</div>
+        <div class="ht"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg> Pago seguro</div>
+        <div class="ht"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg> Atención cercana</div>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <div class="hero-blob"><div class="emoji">🐶</div></div>
+      <div class="hero-chip c1"><div class="ic">🦴</div><div>+1.200 productos</div></div>
+      <div class="hero-chip c2"><div class="ic">⭐</div><div>Marcas premium</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORÍAS -->
+<section id="categorias" class="cats">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Compra por mascota</span>
+      <h2>¿Quién es tu <span>compañero</span>?</h2>
+      <p>Todo lo que necesita, organizado por tipo de mascota.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})"><span class="cat-emoji">🐶</span><h3>Perros</h3><span>720 productos</span></div>
+      <div class="cat-card reveal" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})"><span class="cat-emoji">🐱</span><h3>Gatos</h3><span>319 productos</span></div>
+      <div class="cat-card reveal" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})"><span class="cat-emoji">🐹</span><h3>Roedores</h3><span>81 productos</span></div>
+      <div class="cat-card reveal" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})"><span class="cat-emoji">🦜</span><h3>Pájaros</h3><span>86 productos</span></div>
+      <div class="cat-card reveal" onclick="document.getElementById('ofertas').scrollIntoView({behavior:'smooth'})"><span class="cat-emoji">🐠</span><h3>Peces</h3><span>Acuariofilia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTAS -->
+<section id="ofertas" class="ofertas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">🔥 Ofertas de la semana</span>
+      <h2>Ahorra en lo que <span>más compras</span></h2>
+      <p>Precios rebajados de verdad en piensos y productos top. Stock real, cada semana nuevas ofertas.</p>
+    </div>
+
+    <div class="filt reveal">
+      <button class="filt-chip active" data-f="all">Todas</button>
+      <button class="filt-chip" data-f="perro">🐶 Perros</button>
+      <button class="filt-chip" data-f="gato">🐱 Gatos</button>
+      <button class="filt-chip" data-f="otros">🧴 Accesorios</button>
+    </div>
+
+    <div class="prod-grid" id="prodGrid"></div>
+
+    <div class="ofertas-cta reveal">
+      <a href="#contacto" class="btn btn-green">Ver todas las ofertas →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CUPÓN -->
+<div class="cupon-wrap reveal">
+  <div class="cupon">
+    <h2>-20% en tu primera compra</h2>
+    <p>Solo por compras superiores a 20€. Copia el cupón y aplícalo en el carrito.</p>
+    <div class="cupon-code" id="cuponCode" title="Copiar cupón"><span>HOLAKONPA</span><small id="cuponMsg">Toca para copiar</small></div>
+  </div>
+</div>
+
+<!-- MARCAS -->
+<section id="marcas" class="marcas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Trabajamos con</span>
+      <h2>Las <span>mejores marcas</span></h2>
+      <p>Solo marcas de la mayor calidad para la salud de tu mascota.</p>
+    </div>
+    <div class="marcas-grid reveal">
+      <div class="marca">Acana</div>
+      <div class="marca">Advance</div>
+      <div class="marca">Purina Pro Plan</div>
+      <div class="marca">Farmina</div>
+      <div class="marca">Bravery</div>
+      <div class="marca">Nature's Variety</div>
+      <div class="marca">Mediterranean Natural</div>
+      <div class="marca">Trovet</div>
+      <div class="marca">Amity</div>
+      <div class="marca">Summum</div>
+      <div class="marca">Naturo</div>
+      <div class="marca">Super Benek</div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section id="porque" class="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Por qué Konpa</span>
+      <h2>Cuidamos a los que <span>más quieres</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-ico">🚚</div><h3>Envío gratis +49€</h3><p>Recíbelo en casa rápido y sin coste de envío en pedidos desde 49€.</p></div>
+      <div class="why-card reveal"><div class="why-ico">🔒</div><h3>Compra segura</h3><p>Pago 100% seguro y tus datos siempre protegidos.</p></div>
+      <div class="why-card reveal"><div class="why-ico">⭐</div><h3>Marcas de calidad</h3><p>Trabajamos solo con marcas premium para la salud de tu mascota.</p></div>
+      <div class="why-card reveal"><div class="why-ico">💬</div><h3>Atención cercana</h3><p>Te asesoramos para acertar con lo que tu mascota necesita.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+  <div class="wrap">
+    <div class="contacto-grid">
+      <div class="contacto-text reveal">
+        <span class="eyebrow">Hablemos</span>
+        <h2>¿Dudas con tu <span>pedido</span>?</h2>
+        <p>Escríbenos por WhatsApp o llámanos y te ayudamos a elegir el mejor producto para tu mascota.</p>
+        <div class="ci-list">
+          <div class="ci-row"><div class="ci-ico">💬</div><div><b>Teléfono y WhatsApp</b><a href="https://wa.me/34674023497" target="_blank" rel="noopener">674 023 497</a></div></div>
+          <div class="ci-row"><div class="ci-ico">✉️</div><div><b>Email</b><a href="mailto:info@konpamascotas.com">info@konpamascotas.com</a></div></div>
+          <div class="ci-row"><div class="ci-ico">📸</div><div><b>Síguenos</b><a href="https://www.instagram.com/konpamascotas/" target="_blank" rel="noopener">@konpamascotas</a></div></div>
+        </div>
+      </div>
+      <div class="contacto-card reveal">
+        <div class="big">🐾</div>
+        <h3>Pide por WhatsApp</h3>
+        <p>Dinos qué necesita tu mascota y te lo preparamos. Respuesta rápida.</p>
+        <a href="https://wa.me/34674023497?text=Hola%20KONPA%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn btn-green">Escribir por WhatsApp 💬</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-name">KONPA<span style="color:var(--green)">.</span> Mascotas</div>
+        <p>Tu tienda de mascotas online. Piensos, comida y accesorios de las mejores marcas para perros, gatos, roedores, pájaros y peces.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/konpamascotas/" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a href="https://www.facebook.com/konpamascotas" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+          <a href="https://wa.me/34674023497" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Mascotas</h5>
+        <ul><li><a href="#categorias">Perros</a></li><li><a href="#categorias">Gatos</a></li><li><a href="#categorias">Roedores</a></li><li><a href="#categorias">Pájaros y peces</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h5>Tienda</h5>
+        <ul><li><a href="#ofertas">Ofertas</a></li><li><a href="#marcas">Marcas</a></li><li><a href="#porque">Por qué Konpa</a></li><li><a href="#contacto">Contacto</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <ul><li><a href="https://wa.me/34674023497" target="_blank" rel="noopener">674 023 497</a></li><li><a href="mailto:info@konpamascotas.com">info@konpamascotas.com</a></li><li><span>@konpamascotas</span></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 KONPA Mascotas · Tu tienda de mascotas online</span>
+      <span>Envío gratis +49€ · Pago seguro</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Datos reales de ofertas (konpamascotas.com/categoria-producto/oferta) */
+var PRODUCTS=[
+  {n:"Pienso Canis Puppy 20kg",b:"Canis",p:"30,70",o:"31,60",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2021/02/canis-puppy-220x220.jpg"},
+  {n:"Pienso Canifox 20kg",b:"Canifox",p:"23,65",o:"24,90",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2025/09/canifox-220x220.jpg"},
+  {n:"Pienso Canis Activity 20kg",b:"Canis",p:"27,40",o:"28,00",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2025/09/canis-activity-220x220.jpg"},
+  {n:"Wonder Tails Dogs 14kg",b:"Wonder Tails",p:"24,90",o:"",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2025/05/wonder-tails1-1-220x220.jpg"},
+  {n:"Irelan Súper Premium Pollo y Arroz 15+3kg",b:"Irelan",p:"34,83",o:"38,70",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2024/12/sacos-pollo-153-220x220.jpg"},
+  {n:"Petsana Gel Sílice 4L",b:"Petsana",p:"4,70",o:"",c:"gato",t:"Arena",img:"https://konpamascotas.com/heexichi/2024/09/8437008253169-PETSANA-GEL-SILICE-4L-220x220.jpeg"},
+  {n:"Irelan Súper Premium Cordero y Arroz 18kg",b:"Irelan",p:"36,01",o:"",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2021/07/sacos-cordero-220x220.jpg"},
+  {n:"Rascador Twinbee para Gatos 46cm",b:"Twinbee",p:"9,75",o:"",c:"gato",t:"Accesorio",img:"https://konpamascotas.com/heexichi/2021/07/rascador-twinbee-46cm-220x220.jpg"},
+  {n:"Transportín Pratiko 1 (48x31x33cm)",b:"Pratiko",p:"11,25",o:"",c:"otros",t:"Transporte",img:"https://konpamascotas.com/heexichi/2021/06/transportin-pratiko-220x220.jpg"},
+  {n:"Collar antiparasitario TaberDog",b:"TaberDog",p:"11,95",o:"15,95",c:"perro",t:"Salud",img:"https://konpamascotas.com/heexichi/2021/06/taberdog-181x220.jpg"},
+  {n:"Pienso Dog One Cachorros 20kg",b:"Dog One",p:"30,70",o:"31,60",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2021/02/dog-one-cachorros-220x220.jpg"},
+  {n:"Pienso Dog One Alta Energía 20kg",b:"Dog One",p:"27,40",o:"28,00",c:"perro",t:"Pienso",img:"https://konpamascotas.com/heexichi/2020/11/dog-1-alta-energia-adulto-20kg-220x220.jpg"}
+];
+var EMOJI={perro:"🐶",gato:"🐱",otros:"🧴"};
+function ph(c){var e=EMOJI[c]||"🐾";return "data:image/svg+xml,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' fill='%23EAF6EF'/><text x='110' y='128' font-size='96' text-anchor='middle'>"+e+"</text><text x='110' y='196' font-size='18' font-family='Arial' font-weight='700' fill='%231C7E4E' text-anchor='middle'>KONPA</text></svg>")}
+function pct(p,o){if(!o)return"";var a=parseFloat(p.replace(',','.')),b=parseFloat(o.replace(',','.'));if(!b||b<=a)return"";return "-"+Math.round((1-a/b)*100)+"%"}
+function render(list){
+  var g=document.getElementById('prodGrid');g.innerHTML='';
+  list.forEach(function(p){
+    var d=pct(p.p,p.o);
+    var wa="https://wa.me/34674023497?text="+encodeURIComponent("Hola KONPA, me interesa: "+p.n);
+    var el=document.createElement('article');
+    el.className='prod reveal in';el.dataset.cat=p.c;
+    el.innerHTML=
+      '<div class="prod-imgwrap">'+(d?'<span class="prod-disc">'+d+'</span>':'')+'<span class="prod-tag">'+p.t+'</span>'+
+      '<img loading="lazy" alt="'+p.n+'" src="'+p.img+'" onerror="this.onerror=null;this.src=\''+ph(p.c)+'\';this.style.mixBlendMode=\'normal\'"></div>'+
+      '<div class="prod-body"><div class="prod-brand">'+p.b+'</div><div class="prod-name">'+p.n+'</div>'+
+      '<div class="prod-foot"><div class="prod-price"><b>'+p.p+' €</b>'+(p.o?'<s>'+p.o+' €</s>':'')+'</div>'+
+      '<a class="prod-btn" href="'+wa+'" target="_blank" rel="noopener" aria-label="Pedir '+p.n+'"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></a></div></div>';
+    g.appendChild(el);
+  });
+}
+render(PRODUCTS);
+
+/* Filtro */
+document.querySelectorAll('.filt-chip').forEach(function(c){c.addEventListener('click',function(){
+  document.querySelectorAll('.filt-chip').forEach(function(x){x.classList.remove('active')});c.classList.add('active');
+  var f=c.dataset.f;
+  render(f==='all'?PRODUCTS:PRODUCTS.filter(function(p){return p.c===f}));
+})});
+
+/* Menú móvil */
+var hb=document.getElementById('hb'),mm=document.getElementById('mm');
+function toggleMM(o){var v=o!==undefined?o:!mm.classList.contains('open');mm.classList.toggle('open',v);hb.classList.toggle('active',v);document.body.style.overflow=v?'hidden':''}
+hb.addEventListener('click',function(){toggleMM()});
+document.querySelectorAll('[data-mmc]').forEach(function(a){a.addEventListener('click',function(){toggleMM(false)})});
+
+/* Copiar cupón */
+var cc=document.getElementById('cuponCode');
+cc.addEventListener('click',function(){
+  navigator.clipboard&&navigator.clipboard.writeText('HOLAKONPA');
+  document.getElementById('cuponMsg').textContent='¡Copiado! ✓';
+  setTimeout(function(){document.getElementById('cuponMsg').textContent='Toca para copiar'},2000);
+});
+
+/* Scroll reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+
+</body>
+</html>
