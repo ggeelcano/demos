@@ -164,6 +164,25 @@
 
   svg.ico-sm{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
 
+  /* ── RESEÑAS ── */
+  .rev-head{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+  .rev-score{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px}
+  .rev-score .big{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1}
+  .rev-score .stars{color:#ffb703;font-size:17px;letter-spacing:2px}
+  .rev-score .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  .gmark{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted)}
+  .gmark svg{width:18px;height:18px}
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:34px}
+  .rev{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;gap:14px}
+  .rev .top{display:flex;align-items:center;gap:13px}
+  .rev .ava{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:600;color:#fff;font-size:17px}
+  .rev .who{font-weight:500;font-size:15.5px;color:var(--white)}
+  .rev .when{font-size:12.5px;color:var(--muted)}
+  .rev .stars{color:#ffb703;font-size:14px;letter-spacing:1.5px}
+  .rev p{color:var(--muted);font-size:14.5px;line-height:1.65}
+  .rev .gicon{margin-left:auto}
+  .rev .gicon svg{width:20px;height:20px;opacity:.9}
+
   /* ── MAPA / UBICACIÓN ── */
   .loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;margin-top:50px;align-items:stretch}
   .loc-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;gap:22px}
@@ -204,7 +223,7 @@
   <div class="grid-lines"></div>
   <div class="wrap">
    <div class="hero-copy">
-    <span class="badge"><span class="pulse"></span> Disponibles ahora · 24 horas, 7 días</span>
+    <span class="badge"><span class="pulse"></span> Disponibles ahora · 24 h, los 365 días</span>
     <h1>Cerrajero urgente<span class="l2">en Vitoria-Gasteiz</span></h1>
     <p class="lead">¿Te has quedado fuera de casa o te han forzado la puerta? <b>Atiende directamente el cerrajero</b>, sin centralitas ni intermediarios. Presupuesto claro antes de empezar y métodos no destructivos siempre que es posible.</p>
     <div class="cta-row">
@@ -215,9 +234,9 @@
       <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="n"><span class="accent">24</span>h</div><div class="l">Servicio de urgencias</div></div>
+      <div class="stat"><div class="n"><span class="accent">+12</span></div><div class="l">Años de experiencia</div></div>
+      <div class="stat"><div class="n">24h</div><div class="l">Urgencias · 365 días</div></div>
       <div class="stat"><div class="n">0€</div><div class="l">Sobrecostes de terceros</div></div>
-      <div class="stat"><div class="n">No</div><div class="l">Métodos destructivos*</div></div>
     </div>
    </div>
    <div class="hero-photo">
@@ -362,8 +381,63 @@
   </div>
 </section>
 
+<!-- RESEÑAS -->
+<section class="block" id="resenas">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Lo que dicen</span>
+      <h2 class="sec-title">Clientes en Vitoria</h2>
+      <div class="rev-head">
+        <div class="rev-score">
+          <div class="big">5,0</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="sub">Valoraciones de clientes</div>
+          </div>
+        </div>
+        <span class="gmark">
+          <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+          Reseñas de Google
+        </span>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="rev reveal">
+        <div class="top">
+          <div class="ava" style="background:#d9534f">M</div>
+          <div><div class="who">Maite Aguirre</div><div class="when">hace 2 semanas</div></div>
+          <span class="gicon"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></span>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>Me quedé fuera de casa un domingo por la noche y en 20 minutos estaba Sergio en la puerta. La abrió sin romper nada y me cobró exactamente lo que me dijo por teléfono. Un fenómeno.</p>
+      </div>
+      <div class="rev reveal">
+        <div class="top">
+          <div class="ava" style="background:#0275d8">I</div>
+          <div><div class="who">Iker Garaizabal</div><div class="when">hace 1 mes</div></div>
+          <span class="gicon"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></span>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>Intentaron forzarme la puerta y vino el mismo día a revisar la cerradura. Me explicó todas las opciones sin presionar para vender. Profesional y muy honesto, da gusto.</p>
+      </div>
+      <div class="rev reveal">
+        <div class="top">
+          <div class="ava" style="background:#5cb85c">A</div>
+          <div><div class="who">Ana Ruiz de Gauna</div><div class="when">hace 1 mes</div></div>
+          <span class="gicon"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></span>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>Servicio rapidísimo y trato directo, sin centralitas de por medio. Me cambió el bombín de casa y me dio factura para el seguro. Totalmente recomendable en Vitoria.</p>
+      </div>
+    </div>
+    <div style="margin-top:30px" class="reveal">
+      <a href="https://www.google.com/maps/search/DLT+Cerrajeria+Vitoria-Gasteiz" target="_blank" rel="noopener" class="btn btn-ghost">Ver y dejar reseña en Google</a>
+    </div>
+  </div>
+</section>
+
 <!-- UBICACIÓN / MAPA -->
-<section class="block" id="ubicacion">
+<section class="block why" id="ubicacion">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Dónde estamos</span>
