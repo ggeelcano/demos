@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://irunbikecenter.com">
-<link rel="preload" as="image" href="https://irunbikecenter.com/wp-content/uploads/2024/06/focus-my24-izalco-max-website-header-desktop_23.avif" fetchpriority="high">
+<link rel="preload" as="image" href="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-18-a-las-16.08.14_46d00b8a-1-1536x1152.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
@@ -250,6 +250,33 @@ footer{background:var(--ink);color:#fff;padding:70px 0 30px}
 .foot-social svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.4)}
 
+/* GALERÍA REAL */
+.gal{background:#fff}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:232px;gap:14px}
+.gal-item{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;background:var(--ink)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.gal-item:hover img{transform:scale(1.07)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(14,17,22,.82) 100%);opacity:0;transition:.3s}
+.gal-item:hover::after{opacity:1}
+.gal-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;opacity:0;transform:translateY(8px);transition:.3s}
+.gal-cap::before{content:"";display:block;width:26px;height:2px;background:var(--red);margin-bottom:8px}
+.gal-item:hover .gal-cap{opacity:1;transform:none}
+.gal-big{grid-column:span 2;grid-row:span 2}
+.lb{position:fixed;inset:0;background:rgba(8,10,13,.95);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:94vw;max-height:90vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:20px;right:28px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
+@media(max-width:980px){
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+  .gal-big{grid-column:span 2;grid-row:span 2}
+}
+@media(max-width:560px){
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .gal-big{grid-column:span 1;grid-row:span 1}
+  .gal-cap{opacity:1;transform:none}
+  .gal-item::after{opacity:1}
+}
+
 /* LOADER */
 .loader{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .6s,visibility .6s}
 .loader.hidden{opacity:0;visibility:hidden}
@@ -318,6 +345,7 @@ setTimeout(hideLoader,3500);
     <div class="nav-links">
       <a href="#bicis">Bicicletas</a>
       <a href="#servicios">Taller</a>
+      <a href="#galeria">La tienda</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -328,6 +356,7 @@ setTimeout(hideLoader,3500);
 <div class="mobile-menu" id="mm">
   <a href="#bicis" data-mmc>Bicicletas</a>
   <a href="#servicios" data-mmc>Taller</a>
+  <a href="#galeria" data-mmc>La tienda</a>
   <a href="#nosotros" data-mmc>Nosotros</a>
   <a href="#contacto" data-mmc>Contacto</a>
   <a href="#cita" class="mm-cta" data-mmc>Pide cita</a>
@@ -335,7 +364,7 @@ setTimeout(hideLoader,3500);
 
 <!-- HERO -->
 <header class="hero">
-  <img class="hero-img" id="heroImg" alt="Ciclismo de carretera" src="https://irunbikecenter.com/wp-content/uploads/2024/06/focus-my24-izalco-max-website-header-desktop_23.avif" onload="this.classList.add('loaded')">
+  <img class="hero-img" id="heroImg" alt="Fachada de la tienda Irun Bike Center en Irun" src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-18-a-las-16.08.14_46d00b8a-1-1536x1152.jpg" onload="this.classList.add('loaded')">
   <div class="hero-inner">
     <span class="hero-badge"><span class="pulse"></span> Distribuidor oficial CUBE · Irun</span>
     <h1>Tu bici,<br><em>tu camino.</em></h1>
@@ -556,12 +585,45 @@ setTimeout(hideLoader,3500);
   </div>
 </section>
 
+<!-- GALERÍA REAL DEL NEGOCIO -->
+<section id="galeria" class="gal">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Visítanos</span>
+      <h2>Así es <em>Irun Bike Center</em></h2>
+      <p>Tienda y taller propio en pleno Irun. Fotos reales de la casa: exposición, herramienta profesional y un equipo que vive el ciclismo.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item gal-big reveal" data-lb>
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-26-a-las-18.15.54_092ec3d2-1536x1152.jpg" alt="Taller de Irun Bike Center con utillaje Park Tool" loading="lazy">
+        <div class="gal-cap">Nuestro taller</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-18-a-las-16.08.09_207b1886-1-1152x1536.jpg" alt="Exposición de bicicletas y accesorios en la tienda" loading="lazy">
+        <div class="gal-cap">Exposición y accesorios</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/iibc-1152x1536.jpg" alt="Bicicletas en exposición en Irun Bike Center" loading="lazy">
+        <div class="gal-cap">Bicis en tienda</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-26-a-las-18.15.56_ca266064-1152x1536.jpg" alt="Mecánico ajustando la transmisión de una bici" loading="lazy">
+        <div class="gal-cap">En el taller</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-26-a-las-18.16.00_29626386-1152x1536.jpg" alt="Pared de herramienta profesional Park Tool y VAR" loading="lazy">
+        <div class="gal-cap">Herramienta profesional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NOSOTROS -->
 <section id="nosotros" class="about">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-pic reveal">
-        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/focus-my23-raven-8-9-julian-claudi-raven-8-9-linus-ott-pfalz-4742_4.avif" alt="Ruta en bicicleta de montaña">
+        <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/Imagen-de-WhatsApp-2024-06-18-a-las-16.08.06_61e2868a-1152x1536.jpg" alt="Técnico de Irun Bike Center reparando una bici en el taller">
         <div class="quote">«En un rincón encantador de Irun, donde las colinas besan el mar, <b>nació una pasión compartida</b> por explorar el mundo sobre dos ruedas.»</div>
       </div>
       <div class="about-text reveal">
@@ -712,6 +774,9 @@ setTimeout(hideLoader,3500);
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button><img id="lbImg" src="" alt=""></div>
+
 <script>
 /* Menú móvil */
 var hb=document.getElementById('hb'),mm=document.getElementById('mm');
@@ -731,6 +796,16 @@ chips.forEach(function(c){c.addEventListener('click',function(){
   var f=c.dataset.f;
   cards.forEach(function(card){card.style.display=(f==='all'||card.dataset.cat===f)?'':'none'});
 })});
+
+/* Lightbox galería */
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('[data-lb] img').forEach(function(img){
+  img.parentElement.addEventListener('click',function(){lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden'});
+});
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
 
 /* Scroll reveal */
 var io=new IntersectionObserver(function(ents){ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
