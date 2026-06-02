@@ -140,11 +140,31 @@ section{padding:100px 0}
 .bike-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
 .bike-name{font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:18px;color:var(--ink);text-transform:uppercase;line-height:1.15;margin-bottom:4px}
 .bike-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
-.bike-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bike-foot{margin-top:auto;display:flex;flex-direction:column;gap:14px;align-items:stretch}
 .bike-price{font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:24px;color:var(--ink)}
 .bike-price small{display:block;font-family:'Wix Madefor Text',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.bike-btn{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:11px 18px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.25s;white-space:nowrap}
-.bike-btn:hover{background:var(--red)}
+.bike-actions{display:flex;gap:8px}
+.bike-btn-buy{flex:1.5;background:var(--red);color:#fff;border:none;border-radius:999px;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.25s;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.bike-btn-buy svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+.bike-btn-buy:hover{background:var(--red-d);transform:translateY(-1px)}
+.bike-btn{flex:1;background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.25s;white-space:nowrap}
+.bike-btn:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* CHECKOUT COMPRA ONLINE */
+.co{position:fixed;inset:0;background:rgba(8,10,13,.62);backdrop-filter:blur(4px);z-index:600;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+.co.open{display:flex}
+.co-box{background:#fff;border-radius:20px;width:100%;max-width:520px;padding:30px 30px 30px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.42);animation:coIn .35s cubic-bezier(.16,1,.3,1)}
+@keyframes coIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.co-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:32px;line-height:1;color:var(--muted);cursor:pointer;transition:.2s}
+.co-close:hover{color:var(--ink)}
+.co-head{margin-bottom:18px;padding-right:30px}
+.co-head h3{font-family:'Wix Madefor Display',sans-serif;font-size:23px;color:var(--ink);margin-top:6px;text-transform:uppercase;letter-spacing:-.01em}
+.co-summary{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:20px}
+.co-sum-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0}
+.co-sum-row span{color:var(--muted);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.co-sum-row b{font-family:'Wix Madefor Display',sans-serif;color:var(--ink);font-size:16px;text-align:right}
+.co-sum-row b.co-price{color:var(--red);font-size:21px}
+.co-legal{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.55}
 .bikes-note{text-align:center;margin-top:40px;font-size:15px;color:var(--muted)}
 .bikes-note a{color:var(--red);font-weight:600;text-decoration:underline}
 
@@ -426,7 +446,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Litening Air C:68X Race</div>
           <div class="bike-sub">CUBE · Carretera aero · carbono</div>
-          <div class="bike-foot"><div class="bike-price">5.599 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">5.599 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -439,7 +459,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Agree C:62 SLX</div>
           <div class="bike-sub">CUBE · Carretera · carbono</div>
-          <div class="bike-foot"><div class="bike-price">4.099 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">4.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -452,7 +472,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Agree C:62 Race</div>
           <div class="bike-sub">CUBE · Carretera · carbono</div>
-          <div class="bike-foot"><div class="bike-price">3.899 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">3.899 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -465,7 +485,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Attain C:62 SLT</div>
           <div class="bike-sub">CUBE · Carretera endurance</div>
-          <div class="bike-foot"><div class="bike-price">3.099 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">3.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -478,7 +498,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Nuroad Race</div>
           <div class="bike-sub">CUBE · Gravel · aluminio</div>
-          <div class="bike-foot"><div class="bike-price">1.549 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">1.549 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -491,7 +511,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">AMS Zero99 C:68X Race 29</div>
           <div class="bike-sub">CUBE · MTB doble suspensión XC</div>
-          <div class="bike-foot"><div class="bike-price">4.699 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">4.699 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -504,7 +524,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Acid 200</div>
           <div class="bike-sub">CUBE · MTB junior 20˝</div>
-          <div class="bike-foot"><div class="bike-price">339 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">339 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -517,7 +537,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Acid 160</div>
           <div class="bike-sub">CUBE · MTB junior 16˝</div>
-          <div class="bike-foot"><div class="bike-price">309 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">309 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -530,7 +550,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Stereo Hybrid ONE44 HPC SLX 800</div>
           <div class="bike-sub">CUBE · E-MTB doble · Bosch</div>
-          <div class="bike-foot"><div class="bike-price">5.099 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">5.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -543,7 +563,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Nuride Hybrid Performance 600</div>
           <div class="bike-sub">CUBE · E-Trekking / allround</div>
-          <div class="bike-foot"><div class="bike-price">2.649 €<small>PVP</small></div><button class="bike-btn" data-open>Pedir info</button></div>
+          <div class="bike-foot"><div class="bike-price">2.649 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
         </div>
       </article>
 
@@ -812,6 +832,49 @@ setTimeout(hideLoader,3500);
 <!-- LIGHTBOX -->
 <div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button><img id="lbImg" src="" alt=""></div>
 
+<!-- CHECKOUT COMPRA ONLINE -->
+<div class="co" id="checkout">
+  <div class="co-box">
+    <button type="button" class="co-close" id="coClose" aria-label="Cerrar">&times;</button>
+    <div class="co-head">
+      <span class="eyebrow">Compra online</span>
+      <h3 id="coTitle">Finaliza tu compra</h3>
+    </div>
+    <div class="co-summary">
+      <div class="co-sum-row"><span>Bicicleta</span><b id="coBike">—</b></div>
+      <div class="co-sum-row"><span>Precio</span><b class="co-price" id="coPrice">—</b></div>
+    </div>
+    <form id="coForm" novalidate>
+      <div class="f-status" id="coStatus"></div>
+      <div class="f-row c2">
+        <div class="f-field"><label>Talla</label><select name="talla">
+          <option value="">Elige talla</option>
+          <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>Única / infantil</option><option>No estoy seguro</option>
+        </select></div>
+        <div class="f-field"><label>Unidades</label><select name="unidades"><option>1</option><option>2</option><option>3</option></select></div>
+      </div>
+      <div class="f-field" style="margin-bottom:14px"><label>Nombre y apellidos</label><input name="nombre" type="text" required></div>
+      <div class="f-row c2">
+        <div class="f-field"><label>Teléfono</label><input name="telefono" type="tel" placeholder="6XX XXX XXX" required></div>
+        <div class="f-field"><label>Email</label><input name="email" type="email" placeholder="tu@email.com" required></div>
+      </div>
+      <div class="f-field" style="margin-bottom:14px"><label>Entrega</label><select name="entrega" id="coEntrega">
+        <option>Recoger en tienda (Irun)</option>
+        <option>Envío a domicilio</option>
+      </select></div>
+      <div id="coEnvio" style="display:none">
+        <div class="f-field" style="margin-bottom:14px"><label>Dirección</label><input name="direccion" type="text"></div>
+        <div class="f-row c2">
+          <div class="f-field"><label>Código postal</label><input name="cp" type="text"></div>
+          <div class="f-field"><label>Población</label><input name="poblacion" type="text"></div>
+        </div>
+      </div>
+      <button type="submit" class="f-submit" id="coBtn">Confirmar pedido</button>
+      <p class="co-legal">Sin pago online: reservas la bici y confirmamos disponibilidad, talla y forma de pago (en tienda o por transferencia) contigo. Sin compromiso.</p>
+    </form>
+  </div>
+</div>
+
 <script>
 /* Menú móvil */
 var hb=document.getElementById('hb'),mm=document.getElementById('mm');
@@ -819,9 +882,55 @@ function toggleMM(open){var o=open!==undefined?open:!mm.classList.contains('open
 hb.addEventListener('click',function(){toggleMM()});
 document.querySelectorAll('[data-mmc]').forEach(function(a){a.addEventListener('click',function(){toggleMM(false)})});
 
-/* Botones "Pide cita / Pedir info" → scroll al formulario */
+/* Botones "Pide cita / Info" → scroll al formulario */
 document.querySelectorAll('[data-open]').forEach(function(b){
   b.addEventListener('click',function(){document.getElementById('cita').scrollIntoView({behavior:'smooth'})});
+});
+
+/* COMPRA ONLINE (sin pasarela de pago): checkout que registra el pedido */
+var co=document.getElementById('checkout'),coForm=document.getElementById('coForm'),coBtn=document.getElementById('coBtn');
+var PKEY='ibc_pedidos';
+function openCheckout(name,price){
+  document.getElementById('coBike').textContent=name;
+  document.getElementById('coPrice').textContent=price;
+  document.getElementById('coTitle').textContent='Comprar online';
+  var st=document.getElementById('coStatus');st.className='f-status';st.textContent='';
+  coForm.reset();document.getElementById('coEnvio').style.display='none';
+  coBtn.disabled=false;coBtn.textContent='Confirmar pedido';
+  co.classList.add('open');document.body.style.overflow='hidden';
+  co.scrollTop=0;
+}
+document.querySelectorAll('[data-buy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var card=b.closest('.bike-card');
+    var name=card.querySelector('.bike-name').textContent.trim();
+    var price=card.querySelector('.bike-price').childNodes[0].textContent.trim();
+    openCheckout(name,price);
+  });
+});
+function closeCo(){co.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('coClose').addEventListener('click',closeCo);
+co.addEventListener('click',function(e){if(e.target===co)closeCo()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&co.classList.contains('open'))closeCo()});
+document.getElementById('coEntrega').addEventListener('change',function(){
+  document.getElementById('coEnvio').style.display=this.value==='Envío a domicilio'?'':'none';
+});
+coForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var st=document.getElementById('coStatus');
+  var d=Object.fromEntries(new FormData(coForm).entries());
+  if(!d.nombre||!d.telefono||!d.email){st.className='f-status show err';st.textContent='Completa nombre, teléfono y email.';co.scrollTop=0;return}
+  if(d.entrega==='Envío a domicilio'&&(!d.direccion||!d.cp)){st.className='f-status show err';st.textContent='Para envío a domicilio indica al menos dirección y código postal.';co.scrollTop=0;return}
+  var bici=document.getElementById('coBike').textContent,precio=document.getElementById('coPrice').textContent;
+  var a=(function(){try{return JSON.parse(localStorage.getItem(PKEY)||'[]')}catch(e){return[]}})();
+  var ymd=new Date().toISOString().slice(0,10).replace(/-/g,'');
+  var id='IBC-ORD-'+ymd+'-'+String(a.length+1).padStart(3,'0');
+  d.bici=bici;d.precio=precio;d.id=id;d.estado='pendiente';d.origen='web-compra';d.negocio='irun-bike-center';d.created_at=new Date().toISOString();
+  try{a.unshift(d);localStorage.setItem(PKEY,JSON.stringify(a))}catch(e){}
+  coBtn.disabled=true;coBtn.textContent='Pedido enviado ✓';
+  st.className='f-status show ok';
+  st.innerHTML='<b>¡Pedido recibido!</b> '+bici+' · '+precio+'<br>📦 '+id+' · '+(d.entrega||'')+(d.talla?' · Talla '+d.talla:'')+'<br>Te contactamos para confirmar disponibilidad y forma de pago (tienda o transferencia). ¿Dudas? <a href="tel:+34943306834" style="color:inherit;text-decoration:underline">943 30 68 34</a>.';
+  co.scrollTop=0;
 });
 
 /* Filtro de bicicletas */
