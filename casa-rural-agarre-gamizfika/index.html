@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Rural Agarre · Gámiz-Fika, Bizkaia · Caserío del siglo XIX para grupos</title>
+<meta name="description" content="Casa Rural Agarre, caserío del siglo XIX en Gámiz-Fika (Bizkaia) para hasta 18 personas. 6 habitaciones con baño, txoko para 30, jardín de 1.000 m² y parking privado. A 20 min de Bilbao y Urdaibai.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Casa Rural Agarre · Gámiz-Fika, Bizkaia">
+<meta property="og:description" content="Caserío del siglo XIX para hasta 18 personas. Txoko, jardín de 1.000 m² y naturaleza a 20 min de Bilbao.">
+<meta property="og:image" content="https://lh3.googleusercontent.com/place-photos/AJRVUZMvdyp0MICibP-Gvs4G40RCYe5lVx1iuCZ5eNZqAVVa2OHIeA-GHfIGJ2thjFmeBh9sGOz4bcXJB43PlD9r0yPkDmiRrHcGU0kz5Q0Ul7KSI7NArN-Gc2mO4fAFigA4JQG4RShcZb1DYTPhMmA=s1600-w1200">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#2f4538;        /* verde bosque profundo */
+  --verde-claro:#5b7a5e;
+  --musgo:#8a9a78;
+  --crema:#f6f2e9;
+  --crema-2:#efe8da;
+  --madera:#a9794f;
+  --carbon:#222420;
+  --texto:#3a3d36;
+  --linea:rgba(47,69,56,.14);
+  --sombra:0 18px 50px -22px rgba(34,36,32,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--texto);background:var(--crema);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--verde);line-height:1.12;letter-spacing:-.01em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:'Inter';font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--madera)}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:.35s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:22px 0;transition:.35s}
+header.scrolled{background:rgba(246,242,233,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--linea)}
+header.scrolled .bar{padding:14px 0}
+.brand{display:flex;align-items:center;gap:13px;color:#fff;transition:.35s}
+header.scrolled .brand{color:var(--verde)}
+.brand .mark{width:42px;height:42px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-family:'Fraunces';font-size:1.15rem;font-weight:600;flex-shrink:0}
+.brand .txt b{font-family:'Fraunces';font-weight:600;font-size:1.18rem;display:block;line-height:1}
+.brand .txt span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+nav ul{display:flex;gap:34px;list-style:none;align-items:center}
+nav a{color:#fff;font-size:.92rem;font-weight:500;transition:.25s;opacity:.92}
+header.scrolled nav a{color:var(--texto)}
+nav a:hover{opacity:1;color:var(--musgo)}
+header.scrolled nav a:hover{color:var(--madera)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--madera);color:#fff;padding:13px 26px;border-radius:40px;font-weight:600;font-size:.92rem;transition:.3s;border:none;cursor:pointer}
+.btn:hover{background:var(--verde);transform:translateY(-2px);color:#fff}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff}
+header.scrolled .btn-ghost{border-color:var(--madera);color:var(--madera)}
+.btn-ghost:hover{background:#fff;border-color:#fff;color:var(--verde);transform:none}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{width:26px;height:2px;background:#fff;transition:.3s}
+header.scrolled .nav-toggle span{background:var(--verde)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff}
+.hero .bg{position:absolute;inset:0;background:url('https://lh3.googleusercontent.com/place-photos/AJRVUZMvdyp0MICibP-Gvs4G40RCYe5lVx1iuCZ5eNZqAVVa2OHIeA-GHfIGJ2thjFmeBh9sGOz4bcXJB43PlD9r0yPkDmiRrHcGU0kz5Q0Ul7KSI7NArN-Gc2mO4fAFigA4JQG4RShcZb1DYTPhMmA=s4800-w1600') center/cover;transform:scale(1.05);animation:zoom 22s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,36,32,.55) 0%,rgba(34,36,32,.18) 32%,rgba(34,36,32,.72) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:9vh;padding-top:120px}
+.hero .eyebrow{color:#e7d8b8}
+.hero h1{color:#fff;font-size:clamp(2.7rem,6.5vw,5.4rem);font-weight:500;margin:18px 0 22px;max-width:14ch}
+.hero p.lead{font-size:clamp(1.05rem,1.8vw,1.35rem);max-width:48ch;color:rgba(255,255,255,.92);font-weight:400}
+.hero .cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.hero .meta{display:flex;gap:38px;margin-top:48px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.22);padding-top:26px}
+.hero .meta div b{font-family:'Fraunces';font-size:1.9rem;font-weight:500;color:#fff;display:block;line-height:1}
+.hero .meta div span{font-size:.82rem;letter-spacing:.04em;color:rgba(255,255,255,.78)}
+.scrolldown{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;opacity:.8;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrolldown::after{content:'';width:1px;height:34px;background:#fff;animation:line 1.8s infinite}
+@keyframes line{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* secciones */
+section{padding:110px 0}
+.sec-head{max-width:640px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2rem,4vw,3.1rem);margin:14px 0 18px}
+.sec-head p{font-size:1.08rem}
+
+/* INTRO */
+.intro{background:var(--crema)}
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.intro-text h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 22px}
+.intro-text p{margin-bottom:18px;font-size:1.06rem}
+.intro-text .sign{font-family:'Fraunces';font-style:italic;font-size:1.25rem;color:var(--madera);margin-top:8px}
+.intro-img{position:relative}
+.intro-img img{border-radius:6px;box-shadow:var(--sombra);aspect-ratio:4/5;object-fit:cover;width:100%}
+.intro-img .badge{position:absolute;bottom:-26px;left:-26px;background:var(--verde);color:#fff;padding:22px 26px;border-radius:6px;box-shadow:var(--sombra)}
+.intro-img .badge b{font-family:'Fraunces';font-size:2.2rem;display:block;line-height:1}
+.intro-img .badge span{font-size:.8rem;letter-spacing:.05em;opacity:.85}
+
+/* FEATURES */
+.feats{background:var(--verde);color:var(--crema)}
+.feats h2,.feats .sec-head h2{color:#fff}
+.feats .sec-head p{color:rgba(246,242,233,.82)}
+.feats .eyebrow{color:#e7d8b8}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(246,242,233,.16);border:1px solid rgba(246,242,233,.16);border-radius:8px;overflow:hidden}
+.feat{background:var(--verde);padding:38px 30px;transition:.3s}
+.feat:hover{background:#36503f}
+.feat .ico{font-size:1.7rem;margin-bottom:16px}
+.feat h3{color:#fff;font-size:1.18rem;margin-bottom:8px}
+.feat p{font-size:.95rem;color:rgba(246,242,233,.78)}
+
+/* ESPACIOS */
+.spaces{background:var(--crema-2)}
+.space-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:96px}
+.space-row:last-child{margin-bottom:0}
+.space-row.rev .space-img{order:2}
+.space-img img{border-radius:6px;box-shadow:var(--sombra);aspect-ratio:3/2;object-fit:cover;width:100%}
+.space-text .eyebrow{margin-bottom:12px;display:block}
+.space-text h3{font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:16px}
+.space-text p{font-size:1.05rem;margin-bottom:18px}
+.space-text ul{list-style:none}
+.space-text li{padding:8px 0;border-bottom:1px solid var(--linea);display:flex;align-items:center;gap:12px;font-size:.98rem}
+.space-text li::before{content:'';width:7px;height:7px;background:var(--madera);border-radius:50%;flex-shrink:0}
+
+/* GALERIA */
+.gallery{background:var(--crema)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}
+.gal-grid figure{overflow:hidden;border-radius:6px;cursor:pointer;position:relative}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-grid figure:hover img{transform:scale(1.07)}
+.gal-grid .big{grid-column:span 2;grid-row:span 2}
+.gal-grid .tall{grid-row:span 2}
+
+/* ENTORNO */
+.around{background:var(--verde);color:var(--crema);position:relative;overflow:hidden}
+.around h2{color:#fff}.around .eyebrow{color:#e7d8b8}.around .sec-head p{color:rgba(246,242,233,.82)}
+.around-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:14px}
+.place{background:rgba(246,242,233,.06);border:1px solid rgba(246,242,233,.14);border-radius:8px;padding:30px 26px;transition:.3s}
+.place:hover{background:rgba(246,242,233,.1);transform:translateY(-4px)}
+.place .dist{font-family:'Fraunces';font-size:1.5rem;color:#e7d8b8;display:block;margin-bottom:6px}
+.place h3{color:#fff;font-size:1.12rem;margin-bottom:6px}
+.place p{font-size:.92rem;color:rgba(246,242,233,.74)}
+
+/* RESEÑAS */
+.reviews{background:var(--crema)}
+.rev-top{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:50px}
+.rev-score{text-align:center;background:#fff;border-radius:12px;padding:26px 34px;box-shadow:var(--sombra)}
+.rev-score b{font-family:'Fraunces';font-size:3rem;color:var(--verde);display:block;line-height:1}
+.rev-score .stars{color:#e0a93c;letter-spacing:2px;font-size:1.1rem}
+.rev-score span{font-size:.85rem;color:#777}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review{background:#fff;border-radius:10px;padding:30px;box-shadow:0 10px 36px -24px rgba(34,36,32,.4);display:flex;flex-direction:column}
+.review .stars{color:#e0a93c;letter-spacing:1px;margin-bottom:14px;font-size:.95rem}
+.review p{font-size:.97rem;color:#4a4d44;flex:1;margin-bottom:18px}
+.review .who{display:flex;align-items:center;gap:12px}
+.review .av{width:42px;height:42px;border-radius:50%;background:var(--musgo);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:600}
+.review .who b{font-size:.95rem;color:var(--verde);display:block}
+.review .who span{font-size:.8rem;color:#999}
+
+/* CONTACTO */
+.contact{background:var(--carbon);color:var(--crema)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact h2{color:#fff;font-size:clamp(2rem,4vw,3rem)}
+.contact .eyebrow{color:#e7d8b8}
+.contact-info{margin-top:30px}
+.contact-info p.lead{color:rgba(246,242,233,.82);font-size:1.08rem;margin-bottom:30px}
+.cinfo{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(246,242,233,.12);align-items:flex-start}
+.cinfo .ico{font-size:1.3rem;width:30px}
+.cinfo b{display:block;color:#fff;font-size:1.02rem;margin-bottom:2px;font-family:'Fraunces';font-weight:500}
+.cinfo a,.cinfo span{color:rgba(246,242,233,.8);font-size:.97rem}
+.cinfo a:hover{color:#e7d8b8}
+form{background:rgba(246,242,233,.05);border:1px solid rgba(246,242,233,.12);padding:38px;border-radius:12px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.04em;color:#e7d8b8;margin:16px 0 7px}
+input,textarea,select{width:100%;background:rgba(246,242,233,.07);border:1px solid rgba(246,242,233,.2);border-radius:7px;padding:13px 15px;color:#fff;font-family:'Inter';font-size:.95rem;transition:.25s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--madera);background:rgba(246,242,233,.12)}
+input::placeholder,textarea::placeholder{color:rgba(246,242,233,.4)}
+form .btn{width:100%;justify-content:center;margin-top:26px;background:var(--madera)}
+form .btn:hover{background:#c08a5a}
+select option{color:#222}
+.map-wrap{margin-top:30px;border-radius:12px;overflow:hidden;box-shadow:var(--sombra);height:280px}
+.map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(.2)}
+
+/* FOOTER */
+footer{background:#191b17;color:rgba(246,242,233,.6);padding:48px 0;text-align:center}
+footer .brand{justify-content:center;color:var(--crema);margin-bottom:16px}
+footer .links{display:flex;gap:26px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+footer .links a{font-size:.9rem;color:rgba(246,242,233,.7)}
+footer .links a:hover{color:#e7d8b8}
+footer small{font-size:.8rem;opacity:.6;display:block;margin-top:14px}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(20,21,18,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:40px}
+.lb.on{display:flex}
+.lb img{max-width:92%;max-height:88vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb .x{position:absolute;top:24px;right:30px;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.6rem;cursor:pointer;padding:20px;user-select:none;opacity:.7;transition:.2s}
+.lb .nav:hover{opacity:1}.lb .prev{left:10px}.lb .next{right:10px}
+
+.reveal{opacity:0;transform:translateY(34px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* float whatsapp */
+.wa{position:fixed;bottom:24px;right:24px;width:58px;height:58px;background:#25d366;border-radius:50%;display:grid;place-items:center;z-index:80;box-shadow:0 10px 30px -8px rgba(37,211,102,.7);transition:.3s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;height:30px;fill:#fff}
+
+@media(max-width:920px){
+  nav ul{display:none}
+  .nav-toggle{display:flex}
+  .intro-grid,.contact-grid,.space-row,.space-row.rev .space-img{grid-template-columns:1fr;order:0!important}
+  .space-row{gap:30px}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+  .gal-grid .big{grid-column:span 2}
+  .around-grid,.rev-grid{grid-template-columns:1fr}
+  .intro-img .badge{left:0}
+  form .row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a href="#inicio" class="brand">
+      <span class="mark">A</span>
+      <span class="txt"><b>Agarre</b><span>Casa Rural · Bizkaia</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#casa">La casa</a></li>
+        <li><a href="#espacios">Espacios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#entorno">Entorno</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#reservar" class="btn btn-ghost">Reservar</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="wrap">
+    <span class="eyebrow">Gámiz-Fika · Bizkaia</span>
+    <h1>Un caserío del siglo XIX para los tuyos</h1>
+    <p class="lead">Alquila la casa entera para hasta 18 personas. Naturaleza, txoko y montes a solo 20 minutos de Bilbao.</p>
+    <div class="cta">
+      <a href="#reservar" class="btn">Consultar disponibilidad</a>
+      <a href="#galeria" class="btn btn-ghost">Ver la casa</a>
+    </div>
+    <div class="meta">
+      <div><b>18</b><span>plazas</span></div>
+      <div><b>6</b><span>habitaciones con baño</span></div>
+      <div><b>30</b><span>comensales en el txoko</span></div>
+      <div><b>4,6★</b><span>147 reseñas en Google</span></div>
+    </div>
+  </div>
+  <div class="scrolldown">Descubre</div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="casa">
+  <div class="wrap intro-grid">
+    <div class="intro-text reveal">
+      <span class="eyebrow">Bienvenidos a Agarre</span>
+      <h2>Una casa de pueblo reformada para reunir a la familia</h2>
+      <p>Agarre es un caserío vasco del siglo XIX completamente rehabilitado, conservando su fachada original y el alma de la casa. Está rodeado de montes y praderas en el valle de Gámiz-Fika, muy cerca del antiguo Cinturón de Hierro.</p>
+      <p>Pensada para grupos grandes —familias, cuadrillas, celebraciones—, se alquila al completo: vuestro ritmo, vuestra cocina, vuestro txoko. Un sitio para desconectar de verdad sin renunciar a la comodidad.</p>
+      <p class="sign">«Un lugar para desconectar y estar juntos.»</p>
+    </div>
+    <div class="intro-img reveal">
+      <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOuCM9aiRfw8gqk7Bcw2dzIgt5Y4q6dwJb7eD1_BDT4ED-xYilb-ZOjgfCxZa8d4_Hd2eGmmNflM5fa9WaIwO3_GO8TXXuL2VWCGZ2cr_WrdDOf8eGAliCwzhplugnvEVgSQK2Zj-1yxnMt-3k=s2000-w1300" alt="Interior de la Casa Rural Agarre">
+      <div class="badge"><b>XIX</b><span>siglo · reformada</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feats">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Todo incluido</span>
+      <h2>Lo que encontrarás</h2>
+      <p>Equipada al completo para que solo te preocupes de disfrutar.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat"><div class="ico">🛏️</div><h3>6 habitaciones</h3><p>Dobles, amplias y con baño privado y televisión en cada una.</p></div>
+      <div class="feat"><div class="ico">🍷</div><h3>Gran txoko</h3><p>Sala de celebraciones para hasta 30 comensales, con barra y mesa enorme.</p></div>
+      <div class="feat"><div class="ico">🌳</div><h3>Jardín 1.000 m²</h3><p>Zonas verdes, arbolado y huerto ecológico para vivir fuera.</p></div>
+      <div class="feat"><div class="ico">🚗</div><h3>Parking privado</h3><p>500 m² cerrados y vigilados por cámaras para 10–12 vehículos.</p></div>
+      <div class="feat"><div class="ico">🔥</div><h3>Chimenea</h3><p>Dos salones de estar y comedor, calentitos en cualquier época.</p></div>
+      <div class="feat"><div class="ico">🍳</div><h3>Cocina completa</h3><p>Totalmente equipada para cocinar en grupo a vuestro aire.</p></div>
+      <div class="feat"><div class="ico">📶</div><h3>WiFi</h3><p>Conexión en toda la casa, por si hay que seguir conectado.</p></div>
+      <div class="feat"><div class="ico">🐾</div><h3>Admite mascotas</h3><p>Tu perro también es bienvenido en Agarre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPACIOS -->
+<section class="spaces" id="espacios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Los espacios</span>
+      <h2>Sitio para todos, momentos para cada uno</h2>
+    </div>
+
+    <div class="space-row reveal">
+      <div class="space-img"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNHi-H017Fd9FtzRamADu9EvE5f04yCV5F3biuiMsVasy1GTEh1YR54Suj-oRdtkH1NkVwtGA7MHEt-8DyYd7DbcjUH45NRAtLJvhiNdL_M7sZx-i2GyAkvwDizKFQqVj414P9ZWGNxighaoMA=s2200-w1500" alt="Habitación de la casa rural"></div>
+      <div class="space-text">
+        <span class="eyebrow">Para dormir</span>
+        <h3>6 habitaciones, hasta 18 plazas</h3>
+        <p>Habitaciones dobles amplias y silenciosas, con colchones de calidad y decoración acogedora. Cada una con su baño privado y televisión.</p>
+        <ul>
+          <li>8 dormitorios · 13 camas</li>
+          <li>Baño privado en todas</li>
+          <li>Televisión en cada habitación</li>
+          <li>Ropa de cama y toallas incluidas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="space-row rev reveal">
+      <div class="space-img"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZN_wSaEXyCTZ_a1dDVvbNfKuvFPHuRUfrbhsqqFwiaWlMJiW2k3DPbflGcaXGwIa77yrXrCfOWrz6AZt3l5lXyGy-VV8O4VOX1tmB1Q4uSw8hwhS8YajLSd5_pQCYUAF6_mT2nLma16g_Bqmks=s2200-w1500" alt="Txoko y zona común"></div>
+      <div class="space-text">
+        <span class="eyebrow">Para celebrar</span>
+        <h3>El txoko, el corazón de la casa</h3>
+        <p>Una gran sala para comidas y celebraciones con capacidad para 30 personas. Barra de cocina y mesa enorme: el sitio perfecto para esas sobremesas que no se acaban.</p>
+        <ul>
+          <li>Hasta 30 comensales</li>
+          <li>Barra y cocina de apoyo</li>
+          <li>Ideal para cumpleaños y reuniones</li>
+          <li>Dos salones de estar adicionales</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="space-row reveal">
+      <div class="space-img"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOLaj0DiYXi2uTO8RJHbTpY-rHMDQCP2URVKdgP3E_ly0F_dVnq4QdOTRNa2v-BEr3d2iasG8Kn8ST3ayeeWLUd9Pl9CpajkW65Zc9S0DplaRv4K-V6HIxdFFOuwVFwkXk1rnog9diBYBNnovg=s2200-w1500" alt="Jardín y exterior de la casa"></div>
+      <div class="space-text">
+        <span class="eyebrow">Al aire libre</span>
+        <h3>1.000 m² de jardín y naturaleza</h3>
+        <p>Un jardín enorme con árboles y huerto ecológico, rodeado de montes y praderas. Espacio de sobra para los niños, los juegos y un buen paseo al despertar.</p>
+        <ul>
+          <li>Jardín de 1.000 m²</li>
+          <li>Huerto ecológico</li>
+          <li>Parking cerrado de 500 m²</li>
+          <li>Entorno rural y tranquilo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Galería</span>
+      <h2>Échale un vistazo</h2>
+      <p>Fotos reales de la casa y su entorno.</p>
+    </div>
+    <div class="gal-grid reveal" id="gal">
+      <figure class="big"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMvdyp0MICibP-Gvs4G40RCYe5lVx1iuCZ5eNZqAVVa2OHIeA-GHfIGJ2thjFmeBh9sGOz4bcXJB43PlD9r0yPkDmiRrHcGU0kz5Q0Ul7KSI7NArN-Gc2mO4fAFigA4JQG4RShcZb1DYTPhMmA=s1600-w1100" alt="Casa Rural Agarre"></figure>
+      <figure class="tall"><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOuCM9aiRfw8gqk7Bcw2dzIgt5Y4q6dwJb7eD1_BDT4ED-xYilb-ZOjgfCxZa8d4_Hd2eGmmNflM5fa9WaIwO3_GO8TXXuL2VWCGZ2cr_WrdDOf8eGAliCwzhplugnvEVgSQK2Zj-1yxnMt-3k=s1500-w1000" alt="Interior"></figure>
+      <figure><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNHi-H017Fd9FtzRamADu9EvE5f04yCV5F3biuiMsVasy1GTEh1YR54Suj-oRdtkH1NkVwtGA7MHEt-8DyYd7DbcjUH45NRAtLJvhiNdL_M7sZx-i2GyAkvwDizKFQqVj414P9ZWGNxighaoMA=s1200-w900" alt="Habitación"></figure>
+      <figure><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZN_wSaEXyCTZ_a1dDVvbNfKuvFPHuRUfrbhsqqFwiaWlMJiW2k3DPbflGcaXGwIa77yrXrCfOWrz6AZt3l5lXyGy-VV8O4VOX1tmB1Q4uSw8hwhS8YajLSd5_pQCYUAF6_mT2nLma16g_Bqmks=s1200-w900" alt="Txoko"></figure>
+      <figure><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOLaj0DiYXi2uTO8RJHbTpY-rHMDQCP2URVKdgP3E_ly0F_dVnq4QdOTRNa2v-BEr3d2iasG8Kn8ST3ayeeWLUd9Pl9CpajkW65Zc9S0DplaRv4K-V6HIxdFFOuwVFwkXk1rnog9diBYBNnovg=s1200-w900" alt="Jardín"></figure>
+      <figure><img src="https://lh3.googleusercontent.com/place-photos/AJRVUZO1AzvxaxNlLVLwO3nUn7JzksBt_gOM8ZBk4lkx-EzKV21jXZmZm7CTJ6d1U7x6OrmHEXHmKdJQShhLsgUozjGarnISFPHT-UkL2k3OsLGwkt-oItDLVClqbuUv7midHBJdFzdBjT6au1_-Bw=s1200-w900" alt="Detalle de la casa"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ENTORNO -->
+<section class="around" id="entorno">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">El entorno</span>
+      <h2>Bizkaia, a tiro de piedra</h2>
+      <p>Montes para caminar, costa salvaje, gastronomía y mucha cultura alrededor.</p>
+    </div>
+    <div class="around-grid reveal">
+      <div class="place"><span class="dist">20 min</span><h3>Bilbao y el Guggenheim</h3><p>La capital y el museo más icónico del País Vasco, muy cerca.</p></div>
+      <div class="place"><span class="dist">25 min</span><h3>Urdaibai</h3><p>Reserva de la Biosfera y playas salvajes de la costa de Bizkaia.</p></div>
+      <div class="place"><span class="dist">500 m</span><h3>Cinturón de Hierro</h3><p>Restos de las fortificaciones de la batalla, junto a la casa.</p></div>
+      <div class="place"><span class="dist">4 km</span><h3>Camino de Santiago</h3><p>La ruta jacobea pasa a un paso de Agarre.</p></div>
+      <div class="place"><span class="dist">★</span><h3>Naturaleza activa</h3><p>Senderismo, BTT, multiaventura y orientación en los montes del valle.</p></div>
+      <div class="place"><span class="dist">★</span><h3>Río Butrón</h3><p>Rutas gastronómicas y rincones con encanto a la orilla del río.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Opiniones reales</span>
+      <h2>Lo que dicen quienes ya han venido</h2>
+    </div>
+    <div class="rev-top reveal">
+      <div class="rev-score">
+        <b>4,6</b>
+        <div class="stars">★★★★★</div>
+        <span>147 reseñas en Google</span>
+      </div>
+      <p style="max-width:34ch;color:#5a5d52;font-size:1.05rem">Familias y grupos que repiten: limpieza, espacio y una anfitriona, <strong>Lourdes</strong>, siempre pendiente de todo.</p>
+    </div>
+    <div class="rev-grid reveal">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«La casa es gigante y está genial, entorno muy agradable y cuidado. Habitaciones amplias, limpias y silenciosas, todas con baño. Fuimos en familia (21 personas) y aprovechamos el txoko para las comidas. Lourdes nos ayudó en todo. ¡Lo recomiendo!»</p>
+        <div class="who"><span class="av">A</span><div><b>Ana Martin</b><span>Hace 11 meses</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Hemos estado muy a gusto. No le falta ningún detalle, toda la casa limpia y decorada con gusto. Las zonas comunes muy cómodas para cocinar y pasar en grupo un buen rato. La propietaria, siempre atenta y acogedora. Todo perfecto.»</p>
+        <div class="who"><span class="av">M</span><div><b>Mª Paz Zuluaga</b><span>Hace 5 meses</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Casa amplia y con todo tipo de detalle para hacer la estancia más acogedora. Baño y televisión en todas las habitaciones. Gran txoko. Fuimos un grupo de 15 personas y estuvimos muy bien. La zona es preciosa para visitar.»</p>
+        <div class="who"><span class="av">M</span><div><b>María Pérez</b><span>Hace un año</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Un alojamiento acogedor, muy bien equipado y amplio. Perfecto para familias con niños. Las habitaciones con baño incluido en todas. La dueña de la casa, siempre disponible y muy agradable.»</p>
+        <div class="who"><span class="av">A</span><div><b>Aitziber Zorrakino</b><span>Hace 8 meses</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Hemos pasado un fin de semana estupendo. La casa súper cómoda y con todo lo necesario. Los anfitriones pendientes de todo. A pesar del frío exterior, súper calentita. Recomendamos Agarre 100%.»</p>
+        <div class="who"><span class="av">M</span><div><b>Marta Delclaux</b><span>Hace 6 meses</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Casa muy amplia y perfecta para grupos grandes. La barra de cocina y la mesa enorme, muy cómodas. El jardín, magnífico. Un sitio ideal para desconectar.»</p>
+        <div class="who"><span class="av">A</span><div><b>Alicia García</b><span>Reseña verificada</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO / RESERVAR -->
+<section class="contact" id="reservar">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Reserva tu estancia</span>
+      <h2>¿Hablamos?</h2>
+      <div class="contact-info">
+        <p class="lead">Cuéntanos qué fechas tenéis en mente y cuántos sois. Te respondemos enseguida con disponibilidad y precio.</p>
+        <div class="cinfo"><span class="ico">📞</span><div><b>Teléfono</b><a href="tel:+34946153318">94 615 33 18</a> · <a href="tel:+34685026276">685 02 62 76</a></div></div>
+        <div class="cinfo"><span class="ico">✉️</span><div><b>Email</b><a href="mailto:reservas@agarre.es">reservas@agarre.es</a></div></div>
+        <div class="cinfo"><span class="ico">📍</span><div><b>Dirección</b><span>Barrio Elexalde 9B · 48113 Gámiz-Fika, Bizkaia</span></div></div>
+        <div class="cinfo"><span class="ico">🏠</span><div><b>Registro turístico</b><span>XBI-00063 · Casa rural completa</span></div></div>
+      </div>
+      <div class="map-wrap">
+        <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Agarre+Casa+Rural,Elexalde+9B,Gamiz-Fika&zoom=14"></iframe>
+      </div>
+    </div>
+
+    <form class="reveal" id="resForm" onsubmit="return enviar(event)">
+      <div class="row">
+        <div><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+        <div><label>Teléfono</label><input type="tel" name="tel" placeholder="600 000 000" required></div>
+      </div>
+      <label>Email</label>
+      <input type="email" name="email" placeholder="tu@email.com" required>
+      <div class="row">
+        <div><label>Entrada</label><input type="date" name="entrada"></div>
+        <div><label>Salida</label><input type="date" name="salida"></div>
+      </div>
+      <label>Nº de personas</label>
+      <select name="personas">
+        <option>1 – 6 personas</option>
+        <option>7 – 12 personas</option>
+        <option>13 – 18 personas</option>
+        <option>Evento / celebración (txoko)</option>
+      </select>
+      <label>Mensaje</label>
+      <textarea name="msg" rows="3" placeholder="Cuéntanos el motivo de la estancia, dudas..."></textarea>
+      <button type="submit" class="btn">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#inicio" class="brand"><span class="mark">A</span><span class="txt"><b>Agarre</b><span>Casa Rural · Bizkaia</span></span></a>
+    <div class="links">
+      <a href="#casa">La casa</a>
+      <a href="#espacios">Espacios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#entorno">Entorno</a>
+      <a href="#reservar">Reservar</a>
+    </div>
+    <small>Casa Rural Agarre · Barrio Elexalde 9B, 48113 Gámiz-Fika (Bizkaia) · reservas@agarre.es · 94 615 33 18 · Reg. XBI-00063</small>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34685026276?text=Hola%2C%20quer%C3%ADa%20consultar%20disponibilidad%20en%20la%20Casa%20Rural%20Agarre" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<div class="lb" id="lb">
+  <span class="x" id="lbX">&times;</span>
+  <span class="nav prev" id="lbPrev">&#8249;</span>
+  <img id="lbImg" src="" alt="">
+  <span class="nav next" id="lbNext">&#8250;</span>
+</div>
+
+<script>
+// header scroll
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// mobile nav (simple scroll to)
+document.getElementById('navToggle').onclick=()=>document.querySelector('#reservar').scrollIntoView();
+
+// lightbox
+const imgs=[...document.querySelectorAll('#gal img')];
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');let cur=0;
+function open(i){cur=i;lbImg.src=imgs[i].src.replace(/=s\d+-w\d+/,'=s2400-w1700');lb.classList.add('on')}
+function close(){lb.classList.remove('on')}
+function step(d){cur=(cur+d+imgs.length)%imgs.length;open(cur)}
+imgs.forEach((im,i)=>im.parentElement.onclick=()=>open(i));
+document.getElementById('lbX').onclick=close;
+document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();step(-1)};
+document.getElementById('lbNext').onclick=e=>{e.stopPropagation();step(1)};
+lb.onclick=e=>{if(e.target===lb)close()};
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+
+// form -> mailto fallback
+function enviar(e){
+  e.preventDefault();
+  const f=e.target,d=k=>f[k]?f[k].value:'';
+  const body=`Nombre: ${d('nombre')}%0ATeléfono: ${d('tel')}%0AEmail: ${d('email')}%0AEntrada: ${d('entrada')}%0ASalida: ${d('salida')}%0APersonas: ${d('personas')}%0A%0A${encodeURIComponent(d('msg'))}`;
+  window.location.href=`mailto:reservas@agarre.es?subject=Solicitud de reserva - Casa Rural Agarre&body=${body}`;
+  return false;
+}
+</script>
+</body>
+</html>
