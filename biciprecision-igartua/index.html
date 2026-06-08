@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BiciPrecisión Igartúa · Tienda y taller de bicicletas en Bergara · Distribuidor oficial CUBE</title>
+<meta name="description" content="Tienda y taller de bicicletas en Bergara, Gipuzkoa. Distribuidor oficial CUBE, Focus, Moustache, Massi y Flanders: carretera, montaña, eléctricas y gravel. Montaje a medida, biometría y financiación hasta 2 años sin intereses.">
+<meta name="theme-color" content="#E0282E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="BiciPrecisión Igartúa · Bicicletas en Bergara">
+<meta property="og:description" content="Distribuidor oficial CUBE · Focus · Moustache. Taller, montaje a medida y financiación sin intereses en Bergara.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BicycleStore","name":"BiciPrecisión Igartúa","description":"Tienda y taller de bicicletas en Bergara. Distribuidor oficial CUBE.","brand":"CUBE","priceRange":"€€","telephone":"+34943761121","email":"biciprecisionigartua@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Calle Zubieta, 5 y 7","addressLocality":"Bergara","addressRegion":"Gipuzkoa","postalCode":"20570","addressCountry":"ES"},"openingHours":["Mo,Tu,We,Th,Fr 09:00-13:00","Mo,Tu,We,Th,Fr 16:00-20:00","Sa 09:00-13:00"]}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0D0E10;
+  --ink-2:#161B22;
+  --ink-3:#1F262F;
+  --red:#E0282E;        /* rojo de competición (acento BiciPrecisión) */
+  --red-d:#B81E23;      /* hover */
+  --white:#fff;
+  --bg:#F9FAFB;
+  --paper:#FFFFFF;
+  --line:#E4E5E7;
+  --muted:#5A6470;
+  --text:#0D0E10;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Wix Madefor Display',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* TOPBAR */
+.topbar{background:var(--red);color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px}
+.topbar a{text-decoration:underline;text-underline-offset:2px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,14,16,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mk{width:42px;height:42px;border-radius:11px;background:var(--red);color:#fff;display:grid;place-items:center;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand .bt{font-family:'Wix Madefor Display',sans-serif;font-weight:700;color:#fff;font-size:16px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.brand .bt small{display:block;font-family:'Wix Madefor Text',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.18em;color:var(--red);margin-top:3px}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:rgba(255,255,255,.82)}
+.nav-links a{transition:.2s;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--red);transition:width .25s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--red);color:#fff;padding:11px 22px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.02em;transition:.25s;border:none;cursor:pointer;font-family:inherit}
+.nav-cta:hover{background:var(--red-d);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s;display:block}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--ink);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:30px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;font-family:'Wix Madefor Display',sans-serif;font-weight:600;font-size:30px;padding:10px 0;transition:.2s}
+.mobile-menu a:hover{color:var(--red)}
+.mobile-menu .mm-cta{background:var(--red);border-radius:999px;padding:14px 34px;font-size:16px;margin-top:18px}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;transform:scale(1.05);animation:heroZoom 18s ease-out forwards}
+.hero-img.loaded{opacity:.78}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,17,22,.92) 0%,rgba(14,17,22,.55) 45%,rgba(14,17,22,.15) 100%),linear-gradient(0deg,rgba(14,17,22,.9) 0%,transparent 45%);z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 28px 90px;width:100%;color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(224,40,46,.16);border:1px solid rgba(224,40,46,.5);color:#fff;padding:8px 16px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(224,40,46,.6);animation:pp 2s infinite}
+@keyframes pp{0%{box-shadow:0 0 0 0 rgba(224,40,46,.6)}70%{box-shadow:0 0 0 10px rgba(224,40,46,0)}100%{box-shadow:0 0 0 0 rgba(224,40,46,0)}}
+.hero h1{font-size:clamp(44px,7.5vw,104px);line-height:.94;margin-bottom:22px;text-transform:uppercase}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero p{font-size:clamp(16px,1.6vw,19px);max-width:560px;color:rgba(255,255,255,.85);margin-bottom:34px;font-weight:400}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:.25s;border:2px solid transparent;font-family:inherit}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-d);border-color:var(--red-d);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{background:var(--red);border-color:var(--red)}
+.hero-stats{position:absolute;right:28px;bottom:90px;z-index:2;display:flex;flex-direction:column;gap:18px;text-align:right;color:#fff}
+.hero-stats .hs b{font-family:'Wix Madefor Display',sans-serif;font-size:34px;font-weight:700;color:var(--red);display:block;line-height:1}
+.hero-stats .hs span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600}
+
+/* MARQUEE */
+.strip{background:var(--ink);color:#fff;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;padding:16px 0}
+.strip-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 28s linear infinite;width:max-content}
+.strip-track span{font-family:'Wix Madefor Display',sans-serif;font-weight:600;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:48px}
+.strip-track span::after{content:"●";color:var(--red);font-size:9px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION BASE */
+section{padding:100px 0}
+.sec-head{max-width:680px;margin-bottom:54px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--red);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--red)}
+.sec-head h2{font-size:clamp(32px,4.6vw,56px);color:var(--ink);text-transform:uppercase}
+.sec-head h2 em{color:var(--red);font-style:normal}
+.sec-head p{font-size:17px;color:var(--muted);margin-top:18px}
+.sec-head.center{margin:0 auto 54px;text-align:center}
+.sec-head.center .eyebrow{justify-content:center}
+
+/* CATÁLOGO DE BICIS */
+.bikes{background:var(--bg)}
+.cat-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.cat-chip{padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit}
+.cat-chip:hover{border-color:var(--ink)}
+.cat-chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.bike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.bike-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+.bike-card:hover{border-color:var(--ink);transform:translateY(-6px);box-shadow:0 22px 50px rgba(14,17,22,.12)}
+.bike-imgwrap{position:relative;background:#eef0f2;aspect-ratio:16/11;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.bike-imgwrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.bike-card:hover .bike-imgwrap img{transform:scale(1.06)}
+.bike-cat{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:999px;z-index:2}
+.bike-off{position:absolute;top:14px;right:14px;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:6px 10px;border-radius:999px;z-index:2;font-family:'Wix Madefor Display',sans-serif}
+.bike-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.bike-name{font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:18px;color:var(--ink);text-transform:uppercase;line-height:1.15;margin-bottom:4px}
+.bike-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.bike-foot{margin-top:auto;display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.bike-price{font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:24px;color:var(--ink);display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.bike-price .was{font-family:'Wix Madefor Text',sans-serif;font-size:14px;font-weight:600;color:var(--muted);text-decoration:line-through}
+.bike-price small{flex-basis:100%;font-family:'Wix Madefor Text',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.bike-actions{display:flex;gap:8px}
+.bike-btn-buy{flex:1.5;background:var(--red);color:#fff;border:none;border-radius:999px;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.25s;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.bike-btn-buy svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+.bike-btn-buy:hover{background:var(--red-d);transform:translateY(-1px)}
+.bike-btn{flex:1;background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.25s;white-space:nowrap}
+.bike-btn:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* CHECKOUT COMPRA ONLINE */
+.co{position:fixed;inset:0;background:rgba(8,10,13,.62);backdrop-filter:blur(4px);z-index:600;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+.co.open{display:flex}
+.co-box{background:#fff;border-radius:20px;width:100%;max-width:520px;padding:30px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.42);animation:coIn .35s cubic-bezier(.16,1,.3,1)}
+@keyframes coIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.co-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:32px;line-height:1;color:var(--muted);cursor:pointer;transition:.2s}
+.co-close:hover{color:var(--ink)}
+.co-head{margin-bottom:18px;padding-right:30px}
+.co-head h3{font-family:'Wix Madefor Display',sans-serif;font-size:23px;color:var(--ink);margin-top:6px;text-transform:uppercase;letter-spacing:-.01em}
+.co-summary{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:20px}
+.co-sum-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0}
+.co-sum-row span{color:var(--muted);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.co-sum-row b{font-family:'Wix Madefor Display',sans-serif;color:var(--ink);font-size:16px;text-align:right}
+.co-sum-row b.co-price{color:var(--red);font-size:21px}
+.co-legal{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.55}
+.bikes-note{text-align:center;margin-top:40px;font-size:15px;color:var(--muted)}
+.bikes-note a{color:var(--red);font-weight:600;text-decoration:underline}
+
+/* PROMO BAND */
+.promo{background:var(--ink);color:#fff;position:relative;overflow:hidden;border-radius:24px;margin:0 28px;padding:64px 40px;text-align:center}
+.promo-wrap{max-width:1280px;margin:0 auto;padding:0}
+.promo::before{content:"-42%";position:absolute;font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:clamp(180px,30vw,420px);color:rgba(224,40,46,.08);top:50%;left:50%;transform:translate(-50%,-50%);line-height:1;pointer-events:none;white-space:nowrap}
+.promo h2{position:relative;font-size:clamp(30px,4.4vw,52px);text-transform:uppercase;margin-bottom:14px}
+.promo h2 em{color:var(--red);font-style:normal}
+.promo p{position:relative;color:rgba(255,255,255,.8);font-size:17px;max-width:580px;margin:0 auto 28px}
+.promo .btn{position:relative}
+
+/* MARCAS */
+.marcas{background:var(--bg)}
+.marca-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+.marca-cell{display:flex;align-items:center;justify-content:center;height:104px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;transition:.3s}
+.marca-cell:hover{border-color:var(--red);transform:translateY(-5px);box-shadow:0 16px 38px rgba(13,14,16,.09)}
+.marca-cell img{max-height:42px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.3s}
+.marca-cell:hover img{filter:grayscale(0);opacity:1;transform:scale(1.06)}
+@media(max-width:980px){.marca-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:560px){.marca-grid{grid-template-columns:repeat(3,1fr)}.marca-cell{height:88px;padding:14px}.marca-cell img{max-height:34px}}
+
+/* SERVICIOS */
+.servicios{background:var(--bg)}
+.serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.serv-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 28px;transition:.3s}
+.serv-card:hover{border-color:var(--ink);transform:translateY(-6px);box-shadow:0 20px 44px rgba(14,17,22,.1)}
+.serv-ico{width:56px;height:56px;border-radius:14px;background:var(--ink);display:grid;place-items:center;margin-bottom:22px;transition:.3s}
+.serv-card:hover .serv-ico{background:var(--red)}
+.serv-ico svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.8}
+.serv-card h3{font-size:20px;color:var(--ink);margin-bottom:10px}
+.serv-card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+/* NOSOTROS */
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-pic{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/4.6;box-shadow:0 30px 70px rgba(14,17,22,.18)}
+.about-pic img{width:100%;height:100%;object-fit:cover}
+.about-pic .quote{position:absolute;left:24px;right:24px;bottom:24px;background:rgba(14,17,22,.78);backdrop-filter:blur(8px);border-radius:14px;padding:20px 22px;color:#fff;font-size:14.5px;line-height:1.5}
+.about-pic .quote b{color:var(--red)}
+.about-text h2{font-size:clamp(30px,4vw,48px);color:var(--ink);text-transform:uppercase;margin-bottom:20px}
+.about-text h2 em{color:var(--red);font-style:normal}
+.about-text p{font-size:16px;color:var(--muted);margin-bottom:16px}
+.about-text strong{color:var(--ink)}
+.team{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
+.team-member{display:flex;align-items:center;gap:14px}
+.team-member .av{width:54px;height:54px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:20px}
+.team-member b{display:block;color:var(--ink);font-size:16px}
+.team-member span{font-size:13px;color:var(--muted)}
+
+/* CITA */
+.cita{background:var(--ink);color:#fff}
+.cita-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:start}
+.cita-left h2{font-size:clamp(32px,4.4vw,54px);text-transform:uppercase;margin-bottom:20px}
+.cita-left h2 em{color:var(--red);font-style:normal}
+.cita-left p{color:rgba(255,255,255,.78);font-size:16px;margin-bottom:28px;max-width:440px}
+.cita-feats{display:flex;flex-direction:column;gap:16px;margin-top:30px}
+.cita-feat{display:flex;gap:14px;align-items:flex-start}
+.cita-feat .ck{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex-shrink:0;color:#fff;font-size:13px;font-weight:700;margin-top:2px}
+.cita-feat b{display:block;font-size:15px}
+.cita-feat span{font-size:13.5px;color:rgba(255,255,255,.6)}
+.form{background:#fff;border-radius:20px;padding:36px 34px;color:var(--text)}
+.form h3{color:var(--ink);font-size:22px;margin-bottom:6px}
+.form .form-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.f-row{display:grid;gap:14px;margin-bottom:14px}
+.f-row.c2{grid-template-columns:1fr 1fr}
+.f-field{display:flex;flex-direction:column;gap:6px}
+.f-field label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.f-field input,.f-field select,.f-field textarea{font-family:'Wix Madefor Text',sans-serif;font-size:15px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);outline:none;transition:.2s;font-weight:500}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(224,40,46,.1)}
+.f-field textarea{resize:vertical;min-height:78px}
+.f-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236A7480' d='M6 8L0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.f-submit{width:100%;background:var(--red);color:#fff;padding:15px;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:.25s;margin-top:8px}
+.f-submit:hover:not(:disabled){background:var(--red-d)}
+.f-submit:disabled{opacity:.6;cursor:wait}
+.f-legal{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
+.f-legal a{color:var(--red);text-decoration:underline}
+.f-status{padding:14px 16px;border-radius:10px;font-size:14px;margin-bottom:16px;display:none;line-height:1.5}
+.f-status.show{display:block}
+.f-status.ok{background:#E9F7EE;color:#1E7E45;border:1px solid #9FD8B4}
+.f-status.err{background:#FDEAE9;color:var(--red-d);border:1px solid #F3B6B2}
+
+/* CONTACTO */
+.contacto{background:var(--bg);padding:0}
+.contacto-grid{display:grid;grid-template-columns:1fr 1.2fr;min-height:520px}
+.contacto-info{padding:90px 60px;display:flex;flex-direction:column;justify-content:center}
+.contacto-info .eyebrow{margin-bottom:14px}
+.contacto-info h2{font-size:clamp(30px,3.6vw,46px);color:var(--ink);text-transform:uppercase;margin-bottom:30px}
+.ci-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line)}
+.ci-row:last-child{border-bottom:1px solid var(--line)}
+.ci-ico{width:44px;height:44px;border-radius:12px;background:var(--ink);display:grid;place-items:center;flex-shrink:0}
+.ci-ico svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8}
+.ci-row b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:3px}
+.ci-row a,.ci-row span{font-size:15.5px;color:var(--ink);font-weight:500;line-height:1.5}
+.ci-row a:hover{color:var(--red)}
+.contacto-map{position:relative;background:var(--ink)}
+.contacto-map iframe{width:100%;height:100%;min-height:520px;border:0;filter:grayscale(.3) contrast(1.05)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:70px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand .brand-logo{display:flex;align-items:center;font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em;color:#fff;text-transform:uppercase;margin-bottom:14px}
+.foot-brand .brand-logo .dot{color:var(--red)}
+.foot-brand p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7;max-width:300px}
+.foot-col h5{font-family:'Wix Madefor Display',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:18px;font-weight:600}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:10px}
+.foot-col a,.foot-col span{font-size:14px;color:rgba(255,255,255,.55);transition:.2s;line-height:1.5}
+.foot-col a:hover{color:var(--red)}
+.foot-social{display:flex;gap:12px;margin-top:6px}
+.foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;transition:.25s}
+.foot-social a:hover{background:var(--red);border-color:var(--red)}
+.foot-social svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.4)}
+
+/* GALERÍA REAL */
+.gal{background:#fff}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:232px;gap:14px}
+.gal-item{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;background:var(--ink)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.gal-item:hover img{transform:scale(1.07)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(14,17,22,.82) 100%);opacity:0;transition:.3s}
+.gal-item:hover::after{opacity:1}
+.gal-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;font-family:'Wix Madefor Display',sans-serif;font-weight:600;font-size:16px;opacity:0;transform:translateY(8px);transition:.3s}
+.gal-cap::before{content:"";display:block;width:26px;height:2px;background:var(--red);margin-bottom:8px}
+.gal-item:hover .gal-cap{opacity:1;transform:none}
+.gal-big{grid-column:span 2;grid-row:span 2}
+.lb{position:fixed;inset:0;background:rgba(8,10,13,.95);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:94vw;max-height:90vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:20px;right:28px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
+@media(max-width:980px){
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+  .gal-big{grid-column:span 2;grid-row:span 2}
+}
+@media(max-width:560px){
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .gal-big{grid-column:span 1;grid-row:span 1}
+  .gal-cap{opacity:1;transform:none}
+  .gal-item::after{opacity:1}
+}
+
+/* FAB WhatsApp */
+.fab{position:fixed;right:18px;bottom:18px;z-index:400;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:.25s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:28px;height:28px;fill:currentColor}
+
+/* LOADER */
+.loader{position:fixed;inset:0;z-index:9999;background:#0D0E10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .6s,visibility .6s}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{font-family:'Wix Madefor Display',sans-serif;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(22px,5vw,34px);text-align:center}
+.loader-logo span{color:var(--red)}
+.loader-bar{width:180px;height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden}
+.loader-bar::after{content:"";display:block;height:100%;width:40%;background:var(--red);border-radius:3px;animation:lb 1.2s ease-in-out infinite}
+@keyframes lb{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
+
+@media(max-width:980px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-stats{display:none}
+  .bike-grid{grid-template-columns:repeat(2,1fr)}
+  .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .cita-grid{grid-template-columns:1fr;gap:40px}
+  .contacto-grid{grid-template-columns:1fr}
+  .contacto-info{padding:60px 32px}
+  .contacto-map iframe{min-height:380px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  section{padding:74px 0}
+}
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .hero-inner{padding:0 20px 60px}
+  .bike-grid{grid-template-columns:1fr}
+  .serv-grid{grid-template-columns:1fr}
+  .f-row.c2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .promo{margin:0 20px;padding:48px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01s !important;transition-duration:.15s !important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">BICIPRECISIÓN<br><span>IGARTÚA</span></div>
+  <div class="loader-bar"></div>
+</div>
+<script>
+document.body.style.overflow='hidden';
+function hideLoader(){document.body.style.overflow='';var l=document.getElementById('loader');if(l){l.classList.add('hidden');setTimeout(function(){l.remove()},650)}}
+window.addEventListener('load',function(){setTimeout(hideLoader,350)});
+setTimeout(hideLoader,3500);
+</script>
+
+<!-- TOPBAR -->
+<div class="topbar">🔥 Hasta -42% en bicis seleccionadas · Distribuidor oficial CUBE · <a href="#cita">Financiación hasta 2 años sin intereses →</a></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand" aria-label="BiciPrecisión Igartúa">
+      <span class="mk">BI</span>
+      <span class="bt">BiciPrecisión<small>IGARTÚA · BERGARA</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#bicis">Bicicletas</a>
+      <a href="#servicios">Taller</a>
+      <a href="#galeria">La tienda</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button type="button" class="nav-cta" data-open>Pide cita</button>
+    <button type="button" class="hamburger" id="hb" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mm">
+  <a href="#bicis" data-mmc>Bicicletas</a>
+  <a href="#servicios" data-mmc>Taller</a>
+  <a href="#galeria" data-mmc>La tienda</a>
+  <a href="#nosotros" data-mmc>Nosotros</a>
+  <a href="#contacto" data-mmc>Contacto</a>
+  <a href="#cita" class="mm-cta" data-mmc>Pide cita</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-img" id="heroImg" alt="Taller de BiciPrecisión Igartúa en Bergara" src="assets/negocio-1.jpg" onload="this.classList.add('loaded')">
+  <div class="hero-inner">
+    <span class="hero-badge"><span class="pulse"></span> Distribuidor oficial CUBE · Bergara</span>
+    <h1>Tu bici,<br><em>nuestra precisión.</em></h1>
+    <p>Más de cuatro décadas sobre dos ruedas, del barro del ciclocross a tu próxima bici. Carretera, montaña, eléctricas y gravel CUBE, Focus, Moustache y Massi, con taller propio y montaje a medida.</p>
+    <div class="hero-ctas">
+      <a href="#bicis" class="btn btn-red">Ver bicicletas →</a>
+      <a href="#cita" class="btn btn-ghost">Pide cita en el taller</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><b>CUBE</b><span>Distribuidor oficial</span></div>
+    <div class="hs"><b>+40</b><span>Años de experiencia</span></div>
+    <div class="hs"><b>0%</b><span>Financiación 2 años</span></div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Carretera<span>Montaña</span>E-MTB<span>Gravel</span>Ciclocross<span>City</span>Taller<span>Montaje a medida</span>Biometría<span>Entrenamiento</span></span>
+    <span>Carretera<span>Montaña</span>E-MTB<span>Gravel</span>Ciclocross<span>City</span>Taller<span>Montaje a medida</span>Biometría<span>Entrenamiento</span></span>
+  </div>
+</div>
+
+<!-- CATÁLOGO DE BICIS REALES -->
+<section id="bicis" class="bikes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Nuestras bicicletas</span>
+      <h2>Las bicis que <em>vendemos</em></h2>
+      <p>Una selección real de nuestro catálogo, de la iniciación a la alta competición. Filtra por disciplina, resérvala online o pídenos info por WhatsApp.</p>
+    </div>
+
+    <div class="cat-filter reveal">
+      <button class="cat-chip active" data-f="all">Todas</button>
+      <button class="cat-chip" data-f="e">Eléctricas</button>
+      <button class="cat-chip" data-f="mtb">Montaña</button>
+      <button class="cat-chip" data-f="road">Carretera & Gravel</button>
+    </div>
+
+    <div class="bike-grid" id="bikeGrid">
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Carretera</span>
+          <img src="assets/bici-1.jpg" alt="CUBE Litening Air C:68X Race" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Litening Air C:68X Race</div><div class="bike-sub">CUBE · Carretera aero · carbono</div>
+          <div class="bike-foot"><div class="bike-price">5.599 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Carretera</span>
+          <img src="assets/bici-12.jpg" alt="CUBE Litening Air Race 2026" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Litening Air Race 2026</div><div class="bike-sub">CUBE · Carretera · carbono</div>
+          <div class="bike-foot"><div class="bike-price">5.499 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Aero</span>
+          <img src="assets/bici-4.jpg" alt="CUBE Litening Aero C:68X Pro" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Litening Aero C:68X Pro</div><div class="bike-sub">CUBE · Carretera aero · carbono</div>
+          <div class="bike-foot"><div class="bike-price">4.849 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Aero</span><span class="bike-off">-15%</span>
+          <img src="assets/bici-6.jpg" alt="CUBE Litening Aero C68X Race" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Litening Aero C68X Race</div><div class="bike-sub">CUBE · Carretera aero · carbono</div>
+          <div class="bike-foot"><div class="bike-price">4.589 €<span class="was">5.399 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Aero</span><span class="bike-off">-15%</span>
+          <img src="assets/bici-7.jpg" alt="CUBE Litening Aero C68 STL" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Litening Aero C68 STL</div><div class="bike-sub">CUBE · Carretera aero · top de gama</div>
+          <div class="bike-foot"><div class="bike-price">6.375 €<span class="was">7.500 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Carretera</span><span class="bike-off">-42%</span>
+          <img src="assets/bici-5.jpg" alt="FLANDERS NXT Pro" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Flanders NXT Pro</div><div class="bike-sub">Flanders · Carretera · carbono</div>
+          <div class="bike-foot"><div class="bike-price">3.390 €<span class="was">5.800 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Carretera</span>
+          <img src="assets/massi-carbon.jpg" alt="MASSI Carbon Team talla 52" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Massi Carbon Team</div><div class="bike-sub">Massi · Carretera · carbono · T.52</div>
+          <div class="bike-foot"><div class="bike-price">2.499 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road">
+        <div class="bike-imgwrap"><span class="bike-cat">Gravel</span>
+          <img src="assets/nuroad-race.jpg" alt="CUBE Nuroad Race gravel" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Nuroad Race</div><div class="bike-sub">CUBE · Gravel · aluminio</div>
+          <div class="bike-foot"><div class="bike-price">1.649 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">E-MTB</span>
+          <img src="assets/bici-2.jpg" alt="CUBE Stereo Hybrid 144 HPC SLX" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Stereo Hybrid 144 HPC SLX</div><div class="bike-sub">CUBE · E-MTB doble · Bosch</div>
+          <div class="bike-foot"><div class="bike-price">5.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">E-MTB</span><span class="bike-off">-25%</span>
+          <img src="assets/bici-3.jpg" alt="CUBE AMS Hybrid One44" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">AMS Hybrid One44</div><div class="bike-sub">CUBE · E-MTB doble suspensión</div>
+          <div class="bike-foot"><div class="bike-price">4.475 €<span class="was">5.999 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">E-MTB</span>
+          <img src="assets/bici-11.jpg" alt="FOCUS Thron² 6.6" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Focus Thron² 6.6</div><div class="bike-sub">Focus · E-MTB doble suspensión</div>
+          <div class="bike-foot"><div class="bike-price">3.750 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">E-MTB</span><span class="bike-off">-15%</span>
+          <img src="assets/bici-10.jpg" alt="CUBE Stereo Hybrid One 22 Pro" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Stereo Hybrid One 22 Pro</div><div class="bike-sub">CUBE · E-MTB doble suspensión</div>
+          <div class="bike-foot"><div class="bike-price">3.230 €<span class="was">3.800 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">E-MTB</span><span class="bike-off">-40%</span>
+          <img src="assets/bici-9.jpg" alt="CUBE Stereo Hybrid One 77" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Stereo Hybrid One 77</div><div class="bike-sub">CUBE · E-MTB doble suspensión</div>
+          <div class="bike-foot"><div class="bike-price">3.075 €<span class="was">5.100 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e">
+        <div class="bike-imgwrap"><span class="bike-cat">Gravel E</span><span class="bike-off">-14%</span>
+          <img src="assets/bici-8.jpg" alt="CUBE Nuroad Hybrid C 62" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Nuroad Hybrid C 62</div><div class="bike-sub">CUBE · Gravel eléctrica · carbono</div>
+          <div class="bike-foot"><div class="bike-price">4.400 €<span class="was">5.099 €</span><small>Oferta</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="mtb">
+        <div class="bike-imgwrap"><span class="bike-cat">MTB Rígida</span>
+          <img src="assets/reaction-c62.jpg" alt="CUBE Reaction C:62 One" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Reaction C:62 One</div><div class="bike-sub">CUBE · MTB rígida · carbono</div>
+          <div class="bike-foot"><div class="bike-price">1.549 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="mtb">
+        <div class="bike-imgwrap"><span class="bike-cat">MTB · 2ª mano</span>
+          <img src="assets/stereo-pro.jpg" alt="CUBE Stereo Pro talla M" loading="lazy"></div>
+        <div class="bike-body"><div class="bike-name">Stereo Pro · Talla M</div><div class="bike-sub">CUBE · MTB doble · ocasión</div>
+          <div class="bike-foot"><div class="bike-price">900 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="bikes-note reveal">Y muchos más modelos en tienda (Moustache, accesorios, ruedas, componentes…). ¿No encuentras el tuyo? <a href="https://wa.me/34688673171" target="_blank" rel="noopener">Escríbenos y te lo conseguimos →</a></p>
+  </div>
+</section>
+
+<!-- PROMO -->
+<div class="promo-wrap reveal">
+  <div class="promo">
+    <h2>Hasta <em>-42%</em> en bicis seleccionadas</h2>
+    <p>Aprovecha las ofertas de temporada en modelos CUBE, Focus y Flanders, con financiación hasta 2 años sin intereses. Pásate por la tienda de Bergara o escríbenos y te decimos disponibilidad y tallas.</p>
+    <a href="#cita" class="btn btn-red">Quiero mi oferta →</a>
+  </div>
+</div>
+
+<!-- MARCAS -->
+<section id="marcas" class="marcas">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Marcas oficiales</span>
+      <h2>Trabajamos con las <em>mejores marcas</em></h2>
+      <p>Distribuidor oficial CUBE y de las mejores marcas de bicicletas, componentes y equipación. Calidad, garantía y recambios originales.</p>
+    </div>
+    <div class="marca-grid reveal">
+      <div class="marca-cell"><img src="assets/marcas/cube.gif" alt="CUBE" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/focus.png" alt="Focus" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/flanders.png" alt="Flanders" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/moustache.png" alt="Moustache" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/massi.png" alt="Massi" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/coluer.png" alt="Coluer" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/whistle.png" alt="Whistle" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/shimano.png" alt="Shimano" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/sram.png" alt="SRAM" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/fulcrum.png" alt="Fulcrum" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/schwalbe.png" alt="Schwalbe" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/continental.png" alt="Continental" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/lazer.png" alt="Lazer" loading="lazy"></div>
+      <div class="marca-cell"><img src="assets/marcas/bestial.png" alt="Bestial Wolf" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS / TALLER -->
+<section id="servicios" class="servicios">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Más allá de la venta</span>
+      <h2>Lo que nos hace <em>diferentes</em></h2>
+      <p>Taller propio, montaje a medida, biometría y financiación a tu medida. Te acompañamos antes, durante y después de comprar tu bici.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6 2 2 6-6a4 4 0 0 0 5.4-5.4l-2.3 2.3-1.7-1.7 2.3-2.3z"/></svg></div>
+        <h3>Taller propio</h3>
+        <p>Reparación, mantenimiento y puesta a punto con experiencia de competición. Transmisión, frenos y diagnóstico de e-bikes.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.4-6.3-4.6L5.7 21l2.3-7.4-6-4.5h7.6z"/></svg></div>
+        <h3>Montaje a medida</h3>
+        <p>Configuramos tu bici componente a componente: grupo, ruedas, cotas y geometría adaptadas a ti.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5h-5"/></svg></div>
+        <h3>Biometría y entrenamiento</h3>
+        <p>Estudio biomecánico y planificación para ganar comodidad, eficiencia y prevenir lesiones sobre la bici.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <h3>Financiación 0%</h3>
+        <p>Llévate tu bici y págala en 1 o 2 años sin intereses. Aceptamos también Bizum y tarjeta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA REAL DEL NEGOCIO -->
+<section id="galeria" class="gal">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Visítanos</span>
+      <h2>Así es <em>BiciPrecisión Igartúa</em></h2>
+      <p>Tienda y taller propio en pleno Bergara. Fotos reales de la casa: taller, montajes y una trayectoria que viene de la competición.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item gal-big reveal" data-lb>
+        <img src="assets/negocio-1.jpg" alt="Taller de BiciPrecisión Igartúa" loading="lazy">
+        <div class="gal-cap">Nuestro taller</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="assets/negocio-2.jpg" alt="Bicicleta CUBE en la tienda" loading="lazy">
+        <div class="gal-cap">Bicis en tienda</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="assets/negocio-3.jpg" alt="Competición de ciclocross con maillot Flanders" loading="lazy">
+        <div class="gal-cap">Raíces en el ciclocross</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="assets/negocio-4.jpg" alt="Podio de competición" loading="lazy">
+        <div class="gal-cap">Palmarés</div>
+      </div>
+      <div class="gal-item reveal" data-lb>
+        <img src="assets/negocio-5.jpg" alt="Carrera de ciclocross histórica" loading="lazy">
+        <div class="gal-cap">Nuestra historia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-pic reveal">
+        <img src="assets/negocio-4.jpg" alt="Podio de competición de BiciPrecisión Igartúa">
+        <div class="quote">«No nacimos detrás de un mostrador, <b>nacimos sobre la bici</b>. Esa experiencia es la que ponemos hoy en cada montaje.»</div>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">Quiénes somos</span>
+        <h2>Una tienda hecha por <em>corredores</em></h2>
+        <p>BiciPrecisión Igartúa nace de <strong>décadas compitiendo en ciclocross y carretera</strong>. Esa exigencia nos enseñó lo que de verdad importa: una bici bien montada, ajustada al milímetro y lista para rendir.</p>
+        <p>Hoy, en nuestra tienda y taller de Bergara, ponemos esa misma precisión en cada venta, cada reparación y cada consejo, seas un ciclista que empieza o un competidor.</p>
+        <div class="team">
+          <div class="team-member">
+            <div class="av">I</div>
+            <div><b>Iñigo Igartúa</b><span>Fundador y mecánico</span></div>
+          </div>
+          <div class="team-member">
+            <div class="av">★</div>
+            <div><b>+40 años</b><span>al servicio del ciclista</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITA -->
+<section id="cita" class="cita">
+  <div class="wrap">
+    <div class="cita-grid">
+      <div class="cita-left reveal">
+        <span class="eyebrow">Pide cita</span>
+        <h2>Tu bici, <em>a punto</em></h2>
+        <p>Reserva tu cita en el taller, pide info de una bici o asesoramiento de compra. Te confirmamos plazo y presupuesto sin compromiso.</p>
+        <div class="cita-feats">
+          <div class="cita-feat"><div class="ck">✓</div><div><b>Taller con experiencia de competición</b><span>Reparación, mantenimiento y puesta a punto</span></div></div>
+          <div class="cita-feat"><div class="ck">✓</div><div><b>Distribuidor oficial CUBE</b><span>Garantía de marca y recambios originales</span></div></div>
+          <div class="cita-feat"><div class="ck">✓</div><div><b>Financiación hasta 2 años sin intereses</b><span>Bizum, tarjeta y financiación a medida</span></div></div>
+        </div>
+      </div>
+      <form id="citaForm" class="form reveal" novalidate>
+        <h3>Solicita tu cita</h3>
+        <p class="form-sub">Rellena y nos ponemos en contacto contigo.</p>
+        <div class="f-status" id="citaStatus"></div>
+        <div class="f-row c2">
+          <div class="f-field"><label>Fecha</label><input name="fecha" type="date" required></div>
+          <div class="f-field"><label>Hora</label><select name="hora" required>
+            <option value="">Elige</option>
+            <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+            <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+            <option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option>
+            <option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+          </select></div>
+        </div>
+        <div class="f-field" style="margin-bottom:14px"><label>Servicio</label><select name="servicio" required>
+          <option value="">¿Qué necesitas?</option>
+          <option>Info / reserva de una bici</option>
+          <option>Revisión / puesta a punto</option>
+          <option>Reparación de avería</option>
+          <option>Mantenimiento periódico</option>
+          <option>Montaje a medida</option>
+          <option>Biometría / estudio</option>
+          <option>Asesoramiento de compra</option>
+          <option>Oferta / financiación</option>
+          <option>Otro</option>
+        </select></div>
+        <div class="f-field" style="margin-bottom:14px"><label>Nombre y apellidos</label><input name="nombre" type="text" required></div>
+        <div class="f-row c2">
+          <div class="f-field"><label>Teléfono</label><input name="telefono" type="tel" placeholder="6XX XXX XXX" required></div>
+          <div class="f-field"><label>Email</label><input name="email" type="email" placeholder="tu@email.com" required></div>
+        </div>
+        <div class="f-field" style="margin-bottom:6px"><label>Modelo de bici y detalles</label><textarea name="notas" placeholder="Modelo que te interesa o qué le pasa a tu bici…"></textarea></div>
+        <button type="submit" class="f-submit" id="citaBtn">Pedir cita</button>
+        <p class="f-legal">Al enviar aceptas la <a href="#">política de privacidad</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <span class="eyebrow">Cómo llegar</span>
+      <h2>Te esperamos<br>en Bergara</h2>
+      <div class="ci-row">
+        <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><b>Dirección</b><span>Calle Zubieta, 5 y 7<br>20570 Bergara · Gipuzkoa</span></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Teléfono y WhatsApp</b><a href="tel:+34943761121">943 76 11 21</a><br><a href="https://wa.me/34688673171" target="_blank" rel="noopener">WhatsApp 688 673 171 →</a></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div><b>Email</b><a href="mailto:biciprecisionigartua@gmail.com">biciprecisionigartua@gmail.com</a></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><b>Horario</b><span>Lunes a viernes · 9:00–13:00 y 16:00–20:00<br>Sábado · 9:00–13:00 · Domingo cerrado</span></div>
+      </div>
+      <div style="margin-top:26px"><a href="https://www.google.com/maps/dir/?api=1&destination=Calle+Zubieta+5,+20570+Bergara,+Gipuzkoa" target="_blank" rel="noopener" class="btn btn-dark">Abrir en Google Maps →</a></div>
+    </div>
+    <div class="contacto-map">
+      <iframe src="https://www.google.com/maps?q=Calle+Zubieta+5,+20570+Bergara,+Gipuzkoa&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ubicación BiciPrecisión Igartúa"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-logo">BICIPRECISIÓN IGARTÚA<span class="dot">.</span></div>
+        <p>Tienda y taller de bicicletas en Bergara. Distribuidor oficial CUBE, con montaje a medida, biometría y financiación sin intereses. Del barro del ciclocross a tu próxima bici.</p>
+        <div class="foot-social">
+          <a href="https://wa.me/34688673171" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+          <a href="mailto:biciprecisionigartua@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Bicicletas</h5>
+        <ul>
+          <li><a href="#bicis">Eléctricas</a></li>
+          <li><a href="#bicis">Montaña</a></li>
+          <li><a href="#bicis">Carretera & Gravel</a></li>
+          <li><a href="#bicis">Todas las bicis</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Tienda</h5>
+        <ul>
+          <li><a href="#servicios">Taller</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#cita">Pide cita</a></li>
+          <li><a href="#contacto">Cómo llegar</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><span>C. Zubieta, 5 y 7<br>20570 Bergara · Gipuzkoa</span></li>
+          <li><a href="tel:+34943761121">943 76 11 21</a></li>
+          <li><a href="mailto:biciprecisionigartua@gmail.com">biciprecisionigartua@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 BiciPrecisión Igartúa · Distribuidor oficial CUBE</span>
+      <span>Bergara · Gipuzkoa</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WhatsApp -->
+<a href="https://wa.me/34688673171" class="fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.4 2 7.8L.2 31.6l8-2.1c2.3 1.3 4.9 1.9 7.8 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3C2.6 8.6 8.6 2.6 16 2.6s13.4 6 13.4 13.4S23.4 28.7 16 28.7zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.3 1.5c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.7.1-1 .5s-1.3 1.3-1.3 3.1 1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button><img id="lbImg" src="" alt=""></div>
+
+<!-- CHECKOUT COMPRA ONLINE -->
+<div class="co" id="checkout">
+  <div class="co-box">
+    <button type="button" class="co-close" id="coClose" aria-label="Cerrar">&times;</button>
+    <div class="co-head">
+      <span class="eyebrow">Compra online</span>
+      <h3 id="coTitle">Finaliza tu compra</h3>
+    </div>
+    <div class="co-summary">
+      <div class="co-sum-row"><span>Bicicleta</span><b id="coBike">—</b></div>
+      <div class="co-sum-row"><span>Precio</span><b class="co-price" id="coPrice">—</b></div>
+    </div>
+    <form id="coForm" novalidate>
+      <div class="f-status" id="coStatus"></div>
+      <div class="f-row c2">
+        <div class="f-field"><label>Talla</label><select name="talla">
+          <option value="">Elige talla</option>
+          <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>Única / infantil</option><option>No estoy seguro</option>
+        </select></div>
+        <div class="f-field"><label>Unidades</label><select name="unidades"><option>1</option><option>2</option><option>3</option></select></div>
+      </div>
+      <div class="f-field" style="margin-bottom:14px"><label>Nombre y apellidos</label><input name="nombre" type="text" required></div>
+      <div class="f-row c2">
+        <div class="f-field"><label>Teléfono</label><input name="telefono" type="tel" placeholder="6XX XXX XXX" required></div>
+        <div class="f-field"><label>Email</label><input name="email" type="email" placeholder="tu@email.com" required></div>
+      </div>
+      <div class="f-field" style="margin-bottom:14px"><label>Entrega</label><select name="entrega" id="coEntrega">
+        <option>Recoger en tienda (Bergara)</option>
+        <option>Envío a domicilio</option>
+      </select></div>
+      <div id="coEnvio" style="display:none">
+        <div class="f-field" style="margin-bottom:14px"><label>Dirección</label><input name="direccion" type="text"></div>
+        <div class="f-row c2">
+          <div class="f-field"><label>Código postal</label><input name="cp" type="text"></div>
+          <div class="f-field"><label>Población</label><input name="poblacion" type="text"></div>
+        </div>
+      </div>
+      <button type="submit" class="f-submit" id="coBtn">Confirmar pedido</button>
+      <p class="co-legal">Sin pago online: reservas la bici y confirmamos disponibilidad, talla y forma de pago (en tienda, transferencia o financiación) contigo. Sin compromiso.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+/* Menú móvil */
+var hb=document.getElementById('hb'),mm=document.getElementById('mm');
+function toggleMM(open){var o=open!==undefined?open:!mm.classList.contains('open');mm.classList.toggle('open',o);hb.classList.toggle('active',o);document.body.style.overflow=o?'hidden':''}
+hb.addEventListener('click',function(){toggleMM()});
+document.querySelectorAll('[data-mmc]').forEach(function(a){a.addEventListener('click',function(){toggleMM(false)})});
+
+/* Botones "Info" → scroll al formulario */
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){document.getElementById('cita').scrollIntoView({behavior:'smooth'})});
+});
+
+/* COMPRA ONLINE (sin pasarela): checkout que registra el pedido */
+var co=document.getElementById('checkout'),coForm=document.getElementById('coForm'),coBtn=document.getElementById('coBtn');
+var PKEY='igartua_pedidos';
+function openCheckout(name,price){
+  document.getElementById('coBike').textContent=name;
+  document.getElementById('coPrice').textContent=price;
+  document.getElementById('coTitle').textContent='Comprar online';
+  var st=document.getElementById('coStatus');st.className='f-status';st.textContent='';
+  coForm.reset();document.getElementById('coEnvio').style.display='none';
+  coBtn.disabled=false;coBtn.textContent='Confirmar pedido';
+  co.classList.add('open');document.body.style.overflow='hidden';
+  co.scrollTop=0;
+}
+document.querySelectorAll('[data-buy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var card=b.closest('.bike-card');
+    var name=card.querySelector('.bike-name').textContent.trim();
+    var price=card.querySelector('.bike-price').childNodes[0].textContent.trim();
+    openCheckout(name,price);
+  });
+});
+function closeCo(){co.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('coClose').addEventListener('click',closeCo);
+co.addEventListener('click',function(e){if(e.target===co)closeCo()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&co.classList.contains('open'))closeCo()});
+document.getElementById('coEntrega').addEventListener('change',function(){
+  document.getElementById('coEnvio').style.display=this.value==='Envío a domicilio'?'':'none';
+});
+coForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var st=document.getElementById('coStatus');
+  var d=Object.fromEntries(new FormData(coForm).entries());
+  if(!d.nombre||!d.telefono||!d.email){st.className='f-status show err';st.textContent='Completa nombre, teléfono y email.';co.scrollTop=0;return}
+  if(d.entrega==='Envío a domicilio'&&(!d.direccion||!d.cp)){st.className='f-status show err';st.textContent='Para envío a domicilio indica al menos dirección y código postal.';co.scrollTop=0;return}
+  var bici=document.getElementById('coBike').textContent,precio=document.getElementById('coPrice').textContent;
+  var a=(function(){try{return JSON.parse(localStorage.getItem(PKEY)||'[]')}catch(e){return[]}})();
+  var ymd=new Date().toISOString().slice(0,10).replace(/-/g,'');
+  var id='BPI-ORD-'+ymd+'-'+String(a.length+1).padStart(3,'0');
+  d.bici=bici;d.precio=precio;d.id=id;d.estado='pendiente';d.origen='web-compra';d.negocio='biciprecision-igartua';d.created_at=new Date().toISOString();
+  try{a.unshift(d);localStorage.setItem(PKEY,JSON.stringify(a))}catch(e){}
+  coBtn.disabled=true;coBtn.textContent='Pedido enviado ✓';
+  st.className='f-status show ok';
+  st.innerHTML='<b>¡Pedido recibido!</b> '+bici+' · '+precio+'<br>📦 '+id+' · '+(d.entrega||'')+(d.talla?' · Talla '+d.talla:'')+'<br>Te contactamos para confirmar disponibilidad y forma de pago (tienda, transferencia o financiación). ¿Dudas? <a href="tel:+34943761121" style="color:inherit;text-decoration:underline">943 76 11 21</a>.';
+  co.scrollTop=0;
+});
+
+/* Filtro de bicicletas */
+var chips=document.querySelectorAll('.cat-chip'),cards=document.querySelectorAll('#bikeGrid .bike-card');
+chips.forEach(function(c){c.addEventListener('click',function(){
+  chips.forEach(function(x){x.classList.remove('active')});c.classList.add('active');
+  var f=c.dataset.f;
+  cards.forEach(function(card){card.style.display=(f==='all'||card.dataset.cat===f)?'':'none'});
+})});
+
+/* Lightbox galería */
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('[data-lb] img').forEach(function(img){
+  img.parentElement.addEventListener('click',function(){lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden'});
+});
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
+
+/* Scroll reveal */
+var io=new IntersectionObserver(function(ents){ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+/* Fecha por defecto = mañana */
+var tm=new Date();tm.setDate(tm.getDate()+1);
+document.querySelectorAll('input[type=date]').forEach(function(i){i.min=new Date().toISOString().slice(0,10);i.value=tm.toISOString().slice(0,10)});
+
+/* Envío formulario cita */
+var ERP='https://gg-reservas-erp.josugarciandia.workers.dev/api/reservas';
+var KEY='igartua_citas';
+function saveLocal(d){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');a.unshift(d);localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}}
+document.getElementById('citaForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=e.target,st=document.getElementById('citaStatus'),btn=document.getElementById('citaBtn');
+  var d=Object.fromEntries(new FormData(form).entries());
+  d.negocio='biciprecision-igartua';d.negocio_nombre='BiciPrecisión Igartúa';d.origen='web';
+  if(!d.fecha||!d.hora||!d.servicio||!d.nombre||!d.telefono||!d.email){st.className='f-status show err';st.textContent='Faltan campos por rellenar.';return}
+  btn.disabled=true;var orig=btn.textContent;btn.textContent='Enviando…';st.classList.remove('show');
+  (async function(){
+    var saved=false,id=null;
+    try{var r=await fetch(ERP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),mode:'cors'});if(r.ok){var j=await r.json();id=j.id||(j.reserva&&j.reserva.id);saved=true}}catch(err){}
+    if(!saved){var ymd=new Date().toISOString().slice(0,10).replace(/-/g,'');var a=(function(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}})();id='BPI-'+ymd+'-'+String(a.length+1).padStart(3,'0');saveLocal(Object.assign({},d,{id:id,estado:'pendiente',created_at:new Date().toISOString(),_offline:true}))}
+    var ft=new Date(d.fecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+    st.className='f-status show ok';
+    st.innerHTML='<b>¡Solicitud enviada!</b> Te contactaremos para confirmarla.<br>📌 '+(id||'')+' · '+(d.servicio||'Cita')+' el '+ft+' a las '+d.hora+'.<br>¿Dudas? Llámanos al <a href="tel:+34943761121" style="color:inherit;text-decoration:underline">943 76 11 21</a>.';
+    form.reset();btn.disabled=false;btn.textContent=orig;
+    document.querySelectorAll('input[type=date]').forEach(function(i){i.value=tm.toISOString().slice(0,10)});
+  })();
+});
+</script>
+
+</body>
+</html>
