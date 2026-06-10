@@ -167,6 +167,54 @@ section{padding:100px 0}
 .co-legal{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.55}
 .bikes-note{text-align:center;margin-top:40px;font-size:15px;color:var(--muted)}
 .bikes-note a{color:var(--red);font-weight:600;text-decoration:underline}
+.bike-imgwrap{cursor:pointer}
+.bike-name{cursor:pointer;transition:color .2s}
+.bike-card:hover .bike-name{color:var(--red)}
+
+/* FICHA DETALLE DE BICI */
+.pd{position:fixed;inset:0;z-index:700;background:var(--bg);display:none;overflow-y:auto}
+.pd.open{display:block}
+.pd-bar{position:sticky;top:0;z-index:5;background:rgba(13,14,16,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:13px 28px}
+.pd-back{display:inline-flex;align-items:center;gap:9px;color:#fff;font-weight:600;font-size:14px;background:none;border:none;cursor:pointer;font-family:inherit;transition:.2s}
+.pd-back:hover{color:var(--red)}
+.pd-logo{height:34px;width:auto}
+.pd-x{background:none;border:none;color:#fff;font-size:28px;line-height:1;cursor:pointer;transition:.2s}
+.pd-x:hover{color:var(--red)}
+.pd-inner{max-width:1200px;margin:0 auto;padding:42px 28px 90px;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:start}
+.pd-gallery{position:sticky;top:96px}
+.pd-main{background:#fff;border:1px solid var(--line);border-radius:20px;aspect-ratio:4/3;display:grid;place-items:center;padding:30px;cursor:zoom-in;overflow:hidden}
+.pd-main img{width:100%;height:100%;object-fit:contain;transition:transform .4s}
+.pd-main:hover img{transform:scale(1.05)}
+.pd-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
+.pd-thumb{background:#fff;border:1.5px solid var(--line);border-radius:12px;aspect-ratio:1;display:grid;place-items:center;padding:7px;cursor:pointer;transition:.2s}
+.pd-thumb img{width:100%;height:100%;object-fit:contain}
+.pd-thumb:hover{border-color:var(--ink)}
+.pd-thumb.active{border-color:var(--red);box-shadow:0 0 0 2px rgba(14,179,190,.25)}
+.pd-cat{display:inline-block;background:var(--ink);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+.pd-info h2{font-size:clamp(28px,3.6vw,42px);color:var(--ink);text-transform:uppercase;line-height:1.05;margin-bottom:8px}
+.pd-brand{font-size:14px;color:var(--muted);margin-bottom:22px}
+.pd-price{font-family:'Wix Madefor Display',sans-serif;font-weight:700;font-size:38px;color:var(--ink);display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.pd-price small{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.pd-desc{font-size:15.5px;color:var(--muted);line-height:1.65;margin:18px 0 26px;max-width:520px}
+.pd-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.pd-ctas .btn{font-size:14px}
+.pd-wa{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600;font-size:14px;border-bottom:1.5px solid transparent;transition:.2s;padding-bottom:1px}
+.pd-wa:hover{color:var(--red);border-color:var(--red)}
+.pd-specs{margin-top:34px}
+.pd-specs h3{font-family:'Wix Madefor Display',sans-serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.pd-spec-row{display:grid;grid-template-columns:175px 1fr;gap:16px;padding:13px 2px;border-top:1px solid var(--line);font-size:14.5px}
+.pd-spec-row:last-child{border-bottom:1px solid var(--line)}
+.pd-spec-row b{color:var(--muted);font-weight:700;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;align-self:center}
+.pd-spec-row span{color:var(--ink);font-weight:500}
+.pd-note{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.55}
+@media(max-width:880px){
+  .pd-inner{grid-template-columns:1fr;gap:30px;padding:26px 20px 70px}
+  .pd-gallery{position:static}
+  .pd-bar{padding:12px 18px}
+  .pd-logo{height:28px}
+  .pd-thumbs{grid-template-columns:repeat(5,1fr)}
+  .pd-spec-row{grid-template-columns:128px 1fr;gap:12px}
+}
 
 /* PROMO BAND */
 .promo{background:var(--ink);color:#fff;position:relative;overflow:hidden;border-radius:24px;margin:0 28px;padding:64px 40px;text-align:center}
@@ -446,7 +494,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Litening Air C:68X Race</div>
           <div class="bike-sub">CUBE · Carretera aero · carbono</div>
-          <div class="bike-foot"><div class="bike-price">5.599 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">5.599 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -459,7 +507,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Agree C:62 SLX</div>
           <div class="bike-sub">CUBE · Carretera · carbono</div>
-          <div class="bike-foot"><div class="bike-price">4.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">4.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -472,7 +520,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Agree C:62 Race</div>
           <div class="bike-sub">CUBE · Carretera · carbono</div>
-          <div class="bike-foot"><div class="bike-price">3.899 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">3.899 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -485,7 +533,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Attain C:62 SLT</div>
           <div class="bike-sub">CUBE · Carretera endurance</div>
-          <div class="bike-foot"><div class="bike-price">3.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">3.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -498,7 +546,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Nuroad Race</div>
           <div class="bike-sub">CUBE · Gravel · aluminio</div>
-          <div class="bike-foot"><div class="bike-price">1.549 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">1.549 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -511,7 +559,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">AMS Zero99 C:68X Race 29</div>
           <div class="bike-sub">CUBE · MTB doble suspensión XC</div>
-          <div class="bike-foot"><div class="bike-price">4.699 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">4.699 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -524,7 +572,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Acid 200</div>
           <div class="bike-sub">CUBE · MTB junior 20˝</div>
-          <div class="bike-foot"><div class="bike-price">339 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">339 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -537,7 +585,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Acid 160</div>
           <div class="bike-sub">CUBE · MTB junior 16˝</div>
-          <div class="bike-foot"><div class="bike-price">309 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">309 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -550,7 +598,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Stereo Hybrid ONE44 HPC SLX 800</div>
           <div class="bike-sub">CUBE · E-MTB doble · Bosch</div>
-          <div class="bike-foot"><div class="bike-price">5.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">5.099 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -563,7 +611,7 @@ setTimeout(hideLoader,3500);
         <div class="bike-body">
           <div class="bike-name">Nuride Hybrid Performance 600</div>
           <div class="bike-sub">CUBE · E-Trekking / allround</div>
-          <div class="bike-foot"><div class="bike-price">2.649 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-open>Info</button></div></div>
+          <div class="bike-foot"><div class="bike-price">2.649 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
         </div>
       </article>
 
@@ -829,6 +877,38 @@ setTimeout(hideLoader,3500);
   </div>
 </footer>
 
+<!-- FICHA DETALLE DE BICI -->
+<div class="pd" id="pd">
+  <div class="pd-bar">
+    <button type="button" class="pd-back" id="pdBack">&larr; Volver al catálogo</button>
+    <img class="pd-logo" src="https://irunbikecenter.com/wp-content/uploads/2024/06/IrunBikeCenter__9_.pdf__4_-removebg-preview-e1718138528325.png" alt="Irun Bike Center">
+    <button type="button" class="pd-x" id="pdClose" aria-label="Cerrar">&times;</button>
+  </div>
+  <div class="pd-inner">
+    <div class="pd-gallery">
+      <div class="pd-main" id="pdMain"><img id="pdMainImg" src="" alt=""></div>
+      <div class="pd-thumbs" id="pdThumbs"></div>
+    </div>
+    <div class="pd-info">
+      <span class="pd-cat" id="pdCat"></span>
+      <h2 id="pdName"></h2>
+      <div class="pd-brand" id="pdBrand"></div>
+      <div class="pd-price"><span id="pdPrice"></span><small>PVP</small></div>
+      <p class="pd-desc" id="pdDesc"></p>
+      <div class="pd-ctas">
+        <button type="button" class="btn btn-red" id="pdBuy"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Comprar online</button>
+        <button type="button" class="btn btn-dark" id="pdCita">Reservar / pedir info</button>
+      </div>
+      <a class="pd-wa" id="pdWa" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg> Pregúntanos por WhatsApp</a>
+      <div class="pd-specs">
+        <h3>Ficha técnica</h3>
+        <div id="pdSpecs"></div>
+        <p class="pd-note" id="pdNote"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button><img id="lbImg" src="" alt=""></div>
 
@@ -946,7 +1026,7 @@ var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
 document.querySelectorAll('[data-lb] img').forEach(function(img){
   img.parentElement.addEventListener('click',function(){lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden'});
 });
-function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+function closeLb(){lb.classList.remove('open');if(!document.getElementById('pd').classList.contains('open'))document.body.style.overflow=''}
 document.getElementById('lbClose').addEventListener('click',closeLb);
 lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
@@ -980,6 +1060,93 @@ document.getElementById('citaForm').addEventListener('submit',function(e){
     form.reset();btn.disabled=false;btn.textContent=orig;
     document.querySelectorAll('input[type=date]').forEach(function(i){i.value=tm.toISOString().slice(0,10)});
   })();
+});
+
+/* FICHA DETALLE DE BICI — fotos y especificaciones REALES (web oficial CUBE) */
+var CDN='https://file.cube.eu/azwesc1xfg346/media/';
+var BIKES={
+ "Litening Air C:68X Race":{cat:"Carretera aero",price:"5.599 €",brand:"CUBE · Carretera aero · carbono C:68X",
+  desc:"Lo último de CUBE en carretera: chasis ultraligero de carbono C:68X y diseño aero homologado UCI. Grupo Shimano Ultegra Di2 con potenciómetro y ruedas Newmen para no perder ni un vatio. Tan ligera como rápida.",
+  imgs:["1f/08/33/1754323847/synqup_128200_S_00.jpg","65/17/0a/1754460209/synqup_128200_D_00.jpg","01/0c/3a/1754460210/synqup_128200_D_01.jpg","de/ac/0e/1754460211/synqup_128200_D_02.jpg","08/e0/98/1754460212/synqup_128200_D_03.jpg","a4/0b/11/1754546857/synqup_128200_P_00.jpg"],
+  specs:[["Cuadro","Carbono C:68X (~799 g)"],["Horquilla","Carbono C:68X integral"],["Grupo","Shimano Ultegra Di2 2x12"],["Potenciómetro","Sí, integrado en bielas"],["Frenos","Shimano Ultegra, disco hidráulico"],["Ruedas","Newmen Streem A.49 / A.54"],["Neumáticos","Continental Grand Prix 5000 S · 30 mm"],["Peso","Desde 7,3 kg (homologada UCI)"],["Tallas","50 – 62 cm"]],
+  note:"Color blackline · Homologada UCI. Consulta disponibilidad y tallas en tienda."},
+ "Agree C:62 SLX":{cat:"Carretera",price:"4.099 €",brand:"CUBE · Carretera · carbono C:62",
+  desc:"El todoterreno de carretera definitivo. Cuadro aero de carbono C:62 con caja de almacenaje integrada, manillar de carbono integrado y grupo SRAM Force AXS con potenciómetro. Velocidad, comodidad y tecnología en una sola bici.",
+  imgs:["66/de/43/1754323783/synqup_126400_S_00.jpg","ae/34/bf/1754460139/synqup_126400_D_00.jpg","2d/8a/29/1754460140/synqup_126400_D_01.jpg","5f/83/47/1754460141/synqup_126400_D_02.jpg","17/b1/75/1754460142/synqup_126400_D_03.jpg","3a/7a/99/1754546849/synqup_126400_P_00.jpg"],
+  specs:[["Cuadro","Carbono C:62 Advanced Twin Mold, aero"],["Horquilla","Carbono C:62 integral"],["Grupo","SRAM Force AXS 2x12 (electrónico)"],["Potenciómetro","Sí, integrado"],["Frenos","SRAM Force, disco hidráulico"],["Ruedas","Newmen Streem Climbing 35/38"],["Neumáticos","Continental Grand Prix 5000 · 30 mm"],["Manillar","Integrado de carbono"],["Extras","Caja de almacenaje en el cuadro"],["Tallas","47 – 62 cm"]],
+  note:"Color nightshift'n'prism · Hueco para neumáticos de hasta 32 mm."},
+ "Agree C:62 Race":{cat:"Carretera",price:"3.899 €",brand:"CUBE · Carretera · carbono C:62",
+  desc:"Bajo peso, comodidad y un diseño aero heredado de las bicis de contrarreloj de CUBE. Grupo Shimano Ultegra Di2 con potenciómetro, ruedas Newmen Streem y espacio para neumáticos de hasta 32 mm. El all-rounder perfecto.",
+  imgs:["64/fd/10/1754323758/synqup_126300_S_00.jpg","a9/33/57/1754460130/synqup_126300_D_00.jpg","bd/4f/8b/1754460131/synqup_126300_D_01.jpg","ee/b9/30/1754460132/synqup_126300_D_02.jpg","59/c6/d7/1754460133/synqup_126300_D_04.jpg","81/9b/d9/1754546843/synqup_126300_P_00.jpg"],
+  specs:[["Cuadro","Carbono C:62 aero"],["Horquilla","Carbono C:62 integral"],["Grupo","Shimano Ultegra Di2 2x12"],["Potenciómetro","Sí, integrado"],["Frenos","Shimano Ultegra, disco hidráulico"],["Ruedas","Newmen Streem Allround 49/54"],["Neumáticos","Continental Grand Prix 5000 · 30 mm"],["Manillar","Integrado"],["Extras","Caja de almacenaje en el cuadro"],["Tallas","50 – 62 cm"]],
+  note:"Color glacier'n'black · Hueco para neumáticos de hasta 32 mm."},
+ "Attain C:62 SLT":{cat:"Endurance",price:"3.099 €",brand:"CUBE · Carretera endurance · carbono C:62",
+  desc:"La reina del fondo. Cuadro semi-aero de carbono C:62 con flex stays que filtran el firme, ruedas de carbono Newmen y grupo Shimano Ultegra Di2. Comodidad de gran turismo con alma de bici de carreras.",
+  imgs:["d2/f2/34/1754323772/synqup_125700_S_00.jpg","0a/df/8d/1754460125/synqup_125700_D_02.jpg","a5/c1/88/1754460126/synqup_125700_D_04.jpg","43/9e/97/1754460127/synqup_125700_D_06.jpg","89/32/50/1754460128/synqup_125700_D_09.jpg","g0/40/b2/1754546836/synqup_125700_P_00.jpg"],
+  specs:[["Cuadro","Carbono C:62 semi-aero endurance"],["Horquilla","Carbono integral"],["Grupo","Shimano Ultegra Di2 2x12"],["Frenos","Shimano Ultegra, disco hidráulico"],["Ruedas","Newmen Advanced A.50 (carbono)"],["Neumáticos","Hasta 34 mm"],["Confort","Flex stays + eje pasante"],["Tallas","50 – 62 cm"]],
+  note:"Color carbon'n'coalchrome · Geometría endurance de larga distancia."},
+ "Nuroad Race":{cat:"Gravel",price:"1.549 €",brand:"CUBE · Gravel · aluminio",
+  desc:"Gravel sin límites. Cuadro de aluminio de alto rendimiento con geometría Gravel Comfort, grupo Shimano GRX 2x12 y neumáticos Schwalbe G-One de 45 mm (admite hasta 50). Anclajes para alforjas y aventuras de varios días.",
+  imgs:["30/de/52/1754323841/synqup_129450_S_00.jpg","af/2c/6b/1762237752/synqup_129450_D_00.jpg","fd/24/2a/1754460228/synqup_129450_D_01.jpg","18/d6/33/1754460229/synqup_129450_D_02.jpg","82/81/b8/1754460229/synqup_129450_D_03.jpg","4e/83/29/1754323843/synqup_129450_MC_00.png"],
+  specs:[["Cuadro","Aluminio High Performance"],["Horquilla","Carbono"],["Grupo","Shimano GRX 2x12"],["Frenos","Disco hidráulico"],["Ruedas","Newmen Performance Gravel 25"],["Neumáticos","Schwalbe G-One R · 45 mm (admite 50)"],["Geometría","Gravel Comfort"],["Extras","Anclajes para alforjas, portabultos y guardabarros"],["Tallas","XS – XL"]],
+  note:"Color royalgreen'n'black · Lista para bikepacking."},
+ "AMS Zero99 C:68X Race 29":{cat:"MTB Doble · XC",price:"4.699 €",brand:"CUBE · MTB doble suspensión XC · carbono",
+  desc:"Doble suspensión de competición XC. Cuadro de carbono C:68X (¡solo ~1.600 g!), 100 mm de recorrido Fox delante y detrás con mando remoto, y grupo Shimano XT 1x12. Para volar por el monte.",
+  imgs:["bd/ab/07/1725092334/synqup_833100_S_00.jpg","dc/4a/94/1730352478/synqup_833100_D_00.jpg","49/d6/98/1730352479/synqup_833100_D_01.jpg","8e/60/29/1730352480/synqup_833100_D_02.jpg","2e/1d/f1/1730352481/synqup_833100_D_03.jpg","2d/95/1c/1725092353/synqup_833100_M_00.jpg"],
+  specs:[["Cuadro","Carbono C:68X (~1.600 g) · FSP 4-Link"],["Recorrido","100 mm delante y detrás"],["Horquilla","Fox 32 SC Float Performance, remoto"],["Amortiguador","Fox Float DPS Performance Elite, remoto"],["Grupo","Shimano XT 1x12 (10–51T)"],["Frenos","Shimano XT, disco hidráulico (180/160)"],["Ruedas","29˝"],["Estándares","Boost 148 · UDH"]],
+  note:"Color blackline · Doble suspensión de competición XC."},
+ "Acid 200":{cat:"MTB Junior",price:"339 €",brand:"CUBE · MTB junior 20˝",
+  desc:"La primera 'bici de mayores' para peques. Cuadro de aluminio 6061 ligero y resistente, ruedas de 20˝ y geometría junior pensada para que disfruten del monte con seguridad. Hay versión equipable con portabultos y luces.",
+  imgs:["cc/73/ac/1725093316/synqup_851200_S_00.jpg","64/47/89/1730352710/synqup_851200_D_00.jpg","74/26/74/1730352711/synqup_851200_D_01.jpg","98/6f/ff/1730352712/synqup_851200_D_02.jpg","44/ba/38/1730352713/synqup_851200_D_03.jpg","d5/cf/5c/1725093334/synqup_851200_M_00.jpg"],
+  specs:[["Cuadro","Aluminio 6061 hidroconformado"],["Ruedas","20˝"],["Frenos","V-brake (manetas para manos pequeñas)"],["Cambio","Multivelocidad, gama media"],["Geometría","Junior, ligera"],["Uso","Iniciación al monte"]],
+  note:"Color lightolive'n'orange · Disponibles versiones Disc y FE (portabultos, luces y guardabarros). Consulta en tienda."},
+ "Acid 160":{cat:"MTB Junior",price:"309 €",brand:"CUBE · MTB junior 16˝",
+  desc:"La MTB ideal para empezar. Ruedas de 16˝, cuadro de aluminio ligero con cantos redondeados para minimizar riesgos y frenos V-brake con manetas adaptadas a manos pequeñas. Diversión y seguridad desde el primer pedaleo.",
+  imgs:["f0/e7/9a/1754323950/synqup_151120_S_00.jpg","6e/2c/5c/1754460425/synqup_151120_D_00.jpg","35/af/b4/1754460426/synqup_151120_D_01.jpg","14/84/0d/1754460427/synqup_151120_D_02.jpg","8d/a1/78/1754460428/synqup_151120_D_03.jpg","62/28/de/1754460430/synqup_151120_M_00.jpg"],
+  specs:[["Cuadro","Aluminio 6061 ligero, cantos redondeados"],["Ruedas","16˝"],["Frenos","V-brake (manetas para manos pequeñas)"],["Cambio","Con marchas"],["Geometría","Junior, manejo estable"],["Uso","Primera MTB"]],
+  note:"Acabado Actionteam (mismos colores que las CUBE de adulto). Consulta tallas y disponibilidad en tienda."},
+ "Stereo Hybrid ONE44 HPC SLX 800":{cat:"E-MTB",price:"5.099 €",brand:"CUBE · E-MTB doble · carbono · Bosch",
+  desc:"E-MTB de doble suspensión y carbono HPC. Motor Bosch Performance CX con batería de 800 Wh, 150/140 mm de recorrido Fox, grupo Shimano XT y frenos de 4 pistones con discos de 203 mm. Sube lo que quieras, baja como quieras.",
+  imgs:["60/09/b3/1754323575/synqup_102500_S_00.jpg","41/fb/e7/1754459884/synqup_102500_D_00.jpg","9d/eb/df/1754459885/synqup_102500_D_01.jpg","ab/88/0d/1754459886/synqup_102500_D_02.jpg","fc/20/0d/1754459887/synqup_102500_D_03.jpg","18/2b/d7/1754459889/synqup_102500_M_00.jpg"],
+  specs:[["Cuadro","Carbono HPC · 140 mm traseros"],["Horquilla","Fox 36 Float Rhythm · 150 mm"],["Amortiguador","Fox Float Performance"],["Motor","Bosch Performance CX"],["Batería","Bosch PowerTube 800 Wh"],["Display","Bosch Purion 400 + control en tubo superior"],["Grupo","Shimano XT 1x12"],["Frenos","Shimano XT 4 pistones, discos 203 mm"],["Ruedas","Newmen Performance 30"],["Neumáticos","Continental Kryptotal · 2.4˝"]],
+  note:"Color slabgrey'n'orange · E-MTB all-mountain / enduro."},
+ "Nuride Hybrid Performance 600":{cat:"E-Trekking",price:"2.649 €",brand:"CUBE · E-Trekking / allround · Bosch",
+  desc:"Tu compañera para todo: ciudad, paseos y rutas. Motor Bosch Performance (75 Nm) con Smart System y batería de 600 Wh, horquilla de suspensión y equipamiento completo (portabultos, guardabarros, luces y caballete). Comodidad sin esfuerzo.",
+  imgs:["60/3c/b8/1754323534/synqup_110101_S_00.jpg","62/2f/69/1754460023/synqup_110101_D_00.jpg","53/81/f4/1754460025/synqup_110101_D_02.jpg","18/6d/1b/1754460025/synqup_110101_D_03.jpg","4e/b9/fd/1754460026/synqup_110101_D_04.jpg","83/2e/c2/1754460028/synqup_110101_M_00.jpg"],
+  specs:[["Cuadro","Aluminio Trapeze · Efficient Comfort Geometry"],["Horquilla","Suspensión"],["Motor","Bosch Performance (Smart System) · 75 Nm"],["Batería","Bosch PowerTube 600 Wh"],["Grupo","Shimano Cues 10v"],["Frenos","Shimano, disco hidráulico"],["Neumáticos","Schwalbe, anchos y con agarre"],["Equipamiento","Portabultos, guardabarros, luces y caballete"]],
+  note:"Color slabgrey'n'black · E-trekking totalmente equipada."}
+};
+var pd=document.getElementById('pd');
+function openDetail(name){
+  var b=BIKES[name];if(!b)return;
+  document.getElementById('pdCat').textContent=b.cat;
+  document.getElementById('pdName').textContent=name;
+  document.getElementById('pdBrand').textContent=b.brand;
+  document.getElementById('pdPrice').textContent=b.price;
+  document.getElementById('pdDesc').textContent=b.desc;
+  document.getElementById('pdNote').textContent=b.note||'';
+  var sp=document.getElementById('pdSpecs');sp.innerHTML='';
+  b.specs.forEach(function(r){var d=document.createElement('div');d.className='pd-spec-row';var lb=document.createElement('b');lb.textContent=r[0];var vl=document.createElement('span');vl.textContent=r[1];d.appendChild(lb);d.appendChild(vl);sp.appendChild(d)});
+  var th=document.getElementById('pdThumbs');th.innerHTML='';
+  var main=document.getElementById('pdMainImg');
+  main.src=CDN+b.imgs[0];main.alt=name;
+  b.imgs.forEach(function(rel,i){var src=CDN+rel;var t=document.createElement('div');t.className='pd-thumb'+(i===0?' active':'');var im=document.createElement('img');im.src=src;im.alt=name+' · vista '+(i+1);im.loading='lazy';t.appendChild(im);t.addEventListener('click',function(){main.src=src;th.querySelectorAll('.pd-thumb').forEach(function(x){x.classList.remove('active')});t.classList.add('active')});th.appendChild(t)});
+  document.getElementById('pdBuy').onclick=function(){closeDetail();openCheckout(name,b.price)};
+  document.getElementById('pdCita').onclick=function(){closeDetail();document.getElementById('cita').scrollIntoView({behavior:'smooth'})};
+  document.getElementById('pdWa').href='https://wa.me/34943306834?text='+encodeURIComponent('Hola, me interesa la '+name+' ('+b.price+'). ¿Tenéis disponibilidad y tallas?');
+  pd.classList.add('open');pd.scrollTop=0;document.body.style.overflow='hidden';
+}
+function closeDetail(){pd.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('pdBack').addEventListener('click',closeDetail);
+document.getElementById('pdClose').addEventListener('click',closeDetail);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pd.classList.contains('open')&&!lb.classList.contains('open'))closeDetail()});
+document.getElementById('pdMain').addEventListener('click',function(){var s=document.getElementById('pdMainImg');lbImg.src=s.src;lbImg.alt=s.alt;lb.classList.add('open');document.body.style.overflow='hidden'});
+document.querySelectorAll('#bikeGrid .bike-card').forEach(function(card){
+  var name=card.querySelector('.bike-name').textContent.trim();
+  card.querySelector('.bike-imgwrap').addEventListener('click',function(){openDetail(name)});
+  card.querySelector('.bike-name').addEventListener('click',function(){openDetail(name)});
+  var info=card.querySelector('[data-detail]');
+  if(info)info.addEventListener('click',function(e){e.stopPropagation();openDetail(name)});
 });
 </script>
 
