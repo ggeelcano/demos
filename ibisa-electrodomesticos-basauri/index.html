@@ -72,7 +72,16 @@ html{scroll-behavior:smooth}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
+body{font-family:'Inter',system-ui,sans-serif;background:#070b14;color:var(--txt);line-height:1.6;overflow-x:hidden}
+/* aurora de color de fondo (alegría) */
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+  radial-gradient(620px 520px at 8% 4%, rgba(79,141,249,.30), transparent 60%),
+  radial-gradient(680px 560px at 95% 8%, rgba(45,212,238,.24), transparent 60%),
+  radial-gradient(720px 620px at 88% 62%, rgba(124,58,237,.26), transparent 62%),
+  radial-gradient(640px 560px at 6% 70%, rgba(236,72,153,.18), transparent 60%),
+  radial-gradient(700px 600px at 50% 108%, rgba(34,197,94,.14), transparent 60%),
+  #070b14}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(148,163,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.04) 1px,transparent 1px);background-size:60px 60px}
 h1,h2,h3,.brandword{font-family:'Space Grotesk',sans-serif}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -138,10 +147,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,9,15,.82);backdro
 }
 
 /* hero */
-.hero{position:relative;padding:90px 0 70px;background:
-  radial-gradient(900px 480px at 85% -10%,rgba(79,141,249,.16),transparent 60%),
-  radial-gradient(700px 420px at -10% 110%,rgba(45,212,238,.10),transparent 60%),
-  var(--bg)}
+.hero{position:relative;padding:90px 0 70px}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,black,transparent);mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,black,transparent)}
 .hero .container{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 @media(max-width:920px){.hero .container{grid-template-columns:1fr}}
@@ -169,7 +175,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,9,15,.82);backdro
 @media(max-width:920px){.chip-1{left:0}.chip-2{right:0}}
 
 /* brand marquee */
-.brands{border-block:1px solid var(--line);background:var(--bg2);padding:20px 0;overflow:hidden}
+.brands{border-block:1px solid var(--line);background:rgba(8,11,20,.55);padding:20px 0;overflow:hidden}
 .marquee{display:flex;gap:64px;width:max-content;animation:scroll 36s linear infinite}
 .marquee:hover,.marquee:focus-within{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
@@ -212,7 +218,7 @@ section{padding:88px 0}
 .cat-fam a.sublink:hover{color:var(--cyan);padding-left:4px}
 
 /* productos */
-#destacados{background:var(--bg2);border-block:1px solid var(--line)}
+#destacados{background:rgba(8,11,20,.5);border-block:1px solid var(--line)}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:38px}
 .tab{background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:9px 20px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s}
 .tab:hover{color:var(--txt)}
@@ -223,17 +229,40 @@ section{padding:88px 0}
 @media(max-width:480px){.prod-grid{grid-template-columns:1fr}}
 .prod{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
 .prod:hover{transform:translateY(-6px);border-color:rgba(45,212,238,.4);box-shadow:var(--shadow)}
-.prod .ph{background:#fff;height:200px;display:flex;align-items:center;justify-content:center;padding:16px}
+.prod .ph{position:relative;background:#fff;height:200px;display:flex;align-items:center;justify-content:center;padding:16px}
 .prod .ph img{width:100%;height:168px;object-fit:contain}
+.prod-tag{position:absolute;top:10px;left:10px;background:var(--grad);color:#031018;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
 .prod .info{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .prod .brand{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
 .prod h3{font-size:.93rem;font-weight:600;line-height:1.4;flex:1}
 .prod .foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
 .prod .price{font-size:1.18rem}
-.prod .foot a{font-size:.8rem;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:7px 14px;border-radius:999px;transition:all .2s}
-.prod .foot a:hover{color:var(--cyan);border-color:var(--cyan)}
+.prod .foot a,.prod .foot .prod-ver{font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:1px solid var(--line);padding:7px 16px;border-radius:999px;transition:all .2s;cursor:pointer;font-family:inherit}
+.prod .foot a:hover,.prod .foot .prod-ver:hover{color:#031018;background:var(--grad);border-color:transparent}
 .note-envio{margin-top:34px;text-align:center;color:var(--muted);font-size:.9rem}
 .note-envio strong{color:var(--txt)}
+
+/* modal de producto */
+.prod-modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(4,6,11,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.prod-modal.open{opacity:1;visibility:visible}
+.modal-box{position:relative;width:min(860px,100%);max-height:92vh;overflow:auto;background:linear-gradient(165deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.modal-close{position:absolute;top:14px;right:14px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(8,11,20,.7);border:1px solid var(--line);color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{border-color:var(--cyan);color:var(--cyan)}
+.modal-close svg{width:20px;height:20px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:680px){.modal-grid{grid-template-columns:1fr}}
+.modal-ph{background:#fff;display:flex;align-items:center;justify-content:center;padding:30px;min-height:320px;border-radius:22px 0 0 22px}
+@media(max-width:680px){.modal-ph{border-radius:22px 22px 0 0;min-height:240px}}
+.modal-ph img{width:100%;max-height:340px;object-fit:contain}
+.modal-info{padding:32px 30px;display:flex;flex-direction:column;gap:10px}
+.modal-tag{align-self:flex-start;background:var(--grad);color:#031018;font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 11px;border-radius:999px}
+.modal-brand{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.modal-info h3{font-size:1.25rem;font-weight:700;line-height:1.3}
+.modal-price{font-family:'Space Grotesk';font-size:1.9rem;font-weight:700;color:var(--cyan);margin:2px 0 6px}
+.modal-benes{list-style:none;display:grid;gap:7px;font-size:.9rem;color:var(--muted)}
+.modal-help{font-size:.9rem;color:var(--txt);margin-top:6px}
+.modal-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.modal-ctas .btn{font-size:.9rem;padding:11px 20px}
 
 /* servicios */
 .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -247,7 +276,7 @@ section{padding:88px 0}
 .serv p{font-size:.9rem;color:var(--muted)}
 
 /* nosotros */
-#nosotros{background:var(--bg2);border-block:1px solid var(--line)}
+#nosotros{background:rgba(8,11,20,.5);border-block:1px solid var(--line)}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 @media(max-width:880px){.about{grid-template-columns:1fr}}
 .about-img{position:relative}
@@ -279,7 +308,7 @@ section{padding:88px 0}
 .rev-cta{margin-top:34px;text-align:center}
 
 /* contacto */
-#contacto{background:var(--bg2);border-top:1px solid var(--line)}
+#contacto{background:rgba(8,11,20,.5);border-top:1px solid var(--line)}
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:stretch}
 @media(max-width:880px){.contact-grid{grid-template-columns:1fr}}
 .c-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:22px}
@@ -446,37 +475,37 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
       <p>Trabajamos todo el catálogo de las primeras marcas. Si no lo ves, pregúntanos: te lo conseguimos.</p>
     </div>
     <div class="cat-grid">
-      <a class="cat-card reveal" href="https://www.ibisahome.com/10-televisores" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="tv">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/7691-home_default/tv-lg-65-oled65c54la.jpg" alt="Televisor LG OLED de 65 pulgadas" referrerpolicy="no-referrer"></div>
         <h3>Televisores</h3>
         <p>OLED, QLED y LED de 19" a 77". Samsung, LG, Philips, Sony…</p>
         <span class="go">Ver televisores →</span>
       </a>
-      <a class="cat-card reveal" href="https://www.ibisahome.com/11-imagen-sonido-y-fotografia" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="sonido">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/7468-home_default/tocadiscos-denon-dp400bkem.jpg" alt="Tocadiscos Denon DP400" referrerpolicy="no-referrer"></div>
         <h3>Sonido &amp; Hi-Fi</h3>
         <p>Barras de sonido, home cinema, tocadiscos, equipos de música.</p>
         <span class="go">Ver sonido →</span>
       </a>
-      <a class="cat-card reveal" href="https://www.ibisahome.com/41-frigorificos" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="frio">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/8522-home_default/vinoteca-encastrable-smeg-cvi338lx3-linea-classic-con-capacidad-para-38-botellas.jpg" alt="Vinoteca encastrable Smeg línea Classic" referrerpolicy="no-referrer"></div>
         <h3>Frío &amp; Vinotecas</h3>
         <p>Frigoríficos, combis, congeladores y vinotecas integrables.</p>
         <span class="go">Ver frío →</span>
       </a>
-      <a class="cat-card reveal" href="https://www.ibisahome.com/35-lavadoras" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="lavado">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/5990-home_default/lavadora-integrable-8kg-bosch-wiw28302es.jpg" alt="Lavadora integrable Bosch de 8 kilos" referrerpolicy="no-referrer"></div>
         <h3>Lavado</h3>
         <p>Lavadoras, secadoras y lavavajillas. Libres e integrables.</p>
         <span class="go">Ver lavado →</span>
       </a>
-      <a class="cat-card reveal" href="https://www.ibisahome.com/12-electrodomesticos" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="cocina">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/7105-home_default/horno-cristal-negro-balay-3hb5131n3.jpg" alt="Horno de cristal negro Balay" referrerpolicy="no-referrer"></div>
         <h3>Cocina</h3>
         <p>Hornos, placas, vitrocerámicas, campanas y microondas.</p>
         <span class="go">Ver cocina →</span>
       </a>
-      <a class="cat-card reveal" href="https://www.ibisahome.com/13-pequeno-electrodomestico" target="_blank" rel="noopener">
+      <a class="cat-card reveal" href="#destacados" data-cat="pae">
         <div class="img-wrap"><img loading="lazy" src="https://www.ibisahome.com/7009-home_default/cafetera-integrable-siemens-ct718l1b0-iq700-con-home-connect-y-coffeeworld.jpg" alt="Cafetera integrable Siemens iQ700" referrerpolicy="no-referrer"></div>
         <h3>Pequeño electrodoméstico</h3>
         <p>Cafeteras, aspiradores, robots de cocina, cuidado personal.</p>
@@ -493,20 +522,21 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
   </div>
 </section>
 
-<!-- DESTACADOS -->
+<!-- CATÁLOGO / DESTACADOS -->
 <section id="destacados">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="kicker">Selección</span>
+      <span class="kicker">Nuestro catálogo</span>
       <h2>Productos destacados</h2>
-      <p>Una muestra de lo que tenemos: cómpralos en nuestra tienda online o ven a verlos a Basauri.</p>
+      <p>Una muestra de lo que tenemos. Filtra por categoría y mira los detalles sin salir de la web.</p>
     </div>
     <div class="tabs reveal" role="group" aria-label="Filtrar productos por categoría">
       <button class="tab active" aria-pressed="true" data-f="all">Todo</button>
-      <button class="tab" aria-pressed="false" data-f="televisores">Televisores</button>
-      <button class="tab" aria-pressed="false" data-f="sonido">Sonido</button>
-      <button class="tab" aria-pressed="false" data-f="frio">Frío</button>
-      <button class="tab" aria-pressed="false" data-f="lavado-cocina">Lavado &amp; Cocina</button>
+      <button class="tab" aria-pressed="false" data-f="tv">Televisores</button>
+      <button class="tab" aria-pressed="false" data-f="sonido">Sonido &amp; Hi-Fi</button>
+      <button class="tab" aria-pressed="false" data-f="frio">Frío &amp; Vinotecas</button>
+      <button class="tab" aria-pressed="false" data-f="lavado">Lavado</button>
+      <button class="tab" aria-pressed="false" data-f="cocina">Cocina</button>
       <button class="tab" aria-pressed="false" data-f="pae">Pequeño electro.</button>
     </div>
     <p id="prodStatus" class="sr-only" role="status"></p>
@@ -705,6 +735,16 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
   </div>
 </footer>
 
+<!-- MODAL PRODUCTO -->
+<div class="prod-modal" id="prodModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-grid" id="modalBody"></div>
+  </div>
+</div>
+
 <!-- CHAT -->
 <button class="chat-toggle" id="chatToggle" aria-label="Abrir asistente virtual" aria-expanded="false" aria-controls="chatPanel">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -736,70 +776,57 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
 <script>
 document.documentElement.classList.add('js');
 
-// ---------- catálogo completo (estructura real de ibisahome.com) ----------
-const BASE = 'https://www.ibisahome.com/';
+// ---------- catálogo completo (estructura real de ibisahome.com, navegación INTERNA) ----------
+// cada entrada: [label, navCat]  · navCat = categoría interna que filtra el catálogo de abajo
+const ALL_ELECTRO = 'frio,lavado,cocina,pae';
 const CATALOG = [
-  { id:'10-televisores', em:'📺', name:'Televisores', items:[
-    ['14-tv-led-19-24-','TV LED 19–24"'],['15-tv-led-28-32-','TV LED 28–32"'],
-    ['16-tv-led-40-55-','TV LED 40–55"'],['17-tv-led-mas-de-55-','TV LED más de 55"'],
-    ['65-qled-tv','QLED TV'],['66-oled-tv','OLED TV'],
+  { em:'📺', name:'Televisores', nav:'tv', items:[
+    ['TV LED 19–24"','tv'],['TV LED 28–32"','tv'],['TV LED 40–55"','tv'],['TV LED más de 55"','tv'],['QLED TV','tv'],['OLED TV','tv'],
   ]},
-  { id:'11-imagen-sonido-y-fotografia', em:'🎬', name:'Imagen, sonido y fotografía', items:[
-    ['18-home-cinema','Home cinema'],['24-proyectores','Proyectores'],['19-barras-de-sonido','Barras de sonido'],
-    ['21-altavoces','Altavoces'],['20-blu-ray','Blu-ray'],['22-camaras-video','Cámaras de vídeo'],
-    ['23-camaras-fotografia','Cámaras de fotografía'],['31-objetivos','Objetivos'],['25-auriculares','Auriculares'],
-    ['26-equipos-de-musica','Equipos de música'],['27-amplificadores','Amplificadores'],['28-lectores-de-cd','Lectores de CD'],
-    ['29-radios','Radios'],['30-tocadiscos','Tocadiscos'],
+  { em:'🎬', name:'Imagen, sonido y fotografía', nav:'sonido', items:[
+    ['Home cinema','sonido'],['Proyectores','sonido'],['Barras de sonido','sonido'],['Altavoces','sonido'],['Blu-ray','sonido'],
+    ['Cámaras de vídeo','sonido'],['Cámaras de fotografía','sonido'],['Objetivos','sonido'],['Auriculares','sonido'],
+    ['Equipos de música','sonido'],['Amplificadores','sonido'],['Lectores de CD','sonido'],['Radios','sonido'],['Tocadiscos','sonido'],
   ]},
-  { id:'12-electrodomesticos', em:'🍳', name:'Electrodomésticos', items:[
+  { em:'🍳', name:'Electrodomésticos', nav:ALL_ELECTRO, items:[
     {sub:'Integrables'},
-    ['34-lavavajillas','Lavavajillas'],['35-lavadoras','Lavadoras'],['36-secadoras','Secadoras'],['38-microondas','Microondas'],
-    ['39-combis','Combis'],['40-congeladores','Congeladores'],['41-frigorificos','Frigoríficos'],['42-vinoteca','Vinotecas'],
-    ['46-campanas','Campanas'],['47-grupos-y-motores','Grupos y motores'],['48-vitroceramicas','Vitrocerámicas'],
-    ['49-hornos','Hornos'],['51-cafeteras','Cafeteras'],
+    ['Lavavajillas','lavado'],['Lavadoras','lavado'],['Secadoras','lavado'],['Microondas','cocina'],['Combis','frio'],
+    ['Congeladores','frio'],['Frigoríficos','frio'],['Vinotecas','frio'],['Campanas','cocina'],['Grupos y motores','cocina'],
+    ['Vitrocerámicas','cocina'],['Hornos','cocina'],['Cafeteras','pae'],
     {sub:'Libre instalación'},
-    ['44-lavadoras','Lavadoras'],['43-lavavajillas','Lavavajillas'],['45-secadoras','Secadoras'],['37-cocinas','Cocinas'],
-    ['50-microondas','Microondas'],['52-combis','Combis'],['53-frigorificos','Frigoríficos'],
-    ['54-congeladores','Congeladores'],['55-vinoteca','Vinotecas'],
+    ['Lavadoras','lavado'],['Lavavajillas','lavado'],['Secadoras','lavado'],['Cocinas','cocina'],['Microondas','cocina'],
+    ['Combis','frio'],['Frigoríficos','frio'],['Congeladores','frio'],['Vinotecas','frio'],
   ]},
-  { id:'13-pequeno-electrodomestico', em:'🔌', name:'Pequeño electrodoméstico', items:[
-    ['57-aspiradoras-sin-bolsa','Aspiradoras sin bolsa'],['56-aspiradoras-con-bolsa','Aspiradoras con bolsa'],
-    ['58-centros-de-planchado-y-planchas','Planchado y planchas'],['59-cuidado-personal','Cuidado personal'],
-    ['60-cocina','Cocina'],['67-desayuno','Desayuno'],['61-radiadores','Radiadores'],['62-calefactores','Calefactores'],
-    ['63-aire-acondicionado','Aire acondicionado'],['64-deshumidificadores','Deshumidificadores'],
+  { em:'🔌', name:'Pequeño electrodoméstico', nav:'pae', items:[
+    ['Aspiradoras sin bolsa','pae'],['Aspiradoras con bolsa','pae'],['Planchado y planchas','pae'],['Cuidado personal','pae'],
+    ['Cocina','pae'],['Desayuno','pae'],['Radiadores','pae'],['Calefactores','pae'],['Aire acondicionado','pae'],['Deshumidificadores','pae'],
   ]},
 ];
 
 function catLinks(items){
   return items.map(it => {
     if (it.sub) return `<li class="subhead">${it.sub}</li>`;
-    return `<li><a class="sublink" href="${BASE}${it[0]}" target="_blank" rel="noopener">${it[1]}</a></li>`;
+    return `<li><a class="sublink catfilter" href="#destacados" data-cat="${it[1]}" data-label="${it[0]}">${it[0]}</a></li>`;
   }).join('');
 }
-// megamenú del header
+function famHead(c, tag, cls){
+  return `<${tag} class="${cls}"><span class="em" aria-hidden="true">${c.em}</span> <a class="catfilter" href="#destacados" data-cat="${c.nav}" data-label="${c.name}">${c.name}</a></${tag}>`;
+}
 const megaInner = document.getElementById('megaInner');
 if (megaInner) megaInner.innerHTML = CATALOG.map(c => `
-  <div class="mega-col">
-    <h4><span aria-hidden="true">${c.em}</span> <a href="${BASE}${c.id}" target="_blank" rel="noopener">${c.name}</a></h4>
-    <ul>${catLinks(c.items)}</ul>
-  </div>`).join('') +
-  `<div class="mega-col"><h4><span aria-hidden="true">🏷️</span> <a href="${BASE}productos-rebajados" target="_blank" rel="noopener">Ofertas</a></h4>
-    <ul><li><a class="sublink" href="${BASE}productos-rebajados" target="_blank" rel="noopener">Productos rebajados</a></li>
-    <li><a class="sublink" href="${BASE}68-otros" target="_blank" rel="noopener">Otros</a></li></ul></div>`;
-// índice completo en la sección
+  <div class="mega-col">${famHead(c,'h4','')}<ul>${catLinks(c.items)}</ul></div>`).join('') +
+  `<div class="mega-col"><h4><span aria-hidden="true">🏷️</span> <a class="catfilter" href="#destacados" data-cat="all" data-label="Todo el catálogo">Todo el catálogo</a></h4>
+    <ul><li><a class="sublink catfilter" href="#destacados" data-cat="all" data-label="Todos los productos">Ver todos los productos</a></li></ul></div>`;
 const catIndex = document.getElementById('catIndex');
 if (catIndex) catIndex.innerHTML = CATALOG.map(c => `
-  <div class="cat-fam">
-    <h3><span class="em" aria-hidden="true">${c.em}</span> <a href="${BASE}${c.id}" target="_blank" rel="noopener">${c.name}</a></h3>
-    <ul>${catLinks(c.items)}</ul>
-  </div>`).join('') +
-  `<div class="cat-fam"><h3><span class="em" aria-hidden="true">🏷️</span> <a href="${BASE}productos-rebajados" target="_blank" rel="noopener">Ofertas y otros</a></h3>
-    <ul><li><a class="sublink" href="${BASE}productos-rebajados" target="_blank" rel="noopener">Productos rebajados</a></li>
-    <li><a class="sublink" href="${BASE}68-otros" target="_blank" rel="noopener">Otros productos</a></li></ul></div>`;
+  <div class="cat-fam">${famHead(c,'h3','')}<ul>${catLinks(c.items)}</ul></div>`).join('') +
+  `<div class="cat-fam"><h3><span class="em" aria-hidden="true">🏷️</span> <a class="catfilter" href="#destacados" data-cat="all" data-label="Todo el catálogo">Todo el catálogo</a></h3>
+    <ul><li><a class="sublink catfilter" href="#destacados" data-cat="all" data-label="Todos los productos">Ver los 100 productos</a></li></ul></div>`;
 
 // botón Catálogo: en móvil lleva al índice; en desktop abre/cierra el megapanel
 const megaBtn = document.getElementById('megaBtn');
 const megaPanel = document.getElementById('megaPanel');
+function closeMega(){ if(megaPanel){ megaPanel.classList.remove('open'); megaBtn.setAttribute('aria-expanded','false'); } }
 if (megaBtn) megaBtn.addEventListener('click', () => {
   if (window.matchMedia('(max-width:920px)').matches) {
     document.getElementById('navLinks').classList.remove('open');
@@ -811,73 +838,217 @@ if (megaBtn) megaBtn.addEventListener('click', () => {
   megaBtn.setAttribute('aria-expanded', open);
 });
 document.addEventListener('click', e => {
-  if (megaPanel && megaPanel.classList.contains('open') && !e.target.closest('.has-mega')) {
-    megaPanel.classList.remove('open'); megaBtn.setAttribute('aria-expanded','false');
-  }
+  if (megaPanel && megaPanel.classList.contains('open') && !e.target.closest('.has-mega')) closeMega();
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && megaPanel && megaPanel.classList.contains('open')) {
-    megaPanel.classList.remove('open'); megaBtn.setAttribute('aria-expanded','false'); megaBtn.focus();
-  }
+  if (e.key === 'Escape' && megaPanel && megaPanel.classList.contains('open')) { closeMega(); megaBtn.focus(); }
 });
 
 // ---------- productos ----------
 const PRODUCTS = [
-  {g:"televisores",b:"Samsung",n:"Samsung TQ77S85F · OLED 77\" Smart TV 4K 120Hz (2025)",p:"1.190,00 €",img:"https://www.ibisahome.com/8471-home_default/tv-oled-77-samsung-tq77s85f.jpg",url:"https://www.ibisahome.com/oled-tv/7657-tv-oled-77-samsung-tq77s85f-8806097057529.html"},
-  {g:"televisores",b:"LG",n:"LG OLED evo G5 55\" Serie Gallery 2025 · Tecnología MLA",p:"1.220,00 €",img:"https://www.ibisahome.com/7680-home_default/lg-oled-55g54lw-tv-55-oled-evo-g5-serie-gallery-2025-con-tecnologia-mla.jpg",url:"https://www.ibisahome.com/tv-led-40-55-/6963-lg-oled-55g54lw-tv-55-oled-evo-g5-serie-gallery-2025-con-tecnologia-mla-8806096397480.html"},
-  {g:"televisores",b:"LG",n:"LG OLED evo C5 65\" · OLED65C54LA",p:"1.195,00 €",img:"https://www.ibisahome.com/7691-home_default/tv-lg-65-oled65c54la.jpg",url:"https://www.ibisahome.com/tv-led-mas-de-55-/6973-tv-lg-65-oled65c54la-8806096362426.html"},
-  {g:"televisores",b:"Philips",n:"Philips 55OLED850/12 · OLED 4K Ambilight · P5 AI Gen8",p:"920,00 €",img:"https://www.ibisahome.com/7901-home_default/tv-oled-philips-55oled85012.jpg",url:"https://www.ibisahome.com/tv-led-40-55-/7165-tv-oled-philips-55oled85012-8718863046494.html"},
-  {g:"televisores",b:"Samsung",n:"Samsung The Frame 32\" · TQ32LS03C",p:"350,00 €",img:"https://www.ibisahome.com/7693-home_default/tv-samsung-tq32ls03c.jpg",url:"https://www.ibisahome.com/tv-led-28-32-/4827-tv-samsung-tq32ls03c-8806094915822.html"},
-  {g:"televisores",b:"Hisense",n:"Hisense 50A7Q · QLED 50\" 4K UHD",p:"320,00 €",img:"https://www.ibisahome.com/8758-home_default/televisor-qled-50-hisense-50a7q-4k-uhd.jpg",url:"https://www.ibisahome.com/tv-led-40-55-/7918-televisor-qled-50-hisense-50a7q-4k-uhd-6942351420332.html"},
-  {g:"sonido",b:"Samsung",n:"Barra de sonido Samsung HW-Q990H · cine en casa definitivo",p:"910,00 €",img:"https://www.ibisahome.com/8741-home_default/barra-de-sonido-samsung-hw-q990h-el-sonido-cine-en-casa-definitivo.jpg",url:"https://www.ibisahome.com/barras-de-sonido/7902-barra-de-sonido-samsung-hw-q990h-el-sonido-cine-en-casa-definitivo-8806099027247.html"},
-  {g:"sonido",b:"LG",n:"Barra de sonido LG S95TR",p:"595,00 €",img:"https://www.ibisahome.com/7328-home_default/barra-de-sonido-lg-s95tr.jpg",url:"https://www.ibisahome.com/barras-de-sonido/6634-barra-de-sonido-lg-s95tr-8806091959805.html"},
-  {g:"sonido",b:"JBL",n:"Barra de sonido JBL BAR500MK2",p:"475,00 €",img:"https://www.ibisahome.com/8023-home_default/barra-de-sonido-jbl-bar500mk2.jpg",url:"https://www.ibisahome.com/barras-de-sonido/7257-barra-de-sonido-jbl-bar500mk2-1200130020568.html"},
-  {g:"sonido",b:"Denon",n:"Tocadiscos Denon DP400BKEM",p:"440,00 €",img:"https://www.ibisahome.com/7468-home_default/tocadiscos-denon-dp400bkem.jpg",url:"https://www.ibisahome.com/tocadiscos/6762-tocadiscos-denon-dp400bkem-4951035065532.html"},
-  {g:"sonido",b:"House of Marley",n:"House of Marley Soul Rebel · tocadiscos Bluetooth de bambú",p:"295,00 €",img:"https://www.ibisahome.com/8658-home_default/house-of-marley-soul-rebel-tocadiscos-bluetooth-con-altavoces-integrados-y-bambu.jpg",url:"https://www.ibisahome.com/tocadiscos/7831-house-of-marley-soul-rebel-tocadiscos-bluetooth-con-altavoces-integrados-y-bambu-0846885011812.html"},
-  {g:"frio",b:"Smeg",n:"Vinoteca encastrable Smeg CVI338LX3 · Classic · 38 botellas",p:"3.005,00 €",img:"https://www.ibisahome.com/8522-home_default/vinoteca-encastrable-smeg-cvi338lx3-linea-classic-con-capacidad-para-38-botellas.jpg",url:"https://www.ibisahome.com/vinoteca/7703-vinoteca-encastrable-smeg-cvi338lx3-linea-classic-con-capacidad-para-38-botellas-8017709293932.html"},
-  {g:"frio",b:"Neff",n:"Combi integrable Neff KB7962FE0 · 70 cm de ancho",p:"1.590,00 €",img:"https://www.ibisahome.com/6761-home_default/combi-integrable-70cm-ancho-neff-kb7962fe0.jpg",url:"https://www.ibisahome.com/combis/6099-combi-integrable-70cm-ancho-neff-kb7962fe0-4242004271550.html"},
-  {g:"frio",b:"Smeg",n:"Combi integrable Smeg C875TNE · puerta deslizante 70 cm",p:"1.390,00 €",img:"https://www.ibisahome.com/7863-home_default/combi-integrable-70cm-de-ancho-puerta-deslizante-smeg-c875tne.jpg",url:"https://www.ibisahome.com/combis/7128-combi-integrable-70cm-de-ancho-puerta-deslizante-smeg-c875tne-8017709321178.html"},
-  {g:"frio",b:"Liebherr",n:"Frigorífico integrable Liebherr IRE1780-PB",p:"945,00 €",img:"https://www.ibisahome.com/6683-home_default/frigorifico-integrable-1-puerta-ire1780-pb.jpg",url:"https://www.ibisahome.com/frigorificos/6020-frigorifico-integrable-1-puerta-ire1780-pb-4016803116455.html"},
-  {g:"frio",b:"Bosch",n:"Frigorífico integrable Bosch Serie 6 KIR81ADD0",p:"820,00 €",img:"https://www.ibisahome.com/6311-home_default/frigorifico-integrable-serie-6-bosch-kir81add0.jpg",url:"https://www.ibisahome.com/frigorificos/5644-frigorifico-integrable-serie-6-bosch-kir81add0-4242005371976.html"},
-  {g:"lavado-cocina",b:"Siemens",n:"Lavadora-secadora integrable Siemens WK14D543ES",p:"1.210,00 €",img:"https://www.ibisahome.com/6002-home_default/lavadora-secadora-integrable-siemens-wk14d543es.jpg",url:"https://www.ibisahome.com/lavadoras/5377-lavadora-secadora-integrable-siemens-wk14d543es-4242003941058.html"},
-  {g:"lavado-cocina",b:"Bosch",n:"Lavadora integrable Bosch WIW28302ES · 8 kg",p:"914,00 €",img:"https://www.ibisahome.com/5990-home_default/lavadora-integrable-8kg-bosch-wiw28302es.jpg",url:"https://www.ibisahome.com/lavadoras/5364-lavadora-integrable-8kg-bosch-wiw28302es-4242005348749.html"},
-  {g:"lavado-cocina",b:"Balay",n:"Lavadora integrable Balay 3TI983B · 8 kg",p:"608,00 €",img:"https://www.ibisahome.com/7111-home_default/lavadora-integrable-8kg-balay-3ti983b.jpg",url:"https://www.ibisahome.com/lavadoras/6428-lavadora-integrable-8kg-balay-3ti983b-4242006304591.html"},
-  {g:"lavado-cocina",b:"Bosch",n:"Lavavajillas integrable Bosch SMV25AX06",p:"430,00 €",img:"https://www.ibisahome.com/7428-home_default/lavavajillas-integrable-bosch-smv25ax06.jpg",url:"https://www.ibisahome.com/lavavajillas/6719-lavavajillas-integrable-bosch-smv25ax06-4242005489794.html"},
-  {g:"lavado-cocina",b:"Balay",n:"Horno Balay 3HB5131N3 · cristal negro",p:"345,00 €",img:"https://www.ibisahome.com/7105-home_default/horno-cristal-negro-balay-3hb5131n3.jpg",url:"https://www.ibisahome.com/hornos/6421-horno-cristal-negro-balay-3hb5131n3-4242002808567.html"},
-  {g:"pae",b:"Siemens",n:"Cafetera integrable Siemens iQ700 CT718L1B0 · Home Connect",p:"1.590,00 €",img:"https://www.ibisahome.com/7009-home_default/cafetera-integrable-siemens-ct718l1b0-iq700-con-home-connect-y-coffeeworld.jpg",url:"https://www.ibisahome.com/cafeteras/6325-cafetera-integrable-siemens-ct718l1b0-iq700-con-home-connect-y-coffeeworld-4242003895580.html"},
-  {g:"pae",b:"Bissell",n:"Bissell CrossWave HF2 Select · aspira y friega 3 en 1",p:"179,00 €",img:"https://www.ibisahome.com/8669-home_default/aspirador-y-friegasuelos-bissell-3847n-crosswave-hf2-select-3-en-1.jpg",url:"https://www.ibisahome.com/aspiradoras-sin-bolsa/7841-aspirador-y-friegasuelos-bissell-3847n-crosswave-hf2-select-3-en-1-0011120274035.html"},
-  {g:"pae",b:"Rowenta",n:"Aspirador escoba Rowenta YY5786FE",p:"176,00 €",img:"https://www.ibisahome.com/8451-home_default/aspirador-escoba-rowenta-yy5786fe.jpg",url:"https://www.ibisahome.com/aspiradoras-sin-bolsa/7636-aspirador-escoba-rowenta-yy5786fe-3700342451887.html"},
-  {g:"pae",b:"Kärcher",n:"Aspirador Kärcher AD2",p:"129,00 €",img:"https://www.ibisahome.com/7636-home_default/aspirador-karcher-ad2.jpg",url:"https://www.ibisahome.com/aspiradoras-sin-bolsa/6920-aspirador-karcher-ad2-4054278242026.html"}
+  {c:"tv",t:"OLED",b:"Samsung",n:"Samsung TQ77S85F OLED 77\" (2025) Smart TV 4K 120Hz",p:"1.190,00 €",img:"https://www.ibisahome.com/8471-home_default/tv-oled-77-samsung-tq77s85f.jpg"},
+  {c:"tv",t:"OLED",b:"LG",n:"TV LG OLED EVO 65\" OLED65C54LA",p:"1.195,00 €",img:"https://www.ibisahome.com/7691-home_default/tv-lg-65-oled65c54la.jpg"},
+  {c:"tv",t:"OLED",b:"LG",n:"LG OLED 55G54LW: TV 55\" OLED evo G5 (Serie Gallery 2025) con Tecnología MLA",p:"1.220,00 €",img:"https://www.ibisahome.com/7680-home_default/lg-oled-55g54lw-tv-55-oled-evo-g5-serie-gallery-2025-con-tecnologia-mla.jpg"},
+  {c:"tv",t:"OLED",b:"Samsung",n:"TV OLED SAMSUNG TQ65S90F",p:"1.175,00 €",img:"https://www.ibisahome.com/7819-home_default/tv-oled-samsung-tq65s90f.jpg"},
+  {c:"tv",t:"OLED",b:"Philips",n:"Philips 55OLED850/12 55\" OLED 4K Ambilight - Procesador P5 AI Gen8",p:"920,00 €",img:"https://www.ibisahome.com/7901-home_default/tv-oled-philips-55oled85012.jpg"},
+  {c:"tv",t:"OLED",b:"LG",n:"LG OLED 55C54LA: Televisor 55\" OLED evo 4K (Serie C5 2025) con IA",p:"830,00 €",img:"https://www.ibisahome.com/7690-home_default/lg-oled-55c54la-televisor-55-oled-evo-4k-serie-c5-2025-con-ia.jpg"},
+  {c:"tv",t:"OLED",b:"Samsung",n:"TV OLED SAMSUNG TQ55S90F",p:"810,00 €",img:"https://www.ibisahome.com/7825-home_default/tv-oled-samsung-tq55s90f.jpg"},
+  {c:"tv",t:"OLED",b:"LG",n:"LG OLED 48C54LA: Smart TV 48\" OLED evo 4K (Serie C5 2025) con IA",p:"750,00 €",img:"https://www.ibisahome.com/7692-home_default/lg-oled-48c54la-smart-tv-48-oled-evo-4k-serie-c5-2025-con-ia-.jpg"},
+  {c:"tv",t:"QLED",b:"Samsung",n:"TV QLED SAMSUNG TQ43Q7F4",p:"350,00 €",img:"https://www.ibisahome.com/7760-home_default/tv-qled-samsung-tq43q7f4.jpg"},
+  {c:"tv",t:"QLED",b:"Samsung",n:"TV SAMSUNG TQ32LS03C (The Frame)",p:"350,00 €",img:"https://www.ibisahome.com/7693-home_default/tv-samsung-tq32ls03c.jpg"},
+  {c:"tv",t:"QLED",b:"Philips",n:"TV AMBILIGHT PHILIPS QLED 43PUS8550/12",p:"350,00 €",img:"https://www.ibisahome.com/7957-home_default/tv-ambilight-philips-qled-43pus855012.jpg"},
+  {c:"tv",t:"QLED",b:"Philips",n:"Philips 50PUS8400/12: Smart TV 4K QLED con Ambilight de 50\"",p:"330,00 €",img:"https://www.ibisahome.com/8506-home_default/philips-50pus840012-smart-tv-4k-qled-con-ambilight-de-50.jpg"},
+  {c:"tv",t:"QLED",b:"Hisense",n:"Televisor QLED 50\" Hisense 50A7Q 4K UHD",p:"320,00 €",img:"https://www.ibisahome.com/8758-home_default/televisor-qled-50-hisense-50a7q-4k-uhd.jpg"},
+  {c:"tv",t:"QLED",b:"TCL",n:"TV QLED TCL 55P89K",p:"370,00 €",img:"https://www.ibisahome.com/7790-home_default/tv-qled-tcl-55p89k.jpg"},
+  {c:"tv",t:"QLED",b:"TCL",n:"TV TCL QLED 50C69B",p:"340,00 €",img:"https://www.ibisahome.com/6756-home_default/tv-tcl-qled-50c69b.jpg"},
+  {c:"tv",t:"QLED",b:"Hisense",n:"Hisense 43A7Q: Smart TV 4K QLED con Dolby Vision y Sonido Atmos",p:"270,00 €",img:"https://www.ibisahome.com/8638-home_default/hisense-43a7q-smart-tv-4k-qled-con-dolby-vision-y-sonido-atmos.jpg"},
+  {c:"tv",t:"LED 4K",b:"LG",n:"TV LG 43UA75006LA",p:"285,00 €",img:"https://www.ibisahome.com/7705-home_default/tv-lg-43ua75006la.jpg"},
+  {c:"tv",t:"LED 4K",b:"Philips",n:"TV QLED PHILIPS 43PUS7800/12",p:"310,00 €",img:"https://www.ibisahome.com/8160-home_default/tv-qled-philips-43pus780012.jpg"},
+  {c:"tv",t:"LED 4K",b:"Philips",n:"Televisor Smart TV Philips 40PFS6050/12 Full HD de 40 pulgadas",p:"235,00 €",img:"https://www.ibisahome.com/8717-home_default/televisor-smart-tv-philips-40pfs605012-full-hd-de-40-pulgadas.jpg"},
+  {c:"tv",t:"LED 4K",b:"TCL",n:"TV QLED TCL 50P79K",p:"310,00 €",img:"https://www.ibisahome.com/7746-home_default/tv-qled-tcl-50p79k.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"Samsung",n:"Barra de Sonido Samsung HW-Q990H: El Sonido Cine en Casa Definitivo",p:"910,00 €",img:"https://www.ibisahome.com/8741-home_default/barra-de-sonido-samsung-hw-q990h-el-sonido-cine-en-casa-definitivo.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"Polk Audio",n:"BARRA DE SONIDO POLK AUDIO MAGNIFIMAXAXSR",p:"680,00 €",img:"https://www.ibisahome.com/5430-home_default/barra-de-sonido-polk-audio-magnifimaxaxsr.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"LG",n:"BARRA DE SONIDO LG S95TR",p:"595,00 €",img:"https://www.ibisahome.com/7328-home_default/barra-de-sonido-lg-s95tr.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"LG",n:"BARRA DE SONIDO LG S90TY",p:"590,00 €",img:"https://www.ibisahome.com/7035-home_default/barra-de-sonido-lg-s90ty.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"Denon",n:"BARRA DE SONIDO DENON HOME550",p:"520,00 €",img:"https://www.ibisahome.com/3032-home_default/barra-de-sonido-denon-home550.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"JBL",n:"BARRA DE SONIDO JBL BAR500MK2",p:"475,00 €",img:"https://www.ibisahome.com/8023-home_default/barra-de-sonido-jbl-bar500mk2.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"Samsung",n:"BARRA DE SONIDO SAMSUNG HWQS710F",p:"410,00 €",img:"https://www.ibisahome.com/8079-home_default/barra-de-sonido-samsung-hwqs710f.jpg"},
+  {c:"sonido",t:"Barra de sonido",b:"Yamaha",n:"BARRA DE SONIDO YAMAHA SR-X40A",p:"370,00 €",img:"https://www.ibisahome.com/6856-home_default/barra-de-sonido-yamaha-sr-x40abl.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Yamaha",n:"CADENA DE MUSICA BLANCA YAMAHA TSX-N237DWH",p:"450,00 €",img:"https://www.ibisahome.com/7346-home_default/cadena-de-musica-blanca-yamaha-tsx-n237dwh.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Panasonic",n:"MICROCADENA PANASONIC SCPMX92EGS",p:"260,00 €",img:"https://www.ibisahome.com/6011-home_default/microcadena-panasonic-scpmx92egs.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Philips",n:"MICROCADENA PHILIPS TAM6805/10",p:"220,00 €",img:"https://www.ibisahome.com/7355-home_default/microcadena-philips-tam680510.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Muse",n:"RADIO CASSETTE Y CD PORTATIL MUSE M380GBS",p:"185,00 €",img:"https://www.ibisahome.com/7431-home_default/radio-cassette-y-cd-portatil-muse-m380gbs.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Panasonic",n:"MICROCADENA PANASONIC SCHC302EGK",p:"179,00 €",img:"https://www.ibisahome.com/7227-home_default/microcadena-panasonic-schc302egk.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Panasonic",n:"MINICADENA PANASONIC SCUX102EK",p:"175,00 €",img:"https://www.ibisahome.com/7371-home_default/minicadena-panasonic-scux102ek.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Muse",n:"Microcadena Muse M62BTS: Sonido Hi-Fi con Bluetooth, CD y USB",p:"99,00 €",img:"https://www.ibisahome.com/8642-home_default/microcadena-muse-m62bts-sonido-hi-fi-con-bluetooth-cd-y-usb.jpg"},
+  {c:"sonido",t:"Equipo de música",b:"Muse",n:"Radio Cassette Portátil Muse M152RC: Estilo Retro y Grabación Clásica",p:"48,00 €",img:"https://www.ibisahome.com/8640-home_default/radio-cassette-portatil-muse-m152rc-estilo-retro-y-grabacion-clasica.jpg"},
+  {c:"sonido",t:"Tocadiscos",b:"Denon",n:"TOCADISCOS DENON DP400BKEM",p:"440,00 €",img:"https://www.ibisahome.com/7468-home_default/tocadiscos-denon-dp400bkem.jpg"},
+  {c:"sonido",t:"Tocadiscos",b:"House of Marley",n:"House of Marley Soul Rebel: Tocadiscos Bluetooth con Altavoces Integrados y Bambú",p:"295,00 €",img:"https://www.ibisahome.com/8658-home_default/house-of-marley-soul-rebel-tocadiscos-bluetooth-con-altavoces-integrados-y-bambu.jpg"},
+  {c:"sonido",t:"Tocadiscos",b:"Denon",n:"TOCADISCOS DENON DP300FSPE2",p:"290,00 €",img:"https://www.ibisahome.com/3921-home_default/tocadiscos-denon-dp300fspe2.jpg"},
+  {c:"sonido",t:"Tocadiscos",b:"Denon",n:"TOCADISCOS DENON DP300FBKE2",p:"280,00 €",img:"https://www.ibisahome.com/6899-home_default/tocadiscos-denon-dp300fbke2.jpg"},
+  {c:"frio",t:"Frigorífico",b:"ASKO",n:"Frigorífico Integrable ASKO RBR276SND1",p:"999,00 €",img:"https://www.ibisahome.com/8651-home_default/frigorifico-integrable-asko-rbr276snd1-rendimiento-profesional-en-tu-cocina.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Siemens",n:"FRIGORIFICO INTEGRABLE 1 PUERTA CON PUERTA FIJA SIEMENS KI81RADD0",p:"955,00 €",img:"https://www.ibisahome.com/6271-home_default/frigorifico-integrable-1-puerta-con-puerta-fija-siemens-ki8radd0.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Liebherr",n:"FRIGORIFICO INTEGRABLE 1 PUERTA LIEBHERR IRE1780-PB",p:"945,00 €",img:"https://www.ibisahome.com/6683-home_default/frigorifico-integrable-1-puerta-ire1780-pb.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Electrolux",n:"FRIGORIFICO INTEGRABLE 1 PUERTA FIJA ELECTROLUX ERZ9MD18C",p:"928,00 €",img:"https://www.ibisahome.com/8416-home_default/frigorifico-integrable-1-puerta-fija-electrolux-erz9md18c.jpg"},
+  {c:"frio",t:"Frigorífico",b:"AEG",n:"FRIGORIFICO INTEGRABLE AEG SKE818E1DC",p:"863,00 €",img:"https://www.ibisahome.com/3408-home_default/frigorifico-integrable-aeg-ske818e1dc-.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Bosch",n:"FRIGORIFICO INTEGRABLE SERIE 6 BOSCH KIR81ADD0",p:"820,00 €",img:"https://www.ibisahome.com/6311-home_default/frigorifico-integrable-serie-6-bosch-kir81add0.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Bosch",n:"FRIGORIFICO INTEGRABLE PUERTA FIJA BOSCH KIR81VFE0",p:"795,00 €",img:"https://www.ibisahome.com/8415-home_default/frigorifico-integrable-puerta-fija-bosch-kir81vfe0.jpg"},
+  {c:"frio",t:"Frigorífico",b:"Siemens",n:"REFRIGERADOR DE 1 PUERTA SIEMENS KI81RVFE0",p:"750,00 €",img:"https://www.ibisahome.com/6084-home_default/refrigerador-de-1-puerta-siemens-ki81rvfe0.jpg"},
+  {c:"frio",t:"Combi",b:"Neff",n:"COMBI INTEGRABLE 70cm ANCHO NEFF KB7962FE0",p:"1.590,00 €",img:"https://www.ibisahome.com/6761-home_default/combi-integrable-70cm-ancho-neff-kb7962fe0.jpg"},
+  {c:"frio",t:"Combi",b:"Siemens",n:"COMBI INTEGRABLE 193.5x70.8cm SIEMENS KB96NADD0",p:"1.570,00 €",img:"https://www.ibisahome.com/5713-home_default/combi-integrable-1935x708cm-siemens-kb96nadd0.jpg"},
+  {c:"frio",t:"Combi",b:"Bosch",n:"COMBI INTEGRABLE 193.5x70.8 cm BOSCH KBN96ADD0",p:"1.520,00 €",img:"https://www.ibisahome.com/5838-home_default/combi-integrable-1935x708-cm-bosch-kbn96add0.jpg"},
+  {c:"frio",t:"Combi",b:"Bosch",n:"COMBI INTEGRABLE BOSCH KBN96VFE0",p:"1.460,00 €",img:"https://www.ibisahome.com/5883-home_default/combi-integrable-bosch-kbn96vfe0.jpg"},
+  {c:"frio",t:"Combi",b:"Smeg",n:"COMBI INTEGRABLE 70cm DE ANCHO PUERTA DESLIZANTE SMEG C875TNE",p:"1.390,00 €",img:"https://www.ibisahome.com/7863-home_default/combi-integrable-70cm-de-ancho-puerta-deslizante-smeg-c875tne.jpg"},
+  {c:"frio",t:"Combi",b:"Siemens",n:"COMBI INTEGRABLE SIEMENS KI96NVFD0",p:"1.390,00 €",img:"https://www.ibisahome.com/5928-home_default/combi-integrable-siemens-ki96nvfd0.jpg"},
+  {c:"frio",t:"Combi",b:"Whirlpool",n:"COMBI INTEGRABLE PUERTA DESLIZANTE 70cm ANCHO WHIRLPOOL SP408102FR",p:"1.100,00 €",img:"https://www.ibisahome.com/8465-home_default/combi-integrable-puerta-deslizante-70cm-ancho-whirlpool-sp408102fr.jpg"},
+  {c:"frio",t:"Combi",b:"Balay",n:"FRIGORIFICO COMBI INTEGRABLE PUERTA FIJA BALAY 3KID767F",p:"1.030,00 €",img:"https://www.ibisahome.com/8213-home_default/frigorifico-combi-integrable-puerta-fija-balay-3kid767f.jpg"},
+  {c:"frio",t:"Vinoteca",b:"Smeg",n:"Vinoteca Encastrable Smeg CVI338LX3 Línea Classic 38 Botellas",p:"3.005,00 €",img:"https://www.ibisahome.com/8522-home_default/vinoteca-encastrable-smeg-cvi338lx3-linea-classic-con-capacidad-para-38-botellas.jpg"},
+  {c:"frio",t:"Vinoteca",b:"Smeg",n:"Vinoteca Smeg CVI338RX3 Línea Classic 38 Botellas Apertura Derecha",p:"3.005,00 €",img:"https://www.ibisahome.com/8524-home_default/vinoteca-smeg-cvi338rx3-linea-classic-de-38-botellas-con-apertura-a-la-derecha.jpg"},
+  {c:"frio",t:"Vinoteca",b:"Le Chai",n:"VINOTECA INTEGRABLE 3 ZONAS LE CHAI LTN895/1",p:"2.695,00 €",img:"https://www.ibisahome.com/6230-home_default/vinoteca-integrable-3-zonas-le-chai-ltn8951.jpg"},
+  {c:"frio",t:"Vinoteca",b:"Avintage",n:"VINOTECA INTEGRABLE AVINTAGE AVI76CDZ",p:"1.890,00 €",img:"https://www.ibisahome.com/5029-home_default/vinoteca-integrable-avintage-avi76cdz.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Siemens",n:"LAVADORA SECADORA INTEGRABLE IQ300 SIEMENS WK12D322ES",p:"1.220,00 €",img:"https://www.ibisahome.com/6266-home_default/lavadora-secadora-integrable-iq300-siemens-wk12d322es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Siemens",n:"LAVADORA SECADORA INTEGRABLE SIEMENS WK14D543ES",p:"1.210,00 €",img:"https://www.ibisahome.com/6002-home_default/lavadora-secadora-integrable-siemens-wk14d543es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Siemens",n:"LAVADORA INTEGRABLE SIEMENS 8KG WI14W542ES",p:"995,00 €",img:"https://www.ibisahome.com/4979-home_default/lavadora-integrable-siemens-8kg-wi14w542es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Bosch",n:"LAVADORA INTEGRABLE 8kg BOSCH WIW28302ES",p:"914,00 €",img:"https://www.ibisahome.com/5990-home_default/lavadora-integrable-8kg-bosch-wiw28302es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Siemens",n:"LAVADORA INTEGRABLE 8kg SIEMENS WI12W327ES",p:"850,00 €",img:"https://www.ibisahome.com/5072-home_default/lavadora-integrable-8kg-siemens-wi12w327es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Bosch",n:"LAVADORA INTEGRABLE 8kg BOSCH WIW24307ES",p:"845,00 €",img:"https://www.ibisahome.com/6691-home_default/lavadora-integrable-8kg-bosch-wiw24307es.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Electrolux",n:"LAVADORA INTEGRABLE 8kg ELECTROLUX EW7F1482BI",p:"640,00 €",img:"https://www.ibisahome.com/8284-home_default/lavadora-integrable-8kg-electrolux-ew7f1482bi.jpg"},
+  {c:"lavado",t:"Lavadora",b:"Balay",n:"LAVADORA INTEGRABLE 8kg BALAY 3TI983B",p:"608,00 €",img:"https://www.ibisahome.com/7111-home_default/lavadora-integrable-8kg-balay-3ti983b.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Bosch",n:"LAVAVAJILLAS INTEGRABLE BOSCH SMV25AX06",p:"430,00 €",img:"https://www.ibisahome.com/7428-home_default/lavavajillas-integrable-bosch-smv25ax06.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Bosch",n:"LAVAVAJILLAS INTEGRABLE 45CM BOSCH SPV2HKX42E",p:"430,00 €",img:"https://www.ibisahome.com/6914-home_default/lavavajillas-integrable-45cm-bosch-spv2hkx42e.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Balay",n:"LAVAVAJILLAS INTEGRABLE BALAY 3VF5012NP",p:"410,00 €",img:"https://www.ibisahome.com/6221-home_default/lavavajillas-integrable-balay-3vf5012np.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Balay",n:"LAVAVAJILLAS INTEGRABLE 45cm BALAY 3VT4031NA",p:"410,00 €",img:"https://www.ibisahome.com/6045-home_default/lavavajillas-integrable-45cm-balay-3vt4031na.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Electrolux",n:"LAVAVAJILLAS INTEGRABLE FLEXLIFT ELECTROLUX EEQ47210L1",p:"430,00 €",img:"https://www.ibisahome.com/3854-home_default/lavavajillas-integrable-electrolux-eeq47210l1.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Electrolux",n:"LAVAVAJILLAS INTEGRABLE ELECTROLUX EEA27200L",p:"430,00 €",img:"https://www.ibisahome.com/8400-home_default/lavavajillas-integrable-electrolux-eea27200l.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Whirlpool",n:"LAVAVAJILLAS INTEGRABLE WHIRLPOOL WKIC3C26",p:"450,00 €",img:"https://www.ibisahome.com/1944-home_default/lavavajillas-integrable-whirlpool-wkic3c26.jpg"},
+  {c:"lavado",t:"Lavavajillas",b:"Beko",n:"LAVAVAJILLAS INTEGRABLE 45cm BEKO BDIS38040A",p:"440,00 €",img:"https://www.ibisahome.com/7985-home_default/lavavajillas-integrable-45cm-beko-bdis38040a.jpg"},
+  {c:"cocina",t:"Placa/Vitro",b:"Fagor",n:"DOMINO VITROCERAMICA 29cm CON MANDOS FAGOR FTV2520T",p:"135,00 €",img:"https://www.ibisahome.com/8019-home_default/domino-vitroceramica-29cm-con-mandos-fagor-ftv2520t.jpg"},
+  {c:"cocina",t:"Placa/Vitro",b:"Beko",n:"PLACA DE GAS 4 FUEGOS INOX BEKO HIGG64123SX",p:"160,00 €",img:"https://www.ibisahome.com/8166-home_default/placa-des-gas-4-fuegos-inox-beko-higg64123sx.jpg"},
+  {c:"cocina",t:"Placa/Vitro",b:"Amica",n:"PLACA DE GAS CRISTAL NEGRO AMICA AG3640N",p:"165,00 €",img:"https://www.ibisahome.com/7242-home_default/placa-de-gas-cristal-negro-amica-ag3640n.jpg"},
+  {c:"cocina",t:"Placa/Vitro",b:"Amica",n:"VITROCERAMICA 30cm AMICA AVM2420X",p:"159,00 €",img:"https://www.ibisahome.com/5551-home_default/vitroceramica-30cm-amica-avm2420x.jpg"},
+  {c:"pae",t:"Cafetera",b:"Siemens",n:"Cafetera Integrable Siemens CT718L1B0: iQ700 con Home Connect y CoffeeWorld",p:"1.590,00 €",img:"https://www.ibisahome.com/7009-home_default/cafetera-integrable-siemens-ct718l1b0-iq700-con-home-connect-y-coffeeworld.jpg"},
+  {c:"pae",t:"Cafetera",b:"Bosch",n:"CAFETERA INTEGRABLE BOSCH CTL7181B0",p:"1.695,00 €",img:"https://www.ibisahome.com/8067-home_default/cafetera-integrable-bosch-ctl7181b0.jpg"},
+  {c:"pae",t:"Cafetera",b:"NEFF",n:"CAFETERA INTEGRABLE NEFF CL4TT11N0",p:"2.395,00 €",img:"https://www.ibisahome.com/8164-home_default/cafetera-integrable-neff-cl4tt11n0.jpg"},
+  {c:"pae",t:"Cafetera",b:"ASKO",n:"CAFETERA INTEGRABLE NEGRA ASKO CM8477A",p:"2.800,00 €",img:"https://www.ibisahome.com/7480-home_default/cafetera-integrable-negra-asko-cm8477a.jpg"},
+  {c:"pae",t:"Cafetera",b:"ASKO",n:"CAFETERA INTEGRABLE ASKO CM8478G-1",p:"3.300,00 €",img:"https://www.ibisahome.com/7481-home_default/cafetera-integrable-asko-cm8478g-1.jpg"},
+  {c:"pae",t:"Aspirador",b:"Bissell",n:"Aspiradora Híbrida Seco y Húmedo Bissell OmniForce 3913N",p:"185,00 €",img:"https://www.ibisahome.com/8548-home_default/aspiradora-hibrida-seco-y-humedo-bissell-omniforce-3913n.jpg"},
+  {c:"pae",t:"Aspirador",b:"Beko",n:"Aspiradora Escoba Beko VRT96425VD 2 en 1: Potencia y Versatilidad",p:"185,00 €",img:"https://www.ibisahome.com/8645-home_default/aspiradora-escoba-beko-vrt96425vd-2-en-1-potencia-y-versatilidad.jpg"},
+  {c:"pae",t:"Aspirador",b:"Bosch",n:"ASPIRADOR BOSCH BGC21X350",p:"183,00 €",img:"https://www.ibisahome.com/8283-home_default/aspirador-bosch-bgc21x350.jpg"},
+  {c:"pae",t:"Aspirador",b:"Bissell",n:"Aspirador y Friegasuelos Bissell 3847N CrossWave HF2 Select 3 en 1",p:"179,00 €",img:"https://www.ibisahome.com/8669-home_default/aspirador-y-friegasuelos-bissell-3847n-crosswave-hf2-select-3-en-1.jpg"},
+  {c:"pae",t:"Aspirador",b:"Rowenta",n:"ASPIRADOR ESCOBA ROWENTA YY5786FE",p:"176,00 €",img:"https://www.ibisahome.com/8451-home_default/aspirador-escoba-rowenta-yy5786fe.jpg"},
+  {c:"pae",t:"Aspirador",b:"Rowenta",n:"LIMPIADOR DE VAPOR ROWENTA RY6597WH",p:"175,00 €",img:"https://www.ibisahome.com/3475-home_default/limpiador-de-vapor-rowenta-ry6597wh.jpg"},
+  {c:"pae",t:"Aspirador",b:"Rowenta",n:"ASPIRADOR ROWENTA YY5669FE",p:"165,00 €",img:"https://www.ibisahome.com/8282-home_default/aspirador-rowenta-yy5669fe.jpg"},
+  {c:"pae",t:"Aspirador",b:"Kärcher",n:"ASPIRADOR KARCHER AD2",p:"129,00 €",img:"https://www.ibisahome.com/7636-home_default/aspirador-karcher-ad2.jpg"},
+  {c:"cocina",t:"Horno",b:"Electrolux",n:"HORNO ELECTROLUX EOF3C40TH",p:"360,00 €",img:"https://www.ibisahome.com/7134-home_default/horno-electrolux-eof3c40th.jpg"},
+  {c:"cocina",t:"Horno",b:"Whirlpool",n:"HORNO WHIRLPOOL AKP447IX/01",p:"350,00 €",img:"https://www.ibisahome.com/7136-home_default/horno-whirlpool-akp447ix01.jpg"},
+  {c:"cocina",t:"Horno",b:"Balay",n:"HORNO CRISTAL BLANCO BALAY 3HB5131B3",p:"345,00 €",img:"https://www.ibisahome.com/7104-home_default/horno-cristal-blanco-balay-3hb5131b3.jpg"},
+  {c:"cocina",t:"Horno",b:"Balay",n:"HORNO CRISTAL NEGRO BALAY 3HB5131N3",p:"345,00 €",img:"https://www.ibisahome.com/7105-home_default/horno-cristal-negro-balay-3hb5131n3.jpg"},
+  {c:"cocina",t:"Horno",b:"Electrolux",n:"HORNO PIROLÍTICO ELECTROLUX EZC2400BCX/1",p:"345,00 €",img:"https://www.ibisahome.com/1914-home_default/horno-pirolitico-electrolux-ezc2400bcx1.jpg"},
+  {c:"cocina",t:"Horno",b:"Bosch",n:"HORNO BOSCH HBA514ES3",p:"315,00 €",img:"https://www.ibisahome.com/7284-home_default/horno-bosch-hba514es3.jpg"},
+  {c:"cocina",t:"Horno",b:"Whirlpool",n:"HORNO PIROLÍTICO WHIRLPOOL AKZ9629IX",p:"305,00 €",img:"https://www.ibisahome.com/4028-home_default/horno-pirolitico-whirlpool-akz9629ix.jpg"}
 ];
 
 const grid = document.getElementById('prodGrid');
 const prodStatus = document.getElementById('prodStatus');
+const esc = s => String(s).replace(/"/g,'&quot;');
+function matchCat(p, filter){
+  if (filter === 'all') return true;
+  return filter.split(',').includes(p.c);
+}
 function render(filter, label){
   grid.innerHTML = '';
-  const list = PRODUCTS.filter(p => filter === 'all' || p.g === filter);
-  list.forEach(p => {
+  const list = PRODUCTS.filter(p => matchCat(p, filter));
+  if (!list.length){
+    grid.innerHTML = `<p style="grid-column:1/-1;color:var(--muted);padding:30px 0">No hay productos en esta selección ahora mismo. <a href="https://wa.me/34689523001" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">Pregúntanos por WhatsApp</a> y te lo conseguimos.</p>`;
+  }
+  list.forEach((p, i) => {
     const el = document.createElement('article');
     el.className = 'prod';
     el.innerHTML = `
-      <div class="ph"><img loading="lazy" src="${p.img}" alt="" referrerpolicy="no-referrer"></div>
+      <div class="ph">${p.t ? `<span class="prod-tag">${p.t}</span>` : ''}<img loading="lazy" src="${p.img}" alt="" referrerpolicy="no-referrer"></div>
       <div class="info">
         <span class="brand">${p.b}</span>
         <h3>${p.n}</h3>
         <div class="foot">
           <span class="price">${p.p}</span>
-          <a href="${p.url}" target="_blank" rel="noopener" aria-label="Ver ${p.n.replace(/"/g,'&quot;')} en la tienda online">Ver</a>
+          <button class="prod-ver" data-i="${PRODUCTS.indexOf(p)}" aria-label="Ver detalles de ${esc(p.n)}">Ver</button>
         </div>
       </div>`;
     grid.appendChild(el);
   });
   prodStatus.textContent = `Mostrando ${list.length} productos${label ? ' de ' + label : ''}`;
 }
+function filterTo(cat, label){
+  // sincroniza los tabs si el filtro coincide con uno
+  const tabs = document.querySelectorAll('.tab');
+  let matched = false;
+  tabs.forEach(x => {
+    const on = x.dataset.f === cat;
+    x.classList.toggle('active', on);
+    x.setAttribute('aria-pressed', on);
+    if (on) matched = true;
+  });
+  if (!matched) tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
+  render(cat, label);
+}
 render('all');
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
-  t.classList.add('active'); t.setAttribute('aria-pressed','true');
-  render(t.dataset.f, t.textContent);
+  filterTo(t.dataset.f, t.textContent.trim());
 }));
+
+// las cards de categoría, el megamenú y el índice filtran DENTRO de la web
+document.querySelectorAll('.cat-card[data-cat], a.catfilter[data-cat]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    closeMega();
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded','false');
+    filterTo(el.dataset.cat, el.dataset.label || el.querySelector('h3')?.textContent.trim() || '');
+    document.getElementById('destacados').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// ---------- modal de producto (detalle dentro de la web) ----------
+const modal = document.getElementById('prodModal');
+const modalBody = document.getElementById('modalBody');
+let lastFocus = null;
+function openModal(p){
+  lastFocus = document.activeElement;
+  modalBody.innerHTML = `
+    <div class="modal-ph"><img src="${p.img}" alt="${esc(p.n)}" referrerpolicy="no-referrer"></div>
+    <div class="modal-info">
+      ${p.t ? `<span class="modal-tag">${p.t}</span>` : ''}
+      <span class="modal-brand">${p.b}</span>
+      <h3 id="modalTitle">${p.n}</h3>
+      <div class="modal-price">${p.p}</div>
+      <ul class="modal-benes">
+        <li>✓ Entrega gratis en 3–7 días</li>
+        <li>✓ 3 años de garantía legal</li>
+        <li>✓ Pago 100% seguro · 14 días de devolución</li>
+      </ul>
+      <p class="modal-help">¿Te interesa o quieres asesoramiento? Te atendemos al momento:</p>
+      <div class="modal-ctas">
+        <a class="btn btn-grad" href="https://wa.me/34689523001?text=${encodeURIComponent('Hola, me interesa: ' + p.n + ' (' + p.p + ')')}" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+34944407361">Llamar 944 40 73 61</a>
+      </div>
+    </div>`;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('.modal-close').focus();
+}
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+grid.addEventListener('click', e => {
+  const b = e.target.closest('.prod-ver');
+  if (b) openModal(PRODUCTS[+b.dataset.i]);
+});
+modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('.modal-close')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
 // ---------- nav móvil ----------
 const ham = document.getElementById('hamburger');
