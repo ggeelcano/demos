@@ -101,8 +101,25 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,9,15,.82);backdro
 .logo small{font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;font-weight:600}
 @media(max-width:560px){.logo small{display:none}}
 .nav-links{display:flex;gap:26px;list-style:none;align-items:center}
-.nav-links a{font-size:.92rem;font-weight:500;color:var(--muted);transition:color .2s}
-.nav-links a:hover{color:var(--txt)}
+.nav-links>li>a,.nav-links>li>button.navlink{font-size:.92rem;font-weight:500;color:var(--muted);transition:color .2s;background:none;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:5px}
+.nav-links>li>a:hover,.nav-links>li>button.navlink:hover,.nav-links>li.has-mega:hover>button.navlink{color:var(--txt)}
+.navlink svg{width:13px;height:13px;transition:transform .25s}
+.has-mega:hover .navlink svg{transform:rotate(180deg)}
+
+/* megamenú catálogo */
+.has-mega{position:static}
+.mega{position:absolute;left:0;right:0;top:100%;background:#0a0d16;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 28px 60px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s,transform .22s,visibility .22s;z-index:90}
+.has-mega:hover .mega,.mega:hover,.mega.open{opacity:1;visibility:visible;transform:none}
+.mega-inner{max-width:1200px;margin:0 auto;padding:30px 24px 34px;display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+.mega-col h4{font-family:'Space Grotesk';font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.mega-col h4 a{color:inherit}
+.mega-col h4 a:hover{text-decoration:underline}
+.mega-col ul{list-style:none;display:grid;gap:9px}
+.mega-col li.subhead{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7a90;margin-top:8px}
+.mega-col li.subhead:first-child{margin-top:0}
+.mega-col a.sublink{font-size:.84rem;color:var(--muted);transition:color .18s,padding .18s}
+.mega-col a.sublink:hover{color:var(--cyan);padding-left:4px}
+@media(max-width:1100px){.mega-inner{grid-template-columns:repeat(2,1fr);gap:22px 30px}}
 .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;border-radius:999px;padding:12px 24px;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn-grad{background:var(--grad);color:#031018;box-shadow:0 8px 24px rgba(45,212,238,.25)}
@@ -177,6 +194,22 @@ section{padding:88px 0}
 .cat-card h3{font-size:1.12rem;font-weight:600}
 .cat-card p{font-size:.86rem;color:var(--muted)}
 .cat-card .go{margin-top:12px;color:var(--cyan);font-weight:600;font-size:.86rem;display:inline-flex;align-items:center;gap:6px}
+
+/* índice completo del catálogo */
+.cat-index{margin-top:40px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+@media(max-width:1100px){.cat-index{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.cat-index{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.cat-index{grid-template-columns:1fr}}
+.cat-fam{background:linear-gradient(165deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.cat-fam h3{font-family:'Space Grotesk';font-size:.95rem;margin-bottom:14px;display:flex;align-items:center;gap:9px;line-height:1.2}
+.cat-fam h3 .em{font-size:1.15rem}
+.cat-fam h3 a{color:var(--txt)}
+.cat-fam h3 a:hover{color:var(--cyan)}
+.cat-fam ul{list-style:none;display:grid;gap:8px}
+.cat-fam li.subhead{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#6b7a90;margin-top:10px}
+.cat-fam li.subhead:first-child{margin-top:0}
+.cat-fam a.sublink{font-size:.85rem;color:var(--muted);transition:color .18s,padding-left .18s}
+.cat-fam a.sublink:hover{color:var(--cyan);padding-left:4px}
 
 /* productos */
 #destacados{background:var(--bg2);border-block:1px solid var(--line)}
@@ -330,7 +363,12 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
     </a>
     <nav aria-label="Navegación principal">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#categorias">Categorías</a></li>
+        <li class="has-mega">
+          <button class="navlink" id="megaBtn" aria-haspopup="true" aria-expanded="false" aria-controls="megaPanel">Catálogo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mega" id="megaPanel"><div class="mega-inner" id="megaInner"></div></div>
+        </li>
         <li><a href="#destacados">Destacados</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
@@ -445,6 +483,13 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
         <span class="go">Ver PAE →</span>
       </a>
     </div>
+
+    <div class="sec-head reveal" style="margin:64px auto 28px;text-align:center;max-width:640px">
+      <span class="kicker">Todo el catálogo</span>
+      <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">Explora todas nuestras secciones</h2>
+      <p>Estas son todas las familias y categorías que encontrarás en nuestra tienda.</p>
+    </div>
+    <nav class="cat-index reveal" id="catIndex" aria-label="Índice completo del catálogo"></nav>
   </div>
 </section>
 
@@ -626,14 +671,17 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
         <h4>Catálogo</h4>
         <ul>
           <li><a href="https://www.ibisahome.com/10-televisores" target="_blank" rel="noopener">Televisores</a></li>
-          <li><a href="https://www.ibisahome.com/11-imagen-sonido-y-fotografia" target="_blank" rel="noopener">Imagen y sonido</a></li>
+          <li><a href="https://www.ibisahome.com/11-imagen-sonido-y-fotografia" target="_blank" rel="noopener">Imagen, sonido y fotografía</a></li>
           <li><a href="https://www.ibisahome.com/12-electrodomesticos" target="_blank" rel="noopener">Electrodomésticos</a></li>
+          <li><a href="https://www.ibisahome.com/13-pequeno-electrodomestico" target="_blank" rel="noopener">Pequeño electrodoméstico</a></li>
           <li><a href="https://www.ibisahome.com/productos-rebajados" target="_blank" rel="noopener">Ofertas</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h4>La empresa</h4>
         <ul>
+          <li><a href="https://www.ibisahome.com/content/4-ibisahome" target="_blank" rel="noopener">Quiénes somos</a></li>
+          <li><a href="https://www.ibisahome.com/contactanos" target="_blank" rel="noopener">Contacta con nosotros</a></li>
           <li><a href="tel:+34944407361">944 40 73 61</a></li>
           <li><a href="https://wa.me/34689523001" target="_blank" rel="noopener">WhatsApp 689 523 001</a></li>
           <li><a href="mailto:info@ibisahome.com">info@ibisahome.com</a></li>
@@ -641,12 +689,12 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h4>Información legal</h4>
         <ul>
-          <li><a href="#">Aviso legal</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-          <li><a href="#">Política de cookies</a></li>
-          <li><a href="#">Condiciones de compra</a></li>
+          <li><a href="https://www.ibisahome.com/content/2-aviso-legal" target="_blank" rel="noopener">Aviso legal</a></li>
+          <li><a href="https://www.ibisahome.com/content/3-condiciones-de-venta" target="_blank" rel="noopener">Condiciones de venta</a></li>
+          <li><a href="https://www.ibisahome.com/content/6-politica-de-privacidad" target="_blank" rel="noopener">Política de privacidad</a></li>
+          <li><a href="https://www.ibisahome.com/content/7-politica-de-cookies" target="_blank" rel="noopener">Política de cookies</a></li>
         </ul>
       </div>
     </div>
@@ -687,6 +735,91 @@ footer .desc{color:var(--muted);font-size:.9rem;max-width:340px;margin-top:14px}
 
 <script>
 document.documentElement.classList.add('js');
+
+// ---------- catálogo completo (estructura real de ibisahome.com) ----------
+const BASE = 'https://www.ibisahome.com/';
+const CATALOG = [
+  { id:'10-televisores', em:'📺', name:'Televisores', items:[
+    ['14-tv-led-19-24-','TV LED 19–24"'],['15-tv-led-28-32-','TV LED 28–32"'],
+    ['16-tv-led-40-55-','TV LED 40–55"'],['17-tv-led-mas-de-55-','TV LED más de 55"'],
+    ['65-qled-tv','QLED TV'],['66-oled-tv','OLED TV'],
+  ]},
+  { id:'11-imagen-sonido-y-fotografia', em:'🎬', name:'Imagen, sonido y fotografía', items:[
+    ['18-home-cinema','Home cinema'],['24-proyectores','Proyectores'],['19-barras-de-sonido','Barras de sonido'],
+    ['21-altavoces','Altavoces'],['20-blu-ray','Blu-ray'],['22-camaras-video','Cámaras de vídeo'],
+    ['23-camaras-fotografia','Cámaras de fotografía'],['31-objetivos','Objetivos'],['25-auriculares','Auriculares'],
+    ['26-equipos-de-musica','Equipos de música'],['27-amplificadores','Amplificadores'],['28-lectores-de-cd','Lectores de CD'],
+    ['29-radios','Radios'],['30-tocadiscos','Tocadiscos'],
+  ]},
+  { id:'12-electrodomesticos', em:'🍳', name:'Electrodomésticos', items:[
+    {sub:'Integrables'},
+    ['34-lavavajillas','Lavavajillas'],['35-lavadoras','Lavadoras'],['36-secadoras','Secadoras'],['38-microondas','Microondas'],
+    ['39-combis','Combis'],['40-congeladores','Congeladores'],['41-frigorificos','Frigoríficos'],['42-vinoteca','Vinotecas'],
+    ['46-campanas','Campanas'],['47-grupos-y-motores','Grupos y motores'],['48-vitroceramicas','Vitrocerámicas'],
+    ['49-hornos','Hornos'],['51-cafeteras','Cafeteras'],
+    {sub:'Libre instalación'},
+    ['44-lavadoras','Lavadoras'],['43-lavavajillas','Lavavajillas'],['45-secadoras','Secadoras'],['37-cocinas','Cocinas'],
+    ['50-microondas','Microondas'],['52-combis','Combis'],['53-frigorificos','Frigoríficos'],
+    ['54-congeladores','Congeladores'],['55-vinoteca','Vinotecas'],
+  ]},
+  { id:'13-pequeno-electrodomestico', em:'🔌', name:'Pequeño electrodoméstico', items:[
+    ['57-aspiradoras-sin-bolsa','Aspiradoras sin bolsa'],['56-aspiradoras-con-bolsa','Aspiradoras con bolsa'],
+    ['58-centros-de-planchado-y-planchas','Planchado y planchas'],['59-cuidado-personal','Cuidado personal'],
+    ['60-cocina','Cocina'],['67-desayuno','Desayuno'],['61-radiadores','Radiadores'],['62-calefactores','Calefactores'],
+    ['63-aire-acondicionado','Aire acondicionado'],['64-deshumidificadores','Deshumidificadores'],
+  ]},
+];
+
+function catLinks(items){
+  return items.map(it => {
+    if (it.sub) return `<li class="subhead">${it.sub}</li>`;
+    return `<li><a class="sublink" href="${BASE}${it[0]}" target="_blank" rel="noopener">${it[1]}</a></li>`;
+  }).join('');
+}
+// megamenú del header
+const megaInner = document.getElementById('megaInner');
+if (megaInner) megaInner.innerHTML = CATALOG.map(c => `
+  <div class="mega-col">
+    <h4><span aria-hidden="true">${c.em}</span> <a href="${BASE}${c.id}" target="_blank" rel="noopener">${c.name}</a></h4>
+    <ul>${catLinks(c.items)}</ul>
+  </div>`).join('') +
+  `<div class="mega-col"><h4><span aria-hidden="true">🏷️</span> <a href="${BASE}productos-rebajados" target="_blank" rel="noopener">Ofertas</a></h4>
+    <ul><li><a class="sublink" href="${BASE}productos-rebajados" target="_blank" rel="noopener">Productos rebajados</a></li>
+    <li><a class="sublink" href="${BASE}68-otros" target="_blank" rel="noopener">Otros</a></li></ul></div>`;
+// índice completo en la sección
+const catIndex = document.getElementById('catIndex');
+if (catIndex) catIndex.innerHTML = CATALOG.map(c => `
+  <div class="cat-fam">
+    <h3><span class="em" aria-hidden="true">${c.em}</span> <a href="${BASE}${c.id}" target="_blank" rel="noopener">${c.name}</a></h3>
+    <ul>${catLinks(c.items)}</ul>
+  </div>`).join('') +
+  `<div class="cat-fam"><h3><span class="em" aria-hidden="true">🏷️</span> <a href="${BASE}productos-rebajados" target="_blank" rel="noopener">Ofertas y otros</a></h3>
+    <ul><li><a class="sublink" href="${BASE}productos-rebajados" target="_blank" rel="noopener">Productos rebajados</a></li>
+    <li><a class="sublink" href="${BASE}68-otros" target="_blank" rel="noopener">Otros productos</a></li></ul></div>`;
+
+// botón Catálogo: en móvil lleva al índice; en desktop abre/cierra el megapanel
+const megaBtn = document.getElementById('megaBtn');
+const megaPanel = document.getElementById('megaPanel');
+if (megaBtn) megaBtn.addEventListener('click', () => {
+  if (window.matchMedia('(max-width:920px)').matches) {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded','false');
+    document.getElementById('categorias').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const open = megaPanel.classList.toggle('open');
+  megaBtn.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', e => {
+  if (megaPanel && megaPanel.classList.contains('open') && !e.target.closest('.has-mega')) {
+    megaPanel.classList.remove('open'); megaBtn.setAttribute('aria-expanded','false');
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && megaPanel && megaPanel.classList.contains('open')) {
+    megaPanel.classList.remove('open'); megaBtn.setAttribute('aria-expanded','false'); megaBtn.focus();
+  }
+});
 
 // ---------- productos ----------
 const PRODUCTS = [
