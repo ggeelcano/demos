@@ -123,11 +123,14 @@ section{padding:100px 0}
 
 /* CATÁLOGO DE BICIS */
 .bikes{background:var(--bg)}
-.cat-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.filters{margin-bottom:40px}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cat-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.brand-filter .cat-chip.active{background:var(--red);border-color:var(--red)}
 .cat-chip{padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit}
 .cat-chip:hover{border-color:var(--ink)}
 .cat-chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
-.bike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.bike-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
 .bike-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
 .bike-card:hover{border-color:var(--ink);transform:translateY(-6px);box-shadow:0 22px 50px rgba(14,17,22,.12)}
 .bike-imgwrap{position:relative;background:#fff;aspect-ratio:16/11;display:grid;place-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
@@ -473,19 +476,29 @@ setTimeout(hideLoader,3500);
     <div class="sec-head reveal">
       <span class="eyebrow">Nuestras bicicletas</span>
       <h2>Las bicis que <em>vendemos</em></h2>
-      <p>Una selección de la gama CUBE disponible en tienda, de la iniciación a la alta competición. Filtra por disciplina y pídenos info o reserva la tuya.</p>
+      <p>Una selección de las bicis disponibles en tienda — CUBE, FOCUS y AMFLOW — de la iniciación a la alta competición. Filtra por marca o disciplina y pídenos info o reserva la tuya.</p>
     </div>
 
-    <div class="cat-filter reveal">
-      <button class="cat-chip active" data-f="all">Todas</button>
-      <button class="cat-chip" data-f="e">Eléctricas</button>
-      <button class="cat-chip" data-f="mtb">Montaña</button>
-      <button class="cat-chip" data-f="road">Carretera & Gravel</button>
+    <div class="filters reveal">
+      <div class="filter-label">Marca</div>
+      <div class="cat-filter brand-filter">
+        <button class="cat-chip active" data-b="all">Todas las marcas</button>
+        <button class="cat-chip" data-b="cube">CUBE</button>
+        <button class="cat-chip" data-b="focus">FOCUS</button>
+        <button class="cat-chip" data-b="amflow">AMFLOW</button>
+      </div>
+      <div class="filter-label">Tipo</div>
+      <div class="cat-filter">
+        <button class="cat-chip active" data-f="all">Todas</button>
+        <button class="cat-chip" data-f="e">Eléctricas</button>
+        <button class="cat-chip" data-f="mtb">Montaña</button>
+        <button class="cat-chip" data-f="road">Carretera & Gravel</button>
+      </div>
     </div>
 
     <div class="bike-grid" id="bikeGrid">
 
-      <article class="bike-card reveal" data-cat="road">
+      <article class="bike-card reveal" data-cat="road" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">Carretera</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -498,7 +511,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="road">
+      <article class="bike-card reveal" data-cat="road" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">Carretera</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -511,7 +524,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="road">
+      <article class="bike-card reveal" data-cat="road" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">Carretera</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -524,7 +537,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="road">
+      <article class="bike-card reveal" data-cat="road" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">Endurance</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -537,7 +550,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="road">
+      <article class="bike-card reveal" data-cat="road" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">Gravel</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -550,7 +563,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="mtb">
+      <article class="bike-card reveal" data-cat="mtb" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">MTB Doble</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -563,7 +576,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="mtb">
+      <article class="bike-card reveal" data-cat="mtb" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">MTB Junior</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -576,7 +589,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="mtb">
+      <article class="bike-card reveal" data-cat="mtb" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">MTB Junior</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -589,7 +602,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="e">
+      <article class="bike-card reveal" data-cat="e" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">E-MTB</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -602,7 +615,7 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
-      <article class="bike-card reveal" data-cat="e">
+      <article class="bike-card reveal" data-cat="e" data-brand="cube">
         <div class="bike-imgwrap">
           <span class="bike-cat">E-Trekking</span>
           <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
@@ -615,9 +628,113 @@ setTimeout(hideLoader,3500);
         </div>
       </article>
 
+      <article class="bike-card reveal" data-cat="e" data-brand="amflow">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">E-MTB</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2025/06/pl-carbon-pro_%E9%A6%96%E9%A1%B5%E6%A9%B1%E7%AA%97%E5%9B%BE_xl.jpg" alt="AmFlow PL Carbon Pro 800 Wh E-MTB" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">PL Carbon Pro (800 Wh)</div>
+          <div class="bike-sub">AMFLOW · E-MTB · motor DJI Avinox</div>
+          <div class="bike-foot"><div class="bike-price">9.999 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e" data-brand="amflow">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">E-MTB</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2025/06/pl-carbon_%E9%A6%96%E9%A1%B5%E6%A9%B1%E7%AA%97%E5%9B%BE_xl.jpg" alt="AmFlow PL Carbon 800 Wh E-MTB" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">PL Carbon (800 Wh)</div>
+          <div class="bike-sub">AMFLOW · E-MTB · motor DJI Avinox</div>
+          <div class="bike-foot"><div class="bike-price">6.499 €<small>PVP</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">Carretera</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/05/6000_QJ3fIJvYhkJ04kkt-1024x622.png" alt="Focus Izalco Max 8.9 carretera" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Izalco Max 8.9</div>
+          <div class="bike-sub">FOCUS · Carretera aero · carbono</div>
+          <div class="bike-foot"><div class="bike-price">3.999 €<small>antes 4.799 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="mtb" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">MTB Doble</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/07/JAM-8.9.png" alt="Focus Jam 8.9 MTB doble trail" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Jam 8.9</div>
+          <div class="bike-sub">FOCUS · MTB doble trail · carbono</div>
+          <div class="bike-foot"><div class="bike-price">3.791 €<small>antes 4.799 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="mtb" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">MTB Doble</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/07/1280_o2VIoRN3ok64IFZi.png" alt="Focus Thron 6.9 MTB doble" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Thron 6.9</div>
+          <div class="bike-sub">FOCUS · MTB doble trail · aluminio</div>
+          <div class="bike-foot"><div class="bike-price">2.549 €<small>antes 2.999 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="road" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">Gravel</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/04/1280_AMtS05VbWk552Kdy.png" alt="Focus Atlas 6.7 gravel" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Atlas 6.7</div>
+          <div class="bike-sub">FOCUS · Gravel · aluminio</div>
+          <div class="bike-foot"><div class="bike-price">1.799 €<small>antes 1.999 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">E-MTB Light</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/6000_gXDfZ6y9WHi01YZf-1024x584.png" alt="Focus Jam² SL 9.0 e-MTB ligera" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Jam² SL 9.0</div>
+          <div class="bike-sub">FOCUS · E-MTB ligera · Fazua Ride 60</div>
+          <div class="bike-foot"><div class="bike-price">9.774 €<small>antes 11.499 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
+      <article class="bike-card reveal" data-cat="e" data-brand="focus">
+        <div class="bike-imgwrap">
+          <span class="bike-cat">E-MTB Light</span>
+          <span class="bike-fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span>
+          <img src="https://irunbikecenter.com/wp-content/uploads/2024/06/6000_Q3BPhdVIK64wWDNN-1024x583.png" alt="Focus Vam² SL 9.0 e-MTB ligera XC" loading="lazy">
+        </div>
+        <div class="bike-body">
+          <div class="bike-name">Vam² SL 9.0</div>
+          <div class="bike-sub">FOCUS · E-MTB ligera XC · Fazua Ride 60</div>
+          <div class="bike-foot"><div class="bike-price">9.349 €<small>antes 10.999 €</small></div><div class="bike-actions"><button class="bike-btn-buy" data-buy><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Comprar online</button><button class="bike-btn" data-detail>Ver ficha</button></div></div>
+        </div>
+      </article>
+
     </div>
 
-    <p class="bikes-note reveal">Y muchos más modelos CUBE en tienda. ¿No encuentras el tuyo? <a href="#cita">Escríbenos y te lo conseguimos →</a></p>
+    <p class="bikes-note reveal">Y muchos más modelos CUBE, FOCUS y AMFLOW en tienda. ¿No encuentras el tuyo? <a href="#cita">Escríbenos y te lo conseguimos →</a></p>
   </div>
 </section>
 
@@ -1013,12 +1130,20 @@ coForm.addEventListener('submit',function(e){
   co.scrollTop=0;
 });
 
-/* Filtro de bicicletas */
-var chips=document.querySelectorAll('.cat-chip'),cards=document.querySelectorAll('#bikeGrid .bike-card');
-chips.forEach(function(c){c.addEventListener('click',function(){
-  chips.forEach(function(x){x.classList.remove('active')});c.classList.add('active');
-  var f=c.dataset.f;
-  cards.forEach(function(card){card.style.display=(f==='all'||card.dataset.cat===f)?'':'none'});
+/* Filtro de bicicletas: marca + tipo combinados */
+var catChips=document.querySelectorAll('.cat-chip[data-f]'),brandChips=document.querySelectorAll('.cat-chip[data-b]'),cards=document.querySelectorAll('#bikeGrid .bike-card');
+var curCat='all',curBrand='all';
+function applyFilters(){cards.forEach(function(card){
+  var ok=(curCat==='all'||card.dataset.cat===curCat)&&(curBrand==='all'||card.dataset.brand===curBrand);
+  card.style.display=ok?'':'none';
+})}
+catChips.forEach(function(c){c.addEventListener('click',function(){
+  catChips.forEach(function(x){x.classList.remove('active')});c.classList.add('active');
+  curCat=c.dataset.f;applyFilters();
+})});
+brandChips.forEach(function(c){c.addEventListener('click',function(){
+  brandChips.forEach(function(x){x.classList.remove('active')});c.classList.add('active');
+  curBrand=c.dataset.b;applyFilters();
 })});
 
 /* Lightbox galería */
@@ -1114,7 +1239,47 @@ var BIKES={
   desc:"Tu compañera para todo: ciudad, paseos y rutas. Motor Bosch Performance (75 Nm) con Smart System y batería de 600 Wh, horquilla de suspensión y equipamiento completo (portabultos, guardabarros, luces y caballete). Comodidad sin esfuerzo.",
   imgs:["60/3c/b8/1754323534/synqup_110101_S_00.jpg","62/2f/69/1754460023/synqup_110101_D_00.jpg","53/81/f4/1754460025/synqup_110101_D_02.jpg","18/6d/1b/1754460025/synqup_110101_D_03.jpg","4e/b9/fd/1754460026/synqup_110101_D_04.jpg","83/2e/c2/1754460028/synqup_110101_M_00.jpg"],
   specs:[["Cuadro","Aluminio Trapeze · Efficient Comfort Geometry"],["Horquilla","Suspensión"],["Motor","Bosch Performance (Smart System) · 75 Nm"],["Batería","Bosch PowerTube 600 Wh"],["Grupo","Shimano Cues 10v"],["Frenos","Shimano, disco hidráulico"],["Neumáticos","Schwalbe, anchos y con agarre"],["Equipamiento","Portabultos, guardabarros, luces y caballete"]],
-  note:"Color slabgrey'n'black · E-trekking totalmente equipada."}
+  note:"Color slabgrey'n'black · E-trekking totalmente equipada."},
+ "PL Carbon Pro (800 Wh)":{cat:"E-MTB",price:"9.999 €",brand:"AMFLOW · E-MTB · carbono · DJI Avinox",
+  desc:"La e-MTB que ha revolucionado el sector. Motor DJI Avinox de solo 2,52 kg con 105 Nm de par continuo y hasta 850 W (modo Boost: 120 Nm y 1.000 W), batería de 800 Wh y cuadro de carbono ultraligero de 2,27 kg. Peso total: 19,2 kg.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2025/06/pl-carbon-pro_%E9%A6%96%E9%A1%B5%E6%A9%B1%E7%AA%97%E5%9B%BE_xl.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/03559bcd90984f7d7c9e713b48bd7cca@ultra.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/793df0f69aac7f7c34ee60dbdbaacb64@ultra.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/8476bc31225c70e905df40eca379de0b@ultra.jpg"],
+  specs:[["Cuadro","Carbono ultraligero (2,27 kg)"],["Motor","DJI Avinox M1 · 105 Nm / 850 W continuos"],["Modo Boost","120 Nm y 1.000 W"],["Batería","Avinox 800 Wh integrada"],["Display","Avinox OLED 2˝ + mandos inalámbricos"],["Asistencia","5 modos · modo Auto adaptativo en tiempo real"],["Peso","19,2 kg"]],
+  note:"Versión Pro tope de gama. Consulta disponibilidad y tallas en tienda."},
+ "PL Carbon (800 Wh)":{cat:"E-MTB",price:"6.499 €",brand:"AMFLOW · E-MTB · carbono · DJI Avinox",
+  desc:"Toda la tecnología DJI Avinox a un precio imbatible: motor de 105 Nm, batería integrada de 800 Wh con cargador rápido de 508 W, cuadro de carbono con 150 mm de recorrido trasero y horquilla Fox 36 Performance de 160 mm. Compatible con rueda trasera de 27,5˝ o 29˝.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2025/06/pl-carbon_%E9%A6%96%E9%A1%B5%E6%A9%B1%E7%AA%97%E5%9B%BE_xl.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/1ed2f8b854c83213bbd57e858d56eef7@origin-scaled.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/d87e30cbc2cafc95655a336e84c19a76@ultra.jpg","https://irunbikecenter.com/wp-content/uploads/2025/06/03559bcd90984f7d7c9e713b48bd7cca@ultra.jpg"],
+  specs:[["Cuadro","Amflow PL Carbon · 150 mm de recorrido trasero"],["Horquilla","Fox 36 Performance · 160 mm (GRIP)"],["Motor","DJI Avinox M1 · 105 Nm"],["Batería","Avinox 800 Wh integrada"],["Cargador","Rápido 12 A / 508 W"],["Display","Avinox OLED 2˝ + mandos inalámbricos"],["Ruedas","Compatible 27,5˝ y 29˝ traseras"]],
+  note:"Color plata satinada. Consulta disponibilidad y tallas en tienda."},
+ "Izalco Max 8.9":{cat:"Carretera",price:"3.999 €",brand:"FOCUS · Carretera aero · carbono",
+  desc:"Pura velocidad alemana. Cuadro aero de carbono de solo 1.050 g, grupo electrónico Shimano 105 Di2 2x12 y ruedas de carbono Novatec R4. Rendimiento de gama alta a precio de oferta.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/05/6000_QJ3fIJvYhkJ04kkt-1024x622.png","https://irunbikecenter.com/wp-content/uploads/2024/05/6000_QJ3fIJvYhkJ04kkt.png"],
+  specs:[["Cuadro","Carbono aero (1.050 g)"],["Grupo","Shimano 105 Di2 2x12 (electrónico)"],["Frenos","Shimano, disco hidráulico"],["Ruedas","Novatec R4 de carbono"]],
+  note:"Oferta: antes 4.799 €. Unidades y tallas limitadas, consulta en tienda."},
+ "Jam 8.9":{cat:"MTB Doble · Trail",price:"3.791 €",brand:"FOCUS · MTB doble trail · carbono",
+  desc:"Trail en estado puro. Cuadro de carbono con bolsa de herramientas integrada, horquilla Fox 36 Performance y amortiguador Float X con 150 mm de recorrido, y grupo Shimano XT 1x12. Para comerte cualquier bajada.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/07/JAM-8.9.png","https://irunbikecenter.com/wp-content/uploads/2024/06/1280_opVqVgksxUA61QKG.jpg"],
+  specs:[["Cuadro","Carbono · bolsa de herramientas integrada"],["Horquilla","Fox 36 Performance · 150 mm"],["Amortiguador","Fox Float X · 150 mm"],["Grupo","Shimano XT 1x12"],["Frenos","Disco hidráulico"]],
+  note:"Oferta: antes 4.799 €. Consulta tallas disponibles en tienda."},
+ "Thron 6.9":{cat:"MTB Doble · Trail",price:"2.549 €",brand:"FOCUS · MTB doble trail · aluminio",
+  desc:"La doble polivalente para empezar fuerte en el trail: cuadro de aluminio con bolsa de herramientas, horquilla Fox 34 Rhythm y amortiguador Float DPS con 130 mm, y componentes Shimano XT. Mucha bici por su precio.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/07/1280_o2VIoRN3ok64IFZi.png"],
+  specs:[["Cuadro","Aluminio · bolsa de herramientas"],["Horquilla","Fox 34 Float Rhythm"],["Amortiguador","Fox Float DPS · 130 mm"],["Componentes","Shimano XT"],["Frenos","Disco hidráulico"]],
+  note:"Oferta: antes 2.999 €. Consulta tallas disponibles en tienda."},
+ "Atlas 6.7":{cat:"Gravel",price:"1.799 €",brand:"FOCUS · Gravel · aluminio",
+  desc:"La gravel aventurera de FOCUS. Cuadro de aluminio robusto, grupo Shimano GRX400 2x10, bujes Novatec y llantas WTB. Lista para pistas, bikepacking y lo que le eches.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/04/1280_AMtS05VbWk552Kdy.png","https://irunbikecenter.com/wp-content/uploads/2024/04/6000_cAqe7qE5OmP11gT1.png"],
+  specs:[["Cuadro","Aluminio"],["Grupo","Shimano GRX400 2x10"],["Bujes","Novatec"],["Llantas","WTB"],["Frenos","Disco hidráulico"]],
+  note:"Oferta: antes 1.999 €. Consulta tallas disponibles en tienda."},
+ "Jam² SL 9.0":{cat:"E-MTB Light",price:"9.774 €",brand:"FOCUS · E-MTB ligera · Fazua Ride 60",
+  desc:"E-MTB ligera tope de gama: cuadro de carbono MAX con motor Fazua Ride 60 y batería de 430 Wh, horquilla Fox 36 Factory de 160 mm, amortiguador Fox DPS Factory de 150 mm, grupo electrónico SRAM X01 AXS y ruedas Mavic Crossmax XL R 29.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/06/6000_gXDfZ6y9WHi01YZf-1024x584.png","https://irunbikecenter.com/wp-content/uploads/2024/06/6000_gXDfZ6y9WHi01YZf.png"],
+  specs:[["Cuadro","Carbono MAX"],["Motor","Fazua Ride 60 · batería 430 Wh"],["Horquilla","Fox 36 Factory · 160 mm"],["Amortiguador","Fox DPS Factory · 150 mm"],["Grupo","SRAM X01 AXS 1x12 (electrónico)"],["Ruedas","Mavic Crossmax XL R 29"]],
+  note:"Oferta: antes 11.499 €. Consulta tallas disponibles en tienda."},
+ "Vam² SL 9.0":{cat:"E-MTB Light · XC",price:"9.349 €",brand:"FOCUS · E-MTB ligera XC · Fazua Ride 60",
+  desc:"La e-MTB ligera de XC más rápida de FOCUS: cuadro de carbono MAX con motor Fazua Ride 60, horquilla Fox 34 Float Factory, amortiguador Fox Float Factory, SRAM X0 Eagle Transmission de 12 velocidades y ruedas Mavic Crossmax XL R 29.",
+  imgs:["https://irunbikecenter.com/wp-content/uploads/2024/06/6000_Q3BPhdVIK64wWDNN-1024x583.png","https://irunbikecenter.com/wp-content/uploads/2024/06/6000_Q3BPhdVIK64wWDNN.png"],
+  specs:[["Cuadro","Carbono MAX"],["Motor","Fazua Ride 60"],["Horquilla","Fox 34 Float Factory 29"],["Amortiguador","Fox Float Factory"],["Grupo","SRAM X0 Eagle Transmission 12v"],["Ruedas","Mavic Crossmax XL R 29"]],
+  note:"Oferta: antes 10.999 €. Consulta tallas disponibles en tienda."}
 };
 var pd=document.getElementById('pd');
 function openDetail(name){
@@ -1129,8 +1294,9 @@ function openDetail(name){
   b.specs.forEach(function(r){var d=document.createElement('div');d.className='pd-spec-row';var lb=document.createElement('b');lb.textContent=r[0];var vl=document.createElement('span');vl.textContent=r[1];d.appendChild(lb);d.appendChild(vl);sp.appendChild(d)});
   var th=document.getElementById('pdThumbs');th.innerHTML='';
   var main=document.getElementById('pdMainImg');
-  main.src=CDN+b.imgs[0];main.alt=name;
-  b.imgs.forEach(function(rel,i){var src=CDN+rel;var t=document.createElement('div');t.className='pd-thumb'+(i===0?' active':'');var im=document.createElement('img');im.src=src;im.alt=name+' · vista '+(i+1);im.loading='lazy';t.appendChild(im);t.addEventListener('click',function(){main.src=src;th.querySelectorAll('.pd-thumb').forEach(function(x){x.classList.remove('active')});t.classList.add('active')});th.appendChild(t)});
+  function imgUrl(rel){return rel.indexOf('http')===0?rel:CDN+rel}
+  main.src=imgUrl(b.imgs[0]);main.alt=name;
+  b.imgs.forEach(function(rel,i){var src=imgUrl(rel);var t=document.createElement('div');t.className='pd-thumb'+(i===0?' active':'');var im=document.createElement('img');im.src=src;im.alt=name+' · vista '+(i+1);im.loading='lazy';t.appendChild(im);t.addEventListener('click',function(){main.src=src;th.querySelectorAll('.pd-thumb').forEach(function(x){x.classList.remove('active')});t.classList.add('active')});th.appendChild(t)});
   document.getElementById('pdBuy').onclick=function(){closeDetail();openCheckout(name,b.price)};
   document.getElementById('pdCita').onclick=function(){closeDetail();document.getElementById('cita').scrollIntoView({behavior:'smooth'})};
   document.getElementById('pdWa').href='https://wa.me/34943306834?text='+encodeURIComponent('Hola, me interesa la '+name+' ('+b.price+'). ¿Tenéis disponibilidad y tallas?');
