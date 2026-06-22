@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizkaia Landa · Turismo rural de Bizkaia</title>
+<meta name="description" content="Descubre y reserva agroturismos y casas rurales de Bizkaia: Urdaibai, Durangaldea, Enkarterri y la costa.">
+<style>
+ :root{
+   --v:#1d6f4c; --vd:#0f4b32; --vc:#e9f4ee; --mar:#1f6f8f; --oro:#c98a2b; --tinta:#16261f;
+   --gris:#5e6f67; --linea:#e0ebe4; --rojo:#c0392b; --wa:#25d366;
+   --som:0 12px 34px rgba(15,75,50,.12);
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:#f4f8f6;line-height:1.55}
+ .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+ button{font-family:inherit;cursor:pointer}
+ a{text-decoration:none;color:inherit}
+
+ .topbar{background:var(--vd);color:#cfe7dc}
+ .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;font-size:12.5px}
+ .lang button{background:none;border:1px solid rgba(255,255,255,.25);color:#cfe7dc;border-radius:6px;padding:3px 9px;font-size:12px;font-weight:700;margin-left:5px}
+ .lang button.on{background:#fff;color:var(--vd);border-color:#fff}
+
+ header{background:#fff;border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:40}
+ header .wrap{display:flex;align-items:center;gap:13px;height:70px}
+ .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--v),var(--mar));display:flex;align-items:center;justify-content:center;font-size:22px}
+ .brand b{display:block;font-size:18px;color:var(--vd);letter-spacing:.3px}
+ .brand span{font-size:12px;color:var(--gris)}
+ .hcount{margin-left:auto;font-size:12.5px;color:var(--gris)}
+
+ .hero{position:relative;color:#fff;padding:48px 0 86px;overflow:hidden;
+   background:linear-gradient(160deg,#2b8a5e 0%,#0f4b32 60%,#0a3a27 100%)}
+ .hero:before{content:"";position:absolute;inset:0;opacity:.18;
+   background:radial-gradient(circle at 80% 10%,#7fe0b0,transparent 40%),radial-gradient(circle at 15% 90%,#2f88b0,transparent 45%)}
+ .hero .wrap{position:relative;z-index:1}
+ .hero h1{font-size:34px;font-weight:800;max-width:640px;line-height:1.12}
+ .hero p{margin-top:10px;color:#d4ece1;font-size:16px;max-width:560px}
+ .search{margin-top:24px;background:#fff;border-radius:16px;box-shadow:var(--som);padding:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+ .search .f{flex:1;min-width:150px}
+ .search label{display:block;font-size:11.5px;font-weight:700;color:var(--vd);margin-bottom:5px}
+ .search input,.search select{width:100%;border:1px solid var(--linea);border-radius:10px;padding:11px 12px;font-size:14px;color:var(--tinta);outline:none}
+ .search .go{background:var(--v);color:#fff;border:0;border-radius:11px;padding:12px 22px;font-weight:700;font-size:14px;height:44px}
+ .search .go:hover{background:var(--vd)}
+
+ .filtros{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 18px}
+ .chip{border:1.5px solid var(--linea);background:#fff;border-radius:20px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--gris)}
+ .chip.on{background:var(--v);color:#fff;border-color:var(--v)}
+ .barra{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+ .barra h2{font-size:20px;color:var(--vd)}
+ .barra .n{font-size:13px;color:var(--gris)}
+
+ .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+ .card{background:#fff;border:1px solid var(--linea);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.16s}
+ .card:hover{transform:translateY(-4px);box-shadow:var(--som)}
+ .ph{height:140px;position:relative;display:flex;align-items:flex-end;padding:10px 12px;color:#fff}
+ .ph .em{position:absolute;top:10px;right:12px;font-size:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+ .ph .com{background:rgba(0,0,0,.32);backdrop-filter:blur(2px);border-radius:20px;padding:3px 11px;font-size:11.5px;font-weight:700}
+ .card .b{padding:13px 14px;display:flex;flex-direction:column;flex:1}
+ .card h3{font-size:15.5px;color:var(--tinta);line-height:1.25}
+ .card .mun{font-size:12.5px;color:var(--gris);margin-top:3px}
+ .stars{margin-top:8px;font-size:13px;color:var(--oro);font-weight:700}
+ .stars small{color:var(--gris);font-weight:500}
+ .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+ .tag{font-size:10.5px;font-weight:700;background:var(--vc);color:var(--v);border-radius:6px;padding:2px 7px}
+ .cta{display:flex;gap:8px;margin-top:auto;padding-top:12px}
+ .cta button,.cta a{flex:1;text-align:center;border-radius:10px;padding:9px;font-size:13px;font-weight:700;border:1px solid var(--linea)}
+ .cta .res{background:var(--v);color:#fff;border-color:var(--v)}
+ .cta .res:hover{background:var(--vd)}
+ .cta .web{background:#fff;color:var(--vd)}
+
+ /* modal */
+ .ov{position:fixed;inset:0;background:rgba(10,30,22,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+ .ov.on{display:flex}
+ .modal{background:#fff;border-radius:18px;max-width:440px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+ .mhead{background:linear-gradient(135deg,var(--v),var(--mar));color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px}
+ .mhead b{font-size:15px}.mhead .x{margin-left:auto;background:none;border:0;color:#fff;font-size:24px}
+ .mbody{padding:18px}
+ .mbody label{display:block;font-size:12px;font-weight:700;color:var(--vd);margin:0 0 5px}
+ .mbody input{width:100%;border:1px solid var(--linea);border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:13px;outline:none}
+ .mrow{display:flex;gap:12px}.mrow .f{flex:1}
+ .mbtn{width:100%;background:var(--v);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:700;font-size:14.5px;margin-top:4px}
+ .mbtn:disabled{background:#b9cfc5}
+ .mwa{width:100%;background:var(--wa);color:#fff;border:0;border-radius:11px;padding:12px;font-weight:700;font-size:14px;margin-top:9px}
+ .conf{text-align:center;padding:10px 4px}
+ .conf .ic{width:56px;height:56px;border-radius:50%;background:var(--v);color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px}
+ .conf .code{font-family:monospace;font-size:20px;font-weight:700;letter-spacing:2px;color:var(--vd);background:var(--vc);padding:6px 12px;border-radius:8px;display:inline-block;margin-top:6px}
+
+ footer{background:var(--vd);color:#bcdacb;margin-top:40px}
+ footer .wrap{padding:30px 18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px}
+ .disc{text-align:center;font-size:11.5px;color:#9bb0a7;padding:14px}
+
+ @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}.hcount{display:none}}
+ @media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+ <span id="gov">Bizkaiko Foru Aldundia · Diputación Foral de Bizkaia · Turismo</span>
+ <span class="lang" id="lang"><button data-l="eu">EU</button><button data-l="es" class="on">ES</button></span>
+</div></div>
+
+<header><div class="wrap">
+ <div class="logo">🏞️</div>
+ <div class="brand"><b>Bizkaia Landa</b><span id="bsub">Turismo rural de Bizkaia</span></div>
+ <div class="hcount" id="hcount"></div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+ <h1 id="heroh">Descubre el Bizkaia rural y reserva en un clic</h1>
+ <p id="herop">Agroturismos y casas rurales con encanto en Urdaibai, la costa, Durangaldea y Enkarterri.</p>
+ <div class="search">
+   <div class="f"><label id="l_dest">Destino / comarca</label>
+     <select id="s_com"><option value="">—</option></select></div>
+   <div class="f"><label id="l_in">Entrada</label><input type="date" id="s_in"></div>
+   <div class="f"><label id="l_out">Salida</label><input type="date" id="s_out"></div>
+   <div class="f"><label id="l_pax">Personas</label><input type="number" id="s_pax" min="1" max="20" value="2"></div>
+   <button class="go" id="s_go" onclick="buscar()">🔍 <span id="b_go">Buscar</span></button>
+ </div>
+</div></div>
+
+<div class="wrap">
+ <div class="filtros" id="filtros"></div>
+ <div class="barra"><h2 id="lista_t">Alojamientos en Bizkaia</h2><span class="n" id="lista_n"></span></div>
+ <div class="grid" id="grid"></div>
+</div>
+
+<footer><div class="wrap">
+ <div><b>Bizkaia Landa</b> · <span id="f_tag">Turismo rural de Bizkaia</span><br><span id="f_sub">Una iniciativa para promocionar y digitalizar el alojamiento rural del territorio.</span></div>
+ <div id="f_links">Urdaibai · Costa · Durangaldea · Enkarterri · Gorbeialdea</div>
+</div></footer>
+<div class="disc" id="disc">Demostración de portal de reservas · datos públicos (valoraciones reales de Google) de alojamientos de Bizkaia</div>
+
+<!-- MODAL -->
+<div class="ov" id="ov"><div class="modal">
+ <div class="mhead"><span>🏡</span><b id="m_nom"></b><button class="x" onclick="closeM()">×</button></div>
+ <div class="mbody" id="mbody"></div>
+</div></div>
+
+<script>
+/* ---- i18n ---- */
+const T={
+ es:{gov:"Bizkaiko Foru Aldundia · Diputación Foral de Bizkaia · Turismo",bsub:"Turismo rural de Bizkaia",
+  heroh:"Descubre el Bizkaia rural y reserva en un clic",herop:"Agroturismos y casas rurales con encanto en Urdaibai, la costa, Durangaldea y Enkarterri.",
+  l_dest:"Destino / comarca",l_in:"Entrada",l_out:"Salida",l_pax:"Personas",b_go:"Buscar",
+  lista_t:"Alojamientos en Bizkaia",todas:"Todas",
+  f_tag:"Turismo rural de Bizkaia",f_sub:"Una iniciativa para promocionar y digitalizar el alojamiento rural del territorio.",
+  disc:"Demostración de portal de reservas · datos públicos (valoraciones reales de Google) de alojamientos de Bizkaia",
+  resenas:"reseñas",reservar:"Reservar",web:"Web",results:n=>n+" alojamientos",
+  m_in:"Entrada",m_out:"Salida",m_pax:"Personas",m_nombre:"Nombre",m_email:"Email",m_tel:"Teléfono",
+  m_solicit:"Solicitar reserva",m_wa:"Consultar por WhatsApp",
+  m_okt:"¡Solicitud enviada!",m_oks:"El alojamiento confirmará tu disponibilidad. Hemos enviado los detalles a tu correo.",
+  m_code:"Referencia",m_otra:"Cerrar",
+  tags:{eco:"Eco",surf:"Surf",fam:"Familias",mascot:"Mascotas",singular:"Singular",gastro:"Gastronomía",playa:"Playa",montana:"Montaña"}},
+ eu:{gov:"Bizkaiko Foru Aldundia · Turismoa",bsub:"Bizkaiko landa-turismoa",
+  heroh:"Ezagutu Bizkaia landatarra eta erreserbatu klik batean",herop:"Agroturismo eta landetxe xarmagarriak Urdaibain, kostaldean, Durangaldean eta Enkarterrin.",
+  l_dest:"Helmuga / eskualdea",l_in:"Sarrera",l_out:"Irteera",l_pax:"Lagunak",b_go:"Bilatu",
+  lista_t:"Bizkaiko ostatuak",todas:"Guztiak",
+  f_tag:"Bizkaiko landa-turismoa",f_sub:"Lurraldeko landa-ostatua sustatu eta digitalizatzeko ekimena.",
+  disc:"Erreserba-atariaren erakustaldia · datu publikoak (Google-ko benetako balorazioak) Bizkaiko ostatuenak",
+  resenas:"iritzi",reservar:"Erreserbatu",web:"Weba",results:n=>n+" ostatu",
+  m_in:"Sarrera",m_out:"Irteera",m_pax:"Lagunak",m_nombre:"Izena",m_email:"Emaila",m_tel:"Telefonoa",
+  m_solicit:"Erreserba eskatu",m_wa:"WhatsApp bidez galdetu",
+  m_okt:"Eskaera bidalita!",m_oks:"Ostatuak erabilgarritasuna baieztatuko dizu. Xehetasunak zure postara bidali ditugu.",
+  m_code:"Erreferentzia",m_otra:"Itxi",
+  tags:{eco:"Eko",surf:"Surf",fam:"Familiak",mascot:"Maskotak",singular:"Berezia",gastro:"Gastronomia",playa:"Hondartza",montana:"Mendia"}}
+};
+let LANG="es";const t=k=>T[LANG][k];
+
+/* ---- Catálogo: agroturismos REALES de Bizkaia (valoraciones reales Google) ---- */
+const COMARCAS=["Urdaibai","Costa","Durangaldea","Enkarterri","Gorbeialdea"];
+const A=[
+ {n:"Castillo de Arteaga",mun:"Gautegiz Arteaga",com:"Urdaibai",rat:4.7,res:904,web:"https://castillodearteaga.com/",em:"🏰",tags:["singular","gastro"]},
+ {n:"Lurdeia · Alojamiento Ecológico",mun:"Bermeo",com:"Urdaibai",rat:5.0,res:495,web:"http://www.lurdeia.com/",em:"🌿",tags:["eco","fam"]},
+ {n:"Casa Rural Ogoño Mendi",mun:"Elantxobe",com:"Urdaibai",rat:4.9,res:187,web:"https://ogonomendi.com/",em:"⛰️",tags:["montana","playa"]},
+ {n:"Urdaibai Etxea",mun:"Ea",com:"Costa",rat:4.7,res:294,web:"http://www.urdaibaietxea.com/",em:"🏡",tags:["playa","fam"]},
+ {n:"Moana Eco Surf House",mun:"Sopela",com:"Costa",rat:4.7,res:555,web:"https://moanasurfhouse.com/",em:"🏄",tags:["surf","eco"]},
+ {n:"Cabañas en los árboles · Zuhaitz-etxeak",mun:"Otxandio",com:"Gorbeialdea",rat:4.8,res:911,web:"http://www.cabanasenlosarboles.com/",em:"🌳",tags:["singular","montana"]},
+ {n:"Garaiko Landetxea",mun:"Garai",com:"Durangaldea",rat:4.8,res:402,web:"https://www.garaikolandetxea.com/",em:"🏞️",tags:["fam","montana"]},
+ {n:"Etxano Agroturismo",mun:"Etxano (Amorebieta)",com:"Durangaldea",rat:4.8,res:233,web:"http://www.etxano.com/",em:"🐑",tags:["eco","fam"]},
+ {n:"Eco Hotel Rural Angiz",mun:"Muxika",com:"Urdaibai",rat:4.7,res:289,web:"http://www.ecohotelruralangiz.com/",em:"🌾",tags:["eco","gastro"]},
+ {n:"Gailurretan · Casa Rural y Restaurante",mun:"Karrantza",com:"Enkarterri",rat:4.7,res:301,web:"https://www.gailurretan.com/",em:"🍽️",tags:["gastro","montana"]},
+ {n:"Miamendi",mun:"Orozko",com:"Gorbeialdea",rat:4.8,res:200,web:"http://www.miamendi.es/",em:"🌲",tags:["montana","fam"]},
+ {n:"Batimont Suites",mun:"Bilbao",com:"Costa",rat:4.8,res:199,web:"http://www.batimontsuites.com/",em:"🛏️",tags:["singular"]}
+];
+
+let filtro="";
+
+function stars(r){const full=Math.round(r);return "★".repeat(full)+"☆".repeat(5-full);}
+function phBG(com){
+ const map={Urdaibai:"linear-gradient(150deg,#2f88b0,#0f4b32)",Costa:"linear-gradient(150deg,#2aa7c4,#155e7a)",
+  Durangaldea:"linear-gradient(150deg,#3a9b63,#0f4b32)",Enkarterri:"linear-gradient(150deg,#7a8b3a,#3d4d18)",
+  Gorbeialdea:"linear-gradient(150deg,#2b8a5e,#0a3a27)"};
+ return map[com]||"linear-gradient(150deg,#2b8a5e,#0f4b32)";
+}
+function render(){
+ ["gov","bsub","heroh","herop","f_tag","f_sub","disc"].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML=t(id);});
+ document.getElementById("l_dest").textContent=t("l_dest");document.getElementById("l_in").textContent=t("l_in");
+ document.getElementById("l_out").textContent=t("l_out");document.getElementById("l_pax").textContent=t("l_pax");
+ document.getElementById("b_go").textContent=t("b_go");document.getElementById("lista_t").textContent=t("lista_t");
+ document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===LANG));
+ // comarca select
+ const sel=document.getElementById("s_com");const cur=sel.value;
+ sel.innerHTML=`<option value="">${t("todas")}</option>`+COMARCAS.map(c=>`<option value="${c}">${c}</option>`).join("");
+ sel.value=cur;
+ // filtros chips
+ const chips=[["",t("todas")],...COMARCAS.map(c=>[c,c])];
+ document.getElementById("filtros").innerHTML=chips.map(([v,l])=>`<button class="chip ${filtro===v?'on':''}" onclick="setF('${v}')">${l}</button>`).join("");
+ // grid
+ const list=A.filter(a=>!filtro||a.com===filtro);
+ document.getElementById("hcount").textContent=t("results")(A.length);
+ document.getElementById("lista_n").textContent=t("results")(list.length);
+ document.getElementById("grid").innerHTML=list.map((a,i)=>{
+   const idx=A.indexOf(a);
+   const tg=a.tags.map(x=>`<span class="tag">${T[LANG].tags[x]||x}</span>`).join("");
+   return `<div class="card">
+     <div class="ph" style="background:${phBG(a.com)}"><span class="em">${a.em}</span><span class="com">${a.com}</span></div>
+     <div class="b">
+       <h3>${a.n}</h3><div class="mun">📍 ${a.mun}</div>
+       <div class="stars">${stars(a.rat)} <small>${a.rat} · ${a.res} ${t("resenas")}</small></div>
+       <div class="tags">${tg}</div>
+       <div class="cta">
+         <button class="res" onclick="openM(${idx})">${t("reservar")}</button>
+         <a class="web" href="${a.web}" target="_blank" rel="noopener">${t("web")} ↗</a>
+       </div>
+     </div></div>`;
+ }).join("");
+}
+function setF(v){filtro=v;render();}
+function buscar(){filtro=document.getElementById("s_com").value;render();window.scrollTo({top:document.getElementById("filtros").offsetTop-70,behavior:"smooth"});}
+
+/* ---- Modal reserva ---- */
+let curA=null;
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;}
+function openM(idx){
+ curA=A[idx];document.getElementById("m_nom").textContent=curA.n;
+ document.getElementById("mbody").innerHTML=`
+   <div class="mrow"><div class="f"><label>${t("m_in")}</label><input type="date" id="r_in"></div>
+     <div class="f"><label>${t("m_out")}</label><input type="date" id="r_out"></div></div>
+   <label>${t("m_pax")}</label><input type="number" id="r_pax" min="1" max="20" value="${document.getElementById('s_pax').value||2}">
+   <label>${t("m_nombre")}</label><input id="r_nom" oninput="valR()" placeholder="Ane Etxebarria">
+   <div class="mrow"><div class="f"><label>${t("m_email")}</label><input id="r_em" type="email" oninput="valR()" placeholder="ane@email.eus"></div>
+     <div class="f"><label>${t("m_tel")}</label><input id="r_tel" placeholder="600 000 000"></div></div>
+   <button class="mbtn" id="r_go" disabled onclick="solicitar()">${t("m_solicit")}</button>
+   <button class="mwa" onclick="wa()">🟢 ${t("m_wa")}</button>`;
+ const inn=document.getElementById("s_in").value, out=document.getElementById("s_out").value;
+ if(inn)document.getElementById("r_in").value=inn; if(out)document.getElementById("r_out").value=out;
+ document.getElementById("ov").classList.add("on");
+}
+function valR(){const ok=document.getElementById("r_nom").value.trim().length>2 && /.+@.+\..+/.test(document.getElementById("r_em").value);document.getElementById("r_go").disabled=!ok;}
+function solicitar(){
+ const code="LANDA-"+(hashStr(curA.n+document.getElementById("r_em").value)%10000).toString().padStart(4,"0");
+ document.getElementById("mbody").innerHTML=`<div class="conf">
+   <div class="ic">✓</div><b style="font-size:17px;color:var(--vd)">${t("m_okt")}</b>
+   <p style="color:var(--gris);font-size:13.5px;margin-top:6px">${t("m_oks")}</p>
+   <div style="font-size:12px;color:var(--gris);font-weight:700;margin-top:14px;text-transform:uppercase">${t("m_code")}</div>
+   <span class="code">${code}</span>
+   <div style="margin-top:14px;font-size:13.5px"><b>${curA.n}</b><br>📍 ${curA.mun} · ${curA.com}</div>
+   <button class="mbtn" style="margin-top:18px" onclick="closeM()">${t("m_otra")}</button></div>`;
+}
+function wa(){
+ const txt=encodeURIComponent((LANG==="es"?"Hola, me interesa reservar en ":"Kaixo, hemen erreserbatu nahi nuke: ")+curA.n+" (Bizkaia Landa).");
+ window.open("https://wa.me/?text="+txt,"_blank");
+}
+function closeM(){document.getElementById("ov").classList.remove("on");}
+document.getElementById("ov").addEventListener("click",e=>{if(e.target.id==="ov")closeM();});
+document.getElementById("lang").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;render();}});
+render();
+</script>
+</body>
+</html>
