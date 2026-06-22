@@ -4,234 +4,435 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bizkaiko Foru Ogasuna · Hacienda Foral de Bizkaia</title>
-<meta name="description" content="Sede tributaria de la Hacienda Foral de Bizkaia: Renta, Batuz, cita previa, certificados y pagos.">
+<meta name="description" content="Sede tributaria de la Hacienda Foral de Bizkaia: Renta, Batuz, cita previa, certificados y pagos, con asistente IA 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
  :root{
-   --az:#13386b; --az-osc:#0c2748; --az-cla:#eaf0f8; --teal:#1f7a8c; --oro:#c79a3b;
-   --tinta:#172334; --gris:#5d6776; --linea:#e2e8f0;
-   --bot1:#6d28d9; --bot2:#06b6d4;
-   --som:0 12px 32px rgba(19,56,107,.12);
+   --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#FBFAF6;
+   --ink:#0A1733; --ink-soft:#4C5A68;
+   --primary:#0B2A5B; --primary-700:#082046; --secondary:#1E5F8C;
+   --accent:#00A884; --accent-ink:#067A5E; --accent-soft:#E6F7F1;
+   --success:#0FB87C; --line:#E4EAF3; --line-warm:#ECE7DC;
+   --dk-bg:#081634; --dk-surface:#0B2A5B; --dk-ink:#EAF1FB; --dk-soft:#9DB0CF; --dk-line:rgba(255,255,255,.10);
+   --sh-1:0 1px 2px rgba(10,23,51,.06);
+   --sh-2:0 4px 12px rgba(10,23,51,.08);
+   --sh-3:0 16px 40px -8px rgba(10,23,51,.18);
+   --sh-4:0 24px 70px -16px rgba(8,22,52,.28);
+   --sh-accent:0 12px 32px rgba(0,168,132,.28);
+   --r-chip:12px; --r-input:14px; --r-btn:16px; --r-card:22px; --r-panel:24px; --r-pill:999px;
+   --ease:cubic-bezier(.22,1,.36,1);
+   --maxw:1200px;
  }
  *{box-sizing:border-box;margin:0;padding:0}
- body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:#fff;line-height:1.55}
- .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
- button{font-family:inherit;cursor:pointer}
- a{color:var(--az);text-decoration:none}
+ html{scroll-behavior:smooth}
+ body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;color:var(--ink);font-size:1.0625rem;line-height:1.65;
+   background:radial-gradient(120% 80% at 88% -8%,rgba(0,168,132,.05),transparent 55%),var(--bg);-webkit-font-smoothing:antialiased}
+ button,input{font-family:inherit}
+ a{color:var(--primary);text-decoration:none}
+ h1,h2,h3{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+ .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+ .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+ .num{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums}
+ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 
- .topbar{background:var(--az-osc);color:#cdd9ec}
- .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;font-size:12.5px}
- .lang button{background:none;border:1px solid rgba(255,255,255,.25);color:#cdd9ec;border-radius:6px;padding:3px 9px;font-size:12px;font-weight:700;margin-left:5px}
- .lang button.on{background:#fff;color:var(--az-osc);border-color:#fff}
+ /* Skip link */
+ .skip{position:absolute;left:14px;top:-60px;z-index:999;background:var(--primary);color:#fff;padding:11px 18px;border-radius:10px;font-weight:700;transition:top .2s}
+ .skip:focus{top:14px}
 
- header{background:#fff;border-bottom:1px solid var(--linea)}
- header .wrap{display:flex;align-items:center;gap:13px;height:72px}
- .esc{width:44px;height:44px;border-radius:10px;background:linear-gradient(140deg,var(--az),var(--teal));display:flex;align-items:center;justify-content:center;font-size:22px}
- .brand b{display:block;font-size:17px;color:var(--az);letter-spacing:.2px}
- .brand span{font-size:12px;color:var(--gris)}
- nav{margin-left:auto;display:flex;gap:20px}
- nav a{font-size:14px;font-weight:600;color:var(--tinta)}
- nav a:hover{color:var(--az)}
+ /* Topbar */
+ .topbar{background:var(--primary-700);color:#cdd9ec}
+ .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;font-size:13px;gap:14px}
+ .status{display:inline-flex;align-items:center;gap:8px}
+ .live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(15,184,124,.25);animation:beat 2.6s var(--ease) infinite}
+ @keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(15,184,124,.4)}60%{box-shadow:0 0 0 7px rgba(15,184,124,0)}}
+ .seg{position:relative;display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:3px}
+ .seg .thumb{position:absolute;top:3px;bottom:3px;width:calc(50% - 3px);border-radius:var(--r-pill);background:#fff;transition:transform .22s var(--ease)}
+ .seg.es .thumb{transform:translateX(100%)}
+ .seg button{position:relative;z-index:1;background:none;border:0;color:#cdd9ec;font-size:12px;font-weight:700;padding:3px 12px;border-radius:var(--r-pill);min-width:42px}
+ .seg button.on{color:var(--primary-700)}
 
- .hero{background:linear-gradient(120deg,var(--az) 0%,var(--az-osc) 75%);color:#fff;padding:42px 0 76px;position:relative;overflow:hidden}
- .hero:after{content:"📊";position:absolute;right:30px;top:20px;font-size:120px;opacity:.07}
- .hero h1{font-size:30px;font-weight:800;max-width:620px;line-height:1.15}
- .hero p{margin-top:10px;color:#cdd9ec;font-size:15.5px;max-width:540px}
- .hero .cta{margin-top:20px}
- .bpr{background:#fff;color:var(--az);border:0;border-radius:11px;padding:13px 20px;font-weight:700;font-size:14.5px}
+ /* Header */
+ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--line);transition:box-shadow .25s,padding .25s}
+ header.scrolled{box-shadow:var(--sh-2)}
+ @supports not (backdrop-filter:blur(2px)){header{background:#fff}}
+ header .wrap{display:flex;align-items:center;gap:14px;height:74px}
+ .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:var(--sh-1)}
+ .logo svg{width:24px;height:24px;stroke:#fff}
+ .brand b{display:block;font-size:16px;color:var(--primary);font-weight:800;letter-spacing:-.01em}
+ .brand span{font-size:12px;color:var(--ink-soft)}
+ nav{margin-left:auto;display:flex;align-items:center;gap:24px}
+ nav a{font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer}
+ nav a:hover{color:var(--primary)}
+ .nav-cta{background:var(--primary);color:#fff;padding:9px 16px;border-radius:var(--r-btn);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px}
+ .nav-cta:hover{background:var(--primary-700)}
 
- .tiles{margin-top:-40px;position:relative;z-index:5}
- .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
- .tile{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px 10px;text-align:center;box-shadow:var(--som);cursor:pointer;transition:.16s}
- .tile:hover{transform:translateY(-3px);border-color:var(--teal)}
- .tile .ic{font-size:24px}.tile b{display:block;margin-top:7px;font-size:12.5px;color:var(--az)}
+ /* Hero */
+ .hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,92px) 0 clamp(60px,8vw,104px)}
+ .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+ .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+ .hero h1{font-size:clamp(2.3rem,1.6rem+2.9vw,4rem);margin:14px 0 0}
+ .hero h1 .g{background:linear-gradient(120deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+ .hero .lead{margin-top:16px;font-size:clamp(1.05rem,1rem+.4vw,1.22rem);color:var(--ink-soft);max-width:520px}
+ .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+ .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;border-radius:var(--r-btn);padding:14px 22px;font-size:15px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s}
+ .btn svg{width:18px;height:18px}
+ .btn-accent{background:var(--accent);color:#042b22;box-shadow:var(--sh-accent)}
+ .btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,168,132,.36)}
+ .btn-ghost{background:var(--surface);color:var(--primary);border:1px solid var(--line);box-shadow:var(--sh-1)}
+ .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+ .trust{margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+ .trust .live{width:7px;height:7px}
 
- section{padding:42px 0}
- .h2{font-size:22px;color:var(--az);font-weight:800}
- .sub{color:var(--gris);font-size:14px;margin:4px 0 22px}
- .news{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
- .card{border:1px solid var(--linea);border-radius:14px;padding:16px;background:#fff}
- .card .tg{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.4px}
- .card h3{font-size:15.5px;margin:7px 0;color:var(--tinta)}
- .card p{font-size:13px;color:var(--gris)}
- .card .lk{font-size:13px;font-weight:700;color:var(--az);margin-top:8px;display:inline-block}
+ /* Hero preview card */
+ .luxcard{position:relative;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sh-4);padding:18px;border:1px solid var(--line)}
+ .luxcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(0,168,132,.55),rgba(11,42,91,.12) 42%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+ .lux-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+ .lux-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center}
+ .lux-av svg{width:20px;height:20px;stroke:#fff}
+ .lux-head b{font-size:13.5px;color:var(--ink)}
+ .lux-head .st{font-size:11.5px;color:var(--accent-ink);display:flex;align-items:center;gap:5px}
+ .lux-msgs{display:flex;flex-direction:column;gap:9px;padding:14px 2px 4px}
+ .lux-q{align-self:flex-end;background:var(--primary);color:#fff;font-size:13px;padding:9px 13px;border-radius:14px 14px 5px 14px;max-width:80%}
+ .lux-a{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:13px;padding:9px 13px;border-radius:5px 14px 14px 14px;max-width:88%;color:var(--ink)}
+ .lux-stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:3px}
+ .lux-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+ .lux-chip{font-size:11px;font-weight:600;color:var(--primary);background:var(--accent-soft);border-radius:999px;padding:4px 10px}
 
- footer{background:var(--az-osc);color:#c2d0e6}
- footer .wrap{padding:34px 18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px}
- footer b{color:#fff;display:block;margin-bottom:8px}
- .disc{text-align:center;font-size:11.5px;color:#9fb0c9;padding:13px}
+ /* Tiles */
+ .tiles .wrap{margin-top:clamp(-44px,-4vw,-30px);position:relative;z-index:5}
+ .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+ .tile{position:relative;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:18px;padding:18px 16px 16px;box-shadow:var(--sh-1);cursor:pointer;text-align:left;transition:transform .18s var(--ease),box-shadow .18s;display:flex;flex-direction:column;gap:8px}
+ .tile:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .tile .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);font-weight:600}
+ .tile:hover .no{color:var(--accent-ink)}
+ .tile .ico{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
+ .tile .ico svg{width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:1.7}
+ .tile:hover .ico{background:var(--primary)}
+ .tile:hover .ico svg{stroke:#fff}
+ .tile b{font-size:15px;color:var(--ink);font-weight:700}
+ .tile small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+ .tile .arr{position:absolute;right:14px;top:18px;color:var(--ink-soft);transition:transform .18s}
+ .tile:hover .arr{transform:translateX(4px);color:var(--accent-ink)}
 
- /* chatbot */
- #fab{position:fixed;right:24px;bottom:24px;z-index:200;width:64px;height:64px;border-radius:50%;border:0;
-   background:linear-gradient(135deg,var(--bot1),var(--bot2));box-shadow:0 12px 30px rgba(109,40,217,.45);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;transition:.2s}
- #fab:hover{transform:scale(1.06)}
- #fab .pulse{position:absolute;inset:0;border-radius:50%;animation:pulse 2.2s infinite}
- @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(109,40,217,.45)}70%{box-shadow:0 0 0 18px rgba(109,40,217,0)}100%{box-shadow:0 0 0 0 rgba(109,40,217,0)}}
- #fab .badge{position:absolute;top:-3px;right:-3px;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+ /* Steps */
+ section{padding:clamp(58px,8vw,104px) 0}
+ .sec-head{max-width:620px;margin-bottom:36px}
+ .sec-head h2{font-size:clamp(1.5rem,1.1rem+1.4vw,2.1rem);margin-top:8px;color:var(--ink)}
+ .sec-head p{color:var(--ink-soft);margin-top:8px}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:26px 24px}
+ .step .n{font-family:"Space Grotesk",sans-serif;font-size:42px;font-weight:700;color:var(--accent);line-height:1}
+ .step h3{font-size:17px;margin:12px 0 6px;color:var(--ink)}
+ .step p{font-size:14px;color:var(--ink-soft)}
 
- #chat{position:fixed;right:24px;bottom:24px;z-index:210;width:384px;max-width:calc(100vw - 32px);height:610px;max-height:calc(100vh - 40px);
-   background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(12,39,72,.32);display:none;flex-direction:column;overflow:hidden}
- #chat.open{display:flex;animation:rise .25s ease}
- @keyframes rise{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
- .chead{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;padding:14px 16px;display:flex;align-items:center;gap:11px}
- .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:21px}
- .chead .t b{font-size:15px;display:block}.chead .t span{font-size:12px;color:#e7defb;display:flex;align-items:center;gap:6px}
- .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
- .chead .x{margin-left:auto;background:none;border:0;color:#fff;font-size:22px;opacity:.85}
- .cbody{flex:1;overflow-y:auto;padding:16px;background:#f6f5fb;display:flex;flex-direction:column;gap:10px}
- .msg{max-width:86%;padding:10px 13px;border-radius:14px;font-size:13.7px;line-height:1.5;white-space:pre-line;animation:rise .2s}
- .msg.bot{background:#fff;border:1px solid #eae6f5;border-bottom-left-radius:5px;align-self:flex-start}
- .msg.user{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
- .msg.bot a{color:var(--bot1);font-weight:600}
- .chips{display:flex;flex-wrap:wrap;gap:7px}
- .chip{background:#fff;border:1px solid #d9d2ee;color:var(--bot1);border-radius:18px;padding:7px 12px;font-size:12.5px;font-weight:600}
- .chip:hover{background:var(--bot1);color:#fff}
- .typing{align-self:flex-start;background:#fff;border:1px solid #eae6f5;border-radius:14px;padding:12px 14px;display:flex;gap:4px}
- .typing i{width:7px;height:7px;border-radius:50%;background:#b9add9;animation:bn 1.2s infinite}
+ /* Dark trust band */
+ .band{position:relative;background:var(--dk-bg);color:var(--dk-ink);overflow:hidden;border-radius:0}
+ .band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,168,132,.10) 1px,transparent 1px);background-size:30px 30px;-webkit-mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);opacity:.7}
+ .band::after{content:"";position:absolute;inset:0;opacity:.4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+ .band .wrap{position:relative;padding:clamp(48px,7vw,80px) 0}
+ .band h2{color:#fff;font-size:clamp(1.4rem,1.1rem+1.2vw,2rem)}
+ .band .lead{color:var(--dk-soft);margin-top:8px;max-width:560px}
+ .stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+ .stat .v{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums;font-size:clamp(2rem,1.4rem+2vw,3rem);font-weight:700;color:#fff;line-height:1}
+ .stat .v .u{color:var(--accent);font-size:.7em}
+ .stat .l{color:var(--dk-soft);font-size:13.5px;margin-top:6px}
+
+ /* News */
+ .news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .ncard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s}
+ .ncard:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .ncard .top{height:5px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+ .ncard .in{padding:22px}
+ .ncard .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-ink)}
+ .ncard h3{font-size:16.5px;margin:9px 0;color:var(--ink);line-height:1.3}
+ .ncard p{font-size:13.5px;color:var(--ink-soft)}
+ .ncard .lk{margin-top:12px;font-size:13.5px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+ .ncard:hover .lk{gap:9px}
+
+ /* Footer */
+ footer{background:var(--dk-bg);color:var(--dk-soft)}
+ footer .wrap{padding:54px 0 0;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:28px}
+ footer b{color:#fff;display:block;margin-bottom:12px;font-size:15px}
+ footer a{color:var(--dk-soft);display:block;margin-bottom:7px;font-size:14px;cursor:pointer}
+ footer a:hover{color:#fff}
+ .foot-brand p{font-size:13.5px;line-height:1.7}
+ .wcag{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--accent);border:1px solid var(--dk-line);border-radius:var(--r-pill);padding:5px 12px}
+ .legal{border-top:1px solid var(--dk-line);margin-top:44px}
+ .legal .wrap{padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--dk-soft)}
+
+ /* Reveal */
+ .js .reveal{opacity:0;transform:translateY(18px)}
+ .js .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+ /* ===== CHATBOT ===== */
+ #fab{position:fixed;right:26px;bottom:26px;z-index:200;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 16px;border:0;border-radius:var(--r-pill);
+   background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-weight:700;font-size:15px;box-shadow:var(--sh-accent),var(--sh-2);transition:transform .25s var(--ease),box-shadow .25s}
+ #fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+ #fab:hover{transform:translateY(-2px) scale(1.03)}
+ #fab::after{content:"";position:absolute;inset:0;border-radius:var(--r-pill);box-shadow:0 0 0 0 rgba(0,168,132,.4);animation:breathe 3.2s var(--ease) infinite;pointer-events:none}
+ @keyframes breathe{0%{box-shadow:0 0 0 0 rgba(0,168,132,.4)}70%{box-shadow:0 0 0 16px rgba(0,168,132,0)}100%{box-shadow:0 0 0 0 rgba(0,168,132,0)}}
+ #fab .badge{position:absolute;top:-4px;right:-2px;background:#C2334D;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+
+ #chat{position:fixed;right:26px;bottom:26px;z-index:210;width:400px;max-width:calc(100vw - 28px);height:624px;max-height:calc(100vh - 40px);
+   background:var(--surface);border-radius:var(--r-panel);box-shadow:var(--sh-4);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line);transform-origin:bottom right}
+ #chat.open{display:flex;animation:born .34s var(--ease)}
+ @keyframes born{from{opacity:0;transform:translateY(14px) scale(.95)}to{opacity:1;transform:none}}
+ .chead{position:relative;background:linear-gradient(135deg,var(--primary-700),var(--primary));color:#fff;padding:16px 16px 15px;display:flex;align-items:center;gap:12px}
+ .chead::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+ .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center}
+ .chead .av svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8}
+ .chead .t b{font-size:14.5px;display:block}
+ .chead .t span{font-size:12px;color:#bcd0ee;display:flex;align-items:center;gap:6px}
+ .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(15,184,124,.3)}
+ .chead .x{margin-left:auto;background:rgba(255,255,255,.1);border:0;color:#fff;font-size:20px;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+ .chead .x:hover{background:rgba(255,255,255,.2)}
+ .cbody{flex:1;overflow-y:auto;padding:18px 16px;background:var(--surface-2);display:flex;flex-direction:column;gap:11px}
+ .msg{max-width:86%;font-size:14px;line-height:1.55;white-space:pre-line}
+ .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:5px 16px 16px 16px;padding:10px 14px;box-shadow:var(--sh-1)}
+ .msg.user{align-self:flex-end;background:var(--primary);color:#fff;border-radius:16px 16px 5px 16px;padding:10px 14px}
+ .msg.bot a{color:var(--accent-ink);font-weight:700}
+ .stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.04em}
+ .msg-in{animation:msgin .32s var(--ease)}
+ @keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ .chips{display:flex;flex-wrap:wrap;gap:8px}
+ .chip{background:#fff;border:1px solid var(--line);color:var(--primary);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;min-height:36px}
+ .chip:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+ .typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px;display:flex;gap:5px}
+ .typing i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bn 1.2s infinite}
  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
- @keyframes bn{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
- .cfoot{border-top:1px solid #eee;padding:10px;display:flex;gap:8px;background:#fff}
- .cfoot input{flex:1;border:1px solid #e0dbef;border-radius:22px;padding:11px 15px;font-size:14px;outline:none}
- .cfoot input:focus{border-color:var(--bot1)}
- .cfoot button{width:44px;height:44px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;font-size:18px;flex:0 0 auto}
- .mini{font-size:10.5px;color:#9a93b3;text-align:center;padding:5px 10px 8px;background:#fff}
+ @keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+ .cfoot{border-top:1px solid var(--line);padding:11px;display:flex;gap:9px;background:#fff}
+ .cfoot input{flex:1;border:1px solid var(--line);border-radius:var(--r-pill);padding:12px 16px;font-size:14px;outline:none;transition:.15s}
+ .cfoot input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,168,132,.18)}
+ .cfoot .send{width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:#042b22;display:flex;align-items:center;justify-content:center;flex:0 0 auto;cursor:pointer;transition:.15s}
+ .cfoot .send svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+ .cfoot .send:hover{background:var(--success)}
+ .clegal{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:6px 12px 9px;background:#fff}
 
- @media(max-width:820px){nav{display:none}.grid{grid-template-columns:repeat(3,1fr)}.news{grid-template-columns:1fr}.hero h1{font-size:25px}}
+ @media(max-width:920px){
+   nav .navlinks{display:none}
+   .hero .wrap{grid-template-columns:1fr}
+   .hero .luxwrap{order:-1;max-width:440px}
+   .grid6{grid-template-columns:repeat(3,1fr)}
+   .steps,.news,.stats{grid-template-columns:1fr}
+   .stats{grid-template-columns:repeat(2,1fr)}
+   footer .wrap{grid-template-columns:1fr 1fr}
+ }
+ @media(max-width:560px){
+   .grid6{grid-template-columns:repeat(2,1fr)}
+   #fab span{display:none}#fab{padding:0;width:60px;height:60px;justify-content:center}
+   #chat{right:0;bottom:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:18px 18px 0 0}
+ }
+ @media (prefers-reduced-motion:reduce){
+   *{scroll-behavior:auto!important}
+   #fab::after,.live{animation:none}
+   #chat.open,.msg-in{animation:none}
+   .js .reveal{opacity:1;transform:none}
+ }
 </style>
 </head>
 <body>
+<a class="skip" href="#contenido" id="skip">Saltar al contenido</a>
 
 <div class="topbar"><div class="wrap">
- <span id="gov">Bizkaiko Foru Aldundia · Diputación Foral de Bizkaia</span>
- <span class="lang" id="lang"><button data-l="eu">EU</button><button data-l="es" class="on">ES</button></span>
+ <span class="status"><i class="live"></i><span id="status">Operativo · BizkaiBai disponible</span></span>
+ <span class="seg eu" id="seg" role="group" aria-label="Idioma">
+   <span class="thumb" aria-hidden="true"></span>
+   <button data-l="eu" class="on" aria-pressed="true">EU</button>
+   <button data-l="es" aria-pressed="false">ES</button>
+ </span>
 </div></div>
 
-<header><div class="wrap">
- <div class="esc">⚖️</div>
+<header id="hdr"><div class="wrap">
+ <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></div>
  <div class="brand"><b>Bizkaiko Foru Ogasuna</b><span id="bsub">Hacienda Foral de Bizkaia</span></div>
- <nav><a id="n1" onclick="ask('renta')">Renta</a><a id="n2" onclick="ask('batuz')">Batuz</a><a id="n3" onclick="ask('cita')">Cita previa</a><a id="n4" onclick="ask('contacto')">Contacto</a></nav>
+ <nav>
+   <span class="navlinks" style="display:flex;gap:24px">
+     <a id="n1" onclick="ask('renta')">Renta</a>
+     <a id="n2" onclick="ask('batuz')">Batuz</a>
+     <a id="n3" onclick="ask('cita')">Cita previa</a>
+   </span>
+   <a class="nav-cta" id="ncta" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Acceso BizkaiBai</a>
+ </nav>
 </div></header>
 
-<div class="hero"><div class="wrap">
- <h1 id="heroh">Tu Hacienda Foral, más fácil</h1>
- <p id="herop">Renta, Batuz, certificados y pagos. Y si tienes dudas, pregunta a nuestro asistente las 24 horas.</p>
- <div class="cta"><button class="bpr" onclick="openChat()" id="herob">💬 Pregunta al asistente</button></div>
-</div></div>
-
-<div class="tiles"><div class="wrap"><div class="grid">
- <div class="tile" onclick="ask('renta')"><div class="ic">🧾</div><b id="t1">Renta / IRPF</b></div>
- <div class="tile" onclick="ask('batuz')"><div class="ic">🧮</div><b id="t2">Batuz</b></div>
- <div class="tile" onclick="ask('cita')"><div class="ic">📅</div><b id="t3">Cita previa</b></div>
- <div class="tile" onclick="ask('certificado')"><div class="ic">📑</div><b id="t4">Certificados</b></div>
- <div class="tile" onclick="ask('pago')"><div class="ic">💶</div><b id="t5">Pagos</b></div>
- <div class="tile" onclick="ask('bizkaibai')"><div class="ic">🔐</div><b id="t6">BizkaiBai</b></div>
-</div></div></div>
-
-<section><div class="wrap">
- <div class="h2" id="news_h">Actualidad tributaria</div>
- <div class="sub" id="news_s">Lo último de la Hacienda Foral de Bizkaia.</div>
- <div class="news">
-   <div class="card"><span class="tg" id="nw1t">Renta 2026</span><h3 id="nw1h">La campaña de la Renta, del 15 de abril al 30 de junio</h3><p id="nw1p">Consulta tu borrador y presenta tu declaración por vía digital, telefónica o presencial.</p><a class="lk" onclick="ask('renta')" id="nw1l">Más información →</a></div>
-   <div class="card"><span class="tg" id="nw2t">Batuz</span><h3 id="nw2h">Batuz ya es obligatorio para todos los autónomos y empresas</h3><p id="nw2p">TicketBAI y LROE en vigor para todo el tejido empresarial de Bizkaia.</p><a class="lk" onclick="ask('batuz')" id="nw2l">Más información →</a></div>
-   <div class="card"><span class="tg" id="nw3t">Atención</span><h3 id="nw3h">Nuevo asistente virtual tributario</h3><p id="nw3p">Resuelve tus dudas sobre Renta, Batuz, certificados o pagos las 24 horas.</p><a class="lk" onclick="openChat()" id="nw3l">Probar asistente →</a></div>
+<main id="contenido">
+<section class="hero"><div class="wrap">
+ <div>
+   <span class="eyebrow" id="eyebrow">Bizkaiko Foru Ogasuna · Asistente IA</span>
+   <h1 id="heroh">Tu Hacienda, <span class="g">clara.</span></h1>
+   <p class="lead" id="herop">Renta, Batuz, certificados y pagos. Y si te surge una duda, nuestro asistente te ayuda al instante, en euskera y castellano, las 24 horas.</p>
+   <div class="cta">
+     <button class="btn btn-accent" onclick="openChat()" id="herob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Pregunta al asistente</span></button>
+     <a class="btn btn-ghost" href="#tramites" id="herob2">Ver trámites</a>
+   </div>
+   <div class="trust"><i class="live"></i><span id="herotrust">Asistente en línea · respuesta inmediata</span></div>
  </div>
+ <div class="luxwrap"><div class="luxcard">
+   <div class="lux-head">
+     <div class="lux-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+     <div><b>Adi</b><div class="st"><i class="dot" style="width:7px;height:7px"></i> <span id="luxst">Asistente tributario</span></div></div>
+   </div>
+   <div class="lux-msgs">
+     <div class="lux-q" id="luxq">¿Hasta cuándo tengo para hacer la Renta?</div>
+     <div class="lux-a"><div class="lux-stamp">OGASUNA · 09:41</div><span id="luxa">El plazo de la Renta es del 15 de abril al 30 de junio de 2026. Puedes presentarla en BizkaiBai con BakQ. ¿Te ayudo a empezar?</span>
+       <div class="lux-chips"><span class="lux-chip">Renta</span><span class="lux-chip">Batuz</span><span class="lux-chip">BizkaiBai</span></div>
+     </div>
+   </div>
+ </div></div>
 </div></section>
 
-<footer><div class="wrap">
- <div><b>Bizkaiko Foru Ogasuna · Hacienda Foral de Bizkaia</b>📞 Información fiscal: 901 502 000<br>📅 Cita previa Renta: 94 406 6600<br>🔐 Trámites online: BizkaiBai</div>
- <div><b id="f1">Destacados</b><a onclick="ask('renta')">Renta / IRPF</a><br><a onclick="ask('batuz')">Batuz</a><br><a onclick="ask('certificado')">Certificados</a></div>
-</div></footer>
-<div class="disc" id="disc">Demostración de asistente virtual tributario · datos públicos de la Hacienda Foral de Bizkaia</div>
+<div class="tiles" id="tramites"><div class="wrap"><div class="grid6" id="grid6"></div></div></div>
 
-<button id="fab" onclick="openChat()"><span class="pulse"></span>💬<span class="badge">1</span></button>
-<div id="chat">
- <div class="chead"><div class="av">🤖</div>
-   <div class="t"><b>Ogasun Laguntzailea</b><span><i class="dot"></i> <span id="con">Asistente tributario · en línea</span></span></div>
-   <button class="x" onclick="closeChat()">×</button></div>
- <div class="cbody" id="cbody"></div>
- <div class="cfoot"><input id="cinput" placeholder="Escribe tu pregunta…" autocomplete="off" onkeydown="if(event.key==='Enter')send()"><button onclick="send()">➤</button></div>
- <div class="mini" id="mini">Información orientativa · no sustituye a la consulta oficial en BizkaiBai</div>
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="pasos_k">Empieza aquí</span><h2 id="pasos_h">¿Por dónde empiezo?</h2><p id="pasos_p">Tres pasos para resolver tu gestión sin complicaciones.</p></div>
+ <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="band reveal"><div class="wrap">
+ <span class="eyebrow" style="color:var(--accent)" id="band_k">Asistente IA</span>
+ <h2 id="band_h">Atención al contribuyente, sin esperas</h2>
+ <p class="lead" id="band_p">Un asistente que resuelve las dudas más frecuentes al instante y descarga las líneas en campaña.</p>
+ <div class="stats" id="stats"></div>
+</div></section>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="news_k">Actualidad</span><h2 id="news_h">Actualidad tributaria</h2></div>
+ <div class="news" id="news"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="foot-brand">
+   <b>Bizkaiko Foru Ogasuna</b>
+   <p id="foot_dir">Hacienda Foral de Bizkaia<br>📞 Información fiscal: 901 502 000<br>📅 Cita previa Renta: 94 406 6600</p>
+   <span class="wcag" id="wcag">✓ Conforme WCAG 2.1 AA</span>
+ </div>
+ <div><b id="f_t1">Trámites</b><a onclick="ask('renta')">Renta / IRPF</a><a onclick="ask('batuz')">Batuz</a><a onclick="ask('certificado')">Certificados</a><a onclick="ask('pago')">Pagos</a></div>
+ <div><b id="f_t2">Ayuda</b><a onclick="ask('cita')" id="f_cita">Cita previa</a><a onclick="ask('bizkaibai')">BizkaiBai</a><a onclick="openChat()" id="f_asist">Asistente IA</a></div>
+ <div><b id="f_t3">Accesibilidad</b><a id="f_a1">Declaración de accesibilidad</a><a id="f_a2">Aviso legal</a><a id="f_a3">Privacidad</a></div>
+</div>
+<div class="legal"><div class="wrap"><span>© Bizkaiko Foru Ogasuna</span><span id="disc">Demostración de asistente virtual tributario · datos públicos</span></div></div>
+</footer>
+
+<button id="fab" onclick="openChat()" aria-label="Abrir asistente tributario">
+ <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span id="fablabel">¿Te ayudo?</span>
+ <span class="badge">1</span>
+</button>
+
+<div id="chat" role="dialog" aria-modal="false" aria-label="Asistente tributario">
+ <div class="chead">
+   <div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+   <div class="t"><b id="cname">Adi · Asistente de la Hacienda Foral</b><span><i class="dot"></i> <span id="con">En línea · responde al instante</span></span></div>
+   <button class="x" onclick="closeChat()" aria-label="Cerrar">×</button>
+ </div>
+ <div class="cbody" id="cbody" role="log" aria-live="polite" aria-label="Conversación"></div>
+ <div class="cfoot">
+   <input id="cinput" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta…" autocomplete="off" onkeydown="if(event.key==='Enter')send()">
+   <button class="send" onclick="send()" aria-label="Enviar"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+ </div>
+ <div class="clegal" id="clegal">Información orientativa · no sustituye la consulta oficial en BizkaiBai</div>
 </div>
 
 <script>
-const UI={
- es:{gov:"Bizkaiko Foru Aldundia · Diputación Foral de Bizkaia",bsub:"Hacienda Foral de Bizkaia",
-  n1:"Renta",n2:"Batuz",n3:"Cita previa",n4:"Contacto",
-  heroh:"Tu Hacienda Foral, más fácil",herop:"Renta, Batuz, certificados y pagos. Y si tienes dudas, pregunta a nuestro asistente las 24 horas.",herob:"💬 Pregunta al asistente",
-  t1:"Renta / IRPF",t2:"Batuz",t3:"Cita previa",t4:"Certificados",t5:"Pagos",t6:"BizkaiBai",
-  news_h:"Actualidad tributaria",news_s:"Lo último de la Hacienda Foral de Bizkaia.",
-  nw1t:"Renta 2026",nw1h:"La campaña de la Renta, del 15 de abril al 30 de junio",nw1p:"Consulta tu borrador y presenta tu declaración por vía digital, telefónica o presencial.",nw1l:"Más información →",
-  nw2t:"Batuz",nw2h:"Batuz ya es obligatorio para todos los autónomos y empresas",nw2p:"TicketBAI y LROE en vigor para todo el tejido empresarial de Bizkaia.",nw2l:"Más información →",
-  nw3t:"Atención",nw3h:"Nuevo asistente virtual tributario",nw3p:"Resuelve tus dudas sobre Renta, Batuz, certificados o pagos las 24 horas.",nw3l:"Probar asistente →",
-  f1:"Destacados",con:"Asistente tributario · en línea",ph:"Escribe tu pregunta…",mini:"Información orientativa · no sustituye a la consulta oficial en BizkaiBai",disc:"Demostración de asistente virtual tributario · datos públicos de la Hacienda Foral de Bizkaia"},
- eu:{gov:"Bizkaiko Foru Aldundia · Diputación Foral de Bizkaia",bsub:"Bizkaiko Foru Ogasuna",
-  n1:"Errenta",n2:"Batuz",n3:"Hitzordua",n4:"Kontaktua",
-  heroh:"Zure Foru Ogasuna, errazago",herop:"Errenta, Batuz, ziurtagiriak eta ordainketak. Zalantzarik baduzu, galdetu gure laguntzaileari, eguneko 24 orduetan.",herob:"💬 Galdetu laguntzaileari",
-  t1:"Errenta / PFEZ",t2:"Batuz",t3:"Hitzordua",t4:"Ziurtagiriak",t5:"Ordainketak",t6:"BizkaiBai",
-  news_h:"Zerga-albisteak",news_s:"Bizkaiko Foru Ogasunaren azkenak.",
-  nw1t:"Errenta 2026",nw1h:"Errenta-kanpaina, apirilaren 15etik ekainaren 30era",nw1p:"Begiratu zure zirriborroa eta aurkeztu aitorpena bide digital, telefoniko edo aurrez aurrekoan.",nw1l:"Informazio gehiago →",
-  nw2t:"Batuz",nw2h:"Batuz derrigorrezkoa da jada autonomo eta enpresa guztientzat",nw2p:"TicketBAI eta LROE indarrean Bizkaiko enpresa-sare osoarentzat.",nw2l:"Informazio gehiago →",
-  nw3t:"Arreta",nw3h:"Zerga-laguntzaile birtual berria",nw3p:"Argitu zure zalantzak Errenta, Batuz, ziurtagiri edo ordainketei buruz, 24 orduz.",nw3l:"Laguntzailea probatu →",
-  f1:"Nabarmenduak",con:"Zerga-laguntzailea · linean",ph:"Idatzi zure galdera…",mini:"Orientabidezko informazioa · ez du ordezkatzen BizkaiBaiko kontsulta ofiziala",disc:"Zerga-laguntzaile birtualaren erakustaldia · Bizkaiko Foru Ogasunaren datu publikoak"}
-};
-let LANG="es";
+document.documentElement.classList.add("js");
 
+/* ===== UI i18n ===== */
+const UI={
+ es:{status:"Operativo · BizkaiBai disponible",bsub:"Hacienda Foral de Bizkaia",
+  n1:"Renta",n2:"Batuz",n3:"Cita previa",ncta:"Acceso BizkaiBai",
+  eyebrow:"Bizkaiko Foru Ogasuna · Asistente IA",heroh:'Tu Hacienda, <span class="g">clara.</span>',
+  herop:"Renta, Batuz, certificados y pagos. Y si te surge una duda, nuestro asistente te ayuda al instante, en euskera y castellano, las 24 horas.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Pregunta al asistente</span>',
+  herob2:"Ver trámites",herotrust:"Asistente en línea · respuesta inmediata",
+  luxst:"Asistente tributario",luxq:"¿Hasta cuándo tengo para hacer la Renta?",
+  luxa:"El plazo de la Renta es del 15 de abril al 30 de junio de 2026. Puedes presentarla en BizkaiBai con BakQ. ¿Te ayudo a empezar?",
+  pasos_k:"Empieza aquí",pasos_h:"¿Por dónde empiezo?",pasos_p:"Tres pasos para resolver tu gestión sin complicaciones.",
+  band_k:"Asistente IA",band_h:"Atención al contribuyente, sin esperas",band_p:"Un asistente que resuelve las dudas más frecuentes al instante y descarga las líneas en campaña.",
+  news_k:"Actualidad",news_h:"Actualidad tributaria",
+  foot_dir:"Hacienda Foral de Bizkaia<br>📞 Información fiscal: 901 502 000<br>📅 Cita previa Renta: 94 406 6600",
+  wcag:"✓ Conforme WCAG 2.1 AA",f_t1:"Trámites",f_t2:"Ayuda",f_t3:"Accesibilidad",f_cita:"Cita previa",f_asist:"Asistente IA",
+  f_a1:"Declaración de accesibilidad",f_a2:"Aviso legal",f_a3:"Privacidad",
+  disc:"Demostración de asistente virtual tributario · datos públicos",
+  cname:"Adi · Asistente de la Hacienda Foral",con:"En línea · responde al instante",fablabel:"¿Te ayudo?",
+  ph:"Escribe tu pregunta…",clegal:"Información orientativa · no sustituye la consulta oficial en BizkaiBai",skip:"Saltar al contenido",
+  tiles:[["renta","Renta / IRPF","Borrador, plazos y deducciones"],["batuz","Batuz","TicketBAI y LROE"],["cita","Cita previa","Atención telefónica o presencial"],["certificado","Certificados","Estar al corriente, IAE…"],["pago","Pagos","Domiciliar y fraccionar"],["bizkaibai","BizkaiBai","Tu área personal online"]],
+  steps:[["Identifícate","Entra en BizkaiBai con BakQ, certificado digital o DNIe."],["Revisa tu propuesta","Comprueba tu borrador y completa lo que falte."],["Confirma y listo","Presenta y, si procede, domicilia o fracciona el pago."]],
+  stats:[["18","temas resueltos al instante","+"],["2","idiomas · euskera y castellano",""],["24/7","disponible siempre",""],["0","€ de coste para el ciudadano",""]],
+  news:[["Renta 2026","La campaña, del 15 de abril al 30 de junio","Consulta tu borrador y presenta por vía digital, telefónica o presencial.","renta"],["Batuz","Obligatorio para autónomos y empresas","TicketBAI y LROE en vigor para todo el tejido empresarial de Bizkaia.","batuz"],["Atención","Nuevo asistente virtual tributario","Resuelve dudas de Renta, Batuz, certificados o pagos las 24 horas.","__chat"]]},
+ eu:{status:"Operatibo · BizkaiBai eskuragarri",bsub:"Bizkaiko Foru Ogasuna",
+  n1:"Errenta",n2:"Batuz",n3:"Hitzordua",ncta:"BizkaiBai sarbidea",
+  eyebrow:"Bizkaiko Foru Ogasuna · IA Laguntzailea",heroh:'Zure Ogasuna, <span class="g">argi.</span>',
+  herop:"Errenta, Batuz, ziurtagiriak eta ordainketak. Eta zalantzarik baduzu, gure laguntzaileak berehala lagunduko dizu, euskaraz eta gaztelaniaz, 24 orduz.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Galdetu laguntzaileari</span>',
+  herob2:"Izapideak ikusi",herotrust:"Laguntzailea linean · berehalako erantzuna",
+  luxst:"Zerga-laguntzailea",luxq:"Noiz arte dut Errenta egiteko?",
+  luxa:"Errentaren epea apirilaren 15etik ekainaren 30era da, 2026an. BizkaiBain aurkez dezakezu BakQ-rekin. Hasten lagundu?",
+  pasos_k:"Hasi hemen",pasos_h:"Nondik hasi?",pasos_p:"Hiru urrats zure izapidea arazorik gabe egiteko.",
+  band_k:"IA Laguntzailea",band_h:"Herritarrentzako arreta, itxaron gabe",band_p:"Galdera ohikoenak berehala argitzen dituen laguntzailea, kanpainan lerroak arinduz.",
+  news_k:"Albisteak",news_h:"Zerga-albisteak",
+  foot_dir:"Bizkaiko Foru Ogasuna<br>📞 Zerga-informazioa: 901 502 000<br>📅 Errenta hitzordua: 94 406 6600",
+  wcag:"✓ WCAG 2.1 AA betetzen du",f_t1:"Izapideak",f_t2:"Laguntza",f_t3:"Irisgarritasuna",f_cita:"Hitzordua",f_asist:"IA Laguntzailea",
+  f_a1:"Irisgarritasun-adierazpena",f_a2:"Lege-oharra",f_a3:"Pribatutasuna",
+  disc:"Zerga-laguntzaile birtualaren erakustaldia · datu publikoak",
+  cname:"Adi · Foru Ogasuneko laguntzailea",con:"Linean · berehala erantzuten du",fablabel:"Lagundu?",
+  ph:"Idatzi zure galdera…",clegal:"Orientabidezko informazioa · ez du ordezkatzen BizkaiBaiko kontsulta ofiziala",skip:"Edukira jauzi",
+  tiles:[["renta","Errenta / PFEZ","Zirriborroa, epeak eta kenkariak"],["batuz","Batuz","TicketBAI eta LROE"],["cita","Hitzordua","Arreta telefonikoa edo aurrez aurrekoa"],["certificado","Ziurtagiriak","Egunean egotea, JEZ…"],["pago","Ordainketak","Helbideratu eta zatikatu"],["bizkaibai","BizkaiBai","Zure eremu pertsonala online"]],
+  steps:[["Identifikatu","Sartu BizkaiBain BakQ, ziurtagiri digital edo NANarekin."],["Begiratu proposamena","Egiaztatu zirriborroa eta osatu falta dena."],["Berretsi eta kito","Aurkeztu eta, behar bada, helbideratu edo zatikatu ordainketa."]],
+  stats:[["18","gai berehala argituta","+"],["2","hizkuntza · euskara eta gaztelania",""],["24/7","beti eskuragarri",""],["0","€-ko kostua herritarrarentzat",""]],
+  news:[["Errenta 2026","Kanpaina, apirilaren 15etik ekainaren 30era","Begiratu zirriborroa eta aurkeztu bide digital, telefoniko edo aurrez aurrekoan.","renta"],["Batuz","Derrigorrezkoa autonomo eta enpresentzat","TicketBAI eta LROE indarrean Bizkaiko enpresa-sare osoarentzat.","batuz"],["Arreta","Zerga-laguntzaile birtual berria","Argitu Errenta, Batuz, ziurtagiri edo ordainketei buruzko zalantzak, 24 orduz.","__chat"]]}
+};
+let LANG="eu";
+
+/* ===== KB (motor del chat) ===== */
 const KB=[
  {id:"saludo",keys:["hola","buenas","kaixo","egun on","epa","gabon"],
-  es:"¡Hola! 👋 Soy el asistente de la Hacienda Foral de Bizkaia. Puedo ayudarte con la <b>Renta (IRPF)</b>, <b>Batuz</b>, cita previa, certificados, pagos o BizkaiBai. ¿Qué necesitas?",
-  eu:"Kaixo! 👋 Bizkaiko Foru Ogasuneko laguntzailea naiz. <b>Errentan (PFEZ)</b>, <b>Batuzen</b>, hitzorduan, ziurtagirietan, ordainketetan edo BizkaiBain lagun diezazuket. Zer behar duzu?"},
-
+  es:"¡Hola! 👋 Soy <b>Adi</b>, el asistente de la Hacienda Foral de Bizkaia. Puedo ayudarte con la <b>Renta (IRPF)</b>, <b>Batuz</b>, cita previa, certificados, pagos o BizkaiBai. ¿Qué necesitas?",
+  eu:"Kaixo! 👋 <b>Adi</b> naiz, Bizkaiko Foru Ogasuneko laguntzailea. <b>Errentan (PFEZ)</b>, <b>Batuzen</b>, hitzorduan, ziurtagirietan, ordainketetan edo BizkaiBain lagun diezazuket. Zer behar duzu?"},
  {id:"renta",keys:["renta","irpf","declaracion","declarar","errenta","pfez","aitorpen","campana","borrador"],
   es:"🧾 <b>Campaña de la Renta (IRPF)</b>\nEl plazo es del <b>15 de abril al 30 de junio de 2026</b>. Desde el 15 de abril tienes disponible tu borrador/propuesta.\nPuedes presentarla por tres vías:\n• <b>Online</b> en BizkaiBai con BakQ o certificado digital.\n• <b>Por teléfono</b>, con cita previa.\n• <b>Presencial</b> en las oficinas de Hacienda, con cita previa.\nℹ️ Info orientativa; confírmala en bizkaia.eus/renta.",
   eu:"🧾 <b>Errenta-kanpaina (PFEZ)</b>\nEpea <b>apirilaren 15etik ekainaren 30era da, 2026an</b>. Apirilaren 15etik zure zirriborroa eskuragarri duzu.\nHiru bidetatik aurkez dezakezu:\n• <b>Online</b> BizkaiBain, BakQ edo ziurtagiri digitalarekin.\n• <b>Telefonoz</b>, hitzordua eskatuta.\n• <b>Aurrez aurre</b> Ogasunaren bulegoetan, hitzorduarekin.\nℹ️ Orientabidezko informazioa; egiaztatu bizkaia.eus/renta atarian."},
-
  {id:"cita",keys:["cita","cita previa","hitzordu","reservar hora","pedir cita","atencion presencial"],
   es:"📅 <b>Cita previa</b>\nPara la atención telefónica o presencial de la Renta, pide cita desde el <b>13 de abril</b>:\n• Online en <b>bizkaia.eus/renta</b>\n• Por teléfono en el <b>94 406 6600</b>.",
   eu:"📅 <b>Hitzordua</b>\nErrentaren arreta telefoniko edo aurrez aurrekorako, eskatu hitzordua <b>apirilaren 13tik</b>:\n• Online <b>bizkaia.eus/renta</b> atarian\n• Telefonoz <b>94 406 6600</b>."},
-
  {id:"borrador",keys:["borrador","propuesta","autoliquidacion","datos fiscales","zirriborro","revisar"],
   es:"📄 <b>Borrador / propuesta de autoliquidación</b>\nHacienda te ofrece un borrador con tus datos. <b>Revísalo</b>, modifica o añade lo que falte (deducciones, inmuebles, etc.) y confírmalo. Disponible desde el 15 de abril en BizkaiBai.",
   eu:"📄 <b>Zirriborroa / autolikidazio-proposamena</b>\nOgasunak zure datuekin zirriborro bat eskaintzen dizu. <b>Berrikusi</b>, aldatu edo osatu falta dena (kenkariak, ondasunak…) eta berretsi. Apirilaren 15etik BizkaiBain."},
-
  {id:"pago",keys:["pago","pagar","fraccionar","plazos","domiciliar","devolucion","ordaindu","itzulketa","zatika"],
   es:"💶 <b>Pago y fraccionamiento</b>\nSi te sale a <b>pagar</b>, puedes fraccionarlo en dos plazos: <b>60% en los primeros días de julio</b> y el <b>40% restante antes del 10 de noviembre de 2026</b>. También puedes domiciliarlo.\nSi te sale a <b>devolver</b>, Hacienda te ingresa el importe tras la revisión.",
   eu:"💶 <b>Ordainketa eta zatikapena</b>\n<b>Ordaindu</b> behar baduzu, bi epetan zatika dezakezu: <b>%60 uztailaren lehen egunetan</b> eta <b>gainerako %40a azaroaren 10a baino lehen, 2026an</b>. Helbideratu ere egin dezakezu.\n<b>Itzultzeko</b> bada, Ogasunak zenbatekoa sartuko dizu berrikuspenaren ondoren."},
-
  {id:"conjunta",keys:["conjunta","individual","unidad familiar","pareja","matrimonio","baterako","banakako","como declaro"],
   es:"👨‍👩‍👧 <b>Individual o conjunta</b>\nPuedes declarar de forma <b>individual</b> o <b>conjunta</b> (unidad familiar). Lo recomendable es <b>simular las dos</b> para ver cuál te conviene; BizkaiBai te permite compararlas antes de confirmar.",
   eu:"👨‍👩‍👧 <b>Banakakoa edo baterakoa</b>\n<b>Banaka</b> edo <b>batera</b> (familia-unitatea) aitor dezakezu. Gomendagarriena <b>biak simulatzea</b> da, zein komeni zaizun ikusteko; BizkaiBaik biak aldera ditzakezu berretsi aurretik."},
-
  {id:"deduccion",keys:["deduccion","deducir","vivienda","alquiler","hijos","descendientes","discapacidad","kenkari","etxebizitza","donativo"],
   es:"🧮 <b>Deducciones</b>\nEn Bizkaia hay deducciones forales: <b>vivienda habitual</b>, descendientes, edad, discapacidad, donativos, etc. Las que te apliquen se reflejan en tu propuesta. Para tu caso concreto, revisa tu borrador o consulta en el <b>901 502 000</b>.",
   eu:"🧮 <b>Kenkariak</b>\nBizkaian foru-kenkariak daude: <b>ohiko etxebizitza</b>, ondorengoak, adina, desgaitasuna, dohaintzak, etab. Dagozkizunak zure proposamenean agertzen dira. Zure kasu zehatzerako, begiratu zirriborroa edo deitu <b>901 502 000</b>."},
-
  {id:"batuz",keys:["batuz","autonomo","empresa","facturacion","libro registro","negocio","enpresa","autonomoa","fakturazio"],
   es:"🧮 <b>Batuz</b> (autónomos y empresas)\nEs el sistema de la Hacienda Foral que combina:\n• <b>TicketBAI</b>: facturación verificable con software homologado.\n• <b>LROE</b>: Libro Registro de Operaciones Económicas (modelo 140 personas físicas / 240 jurídicas).\n• Borradores de IVA, Sociedades y Renta.\nDesde <b>2026 es obligatorio para todos</b> los autónomos y empresas de Bizkaia. Más info en batuz.eus.",
   eu:"🧮 <b>Batuz</b> (autonomo eta enpresak)\nForu Ogasunaren sistema da, hauek biltzen ditu:\n• <b>TicketBAI</b>: fakturazio egiaztagarria software homologatuarekin.\n• <b>LROE</b>: Eragiketa Ekonomikoen Erregistro Liburua (140 eredua pertsona fisikoak / 240 juridikoak).\n• BEZ, Sozietate eta Errentaren zirriborroak.\n<b>2026tik derrigorrezkoa da</b> Bizkaiko autonomo eta enpresa guztientzat. Info gehiago batuz.eus."},
-
  {id:"ticketbai",keys:["ticketbai","tbai","factura","ticket","software facturacion","programa"],
   es:"🧾 <b>TicketBAI</b>\nEs la parte de facturación de Batuz: cada factura o ticket se genera con <b>software homologado</b> y un código que la hace verificable por Hacienda. Necesitas un programa de facturación adaptado a TicketBAI.",
   eu:"🧾 <b>TicketBAI</b>\nBatuzen fakturazio-zatia da: faktura edo tiket bakoitza <b>software homologatuarekin</b> sortzen da, Ogasunak egiaztatzeko moduko kode batekin. TicketBAIra egokitutako fakturazio-programa behar duzu."},
-
  {id:"lroe",keys:["lroe","libro registro","modelo 140","modelo 240","operaciones economicas"],
   es:"📚 <b>LROE</b>\nLibro Registro de Operaciones Económicas: el registro de tus ingresos, gastos y facturas que se envía a Hacienda. <b>Modelo 140</b> (personas físicas) y <b>240</b> (personas jurídicas).",
   eu:"📚 <b>LROE</b>\nEragiketa Ekonomikoen Erregistro Liburua: zure sarrera, gastu eta fakturen erregistroa, Ogasunera bidaltzen dena. <b>140 eredua</b> (pertsona fisikoak) eta <b>240</b> (juridikoak)."},
-
  {id:"certificado",keys:["certificado","corriente","estar al corriente","situacion censal","iae","ziurtagiri","censal"],
   es:"📑 <b>Certificados tributarios</b>\nPuedes obtenerlos al instante en <b>BizkaiBai</b> con BakQ o certificado digital: estar al corriente de pagos, situación censal, IAE, etc.",
   eu:"📑 <b>Zerga-ziurtagiriak</b>\n<b>BizkaiBain</b> berehala lor ditzakezu, BakQ edo ziurtagiri digitalarekin: ordainketetan egunean egotea, egoera zentsala, JEZ, etab."},
-
  {id:"bizkaibai",keys:["bizkaibai","bizkaia bai","identific","bakq","certificado digital","dnie","clave","acceder","sede"],
   es:"🔐 <b>BizkaiBai e identificación</b>\nBizkaiBai es tu área personal para todos los trámites tributarios online. Para entrar necesitas <b>BakQ</b>, certificado digital o DNIe.",
   eu:"🔐 <b>BizkaiBai eta identifikazioa</b>\nBizkaiBai zure eremu pertsonala da zerga-izapide guztietarako. Sartzeko <b>BakQ</b>, ziurtagiri digitala edo NANe behar duzu."},
-
  {id:"contacto",keys:["telefono","contacto","llamar","email","kontaktu","deitu","numero"],
   es:"📞 <b>Contacto</b>\n• Información fiscal: <b>901 502 000</b>\n• Cita previa Renta: <b>94 406 6600</b>\n• Online: <b>BizkaiBai</b> (bizkaia.eus)\nAtención telefónica en días laborables.",
   eu:"📞 <b>Kontaktua</b>\n• Zerga-informazioa: <b>901 502 000</b>\n• Errenta hitzordua: <b>94 406 6600</b>\n• Online: <b>BizkaiBai</b> (bizkaia.eus)\nArreta telefonikoa lanegunetan."},
-
  {id:"persona",keys:["persona","hablar con alguien","humano","operador","asesor","pertsona","quiero hablar"],
-  es:"🙋 Te derivo a atención personal:\n• <b>901 502 000</b> (información fiscal)\n• <b>94 406 6600</b> (cita previa Renta)\n• O acércate a una oficina de Hacienda con cita previa.\n¿Quieres que te explique cómo pedir la cita?",
-  eu:"🙋 Arreta pertsonalera bideratzen zaitut:\n• <b>901 502 000</b> (zerga-informazioa)\n• <b>94 406 6600</b> (Errenta hitzordua)\n• Edo zatoz Ogasunaren bulego batera hitzorduarekin.\nHitzordua nola eskatu azaltzea nahi duzu?"},
-
+  es:"🙋 Te derivo a atención personal:\n• <b>901 502 000</b> (información fiscal)\n• <b>94 406 6600</b> (cita previa Renta)\n• O acércate a una oficina de Hacienda con cita previa.",
+  eu:"🙋 Arreta pertsonalera bideratzen zaitut:\n• <b>901 502 000</b> (zerga-informazioa)\n• <b>94 406 6600</b> (Errenta hitzordua)\n• Edo zatoz Ogasunaren bulego batera hitzorduarekin."},
  {id:"gracias",keys:["gracias","eskerrik asko","ok","perfecto","adios","agur","mila esker"],
   es:"¡Un placer! 😊 Recuerda que es información orientativa; para tu caso concreto consulta en BizkaiBai o llama al 901 502 000. ¡Agur!",
   eu:"Pozik! 😊 Gogoratu orientabidezko informazioa dela; zure kasurako kontsultatu BizkaiBain edo deitu 901 502 000. Agur!"}
@@ -244,29 +445,95 @@ const CHIPS={
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 function match(text){const t=norm(text);let best=null,score=0;for(const it of KB){let s=0;for(const k of it.keys){const kn=norm(k);if(t.includes(kn))s+=kn.length;}if(s>score){score=s;best=it;}}return score>0?best:null;}
 const cb=()=>document.getElementById("cbody");
-function bubble(h,w){const d=document.createElement("div");d.className="msg "+w;d.innerHTML=h;cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
-function chips(l){const c=document.createElement("div");c.className="chips";l.forEach(([id,lb])=>{const b=document.createElement("button");b.className="chip";b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
-function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function nowHM(){const d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
+function bubble(html,who){const d=document.createElement("div");d.className="msg "+who+" msg-in";
+ if(who==="bot")d.innerHTML='<div class="stamp">OGASUNA · '+nowHM()+'</div>'+html;else d.innerHTML=html;
+ cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function chips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([id,lb])=>{const b=document.createElement("button");b.className="chip";b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";d.setAttribute("aria-label",LANG==="es"?"El asistente está escribiendo":"Laguntzailea idazten ari da");cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
 function respond(it){const tp=typing();setTimeout(()=>{tp.remove();let a;if(it)a=it[LANG];else a=(LANG==="es"
    ?"🤔 No estoy seguro de entenderte. Puedo ayudarte con <b>Renta, Batuz, cita previa, deducciones, certificados, pagos o BizkaiBai</b>. ¿Sobre cuál? También puedes llamar al 901 502 000."
    :"🤔 Ez nago ziur ulertu zaitudan. <b>Errenta, Batuz, hitzordua, kenkariak, ziurtagiriak, ordainketak edo BizkaiBai</b>ri buruz lagun diezazuket. Zeini buruz? 901 502 000 telefonora ere dei dezakezu.");
   bubble(a,"bot");if(!it||it.id==="saludo")chips(CHIPS[LANG]);},560+Math.random()*420);}
 function ask(id,label){const it=KB.find(x=>x.id===id);if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(it?it[LANG].split("\n")[0]:id),"user");respond(it);}
 function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";respond(match(v));}
-let greeted=false;
+let greeted=false,lastFocus=null;
 function greet(){if(greeted)return;greeted=true;bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
-function openChat(skip){document.getElementById("chat").classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)document.getElementById("cinput").focus();}
-function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="flex";}
+function openChat(skip){const c=document.getElementById("chat");lastFocus=document.activeElement;c.classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)setTimeout(()=>document.getElementById("cinput").focus(),60);}
+function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="inline-flex";if(lastFocus)try{lastFocus.focus()}catch(e){}}
 function resetChat(){cb().innerHTML="";greeted=false;greet();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("chat").classList.contains("open"))closeChat();});
+/* focus-trap simple */
+document.getElementById("chat").addEventListener("keydown",e=>{
+ if(e.key!=="Tab")return;
+ const f=document.getElementById("chat").querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])');
+ if(!f.length)return;const first=f[0],last=f[f.length-1];
+ if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+ else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+});
+
+/* ===== Render UI ===== */
+function buildTiles(){
+ const ICON={renta:'<path d="M9 2h6l4 4v14a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2z"/><path d="M9 9h6M9 13h6M9 17h4"/>',
+  batuz:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/>',
+  cita:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9 14l2 2 4-4"/>',
+  certificado:'<circle cx="12" cy="9" r="5"/><path d="M9 13l-1 7 4-2 4 2-1-7"/>',
+  pago:'<rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/>',
+  bizkaibai:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>'};
+ document.getElementById("grid6").innerHTML=UI[LANG].tiles.map((tl,i)=>{
+   const[id,t,d]=tl;
+   return `<button class="tile" onclick="ask('${id}')">
+     <span class="arr" aria-hidden="true">→</span>
+     <span class="no">0${i+1}</span>
+     <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg></span>
+     <b>${t}</b><small>${d}</small></button>`;
+ }).join("");
+}
+function buildSteps(){document.getElementById("steps").innerHTML=UI[LANG].steps.map((s,i)=>`<div class="step reveal"><div class="n">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");}
+function buildStats(){document.getElementById("stats").innerHTML=UI[LANG].stats.map(s=>{
+  const isNum=/^\d+$/.test(s[0]);
+  return `<div class="stat"><div class="v"><span class="cv" ${isNum?`data-to="${s[0]}"`:''}>${isNum?'0':s[0]}</span>${s[2]?'<span class="u">'+s[2]+'</span>':''}</div><div class="l">${s[1]}</div></div>`;
+}).join("");}
+function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map(n=>{
+  const act=n[3]==="__chat"?"openChat()":`ask('${n[3]}')`;
+  return `<div class="ncard reveal"><div class="top"></div><div class="in"><span class="k">${n[0]}</span><h3>${n[1]}</h3><p>${n[2]}</p><span class="lk" onclick="${act}">${LANG==='es'?'Más información':'Informazio gehiago'} →</span></div></div>`;
+}).join("");}
 
 function applyLang(){
- document.documentElement.lang=LANG;
  const u=UI[LANG];
- for(const k in u){const e=document.getElementById(k);if(e){if(k==="ph")e.placeholder=u[k];else e.innerHTML=u[k];}}
+ document.documentElement.lang=LANG;
+ ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxst","luxq","luxa","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_cita","f_asist","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=u[k];});
  const ci=document.getElementById("cinput");if(ci)ci.placeholder=u.ph;
- document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===LANG));
+ document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
+ document.getElementById("seg").className="seg "+LANG;
+ buildTiles();buildSteps();buildStats();buildNews();
+ observeReveal();observeStats();
 }
-document.getElementById("lang").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+
+/* ===== Scroll efectos ===== */
+const rmotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+let revObs;
+function observeReveal(){
+ if(rmotion){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));return;}
+ if(revObs)revObs.disconnect();
+ revObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");revObs.unobserve(en.target);}});},{threshold:.12});
+ document.querySelectorAll(".reveal").forEach(el=>revObs.observe(el));
+}
+let statObs;
+function observeStats(){
+ if(statObs)statObs.disconnect();
+ statObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){countUp(en.target);statObs.unobserve(en.target);}});},{threshold:.5});
+ document.querySelectorAll(".cv[data-to]").forEach(el=>statObs.observe(el));
+}
+function countUp(el){
+ const to=+el.dataset.to;if(rmotion){el.textContent=to;return;}
+ let t0=null;const dur=1100;
+ function step(ts){if(!t0)t0=ts;const p=Math.min(1,(ts-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+ requestAnimationFrame(step);
+}
+addEventListener("scroll",()=>{document.getElementById("hdr").classList.toggle("scrolled",scrollY>10);},{passive:true});
+
 applyLang();
 </script>
 </body>
