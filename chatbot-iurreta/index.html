@@ -4,419 +4,599 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iurretako Udala · Ayuntamiento de Iurreta</title>
-<meta name="description" content="Web municipal de Iurreta (Bizkaia) — trámites, padrón, impuestos, agenda y atención ciudadana.">
+<meta name="description" content="Web municipal de Iurreta (Bizkaia): padrón, impuestos, cita previa, residuos y agenda, con asistente virtual 24/7 en euskera y castellano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --verde:#0b6b53; --verde-osc:#084e3c; --verde-cla:#e8f3ef;
-    --rojo:#b21e28; --tinta:#16241f; --gris:#5b6b64; --linea:#e1e9e5;
-    --bot1:#6d28d9; --bot2:#06b6d4; /* morado -> cyan */
-    --sombra:0 10px 30px rgba(8,40,30,.10);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:#fff;line-height:1.55}
-  a{color:var(--verde);text-decoration:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+ :root{
+   --bg:#F3F8F4; --surface:#FFFFFF; --surface-2:#F7FBF8;
+   --ink:#0E241D; --ink-soft:#4B615A;
+   --green:#0E6A4F; --green-700:#0A5440; --green-900:#063A2B; --green-soft:#E3F2EB;
+   --gold:#B98A23; --rojo:#B21E28;
+   --line:#DFEBE5; --line-warm:#ECE7DC; --success:#16A34A;
+   --dk-bg:#07271C; --dk-ink:#EAF4EF; --dk-soft:#9CC2B4; --dk-line:rgba(255,255,255,.10);
+   /* Asistente IA: morado -> cyan */
+   --bot1:#6D28D9; --bot2:#06B6D4; --bot-ink:#4C1D95; --bot-soft:#F0EBFE;
+   --sh-1:0 1px 2px rgba(10,40,30,.06);
+   --sh-2:0 4px 12px rgba(10,40,30,.08);
+   --sh-3:0 16px 40px -8px rgba(10,40,30,.18);
+   --sh-4:0 24px 70px -16px rgba(6,40,28,.28);
+   --sh-bot:0 14px 34px rgba(109,40,217,.34);
+   --r-chip:12px; --r-input:14px; --r-btn:16px; --r-card:22px; --r-panel:24px; --r-pill:999px;
+   --ease:cubic-bezier(.22,1,.36,1); --maxw:1180px;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html{scroll-behavior:smooth}
+ body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);font-size:1.0625rem;line-height:1.65;
+   background:radial-gradient(120% 80% at 88% -8%,rgba(14,106,79,.06),transparent 55%),var(--bg);-webkit-font-smoothing:antialiased}
+ button,input{font-family:inherit}
+ a{color:var(--green);text-decoration:none}
+ h1,h2,h3{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+ .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+ .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--bot1);outline-offset:2px;border-radius:8px}
 
-  /* Topbar */
-  .topbar{background:var(--verde-osc);color:#cfe7df;font-size:13px}
-  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
-  .lang button{background:none;border:1px solid rgba(255,255,255,.25);color:#cfe7df;border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;font-weight:600}
-  .lang button.on{background:#fff;color:var(--verde-osc);border-color:#fff}
-  .topbar .links{display:flex;gap:16px}.topbar .links a{color:#cfe7df}
+ .skip{position:absolute;left:14px;top:-60px;z-index:999;background:var(--green);color:#fff;padding:11px 18px;border-radius:10px;font-weight:700;transition:top .2s}
+ .skip:focus{top:14px}
 
-  /* Header */
-  header{background:#fff;border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:50}
-  header .wrap{display:flex;align-items:center;gap:16px;height:78px}
-  .escudo{width:46px;height:54px;border-radius:8px 8px 22px 22px;background:linear-gradient(160deg,var(--rojo),#7d1018);position:relative;flex:0 0 auto;box-shadow:inset 0 0 0 3px rgba(255,255,255,.7)}
-  .escudo:after{content:"🌳";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px}
-  .brand b{display:block;font-size:19px;letter-spacing:.2px;color:var(--verde-osc)}
-  .brand span{font-size:12.5px;color:var(--gris)}
-  nav.main{margin-left:auto;display:flex;gap:22px}
-  nav.main a{font-weight:600;font-size:14.5px;color:var(--tinta);padding:6px 0;border-bottom:2px solid transparent}
-  nav.main a:hover{color:var(--verde);border-color:var(--verde)}
+ /* Topbar */
+ .topbar{background:var(--green-900);color:#bfe0d4}
+ .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;font-size:13px;gap:14px}
+ .status{display:inline-flex;align-items:center;gap:8px}
+ .live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(22,163,74,.25);animation:beat 2.6s var(--ease) infinite}
+ @keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.4)}60%{box-shadow:0 0 0 7px rgba(22,163,74,0)}}
+ .seg{position:relative;display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:3px}
+ .seg .thumb{position:absolute;top:3px;bottom:3px;width:calc(50% - 3px);border-radius:var(--r-pill);background:#fff;transition:transform .22s var(--ease)}
+ .seg.es .thumb{transform:translateX(100%)}
+ .seg button{position:relative;z-index:1;background:none;border:0;color:#bfe0d4;font-size:12px;font-weight:700;padding:3px 12px;border-radius:var(--r-pill);min-width:42px;cursor:pointer}
+ .seg button.on{color:var(--green-900)}
 
-  /* Hero */
-  .hero{position:relative;background:linear-gradient(115deg,var(--verde) 0%,var(--verde-osc) 60%,#063a2d 100%);color:#fff;overflow:hidden}
-  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.06)}
-  .hero:after{content:"";position:absolute;left:-60px;bottom:-120px;width:280px;height:280px;border-radius:50%;background:rgba(6,182,212,.10)}
-  .hero .wrap{padding:54px 20px 60px;position:relative;z-index:1}
-  .hero h1{font-size:38px;line-height:1.12;max-width:640px;font-weight:800}
-  .hero p{margin-top:14px;font-size:17px;color:#d7ece5;max-width:560px}
-  .hero .cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:10px;padding:12px 18px;cursor:pointer;border:0;font-size:14.5px}
-  .btn-primary{background:#fff;color:var(--verde-osc)}
-  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35)}
+ /* Header */
+ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+ header.scrolled{box-shadow:var(--sh-2)}
+ @supports not (backdrop-filter:blur(2px)){header{background:#fff}}
+ header .wrap{display:flex;align-items:center;gap:14px;height:74px}
+ .escudo{width:44px;height:50px;border-radius:9px 9px 20px 20px;background:linear-gradient(160deg,var(--rojo),#7d1018);position:relative;flex:0 0 auto;box-shadow:inset 0 0 0 3px rgba(255,255,255,.7),var(--sh-1);display:flex;align-items:center;justify-content:center;font-size:21px}
+ .brand b{display:block;font-size:16px;color:var(--green-900);font-weight:800;letter-spacing:-.01em}
+ .brand span{font-size:12px;color:var(--ink-soft)}
+ nav{margin-left:auto;display:flex;align-items:center;gap:24px}
+ nav .navlinks{display:flex;gap:24px}
+ nav a{font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer}
+ nav a:hover{color:var(--green)}
+ .nav-cta{background:var(--green);color:#fff;padding:9px 16px;border-radius:var(--r-btn);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px}
+ .nav-cta:hover{background:var(--green-700)}
+ .nav-cta svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
 
-  /* Accesos */
-  .accesos{margin-top:-34px;position:relative;z-index:5}
-  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-  .tile{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:18px 14px;text-align:center;box-shadow:var(--sombra);cursor:pointer;transition:.18s}
-  .tile:hover{transform:translateY(-3px);border-color:var(--verde)}
-  .tile .ic{font-size:26px}
-  .tile b{display:block;margin-top:8px;font-size:13.5px;color:var(--verde-osc)}
+ /* Hero */
+ .hero{position:relative;overflow:hidden;padding:clamp(46px,7vw,88px) 0 clamp(58px,8vw,100px)}
+ .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+ .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+ .hero h1{font-size:clamp(2.3rem,1.6rem+2.9vw,3.9rem);margin:14px 0 0}
+ .hero h1 .g{background:linear-gradient(120deg,var(--green),#19a37b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+ .hero .lead{margin-top:16px;font-size:clamp(1.05rem,1rem+.4vw,1.2rem);color:var(--ink-soft);max-width:520px}
+ .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+ .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;border-radius:var(--r-btn);padding:14px 22px;font-size:15px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s}
+ .btn svg{width:18px;height:18px}
+ .btn-bot{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;box-shadow:var(--sh-bot)}
+ .btn-bot:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(109,40,217,.42)}
+ .btn-ghost{background:var(--surface);color:var(--green);border:1px solid var(--line);box-shadow:var(--sh-1)}
+ .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+ .trust{margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+ .trust .live{width:7px;height:7px}
 
-  section.bloque{padding:48px 0}
-  .h2{font-size:24px;color:var(--verde-osc);font-weight:800;margin-bottom:6px}
-  .sub{color:var(--gris);margin-bottom:24px}
+ /* Hero preview card */
+ .luxcard{position:relative;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sh-4);padding:18px;border:1px solid var(--line)}
+ .luxcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(109,40,217,.5),rgba(6,182,212,.3) 45%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+ .lux-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+ .lux-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--bot1),var(--bot2));display:flex;align-items:center;justify-content:center}
+ .lux-av svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8}
+ .lux-head b{font-size:13.5px;color:var(--ink)}
+ .lux-head .st{font-size:11.5px;color:var(--bot-ink);display:flex;align-items:center;gap:5px}
+ .lux-msgs{display:flex;flex-direction:column;gap:9px;padding:14px 2px 4px}
+ .lux-q{align-self:flex-end;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;font-size:13px;padding:9px 13px;border-radius:14px 14px 5px 14px;max-width:82%}
+ .lux-a{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--bot2);font-size:13px;padding:9px 13px;border-radius:5px 14px 14px 14px;max-width:90%;color:var(--ink)}
+ .lux-stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:3px}
+ .lux-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+ .lux-chip{font-size:11px;font-weight:600;color:var(--bot-ink);background:var(--bot-soft);border-radius:999px;padding:4px 10px}
 
-  /* Noticias */
-  .news{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .card{border:1px solid var(--linea);border-radius:14px;overflow:hidden;background:#fff}
-  .card .ph{height:120px;background:linear-gradient(135deg,#cde7df,#9dccbd)}
-  .card .ph.b{background:linear-gradient(135deg,#cfe0f7,#9db8e6)}
-  .card .ph.c{background:linear-gradient(135deg,#f7e3cf,#e6c39d)}
-  .card .body{padding:15px 16px}
-  .tag{font-size:11px;font-weight:700;color:var(--rojo);text-transform:uppercase;letter-spacing:.4px}
-  .card h3{font-size:16px;margin:7px 0;color:var(--tinta)}
-  .card p{font-size:13.5px;color:var(--gris)}
+ /* Tiles */
+ .tiles .wrap{margin-top:clamp(-44px,-4vw,-30px);position:relative;z-index:5}
+ .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+ .tile{position:relative;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--green);border-radius:18px;padding:18px 16px 16px;box-shadow:var(--sh-1);cursor:pointer;text-align:left;transition:transform .18s var(--ease),box-shadow .18s;display:flex;flex-direction:column;gap:8px}
+ .tile:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .tile .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);font-weight:600}
+ .tile:hover .no{color:var(--green)}
+ .tile .ico{width:38px;height:38px;border-radius:11px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
+ .tile .ico svg{width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.7}
+ .tile:hover .ico{background:var(--green)}
+ .tile:hover .ico svg{stroke:#fff}
+ .tile b{font-size:15px;color:var(--ink);font-weight:700}
+ .tile small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+ .tile .arr{position:absolute;right:14px;top:18px;color:var(--ink-soft);transition:transform .18s}
+ .tile:hover .arr{transform:translateX(4px);color:var(--green)}
 
-  /* Footer */
-  footer{background:var(--verde-osc);color:#c7e0d8;margin-top:30px}
-  footer .wrap{padding:40px 20px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
-  footer b{color:#fff;display:block;margin-bottom:10px;font-size:15px}
-  footer a{color:#c7e0d8}
-  .legal{border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#9fc3b8}
-  .legal .wrap{padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+ section{padding:clamp(56px,8vw,100px) 0}
+ .sec-head{max-width:620px;margin-bottom:36px}
+ .sec-head h2{font-size:clamp(1.5rem,1.1rem+1.4vw,2.1rem);margin-top:8px;color:var(--ink)}
+ .sec-head p{color:var(--ink-soft);margin-top:8px}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:26px 24px}
+ .step .n{font-family:"Space Grotesk",sans-serif;font-size:42px;font-weight:700;color:var(--green);line-height:1}
+ .step h3{font-size:17px;margin:12px 0 6px;color:var(--ink)}
+ .step p{font-size:14px;color:var(--ink-soft)}
 
-  /* ===== CHATBOT ===== */
-  #fab{position:fixed;right:24px;bottom:24px;z-index:200;width:64px;height:64px;border-radius:50%;border:0;cursor:pointer;
-    background:linear-gradient(135deg,var(--bot1),var(--bot2));box-shadow:0 12px 30px rgba(109,40,217,.45);color:#fff;font-size:27px;display:flex;align-items:center;justify-content:center;transition:.2s}
-  #fab:hover{transform:scale(1.06)}
-  #fab .pulse{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(109,40,217,.5);animation:pulse 2.2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(109,40,217,.45)}70%{box-shadow:0 0 0 18px rgba(109,40,217,0)}100%{box-shadow:0 0 0 0 rgba(109,40,217,0)}}
-  #fab .badge{position:absolute;top:-3px;right:-3px;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+ /* Dark band */
+ .band{position:relative;background:var(--dk-bg);color:var(--dk-ink);overflow:hidden}
+ .band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(6,182,212,.12) 1px,transparent 1px);background-size:30px 30px;-webkit-mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);opacity:.7}
+ .band .wrap{position:relative;padding:clamp(48px,7vw,80px) 0}
+ .band h2{color:#fff;font-size:clamp(1.4rem,1.1rem+1.2vw,2rem)}
+ .band .lead{color:var(--dk-soft);margin-top:8px;max-width:560px}
+ .stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+ .stat .v{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums;font-size:clamp(2rem,1.4rem+2vw,3rem);font-weight:700;color:#fff;line-height:1}
+ .stat .v .u{color:var(--bot2);font-size:.7em}
+ .stat .l{color:var(--dk-soft);font-size:13.5px;margin-top:6px}
 
-  #chat{position:fixed;right:24px;bottom:24px;z-index:210;width:380px;max-width:calc(100vw - 32px);height:600px;max-height:calc(100vh - 40px);
-    background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(8,40,30,.30);display:none;flex-direction:column;overflow:hidden}
-  #chat.open{display:flex;animation:rise .25s ease}
-  @keyframes rise{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-  .chead{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;padding:15px 16px;display:flex;align-items:center;gap:12px}
-  .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:22px}
-  .chead .t b{font-size:15px;display:block}
-  .chead .t span{font-size:12px;color:#e7defb;display:flex;align-items:center;gap:6px}
-  .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
-  .chead .x{margin-left:auto;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;opacity:.85}
-  .cbody{flex:1;overflow-y:auto;padding:16px;background:#f6f5fb;display:flex;flex-direction:column;gap:10px}
-  .msg{max-width:84%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.5;white-space:pre-line;animation:rise .2s}
-  .msg.bot{background:#fff;border:1px solid #eae6f5;border-bottom-left-radius:5px;align-self:flex-start;box-shadow:0 2px 6px rgba(50,20,90,.04)}
-  .msg.user{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
-  .msg.bot a{color:var(--bot1);font-weight:600}
-  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
-  .chip{background:#fff;border:1px solid #d9d2ee;color:var(--bot1);border-radius:18px;padding:7px 12px;font-size:12.5px;cursor:pointer;font-weight:600;transition:.15s}
-  .chip:hover{background:var(--bot1);color:#fff;border-color:var(--bot1)}
-  .typing{align-self:flex-start;background:#fff;border:1px solid #eae6f5;border-radius:14px;padding:12px 14px;display:flex;gap:4px}
-  .typing i{width:7px;height:7px;border-radius:50%;background:#b9add9;display:inline-block;animation:bounce 1.2s infinite}
-  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
-  @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-  .cfoot{border-top:1px solid #eee;padding:10px;display:flex;gap:8px;background:#fff}
-  .cfoot input{flex:1;border:1px solid #e0dbef;border-radius:22px;padding:11px 15px;font-size:14px;outline:none}
-  .cfoot input:focus{border-color:var(--bot1)}
-  .cfoot button{width:44px;height:44px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;font-size:18px;cursor:pointer;flex:0 0 auto}
-  .mini{font-size:10.5px;color:#9a93b3;text-align:center;padding:4px 0 8px;background:#fff}
+ /* News */
+ .news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .ncard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s}
+ .ncard:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .ncard .top{height:5px;background:linear-gradient(90deg,var(--green),#19a37b)}
+ .ncard .in{padding:22px}
+ .ncard .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--green)}
+ .ncard h3{font-size:16.5px;margin:9px 0;color:var(--ink);line-height:1.3}
+ .ncard p{font-size:13.5px;color:var(--ink-soft)}
+ .ncard .lk{margin-top:12px;font-size:13.5px;font-weight:700;color:var(--green);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+ .ncard:hover .lk{gap:9px}
 
-  @media(max-width:860px){
-    nav.main{display:none}
-    .grid{grid-template-columns:repeat(3,1fr)}
-    .news{grid-template-columns:1fr}
-    footer .wrap{grid-template-columns:1fr}
-    .hero h1{font-size:30px}
-  }
+ /* Footer */
+ footer{background:var(--dk-bg);color:var(--dk-soft)}
+ footer .wrap{padding:54px 0 0;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:28px}
+ footer b{color:#fff;display:block;margin-bottom:12px;font-size:15px}
+ footer a{color:var(--dk-soft);display:block;margin-bottom:7px;font-size:14px;cursor:pointer}
+ footer a:hover{color:#fff}
+ .foot-brand p{font-size:13.5px;line-height:1.7}
+ .wcag{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--bot2);border:1px solid var(--dk-line);border-radius:var(--r-pill);padding:5px 12px}
+ .legal{border-top:1px solid var(--dk-line);margin-top:44px}
+ .legal .wrap{padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--dk-soft)}
+
+ .js .reveal{opacity:0;transform:translateY(18px)}
+ .js .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+ /* ===== CHATBOT ===== */
+ #fab{position:fixed;right:26px;bottom:26px;z-index:200;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 16px;border:0;border-radius:var(--r-pill);
+   background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;font-weight:700;font-size:15px;box-shadow:var(--sh-bot),var(--sh-2);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s}
+ #fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+ #fab:hover{transform:translateY(-2px) scale(1.03)}
+ #fab::after{content:"";position:absolute;inset:0;border-radius:var(--r-pill);box-shadow:0 0 0 0 rgba(109,40,217,.4);animation:breathe 3.2s var(--ease) infinite;pointer-events:none}
+ @keyframes breathe{0%{box-shadow:0 0 0 0 rgba(109,40,217,.4)}70%{box-shadow:0 0 0 16px rgba(109,40,217,0)}100%{box-shadow:0 0 0 0 rgba(109,40,217,0)}}
+ #fab .badge{position:absolute;top:-4px;right:-2px;background:#EF4444;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+
+ #chat{position:fixed;right:26px;bottom:26px;z-index:210;width:400px;max-width:calc(100vw - 28px);height:626px;max-height:calc(100vh - 40px);
+   background:var(--surface);border-radius:var(--r-panel);box-shadow:var(--sh-4);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line);transform-origin:bottom right}
+ #chat.open{display:flex;animation:born .34s var(--ease)}
+ @keyframes born{from{opacity:0;transform:translateY(14px) scale(.95)}to{opacity:1;transform:none}}
+ .chead{position:relative;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;padding:16px 16px 15px;display:flex;align-items:center;gap:12px}
+ .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+ .chead .av svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8}
+ .chead .t b{font-size:14.5px;display:block}
+ .chead .t span{font-size:12px;color:#ece5ff;display:flex;align-items:center;gap:6px}
+ .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
+ .chead .x{margin-left:auto;background:rgba(255,255,255,.16);border:0;color:#fff;font-size:20px;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+ .chead .x:hover{background:rgba(255,255,255,.28)}
+ .cbody{flex:1;overflow-y:auto;padding:18px 16px;background:var(--surface-2);display:flex;flex-direction:column;gap:11px}
+ .msg{max-width:86%;font-size:14px;line-height:1.55;white-space:pre-line}
+ .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--bot2);border-radius:5px 16px 16px 16px;padding:10px 14px;box-shadow:var(--sh-1)}
+ .msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border-radius:16px 16px 5px 16px;padding:10px 14px}
+ .msg.bot a{color:var(--bot-ink);font-weight:700}
+ .stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.04em}
+ .msg-in{animation:msgin .32s var(--ease)}
+ @keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ .chips{display:flex;flex-wrap:wrap;gap:8px}
+ .chip{background:#fff;border:1px solid var(--line);color:var(--bot-ink);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;min-height:36px}
+ .chip:hover{border-color:var(--bot1);background:var(--bot-soft);transform:translateY(-1px)}
+ .typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px;display:flex;gap:5px}
+ .typing i{width:7px;height:7px;border-radius:50%;background:var(--bot1);animation:bn 1.2s infinite}
+ .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+ @keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+ .cfoot{border-top:1px solid var(--line);padding:11px;display:flex;gap:9px;background:#fff}
+ .cfoot input{flex:1;border:1px solid var(--line);border-radius:var(--r-pill);padding:12px 16px;font-size:14px;outline:none;transition:.15s}
+ .cfoot input:focus{border-color:var(--bot1);box-shadow:0 0 0 3px rgba(109,40,217,.16)}
+ .cfoot .send{width:46px;height:46px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;cursor:pointer;transition:.15s}
+ .cfoot .send svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+ .cfoot .send:hover{filter:brightness(1.08)}
+ .clegal{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:6px 12px 9px;background:#fff}
+
+ @media(max-width:920px){
+   nav .navlinks{display:none}
+   .hero .wrap{grid-template-columns:1fr}
+   .hero .luxwrap{order:-1;max-width:440px}
+   .grid6{grid-template-columns:repeat(3,1fr)}
+   .steps,.news{grid-template-columns:1fr}
+   .stats{grid-template-columns:repeat(2,1fr)}
+   footer .wrap{grid-template-columns:1fr 1fr}
+ }
+ @media(max-width:560px){
+   .grid6{grid-template-columns:repeat(2,1fr)}
+   #fab span{display:none}#fab{padding:0;width:60px;height:60px;justify-content:center}
+   #chat{right:0;bottom:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:18px 18px 0 0}
+ }
+ @media (prefers-reduced-motion:reduce){
+   *{scroll-behavior:auto!important}
+   #fab::after,.live{animation:none}
+   #chat.open,.msg-in{animation:none}
+   .js .reveal{opacity:1;transform:none}
+ }
 </style>
 </head>
 <body>
+<a class="skip" href="#contenido" id="skip">Saltar al contenido</a>
 
-<!-- TOPBAR -->
 <div class="topbar"><div class="wrap">
-  <div class="lang" id="lang">
-    <button data-l="eu">EU</button>
-    <button data-l="es" class="on">ES</button>
-  </div>
-  <div class="links">
-    <a href="#" data-i="t_sede">🔐 Sede electrónica</a>
-    <a href="#" data-i="t_tel">📞 946 201 200</a>
-  </div>
+ <span class="status"><i class="live"></i><span id="status">Operativo · Sede electrónica 24/7</span></span>
+ <span class="seg es" id="seg" role="group" aria-label="Idioma / Hizkuntza">
+   <span class="thumb" aria-hidden="true"></span>
+   <button data-l="eu" aria-pressed="false">EU</button>
+   <button data-l="es" class="on" aria-pressed="true">ES</button>
+ </span>
 </div></div>
 
-<!-- HEADER -->
-<header><div class="wrap">
-  <div class="escudo"></div>
-  <div class="brand">
-    <b>Iurretako Udala</b>
-    <span data-i="brand_sub">Ayuntamiento de Iurreta · Bizkaia</span>
-  </div>
-  <nav class="main">
-    <a href="#" data-i="n_ayto">Ayuntamiento</a>
-    <a href="#accesos" data-i="n_tram">Trámites</a>
-    <a href="#noticias" data-i="n_actu">Actualidad</a>
-    <a href="#contacto" data-i="n_cont">Contacto</a>
-  </nav>
+<header id="hdr"><div class="wrap">
+ <div class="escudo" aria-hidden="true">🌳</div>
+ <div class="brand"><b>Iurretako Udala</b><span id="bsub">Ayuntamiento de Iurreta · Bizkaia</span></div>
+ <nav>
+   <span class="navlinks">
+     <a id="n1" href="#tramites">Trámites</a>
+     <a id="n2" href="#actualidad">Actualidad</a>
+     <a id="n3" onclick="ask('contacto')">Contacto</a>
+   </span>
+   <a class="nav-cta" id="ncta" href="#" onclick="return false"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Sede electrónica</a>
+ </nav>
 </div></header>
 
-<!-- HERO -->
-<div class="hero"><div class="wrap">
-  <h1 data-i="hero_h">Iurreta, gertu zaude<br>Iurreta, más cerca de ti</h1>
-  <p data-i="hero_p">Realiza tus gestiones online, consulta la agenda del municipio y resuelve tus dudas al instante con nuestro asistente.</p>
-  <div class="cta">
-    <button class="btn btn-primary" onclick="openChat()" data-i="hero_b1">💬 Pregunta al asistente</button>
-    <a class="btn btn-ghost" href="#accesos" data-i="hero_b2">Trámites online</a>
-  </div>
-</div></div>
-
-<!-- ACCESOS -->
-<div class="accesos"><div class="wrap" id="accesos">
-  <div class="grid">
-    <div class="tile" onclick="ask('padron')"><div class="ic">🏠</div><b data-i="a_pad">Empadronamiento</b></div>
-    <div class="tile" onclick="ask('impuestos')"><div class="ic">🧾</div><b data-i="a_imp">Impuestos / IBI</b></div>
-    <div class="tile" onclick="ask('cita')"><div class="ic">📅</div><b data-i="a_cit">Cita previa</b></div>
-    <div class="tile" onclick="ask('residuos')"><div class="ic">♻️</div><b data-i="a_res">Residuos</b></div>
-    <div class="tile" onclick="ask('deporte')"><div class="ic">🏃</div><b data-i="a_dep">Kiroldegia</b></div>
-    <div class="tile" onclick="ask('agenda')"><div class="ic">🎭</div><b data-i="a_age">Agenda</b></div>
-  </div>
-</div></div>
-
-<!-- NOTICIAS -->
-<section class="bloque"><div class="wrap" id="noticias">
-  <div class="h2" data-i="news_h">Actualidad municipal</div>
-  <div class="sub" data-i="news_s">Últimas noticias y avisos del Ayuntamiento de Iurreta.</div>
-  <div class="news">
-    <div class="card"><div class="ph"></div><div class="body">
-      <span class="tag" data-i="news1_t">Hacienda</span>
-      <h3 data-i="news1_h">Recargo del 50% en el IBI a las viviendas vacías</h3>
-      <p data-i="news1_p">El Ayuntamiento aplicará un recargo del 50% en el IBI a los inmuebles desocupados de forma permanente.</p>
-    </div></div>
-    <div class="card"><div class="ph b"></div><div class="body">
-      <span class="tag" data-i="news2_t">Ordenanzas</span>
-      <h3 data-i="news2_h">Nuevas tasas y ordenanzas fiscales 2026</h3>
-      <p data-i="news2_p">Entran en vigor las ordenanzas fiscales actualizadas, incluida la nueva tasa de residuos.</p>
-    </div></div>
-    <div class="card"><div class="ph c"></div><div class="body">
-      <span class="tag" data-i="news3_t">Atención</span>
-      <h3 data-i="news3_h">Nuevo asistente virtual de atención ciudadana</h3>
-      <p data-i="news3_p">Resuelve tus dudas sobre trámites, padrón, impuestos o agenda las 24 horas del día.</p>
-    </div></div>
-  </div>
+<main id="contenido">
+<section class="hero"><div class="wrap">
+ <div>
+   <span class="eyebrow" id="eyebrow">Iurretako Udala · Asistente virtual</span>
+   <h1 id="heroh">Tu Ayuntamiento, <span class="g">más cerca.</span></h1>
+   <p class="lead" id="herop">Padrón, impuestos, cita previa, residuos y agenda. Y si te surge una duda, nuestro asistente te ayuda al instante, en euskera y castellano, las 24 horas.</p>
+   <div class="cta">
+     <button class="btn btn-bot" onclick="openChat()" id="herob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Pregunta al asistente</span></button>
+     <a class="btn btn-ghost" href="#tramites" id="herob2">Ver trámites</a>
+   </div>
+   <div class="trust"><i class="live"></i><span id="herotrust">Asistente en línea · respuesta inmediata</span></div>
+ </div>
+ <div class="luxwrap"><div class="luxcard">
+   <div class="lux-head">
+     <div class="lux-av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+     <div><b id="luxname">Laguntzailea · Asistente</b><div class="st"><i class="dot" style="width:7px;height:7px"></i> <span id="luxst">Asistente municipal</span></div></div>
+   </div>
+   <div class="lux-msgs">
+     <div class="lux-q" id="luxq">¿Cómo me empadrono en Iurreta?</div>
+     <div class="lux-a"><div class="lux-stamp" id="luxstamp">IURRETA · 09:41</div><span id="luxa">Puedes empadronarte online en la Sede electrónica con BakQ, o en el SAC (Bidebarrieta 5) con cita previa. Necesitas DNI/NIE y un justificante de domicilio. ¿Te ayudo a pedir cita?</span>
+       <div class="lux-chips"><span class="lux-chip" id="lc1">Empadronarme</span><span class="lux-chip" id="lc2">Cita previa</span><span class="lux-chip" id="lc3">Sede electrónica</span></div>
+     </div>
+   </div>
+ </div></div>
 </div></section>
 
-<!-- FOOTER -->
+<div class="tiles" id="tramites"><div class="wrap"><div class="grid6" id="grid6"></div></div></div>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="pasos_k">Empieza aquí</span><h2 id="pasos_h">¿Por dónde empiezo?</h2><p id="pasos_p">Tres pasos para resolver tu gestión sin desplazarte.</p></div>
+ <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="band reveal"><div class="wrap">
+ <span class="eyebrow" style="color:var(--bot2)" id="band_k">Asistente virtual</span>
+ <h2 id="band_h">Atención ciudadana, sin esperas</h2>
+ <p class="lead" id="band_p">Resuelve al instante las consultas más frecuentes —padrón, impuestos, cita, residuos— y libera al personal de atención.</p>
+ <div class="stats" id="stats"></div>
+</div></section>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head" id="actualidad"><span class="eyebrow" id="news_k">Actualidad</span><h2 id="news_h">Actualidad municipal</h2></div>
+ <div class="news" id="news"></div>
+</div></section>
+</main>
+
 <footer><div class="wrap">
-  <div>
-    <b>Iurretako Udala</b>
-    Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)<br>
-    📞 946 201 200 · Fax 946 815 598<br>
-    ✉️ <a href="#">haz-sac@iurreta.eus</a> · <a href="#">erregistroa@iurreta.eus</a>
-  </div>
-  <div><b data-i="f_tram">Trámites</b>
-    <a href="#" data-i="a_pad">Empadronamiento</a><br>
-    <a href="#" data-i="a_imp">Impuestos / IBI</a><br>
-    <a href="#" data-i="a_cit">Cita previa</a><br>
-    <a href="#" data-i="t_sede">Sede electrónica</a>
-  </div>
-  <div><b data-i="f_ayto">Ayuntamiento</b>
-    <a href="#" data-i="f_alc">Alcaldía</a><br>
-    <a href="#noticias" data-i="n_actu">Actualidad</a><br>
-    <a href="#" data-i="a_age">Agenda</a><br>
-    <a href="#contacto" data-i="n_cont">Contacto</a>
-  </div>
+ <div class="foot-brand">
+   <b>Iurretako Udala</b>
+   <p id="foot_dir">Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)<br>📞 946 201 200 · Fax 946 815 598<br>✉️ haz-sac@iurreta.eus</p>
+   <span class="wcag" id="wcag">✓ Conforme WCAG 2.1 AA</span>
+ </div>
+ <div><b id="f_t1">Trámites</b><a onclick="ask('padron')">Empadronamiento</a><a onclick="ask('impuestos')">Impuestos / IBI</a><a onclick="ask('cita')">Cita previa</a><a onclick="ask('sede')">Sede electrónica</a></div>
+ <div><b id="f_t2">Ayuntamiento</b><a onclick="ask('alcalde')" id="f_alc">Alcaldía</a><a href="#actualidad" id="f_act">Actualidad</a><a onclick="ask('agenda')" id="f_age">Agenda</a><a onclick="ask('contacto')" id="f_con">Contacto</a></div>
+ <div><b id="f_t3">Accesibilidad</b><a id="f_a1">Declaración de accesibilidad</a><a id="f_a2">Aviso legal</a><a id="f_a3">Privacidad</a></div>
 </div>
-<div class="legal"><div class="wrap" id="contacto">
-  <span>© Iurretako Udala</span>
-  <span data-i="f_demo">Demostración de asistente virtual · datos públicos del municipio</span>
-</div></div>
+<div class="legal"><div class="wrap"><span>© Iurretako Udala</span><span id="disc">Demostración de asistente virtual · datos públicos del municipio</span></div></div>
 </footer>
 
-<!-- CHAT FAB -->
-<button id="fab" onclick="openChat()" aria-label="Abrir asistente">
-  <span class="pulse"></span>💬<span class="badge">1</span>
+<button id="fab" onclick="openChat()" aria-label="Abrir asistente virtual">
+ <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span id="fablabel">¿Te ayudo?</span>
+ <span class="badge">1</span>
 </button>
 
-<!-- CHAT PANEL -->
-<div id="chat">
-  <div class="chead">
-    <div class="av">🤖</div>
-    <div class="t"><b>Laguntzailea · Asistente</b><span><i class="dot"></i> <span data-i="c_online">En línea · responde al instante</span></span></div>
-    <button class="x" onclick="closeChat()">×</button>
-  </div>
-  <div class="cbody" id="cbody"></div>
-  <div class="cfoot">
-    <input id="cinput" data-i-ph="c_ph" placeholder="Escribe tu pregunta…" autocomplete="off"
-      onkeydown="if(event.key==='Enter')send()">
-    <button onclick="send()">➤</button>
-  </div>
-  <div class="mini" data-i="c_mini">Asistente virtual · respuestas orientativas</div>
+<div id="chat" role="dialog" aria-modal="false" aria-label="Asistente virtual del Ayuntamiento de Iurreta">
+ <div class="chead">
+   <div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+   <div class="t"><b id="cname">Laguntzailea · Asistente de Iurreta</b><span><i class="dot"></i> <span id="con">En línea · responde al instante</span></span></div>
+   <button class="x" onclick="closeChat()" aria-label="Cerrar">×</button>
+ </div>
+ <div class="cbody" id="cbody" role="log" aria-live="polite" aria-label="Conversación"></div>
+ <div class="cfoot">
+   <input id="cinput" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta…" autocomplete="off" onkeydown="if(event.key==='Enter')send()">
+   <button class="send" onclick="send()" aria-label="Enviar"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+ </div>
+ <div class="clegal" id="clegal">Asistente virtual · información orientativa basada en datos públicos municipales</div>
 </div>
 
 <script>
-/* ============ I18N de la interfaz ============ */
-const T={
- es:{brand_sub:"Ayuntamiento de Iurreta · Bizkaia",n_ayto:"Ayuntamiento",n_tram:"Trámites",n_actu:"Actualidad",n_cont:"Contacto",
-  hero_h:"Iurreta, gertu zaude<br>Iurreta, más cerca de ti",hero_p:"Realiza tus gestiones online, consulta la agenda del municipio y resuelve tus dudas al instante con nuestro asistente.",
-  hero_b1:"💬 Pregunta al asistente",hero_b2:"Trámites online",
-  a_pad:"Empadronamiento",a_imp:"Impuestos / IBI",a_cit:"Cita previa",a_res:"Residuos",a_dep:"Kiroldegia",a_age:"Agenda",
-  news_h:"Actualidad municipal",news_s:"Últimas noticias y avisos del Ayuntamiento de Iurreta.",
-  news1_t:"Hacienda",news1_h:"Recargo del 50% en el IBI a las viviendas vacías",news1_p:"El Ayuntamiento aplicará un recargo del 50% en el IBI a los inmuebles desocupados de forma permanente.",
-  news2_t:"Ordenanzas",news2_h:"Nuevas tasas y ordenanzas fiscales 2026",news2_p:"Entran en vigor las ordenanzas fiscales actualizadas, incluida la nueva tasa de residuos.",
-  news3_t:"Atención",news3_h:"Nuevo asistente virtual de atención ciudadana",news3_p:"Resuelve tus dudas sobre trámites, padrón, impuestos o agenda las 24 horas del día.",
-  f_tram:"Trámites",f_ayto:"Ayuntamiento",f_alc:"Alcaldía",t_sede:"🔐 Sede electrónica",t_tel:"📞 946 201 200",
-  f_demo:"Demostración de asistente virtual · datos públicos del municipio",
-  c_online:"En línea · responde al instante",c_ph:"Escribe tu pregunta…",c_mini:"Asistente virtual · respuestas orientativas"},
- eu:{brand_sub:"Iurretako Udala · Bizkaia",n_ayto:"Udala",n_tram:"Izapideak",n_actu:"Albisteak",n_cont:"Kontaktua",
-  hero_h:"Iurreta, gertu zaude<br>Iurreta, zugandik gertuago",hero_p:"Egin zure izapideak online, kontsultatu udalerriko agenda eta argitu zure zalantzak berehala gure laguntzailearekin.",
-  hero_b1:"💬 Galdetu laguntzaileari",hero_b2:"Online izapideak",
-  a_pad:"Errolda",a_imp:"Zergak / OHZ",a_cit:"Hitzordua",a_res:"Hondakinak",a_dep:"Kiroldegia",a_age:"Agenda",
-  news_h:"Udal albisteak",news_s:"Iurretako Udalaren azken albiste eta oharrak.",
-  news1_t:"Ogasuna",news1_h:"%50eko errekargua OHZan etxebizitza hutsetan",news1_p:"Udalak %50eko errekargua aplikatuko du modu iraunkorrean hutsik dauden etxebizitzen OHZan.",
-  news2_t:"Ordenantzak",news2_h:"2026ko zerga-ordenantza eta tasa berriak",news2_p:"Eguneratutako zerga-ordenantzak indarrean sartu dira, hondakinen tasa berria barne.",
-  news3_t:"Arreta",news3_h:"Herritarrentzako laguntzaile birtual berria",news3_p:"Argitu zure zalantzak izapide, errolda, zerga edo agendari buruz, eguneko 24 orduetan.",
-  f_tram:"Izapideak",f_ayto:"Udala",f_alc:"Alkatetza",t_sede:"🔐 Egoitza elektronikoa",t_tel:"📞 946 201 200",
-  f_demo:"Laguntzaile birtualaren erakustaldia · udalerriko datu publikoak",
-  c_online:"Linean · berehala erantzuten du",c_ph:"Idatzi zure galdera…",c_mini:"Laguntzaile birtuala · orientabidezko erantzunak"}
+document.documentElement.classList.add("js");
+
+/* =================== UI i18n =================== */
+const UI={
+ es:{status:"Operativo · Sede electrónica 24/7",bsub:"Ayuntamiento de Iurreta · Bizkaia",
+  n1:"Trámites",n2:"Actualidad",n3:"Contacto",ncta:'<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Sede electrónica',
+  eyebrow:"Iurretako Udala · Asistente virtual",heroh:'Tu Ayuntamiento, <span class="g">más cerca.</span>',
+  herop:"Padrón, impuestos, cita previa, residuos y agenda. Y si te surge una duda, nuestro asistente te ayuda al instante, en euskera y castellano, las 24 horas.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Pregunta al asistente</span>',
+  herob2:"Ver trámites",herotrust:"Asistente en línea · respuesta inmediata",
+  luxname:"Laguntzailea · Asistente",luxst:"Asistente municipal",luxq:"¿Cómo me empadrono en Iurreta?",luxstamp:"IURRETA · 09:41",
+  luxa:"Puedes empadronarte online en la Sede electrónica con BakQ, o en el SAC (Bidebarrieta 5) con cita previa. Necesitas DNI/NIE y un justificante de domicilio. ¿Te ayudo a pedir cita?",
+  lc1:"Empadronarme",lc2:"Cita previa",lc3:"Sede electrónica",
+  pasos_k:"Empieza aquí",pasos_h:"¿Por dónde empiezo?",pasos_p:"Tres pasos para resolver tu gestión sin desplazarte.",
+  band_k:"Asistente virtual",band_h:"Atención ciudadana, sin esperas",band_p:"Resuelve al instante las consultas más frecuentes —padrón, impuestos, cita, residuos— y libera al personal de atención.",
+  news_k:"Actualidad",news_h:"Actualidad municipal",
+  foot_dir:"Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)<br>📞 946 201 200 · Fax 946 815 598<br>✉️ haz-sac@iurreta.eus",
+  wcag:"✓ Conforme WCAG 2.1 AA",f_t1:"Trámites",f_t2:"Ayuntamiento",f_t3:"Accesibilidad",f_alc:"Alcaldía",f_act:"Actualidad",f_age:"Agenda",f_con:"Contacto",
+  f_a1:"Declaración de accesibilidad",f_a2:"Aviso legal",f_a3:"Privacidad",
+  disc:"Demostración de asistente virtual · datos públicos del municipio",
+  cname:"Laguntzailea · Asistente de Iurreta",con:"En línea · responde al instante",fablabel:"¿Te ayudo?",
+  ph:"Escribe tu pregunta…",clegal:"Asistente virtual · información orientativa basada en datos públicos municipales",skip:"Saltar al contenido",
+  tiles:[["padron","Empadronamiento","Altas, volantes y certificados"],["impuestos","Impuestos / IBI","Recibos, domiciliación y pagos"],["cita","Cita previa","SAC sin esperas"],["residuos","Residuos","Voluminosos, garbigune y reciclaje"],["deporte","Kiroldegia","Abonos, horarios y reservas"],["agenda","Agenda","Cultura, fiestas y biblioteca"]],
+  steps:[["Identifícate","Entra en la Sede electrónica con BakQ, certificado digital o DNIe."],["Elige tu trámite","Padrón, impuestos, registro de instancias, cita previa…"],["Resuelto","Hazlo online 24/7 o pide cita si necesitas atención presencial."]],
+  stats:[["20","+","temas resueltos al instante"],["2","","idiomas · euskera y castellano"],["24/7","","disponible siempre"],["0","","€ de coste para el vecino"]],
+  news:[["Hacienda","Recargo del 50% en el IBI a viviendas vacías","El Ayuntamiento aplicará un recargo del 50% en el IBI a los inmuebles desocupados de forma permanente.","impuestos"],["Ordenanzas","Nuevas ordenanzas fiscales y tasa de residuos 2026","Entran en vigor las ordenanzas actualizadas para 2026, incluida la nueva tasa de residuos.","residuos"],["Atención","Nuevo asistente virtual 24/7","Resuelve tus dudas sobre padrón, impuestos, cita previa o agenda a cualquier hora.","__chat"]]},
+ eu:{status:"Operatibo · Egoitza elektronikoa 24/7",bsub:"Iurretako Udala · Bizkaia",
+  n1:"Izapideak",n2:"Albisteak",n3:"Kontaktua",ncta:'<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Egoitza elektronikoa',
+  eyebrow:"Iurretako Udala · Laguntzaile birtuala",heroh:'Zure Udala, <span class="g">gertuago.</span>',
+  herop:"Errolda, zergak, hitzordua, hondakinak eta agenda. Eta zalantzarik baduzu, gure laguntzaileak berehala lagunduko dizu, euskaraz eta gaztelaniaz, 24 orduz.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Galdetu laguntzaileari</span>',
+  herob2:"Izapideak ikusi",herotrust:"Laguntzailea linean · berehalako erantzuna",
+  luxname:"Laguntzailea · Asistentea",luxst:"Udal laguntzailea",luxq:"Nola erroldatzen naiz Iurretan?",luxstamp:"IURRETA · 09:41",
+  luxa:"Online erroldatu zaitezke Egoitza elektronikoan BakQ-rekin, edo HAZ-ean (Bidebarrieta 5) hitzordua eskatuta. NAN/AIZ eta bizilekuaren egiaztagiria behar dituzu. Hitzordua eskatzen lagundu?",
+  lc1:"Erroldatu",lc2:"Hitzordua",lc3:"Egoitza elektronikoa",
+  pasos_k:"Hasi hemen",pasos_h:"Nondik hasi?",pasos_p:"Hiru urrats zure izapidea lekualdatu gabe egiteko.",
+  band_k:"Laguntzaile birtuala",band_h:"Herritarrentzako arreta, itxaron gabe",band_p:"Galdera ohikoenak —errolda, zergak, hitzordua, hondakinak— berehala argitzen ditu, eta arreta-langileak arintzen.",
+  news_k:"Albisteak",news_h:"Udal albisteak",
+  foot_dir:"Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)<br>📞 946 201 200 · Faxa 946 815 598<br>✉️ haz-sac@iurreta.eus",
+  wcag:"✓ WCAG 2.1 AA betetzen du",f_t1:"Izapideak",f_t2:"Udala",f_t3:"Irisgarritasuna",f_alc:"Alkatetza",f_act:"Albisteak",f_age:"Agenda",f_con:"Kontaktua",
+  f_a1:"Irisgarritasun-adierazpena",f_a2:"Lege-oharra",f_a3:"Pribatutasuna",
+  disc:"Laguntzaile birtualaren erakustaldia · udalerriko datu publikoak",
+  cname:"Laguntzailea · Iurretako asistentea",con:"Linean · berehala erantzuten du",fablabel:"Lagundu?",
+  ph:"Idatzi zure galdera…",clegal:"Laguntzaile birtuala · udalerriko datu publikoetan oinarritutako orientabidezko informazioa",skip:"Edukira jauzi",
+  tiles:[["padron","Errolda","Altak, agiriak eta ziurtagiriak"],["impuestos","Zergak / OHZ","Ordainagiriak, helbideratzea eta ordainketak"],["cita","Hitzordua","HAZ itxaron gabe"],["residuos","Hondakinak","Tamaina handikoak, garbigunea eta birziklapena"],["deporte","Kiroldegia","Bonuak, ordutegiak eta erreserbak"],["agenda","Agenda","Kultura, jaiak eta liburutegia"]],
+  steps:[["Identifikatu","Sartu Egoitza elektronikoan BakQ, ziurtagiri digital edo NANarekin."],["Aukeratu izapidea","Errolda, zergak, instantzien erregistroa, hitzordua…"],["Eginda","Egin online 24/7 edo eskatu hitzordua aurrez aurreko arreta behar baduzu."]],
+  stats:[["20","+","gai berehala argituta"],["2","","hizkuntza · euskara eta gaztelania"],["24/7","","beti eskuragarri"],["0","","€-ko kostua herritarrarentzat"]],
+  news:[["Ogasuna","%50eko errekargua OHZan etxebizitza hutsetan","Udalak %50eko errekargua aplikatuko du modu iraunkorrean hutsik dauden etxebizitzen OHZan.","impuestos"],["Ordenantzak","2026ko zerga-ordenantza eta hondakin-tasa berriak","2026rako eguneratutako ordenantzak indarrean sartzen dira, hondakinen tasa berria barne.","residuos"],["Arreta","Laguntzaile birtual berria 24/7","Argitu errolda, zerga, hitzordu edo agendari buruzko zalantzak edozein ordutan.","__chat"]]}
 };
 let LANG="es";
-function applyLang(){
-  document.documentElement.lang=LANG;
-  document.querySelectorAll("[data-i]").forEach(el=>{const k=el.getAttribute("data-i");if(T[LANG][k]!=null)el.innerHTML=T[LANG][k];});
-  document.querySelectorAll("[data-i-ph]").forEach(el=>{const k=el.getAttribute("data-i-ph");if(T[LANG][k]!=null)el.placeholder=T[LANG][k];});
-  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===LANG));
-}
-document.getElementById("lang").addEventListener("click",e=>{
-  if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();resetChat();}
-});
 
-/* ============ BASE DE CONOCIMIENTO DEL CHATBOT ============
-   Cada intención: claves (palabras gatillo ES+EU) + respuesta ES / EU.
-   En real, este bloque se carga con los datos de cada ayuntamiento. */
+/* =================== Base de conocimiento (motor del chat) =================== */
 const KB=[
- {id:"saludo",keys:["hola","buenas","kaixo","egun on","epa","gabon","hi"],
-  es:"¡Hola! 👋 Soy el asistente virtual del Ayuntamiento de Iurreta. Puedo ayudarte con padrón, impuestos, cita previa, residuos, agenda y más. ¿Qué necesitas?",
-  eu:"Kaixo! 👋 Iurretako Udaleko laguntzaile birtuala naiz. Erroldan, zergetan, hitzorduan, hondakinetan, agendan eta gehiagotan lagun diezazuket. Zer behar duzu?"},
+ {id:"saludo",rel:["padron","impuestos","cita"],keys:["hola","buenas","buenos dias","buenas tardes","kaixo","egun on","arratsalde on","epa","aupa","gabon","hi","ola"],
+  es:"¡Hola! 👋 Soy el asistente virtual del Ayuntamiento de Iurreta. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, sede electrónica, agenda</b> y más de 20 temas. ¿Qué necesitas?",
+  eu:"Kaixo! 👋 Iurretako Udaleko laguntzaile birtuala naiz. <b>Erroldan, zergetan/OHZan, hitzorduan, hondakinetan, egoitza elektronikoan, agendan</b> eta 20 gai baino gehiagotan lagun diezazuket. Zer behar duzu?"},
 
- {id:"padron",keys:["padron","padrón","empadron","empadronar","errolda","erroldatu","volante","certificado de empadron","censo"],
-  es:"🏠 <b>Empadronamiento</b>\nPuedes pedir el alta en el padrón o un certificado/volante de empadronamiento:\n• <b>Online:</b> en la Sede electrónica con certificado digital o BakQ.\n• <b>Presencial:</b> en el SAC (Bidebarrieta 5), con cita previa.\nDocumentación: DNI/NIE y un documento que acredite el domicilio (contrato/escritura o recibo).\n¿Quieres que te explique cómo pedir <b>cita previa</b>?",
+ {id:"padron",rel:["cita","sede","registro"],keys:["padron","padrón","empadron","empadronar","empadronarme","empadronado","empadrono","empadrona","alta padron","cambio domicilio","volante","certificado de empadronamiento","certificado empadronamiento","censo","convivencia","errolda","erroldatu","erroldan","bizileku","bizilekua"],
+  es:"🏠 <b>Empadronamiento</b>\nPuedes pedir el alta en el padrón o un certificado/volante de empadronamiento:\n• <b>Online:</b> en la Sede electrónica con certificado digital o BakQ.\n• <b>Presencial:</b> en el SAC (Bidebarrieta 5), con cita previa.\nDocumentación: DNI/NIE y un documento que acredite el domicilio (contrato, escritura o recibo).\n¿Quieres que te explique cómo pedir <b>cita previa</b>?",
   eu:"🏠 <b>Errolda</b>\nErroldan alta edo errolda-ziurtagiria eska dezakezu:\n• <b>Online:</b> Egoitza elektronikoan, ziurtagiri digitalarekin edo BakQ-rekin.\n• <b>Aurrez aurre:</b> HAZ-ean (Bidebarrieta 5), hitzordua eskatuta.\nAgiriak: NAN/AIZ eta etxebizitza egiaztatzen duen agiri bat.\n<b>Hitzordua</b> nola eskatu azaltzea nahi duzu?"},
 
- {id:"impuestos",keys:["impuesto","ibi","tributo","tasa","recibo","pagar","domiciliar","zerga","ohz","ordenanza","plusvalia","vado"],
-  es:"🧾 <b>Impuestos y tasas</b>\nGestiona el IBI, el impuesto de vehículos, tasas de basura, vados, etc.:\n• Consulta y pago de recibos en la Sede electrónica.\n• Domiciliación bancaria para no estar pendiente de plazos.\n📌 Novedad 2026: nuevas ordenanzas fiscales y un recargo del 50% en el IBI a viviendas vacías.\nPara dudas concretas de un recibo: 946 201 200.",
-  eu:"🧾 <b>Zergak eta tasak</b>\nOHZ, ibilgailuen zerga, zaborren tasa, bideak eta abar kudeatzen dira:\n• Ordainagiriak kontsultatu eta ordaindu Egoitza elektronikoan.\n• Banku-helbideratzea epeez ez arduratzeko.\n📌 2026ko berritasuna: zerga-ordenantza berriak eta %50eko errekargua etxebizitza hutsen OHZan.\nOrdainagiri jakin baten zalantzak: 946 201 200."},
+ {id:"impuestos",rel:["sede","cita","contacto"],keys:["impuesto","impuestos","ibi","tributo","tributos","tasa","tasas","recibo","recibos","pagar","pagar impuesto","contribucion","domiciliar","domiciliacion","fraccionar","vehiculos","circulacion","plusvalia","vado","zerga","zergak","ohz","ordenanza","ordenantza","ordainagiri"],
+  es:"🧾 <b>Impuestos y tasas</b>\nGestiona el IBI, el impuesto de vehículos, la tasa de basuras, vados, etc.:\n• Consulta y pago de recibos en la Sede electrónica.\n• Domiciliación bancaria para no estar pendiente de plazos.\n📌 Novedad 2026: nuevas ordenanzas fiscales y un recargo del 50% en el IBI a viviendas vacías.\nPara dudas de un recibo concreto: <b>946 201 200</b>.",
+  eu:"🧾 <b>Zergak eta tasak</b>\nOHZ, ibilgailuen zerga, zaborren tasa, bideak eta abar kudeatzen dira:\n• Ordainagiriak kontsultatu eta ordaindu Egoitza elektronikoan.\n• Banku-helbideratzea epeez ez arduratzeko.\n📌 2026ko berritasuna: zerga-ordenantza berriak eta %50eko errekargua etxebizitza hutsen OHZan.\nOrdainagiri jakin baten zalantzak: <b>946 201 200</b>."},
 
- {id:"cita",keys:["cita","cita previa","hitzordu","reservar hora","pedir cita","turno","appointment"],
+ {id:"cita",rel:["padron","sede","horario"],keys:["cita","citas","cita previa","pedir cita","reservar hora","reservar","turno","appointment","atencion presencial","atención presencial","hitzordu","hitzordua","hitzorduak"],
   es:"📅 <b>Cita previa</b>\nPara ser atendido en el SAC sin esperas:\n• Pídela <b>online</b> en la Sede electrónica (apartado «Cita previa»).\n• O por teléfono en el <b>946 201 200</b>.\nIndica el trámite (padrón, impuestos, registro…) y elige día y hora.",
   eu:"📅 <b>Hitzordua</b>\nHAZ-ean itxaron gabe artatua izateko:\n• Eskatu <b>online</b> Egoitza elektronikoan («Hitzordua» atalean).\n• Edo telefonoz: <b>946 201 200</b>.\nAdierazi izapidea (errolda, zergak, erregistroa…) eta aukeratu eguna eta ordua."},
 
- {id:"residuos",keys:["basura","residuo","reciclaje","reciclar","contenedor","garbigune","punto limpio","voluminoso","muebles","hondakin","zabor","birziklatu","organico","poda"],
-  es:"♻️ <b>Residuos y reciclaje</b>\n• Contenedores de orgánico, envases, papel, vidrio y resto en la vía pública.\n• <b>Voluminosos</b> (muebles, electrodomésticos): recogida con aviso previo al 946 201 200; no los dejes fuera sin avisar.\n• <b>Garbigune</b> (punto limpio) para escombros, aceites, pinturas, electrónica, etc.\nLa nueva tasa de residuos 2026 se calcula según la generación de basura.",
-  eu:"♻️ <b>Hondakinak eta birziklapena</b>\n• Edukiontziak: organikoa, ontziak, papera, beira eta gainerakoa kalean.\n• <b>Tamaina handiko hondakinak</b> (altzariak, etxetresnak): jasotzeko deitu aurrez 946 201 200 telefonora.\n• <b>Garbigune</b>a hondakinetarako (hondakinak, olioak, pinturak, elektronika…).\n2026ko hondakin-tasa sortutako zaborraren arabera kalkulatzen da."},
+ {id:"residuos",rel:["contacto","horario","quejas"],keys:["basura","basuras","residuo","residuos","reciclaje","reciclar","contenedor","contenedores","garbigune","punto limpio","voluminoso","voluminosos","muebles","poda","escombros","organico","vidrio","aceite","hondakin","zabor","birziklatu","altzari"],
+  es:"♻️ <b>Residuos y reciclaje</b>\n• Contenedores de orgánico, envases, papel, vidrio y resto en la vía pública.\n• <b>Voluminosos</b> (muebles, electrodomésticos): recogida con aviso previo al <b>946 201 200</b>; no los dejes fuera sin avisar.\n• <b>Garbigune</b> (punto limpio) para escombros, aceites, pinturas, electrónica, etc.\nLa nueva tasa de residuos 2026 se calcula según la generación de basura.",
+  eu:"♻️ <b>Hondakinak eta birziklapena</b>\n• Edukiontziak: organikoa, ontziak, papera, beira eta gainerakoa kalean.\n• <b>Tamaina handiko hondakinak</b> (altzariak, etxetresnak): jasotzeko deitu aurrez <b>946 201 200</b> telefonora.\n• <b>Garbigune</b>a hondakinetarako (hondakinak, olioak, pinturak, elektronika…).\n2026ko hondakin-tasa sortutako zaborraren arabera kalkulatzen da."},
 
- {id:"deporte",keys:["deporte","polideportivo","kiroldegi","gimnasio","piscina","igerileku","kirol","abono","instalacion deportiva"],
-  es:"🏃 <b>Kiroldegia (instalaciones deportivas)</b>\nInformación sobre abonos, horarios de instalaciones, cursillos y reserva de pistas/frontón.\nPara altas de abonado y reservas, contacta con las instalaciones municipales o pásate por el SAC. ¿Te facilito el teléfono general? 946 201 200.",
-  eu:"🏃 <b>Kiroldegia</b>\nBonu, instalazioen ordutegi, ikastaro eta pista/frontoi erreserben informazioa.\nBazkide alta eta erreserbetarako, jarri harremanetan udal instalazioekin edo zatoz HAZ-era. Telefono orokorra: 946 201 200."},
+ {id:"deporte",rel:["agenda","horario","contacto"],keys:["deporte","polideportivo","kiroldegi","kiroldegia","gimnasio","piscina","igerileku","kirol","abono","abonado","frontón","fronton","pista","instalacion deportiva","polikiroldegi"],
+  es:"🏃 <b>Kiroldegia (instalaciones deportivas)</b>\nInformación sobre abonos, horarios de instalaciones, cursillos y reserva de pistas/frontón.\nPara altas de abonado y reservas, contacta con las instalaciones municipales o pásate por el SAC. Teléfono general: <b>946 201 200</b>.",
+  eu:"🏃 <b>Kiroldegia</b>\nBonu, instalazioen ordutegi, ikastaro eta pista/frontoi erreserben informazioa.\nBazkide alta eta erreserbetarako, jarri harremanetan udal instalazioekin edo zatoz HAZ-era. Telefono orokorra: <b>946 201 200</b>."},
 
- {id:"agenda",keys:["agenda","evento","fiesta","jai","cultura","kultur","biblioteca","liburutegi","actividad","ekitaldi","concierto"],
-  es:"🎭 <b>Agenda y cultura</b>\nConsulta conciertos, talleres, fiestas y actividades de la Kultur Etxea y la biblioteca en la sección «Actualidad» de la web. ¿Quieres que te avise de algo en concreto (fiestas, biblioteca, talleres)?",
-  eu:"🎭 <b>Agenda eta kultura</b>\nKontsultatu kontzertuak, tailerrak, jaiak eta Kultur Etxeko eta liburutegiko ekitaldiak webeko «Albisteak» atalean. Zerbait jakin bat nahi duzu (jaiak, liburutegia, tailerrak)?"},
+ {id:"agenda",rel:["deporte","euskera","festivos"],keys:["agenda","evento","eventos","fiesta","fiestas","jai","jaiak","cultura","kultur","biblioteca","liburutegi","actividad","actividades","ekitaldi","concierto","conciertos","taller","talleres","cine"],
+  es:"🎭 <b>Agenda y cultura</b>\nConsulta conciertos, talleres, fiestas y actividades de la Kultur Etxea y la biblioteca en la sección «Actualidad» de la web. ¿Quieres info de algo en concreto (fiestas, biblioteca, talleres)?",
+  eu:"🎭 <b>Agenda eta kultura</b>\nKontsultatu kontzertuak, tailerrak, jaiak eta Kultur Etxeko eta liburutegiko ekitaldiak webeko «Albisteak» atalean. Zerbait jakin baten informazioa nahi duzu (jaiak, liburutegia, tailerrak)?"},
 
- {id:"sede",keys:["sede","online","telematico","internet","tramite online","certificado digital","bakq","izenpe","egoitza","firma"],
+ {id:"sede",rel:["padron","impuestos","registro"],keys:["sede","sede electronica","sede electrónica","online","telematico","internet","tramite online","tramites online","certificado digital","bakq","izenpe","dnie","clave","firma","egoitza","egoitza elektronikoa"],
   es:"🔐 <b>Sede electrónica</b>\nDesde casa puedes registrar instancias, pedir certificados, pagar impuestos y consultar tus expedientes.\nNecesitas identificarte con <b>certificado digital</b>, <b>DNIe</b> o <b>BakQ</b>.\n¿Sobre qué trámite quieres hacerlo? (padrón, impuestos, registro…)",
   eu:"🔐 <b>Egoitza elektronikoa</b>\nEtxetik instantziak erregistratu, ziurtagiriak eskatu, zergak ordaindu eta zure espedienteak kontsultatu ditzakezu.\n<b>Ziurtagiri digitala</b>, <b>NANe</b> edo <b>BakQ</b> behar duzu identifikatzeko.\nZein izapideri buruz egin nahi duzu?"},
 
- {id:"registro",keys:["registro","instancia","solicitud","escrito","presentar","eskaera","erregistro","reclamacion","queja"],
+ {id:"registro",rel:["sede","cita","quejas"],keys:["registro","registrar","instancia","instancias","solicitud","escrito","presentar","presentar escrito","eskaera","erregistro","erregistroa","documentacion"],
   es:"📨 <b>Registro / instancias</b>\nPuedes presentar solicitudes y escritos:\n• <b>Online:</b> Sede electrónica (registro electrónico).\n• <b>Presencial:</b> SAC, Bidebarrieta 5, con cita previa.\n• <b>Email de registro:</b> erregistroa@iurreta.eus",
   eu:"📨 <b>Erregistroa / instantziak</b>\nEskaerak eta idatziak aurkez ditzakezu:\n• <b>Online:</b> Egoitza elektronikoa (erregistro elektronikoa).\n• <b>Aurrez aurre:</b> HAZ, Bidebarrieta 5, hitzorduarekin.\n• <b>Erregistro-emaila:</b> erregistroa@iurreta.eus"},
 
- {id:"obras",keys:["obra","licencia","reforma","urbanismo","permiso","construir","hirigintza","lizentzia","derribo"],
-  es:"🏗️ <b>Licencias de obra / urbanismo</b>\nPara obras menores (comunicación previa) o mayores (licencia) hay que presentar la solicitud en el registro con la documentación técnica. El área de Urbanismo revisa el expediente.\nTe recomiendo pedir cita en el SAC para que te indiquen la documentación exacta de tu caso: 946 201 200.",
-  eu:"🏗️ <b>Obra-lizentziak / hirigintza</b>\nObra txikietarako (aurretiazko komunikazioa) edo handietarako (lizentzia) eskaera erregistroan aurkeztu behar da agiri teknikoekin. Hirigintza arloak espedientea aztertzen du.\nGomendatzen dizut HAZ-ean hitzordua eskatzea zure kasurako agiriak zehazteko: 946 201 200."},
+ {id:"obras",rel:["cita","registro","contacto"],keys:["obra","obras","licencia","licencias","reforma","urbanismo","permiso","permiso de obra","construir","derribo","hirigintza","lizentzia","baimen"],
+  es:"🏗️ <b>Licencias de obra / urbanismo</b>\nPara obras menores (comunicación previa) o mayores (licencia) hay que presentar la solicitud en el registro con la documentación técnica. El área de Urbanismo revisa el expediente.\nTe recomiendo pedir cita en el SAC para que te indiquen la documentación exacta de tu caso: <b>946 201 200</b>.",
+  eu:"🏗️ <b>Obra-lizentziak / hirigintza</b>\nObra txikietarako (aurretiazko komunikazioa) edo handietarako (lizentzia) eskaera erregistroan aurkeztu behar da agiri teknikoekin. Hirigintza arloak espedientea aztertzen du.\nGomendatzen dizut HAZ-ean hitzordua eskatzea zure kasurako agiriak zehazteko: <b>946 201 200</b>."},
 
- {id:"euskera",keys:["euskera","euskara","clases","aek","euskaltegi","hizkuntza","ingles","idioma","subvencion euskera"],
+ {id:"euskera",rel:["agenda","empleo","ayudas"],keys:["euskera","euskara","clases","clases de euskera","aek","euskaltegi","euskaltegia","hizkuntza","ikasi euskara","idioma"],
   es:"🗣️ <b>Euskera</b>\nInformación sobre clases de euskera (euskaltegi/AEK), campañas de uso y, en su caso, ayudas para el aprendizaje. Dime si buscas <b>clases para adultos</b> o <b>actividades en euskera</b> y te oriento.",
   eu:"🗣️ <b>Euskara</b>\nEuskara ikasteari buruzko informazioa (euskaltegia/AEK), erabilera-kanpainak eta, hala badagokio, ikasteko laguntzak. Esan <b>helduentzako klaseak</b> ala <b>euskarazko jarduerak</b> bilatzen dituzun."},
 
- {id:"empleo",keys:["empleo","trabajo","lan","oferta","curso","formacion","lanbide","paro","oposicion"],
-  es:"💼 <b>Empleo y formación</b>\nConsulta ofertas de empleo público del Ayuntamiento y cursos/formación. Las convocatorias de empleo se publican en la Sede electrónica y el tablón de anuncios. ¿Buscas <b>empleo municipal</b> o <b>cursos</b>?",
-  eu:"💼 <b>Enplegua eta prestakuntza</b>\nUdalaren enplegu publikoko eskaintzak eta ikastaroak kontsultatu. Enplegu-deialdiak Egoitza elektronikoan eta iragarki-taulan argitaratzen dira. <b>Udal enplegua</b> ala <b>ikastaroak</b> bilatzen dituzu?"},
+ {id:"empleo",rel:["sede","contacto","euskera"],keys:["empleo","trabajo","oferta","ofertas de empleo","oposicion","oposiciones","bolsa de trabajo","curso","cursos","formacion","lanbide","paro","lan","enplegu","prestakuntza"],
+  es:"💼 <b>Empleo y formación</b>\nConsulta ofertas de empleo público del Ayuntamiento, bolsas de trabajo y cursos. Las convocatorias se publican en la Sede electrónica y el tablón de anuncios. ¿Buscas <b>empleo municipal</b> o <b>cursos</b>?",
+  eu:"💼 <b>Enplegua eta prestakuntza</b>\nUdalaren enplegu publikoko eskaintzak, lan-poltsak eta ikastaroak kontsultatu. Deialdiak Egoitza elektronikoan eta iragarki-taulan argitaratzen dira. <b>Udal enplegua</b> ala <b>ikastaroak</b> bilatzen dituzu?"},
 
- {id:"horario",keys:["horario","abierto","cuando abre","hora","atencion","ordutegi","zabalik","noiz","irekita"],
-  es:"🕗 <b>Horario de atención</b>\nEl SAC (Bidebarrieta 5) atiende de <b>lunes a viernes por la mañana</b>. Para confirmar el horario exacto y los días festivos locales, llama al <b>946 201 200</b>.\nLa Sede electrónica está disponible <b>24/7</b> para trámites online.",
-  eu:"🕗 <b>Arreta-ordutegia</b>\nHAZ-ek (Bidebarrieta 5) <b>astelehenetik ostiralera goizez</b> egiten du arreta. Ordutegi zehatza eta jaiegunak baieztatzeko, deitu <b>946 201 200</b> telefonora.\nEgoitza elektronikoa <b>24/7</b> dago eskuragarri online izapideetarako."},
+ {id:"horario",rel:["cita","ubicacion","festivos"],keys:["horario","horarios","abierto","cuando abre","hora","a que hora","abren","atencion","atencion al publico","ordutegi","ordutegia","zabalik","noiz","irekita"],
+  es:"🕗 <b>Horario de atención</b>\nEl SAC (Bidebarrieta 5) atiende de <b>lunes a viernes, de 8:30 a 14:00</b>. Para festivos locales, llama al <b>946 201 200</b>.\nLa Sede electrónica está disponible <b>24/7</b> para trámites online.",
+  eu:"🕗 <b>Arreta-ordutegia</b>\nHAZ-ek (Bidebarrieta 5) <b>astelehenetik ostiralera, 8:30etik 14:00etara</b> egiten du arreta. Jaiegunak baieztatzeko, deitu <b>946 201 200</b> telefonora.\nEgoitza elektronikoa <b>24/7</b> dago eskuragarri online izapideetarako."},
 
- {id:"ubicacion",keys:["donde","direccion","ubicacion","como llegar","mapa","esta","helbide","non","kokapen"],
+ {id:"ubicacion",rel:["horario","contacto","cita"],keys:["donde","donde esta","direccion","dirección","ubicacion","ubicación","como llegar","mapa","plano","esta","helbide","helbidea","non","non dago","kokapen"],
   es:"📍 <b>Ubicación</b>\nAyuntamiento de Iurreta — <b>Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)</b>.\n📞 946 201 200 · ✉️ haz-sac@iurreta.eus",
   eu:"📍 <b>Kokapena</b>\nIurretako Udala — <b>Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)</b>.\n📞 946 201 200 · ✉️ haz-sac@iurreta.eus"},
 
- {id:"contacto",keys:["telefono","contacto","email","correo","llamar","telefono","kontaktu","deitu","posta"],
+ {id:"contacto",rel:["horario","cita","persona"],keys:["telefono","teléfono","contacto","contactar","email","correo","llamar","numero","número","kontaktu","kontaktua","telefonoa","deitu","posta"],
   es:"📞 <b>Contacto</b>\n• Teléfono: <b>946 201 200</b> · Fax: 946 815 598\n• Atención ciudadana: haz-sac@iurreta.eus\n• Registro: erregistroa@iurreta.eus\n• Dirección: Bidebarrieta 5, 48215 Iurreta",
   eu:"📞 <b>Kontaktua</b>\n• Telefonoa: <b>946 201 200</b> · Faxa: 946 815 598\n• Herritarren arreta: haz-sac@iurreta.eus\n• Erregistroa: erregistroa@iurreta.eus\n• Helbidea: Bidebarrieta 5, 48215 Iurreta"},
 
- {id:"alcalde",keys:["alcalde","alcaldesa","alkate","gobierno","corporacion","quien manda","politico","udalbatza"],
+ {id:"alcalde",rel:["contacto","agenda"],keys:["alcalde","alcaldesa","alkate","alkatea","gobierno","gobierno municipal","corporacion","corporación","concejal","concejales","quien manda","udalbatza","zinegotzi"],
   es:"🏛️ <b>Alcaldía</b>\nEl alcalde de Iurreta es <b>Oskar Koka Lorente</b>. La corporación municipal y las áreas de gobierno están en la sección «Ayuntamiento» de la web.",
   eu:"🏛️ <b>Alkatetza</b>\nIurretako alkatea <b>Oskar Koka Lorente</b> da. Udalbatza eta gobernu-arloak webeko «Udala» atalean daude."},
 
- {id:"persona",keys:["persona","hablar con alguien","humano","operador","no me ayudas","quiero hablar","atencion personal","pertsona"],
-  es:"🙋 Te paso con atención personal. Puedes:\n• Llamar al <b>946 201 200</b> (lunes a viernes por la mañana).\n• Escribir a haz-sac@iurreta.eus\n• Pedir cita previa y acercarte al SAC (Bidebarrieta 5).\n¿Quieres que te ayude a pedir la cita?",
-  eu:"🙋 Arreta pertsonalera bideratuko zaitut. Aukerak:\n• Deitu <b>946 201 200</b> (astelehenetik ostiralera goizez).\n• Idatzi haz-sac@iurreta.eus helbidera\n• Hitzordua eskatu eta HAZ-era joan (Bidebarrieta 5).\nHitzordua eskatzen lagundu nahi dizut?"},
+ {id:"festivos",rel:["horario","agenda"],keys:["festivo","festivos","fiesta local","calendario","calendario laboral","puente","cerrado","vacaciones","san miguel","patron","patronales","jaiegun","jaiegunak","oporrak","itxita"],
+  es:"📆 <b>Días festivos y horario especial</b>\nEn las fiestas locales y festivos el SAC permanece cerrado. Las fiestas patronales de Iurreta se celebran en torno a <b>San Miguel (finales de septiembre)</b>. Para confirmar un día concreto, llama al <b>946 201 200</b>.\nRecuerda: la Sede electrónica está disponible 24/7.",
+  eu:"📆 <b>Jaiegunak eta ordutegi berezia</b>\nJai lokal eta jaiegunetan HAZ itxita egoten da. Iurretako jai nagusiak <b>San Migel inguruan (irailaren amaieran)</b> ospatzen dira. Egun jakin bat baieztatzeko, deitu <b>946 201 200</b>.\nGogoan izan: Egoitza elektronikoa 24/7 eskuragarri dago."},
 
- {id:"gracias",keys:["gracias","eskerrik asko","ok","genial","perfecto","mila esker","adios","agur"],
-  es:"¡Un placer! 😊 Si necesitas algo más sobre Iurreta, aquí estoy. ¡Agur!",
-  eu:"Pozik lagundu izana! 😊 Iurretari buruz beste zerbait behar baduzu, hemen nago. Agur!"}
+ {id:"quejas",rel:["registro","contacto"],keys:["queja","quejas","sugerencia","sugerencias","reclamacion","reclamación","reclamar","incidencia","averia","avería","alumbrado","bache","baches","farola","limpieza","ruido","kexa","kexak","iradokizun","intzidentzia","matxura","argiteria"],
+  es:"📢 <b>Quejas, sugerencias e incidencias</b>\nPuedes comunicar una incidencia en la vía pública (alumbrado, baches, limpieza…) o presentar una queja/sugerencia:\n• <b>Online</b> en la Sede electrónica.\n• <b>Presencial</b> en el SAC (Bidebarrieta 5).\n• Teléfono: <b>946 201 200</b>.\nIndica el lugar y, si puedes, una foto o referencia.",
+  eu:"📢 <b>Kexak, iradokizunak eta intzidentziak</b>\nBide publikoko intzidentzia bat (argiteria, zuloak, garbiketa…) jakinaraz dezakezu, edo kexa/iradokizun bat aurkeztu:\n• <b>Online</b> Egoitza elektronikoan.\n• <b>Aurrez aurre</b> HAZ-ean (Bidebarrieta 5).\n• Telefonoa: <b>946 201 200</b>.\nAdierazi lekua eta, ahal baduzu, argazki edo erreferentzia bat."},
+
+ {id:"ayudas",rel:["cita","registro","contacto"],keys:["ayuda","ayudas","social","servicios sociales","subvencion","subvenciones","dependencia","mayores","tercera edad","emergencia social","familia","infancia","beca","becas","laguntza","laguntzak","gizarte","mendekotasun","adineko"],
+  es:"🤝 <b>Ayudas y servicios sociales</b>\nEl Ayuntamiento gestiona ayudas y atención social: emergencia social, dependencia, mayores, familia e infancia.\nLo habitual es <b>pedir cita</b> con los Servicios Sociales para valorar tu caso:\n• Teléfono: <b>946 201 200</b>\n• Presencial en el SAC (Bidebarrieta 5).",
+  eu:"🤝 <b>Laguntzak eta gizarte-zerbitzuak</b>\nUdalak laguntzak eta gizarte-arreta kudeatzen ditu: gizarte-larrialdia, mendekotasuna, adinekoak, familia eta haurtzaroa.\nOhikoena <b>hitzordua eskatzea</b> da Gizarte Zerbitzuekin zure kasua aztertzeko:\n• Telefonoa: <b>946 201 200</b>\n• Aurrez aurre HAZ-ean (Bidebarrieta 5)."},
+
+ {id:"persona",rel:["cita","contacto","horario"],keys:["persona","hablar con alguien","hablar con una persona","humano","operador","agente","atencion personal","no me ayudas","quiero hablar","pertsona","norbaitekin"],
+  es:"🙋 Te paso con atención personal. Puedes:\n• Llamar al <b>946 201 200</b> (lunes a viernes, 8:30-14:00).\n• Escribir a haz-sac@iurreta.eus\n• Pedir cita previa y acercarte al SAC (Bidebarrieta 5).\n¿Quieres que te ayude a pedir la cita?",
+  eu:"🙋 Arreta pertsonalera bideratuko zaitut. Aukerak:\n• Deitu <b>946 201 200</b> (astelehenetik ostiralera, 8:30-14:00).\n• Idatzi haz-sac@iurreta.eus helbidera\n• Hitzordua eskatu eta HAZ-era joan (Bidebarrieta 5).\nHitzordua eskatzen lagundu nahi dizut?"},
+
+ {id:"gracias",rel:["padron","impuestos","cita"],keys:["gracias","muchas gracias","eskerrik asko","mila esker","perfecto","genial","ok","vale","estupendo","adios","adiós","agur","hurrengora arte"],
+  es:"¡Un placer! 😊 Si necesitas algo más sobre Iurreta, aquí estoy las 24 horas. ¡Agur!",
+  eu:"Pozik lagundu izana! 😊 Iurretari buruz beste zerbait behar baduzu, hemen nago 24 orduz. Agur!"}
 ];
 
-/* Chips iniciales por idioma */
+/* Etiquetas cortas para chips de seguimiento / desambiguación */
+const CHIPLABELS={
+ padron:["🏠 Empadronamiento","🏠 Errolda"],impuestos:["🧾 Impuestos / IBI","🧾 Zergak / OHZ"],cita:["📅 Cita previa","📅 Hitzordua"],
+ residuos:["♻️ Residuos","♻️ Hondakinak"],deporte:["🏃 Kiroldegia","🏃 Kiroldegia"],agenda:["🎭 Agenda","🎭 Agenda"],
+ sede:["🔐 Sede electrónica","🔐 Egoitza elektronikoa"],registro:["📨 Registro","📨 Erregistroa"],obras:["🏗️ Licencias de obra","🏗️ Obra-lizentziak"],
+ euskera:["🗣️ Euskera","🗣️ Euskara"],empleo:["💼 Empleo","💼 Enplegua"],horario:["🕗 Horario","🕗 Ordutegia"],
+ ubicacion:["📍 Cómo llegar","📍 Kokapena"],contacto:["📞 Contacto","📞 Kontaktua"],alcalde:["🏛️ Alcaldía","🏛️ Alkatetza"],
+ festivos:["📆 Días festivos","📆 Jaiegunak"],quejas:["📢 Quejas y avisos","📢 Kexak eta oharrak"],ayudas:["🤝 Ayudas sociales","🤝 Gizarte-laguntzak"],
+ persona:["🙋 Hablar con una persona","🙋 Pertsona batekin"]
+};
 const CHIPS={
- es:[["padron","🏠 Empadronarme"],["impuestos","🧾 Pagar el IBI"],["cita","📅 Pedir cita"],["residuos","♻️ Recogida de muebles"],["horario","🕗 Horario"]],
- eu:[["padron","🏠 Erroldatu"],["impuestos","🧾 OHZ ordaindu"],["cita","📅 Hitzordua"],["residuos","♻️ Altzariak jaso"],["horario","🕗 Ordutegia"]]
+ es:[["padron","🏠 Empadronarme"],["impuestos","🧾 Pagar el IBI"],["cita","📅 Pedir cita"],["residuos","♻️ Recogida de muebles"],["sede","🔐 Sede electrónica"]],
+ eu:[["padron","🏠 Erroldatu"],["impuestos","🧾 OHZ ordaindu"],["cita","📅 Hitzordua"],["residuos","♻️ Altzariak jaso"],["sede","🔐 Egoitza elektronikoa"]]
+};
+const FB={
+ es:"🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, sede electrónica, deporte, agenda, registro, empleo, ayudas sociales</b> y más. ¿Sobre cuál quieres saber? También puedes llamar al <b>946 201 200</b>.",
+ eu:"🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, egoitza elektronikoa, kirola, agenda, erregistroa, enplegua, gizarte-laguntzak</b> eta gehiagotan lagun diezazuket. Zeini buruz? <b>946 201 200</b> telefonora ere dei dezakezu."
 };
 
-/* ============ MOTOR ============ */
-const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-function match(text){
-  const t=norm(text);let best=null,score=0;
-  for(const it of KB){
-    let s=0;
-    for(const k of it.keys){const kn=norm(k); if(t.includes(kn)) s+=kn.length; }
-    if(s>score){score=s;best=it;}
-  }
-  return score>0?best:null;
+/* =================== Motor NLU =================== */
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+const STOP=new Set("el la los las un una unos unas de del al a y o u en con por para que como cuando donde quiero necesito puedo hacer sobre me te se mi tu su lo le es son esta este esa ese info informacion dame quisiera querria saber hay tengo me gustaria nire dut zer nola non noiz da naiz eta edo".split(/\s+/));
+function toks(s){return norm(s).split(" ").filter(w=>w.length>2&&!STOP.has(w));}
+/* índice de tokens y frases por intención */
+KB.forEach(it=>{it._kw=new Set();it._ph=[];it.keys.forEach(k=>{const kn=norm(k);if(!kn)return;if(kn.includes(" "))it._ph.push(kn);kn.split(" ").forEach(w=>{if(w.length>2&&!STOP.has(w))it._kw.add(w);});});it._kw=[...it._kw];});
+function lev(a,b){const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+function score(it,qToks,qText){
+ let s=0;
+ it._ph.forEach(p=>{if(qText.includes(p))s+=6;});
+ qToks.forEach(qt=>{
+   let best=0;
+   for(const kt of it._kw){
+     if(qt===kt){best=4;break;}
+     if(kt.length>=4&&qt.length>=4&&(kt.startsWith(qt)||qt.startsWith(kt)))best=Math.max(best,2);
+     else if(kt.length>=5&&qt.length>=5&&lev(qt,kt)<=1)best=Math.max(best,2);
+     else if(kt.length>=7&&qt.length>=7&&lev(qt,kt)<=2)best=Math.max(best,1);
+   }
+   s+=best;
+ });
+ return s;
 }
-const cbody=()=>document.getElementById("cbody");
-function bubble(txt,who){const d=document.createElement("div");d.className="msg "+who;d.innerHTML=txt;cbody().appendChild(d);cbody().scrollTop=cbody().scrollHeight;return d;}
-function chips(list){
-  const c=document.createElement("div");c.className="chips";
-  list.forEach(([id,label])=>{const b=document.createElement("button");b.className="chip";b.textContent=label;b.onclick=()=>ask(id,label);c.appendChild(b);});
-  cbody().appendChild(c);cbody().scrollTop=cbody().scrollHeight;
+function rank(text){
+ const qText=norm(text),qToks=toks(text);
+ return KB.map(it=>({it,s:score(it,qToks,qText)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);
 }
-function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";cbody().appendChild(d);cbody().scrollTop=cbody().scrollHeight;return d;}
 
-function botRespond(intentObj,raw){
-  const t=typing();
-  setTimeout(()=>{
-    t.remove();
-    let ans;
-    if(intentObj) ans=intentObj[LANG];
-    else ans=(LANG==="es"
-      ? "🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, sede electrónica, deporte, agenda o contacto</b>. ¿Sobre cuál quieres saber? También puedes llamar al 946 201 200."
-      : "🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, egoitza elektronikoa, kirola, agenda edo kontaktua</b>ri buruz lagun diezazuket. Zeini buruz? 946 201 200 telefonora ere dei dezakezu.");
-    bubble(ans,"bot");
-    if(!intentObj || intentObj.id==="saludo") chips(CHIPS[LANG]);
-  }, 550+Math.random()*450);
+/* =================== UI del chat =================== */
+const cb=()=>document.getElementById("cbody");
+function nowHM(){const d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
+function bubble(html,who){const d=document.createElement("div");d.className="msg "+who+" msg-in";
+ if(who==="bot")d.innerHTML='<div class="stamp">IURRETA · '+nowHM()+'</div>'+html;else d.innerHTML=html;
+ cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function chips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([id,lb])=>{const b=document.createElement("button");b.className="chip";b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function chipsFromIds(ids){const list=ids.filter(id=>CHIPLABELS[id]).map(id=>[id,CHIPLABELS[id][LANG==="es"?0:1]]);if(list.length)chips(list);}
+function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";d.setAttribute("aria-label",LANG==="es"?"El asistente está escribiendo":"Laguntzailea idazten ari da");cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+const rmotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+function delayFor(html){return rmotion?260:Math.min(1400,420+html.length*3)+Math.random()*250;}
+
+/* respuesta a una intención concreta (chips, tiles, enlaces) */
+function respondIntent(it){const tp=typing();const html=it?it[LANG]:FB[LANG];setTimeout(()=>{tp.remove();bubble(html,"bot");if(!it||it.id==="saludo")chips(CHIPS[LANG]);else if(it.rel)chipsFromIds(it.rel);},delayFor(html));}
+/* respuesta a texto libre (motor) */
+function answer(text){
+ const sc=rank(text);const tp=typing();
+ let html,follow=null,disamb=null;
+ if(!sc.length){html=FB[LANG];follow="__popular";}
+ else if(sc[0].s>=3){const it=sc[0].it;html=it[LANG];follow=(it.rel||[]).slice();
+   if(sc[1]&&sc[1].s>=3&&(sc[0].s-sc[1].s)<=1&&!follow.includes(sc[1].it.id)&&sc[1].it.id!=="saludo")follow.push(sc[1].it.id);}
+ else{html=(LANG==="es"?"🤔 No estoy del todo seguro de a qué te refieres. ¿Quizá alguno de estos temas?":"🤔 Ez nago guztiz ziur zertaz ari zaren. Hauetako gairen bat agian?");disamb=sc.slice(0,3).map(x=>x.it.id);}
+ setTimeout(()=>{tp.remove();bubble(html,"bot");
+   if(disamb)chipsFromIds(disamb);
+   else if(follow==="__popular")chips(CHIPS[LANG]);
+   else if(follow&&follow.length)chipsFromIds(follow);
+ },delayFor(html));
 }
-function ask(id,label){
-  const it=KB.find(x=>x.id===id);
-  bubble(label|| (it?it[LANG].split("\n")[0]:id),"user");
-  botRespond(it);
+function ask(id,label){const it=KB.find(x=>x.id===id);if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(it?CHIPLABELS[id]?CHIPLABELS[id][LANG==="es"?0:1]:it[LANG].split("\n")[0]:id),"user");respondIntent(it);}
+function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";answer(v);}
+
+let greeted=false,lastFocus=null;
+function greet(){if(greeted)return;greeted=true;bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
+function openChat(skip){const c=document.getElementById("chat");lastFocus=document.activeElement;c.classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)setTimeout(()=>document.getElementById("cinput").focus(),60);}
+function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="inline-flex";if(lastFocus)try{lastFocus.focus()}catch(e){}}
+function resetChat(){cb().innerHTML="";greeted=false;greet();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("chat").classList.contains("open"))closeChat();});
+document.getElementById("chat").addEventListener("keydown",e=>{
+ if(e.key!=="Tab")return;
+ const f=document.getElementById("chat").querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])');
+ if(!f.length)return;const first=f[0],last=f[f.length-1];
+ if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+ else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+});
+
+/* =================== Render de la web =================== */
+const ICON={
+ padron:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/>',
+ impuestos:'<path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
+ cita:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9 15l2 2 4-4"/>',
+ residuos:'<path d="M3 6h18M8 6V4h8v2M6 6l1 14h12l1-14"/><path d="M10 11v5M14 11v5"/>',
+ deporte:'<path d="M4 12h4l2-6 4 12 2-6h4"/>',
+ agenda:'<path d="M12 3l2.6 5.3 5.8.9-4.2 4.1 1 5.7L12 21.4 6.8 19l1-5.7L3.6 9.2l5.8-.9z"/>'
+};
+function buildTiles(){document.getElementById("grid6").innerHTML=UI[LANG].tiles.map((tl,i)=>{const[id,t,d]=tl;
+ return `<button class="tile" onclick="ask('${id}')"><span class="arr" aria-hidden="true">→</span><span class="no">0${i+1}</span><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg></span><b>${t}</b><small>${d}</small></button>`;}).join("");}
+function buildSteps(){document.getElementById("steps").innerHTML=UI[LANG].steps.map((s,i)=>`<div class="step reveal"><div class="n">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");}
+function buildStats(){document.getElementById("stats").innerHTML=UI[LANG].stats.map(s=>{const isNum=/^\d+$/.test(s[0]);return `<div class="stat"><div class="v"><span class="cv" ${isNum?`data-to="${s[0]}"`:""}>${isNum?"0":s[0]}</span>${s[1]?'<span class="u">'+s[1]+'</span>':''}</div><div class="l">${s[2]}</div></div>`;}).join("");}
+function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map(n=>{const act=n[3]==="__chat"?"openChat()":`ask('${n[3]}')`;return `<div class="ncard reveal"><div class="top"></div><div class="in"><span class="k">${n[0]}</span><h3>${n[1]}</h3><p>${n[2]}</p><span class="lk" onclick="${act}">${LANG==="es"?"Más información":"Informazio gehiago"} →</span></div></div>`;}).join("");}
+
+function applyLang(){
+ const u=UI[LANG];document.documentElement.lang=LANG;
+ ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxname","luxst","luxq","luxstamp","luxa","lc1","lc2","lc3","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_alc","f_act","f_age","f_con","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=u[k];});
+ const ci=document.getElementById("cinput");if(ci)ci.placeholder=u.ph;
+ document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
+ document.getElementById("seg").className="seg "+LANG;
+ buildTiles();buildSteps();buildStats();buildNews();observeReveal();observeStats();
 }
-function send(){
-  const inp=document.getElementById("cinput");const v=inp.value.trim();if(!v)return;
-  bubble(v,"user");inp.value="";
-  botRespond(match(v),v);
-}
-let greeted=false;
-function resetChat(){cbody().innerHTML="";greeted=false;greet();}
-function greet(){
-  if(greeted)return;greeted=true;
-  bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");
-  chips(CHIPS[LANG]);
-}
-function openChat(){document.getElementById("chat").classList.add("open");document.getElementById("fab").style.display="none";greet();document.getElementById("cinput").focus();}
-function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="flex";}
+document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+
+/* =================== Scroll / animaciones =================== */
+let revObs;
+function observeReveal(){if(rmotion){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));return;}if(revObs)revObs.disconnect();revObs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");revObs.unobserve(en.target);}});},{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>revObs.observe(el));}
+let statObs;
+function observeStats(){if(statObs)statObs.disconnect();statObs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){countUp(en.target);statObs.unobserve(en.target);}});},{threshold:.5});document.querySelectorAll(".cv[data-to]").forEach(el=>statObs.observe(el));}
+function countUp(el){const to=+el.dataset.to;if(rmotion){el.textContent=to;return;}let t0=null;const dur=1100;function step(ts){if(!t0)t0=ts;const p=Math.min(1,(ts-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+addEventListener("scroll",()=>{document.getElementById("hdr").classList.toggle("scrolled",scrollY>10);},{passive:true});
 
 applyLang();
 </script>
