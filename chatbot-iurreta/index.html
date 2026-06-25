@@ -389,7 +389,7 @@ let LANG="es";
 
 /* =================== Base de conocimiento (motor del chat) =================== */
 const KB=[
- {id:"saludo",rel:["padron","impuestos","cita"],keys:["hola","buenas","buenos dias","buenas tardes","kaixo","egun on","arratsalde on","epa","aupa","gabon","hi","ola"],
+ {id:"saludo",rel:["padron","impuestos","cita"],keys:["hola","buenas","kaixo","egun on","arratsalde on","epa","aupa","gabon","hi","ola","ongi etorri"],
   es:"¡Hola! 👋 Soy el asistente virtual del Ayuntamiento de Iurreta. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, sede electrónica, agenda</b> y más de 20 temas. ¿Qué necesitas?",
   eu:"Kaixo! 👋 Iurretako Udaleko laguntzaile birtuala naiz. <b>Erroldan, zergetan/OHZan, hitzorduan, hondakinetan, egoitza elektronikoan, agendan</b> eta 20 gai baino gehiagotan lagun diezazuket. Zer behar duzu?"},
 
@@ -397,7 +397,7 @@ const KB=[
   es:"🏠 <b>Empadronamiento</b>\nPuedes pedir el alta en el padrón o un certificado/volante de empadronamiento:\n• <b>Online:</b> en la Sede electrónica con certificado digital o BakQ.\n• <b>Presencial:</b> en el SAC (Bidebarrieta 5), con cita previa.\nDocumentación: DNI/NIE y un documento que acredite el domicilio (contrato, escritura o recibo).\n¿Quieres que te explique cómo pedir <b>cita previa</b>?",
   eu:"🏠 <b>Errolda</b>\nErroldan alta edo errolda-ziurtagiria eska dezakezu:\n• <b>Online:</b> Egoitza elektronikoan, ziurtagiri digitalarekin edo BakQ-rekin.\n• <b>Aurrez aurre:</b> HAZ-ean (Bidebarrieta 5), hitzordua eskatuta.\nAgiriak: NAN/AIZ eta etxebizitza egiaztatzen duen agiri bat.\n<b>Hitzordua</b> nola eskatu azaltzea nahi duzu?"},
 
- {id:"impuestos",rel:["sede","cita","contacto"],keys:["impuesto","impuestos","ibi","tributo","tributos","tasa","tasas","recibo","recibos","pagar","pagar impuesto","contribucion","domiciliar","domiciliacion","fraccionar","vehiculos","circulacion","plusvalia","vado","zerga","zergak","ohz","ordenanza","ordenantza","ordainagiri"],
+ {id:"impuestos",rel:["sede","cita","contacto"],keys:["impuesto","impuestos","ibi","tributo","tributos","tasa","tasas","recibo","recibos","pagar","pagar impuesto","contribucion","domiciliar","domiciliacion","fraccionar","vehiculos","ivtm","circulacion","impuesto de circulacion","plusvalia","bonificacion","zerga","zergak","ohz","ordenanza","ordenantza","ordainagiri"],
   es:"🧾 <b>Impuestos y tasas</b>\nGestiona el IBI, el impuesto de vehículos, la tasa de basuras, vados, etc.:\n• Consulta y pago de recibos en la Sede electrónica.\n• Domiciliación bancaria para no estar pendiente de plazos.\n📌 Novedad 2026: nuevas ordenanzas fiscales y un recargo del 50% en el IBI a viviendas vacías.\nPara dudas de un recibo concreto: <b>946 201 200</b>.",
   eu:"🧾 <b>Zergak eta tasak</b>\nOHZ, ibilgailuen zerga, zaborren tasa, bideak eta abar kudeatzen dira:\n• Ordainagiriak kontsultatu eta ordaindu Egoitza elektronikoan.\n• Banku-helbideratzea epeez ez arduratzeko.\n📌 2026ko berritasuna: zerga-ordenantza berriak eta %50eko errekargua etxebizitza hutsen OHZan.\nOrdainagiri jakin baten zalantzak: <b>946 201 200</b>."},
 
@@ -405,21 +405,21 @@ const KB=[
   es:"📅 <b>Cita previa</b>\nPara ser atendido en el SAC sin esperas:\n• Pídela <b>online</b> en la Sede electrónica (apartado «Cita previa»).\n• O por teléfono en el <b>946 201 200</b>.\nIndica el trámite (padrón, impuestos, registro…) y elige día y hora.",
   eu:"📅 <b>Hitzordua</b>\nHAZ-ean itxaron gabe artatua izateko:\n• Eskatu <b>online</b> Egoitza elektronikoan («Hitzordua» atalean).\n• Edo telefonoz: <b>946 201 200</b>.\nAdierazi izapidea (errolda, zergak, erregistroa…) eta aukeratu eguna eta ordua."},
 
- {id:"residuos",rel:["contacto","horario","quejas"],keys:["basura","basuras","residuo","residuos","reciclaje","reciclar","contenedor","contenedores","garbigune","punto limpio","voluminoso","voluminosos","muebles","poda","escombros","organico","vidrio","aceite","hondakin","zabor","birziklatu","altzari"],
-  es:"♻️ <b>Residuos y reciclaje</b>\n• Contenedores de orgánico, envases, papel, vidrio y resto en la vía pública.\n• <b>Voluminosos</b> (muebles, electrodomésticos): recogida con aviso previo al <b>946 201 200</b>; no los dejes fuera sin avisar.\n• <b>Garbigune</b> (punto limpio) para escombros, aceites, pinturas, electrónica, etc.\nLa nueva tasa de residuos 2026 se calcula según la generación de basura.",
-  eu:"♻️ <b>Hondakinak eta birziklapena</b>\n• Edukiontziak: organikoa, ontziak, papera, beira eta gainerakoa kalean.\n• <b>Tamaina handiko hondakinak</b> (altzariak, etxetresnak): jasotzeko deitu aurrez <b>946 201 200</b> telefonora.\n• <b>Garbigune</b>a hondakinetarako (hondakinak, olioak, pinturak, elektronika…).\n2026ko hondakin-tasa sortutako zaborraren arabera kalkulatzen da."},
+ {id:"residuos",rel:["contacto","horario","quejas"],keys:["basura","basuras","residuo","residuos","reciclaje","reciclar","contenedor","contenedores","garbigune","punto limpio","voluminoso","voluminosos","muebles","mueble","sofa","colchon","tirar","electrodomestico","poda","escombros","organico","vidrio","aceite","hondakin","zabor","birziklatu","altzari"],
+  es:"♻️ <b>Residuos y reciclaje</b>\nLa recogida la gestiona la <b>Mancomunidad de la Merindad de Durango</b> (946 818 116 · dma.eus).\n• <b>Voluminosos</b> (muebles, colchones, electrodomésticos): sácalos junto al contenedor el día asignado a tu zona, antes de las 7:00 (consulta el día a la Mancomunidad).\n• <b>Garbigune</b>: el de Durango, para escombros, aceites, pinturas, electrónica, etc.\nLa nueva tasa de residuos 2026 se calcula según la generación de basura.",
+  eu:"♻️ <b>Hondakinak eta birziklapena</b>\nBilketa <b>Durangoko Merinaldearen Amankomunazgoak</b> kudeatzen du (946 818 116 · dma.eus).\n• <b>Tamaina handikoak</b> (altzariak, koltxoiak, etxetresnak): atera edukiontzi ondoan zure eremuari dagokion egunean, 7:00ak baino lehen (galdetu eguna Amankomunazgoari).\n• <b>Garbigunea</b>: Durangokoa, hondakinak, olioak, pinturak, elektronika eta abarretarako.\n2026ko hondakin-tasa sortutako zaborraren arabera kalkulatzen da."},
 
  {id:"deporte",rel:["agenda","horario","contacto"],keys:["deporte","polideportivo","kiroldegi","kiroldegia","gimnasio","piscina","igerileku","kirol","abono","abonado","frontón","fronton","pista","instalacion deportiva","polikiroldegi"],
   es:"🏃 <b>Kiroldegia (instalaciones deportivas)</b>\nInformación sobre abonos, horarios de instalaciones, cursillos y reserva de pistas/frontón.\nPara altas de abonado y reservas, contacta con las instalaciones municipales o pásate por el SAC. Teléfono general: <b>946 201 200</b>.",
   eu:"🏃 <b>Kiroldegia</b>\nBonu, instalazioen ordutegi, ikastaro eta pista/frontoi erreserben informazioa.\nBazkide alta eta erreserbetarako, jarri harremanetan udal instalazioekin edo zatoz HAZ-era. Telefono orokorra: <b>946 201 200</b>."},
 
- {id:"agenda",rel:["deporte","euskera","festivos"],keys:["agenda","evento","eventos","fiesta","fiestas","jai","jaiak","cultura","kultur","biblioteca","liburutegi","actividad","actividades","ekitaldi","concierto","conciertos","taller","talleres","cine"],
+ {id:"agenda",rel:["cultura","festivos","juventud"],keys:["agenda","evento","eventos","fiesta","fiestas","jai","jaiak","ekitaldi","concierto","conciertos","cine","programacion","espectaculo","kontzertu","emanaldi"],
   es:"🎭 <b>Agenda y cultura</b>\nConsulta conciertos, talleres, fiestas y actividades de la Kultur Etxea y la biblioteca en la sección «Actualidad» de la web. ¿Quieres info de algo en concreto (fiestas, biblioteca, talleres)?",
   eu:"🎭 <b>Agenda eta kultura</b>\nKontsultatu kontzertuak, tailerrak, jaiak eta Kultur Etxeko eta liburutegiko ekitaldiak webeko «Albisteak» atalean. Zerbait jakin baten informazioa nahi duzu (jaiak, liburutegia, tailerrak)?"},
 
  {id:"sede",rel:["padron","impuestos","registro"],keys:["sede","sede electronica","sede electrónica","online","telematico","internet","tramite online","tramites online","certificado digital","bakq","izenpe","dnie","clave","firma","egoitza","egoitza elektronikoa"],
-  es:"🔐 <b>Sede electrónica</b>\nDesde casa puedes registrar instancias, pedir certificados, pagar impuestos y consultar tus expedientes.\nNecesitas identificarte con <b>certificado digital</b>, <b>DNIe</b> o <b>BakQ</b>.\n¿Sobre qué trámite quieres hacerlo? (padrón, impuestos, registro…)",
-  eu:"🔐 <b>Egoitza elektronikoa</b>\nEtxetik instantziak erregistratu, ziurtagiriak eskatu, zergak ordaindu eta zure espedienteak kontsultatu ditzakezu.\n<b>Ziurtagiri digitala</b>, <b>NANe</b> edo <b>BakQ</b> behar duzu identifikatzeko.\nZein izapideri buruz egin nahi duzu?"},
+  es:"🔐 <b>Sede electrónica</b>\nEn <b>egoitza.iurreta.eus</b> puedes registrar instancias, pedir certificados, pagar impuestos y consultar tus expedientes.\nNecesitas identificarte con <b>B@k / Bak-Q de Izenpe</b>, <b>certificado electrónico</b> o <b>DNIe</b>.\n¿Sobre qué trámite quieres hacerlo? (padrón, impuestos, registro…)",
+  eu:"🔐 <b>Egoitza elektronikoa</b>\n<b>egoitza.iurreta.eus</b> atarian instantziak erregistratu, ziurtagiriak eskatu, zergak ordaindu eta zure espedienteak kontsultatu ditzakezu.\nIdentifikatzeko <b>Izenpe-ren B@k / Bak-Q</b>, <b>ziurtagiri elektronikoa</b> edo <b>NANe</b> behar duzu.\nZein izapideri buruz egin nahi duzu?"},
 
  {id:"registro",rel:["sede","cita","quejas"],keys:["registro","registrar","instancia","instancias","solicitud","escrito","presentar","presentar escrito","eskaera","erregistro","erregistroa","documentacion"],
   es:"📨 <b>Registro / instancias</b>\nPuedes presentar solicitudes y escritos:\n• <b>Online:</b> Sede electrónica (registro electrónico).\n• <b>Presencial:</b> SAC, Bidebarrieta 5, con cita previa.\n• <b>Email de registro:</b> erregistroa@iurreta.eus",
@@ -430,8 +430,8 @@ const KB=[
   eu:"🏗️ <b>Obra-lizentziak / hirigintza</b>\nObra txikietarako (aurretiazko komunikazioa) edo handietarako (lizentzia) eskaera erregistroan aurkeztu behar da agiri teknikoekin. Hirigintza arloak espedientea aztertzen du.\nGomendatzen dizut HAZ-ean hitzordua eskatzea zure kasurako agiriak zehazteko: <b>946 201 200</b>."},
 
  {id:"euskera",rel:["agenda","empleo","ayudas"],keys:["euskera","euskara","clases","clases de euskera","aek","euskaltegi","euskaltegia","hizkuntza","ikasi euskara","idioma"],
-  es:"🗣️ <b>Euskera</b>\nInformación sobre clases de euskera (euskaltegi/AEK), campañas de uso y, en su caso, ayudas para el aprendizaje. Dime si buscas <b>clases para adultos</b> o <b>actividades en euskera</b> y te oriento.",
-  eu:"🗣️ <b>Euskara</b>\nEuskara ikasteari buruzko informazioa (euskaltegia/AEK), erabilera-kanpainak eta, hala badagokio, ikasteko laguntzak. Esan <b>helduentzako klaseak</b> ala <b>euskarazko jarduerak</b> bilatzen dituzun."},
+  es:"🗣️ <b>Euskera</b>\nLas clases de euskera para adultos las imparte <b>Durangaldeko AEK</b> (Santanoste 4, Durango · 946 817 349). El <b>Servicio de Euskera</b> del Ayuntamiento informa de cursos y de posibles ayudas a la matrícula. ¿Buscas <b>clases para adultos</b> o <b>actividades en euskera</b>?",
+  eu:"🗣️ <b>Euskara</b>\nHelduentzako euskara klaseak <b>Durangaldeko AEK</b>-k ematen ditu (Santanoste 4, Durango · 946 817 349). Udaleko <b>Euskara Zerbitzuak</b> ikastaroen eta matrikularako laguntzen berri ematen du. <b>Helduentzako klaseak</b> ala <b>euskarazko jarduerak</b> bilatzen dituzu?"},
 
  {id:"empleo",rel:["sede","contacto","euskera"],keys:["empleo","trabajo","oferta","ofertas de empleo","oposicion","oposiciones","bolsa de trabajo","curso","cursos","formacion","lanbide","paro","lan","enplegu","prestakuntza"],
   es:"💼 <b>Empleo y formación</b>\nConsulta ofertas de empleo público del Ayuntamiento, bolsas de trabajo y cursos. Las convocatorias se publican en la Sede electrónica y el tablón de anuncios. ¿Buscas <b>empleo municipal</b> o <b>cursos</b>?",
@@ -441,7 +441,7 @@ const KB=[
   es:"🕗 <b>Horario de atención</b>\nEl SAC (Bidebarrieta 5) atiende de <b>lunes a viernes, de 8:30 a 14:00</b>. Para festivos locales, llama al <b>946 201 200</b>.\nLa Sede electrónica está disponible <b>24/7</b> para trámites online.",
   eu:"🕗 <b>Arreta-ordutegia</b>\nHAZ-ek (Bidebarrieta 5) <b>astelehenetik ostiralera, 8:30etik 14:00etara</b> egiten du arreta. Jaiegunak baieztatzeko, deitu <b>946 201 200</b> telefonora.\nEgoitza elektronikoa <b>24/7</b> dago eskuragarri online izapideetarako."},
 
- {id:"ubicacion",rel:["horario","contacto","cita"],keys:["donde","donde esta","direccion","dirección","ubicacion","ubicación","como llegar","mapa","plano","esta","helbide","helbidea","non","non dago","kokapen"],
+ {id:"ubicacion",rel:["horario","contacto","cita"],keys:["donde","direccion","ubicacion","como llegar","mapa","plano","helbide","helbidea","non","kokapen"],
   es:"📍 <b>Ubicación</b>\nAyuntamiento de Iurreta — <b>Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)</b>.\n📞 946 201 200 · ✉️ haz-sac@iurreta.eus",
   eu:"📍 <b>Kokapena</b>\nIurretako Udala — <b>Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)</b>.\n📞 946 201 200 · ✉️ haz-sac@iurreta.eus"},
 
@@ -457,13 +457,13 @@ const KB=[
   es:"📆 <b>Días festivos y horario especial</b>\nEn las fiestas locales y festivos el SAC permanece cerrado. Las fiestas patronales de Iurreta se celebran en torno a <b>San Miguel (finales de septiembre)</b>. Para confirmar un día concreto, llama al <b>946 201 200</b>.\nRecuerda: la Sede electrónica está disponible 24/7.",
   eu:"📆 <b>Jaiegunak eta ordutegi berezia</b>\nJai lokal eta jaiegunetan HAZ itxita egoten da. Iurretako jai nagusiak <b>San Migel inguruan (irailaren amaieran)</b> ospatzen dira. Egun jakin bat baieztatzeko, deitu <b>946 201 200</b>.\nGogoan izan: Egoitza elektronikoa 24/7 eskuragarri dago."},
 
- {id:"quejas",rel:["registro","contacto"],keys:["queja","quejas","sugerencia","sugerencias","reclamacion","reclamación","reclamar","incidencia","averia","avería","alumbrado","bache","baches","farola","limpieza","ruido","kexa","kexak","iradokizun","intzidentzia","matxura","argiteria"],
+ {id:"quejas",rel:["registro","contacto","medioambiente"],keys:["queja","quejas","sugerencia","sugerencias","reclamacion","reclamar","incidencia","averia","alumbrado","bache","baches","farola","limpieza","contenedor roto","kexa","kexak","iradokizun","intzidentzia","matxura","argiteria"],
   es:"📢 <b>Quejas, sugerencias e incidencias</b>\nPuedes comunicar una incidencia en la vía pública (alumbrado, baches, limpieza…) o presentar una queja/sugerencia:\n• <b>Online</b> en la Sede electrónica.\n• <b>Presencial</b> en el SAC (Bidebarrieta 5).\n• Teléfono: <b>946 201 200</b>.\nIndica el lugar y, si puedes, una foto o referencia.",
   eu:"📢 <b>Kexak, iradokizunak eta intzidentziak</b>\nBide publikoko intzidentzia bat (argiteria, zuloak, garbiketa…) jakinaraz dezakezu, edo kexa/iradokizun bat aurkeztu:\n• <b>Online</b> Egoitza elektronikoan.\n• <b>Aurrez aurre</b> HAZ-ean (Bidebarrieta 5).\n• Telefonoa: <b>946 201 200</b>.\nAdierazi lekua eta, ahal baduzu, argazki edo erreferentzia bat."},
 
- {id:"ayudas",rel:["cita","registro","contacto"],keys:["ayuda","ayudas","social","servicios sociales","subvencion","subvenciones","dependencia","mayores","tercera edad","emergencia social","familia","infancia","beca","becas","laguntza","laguntzak","gizarte","mendekotasun","adineko"],
-  es:"🤝 <b>Ayudas y servicios sociales</b>\nEl Ayuntamiento gestiona ayudas y atención social: emergencia social, dependencia, mayores, familia e infancia.\nLo habitual es <b>pedir cita</b> con los Servicios Sociales para valorar tu caso:\n• Teléfono: <b>946 201 200</b>\n• Presencial en el SAC (Bidebarrieta 5).",
-  eu:"🤝 <b>Laguntzak eta gizarte-zerbitzuak</b>\nUdalak laguntzak eta gizarte-arreta kudeatzen ditu: gizarte-larrialdia, mendekotasuna, adinekoak, familia eta haurtzaroa.\nOhikoena <b>hitzordua eskatzea</b> da Gizarte Zerbitzuekin zure kasua aztertzeko:\n• Telefonoa: <b>946 201 200</b>\n• Aurrez aurre HAZ-ean (Bidebarrieta 5)."},
+ {id:"ayudas",rel:["cita","registro","contacto"],keys:["ayuda","ayudas","social","servicios sociales","ayuda a domicilio","dependencia","mayores","tercera edad","emergencia social","aes","rgi","familia","infancia","laguntza","laguntzak","gizarte","mendekotasun","adineko"],
+  es:"🤝 <b>Ayudas y servicios sociales</b>\nLos <b>Servicios Sociales de Base</b> (área de Bienestar Social, en la Ibarretxe Kultur Etxea) atienden con cita: <b>ayuda a domicilio (SAD)</b>, tramitación de la <b>dependencia</b>, <b>ayuda de emergencia social (AES)</b> y orientación sobre la <b>RGI</b> (Lanbide).\nPide cita en el SAC: <b>946 201 200</b>.",
+  eu:"🤝 <b>Laguntzak eta gizarte-zerbitzuak</b>\n<b>Oinarrizko Gizarte Zerbitzuek</b> (Gizarte Ongizate arloa, Ibarretxe Kultur Etxean) hitzorduarekin artatzen dute: <b>etxez etxeko laguntza (ELZ)</b>, <b>mendekotasunaren</b> izapidetzea, <b>gizarte-larrialdiko laguntza (GLL)</b> eta <b>DSBE</b>ri (Lanbide) buruzko orientazioa.\nEskatu hitzordua HAZ-ean: <b>946 201 200</b>."},
 
  {id:"persona",rel:["cita","contacto","horario"],keys:["persona","hablar con alguien","hablar con una persona","humano","operador","agente","atencion personal","no me ayudas","quiero hablar","pertsona","norbaitekin"],
   es:"🙋 Te paso con atención personal. Puedes:\n• Llamar al <b>946 201 200</b> (lunes a viernes, 8:30-14:00).\n• Escribir a haz-sac@iurreta.eus\n• Pedir cita previa y acercarte al SAC (Bidebarrieta 5).\n¿Quieres que te ayude a pedir la cita?",
@@ -471,7 +471,91 @@ const KB=[
 
  {id:"gracias",rel:["padron","impuestos","cita"],keys:["gracias","muchas gracias","eskerrik asko","mila esker","perfecto","genial","ok","vale","estupendo","adios","adiós","agur","hurrengora arte"],
   es:"¡Un placer! 😊 Si necesitas algo más sobre Iurreta, aquí estoy las 24 horas. ¡Agur!",
-  eu:"Pozik lagundu izana! 😊 Iurretari buruz beste zerbait behar baduzu, hemen nago 24 orduz. Agur!"}
+  eu:"Pozik lagundu izana! 😊 Iurretari buruz beste zerbait behar baduzu, hemen nago 24 orduz. Agur!"},
+
+ {id:"agua",rel:["contacto","quejas"],keys:["agua","aguas","fuga","fuga de agua","averia agua","factura del agua","factura agua","alta agua","contador","consorcio","saneamiento","alcantarillado","ura","ihes","kontadore"],
+  es:"🚰 <b>Agua y saneamiento</b>\nEl suministro de agua en Iurreta lo gestiona el <b>Consorcio de Aguas Bilbao Bizkaia</b>.\n• Altas, cambios de titular, facturas y reclamaciones: <b>944 873 187</b> u oficina virtual del Consorcio.\n• <b>Averías y fugas</b> (24 h): <b>944 873 187</b>.",
+  eu:"🚰 <b>Ura eta saneamendua</b>\nIurretako ur-hornidura <b>Bilbao Bizkaia Ur Partzuergoak</b> kudeatzen du.\n• Altak, titular-aldaketak, fakturak eta erreklamazioak: <b>944 873 187</b> edo Partzuergoaren bulego birtuala.\n• <b>Matxurak eta ihesak</b> (24 ord): <b>944 873 187</b>."},
+
+ {id:"actividad",rel:["obras","cita","registro"],keys:["actividad","licencia de actividad","apertura","abrir un negocio","abrir negocio","bar","tienda","comercio","local","terraza","terrazas","ocupacion via publica","hosteleria","jarduera","negozio","taberna","denda"],
+  es:"🏪 <b>Licencia de actividad / apertura y terrazas</b>\n• Para abrir un negocio: según el tipo, <b>comunicación previa de actividad</b> o <b>licencia de actividad clasificada</b> (actividades con impacto).\n• <b>Terrazas</b>: requieren licencia de ocupación de la vía pública.\nSe inicia en la Sede electrónica o en el SAC. Te recomiendo pedir cita para que te indiquen la documentación exacta: <b>946 201 200</b>.",
+  eu:"🏪 <b>Jarduera-lizentzia / irekiera eta terrazak</b>\n• Negozio bat irekitzeko: motaren arabera, <b>jardueraren aurretiazko komunikazioa</b> edo <b>sailkatutako jarduera-lizentzia</b>.\n• <b>Terrazak</b>: bide publikoa okupatzeko lizentzia behar dute.\nEgoitza elektronikoan edo HAZ-ean hasten da. Hitzordua gomendatzen dizut agiriak zehazteko: <b>946 201 200</b>."},
+
+ {id:"animales",rel:["quejas","contacto"],keys:["perro","perros","animal","animales","mascota","mascotas","censo de perros","censar","microchip","ppp","perro peligroso","perros peligrosos","gato","gatos","txakur","txakurra","txakurra erroldatu","animalia","maskota"],
+  es:"🐶 <b>Animales / bienestar animal</b>\n• <b>Censo municipal de animales</b>: obligatorio (microchip y cartilla).\n• <b>Perros potencialmente peligrosos (PPP)</b>: necesitan licencia municipal (seguro de responsabilidad civil, certificado de penales y de aptitud).\n• Animal abandonado o herido: avisa al Ayuntamiento (946 201 200) o a la policía.\nTrámites en la Sede electrónica o el SAC.",
+  eu:"🐶 <b>Animaliak / animalien ongizatea</b>\n• <b>Animalien udal errolda</b>: derrigorrezkoa (mikrotxipa eta txartela).\n• <b>Arriskutsuak izan daitezkeen txakurrak (PPP)</b>: udal lizentzia behar dute (erantzukizun zibileko asegurua, zigor-ziurtagiria eta gaitasun-ziurtagiria).\n• Animalia abandonatua edo zauritua: deitu Udalari (946 201 200) edo poliziari.\nIzapideak Egoitza elektronikoan edo HAZ-ean."},
+
+ {id:"bodas",rel:["juzgado","alcalde","cita"],keys:["boda","bodas","casarme","casarse","matrimonio","matrimonio civil","boda civil","ezkontza","ezkondu"],
+  es:"💍 <b>Boda civil / matrimonio civil</b>\nEl matrimonio civil puede oficiarlo el alcalde (o concejal en quien delegue) o el Juez de Paz. El expediente matrimonial previo se tramita en el <b>Registro Civil / Juzgado de Paz</b>.\nPara reservar fecha y conocer requisitos y documentación, contacta con el Ayuntamiento: <b>946 201 200</b>.",
+  eu:"💍 <b>Ezkontza zibila</b>\nEzkontza zibila alkateak (edo eskuordetzen duen zinegotziak) edo Bake Epaileak ofiziatu dezake. Aurretiazko ezkontza-espedientea <b>Erregistro Zibilean / Bake Epaitegian</b> izapidetzen da.\nData erreserbatzeko eta baldintzak ezagutzeko, jarri Udalarekin harremanetan: <b>946 201 200</b>."},
+
+ {id:"juzgado",rel:["padron","contacto"],keys:["juzgado","juzgado de paz","registro civil","fe de vida","certificado de nacimiento","certificado de defuncion","defuncion","nacimiento","partida de nacimiento","inscribir","estado civil","bake epaitegi","erregistro zibil","jaiotza","heriotza"],
+  es:"⚖️ <b>Juzgado de Paz / Registro Civil</b>\nEl Juzgado de Paz de Iurreta (Plaza Aita San Migel) atiende actos del estado civil:\n• Certificados de <b>nacimiento, matrimonio y defunción</b> (también online en el Registro Civil).\n• <b>Fe de vida</b> e inscripciones (nacimiento, defunción): presencial.\nContacto a través del Ayuntamiento: <b>946 201 200</b>.",
+  eu:"⚖️ <b>Bake Epaitegia / Erregistro Zibila</b>\nIurretako Bake Epaitegiak (Aita San Migel plaza) egoera zibileko egintzak artatzen ditu:\n• <b>Jaiotza, ezkontza eta heriotza</b> ziurtagiriak (online ere Erregistro Zibilean).\n• <b>Bizi-fedea</b> eta inskripzioak: aurrez aurre.\nHarremanetarako, Udalaren bidez: <b>946 201 200</b>."},
+
+ {id:"cementerio",rel:["juzgado","contacto"],keys:["cementerio","nicho","nichos","sepultura","tumba","panteon","columbario","cenizas","inhumacion","entierro","hilerri","nitxo","hilobi","ehorzketa"],
+  es:"🌿 <b>Cementerio</b>\nEl cementerio de Iurreta es de gestión municipal. Las concesiones de <b>nichos, sepulturas y columbarios</b>, las renovaciones y los trámites de inhumación se gestionan en el Ayuntamiento (SAC), habitualmente en coordinación con la funeraria.\nInformación: <b>946 201 200</b>.",
+  eu:"🌿 <b>Hilerria</b>\nIurretako hilerria udalak kudeatzen du. <b>Nitxo, hilobi eta kolunbarioen</b> emakidak, berritzeak eta ehorzketa-izapideak Udalean (HAZ) kudeatzen dira, normalean ehorztetxearekin batera.\nInformazioa: <b>946 201 200</b>."},
+
+ {id:"vivienda",rel:["ayudas","registro"],keys:["vivienda","piso","alquiler","ayuda alquiler","vpo","vivienda protegida","etxebide","gaztelagun","rehabilitacion","hipoteca","etxebizitza","alokairu","birgaitze"],
+  es:"🏘️ <b>Vivienda</b>\nLa vivienda protegida (VPO) y la mayoría de ayudas (alquiler, <b>Gaztelagun</b> para jóvenes, rehabilitación) son competencia del <b>Gobierno Vasco (Etxebide)</b>. Inscríbete en <b>etxebide.euskadi.eus</b>.\nEl Ayuntamiento puede informarte de ayudas locales: <b>946 201 200</b>.",
+  eu:"🏘️ <b>Etxebizitza</b>\nBabes ofizialeko etxebizitza (BOE) eta laguntza gehienak (alokairua, gazteentzako <b>Gaztelagun</b>, birgaitzea) <b>Eusko Jaurlaritzaren (Etxebide)</b> eskumenekoak dira. Izena eman <b>etxebide.euskadi.eus</b> atarian.\nUdalak tokiko laguntzen berri eman diezazuke: <b>946 201 200</b>."},
+
+ {id:"igualdad",rel:["ayudas","emergencias"],keys:["igualdad","violencia de genero","violencia machista","maltrato","mujer","mujeres","berdintasun","genero indarkeria","satevi","emakume","lgtbi"],
+  es:"⚧️ <b>Igualdad y violencia de género</b>\nAnte una emergencia, llama al <b>112</b>.\nAtención especializada y gratuita 24 h: <b>SATEVI 900 840 111</b> (Gobierno Vasco).\nEl área de Igualdad del Ayuntamiento (Bienestar Social) informa y deriva a recursos de apoyo. Cita en el SAC: <b>946 201 200</b>.",
+  eu:"⚧️ <b>Berdintasuna eta genero-indarkeria</b>\nLarrialdian, deitu <b>112</b>.\nArreta espezializatua eta doakoa 24 ord: <b>SATEVI 900 840 111</b> (Eusko Jaurlaritza).\nUdaleko Berdintasun arloak (Gizarte Ongizatea) informatu eta laguntza-baliabideetara bideratzen du. Hitzordua HAZ-ean: <b>946 201 200</b>."},
+
+ {id:"juventud",rel:["cultura","agenda"],keys:["juventud","joven","jovenes","carne joven","gaztegune","gazteria","gazte txartela","ocio joven","voluntariado","gazte"],
+  es:"🧑 <b>Juventud</b>\nInformación sobre <b>Carné Joven</b>, programas de ocio y formación, espacio juvenil y voluntariado.\nConsulta la agenda y los programas en la Kultur Etxea o llama al <b>946 201 200</b>.",
+  eu:"🧑 <b>Gazteria</b>\n<b>Gazte Txartela</b>, aisia eta prestakuntza programak, gazte-gunea eta boluntariotza.\nKontsultatu agenda eta programak Kultur Etxean edo deitu <b>946 201 200</b>."},
+
+ {id:"educacion",rel:["ayudas","cultura"],keys:["educacion","colegio","escuela","haurreskola","guarderia","matricula","beca","becas","comedor","material escolar","ikastetxe","eskola","hezkuntza","matrikula"],
+  es:"🎒 <b>Educación, haurreskola y becas</b>\n• La <b>haurreskola</b> (0-2 años) se gestiona vía Consorcio Haurreskolak del Gobierno Vasco.\n• La matrícula de colegios y las <b>becas</b> (comedor, material) dependen de Educación del Gobierno Vasco.\nEl Ayuntamiento informa de plazos y de ayudas locales si las hay: <b>946 201 200</b>.",
+  eu:"🎒 <b>Hezkuntza, haurreskola eta bekak</b>\n• <b>Haurreskola</b> (0-2 urte) Eusko Jaurlaritzaren Haurreskolak Partzuergoaren bidez kudeatzen da.\n• Ikastetxeetako matrikula eta <b>bekak</b> (jantokia, materiala) Hezkuntzaren eskumenekoak dira.\nUdalak epeen eta tokiko laguntzen berri ematen du: <b>946 201 200</b>."},
+
+ {id:"cultura",rel:["agenda","juventud","salas"],keys:["cultura","biblioteca","biblioteca municipal","libros","carne de biblioteca","kultur etxea","ibarretxe","casa de cultura","taller","talleres","curso cultural","liburutegi","liburutegiko","liburu","ikastaro"],
+  es:"📚 <b>Cultura y biblioteca</b>\nLa <b>Ibarretxe Kultur Etxea</b> (Bidebarrieta 4 · 946 200 342 · kultur-etxea@iurreta.eus) alberga la <b>biblioteca municipal</b> y organiza cursos, talleres y la agenda cultural.\nHorario (invierno): L-V 9:00-13:30 y 15:00-20:00. Allí puedes hacerte el carné de la biblioteca.",
+  eu:"📚 <b>Kultura eta liburutegia</b>\n<b>Ibarretxe Kultur Etxeak</b> (Bidebarrieta 4 · 946 200 342 · kultur-etxea@iurreta.eus) <b>udal liburutegia</b> hartzen du, eta ikastaroak, tailerrak eta kultur agenda antolatzen ditu.\nOrdutegia (negua): A-O 9:00-13:30 eta 15:00-20:00. Bertan liburutegiko txartela egin dezakezu."},
+
+ {id:"medioambiente",rel:["quejas","residuos"],keys:["medio ambiente","medioambiente","ruido","ruidos","contaminacion","vertido","tala","talar","arbol","arboles","huerto","ingurumen","zarata","kutsadura","baratze","zuhaitz"],
+  es:"🌳 <b>Medio ambiente</b>\nQuejas por <b>ruidos</b>, vertidos o contaminación, permisos de <b>tala de árboles</b>, huertos urbanos y consultas ambientales se canalizan por instancia o por el trámite de quejas/incidencias en la Sede electrónica o el SAC.\nEmergencias ambientales: <b>112</b>.",
+  eu:"🌳 <b>Ingurumena</b>\n<b>Zaratengatiko</b> kexak, isurketak edo kutsadura, <b>zuhaitzak mozteko</b> baimenak, hiri-baratzeak eta ingurumen-kontsultak instantzia bidez edo kexa/intzidentzia izapidearen bidez bideratzen dira (Egoitza elektronikoa edo HAZ).\nIngurumen-larrialdiak: <b>112</b>."},
+
+ {id:"trafico",rel:["quejas","contacto"],keys:["trafico","multa","multas","sancion","recurrir multa","vado","grua","retirada","aparcar","mudanza","corte de calle","reserva de espacio","trafiko","isun","garabi"],
+  es:"🚗 <b>Tráfico, multas y vados</b>\n• <b>Multas</b> de tráfico municipales: se pagan o recurren en el plazo indicado, en la Sede electrónica o el SAC.\n• <b>Vado</b> (paso de carruajes) y <b>reserva/corte de calle</b> (mudanzas, obras): pide autorización al Ayuntamiento.\n• Vehículo retirado por la grúa: consulta a la policía local. Info: <b>946 201 200</b>.",
+  eu:"🚗 <b>Trafikoa, isunak eta bideak</b>\n• Udal trafiko-<b>isunak</b>: epe barruan ordaindu edo errekurritu, Egoitza elektronikoan edo HAZ-ean.\n• <b>Bidea</b> (ibilgailu-pasabidea) eta <b>kalea ixtea/erreserbatzea</b> (mudantzak, obrak): eskatu baimena Udalari.\n• Garabiak eramandako ibilgailua: galdetu udaltzaingoari. Info: <b>946 201 200</b>."},
+
+ {id:"transporte",rel:["contacto","turismo"],keys:["bus","autobus","bizkaibus","tren","euskotren","cercanias","barik","horario bus","ir a bilbao","durango","transporte","parada","garraio","autobusa","trena","geltoki"],
+  es:"🚌 <b>Transporte público</b>\n• <b>Bizkaibus</b> conecta Iurreta con Bilbao y la comarca (horarios en web.bizkaia.eus/bizkaibus o la app Bidaide).\n• El <b>tren (Euskotren E1)</b> y Cercanías operan desde Durango, a un paso (Bilbao-Durango ~41 min).\n• Se usa la tarjeta <b>Barik</b>.",
+  eu:"🚌 <b>Garraio publikoa</b>\n• <b>Bizkaibusek</b> Iurreta Bilborekin eta eskualdearekin lotzen du (ordutegiak web.bizkaia.eus/bizkaibus edo Bidaide app-ean).\n• <b>Trena (Euskotren E1)</b> eta Aldiriak Durangotik abiatzen dira, oso gertu (Bilbo-Durango ~41 min).\n• <b>Barik</b> txartela erabiltzen da."},
+
+ {id:"transparencia",rel:["empleo","registro"],keys:["transparencia","contratacion","licitacion","licitaciones","perfil de contratante","empleo publico","oposicion ayuntamiento","presupuesto","presupuestos","cuentas","gardentasun","kontratazio","lizitazio","aurrekontu"],
+  es:"📊 <b>Transparencia, contratación y empleo público</b>\n• <b>Empleo público</b> del Ayuntamiento: las convocatorias se publican en la web, el tablón y los boletines oficiales (BOB).\n• <b>Licitaciones</b>: en el perfil de contratante.\n• <b>Presupuestos</b> y datos: en el portal de transparencia (iurreta.eus).\nInfo: <b>946 201 200</b>.",
+  eu:"📊 <b>Gardentasuna, kontratazioa eta enplegu publikoa</b>\n• Udaleko <b>enplegu publikoa</b>: deialdiak webean, iragarki-taulan eta aldizkari ofizialetan (BAO) argitaratzen dira.\n• <b>Lizitazioak</b>: kontratazio-organoaren profilean.\n• <b>Aurrekontuak</b> eta datuak: gardentasun-atarian (iurreta.eus).\nInfo: <b>946 201 200</b>."},
+
+ {id:"bandos",rel:["agenda","contacto"],keys:["bando","bandos","tablon","tablon de anuncios","edicto","edictos","anuncio oficial","aviso oficial","bao","iragarki taula","ediktu"],
+  es:"📜 <b>Bandos y tablón de anuncios</b>\nLos bandos del alcalde y el tablón de edictos se publican en la web municipal y en el <b>tablón electrónico</b> de la Sede. Los avisos importantes también se difunden por medios y redes locales.",
+  eu:"📜 <b>Bandoak eta iragarki-taula</b>\nAlkatearen bandoak eta ediktu-taula web munizipalean eta Egoitzaren <b>iragarki-taula elektronikoan</b> argitaratzen dira. Ohar garrantzitsuak tokiko hedabide eta sareetan ere zabaltzen dira."},
+
+ {id:"subvenciones",rel:["cultura","deporte","registro"],keys:["subvencion","subvenciones","ayuda asociacion","ayuda club","ayuda para mi asociacion","financiacion","diru laguntza","laguntza elkarte","klub"],
+  es:"🤝 <b>Subvenciones a asociaciones y clubes</b>\nEl Ayuntamiento convoca subvenciones para asociaciones y clubes (cultura, deporte, euskera, etc.). Consulta las <b>bases y plazos</b> en iurreta.eus y presenta la solicitud en la Sede electrónica. Gestión a través de la Kultur Etxea.",
+  eu:"🤝 <b>Elkarte eta klubentzako diru-laguntzak</b>\nUdalak diru-laguntzak deitzen ditu elkarte eta klubentzat (kultura, kirola, euskara, etab.). Begiratu <b>oinarriak eta epeak</b> iurreta.eus-en eta aurkeztu eskaera Egoitza elektronikoan. Kudeaketa Kultur Etxearen bidez."},
+
+ {id:"participacion",rel:["bandos","registro"],keys:["participacion","participacion ciudadana","presupuestos participativos","consulta vecinal","iniciativa","proponer","parte hartze","herritar"],
+  es:"🗳️ <b>Participación ciudadana</b>\nLos procesos de participación (presupuestos participativos, consultas vecinales) se anuncian en la web municipal. Puedes proponer iniciativas por instancia general o en los procesos abiertos en cada momento.",
+  eu:"🗳️ <b>Herritarren parte-hartzea</b>\nParte-hartze prozesuak (aurrekontu parte-hartzaileak, herritar-kontsultak) web munizipalean iragartzen dira. Ekimenak instantzia bidez edo une bakoitzean irekitako prozesuetan proposa ditzakezu."},
+
+ {id:"salas",rel:["cultura","deporte","contacto"],keys:["sala","salas","alquilar sala","reservar sala","espacio","local para evento","aula","areto","gela"],
+  es:"🏛️ <b>Alquiler de salas e instalaciones</b>\nLa reserva de salas y espacios municipales (Kultur Etxea, instalaciones deportivas) se solicita al Ayuntamiento o a la Kultur Etxea (<b>946 200 342</b>) según disponibilidad y normativa de uso.",
+  eu:"🏛️ <b>Aretoak eta instalazioak alokatzea</b>\nUdal areto eta espazioen erreserba (Kultur Etxea, kirol-instalazioak) Udalari edo Kultur Etxeari (<b>946 200 342</b>) eskatzen zaio, erabilgarritasunaren eta arauen arabera."},
+
+ {id:"emergencias",rel:["igualdad","contacto"],keys:["emergencia","emergencias","112","sos","ambulancia","bomberos","incendio","accidente","policia","ertzaintza","urgencia","larrialdi","sute","istripu"],
+  es:"🚨 <b>Emergencias</b>\nPara cualquier emergencia (sanitaria, incendio, accidente, seguridad), llama al <b>112</b> (SOS Deiak), disponible 24 h.\nPara incidencias NO urgentes en la vía pública, avisa al Ayuntamiento: <b>946 201 200</b>.",
+  eu:"🚨 <b>Larrialdiak</b>\nEdozein larrialditarako (osasuna, sutea, istripua, segurtasuna), deitu <b>112</b> (SOS Deiak), 24 orduz.\nBide publikoko intzidentzia EZ-larrietarako, deitu Udalari: <b>946 201 200</b>."},
+
+ {id:"turismo",rel:["agenda","transporte"],keys:["turismo","visitar","que ver","ermita","ermitas","urkiola","monte","ruta","senderismo","patrimonio","turista","turismoa","mendi"],
+  es:"🗺️ <b>Turismo</b>\nIurreta cuenta con patrimonio rural y ermitas, y está junto al <b>Parque Natural de Urkiola</b>. Las fiestas de <b>San Miguel (Sanmigueles)</b> son a finales de septiembre, con su feria de alimentación y artesanía.\nOficina de turismo comarcal: Durango / Durangaldea Turismoa.",
+  eu:"🗺️ <b>Turismoa</b>\nIurretak landa-ondarea eta ermitak ditu, eta <b>Urkiola Parke Naturalaren</b> ondoan dago. <b>San Migel (Sanmigeletako)</b> jaiak irailaren amaieran dira, elikadura eta artisautza azokarekin.\nEskualdeko turismo-bulegoa: Durango / Durangaldea Turismoa."}
 ];
 
 /* Etiquetas cortas para chips de seguimiento / desambiguación */
@@ -482,23 +566,32 @@ const CHIPLABELS={
  euskera:["🗣️ Euskera","🗣️ Euskara"],empleo:["💼 Empleo","💼 Enplegua"],horario:["🕗 Horario","🕗 Ordutegia"],
  ubicacion:["📍 Cómo llegar","📍 Kokapena"],contacto:["📞 Contacto","📞 Kontaktua"],alcalde:["🏛️ Alcaldía","🏛️ Alkatetza"],
  festivos:["📆 Días festivos","📆 Jaiegunak"],quejas:["📢 Quejas y avisos","📢 Kexak eta oharrak"],ayudas:["🤝 Ayudas sociales","🤝 Gizarte-laguntzak"],
- persona:["🙋 Hablar con una persona","🙋 Pertsona batekin"]
+ persona:["🙋 Hablar con una persona","🙋 Pertsona batekin"],
+ agua:["🚰 Agua","🚰 Ura"],actividad:["🏪 Licencia de actividad","🏪 Jarduera-lizentzia"],animales:["🐶 Animales / perros","🐶 Animaliak"],
+ bodas:["💍 Boda civil","💍 Ezkontza zibila"],juzgado:["⚖️ Juzgado de Paz","⚖️ Bake Epaitegia"],cementerio:["🌿 Cementerio","🌿 Hilerria"],
+ vivienda:["🏘️ Vivienda","🏘️ Etxebizitza"],igualdad:["⚧️ Igualdad","⚧️ Berdintasuna"],juventud:["🧑 Juventud","🧑 Gazteria"],
+ educacion:["🎒 Educación / becas","🎒 Hezkuntza / bekak"],cultura:["📚 Cultura / biblioteca","📚 Kultura / liburutegia"],medioambiente:["🌳 Medio ambiente","🌳 Ingurumena"],
+ trafico:["🚗 Tráfico / multas","🚗 Trafikoa / isunak"],transporte:["🚌 Transporte","🚌 Garraioa"],transparencia:["📊 Empleo público","📊 Enplegu publikoa"],
+ bandos:["📜 Bandos","📜 Bandoak"],subvenciones:["🤝 Subvenciones","🤝 Diru-laguntzak"],participacion:["🗳️ Participación","🗳️ Parte-hartzea"],
+ salas:["🏛️ Alquiler de salas","🏛️ Aretoak"],emergencias:["🚨 Emergencias","🚨 Larrialdiak"],turismo:["🗺️ Turismo","🗺️ Turismoa"]
 };
 const CHIPS={
  es:[["padron","🏠 Empadronarme"],["impuestos","🧾 Pagar el IBI"],["cita","📅 Pedir cita"],["residuos","♻️ Recogida de muebles"],["sede","🔐 Sede electrónica"]],
  eu:[["padron","🏠 Erroldatu"],["impuestos","🧾 OHZ ordaindu"],["cita","📅 Hitzordua"],["residuos","♻️ Altzariak jaso"],["sede","🔐 Egoitza elektronikoa"]]
 };
 const FB={
- es:"🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, sede electrónica, deporte, agenda, registro, empleo, ayudas sociales</b> y más. ¿Sobre cuál quieres saber? También puedes llamar al <b>946 201 200</b>.",
- eu:"🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, egoitza elektronikoa, kirola, agenda, erregistroa, enplegua, gizarte-laguntzak</b> eta gehiagotan lagun diezazuket. Zeini buruz? <b>946 201 200</b> telefonora ere dei dezakezu."
+ es:"🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, agua, licencias, sede electrónica, servicios sociales, cultura, deporte, tráfico, transporte</b> y muchos más trámites municipales. ¿Sobre cuál quieres saber? También puedes llamar al <b>946 201 200</b>.",
+ eu:"🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, ura, lizentziak, egoitza elektronikoa, gizarte-zerbitzuak, kultura, kirola, trafikoa, garraioa</b> eta beste izapide askotan lagun diezazuket. Zeini buruz? <b>946 201 200</b> telefonora ere dei dezakezu."
 };
 
 /* =================== Motor NLU =================== */
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
-const STOP=new Set("el la los las un una unos unas de del al a y o u en con por para que como cuando donde quiero necesito puedo hacer sobre me te se mi tu su lo le es son esta este esa ese info informacion dame quisiera querria saber hay tengo me gustaria nire dut zer nola non noiz da naiz eta edo".split(/\s+/));
+const STOP=new Set("el la los las un una unos unas de del al a y o u en con por para que como cuando quiero necesito puedo hacer sobre me te se mi tu su lo le es son esta este esa ese info informacion dame quisiera querria saber hay tengo me gustaria nire dut zer nola non noiz da naiz eta edo".split(/\s+/));
 function toks(s){return norm(s).split(" ").filter(w=>w.length>2&&!STOP.has(w));}
+const GENERIC=new Set(["saludo","horario","ubicacion","contacto","persona","gracias"]);
 /* índice de tokens y frases por intención */
-KB.forEach(it=>{it._kw=new Set();it._ph=[];it.keys.forEach(k=>{const kn=norm(k);if(!kn)return;if(kn.includes(" "))it._ph.push(kn);kn.split(" ").forEach(w=>{if(w.length>2&&!STOP.has(w))it._kw.add(w);});});it._kw=[...it._kw];});
+const WEAK=new Set(["ayuntamiento","horario","online","previa","municipal","atencion","publico","general","tramite","tramites"]);
+KB.forEach(it=>{it._kw=new Set();it._ph=[];it.keys.forEach(k=>{const kn=norm(k);if(!kn)return;if(kn.includes(" ")){it._ph.push(kn);kn.split(" ").forEach(w=>{if(w.length>2&&!STOP.has(w)&&!WEAK.has(w))it._kw.add(w);});}else if(kn.length>2&&!STOP.has(kn))it._kw.add(kn);});it._kw=[...it._kw];it._generic=GENERIC.has(it.id);});
 function lev(a,b){const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
 function score(it,qToks,qText){
  let s=0;
@@ -513,7 +606,7 @@ function score(it,qToks,qText){
    }
    s+=best;
  });
- return s;
+ return s>0&&it._generic?s-0.5:s;
 }
 function rank(text){
  const qText=norm(text),qToks=toks(text);
