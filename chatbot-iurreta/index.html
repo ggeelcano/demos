@@ -253,6 +253,43 @@
  #townsel option{color:#16241f}
  .townsel .tnote{opacity:.75;font-size:11.5px}
  @media(max-width:760px){.townsel .tnote{display:none}}
+ .panelbtn{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:3px 10px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+ .panelbtn:hover{background:rgba(255,255,255,.26)}
+ .panelwrap{position:fixed;inset:0;z-index:400;background:rgba(8,30,22,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
+ .panelwrap.open{display:flex;animation:born .3s var(--ease)}
+ .panelcard{background:var(--surface);border-radius:20px;box-shadow:var(--sh-4);width:780px;max-width:100%;max-height:92vh;overflow:auto;border:1px solid var(--line)}
+ .panelhead{position:sticky;top:0;background:linear-gradient(135deg,var(--green),var(--green-700));color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;font-size:16px;z-index:2}
+ .panelhead .px{background:rgba(255,255,255,.18);border:0;color:#fff;width:32px;height:32px;border-radius:9px;font-size:20px;cursor:pointer}
+ .panelbody{padding:22px}
+ .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+ .pkpi{background:var(--surface-2);border:1px solid var(--line);border-top:2px solid var(--green);border-radius:14px;padding:14px}
+ .pkpi .pv{font-family:"Space Grotesk",sans-serif;font-size:27px;font-weight:700;color:var(--green-900);line-height:1}
+ .pkpi .pv span{font-size:15px;color:var(--ink-soft)}
+ .pkpi .pl{font-size:11.5px;color:var(--ink-soft);margin-top:5px}
+ .prow{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:22px}
+ .prow h4{font-size:13px;color:var(--ink-soft);margin-bottom:10px;font-weight:700}
+ .ptopr{display:flex;align-items:center;gap:10px;font-size:13px;margin-bottom:8px}
+ .ptopr span:first-child{width:120px;color:var(--ink)}
+ .ptbar{flex:1;height:8px;background:var(--green-soft);border-radius:6px;overflow:hidden}
+ .ptbar i{display:block;height:100%;background:var(--green);border-radius:6px}
+ .ptopr b{width:34px;text-align:right;color:var(--green-900)}
+ .pbar{height:12px;border-radius:7px;background:var(--green-soft);overflow:hidden}
+ .pbar .pbeu{display:block;height:100%;background:linear-gradient(90deg,var(--bot1),var(--bot2))}
+ .pbleg{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:6px}
+ .pbleg b{color:var(--ink)}
+ .pspark{display:flex;align-items:flex-end;gap:5px;height:64px}
+ .pspark i{flex:1;background:linear-gradient(180deg,var(--green),var(--green-soft));border-radius:4px 4px 0 0;min-height:4px}
+ .pcfg{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:18px}
+ .pcfg h4{font-size:14px;color:var(--green-900);margin-bottom:12px}
+ .pcfgrow{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+ .pcfgrow label{width:150px;font-size:13px;color:var(--ink-soft)}
+ .pcfgrow input{flex:1;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13.5px;font-family:inherit;color:var(--ink)}
+ .pcfgrow input:focus{outline:2px solid var(--green);border-color:var(--green)}
+ .psave{background:var(--green);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;margin-top:6px}
+ .ptoast{margin-left:12px;color:var(--success);font-weight:700;font-size:13px;opacity:0;transition:.2s}
+ .ptoast.show{opacity:1}
+ .pnote{font-size:12px;color:var(--ink-soft);margin-top:14px;line-height:1.5}
+ @media(max-width:680px){.pgrid{grid-template-columns:repeat(2,1fr)}.prow{grid-template-columns:1fr}.pcfgrow{flex-wrap:wrap}.pcfgrow label{width:100%}}
 </style>
 </head>
 <body>
@@ -260,6 +297,7 @@
 
 <div class="topbar"><div class="wrap">
  <span class="townsel"><i class="live"></i><span class="tlab">Asistente de</span> <select id="townsel" aria-label="Ayuntamiento"><option value="iurreta">Iurreta</option><option value="mungia">Mungia</option><option value="durango">Durango</option></select><span class="tnote" id="tnote">· un módulo, configurable por ayuntamiento</span></span>
+ <button id="panelbtn" class="panelbtn" onclick="openPanel()">📊 Panel municipal</button>
  <span class="seg es" id="seg" role="group" aria-label="Idioma / Hizkuntza">
    <span class="thumb" aria-hidden="true"></span>
    <button data-l="eu" aria-pressed="false">EU</button>
@@ -338,6 +376,38 @@
 </div>
 <div class="legal"><div class="wrap"><span>© Iurretako Udala</span><span id="disc">Demostración de asistente virtual · datos públicos del municipio</span></div></div>
 </footer>
+
+<div id="panel" class="panelwrap" role="dialog" aria-modal="true" aria-label="Panel municipal" onclick="if(event.target===this)closePanel()">
+ <div class="panelcard">
+  <div class="panelhead"><b>📊 Panel municipal · <span id="pn_town">Iurreta</span></b><button class="px" onclick="closePanel()" aria-label="Cerrar">×</button></div>
+  <div class="panelbody">
+   <div class="pgrid">
+    <div class="pkpi"><div class="pv" id="pk1">0</div><div class="pl" id="pl_k1">consultas hoy</div></div>
+    <div class="pkpi"><div class="pv" id="pk2">0<span>%</span></div><div class="pl" id="pl_k2">resueltas sin agente</div></div>
+    <div class="pkpi"><div class="pv" id="pk3">0<span>s</span></div><div class="pl" id="pl_k3">tiempo medio</div></div>
+    <div class="pkpi"><div class="pv" id="pk4">0</div><div class="pl" id="pl_k4">satisfacción /5</div></div>
+   </div>
+   <div class="prow">
+    <div class="pcol"><h4 id="ph_top">Temas más consultados</h4><div id="ptop"></div></div>
+    <div class="pcol">
+     <h4 id="ph_idi">Idioma</h4>
+     <div class="pbar"><span class="pbeu" id="pbeu"></span></div>
+     <div class="pbleg"><span id="peu">EU</span><span id="pes">ES</span></div>
+     <h4 id="ph_pico" style="margin-top:16px">Consultas por hora</h4>
+     <div class="pspark" id="pspark"></div>
+    </div>
+   </div>
+   <div class="pcfg">
+    <h4 id="ph_cfg">⚙️ Configura tus trámites — sin tocar código</h4>
+    <div class="pcfgrow"><label id="pl_tel">Teléfono</label><input id="pi_tel"></div>
+    <div class="pcfgrow"><label id="pl_hor">Horario SAC</label><input id="pi_hor" value="L-V 8:30-14:00"></div>
+    <div class="pcfgrow"><label id="pl_sede">Sede electrónica</label><input id="pi_sede"></div>
+    <button class="psave" id="psave" onclick="panelSave()">Guardar cambios</button><span class="ptoast" id="ptoast">✓ Cambios guardados</span>
+    <p class="pnote" id="pnote">Cada ayuntamiento gestiona su propia base de conocimiento: una implantación, configurable para toda la red.</p>
+   </div>
+  </div>
+ </div>
+</div>
 
 <button id="fab" onclick="openChat()" aria-label="Abrir asistente virtual">
  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -739,9 +809,9 @@ function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map
 
 /* ===== Multi-ayuntamiento: mismo módulo, configurado por municipio ===== */
 const TOWNS={
- iurreta:{slug:"iurreta",name:"Iurreta",udala:"Iurretako Udala",web:"iurreta.eus",sede:"egoitza.iurreta.eus",tel:"946 201 200",fax:"946 815 598",sac:"Bidebarrieta 5",cp:"48215",email:"haz-sac@iurreta.eus",email2:"erregistroa@iurreta.eus",kultur:"Ibarretxe Kultur Etxea",kulturAddr:"Bidebarrieta 4",kulturTel:"946 200 342",kulturEmail:"kultur-etxea@iurreta.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Oskar Koka Lorente",escudo:"🌳",col:["#0E6A4F","#0A5440","#063A2B","#E3F2EB"]},
- mungia:{slug:"mungia",name:"Mungia",udala:"Mungiako Udala",web:"mungia.eus",sede:"sede.mungia.eus",tel:"946 741 216",fax:"—",sac:"Trobika kalea 1",cp:"48100",email:"udala@mungia.eus",email2:"udala@mungia.eus",kultur:"Torrebillela Aretoa",kulturAddr:"Trobika",kulturTel:"946 741 216",kulturEmail:"udala@mungia.eus",mankomName:"la Mancomunidad de servicios de tu comarca",mankomTel:"946 741 216",mankomWeb:"mungia.eus",alcalde:"Alaitz Erkoreka Baraiazarra",alcLabel:"La alcaldesa de",escudo:"🏰",col:["#1D4E89","#163C6B","#0F2A4D","#E4ECF6"]},
- durango:{slug:"durango",name:"Durango",udala:"Durangoko Udala",web:"durango.eus",sede:"durango.eus",tel:"946 030 000",fax:"—",sac:"Barrenkale 17",cp:"48200",email:"udala@durango.eus",email2:"udala@durango.eus",kultur:"San Agustín Kultur Gunea",kulturAddr:"San Agustinalde 12",kulturTel:"946 030 000",kulturEmail:"udala@durango.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Mireia Elkoroiribe Zenikaonandia",alcLabel:"La alcaldesa de",escudo:"⛪",col:["#8A2B2B","#6E2222","#4D1717","#F6E7E7"]}
+ iurreta:{slug:"iurreta",name:"Iurreta",udala:"Iurretako Udala",web:"iurreta.eus",sede:"egoitza.iurreta.eus",tel:"946 201 200",fax:"946 815 598",sac:"Bidebarrieta 5",cp:"48215",email:"haz-sac@iurreta.eus",email2:"erregistroa@iurreta.eus",kultur:"Ibarretxe Kultur Etxea",kulturAddr:"Bidebarrieta 4",kulturTel:"946 200 342",kulturEmail:"kultur-etxea@iurreta.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Oskar Koka Lorente",escudo:"🌳",met:[142,84,8,4.6,47],col:["#0E6A4F","#0A5440","#063A2B","#E3F2EB"]},
+ mungia:{slug:"mungia",name:"Mungia",udala:"Mungiako Udala",web:"mungia.eus",sede:"sede.mungia.eus",tel:"946 741 216",fax:"—",sac:"Trobika kalea 1",cp:"48100",email:"udala@mungia.eus",email2:"udala@mungia.eus",kultur:"Torrebillela Aretoa",kulturAddr:"Trobika",kulturTel:"946 741 216",kulturEmail:"udala@mungia.eus",mankomName:"la Mancomunidad de servicios de tu comarca",mankomTel:"946 741 216",mankomWeb:"mungia.eus",alcalde:"Alaitz Erkoreka Baraiazarra",alcLabel:"La alcaldesa de",escudo:"🏰",met:[318,82,9,4.5,52],col:["#1D4E89","#163C6B","#0F2A4D","#E4ECF6"]},
+ durango:{slug:"durango",name:"Durango",udala:"Durangoko Udala",web:"durango.eus",sede:"durango.eus",tel:"946 030 000",fax:"—",sac:"Barrenkale 17",cp:"48200",email:"udala@durango.eus",email2:"udala@durango.eus",kultur:"San Agustín Kultur Gunea",kulturAddr:"San Agustinalde 12",kulturTel:"946 030 000",kulturEmail:"udala@durango.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Mireia Elkoroiribe Zenikaonandia",alcLabel:"La alcaldesa de",escudo:"⛪",met:[690,86,7,4.7,49],col:["#8A2B2B","#6E2222","#4D1717","#F6E7E7"]}
 };
 let TOWN=TOWNS.iurreta;
 function localize(t){
@@ -787,12 +857,37 @@ function applyLang(){
  const fn=document.getElementById("footname");if(fn)fn.textContent=TOWN.udala;
  const esc=document.getElementById("escudo");if(esc)esc.textContent=TOWN.escudo;
  const tn=document.getElementById("tnote");if(tn)tn.textContent=(LANG==="es"?"· un módulo, configurable por ayuntamiento":"· modulu bat, udal bakoitzerako konfiguragarria");
+ const pb=document.getElementById("panelbtn");if(pb)pb.textContent=(LANG==="es"?"📊 Panel municipal":"📊 Udal panela");
  document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
  document.getElementById("seg").className="seg "+LANG;
  buildTiles();buildSteps();buildStats();buildNews();observeReveal();observeStats();
 }
 document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
 var _ts=document.getElementById("townsel");if(_ts)_ts.addEventListener("change",e=>applyTown(e.target.value));
+/* ===== Panel municipal (métricas + configuración sin código) ===== */
+const PANEL_I18N={
+ es:{k1:"consultas hoy",k2:"resueltas sin agente",k3:"tiempo medio",k4:"satisfacción /5",top:"Temas más consultados",idi:"Idioma",pico:"Consultas por hora",cfg:"⚙️ Configura tus trámites — sin tocar código",tel:"Teléfono general",hor:"Horario SAC",sede:"Sede electrónica",save:"Guardar cambios",toast:"✓ Cambios guardados",note:"Cada ayuntamiento gestiona su propia base de conocimiento: una implantación, configurable para toda la red.",temas:[["Padrón",22],["Impuestos / IBI",18],["Cita previa",14],["Residuos",11],["Sede electrónica",9],["Oposiciones",7]]},
+ eu:{k1:"kontsulta gaur",k2:"agente gabe ebatzita",k3:"batez besteko denbora",k4:"gogobetetzea /5",top:"Gai kontsultatuenak",idi:"Hizkuntza",pico:"Kontsultak orduko",cfg:"⚙️ Konfiguratu zure izapideak — koderik ukitu gabe",tel:"Telefono orokorra",hor:"HAZ ordutegia",sede:"Egoitza elektronikoa",save:"Aldaketak gorde",toast:"✓ Aldaketak gordeta",note:"Udal bakoitzak bere ezagutza-basea kudeatzen du: ezarpen bana, sare osorako konfiguragarria.",temas:[["Errolda",22],["Zergak / OHZ",18],["Hitzordua",14],["Hondakinak",11],["Egoitza elektronikoa",9],["Oposizioak",7]]}
+};
+const SPARK=[3,5,9,14,18,16,12,10,13,17,11,6];
+function gid(id){return document.getElementById(id)}
+function populatePanel(){
+ const m=TOWN.met||[142,84,8,4.6,47],L=PANEL_I18N[LANG];
+ gid("pn_town").textContent=TOWN.name;
+ gid("pk1").textContent=m[0];gid("pk2").innerHTML=m[1]+"<span>%</span>";gid("pk3").innerHTML=m[2]+"<span>s</span>";gid("pk4").textContent=m[3].toFixed(1);
+ gid("pl_k1").textContent=L.k1;gid("pl_k2").textContent=L.k2;gid("pl_k3").textContent=L.k3;gid("pl_k4").textContent=L.k4;
+ const eu=m[4],es=100-eu;gid("pbeu").style.width=eu+"%";gid("peu").innerHTML="EU <b>"+eu+"%</b>";gid("pes").innerHTML="ES <b>"+es+"%</b>";
+ gid("ptop").innerHTML=L.temas.map(t=>"<div class=\"ptopr\"><span>"+t[0]+"</span><span class=\"ptbar\"><i style=\"width:"+Math.min(100,t[1]*4)+"%\"></i></span><b>"+t[1]+"%</b></div>").join("");
+ const mx=Math.max.apply(null,SPARK);gid("pspark").innerHTML=SPARK.map(v=>"<i style=\"height:"+Math.round(v/mx*100)+"%\"></i>").join("");
+ gid("pi_tel").value=TOWN.tel;gid("pi_sede").value=TOWN.sede;
+ gid("ph_top").textContent=L.top;gid("ph_idi").textContent=L.idi;gid("ph_pico").textContent=L.pico;gid("ph_cfg").textContent=L.cfg;
+ gid("pl_tel").textContent=L.tel;gid("pl_hor").textContent=L.hor;gid("pl_sede").textContent=L.sede;
+ gid("psave").textContent=L.save;gid("ptoast").textContent=L.toast;gid("pnote").textContent=L.note;
+}
+function openPanel(){populatePanel();gid("panel").classList.add("open");}
+function closePanel(){gid("panel").classList.remove("open");}
+function panelSave(){const t=gid("ptoast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&gid("panel").classList.contains("open"))closePanel();});
 
 /* =================== Scroll / animaciones =================== */
 let revObs;
