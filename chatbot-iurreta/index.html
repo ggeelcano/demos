@@ -683,8 +683,8 @@ const CHIPS={
  eu:[["padron","🏠 Erroldatu"],["impuestos","🧾 OHZ ordaindu"],["cita","📅 Hitzordua"],["residuos","♻️ Altzariak jaso"],["sede","🔐 Egoitza elektronikoa"]]
 };
 const FB={
- es:"🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, agua, licencias, sede electrónica, servicios sociales, cultura, deporte, tráfico, transporte</b> y muchos más trámites municipales. ¿Sobre cuál quieres saber? También puedes llamar al <b>946 201 200</b>.",
- eu:"🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, ura, lizentziak, egoitza elektronikoa, gizarte-zerbitzuak, kultura, kirola, trafikoa, garraioa</b> eta beste izapide askotan lagun diezazuket. Zeini buruz? <b>946 201 200</b> telefonora ere dei dezakezu."
+ es:"🤔 No estoy seguro de haberte entendido. Puedo ayudarte con <b>padrón, impuestos/IBI, cita previa, residuos, agua, licencias, sede electrónica, servicios sociales, cultura, deporte, tráfico, transporte, oposiciones</b> y muchos más trámites municipales. ¿Sobre cuál quieres saber?\nY si lo prefieres, <b>te paso con una persona</b> del SAC (<b>946 201 200</b>, L-V 8:30-14:00). ¿Te paso?",
+ eu:"🤔 Ez nago ziur ondo ulertu zaitudan. <b>Errolda, zergak/OHZ, hitzordua, hondakinak, ura, lizentziak, egoitza elektronikoa, gizarte-zerbitzuak, kultura, kirola, trafikoa, garraioa, oposizioak</b> eta beste izapide askotan lagun diezazuket. Zeini buruz?\nNahiago baduzu, <b>pertsona batekin</b> jartzen zaitut HAZ-ean (<b>946 201 200</b>, A-O 8:30-14:00). Lotzen zaitut?"
 };
 
 /* =================== Motor NLU =================== */
@@ -747,14 +747,14 @@ function answer(text){
  if(!strong&&PENDING&&isNeg(text)){PENDING=null;botSay(T("De acuerdo 👍 ¿Hay algo más en lo que pueda ayudarte?","Ados 👍 Beste zerbaitetan lagun diezazuket?"),()=>chips(CHIPS[LANG]));return;}
  const tp=typing();
  let html,follow=null,disamb=null,topId=null;
- if(!sc.length){html=FB[LANG];follow="__popular";PENDING=null;}
+ if(!sc.length){html=FB[LANG];follow="__popular";PENDING="persona";}
  else if(strong){const it=sc[0].it;topId=it.id;setPending(it);html=it[LANG];follow=(it.rel||[]).slice();
    if(sc[1]&&sc[1].s>=3&&(sc[0].s-sc[1].s)<=1&&!follow.includes(sc[1].it.id)&&sc[1].it.id!=="saludo")follow.push(sc[1].it.id);}
  else{html=(LANG==="es"?"🤔 No estoy del todo seguro de a qué te refieres. ¿Quizá alguno de estos temas?":"🤔 Ez nago guztiz ziur zertaz ari zaren. Hauetako gairen bat agian?");disamb=sc.slice(0,3).map(x=>x.it.id);PENDING=null;}
  setTimeout(()=>{tp.remove();bubble(html,"bot");
    if(topId==="cita"){flowChips([{label:T("📅 Pedir cita ahora","📅 Eskatu hitzordua orain"),cta:true,echo:false,fn:citaStart}]);return;}
    if(disamb)chipsFromIds(disamb);
-   else if(follow==="__popular")chips(CHIPS[LANG]);
+   else if(follow==="__popular"){chips(CHIPS[LANG]);chipsFromIds(["persona"]);}
    else if(follow&&follow.length)chipsFromIds(follow);
  },delayFor(html));
 }
