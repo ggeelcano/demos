@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naturguneak Bizkaia · Medio Natural y Agricultura — Asistente IA</title>
+<meta name="description" content="Asistente virtual de los espacios naturales de Bizkaia (Gaztelugatxe, Gorbeia, Urkiola, Armañón): cómo llegar, horarios, reservas y ayudas al sector primario. Bilingüe EU/ES, 24/7.">
+<meta property="og:title" content="Naturguneak Bizkaia — Asistente IA de espacios naturales">
+<meta property="og:description" content="Planifica tu visita a los espacios naturales de Bizkaia en segundos. Asistente bilingüe 24/7.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+ :root{
+   --bg:#F3F8F3; --surface:#FFFFFF; --surface-2:#F7FBF6;
+   --ink:#102219; --ink-soft:#46584E;
+   --primary:#14533B; --primary-700:#0E3D2B; --secondary:#2E7D5B;
+   --accent:#2E9E63; --accent-ink:#1B7A48; --accent-soft:#E4F4EA;
+   --gold:#E0A53D; --gold-soft:#FBF1DA;
+   --success:#1FA85C; --line:#E0EBE3; --line-warm:#ECE7DC;
+   --dk-bg:#0A2218; --dk-surface:#14533B; --dk-ink:#EAF6EF; --dk-soft:#9CC2AE; --dk-line:rgba(255,255,255,.10);
+   --sh-1:0 1px 2px rgba(16,34,25,.06);
+   --sh-2:0 4px 12px rgba(16,34,25,.08);
+   --sh-3:0 16px 40px -8px rgba(16,34,25,.18);
+   --sh-4:0 24px 70px -16px rgba(10,34,24,.28);
+   --sh-accent:0 12px 32px rgba(46,158,99,.30);
+   --r-chip:12px; --r-input:14px; --r-btn:16px; --r-card:22px; --r-panel:24px; --r-pill:999px;
+   --ease:cubic-bezier(.22,1,.36,1);
+   --maxw:1200px;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html{scroll-behavior:smooth}
+ body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;color:var(--ink);font-size:1.0625rem;line-height:1.65;
+   background:radial-gradient(120% 80% at 88% -8%,rgba(46,158,99,.07),transparent 55%),var(--bg);-webkit-font-smoothing:antialiased}
+ button,input{font-family:inherit}
+ a{color:var(--primary);text-decoration:none}
+ h1,h2,h3{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+ .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+ .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+ .num{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums}
+ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+ .skip{position:absolute;left:14px;top:-60px;z-index:999;background:var(--primary);color:#fff;padding:11px 18px;border-radius:10px;font-weight:700;transition:top .2s}
+ .skip:focus{top:14px}
+
+ .topbar{background:var(--primary-700);color:#cfe5d8}
+ .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;font-size:13px;gap:14px}
+ .status{display:inline-flex;align-items:center;gap:8px}
+ .live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(31,168,92,.25);animation:beat 2.6s var(--ease) infinite}
+ @keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(31,168,92,.4)}60%{box-shadow:0 0 0 7px rgba(31,168,92,0)}}
+ .seg{position:relative;display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:3px}
+ .seg .thumb{position:absolute;top:3px;bottom:3px;width:calc(50% - 3px);border-radius:var(--r-pill);background:#fff;transition:transform .22s var(--ease)}
+ .seg.es .thumb{transform:translateX(100%)}
+ .seg button{position:relative;z-index:1;background:none;border:0;color:#cfe5d8;font-size:12px;font-weight:700;padding:3px 12px;border-radius:var(--r-pill);min-width:42px}
+ .seg button.on{color:var(--primary-700)}
+
+ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--line);transition:box-shadow .25s,padding .25s}
+ header.scrolled{box-shadow:var(--sh-2)}
+ @supports not (backdrop-filter:blur(2px)){header{background:#fff}}
+ header .wrap{display:flex;align-items:center;gap:14px;height:74px}
+ .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(140deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:var(--sh-1)}
+ .logo svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8}
+ .brand b{display:block;font-size:16px;color:var(--primary);font-weight:800;letter-spacing:-.01em}
+ .brand span{font-size:12px;color:var(--ink-soft)}
+ nav{margin-left:auto;display:flex;align-items:center;gap:24px}
+ nav a{font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer}
+ nav a:hover{color:var(--primary)}
+ .nav-cta{background:var(--primary);color:#fff;padding:9px 16px;border-radius:var(--r-btn);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px}
+ .nav-cta:hover{background:var(--primary-700)}
+
+ .hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,92px) 0 clamp(60px,8vw,104px)}
+ .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+ .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+ .hero h1{font-size:clamp(2.3rem,1.6rem+2.9vw,4rem);margin:14px 0 0}
+ .hero h1 .g{background:linear-gradient(120deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+ .hero .lead{margin-top:16px;font-size:clamp(1.05rem,1rem+.4vw,1.22rem);color:var(--ink-soft);max-width:520px}
+ .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+ .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;border-radius:var(--r-btn);padding:14px 22px;font-size:15px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s}
+ .btn svg{width:18px;height:18px}
+ .btn-accent{background:var(--accent);color:#fff;box-shadow:var(--sh-accent)}
+ .btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(46,158,99,.4)}
+ .btn-ghost{background:var(--surface);color:var(--primary);border:1px solid var(--line);box-shadow:var(--sh-1)}
+ .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+ .trust{margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+ .trust .live{width:7px;height:7px}
+
+ .luxcard{position:relative;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sh-4);padding:18px;border:1px solid var(--line)}
+ .luxcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(46,158,99,.55),rgba(20,83,59,.12) 42%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+ .lux-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+ .lux-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center}
+ .lux-av svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8}
+ .lux-head b{font-size:13.5px;color:var(--ink)}
+ .lux-head .st{font-size:11.5px;color:var(--accent-ink);display:flex;align-items:center;gap:5px}
+ .lux-msgs{display:flex;flex-direction:column;gap:9px;padding:14px 2px 4px}
+ .lux-q{align-self:flex-end;background:var(--primary);color:#fff;font-size:13px;padding:9px 13px;border-radius:14px 14px 5px 14px;max-width:80%}
+ .lux-a{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:13px;padding:9px 13px;border-radius:5px 14px 14px 14px;max-width:88%;color:var(--ink)}
+ .lux-stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:3px}
+ .lux-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+ .lux-chip{font-size:11px;font-weight:600;color:var(--primary);background:var(--accent-soft);border-radius:999px;padding:4px 10px}
+
+ .tiles .wrap{margin-top:clamp(-44px,-4vw,-30px);position:relative;z-index:5}
+ .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+ .tile{position:relative;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:18px;padding:18px 16px 16px;box-shadow:var(--sh-1);cursor:pointer;text-align:left;transition:transform .18s var(--ease),box-shadow .18s;display:flex;flex-direction:column;gap:8px}
+ .tile:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .tile.feat{border-top-color:var(--gold);background:linear-gradient(180deg,var(--gold-soft),var(--surface) 60%)}
+ .tile .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);font-weight:600}
+ .tile:hover .no{color:var(--accent-ink)}
+ .tile .ico{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
+ .tile .ico svg{width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:1.7}
+ .tile.feat .ico{background:var(--gold-soft)}
+ .tile.feat .ico svg{stroke:var(--gold)}
+ .tile:hover .ico{background:var(--primary)}
+ .tile:hover .ico svg{stroke:#fff}
+ .tile b{font-size:15px;color:var(--ink);font-weight:700}
+ .tile small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+ .tile .arr{position:absolute;right:14px;top:18px;color:var(--ink-soft);transition:transform .18s}
+ .tile:hover .arr{transform:translateX(4px);color:var(--accent-ink)}
+
+ section{padding:clamp(58px,8vw,104px) 0}
+ .sec-head{max-width:620px;margin-bottom:36px}
+ .sec-head h2{font-size:clamp(1.5rem,1.1rem+1.4vw,2.1rem);margin-top:8px;color:var(--ink)}
+ .sec-head p{color:var(--ink-soft);margin-top:8px}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:26px 24px}
+ .step .n{font-family:"Space Grotesk",sans-serif;font-size:42px;font-weight:700;color:var(--accent);line-height:1}
+ .step h3{font-size:17px;margin:12px 0 6px;color:var(--ink)}
+ .step p{font-size:14px;color:var(--ink-soft)}
+
+ .band{position:relative;background:var(--dk-bg);color:var(--dk-ink);overflow:hidden}
+ .band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(46,158,99,.13) 1px,transparent 1px);background-size:30px 30px;-webkit-mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);opacity:.7}
+ .band::after{content:"";position:absolute;inset:0;opacity:.4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+ .band .wrap{position:relative;padding:clamp(48px,7vw,80px) 0}
+ .band h2{color:#fff;font-size:clamp(1.4rem,1.1rem+1.2vw,2rem)}
+ .band .lead{color:var(--dk-soft);margin-top:8px;max-width:560px}
+ .stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+ .stat .v{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums;font-size:clamp(2rem,1.4rem+2vw,3rem);font-weight:700;color:#fff;line-height:1}
+ .stat .v .u{color:var(--accent);font-size:.7em}
+ .stat .l{color:var(--dk-soft);font-size:13.5px;margin-top:6px}
+
+ .news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .ncard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s}
+ .ncard:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .ncard .top{height:5px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+ .ncard .in{padding:22px}
+ .ncard .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-ink)}
+ .ncard h3{font-size:16.5px;margin:9px 0;color:var(--ink);line-height:1.3}
+ .ncard p{font-size:13.5px;color:var(--ink-soft)}
+ .ncard .lk{margin-top:12px;font-size:13.5px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+ .ncard:hover .lk{gap:9px}
+
+ footer{background:var(--dk-bg);color:var(--dk-soft)}
+ footer .wrap{padding:54px 0 0;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:28px}
+ footer b{color:#fff;display:block;margin-bottom:12px;font-size:15px}
+ footer a{color:var(--dk-soft);display:block;margin-bottom:7px;font-size:14px;cursor:pointer}
+ footer a:hover{color:#fff}
+ .foot-brand p{font-size:13.5px;line-height:1.7}
+ .wcag{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--accent);border:1px solid var(--dk-line);border-radius:var(--r-pill);padding:5px 12px}
+ .legal{border-top:1px solid var(--dk-line);margin-top:44px}
+ .legal .wrap{padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--dk-soft)}
+
+ .js .reveal{opacity:0;transform:translateY(18px)}
+ .js .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+ /* ===== CHATBOT ===== */
+ #fab{position:fixed;right:26px;bottom:26px;z-index:200;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 16px;border:0;border-radius:var(--r-pill);
+   background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-weight:700;font-size:15px;box-shadow:var(--sh-accent),var(--sh-2);transition:transform .25s var(--ease),box-shadow .25s}
+ #fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+ #fab:hover{transform:translateY(-2px) scale(1.03)}
+ #fab::after{content:"";position:absolute;inset:0;border-radius:var(--r-pill);box-shadow:0 0 0 0 rgba(46,158,99,.4);animation:breathe 3.2s var(--ease) infinite;pointer-events:none}
+ @keyframes breathe{0%{box-shadow:0 0 0 0 rgba(46,158,99,.4)}70%{box-shadow:0 0 0 16px rgba(46,158,99,0)}100%{box-shadow:0 0 0 0 rgba(46,158,99,0)}}
+ #fab .badge{position:absolute;top:-4px;right:-2px;background:#C2334D;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+
+ #chat{position:fixed;right:26px;bottom:26px;z-index:210;width:404px;max-width:calc(100vw - 28px);height:640px;max-height:calc(100vh - 40px);
+   background:var(--surface);border-radius:var(--r-panel);box-shadow:var(--sh-4);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line);transform-origin:bottom right}
+ #chat.open{display:flex;animation:born .34s var(--ease)}
+ @keyframes born{from{opacity:0;transform:translateY(14px) scale(.95)}to{opacity:1;transform:none}}
+ .chead{position:relative;background:linear-gradient(135deg,var(--primary-700),var(--primary));color:#fff;padding:16px 16px 15px;display:flex;align-items:center;gap:12px}
+ .chead::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+ .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center}
+ .chead .av svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8}
+ .chead .t b{font-size:14.5px;display:block}
+ .chead .t span{font-size:12px;color:#bfe0cd;display:flex;align-items:center;gap:6px}
+ .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(31,168,92,.3)}
+ .chead .x{margin-left:auto;background:rgba(255,255,255,.1);border:0;color:#fff;font-size:20px;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+ .chead .x:hover{background:rgba(255,255,255,.2)}
+ .cbody{flex:1;overflow-y:auto;padding:18px 16px;background:var(--surface-2);display:flex;flex-direction:column;gap:11px}
+ .msg{max-width:88%;font-size:14px;line-height:1.55;white-space:pre-line}
+ .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:5px 16px 16px 16px;padding:10px 14px;box-shadow:var(--sh-1)}
+ .msg.user{align-self:flex-end;background:var(--primary);color:#fff;border-radius:16px 16px 5px 16px;padding:10px 14px}
+ .msg.bot a{color:var(--accent-ink);font-weight:700}
+ .stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.04em}
+ .msg-in{animation:msgin .32s var(--ease)}
+ @keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ .chips{display:flex;flex-wrap:wrap;gap:8px}
+ .chip{background:#fff;border:1px solid var(--line);color:var(--primary);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;min-height:36px}
+ .chip:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+ .chip.gold{border-color:var(--gold);background:var(--gold-soft);color:#8a610f}
+ .chip.gold:hover{background:#f7e6c2}
+ .rec{margin-top:4px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+ .rec .rh{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:12px;padding:7px 12px;display:flex;align-items:center;gap:7px}
+ .rec .ri{padding:11px 13px;border-top:1px solid var(--line)}
+ .rec .ri:first-of-type{border-top:0}
+ .rec .ri b{font-size:13.5px;color:var(--primary);display:block}
+ .rec .ri small{font-size:12.5px;color:var(--ink-soft);display:block;margin-top:3px}
+ .rec .ri .tag{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:3px 9px}
+ .prog{display:flex;gap:6px;margin:2px 0 6px}
+ .prog i{flex:1;height:4px;border-radius:3px;background:var(--line)}
+ .prog i.on{background:var(--accent)}
+ .typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px;display:flex;gap:5px}
+ .typing i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bn 1.2s infinite}
+ .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+ @keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+ .cfoot{border-top:1px solid var(--line);padding:11px;display:flex;gap:9px;background:#fff}
+ .cfoot input{flex:1;border:1px solid var(--line);border-radius:var(--r-pill);padding:12px 16px;font-size:14px;outline:none;transition:.15s}
+ .cfoot input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(46,158,99,.18)}
+ .cfoot .send{width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;cursor:pointer;transition:.15s}
+ .cfoot .send svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+ .cfoot .send:hover{background:var(--accent-ink)}
+ .clegal{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:6px 12px 9px;background:#fff}
+
+ @media(max-width:920px){
+   nav .navlinks{display:none}
+   .hero .wrap{grid-template-columns:1fr}
+   .hero .luxwrap{order:-1;max-width:440px}
+   .grid6{grid-template-columns:repeat(3,1fr)}
+   .steps,.news,.stats{grid-template-columns:1fr}
+   .stats{grid-template-columns:repeat(2,1fr)}
+   footer .wrap{grid-template-columns:1fr 1fr}
+ }
+ @media(max-width:560px){
+   .grid6{grid-template-columns:repeat(2,1fr)}
+   #fab span{display:none}#fab{padding:0;width:60px;height:60px;justify-content:center}
+   #chat{right:0;bottom:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:18px 18px 0 0}
+ }
+ @media (prefers-reduced-motion:reduce){
+   *{scroll-behavior:auto!important}
+   #fab::after,.live{animation:none}
+   #chat.open,.msg-in{animation:none}
+   .js .reveal{opacity:1;transform:none}
+ }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido" id="skip">Edukira jauzi</a>
+
+<div class="topbar"><div class="wrap">
+ <span class="status"><i class="live"></i><span id="status">Operatibo · naturguneak zabalik</span></span>
+ <span class="seg eu" id="seg" role="group" aria-label="Hizkuntza / Idioma">
+   <span class="thumb" aria-hidden="true"></span>
+   <button data-l="eu" class="on" aria-pressed="true">EU</button>
+   <button data-l="es" aria-pressed="false">ES</button>
+ </span>
+</div></div>
+
+<header id="hdr"><div class="wrap">
+ <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20l5-9 4 5 2-3 3 7M9 11a5 5 0 01.5-7"/></svg></div>
+ <div class="brand"><b>Naturguneak · Bizkaia</b><span id="bsub">Natura eta Nekazaritza Saila · BFA</span></div>
+ <nav>
+   <span class="navlinks" style="display:flex;gap:24px">
+     <a id="n1" onclick="ask('__plan')">Bisita planifikatu</a>
+     <a id="n2" onclick="ask('reservas')">Erreserbak</a>
+     <a id="n3" onclick="ask('ayudas')">Lehen sektorea</a>
+   </span>
+   <a class="nav-cta" id="ncta" href="#" onclick="openChat();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Galdetu</a>
+ </nav>
+</div></header>
+
+<main id="contenido">
+<section class="hero"><div class="wrap">
+ <div>
+   <span class="eyebrow" id="eyebrow">Bizkaiko naturguneak · IA Laguntzailea</span>
+   <h1 id="heroh">Bizkaiko natura, <span class="g">eskura.</span></h1>
+   <p class="lead" id="herop">Gaztelugatxe, Gorbeia, Urkiola eta Armañón. Esadazu zer gogo duzun eta zure bisita planifikatzen lagunduko dizut: nola iritsi, ordutegiak eta erreserbak, euskaraz eta gaztelaniaz, 24 orduz.</p>
+   <div class="cta">
+     <button class="btn btn-accent" onclick="ask('__plan')" id="herob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l-5 3V6l5-3 6 3 5-3v15l-5 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg> <span>Bisita planifikatu</span></button>
+     <a class="btn btn-ghost" href="#guneak" id="herob2">Naturguneak ikusi</a>
+   </div>
+   <div class="trust"><i class="live"></i><span id="herotrust">Laguntzailea linean · berehalako erantzuna</span></div>
+ </div>
+ <div class="luxwrap"><div class="luxcard">
+   <div class="lux-head">
+     <div class="lux-av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+     <div><b>Haritz</b><div class="st"><i class="dot" style="width:7px;height:7px"></i> <span id="luxst">Naturguneetako laguntzailea</span></div></div>
+   </div>
+   <div class="lux-msgs">
+     <div class="lux-q" id="luxq">Gaztelugatxera joan nahi dut. Erreserbatu behar da?</div>
+     <div class="lux-a"><div class="lux-stamp">NATURGUNEAK · 09:41</div><span id="luxa">Sarrera <b>doakoa</b> da. Edukiera-kontrola dagoen egunetan, doako sarrera erreserbatu behar da public.tiketa.eus/gaztelugatxe atarian. 241 maila daude. Nola iritsi jakin nahi?</span>
+       <div class="lux-chips"><span class="lux-chip">Erreserba</span><span class="lux-chip">Nola iritsi</span><span class="lux-chip">Ordutegia</span></div>
+     </div>
+   </div>
+ </div></div>
+</div></section>
+
+<div class="tiles" id="guneak"><div class="wrap"><div class="grid6" id="grid6"></div></div></div>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="pasos_k">Hasi hemen</span><h2 id="pasos_h">Hiru urrats, zure bisita</h2><p id="pasos_p">Esadazu zer gogo duzun eta naturgune egokira eramango zaitut.</p></div>
+ <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="band reveal"><div class="wrap">
+ <span class="eyebrow" style="color:var(--accent)" id="band_k">IA Laguntzailea</span>
+ <h2 id="band_h">Bisitariei arreta, itxaron gabe</h2>
+ <p class="lead" id="band_p">Galdera ohikoenak berehala argitzen ditu (nola iritsi, ordutegiak, erreserbak) eta bisitaria erreserbara eramaten du.</p>
+ <div class="stats" id="stats"></div>
+</div></section>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="news_k">Albisteak</span><h2 id="news_h">Naturguneetako berriak</h2></div>
+ <div class="news" id="news"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="foot-brand">
+   <b>Naturguneak · Bizkaia</b>
+   <p id="foot_dir">Natura eta Nekazaritza Saila — BFA<br>📞 944 068 000<br>🌿 Gaztelugatxe: 688 73 81 47<br>🌐 ebizkaia.eus</p>
+   <span class="wcag" id="wcag">✓ WCAG 2.1 AA betetzen du</span>
+ </div>
+ <div><b id="f_t1">Naturguneak</b><a onclick="ask('gaztelugatxe')">Gaztelugatxe</a><a onclick="ask('gorbeia')">Gorbeia</a><a onclick="ask('urkiola')">Urkiola</a><a onclick="ask('armanon')">Armañón</a></div>
+ <div><b id="f_t2">Laguntza</b><a onclick="ask('__plan')" id="f_plan">Bisita planifikatu</a><a onclick="ask('reservas')">Erreserbak</a><a onclick="openChat()" id="f_asist">IA Laguntzailea</a></div>
+ <div><b id="f_t3">Irisgarritasuna</b><a id="f_a1">Irisgarritasun-adierazpena</a><a id="f_a2">Lege-oharra</a><a id="f_a3">Pribatutasuna</a></div>
+</div>
+<div class="legal"><div class="wrap"><span>© Bizkaiko Foru Aldundia · Natura eta Nekazaritza</span><span id="disc">Naturguneetako laguntzaile birtualaren erakustaldia · datu publikoak</span></div></div>
+</footer>
+
+<button id="fab" onclick="openChat()" aria-label="Laguntzailea ireki">
+ <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span id="fablabel">Lagundu?</span>
+ <span class="badge">1</span>
+</button>
+
+<div id="chat" role="dialog" aria-modal="false" aria-label="Naturguneetako laguntzailea">
+ <div class="chead">
+   <div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+   <div class="t"><b id="cname">Haritz · Naturguneetako laguntzailea</b><span><i class="dot"></i> <span id="con">Linean · berehala erantzuten du</span></span></div>
+   <button class="x" onclick="closeChat()" aria-label="Itxi">×</button>
+ </div>
+ <div class="cbody" id="cbody" role="log" aria-live="polite" aria-label="Elkarrizketa"></div>
+ <div class="cfoot">
+   <input id="cinput" aria-label="Idatzi zure galdera" placeholder="Idatzi zure galdera…" autocomplete="off" onkeydown="if(event.key==='Enter')send()">
+   <button class="send" onclick="send()" aria-label="Bidali"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+ </div>
+ <div class="clegal" id="clegal">Orientabidezko informazioa · egiaztatu ordutegiak eta edukiera bisitatu aurretik</div>
+</div>
+
+<script>
+document.documentElement.classList.add("js");
+
+/* ===== UI i18n ===== */
+const UI={
+ es:{status:"Operativo · espacios naturales abiertos",bsub:"Medio Natural y Agricultura · DFB",
+  n1:"Planifica tu visita",n2:"Reservas",n3:"Sector primario",ncta:"Preguntar",
+  eyebrow:"Espacios naturales de Bizkaia · Asistente IA",heroh:'La naturaleza de Bizkaia, <span class="g">a tu alcance.</span>',
+  herop:"Gaztelugatxe, Gorbeia, Urkiola y Armañón. Dime qué te apetece y te ayudo a planificar tu visita: cómo llegar, horarios y reservas, en euskera y castellano, las 24 horas.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l-5 3V6l5-3 6 3 5-3v15l-5 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg> <span>Planifica tu visita</span>',
+  herob2:"Ver espacios naturales",herotrust:"Asistente en línea · respuesta inmediata",
+  luxst:"Asistente de espacios naturales",luxq:"Quiero ir a Gaztelugatxe. ¿Hay que reservar?",
+  luxa:"El acceso es <b>gratuito</b>. En los días con control de aforo hay que reservar una entrada gratuita en public.tiketa.eus/gaztelugatxe. Son 241 escalones. ¿Te digo cómo llegar?",
+  pasos_k:"Empieza aquí",pasos_h:"Tres pasos, tu visita",pasos_p:"Dime qué te apetece y te llevo al espacio natural que mejor encaja.",
+  band_k:"Asistente IA",band_h:"Atención al visitante, sin esperas",band_p:"Resuelve al instante las dudas más frecuentes (cómo llegar, horarios, reservas) y acompaña al visitante hasta la reserva.",
+  news_k:"Actualidad",news_h:"Novedades de los espacios naturales",
+  foot_dir:"Medio Natural y Agricultura — DFB<br>📞 944 068 000<br>🌿 Gaztelugatxe: 688 73 81 47<br>🌐 ebizkaia.eus",
+  wcag:"✓ Conforme WCAG 2.1 AA",f_t1:"Espacios",f_t2:"Ayuda",f_t3:"Accesibilidad",f_plan:"Planifica tu visita",f_asist:"Asistente IA",
+  f_a1:"Declaración de accesibilidad",f_a2:"Aviso legal",f_a3:"Privacidad",
+  disc:"Demostración de asistente virtual de espacios naturales · datos públicos",
+  cname:"Haritz · Asistente de espacios naturales",con:"En línea · responde al instante",fablabel:"¿Te ayudo?",
+  ph:"Escribe tu pregunta…",clegal:"Información orientativa · confirma horarios y aforo antes de tu visita",skip:"Saltar al contenido",
+  tiles:[["__plan","Planifica tu visita","Dime qué te apetece y te oriento",1],["gaztelugatxe","Gaztelugatxe","Ermita, islote y 241 escalones",0],["gorbeia","Gorbeia","El parque más extenso de Euskadi",0],["urkiola","Urkiola","Santuario, Anboto y hayedos",0],["armanon","Armañón","Cueva de Pozalagua y Karpin",0],["ayudas","Sector primario","Ayudas a baserritarras",0]],
+  steps:[["Dime qué te apetece","¿Costa y vistas, montaña, cuevas o un plan en familia? ¿Vas en coche o en transporte público?"],["Te recomiendo el espacio","Te propongo el espacio natural que encaja y cómo llegar."],["Te digo si hay que reservar","Te indico si necesitas reserva y cómo hacerla, o te derivo al parketxe."]],
+  stats:[["4","espacios naturales",""],["241","escalones a Gaztelugatxe",""],["2","idiomas · euskera y castellano",""],["24/7","atención al visitante",""]],
+  news:[["Gaztelugatxe","Reserva gratuita en días de aforo","En temporada alta se reserva una entrada gratuita por franja en public.tiketa.eus/gaztelugatxe.","gaztelugatxe"],["Parketxes","Gorbeia, Urkiola y Armañón","Centros de interpretación, rutas y visitas guiadas; algunas con reserva por teléfono o email.","__plan"],["Atención","Nuevo asistente virtual","Resuelve dudas y planifica tu visita a los espacios naturales, 24 horas.","__chat"]]},
+ eu:{status:"Operatibo · naturguneak zabalik",bsub:"Natura eta Nekazaritza Saila · BFA",
+  n1:"Bisita planifikatu",n2:"Erreserbak",n3:"Lehen sektorea",ncta:"Galdetu",
+  eyebrow:"Bizkaiko naturguneak · IA Laguntzailea",heroh:'Bizkaiko natura, <span class="g">eskura.</span>',
+  herop:"Gaztelugatxe, Gorbeia, Urkiola eta Armañón. Esadazu zer gogo duzun eta zure bisita planifikatzen lagunduko dizut: nola iritsi, ordutegiak eta erreserbak, euskaraz eta gaztelaniaz, 24 orduz.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l-5 3V6l5-3 6 3 5-3v15l-5 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg> <span>Bisita planifikatu</span>',
+  herob2:"Naturguneak ikusi",herotrust:"Laguntzailea linean · berehalako erantzuna",
+  luxst:"Naturguneetako laguntzailea",luxq:"Gaztelugatxera joan nahi dut. Erreserbatu behar da?",
+  luxa:"Sarrera <b>doakoa</b> da. Edukiera-kontrola dagoen egunetan, doako sarrera erreserbatu behar da public.tiketa.eus/gaztelugatxe atarian. 241 maila daude. Nola iritsi jakin nahi?",
+  pasos_k:"Hasi hemen",pasos_h:"Hiru urrats, zure bisita",pasos_p:"Esadazu zer gogo duzun eta naturgune egokira eramango zaitut.",
+  band_k:"IA Laguntzailea",band_h:"Bisitariei arreta, itxaron gabe",band_p:"Galdera ohikoenak berehala argitzen ditu (nola iritsi, ordutegiak, erreserbak) eta bisitaria erreserbara eramaten du.",
+  news_k:"Albisteak",news_h:"Naturguneetako berriak",
+  foot_dir:"Natura eta Nekazaritza Saila — BFA<br>📞 944 068 000<br>🌿 Gaztelugatxe: 688 73 81 47<br>🌐 ebizkaia.eus",
+  wcag:"✓ WCAG 2.1 AA betetzen du",f_t1:"Naturguneak",f_t2:"Laguntza",f_t3:"Irisgarritasuna",f_plan:"Bisita planifikatu",f_asist:"IA Laguntzailea",
+  f_a1:"Irisgarritasun-adierazpena",f_a2:"Lege-oharra",f_a3:"Pribatutasuna",
+  disc:"Naturguneetako laguntzaile birtualaren erakustaldia · datu publikoak",
+  cname:"Haritz · Naturguneetako laguntzailea",con:"Linean · berehala erantzuten du",fablabel:"Lagundu?",
+  ph:"Idatzi zure galdera…",clegal:"Orientabidezko informazioa · egiaztatu ordutegiak eta edukiera bisitatu aurretik",skip:"Edukira jauzi",
+  tiles:[["__plan","Bisita planifikatu","Esadazu zer gogo duzun eta orientatuko zaitut",1],["gaztelugatxe","Gaztelugatxe","Baseliza, uhartea eta 241 maila",0],["gorbeia","Gorbeia","Euskadiko parkerik zabalena",0],["urkiola","Urkiola","Santutegia, Anboto eta pagadiak",0],["armanon","Armañón","Pozalaguako kobazuloa eta Karpin",0],["ayudas","Lehen sektorea","Baserritarrentzako laguntzak",0]],
+  steps:[["Esadazu zer gogo duzun","Kostaldea, mendia, kobazuloak edo familia-plana? Kotxez ala garraio publikoz?"],["Naturgunea gomendatuko dizut","Egokitzen zaizun naturgunea eta nola iritsi proposatuko dizut."],["Erreserbatu behar den esango dizut","Erreserba behar duzun eta nola egin adieraziko dizut, edo parketxera bideratuko zaitut."]],
+  stats:[["4","naturgune",""],["241","maila Gaztelugatxera",""],["2","hizkuntza · euskara eta gaztelania",""],["24/7","bisitariei arreta",""]],
+  news:[["Gaztelugatxe","Doako erreserba edukiera-egunetan","Denboraldi altuan, doako sarrera erreserbatzen da ordu-tartez public.tiketa.eus/gaztelugatxe atarian.","gaztelugatxe"],["Parketxeak","Gorbeia, Urkiola eta Armañón","Interpretazio-zentroak, ibilbideak eta bisita gidatuak; batzuk telefonoz edo emailez erreserbatuta.","__plan"],["Arreta","Laguntzaile birtual berria","Zalantzak argitu eta naturguneetarako bisita planifikatzen du, 24 orduz.","__chat"]]}
+};
+let LANG="eu";
+
+/* ===== Catálogo de espacios (para el planificador) ===== */
+const ESP={
+ gaztelugatxe:{acc:false,es:{n:"San Juan de Gaztelugatxe",q:"Ermita en un islote unida por 241 escalones; vistas de cine (Rocadragón en Juego de Tronos).",llegar:"En coche desde Bilbao ~45 min (BI-631/BI-3101), parking de pago en Eneperi. En bus: Bizkaibus A3518 Bilbao-Bakio.",reserva:"Acceso gratuito; en días de control de aforo hay que reservar entrada gratuita en public.tiketa.eus/gaztelugatxe.",tel:"688 73 81 47"},
+  eu:{n:"San Joan Gaztelugatxe",q:"Baseliza uharte batean, 241 mailaz lotua; zinemako bistak (Rocadragón Tronuen Jokoan).",llegar:"Kotxez Bilbotik ~45 min (BI-631/BI-3101), ordainpeko aparkalekua Eneperin. Autobusez: Bizkaibus A3518 Bilbo-Bakio.",reserva:"Sarrera doakoa; edukiera-kontrola dagoen egunetan, doako sarrera erreserbatu behar da public.tiketa.eus/gaztelugatxe atarian.",tel:"688 73 81 47"}},
+ gorbeia:{acc:null,es:{n:"Parque Natural de Gorbeia",q:"El parque más extenso de Euskadi: la Cruz del Gorbeia, Itxina y el Ojo de Atxulaur. Parketxe de Areatza.",llegar:"En coche por el valle de Arratia hasta Areatza (Gudarien Plaza 1); las rutas salen del área recreativa de Pagomakurre.",reserva:"Visitas guiadas y rutas con cita previa, por teléfono o email al parketxe.",tel:"946 739 279"},
+  eu:{n:"Gorbeiako Parke Naturala",q:"Euskadiko parkerik zabalena: Gorbeiako Gurutzea, Itxina eta Atxularreko begia. Areatzako parketxea.",llegar:"Kotxez Arratiako haranetik Areatzaraino (Gudarien Plaza 1); ibilbideak Pagomakurreko atsedenlekutik abiatzen dira.",reserva:"Bisita gidatuak eta ibilbideak aurretiko hitzorduz, telefonoz edo emailez parketxera.",tel:"946 739 279"}},
+ urkiola:{acc:null,es:{n:"Parque Natural de Urkiola",q:"Santuario de los Santos Antonios, la peña de Anboto (morada de Mari), hayedos y buitres. Centro Toki Alai.",llegar:"En coche por la A-8 salida Durango y BI-623 al puerto de Urkiola. En bus: Bizkaibus A3923 a Durango + línea a Vitoria con parada en Urkiola.",reserva:"Programa familiar autoguiado gratuito y visitas guiadas: por teléfono o email a Toki Alai.",tel:"946 814 155"},
+  eu:{n:"Urkiolako Parke Naturala",q:"Santu Antonioen santutegia, Anboto (Mariren egoitza), pagadiak eta saiak. Toki Alai zentroa.",llegar:"Kotxez A-8 Durango irteera eta BI-623 Urkiolako mendatera. Autobusez: Bizkaibus A3923 Durangora + Gasteizerako lerroa Urkiolan geldialdiarekin.",reserva:"Familia-programa autogidatu doakoa eta bisita gidatuak: telefonoz edo emailez Toki Alaira.",tel:"946 814 155"}},
+ armanon:{acc:true,es:{n:"Parque Natural de Armañón (Pozalagua)",q:"Más de 200 cuevas; la Cueva de Pozalagua, con la mayor concentración mundial de estalactitas excéntricas. Karpin Fauna cerca.",llegar:"En coche por la BI-4679 dirección Ranero (Karrantza), ~1 h desde Bilbao.",reserva:"La Cueva de Pozalagua solo se visita guiada: reserva en cuevadepozalagua.eus o 649 811 673. Parketxe: 946 560 079.",tel:"946 560 079"},
+  eu:{n:"Armañongo Parke Naturala (Pozalagua)",q:"200 kobazulo baino gehiago; Pozalaguako kobazuloa, munduko estalaktita exzentriko-pilaketa handienarekin. Karpin Fauna gertu.",llegar:"Kotxez BI-4679 errepidetik Ranero norabidean (Karrantza), ~ordubete Bilbotik.",reserva:"Pozalaguako kobazuloa bisita gidatuz soilik: erreserba cuevadepozalagua.eus atarian edo 649 811 673. Parketxea: 946 560 079.",tel:"946 560 079"}}
+};
+
+/* ===== KB (motor del chat) ===== */
+const KB=[
+ {id:"saludo",keys:["hola","buenas","kaixo","egun on","epa","gabon","aupa"],
+  es:"¡Kaixo! 👋 Soy <b>Haritz</b>, el asistente de los <b>espacios naturales de Bizkaia</b>. Te ayudo con <b>Gaztelugatxe, Gorbeia, Urkiola y Armañón</b>: cómo llegar, horarios, reservas y normas. ¿Quieres que te ayude a <b>planificar tu visita</b>?",
+  eu:"Kaixo! 👋 <b>Haritz</b> naiz, <b>Bizkaiko naturguneetako</b> laguntzailea. <b>Gaztelugatxe, Gorbeia, Urkiola eta Armañón</b>-ekin laguntzen dizut: nola iritsi, ordutegiak, erreserbak eta arauak. <b>Zure bisita planifikatzen</b> lagundu nahi?"},
+ {id:"gaztelugatxe",keys:["gaztelugatxe","san juan","gaztelu","juego de tronos","rocadragon","escalones","ermita","campana","bermeo","bakio","mailak","baseliza"],
+  es:"⛪ <b>San Juan de Gaztelugatxe</b>\nErmita en un islote unida a tierra por <b>241 escalones</b>; tocar la campana 3 veces y pedir un deseo. Fue Rocadragón en Juego de Tronos.\n• <b>Acceso gratuito.</b> En días de control de aforo hay que reservar entrada gratuita en <b>public.tiketa.eus/gaztelugatxe</b>.\n• Cómo llegar: coche ~45 min desde Bilbao (parking de pago en Eneperi) o Bizkaibus A3518 Bilbao-Bakio.\n• ⚠️ No apto para movilidad reducida (pendientes y escaleras).\n☎️ 688 73 81 47.",
+  eu:"⛪ <b>San Joan Gaztelugatxe</b>\nUharte bateko baseliza, lurrari <b>241 mailaz</b> lotua; ezkila 3 aldiz jo eta desira eskatu. Rocadragón izan zen Tronuen Jokoan.\n• <b>Sarrera doakoa.</b> Edukiera-kontrola dagoen egunetan, doako sarrera erreserbatu behar da <b>public.tiketa.eus/gaztelugatxe</b> atarian.\n• Nola iritsi: kotxez ~45 min Bilbotik (ordainpeko aparkalekua Eneperin) edo Bizkaibus A3518 Bilbo-Bakio.\n• ⚠️ Ez da egokia mugikortasun urrikoentzat (aldapak eta eskailerak).\n☎️ 688 73 81 47."},
+ {id:"gorbeia",keys:["gorbeia","gorbea","areatza","pagomakurre","cruz","itxina","atxulaur","arratia","aldamin"],
+  es:"⛰️ <b>Parque Natural de Gorbeia</b>\nEl espacio protegido más extenso de Euskadi (20.016 ha). Lo más visitado: la <b>Cruz del Gorbeia</b>, Itxina y el Ojo de Atxulaur.\n• <b>Parketxe de Areatza</b> (Gudarien Plaza 1): centro de interpretación y punto de info; las rutas salen de Pagomakurre.\n• Horario orientativo: 10:00-14:00 y 16:00-18:00 (confirma por temporada).\n• Visitas guiadas con cita previa.\n☎️ 946 739 279 · gorbeia.parke.naturala@bizkaia.eus",
+  eu:"⛰️ <b>Gorbeiako Parke Naturala</b>\nEuskadiko babestutako gunerik zabalena (20.016 ha). Ikusgarrienak: <b>Gorbeiako Gurutzea</b>, Itxina eta Atxularreko begia.\n• <b>Areatzako parketxea</b> (Gudarien Plaza 1): interpretazio-zentroa eta info-gunea; ibilbideak Pagomakurretik.\n• Ordutegi orientagarria: 10:00-14:00 eta 16:00-18:00 (egiaztatu denboraldiaren arabera).\n• Bisita gidatuak aurretiko hitzorduz.\n☎️ 946 739 279 · gorbeia.parke.naturala@bizkaia.eus"},
+ {id:"urkiola",keys:["urkiola","toki alai","anboto","mari","santuario","santos antonios","buitres","abadiño","duranguesado","saiak","pagadi"],
+  es:"🌲 <b>Parque Natural de Urkiola</b>\nGran barrera caliza con el <b>santuario de los Santos Antonios</b>, la peña de <b>Anboto</b> (morada de Mari), hayedos y buitres leonados.\n• <b>Centro Toki Alai</b> (Urkiolako mendatea 8, Abadiño): exposición y cámara en directo de buitres.\n• Horario: nov-mar 10:30-14:30 y 15:30-17:30; abr-oct 10:00-14:00 y 16:00-18:00. Acceso al parque libre 24 h.\n• Programa familiar autoguiado gratuito y visitas guiadas (reserva por tel/email).\n☎️ 946 814 155 · urkiola.parke.naturala@bizkaia.eus",
+  eu:"🌲 <b>Urkiolako Parke Naturala</b>\nKareharrizko hesi handia: <b>Santu Antonioen santutegia</b>, <b>Anboto</b> (Mariren egoitza), pagadiak eta sai arreak.\n• <b>Toki Alai zentroa</b> (Urkiolako mendatea 8, Abadiño): erakusketa eta saien zuzeneko kamera.\n• Ordutegia: aza-mar 10:30-14:30 eta 15:30-17:30; api-urr 10:00-14:00 eta 16:00-18:00. Parkerako sarbidea libre 24 orduz.\n• Familia-programa autogidatu doakoa eta bisita gidatuak (erreserba tel/emailez).\n☎️ 946 814 155 · urkiola.parke.naturala@bizkaia.eus"},
+ {id:"armanon",keys:["armanon","armañon","pozalagua","cueva","cuevas","estalactitas","karpin","karrantza","carranza","ranero","kobazulo","haitzulo"],
+  es:"🕳️ <b>Parque Natural de Armañón · Cueva de Pozalagua</b>\nEn el Valle de Karrantza, con más de 200 cuevas. La <b>Cueva de Pozalagua</b> tiene la mayor concentración del mundo de <b>estalactitas excéntricas</b> (visita guiada ~50 min, ~13°, lleva abrigo). Cerca, Karpin Fauna.\n• La cueva <b>solo se visita guiada</b>: reserva en <b>cuevadepozalagua.eus</b> o 649 811 673.\n• Cueva accesible (~90%): rampa, ascensor y pasarela.\n• Cómo llegar: BI-4679 dirección Ranero, ~1 h desde Bilbao.\n☎️ Parketxe 946 560 079 · armanon.parke.naturala@bizkaia.eus",
+  eu:"🕳️ <b>Armañongo Parke Naturala · Pozalaguako kobazuloa</b>\nKarrantza haranean, 200 kobazulo baino gehiagorekin. <b>Pozalaguako kobazuloak</b> munduko <b>estalaktita exzentriko</b> pilaketa handiena du (bisita gidatua ~50 min, ~13°, eraman beroki). Gertu, Karpin Fauna.\n• Kobazuloa <b>bisita gidatuz soilik</b>: erreserba <b>cuevadepozalagua.eus</b> atarian edo 649 811 673.\n• Kobazuloa irisgarria (~%90): arrapala, igogailua eta pasabidea.\n• Nola iritsi: BI-4679 Ranero norabidean, ~ordubete Bilbotik.\n☎️ Parketxea 946 560 079 · armanon.parke.naturala@bizkaia.eus"},
+ {id:"reservas",keys:["reserva","reservar","reservas","entrada","entradas","aforo","cita previa","tiketa","erreserba","erreserbatu","sarrera","edukiera"],
+  es:"🎟️ <b>Reservas</b>\nHay dos modelos:\n• <b>Gaztelugatxe</b>: reserva online de entrada <b>gratuita</b> en <b>public.tiketa.eus/gaztelugatxe</b>, obligatoria solo en días de control de aforo (el resto, acceso libre). El no-show puede impedir reservar durante un año.\n• <b>Parketxes</b> (Gorbeia, Urkiola, Armañón): las visitas guiadas se reservan <b>por teléfono o email a cada centro</b> (aún de forma manual).\n¿De qué espacio quieres reservar?",
+  eu:"🎟️ <b>Erreserbak</b>\nBi eredu daude:\n• <b>Gaztelugatxe</b>: <b>doako</b> sarreraren erreserba online <b>public.tiketa.eus/gaztelugatxe</b> atarian, edukiera-kontrola dagoen egunetan soilik (gainerakoetan, sarrera libre). Joaten ez bazara, urtebetez erreserbatzea galaraz dezake.\n• <b>Parketxeak</b> (Gorbeia, Urkiola, Armañón): bisita gidatuak <b>telefonoz edo emailez zentro bakoitzera</b> erreserbatzen dira (eskuz oraindik).\nZein gunerako erreserbatu nahi duzu?"},
+ {id:"como_llegar",keys:["como llegar","como ir","llegar","aparcar","parking","aparcamiento","bus","autobus","bizkaibus","transporte","tren","nola iritsi","aparkaleku","garraio"],
+  es:"🚗 <b>Cómo llegar</b>\nDime a qué espacio vas y te doy la ruta en coche y el bus:\n• Gaztelugatxe → Bizkaibus A3518 (Bilbao-Bakio).\n• Gorbeia (Areatza) → por el valle de Arratia.\n• Urkiola → A-8 salida Durango + BI-623; Bizkaibus A3923 a Durango.\n• Armañón (Pozalagua) → BI-4679 dirección Ranero (Karrantza).\nInfo Bizkaibus: <b>946 125 555</b>. ¿De cuál te paso el detalle?",
+  eu:"🚗 <b>Nola iritsi</b>\nEsadazu zein gunetara zoazen eta kotxez eta autobusez emango dizut:\n• Gaztelugatxe → Bizkaibus A3518 (Bilbo-Bakio).\n• Gorbeia (Areatza) → Arratiako haranetik.\n• Urkiola → A-8 Durango irteera + BI-623; Bizkaibus A3923 Durangora.\n• Armañón (Pozalagua) → BI-4679 Ranero norabidean (Karrantza).\nBizkaibus info: <b>946 125 555</b>. Zeinen xehetasuna nahi duzu?"},
+ {id:"horarios",keys:["horario","horarios","abierto","cierra","cuando abre","ordutegi","noiz","zabalik","ireki"],
+  es:"🕒 <b>Horarios (orientativos)</b>\n• Parketxe de Gorbeia: 10:00-14:00 y 16:00-18:00.\n• Toki Alai (Urkiola): nov-mar 10:30-14:30 y 15:30-17:30; abr-oct 10:00-14:00 y 16:00-18:00.\n• Parketxe de Armañón: martes a domingo, mañana y tarde (jul-ago suele abrir a diario).\n• Gaztelugatxe: acceso al recinto en horario diurno; en días de aforo, por franjas reservadas.\n⚠️ Pueden variar por temporada o festivos: confirma por teléfono antes de ir.",
+  eu:"🕒 <b>Ordutegiak (orientagarriak)</b>\n• Gorbeiako parketxea: 10:00-14:00 eta 16:00-18:00.\n• Toki Alai (Urkiola): aza-mar 10:30-14:30 eta 15:30-17:30; api-urr 10:00-14:00 eta 16:00-18:00.\n• Armañongo parketxea: asteartetik igandera, goiz eta arratsalde (uzt-abu egunero ohi).\n• Gaztelugatxe: eguneko ordutegian; edukiera-egunetan, erreserbatutako ordu-tartez.\n⚠️ Aldatu daitezke denboraldi edo jaiengatik: egiaztatu telefonoz joan aurretik."},
+ {id:"normas",keys:["norma","normas","perro","perros","mascota","fuego","hoguera","basura","dron","drones","acampar","arau","txakur","sua","zabor"],
+  es:"📋 <b>Normas para visitantes</b>\n• <b>Perros</b>: con correa (en Gaztelugatxe y parques; confirma casos concretos).\n• <b>Fuego/barbacoas</b>: solo en zonas habilitadas; prohibido en verano por riesgo de incendio.\n• <b>Residuos</b>: llévate tu basura.\n• En Gaztelugatxe: prohibido drones, acampar y escalar.\nAyuda a cuidar el entorno: respeta la fauna, la flora y los senderos señalizados.",
+  eu:"📋 <b>Bisitarientzako arauak</b>\n• <b>Txakurrak</b>: uhalarekin (Gaztelugatxen eta parkeetan; egiaztatu kasu zehatzak).\n• <b>Sua/barbakoak</b>: gune egokituetan soilik; udan debekatuta sute-arriskuagatik.\n• <b>Hondakinak</b>: eraman zure zaborra.\n• Gaztelugatxen: dronak, kanpina egitea eta eskalada debekatuta.\nLagundu ingurua zaintzen: errespetatu fauna, flora eta bidezidor seinaleztatuak."},
+ {id:"accesibilidad",keys:["accesible","accesibilidad","silla de ruedas","movilidad reducida","carrito","discapacidad","irisgarri","gurpil-aulki"],
+  es:"♿ <b>Accesibilidad</b>\n• <b>Cueva de Pozalagua (Armañón)</b>: accesible (~90%), con rampa, ascensor y pasarela — la mejor opción.\n• <b>Gaztelugatxe</b>: NO apto para movilidad reducida (241 escalones y pendientes).\n• <b>Parketxes de Gorbeia y Urkiola</b>: confirma la accesibilidad del edificio llamando al centro antes de ir.\n¿Quieres el teléfono de alguno?",
+  eu:"♿ <b>Irisgarritasuna</b>\n• <b>Pozalaguako kobazuloa (Armañón)</b>: irisgarria (~%90), arrapala, igogailu eta pasabidearekin — aukerarik onena.\n• <b>Gaztelugatxe</b>: EZ da egokia mugikortasun urrikoentzat (241 maila eta aldapak).\n• <b>Gorbeia eta Urkiolako parketxeak</b>: egiaztatu eraikinaren irisgarritasuna zentrora deituta joan aurretik.\nNorbaiten telefonoa nahi duzu?"},
+ {id:"ayudas",keys:["ayuda sector","baserritarra","baserri","agricultor","ganadero","agricultura","ganaderia","forestal","monte","montes","explotacion","pac","subvencion sector","relevo","joven agricultor","nekazari","abeltzain","laguntza","ustiategi"],
+  es:"🚜 <b>Ayudas al sector primario</b>\nEl Departamento gestiona ayudas a <b>agricultura, ganadería, sector forestal/montes</b> y pesca fluvial: PAC foral (Solicitud Única), ayudas forestales, modernización de explotaciones, relevo generacional (jóvenes agricultores) y ganadería extensiva.\n• Requisito: estar inscrito en el <b>Registro de Explotaciones Agrarias</b>.\n• Dónde: sede electrónica <b>ebizkaia.eus</b>, las <b>Oficinas Comarcales Agrarias (OCA)</b> o el centro LORRA.\nℹ️ Importes y plazos según convocatoria (BOB / bizkaia.eus). ☎️ 944 068 000.",
+  eu:"🚜 <b>Lehen sektoreko laguntzak</b>\nSailak <b>nekazaritza, abeltzaintza, baso-sektorea/mendiak</b> eta ibai-arrantzarako laguntzak kudeatzen ditu: PAC forala (Eskaera Bakarra), baso-laguntzak, ustiategien modernizazioa, belaunaldi-aldaketa (nekazari gazteak) eta abeltzaintza estentsiboa.\n• Baldintza: <b>Nekazaritza Ustiategien Erregistroan</b> izena emanda egotea.\n• Non: <b>ebizkaia.eus</b> egoitza elektronikoa, <b>Eskualdeko Nekazaritza Bulegoak (OCA)</b> edo LORRA zentroa.\nℹ️ Zenbatekoak eta epeak deialdiaren arabera (BAO / bizkaia.eus). ☎️ 944 068 000."},
+ {id:"contacto",keys:["telefono","contacto","llamar","email","correo","direccion","kontaktu","deitu","helbide","telefonoa"],
+  es:"📞 <b>Contacto</b>\n• Centralita DFB: <b>944 068 000</b>\n• Espacios naturales / Gaztelugatxe: <b>688 73 81 47</b> · gaztelugatxe@bizkaia.eus\n• Parketxe Gorbeia: <b>946 739 279</b>\n• Parketxe Urkiola (Toki Alai): <b>946 814 155</b>\n• Parketxe Armañón: <b>946 560 079</b>\n• Bizkaibus: <b>946 125 555</b> · Trámites: ebizkaia.eus",
+  eu:"📞 <b>Kontaktua</b>\n• BFA telefono nagusia: <b>944 068 000</b>\n• Naturguneak / Gaztelugatxe: <b>688 73 81 47</b> · gaztelugatxe@bizkaia.eus\n• Gorbeiako parketxea: <b>946 739 279</b>\n• Urkiolako parketxea (Toki Alai): <b>946 814 155</b>\n• Armañongo parketxea: <b>946 560 079</b>\n• Bizkaibus: <b>946 125 555</b> · Izapideak: ebizkaia.eus"},
+ {id:"persona",keys:["persona","hablar con alguien","humano","operador","agente","pertsona","quiero hablar"],
+  es:"🙋 Te derivo a una persona:\n• <b>944 068 000</b> (centralita DFB)\n• <b>688 73 81 47</b> (espacios naturales / Gaztelugatxe)\n• O el parketxe del espacio que te interese.\nAtención en días laborables.",
+  eu:"🙋 Pertsona batengana bideratzen zaitut:\n• <b>944 068 000</b> (BFA telefono nagusia)\n• <b>688 73 81 47</b> (naturguneak / Gaztelugatxe)\n• Edo interesatzen zaizun guneko parketxea.\nArreta lanegunetan."},
+ {id:"fuera",keys:["urdaibai","busturialdea","gernika","renta","irpf","padron","empadron","osakidetza","medico","dni","carnet","multa","lanbide","playa","hondartza"],
+  es:"ℹ️ Eso queda fuera de los espacios naturales que gestiona este departamento. Para no darte información incorrecta:\n• <b>Urdaibai</b> (Reserva de la Biosfera) lo gestiona el <b>Gobierno Vasco</b>, no la Diputación → euskadi.eus.\n• <b>Renta / impuestos</b> → Hacienda Foral (901 502 000).\n• <b>Padrón, multas…</b> → tu Ayuntamiento.\nYo te ayudo con <b>Gaztelugatxe, Gorbeia, Urkiola, Armañón</b> y las ayudas al sector primario. ¿Te oriento?",
+  eu:"ℹ️ Hori sail honek kudeatzen dituen naturguneetatik kanpo dago. Informazio okerrik ez emateko:\n• <b>Urdaibai</b> (Biosfera Erreserba) <b>Eusko Jaurlaritzak</b> kudeatzen du, ez Aldundiak → euskadi.eus.\n• <b>Errenta / zergak</b> → Foru Ogasuna (901 502 000).\n• <b>Errolda, isunak…</b> → zure Udala.\nNik <b>Gaztelugatxe, Gorbeia, Urkiola, Armañón</b> eta lehen sektoreko laguntzetan laguntzen dizut. Orientatu?"},
+ {id:"gracias",keys:["gracias","eskerrik asko","ok","vale","perfecto","adios","agur","mila esker","genial"],
+  es:"¡Un placer! 😊 Recuerda que es información orientativa; confirma horarios y aforo antes de ir (en Gaztelugatxe, public.tiketa.eus/gaztelugatxe). ¡Agur y buena visita! 🌿",
+  eu:"Pozik! 😊 Gogoratu orientabidezko informazioa dela; egiaztatu ordutegiak eta edukiera joan aurretik (Gaztelugatxen, public.tiketa.eus/gaztelugatxe). Agur eta bisita ona! 🌿"}
+];
+const CHIPS={
+ es:[["__plan","🧭 Planifica tu visita","gold"],["gaztelugatxe","⛪ Gaztelugatxe"],["reservas","🎟️ Reservas"],["como_llegar","🚗 Cómo llegar"],["ayudas","🚜 Sector primario"]],
+ eu:[["__plan","🧭 Bisita planifikatu","gold"],["gaztelugatxe","⛪ Gaztelugatxe"],["reservas","🎟️ Erreserbak"],["como_llegar","🚗 Nola iritsi"],["ayudas","🚜 Lehen sektorea"]]
+};
+
+/* ===== Wizard (planifica tu visita) ===== */
+const WIZ={
+ es:{intro:"🧭 <b>Planifica tu visita</b>\nDos preguntas rápidas y te recomiendo el espacio natural que encaja.\n\n<b>1/2 · ¿Qué te apetece?</b>",
+  q2:"<b>2/2 · ¿Cómo vas?</b>",
+  result:"✨ <b>Esto es lo que te recomiendo</b>",
+  foot:"Información orientativa; confirma horarios y aforo antes de ir.",
+  tipos:[["costa","🌊 Costa y vistas"],["montana","⛰️ Montaña y rutas"],["cuevas","🕳️ Cuevas"],["familia","👨‍👩‍👧 Plan en familia"]],
+  prefs:[["coche","🚗 En coche"],["bus","🚌 Transporte público"],["accesible","♿ Necesito accesible"],["igual","Me da igual"]]},
+ eu:{intro:"🧭 <b>Bisita planifikatu</b>\nBi galdera azkar eta egokitzen zaizun naturgunea gomendatuko dizut.\n\n<b>1/2 · Zer gogo duzu?</b>",
+  q2:"<b>2/2 · Nola zoaz?</b>",
+  result:"✨ <b>Hau gomendatzen dizut</b>",
+  foot:"Orientabidezko informazioa; egiaztatu ordutegiak eta edukiera joan aurretik.",
+  tipos:[["costa","🌊 Kostaldea eta bistak"],["montana","⛰️ Mendia eta ibilbideak"],["cuevas","🕳️ Kobazuloak"],["familia","👨‍👩‍👧 Familia-plana"]],
+  prefs:[["coche","🚗 Kotxez"],["bus","🚌 Garraio publikoz"],["accesible","♿ Irisgarria behar dut"],["igual","Berdin zait"]]}
+};
+function recommendVisita(tipo){
+ const map={costa:["gaztelugatxe"],montana:["gorbeia","urkiola"],cuevas:["armanon"],familia:["urkiola","armanon"]};
+ return (map[tipo]||["gaztelugatxe"]).slice(0,2);
+}
+function prefNote(pref,ids){
+ const L=LANG;
+ if(pref==="accesible"){
+  if(ids.includes("armanon"))return L==="es"?"♿ Buena elección: la Cueva de Pozalagua es accesible (~90%, rampa y ascensor).":"♿ Aukera ona: Pozalaguako kobazuloa irisgarria da (~%90, arrapala eta igogailua).";
+  if(ids.includes("gaztelugatxe"))return L==="es"?"⚠️ Gaztelugatxe NO es apto para movilidad reducida (241 escalones). Alternativa accesible: la Cueva de Pozalagua (Armañón).":"⚠️ Gaztelugatxe EZ da egokia mugikortasun urrikoentzat (241 maila). Aukera irisgarria: Pozalaguako kobazuloa (Armañón).";
+  return L==="es"?"♿ Confirma la accesibilidad del parketxe llamando antes de ir.":"♿ Egiaztatu parketxearen irisgarritasuna deituta joan aurretik.";
+ }
+ if(pref==="bus")return L==="es"?"🚌 Mira la línea de Bizkaibus indicada en cada ficha (info 946 125 555).":"🚌 Begiratu fitxa bakoitzeko Bizkaibus lerroa (info 946 125 555).";
+ return "";
+}
+
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function match(text){const t=norm(text);let best=null,score=0;for(const it of KB){let s=0;for(const k of it.keys){const kn=norm(k);if(t.includes(kn))s+=kn.length;}if(s>score){score=s;best=it;}}return score>0?best:null;}
+function isFinderQuery(text){const t=norm(text);return ["planifica","planificar","planear","plan de visita","que visito","que veo","donde voy","recomienda","oriente","oriename","bisita planifikatu","zer bisitatu","nora joan","gomenda"].some(k=>t.includes(norm(k)));}
+const cb=()=>document.getElementById("cbody");
+function nowHM(){const d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
+function bubble(html,who){const d=document.createElement("div");d.className="msg "+who+" msg-in";
+ if(who==="bot")d.innerHTML='<div class="stamp">NATURGUNEAK · '+nowHM()+'</div>'+html;else d.innerHTML=html;
+ cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function chips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([id,lb,cls])=>{const b=document.createElement("button");b.className="chip"+(cls?" "+cls:"");b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function fchips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([lb,fn,cls])=>{const b=document.createElement("button");b.className="chip"+(cls?" "+cls:"");b.textContent=lb;b.onclick=fn;c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";d.setAttribute("aria-label",LANG==="es"?"El asistente está escribiendo":"Laguntzailea idazten ari da");cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function respond(it){const tp=typing();setTimeout(()=>{tp.remove();let a;if(it)a=it[LANG];else a=(LANG==="es"
+   ?"🤔 No estoy seguro de entenderte. Te ayudo con <b>Gaztelugatxe, Gorbeia, Urkiola, Armañón</b>, reservas, cómo llegar, horarios, normas o las ayudas al sector primario. ¿Planificamos tu visita? También puedes llamar al 944 068 000."
+   :"🤔 Ez nago ziur ulertu zaitudan. <b>Gaztelugatxe, Gorbeia, Urkiola, Armañón</b>, erreserbak, nola iritsi, ordutegiak, arauak edo lehen sektoreko laguntzetan laguntzen dizut. Bisita planifikatu? 944 068 000 telefonora ere dei dezakezu.");
+  bubble(a,"bot");if(!it||it.id==="saludo"||it.id==="reservas"||it.id==="como_llegar")chips(CHIPS[LANG]);},520+Math.random()*360);}
+
+/* flujo wizard */
+let FIND={tipo:null};
+function startFinder(){
+ if(!document.getElementById("chat").classList.contains("open"))openChat(true);
+ FIND={tipo:null};
+ const tp=typing();setTimeout(()=>{tp.remove();
+  bubble('<div class="prog"><i class="on"></i><i></i></div>'+WIZ[LANG].intro,"bot");
+  fchips(WIZ[LANG].tipos.map(p=>[p[1],()=>finderTipo(p[0],p[1])]));
+ },420);
+}
+function finderTipo(id,label){
+ bubble(label,"user");FIND.tipo=id;
+ const tp=typing();setTimeout(()=>{tp.remove();
+  bubble('<div class="prog"><i class="on"></i><i class="on"></i></div>'+WIZ[LANG].q2,"bot");
+  fchips(WIZ[LANG].prefs.map(o=>[o[1],()=>finderPref(o[0],o[1])]));
+ },420);
+}
+function finderPref(pref,label){
+ bubble(label,"user");
+ const ids=recommendVisita(FIND.tipo);
+ const note=prefNote(pref,ids);
+ const tp=typing();setTimeout(()=>{tp.remove();
+  let html='<div class="prog"><i class="on"></i><i class="on"></i></div>'+WIZ[LANG].result+'<div class="rec">';
+  html+='<div class="rh">✨ '+(LANG==="es"?"Recomendación para ti":"Zuretzako gomendioa")+'</div>';
+  ids.forEach(eid=>{const e=ESP[eid][LANG];html+='<div class="ri"><b>'+e.n+'</b><small>'+e.q+'<br>📍 '+e.llegar+'<br>🎟️ '+e.reserva+'<br>☎️ '+e.tel+'</small></div>';});
+  html+='</div>';
+  if(note)html+='\n'+note;
+  html+='\n'+WIZ[LANG].foot;
+  bubble(html,"bot");
+  fchips([[LANG==="es"?"🔁 Otra recomendación":"🔁 Beste gomendio bat",()=>startFinder(),"gold"],[LANG==="es"?"🎟️ Cómo reservar":"🎟️ Nola erreserbatu",()=>{respond(KB.find(x=>x.id==="reservas"));}],[LANG==="es"?"📞 Contacto":"📞 Kontaktua",()=>{respond(KB.find(x=>x.id==="contacto"));}]]);
+ },680);
+}
+
+function ask(id,label){
+ if(id==="__plan"){if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(LANG==="es"?"Planifica mi visita":"Bisita planifikatu"),"user");startFinder();return;}
+ const it=KB.find(x=>x.id===id);if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(it?it[LANG].split("\n")[0].replace(/<[^>]+>/g,""):id),"user");respond(it);}
+function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";if(isFinderQuery(v)){startFinder();return;}respond(match(v));}
+
+let greeted=false,lastFocus=null;
+function greet(){if(greeted)return;greeted=true;bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
+function openChat(skip){const c=document.getElementById("chat");lastFocus=document.activeElement;c.classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)setTimeout(()=>document.getElementById("cinput").focus(),60);}
+function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="inline-flex";if(lastFocus)try{lastFocus.focus()}catch(e){}}
+function resetChat(){cb().innerHTML="";greeted=false;greet();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("chat").classList.contains("open"))closeChat();});
+document.getElementById("chat").addEventListener("keydown",e=>{
+ if(e.key!=="Tab")return;
+ const f=document.getElementById("chat").querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])');
+ if(!f.length)return;const first=f[0],last=f[f.length-1];
+ if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+ else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+});
+
+/* ===== Render UI ===== */
+function buildTiles(){
+ const ICON={__plan:'<path d="M9 18l-5 3V6l5-3 6 3 5-3v15l-5 3-6-3z"/><path d="M9 3v15M15 6v15"/>',
+  gaztelugatxe:'<path d="M3 21h18M5 21v-8l4-3 4 3v8M11 10V6l-1.5-1.5M9 21v-4h4v4"/>',
+  gorbeia:'<path d="M3 20h18L14 6l-3 5-2-3-6 12z"/>',
+  urkiola:'<path d="M3 20h18M6 20l4-9 3 4 2-3 3 8"/>',
+  armanon:'<path d="M4 20a8 8 0 0116 0z"/><path d="M9 20v-4M15 20v-5M12 20v-6"/>',
+  ayudas:'<path d="M12 3c2 3 2 6 0 9-2-3-2-6 0-9z"/><path d="M12 12c3-1 6 0 8 2-3 1-6 0-8-2zM12 12c-3-1-6 0-8 2 3 1 6 0 8-2zM12 12v9"/>'};
+ document.getElementById("grid6").innerHTML=UI[LANG].tiles.map((tl,i)=>{
+   const[id,t,d,feat]=tl;
+   return `<button class="tile${feat?' feat':''}" onclick="ask('${id}')">
+     <span class="arr" aria-hidden="true">→</span>
+     <span class="no">0${i+1}</span>
+     <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg></span>
+     <b>${t}</b><small>${d}</small></button>`;
+ }).join("");
+}
+function buildSteps(){document.getElementById("steps").innerHTML=UI[LANG].steps.map((s,i)=>`<div class="step reveal"><div class="n">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");}
+function buildStats(){document.getElementById("stats").innerHTML=UI[LANG].stats.map(s=>{
+  const isNum=/^\d+$/.test(s[0]);
+  return `<div class="stat"><div class="v"><span class="cv" ${isNum?`data-to="${s[0]}"`:''}>${isNum?'0':s[0]}</span>${s[2]?'<span class="u">'+s[2]+'</span>':''}</div><div class="l">${s[1]}</div></div>`;
+}).join("");}
+function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map(n=>{
+  const act=n[3]==="__chat"?"openChat()":(n[3]==="__plan"?"ask('__plan')":`ask('${n[3]}')`);
+  return `<div class="ncard reveal"><div class="top"></div><div class="in"><span class="k">${n[0]}</span><h3>${n[1]}</h3><p>${n[2]}</p><span class="lk" onclick="${act}">${LANG==='es'?'Más información':'Informazio gehiago'} →</span></div></div>`;
+}).join("");}
+
+function applyLang(){
+ const u=UI[LANG];
+ document.documentElement.lang=LANG;
+ ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxst","luxq","luxa","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_plan","f_asist","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=u[k];});
+ const ci=document.getElementById("cinput");if(ci)ci.placeholder=u.ph;
+ document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
+ document.getElementById("seg").className="seg "+LANG;
+ buildTiles();buildSteps();buildStats();buildNews();
+ observeReveal();observeStats();
+}
+document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+
+/* ===== Scroll efectos ===== */
+const rmotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+let revObs;
+function observeReveal(){
+ if(rmotion){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));return;}
+ if(revObs)revObs.disconnect();
+ revObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");revObs.unobserve(en.target);}});},{threshold:.12});
+ document.querySelectorAll(".reveal").forEach(el=>revObs.observe(el));
+}
+let statObs;
+function observeStats(){
+ if(statObs)statObs.disconnect();
+ statObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){countUp(en.target);statObs.unobserve(en.target);}});},{threshold:.5});
+ document.querySelectorAll(".cv[data-to]").forEach(el=>statObs.observe(el));
+}
+function countUp(el){
+ const to=+el.dataset.to;if(rmotion){el.textContent=to;return;}
+ let t0=null;const dur=1100;
+ function step(ts){if(!t0)t0=ts;const p=Math.min(1,(ts-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+ requestAnimationFrame(step);
+}
+addEventListener("scroll",()=>{document.getElementById("hdr").classList.toggle("scrolled",scrollY>10);},{passive:true});
+
+applyLang();
+</script>
+</body>
+</html>
