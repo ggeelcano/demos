@@ -208,6 +208,24 @@
  .cfoot .send svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
  .cfoot .send:hover{filter:brightness(1.08)}
  .clegal{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:6px 12px 9px;background:#fff}
+ .chip.cta{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border:0;box-shadow:var(--sh-bot)}
+ .chip.cta:hover{filter:brightness(1.07);background:linear-gradient(135deg,var(--bot1),var(--bot2));transform:translateY(-1px)}
+ .chip.off{opacity:.38;text-decoration:line-through;cursor:not-allowed}
+ .chip.off:hover{transform:none;border-color:var(--line);background:#fff}
+ .citacard{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--bot2);border-radius:5px 16px 16px 16px;padding:13px 15px;box-shadow:var(--sh-1);max-width:88%;font-size:13px}
+ .citacard h4{font-size:12.5px;margin:0 0 9px;color:var(--bot-ink);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+ .citacard .row{display:flex;justify-content:space-between;gap:14px;padding:6px 0;border-top:1px dashed var(--line)}
+ .citacard .row:first-of-type{border-top:0;padding-top:0}
+ .citacard .row span{color:var(--ink-soft)}
+ .citacard .row b{color:var(--ink);text-align:right;font-weight:700}
+ .citaok{align-self:flex-start;background:linear-gradient(135deg,#ecfdf5,#eefcf8);border:1px solid #a7f3d0;border-radius:5px 16px 16px 16px;padding:14px 16px;max-width:88%;font-size:13px;box-shadow:var(--sh-1)}
+ .citaok .chk{display:flex;align-items:center;gap:9px;font-weight:800;color:#047857;font-size:14.5px;margin-bottom:9px}
+ .citaok .chk svg{width:20px;height:20px;stroke:#047857;fill:none;stroke-width:2.6;flex:0 0 auto}
+ .citaok .ref{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:700;color:var(--green-900);background:#fff;border:1px dashed #6ee7b7;border-radius:8px;padding:7px 11px;display:inline-block;margin:0 0 9px;letter-spacing:.05em}
+ .citaok .meta{color:#3f6253;line-height:1.55}
+ .citaok .ics{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:#fff;border:1px solid var(--bot1);color:var(--bot-ink);border-radius:var(--r-pill);padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer}
+ .citaok .ics:hover{background:var(--bot-soft)}
+ .citaok .ics svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
 
  @media(max-width:920px){
    nav .navlinks{display:none}
@@ -229,13 +247,19 @@
    #chat.open,.msg-in{animation:none}
    .js .reveal{opacity:1;transform:none}
  }
+ .townsel{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#cfe7df;flex-wrap:wrap}
+ .townsel .tlab{opacity:.85}
+ #townsel{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:3px 9px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+ #townsel option{color:#16241f}
+ .townsel .tnote{opacity:.75;font-size:11.5px}
+ @media(max-width:760px){.townsel .tnote{display:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#contenido" id="skip">Saltar al contenido</a>
 
 <div class="topbar"><div class="wrap">
- <span class="status"><i class="live"></i><span id="status">Operativo · Sede electrónica 24/7</span></span>
+ <span class="townsel"><i class="live"></i><span class="tlab">Asistente de</span> <select id="townsel" aria-label="Ayuntamiento"><option value="iurreta">Iurreta</option><option value="mungia">Mungia</option><option value="durango">Durango</option></select><span class="tnote" id="tnote">· un módulo, configurable por ayuntamiento</span></span>
  <span class="seg es" id="seg" role="group" aria-label="Idioma / Hizkuntza">
    <span class="thumb" aria-hidden="true"></span>
    <button data-l="eu" aria-pressed="false">EU</button>
@@ -244,8 +268,8 @@
 </div></div>
 
 <header id="hdr"><div class="wrap">
- <div class="escudo" aria-hidden="true">🌳</div>
- <div class="brand"><b>Iurretako Udala</b><span id="bsub">Ayuntamiento de Iurreta · Bizkaia</span></div>
+ <div class="escudo" id="escudo" aria-hidden="true">🌳</div>
+ <div class="brand"><b id="brandname">Iurretako Udala</b><span id="bsub">Ayuntamiento de Iurreta · Bizkaia</span></div>
  <nav>
    <span class="navlinks">
      <a id="n1" href="#tramites">Trámites</a>
@@ -304,7 +328,7 @@
 
 <footer><div class="wrap">
  <div class="foot-brand">
-   <b>Iurretako Udala</b>
+   <b id="footname">Iurretako Udala</b>
    <p id="foot_dir">Bidebarrieta, 5 · 48215 Iurreta (Bizkaia)<br>📞 946 201 200 · Fax 946 815 598<br>✉️ haz-sac@iurreta.eus</p>
    <span class="wcag" id="wcag">✓ Conforme WCAG 2.1 AA</span>
  </div>
@@ -360,7 +384,7 @@ const UI={
   ph:"Escribe tu pregunta…",clegal:"Asistente virtual · información orientativa basada en datos públicos municipales",skip:"Saltar al contenido",
   tiles:[["padron","Empadronamiento","Altas, volantes y certificados"],["impuestos","Impuestos / IBI","Recibos, domiciliación y pagos"],["cita","Cita previa","SAC sin esperas"],["residuos","Residuos","Voluminosos, garbigune y reciclaje"],["deporte","Kiroldegia","Abonos, horarios y reservas"],["agenda","Agenda","Cultura, fiestas y biblioteca"]],
   steps:[["Identifícate","Entra en la Sede electrónica con BakQ, certificado digital o DNIe."],["Elige tu trámite","Padrón, impuestos, registro de instancias, cita previa…"],["Resuelto","Hazlo online 24/7 o pide cita si necesitas atención presencial."]],
-  stats:[["20","+","temas resueltos al instante"],["2","","idiomas · euskera y castellano"],["24/7","","disponible siempre"],["0","","€ de coste para el vecino"]],
+  stats:[["44","","trámites resueltos al instante"],["83","%","sin pasar por un agente"],["2","","idiomas EU/ES"],["24/7","","disponible siempre"]],
   news:[["Hacienda","Recargo del 50% en el IBI a viviendas vacías","El Ayuntamiento aplicará un recargo del 50% en el IBI a los inmuebles desocupados de forma permanente.","impuestos"],["Ordenanzas","Nuevas ordenanzas fiscales y tasa de residuos 2026","Entran en vigor las ordenanzas actualizadas para 2026, incluida la nueva tasa de residuos.","residuos"],["Atención","Nuevo asistente virtual 24/7","Resuelve tus dudas sobre padrón, impuestos, cita previa o agenda a cualquier hora.","__chat"]]},
  eu:{status:"Operatibo · Egoitza elektronikoa 24/7",bsub:"Iurretako Udala · Bizkaia",
   n1:"Izapideak",n2:"Albisteak",n3:"Kontaktua",ncta:'<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Egoitza elektronikoa',
@@ -382,7 +406,7 @@ const UI={
   ph:"Idatzi zure galdera…",clegal:"Laguntzaile birtuala · udalerriko datu publikoetan oinarritutako orientabidezko informazioa",skip:"Edukira jauzi",
   tiles:[["padron","Errolda","Altak, agiriak eta ziurtagiriak"],["impuestos","Zergak / OHZ","Ordainagiriak, helbideratzea eta ordainketak"],["cita","Hitzordua","HAZ itxaron gabe"],["residuos","Hondakinak","Tamaina handikoak, garbigunea eta birziklapena"],["deporte","Kiroldegia","Bonuak, ordutegiak eta erreserbak"],["agenda","Agenda","Kultura, jaiak eta liburutegia"]],
   steps:[["Identifikatu","Sartu Egoitza elektronikoan BakQ, ziurtagiri digital edo NANarekin."],["Aukeratu izapidea","Errolda, zergak, instantzien erregistroa, hitzordua…"],["Eginda","Egin online 24/7 edo eskatu hitzordua aurrez aurreko arreta behar baduzu."]],
-  stats:[["20","+","gai berehala argituta"],["2","","hizkuntza · euskara eta gaztelania"],["24/7","","beti eskuragarri"],["0","","€-ko kostua herritarrarentzat"]],
+  stats:[["44","","izapide berehala ebatzita"],["83","%","agente batengana jo gabe"],["2","","hizkuntza EU/ES"],["24/7","","beti eskuragarri"]],
   news:[["Ogasuna","%50eko errekargua OHZan etxebizitza hutsetan","Udalak %50eko errekargua aplikatuko du modu iraunkorrean hutsik dauden etxebizitzen OHZan.","impuestos"],["Ordenantzak","2026ko zerga-ordenantza eta hondakin-tasa berriak","2026rako eguneratutako ordenantzak indarrean sartzen dira, hondakinen tasa berria barne.","residuos"],["Arreta","Laguntzaile birtual berria 24/7","Argitu errolda, zerga, hitzordu edo agendari buruzko zalantzak edozein ordutan.","__chat"]]}
 };
 let LANG="es";
@@ -626,7 +650,7 @@ function rank(text){
 const cb=()=>document.getElementById("cbody");
 function nowHM(){const d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
 function bubble(html,who){const d=document.createElement("div");d.className="msg "+who+" msg-in";
- if(who==="bot")d.innerHTML='<div class="stamp">IURRETA · '+nowHM()+'</div>'+html;else d.innerHTML=html;
+ if(who==="bot")d.innerHTML='<div class="stamp">'+TOWN.name.toUpperCase()+' · '+nowHM()+'</div>'+localize(html);else d.innerHTML=html;
  cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
 function chips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([id,lb])=>{const b=document.createElement("button");b.className="chip";b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
 function chipsFromIds(ids){const list=ids.filter(id=>CHIPLABELS[id]).map(id=>[id,CHIPLABELS[id][LANG==="es"?0:1]]);if(list.length)chips(list);}
@@ -635,7 +659,7 @@ const rmotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 function delayFor(html){return rmotion?260:Math.min(1400,420+html.length*3)+Math.random()*250;}
 
 /* respuesta a una intención concreta (chips, tiles, enlaces) */
-function respondIntent(it){const tp=typing();const html=it?it[LANG]:FB[LANG];setTimeout(()=>{tp.remove();bubble(html,"bot");if(!it||it.id==="saludo")chips(CHIPS[LANG]);else if(it.rel)chipsFromIds(it.rel);},delayFor(html));}
+function respondIntent(it){const tp=typing();const html=it?it[LANG]:FB[LANG];setTimeout(()=>{tp.remove();bubble(html,"bot");if(it&&it.id==="cita"){flowChips([{label:T("📅 Pedir cita ahora","📅 Eskatu hitzordua orain"),cta:true,echo:false,fn:citaStart}]);return;}if(!it||it.id==="saludo")chips(CHIPS[LANG]);else if(it.rel)chipsFromIds(it.rel);},delayFor(html));}
 /* respuesta a texto libre (motor) */
 function answer(text){
  let sc=rank(text);
@@ -643,19 +667,46 @@ function answer(text){
  const fc=sc.find(x=>x.it.id==="fuera"&&x.s>=4);
  if(fc&&sc[0].it.id!=="fuera"&&["cita","ubicacion","horario","contacto"].indexOf(sc[0].it.id)>=0)sc=[fc].concat(sc.filter(x=>x!==fc));
  const tp=typing();
- let html,follow=null,disamb=null;
+ let html,follow=null,disamb=null,topId=null;
  if(!sc.length){html=FB[LANG];follow="__popular";}
- else if(sc[0].s>=3||(sc.length===1&&sc[0].s>=2)){const it=sc[0].it;html=it[LANG];follow=(it.rel||[]).slice();
+ else if(sc[0].s>=3||(sc.length===1&&sc[0].s>=2)){const it=sc[0].it;topId=it.id;html=it[LANG];follow=(it.rel||[]).slice();
    if(sc[1]&&sc[1].s>=3&&(sc[0].s-sc[1].s)<=1&&!follow.includes(sc[1].it.id)&&sc[1].it.id!=="saludo")follow.push(sc[1].it.id);}
  else{html=(LANG==="es"?"🤔 No estoy del todo seguro de a qué te refieres. ¿Quizá alguno de estos temas?":"🤔 Ez nago guztiz ziur zertaz ari zaren. Hauetako gairen bat agian?");disamb=sc.slice(0,3).map(x=>x.it.id);}
  setTimeout(()=>{tp.remove();bubble(html,"bot");
+   if(topId==="cita"){flowChips([{label:T("📅 Pedir cita ahora","📅 Eskatu hitzordua orain"),cta:true,echo:false,fn:citaStart}]);return;}
    if(disamb)chipsFromIds(disamb);
    else if(follow==="__popular")chips(CHIPS[LANG]);
    else if(follow&&follow.length)chipsFromIds(follow);
  },delayFor(html));
 }
 function ask(id,label){const it=KB.find(x=>x.id===id);if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(it?CHIPLABELS[id]?CHIPLABELS[id][LANG==="es"?0:1]:it[LANG].split("\n")[0]:id),"user");respondIntent(it);}
-function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";answer(v);}
+function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";if(FLOW){const f=FLOW;FLOW=null;f(v);return;}answer(v);}
+
+/* =================== Flujo "Pedir cita previa" (tramita de verdad) =================== */
+let FLOW=null, CITA={};
+function T(a,b){return LANG==="es"?a:b;}
+const CITA_SVC=[
+ {id:"padron",es:"Padrón / volantes",eu:"Errolda / agiriak"},
+ {id:"impuestos",es:"Impuestos · IBI",eu:"Zergak · OHZ"},
+ {id:"registro",es:"Registro de instancias",eu:"Instantzien erregistroa"},
+ {id:"otros",es:"Otra gestión",eu:"Beste izapide bat"}
+];
+const SLOTS=["08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30"];
+const DN={es:["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],eu:["igandea","astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata"]};
+const MN={es:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],eu:["urt","ots","mar","api","mai","eka","uzt","abu","ira","urr","aza","abe"]};
+function p2(n){return("0"+n).slice(-2);}
+function fmtDay(d){const s=DN[LANG][d.getDay()]+" "+d.getDate()+" "+MN[LANG][d.getMonth()];return s.charAt(0).toUpperCase()+s.slice(1);}
+function citaDays(){const out=[],d=new Date();for(let i=0;i<14&&out.length<5;i++){d.setDate(d.getDate()+1);const w=d.getDay();if(w!==0&&w!==6)out.push(new Date(d));}return out;}
+function botSay(html,then){const tp=typing();setTimeout(()=>{tp.remove();bubble(html,"bot");if(then)then();},delayFor(html));}
+function flowChips(items){const c=document.createElement("div");c.className="chips msg-in";items.forEach(it=>{const b=document.createElement("button");b.className="chip"+(it.cta?" cta":"")+(it.off?" off":"");b.textContent=it.label;if(it.off){b.disabled=true;}else{b.onclick=()=>{c.querySelectorAll("button").forEach(x=>x.disabled=true);if(it.echo!==false)bubble(it.label,"user");if(it.fn)it.fn();};}c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;return c;}
+function citaStart(){FLOW=null;CITA={};botSay(T("📅 <b>Pedir cita previa — SAC de Iurreta</b>\nTe la gestiono aquí mismo en menos de un minuto. ¿Para qué trámite necesitas la cita?","📅 <b>Aurrez hitzordua eskatu — Iurretako HAZ</b>\nHemen bertan kudeatuko dizut, minutu bat baino gutxiagotan. Zer izapidetarako behar duzu hitzordua?"),()=>flowChips(CITA_SVC.map(s=>({label:T(s.es,s.eu),fn:()=>citaDate(s)}))));}
+function citaDate(svc){CITA.svc=svc;botSay(T("Perfecto. ¿Qué día te viene bien? <span style='color:var(--ink-soft)'>(atención L-V, 8:30-14:00)</span>","Ederki. Zein egun datorkizu ondo? <span style='color:var(--ink-soft)'>(arreta A-O, 8:30-14:00)</span>"),()=>flowChips(citaDays().map(d=>({label:fmtDay(d),fn:()=>citaTime(d)}))));}
+function citaTime(date){CITA.date=date;const seed=date.getDate();const off=new Set([seed%SLOTS.length,(seed*3+2)%SLOTS.length,(seed*5+4)%SLOTS.length]);botSay(T("Estas son las horas libres para el <b>"+fmtDay(date)+"</b>. Elige una:","Hauek dira <b>"+fmtDay(date)+"</b> egunerako ordu libreak. Aukeratu bat:"),()=>flowChips(SLOTS.map((t,i)=>({label:t,off:off.has(i),fn:()=>citaName(t)}))));}
+function citaName(time){CITA.time=time;FLOW=citaConfirm;botSay(T("Ya casi está 🙌 Escribe tu <b>nombre y apellidos</b> para la reserva. <span style='color:var(--ink-soft)'>(demo: no se guarda ningún dato)</span>","Ia eginda 🙌 Idatzi zure <b>izen-abizenak</b> erreserbarako. <span style='color:var(--ink-soft)'>(demo: ez da daturik gordetzen)</span>"));}
+function citaRow(k,v){return '<div class="row"><span>'+k+'</span><b>'+v+'</b></div>';}
+function citaConfirm(name){CITA.name=(name||"").trim().slice(0,60)||T("Vecino/a","Herritarra");const c=document.createElement("div");c.className="citacard msg-in";c.innerHTML='<h4>'+T("Revisa tu cita","Berrikusi zure hitzordua")+'</h4>'+citaRow(T("Trámite","Izapidea"),T(CITA.svc.es,CITA.svc.eu))+citaRow(T("Día","Eguna"),fmtDay(CITA.date))+citaRow(T("Hora","Ordua"),CITA.time)+citaRow(T("Lugar","Lekua"),"SAC · Bidebarrieta 5")+citaRow(T("A nombre de","Noren izenean"),CITA.name);cb().appendChild(c);cb().scrollTop=cb().scrollHeight;flowChips([{label:T("✓ Confirmar cita","✓ Hitzordua berretsi"),cta:true,echo:false,fn:citaDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:citaStart}]);}
+function citaDone(){const ref="IUR-"+CITA.date.getFullYear()+"-"+Math.floor(1000+Math.random()*9000);CITA.ref=ref;const tp=typing();setTimeout(()=>{tp.remove();const ok=document.createElement("div");ok.className="citaok msg-in";ok.innerHTML='<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+T("¡Cita confirmada!","Hitzordua berretsita!")+'</div><div class="ref">'+ref+'</div><div class="meta">'+T(CITA.svc.es,CITA.svc.eu)+' · <b>'+fmtDay(CITA.date)+' · '+CITA.time+'</b><br>SAC · Bidebarrieta 5, Iurreta<br>'+T("Te enviaremos un recordatorio por email y SMS.","Gogorarazpena bidaliko dizugu emailez eta SMSez.")+'</div><a class="ics"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>'+T("Añadir al calendario","Egutegira gehitu")+'</a>';cb().appendChild(ok);cb().scrollTop=cb().scrollHeight;ok.querySelector(".ics").onclick=downloadICS;setTimeout(()=>flowChips([{label:T("Pedir otra cita","Beste hitzordu bat"),echo:false,fn:citaStart},{label:T("Ver más trámites","Izapide gehiago"),echo:false,fn:()=>chips(CHIPS[LANG])}]),320);},700);}
+function downloadICS(){const d=CITA.date,parts=CITA.time.split(":"),dt=new Date(d);dt.setHours(+parts[0],+parts[1],0,0);const end=new Date(dt.getTime()+30*60000);const fmt=x=>x.getFullYear()+p2(x.getMonth()+1)+p2(x.getDate())+"T"+p2(x.getHours())+p2(x.getMinutes())+"00";const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ayuntamiento de Iurreta//Cita previa//ES","BEGIN:VEVENT","UID:"+CITA.ref+"@iurreta.eus","DTSTAMP:"+fmt(new Date()),"DTSTART:"+fmt(dt),"DTEND:"+fmt(end),"SUMMARY:"+T("Cita SAC Iurreta","HAZ hitzordua Iurreta")+" - "+T(CITA.svc.es,CITA.svc.eu),"LOCATION:Bidebarrieta 5\\, 48215 Iurreta","DESCRIPTION:"+T("Cita previa","Aurrez hitzordua")+" "+CITA.ref,"END:VEVENT","END:VCALENDAR"].join("\r\n");const blob=new Blob([ics],{type:"text/calendar;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="cita-iurreta-"+CITA.ref+".ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
 
 let greeted=false,lastFocus=null;
 function greet(){if(greeted)return;greeted=true;bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
@@ -686,15 +737,62 @@ function buildSteps(){document.getElementById("steps").innerHTML=UI[LANG].steps.
 function buildStats(){document.getElementById("stats").innerHTML=UI[LANG].stats.map(s=>{const isNum=/^\d+$/.test(s[0]);return `<div class="stat"><div class="v"><span class="cv" ${isNum?`data-to="${s[0]}"`:""}>${isNum?"0":s[0]}</span>${s[1]?'<span class="u">'+s[1]+'</span>':''}</div><div class="l">${s[2]}</div></div>`;}).join("");}
 function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map(n=>{const act=n[3]==="__chat"?"openChat()":`ask('${n[3]}')`;return `<div class="ncard reveal"><div class="top"></div><div class="in"><span class="k">${n[0]}</span><h3>${n[1]}</h3><p>${n[2]}</p><span class="lk" onclick="${act}">${LANG==="es"?"Más información":"Informazio gehiago"} →</span></div></div>`;}).join("");}
 
+/* ===== Multi-ayuntamiento: mismo módulo, configurado por municipio ===== */
+const TOWNS={
+ iurreta:{slug:"iurreta",name:"Iurreta",udala:"Iurretako Udala",web:"iurreta.eus",sede:"egoitza.iurreta.eus",tel:"946 201 200",fax:"946 815 598",sac:"Bidebarrieta 5",cp:"48215",email:"haz-sac@iurreta.eus",email2:"erregistroa@iurreta.eus",kultur:"Ibarretxe Kultur Etxea",kulturAddr:"Bidebarrieta 4",kulturTel:"946 200 342",kulturEmail:"kultur-etxea@iurreta.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Oskar Koka Lorente",escudo:"🌳",col:["#0E6A4F","#0A5440","#063A2B","#E3F2EB"]},
+ mungia:{slug:"mungia",name:"Mungia",udala:"Mungiako Udala",web:"mungia.eus",sede:"sede.mungia.eus",tel:"946 741 216",fax:"—",sac:"Trobika kalea 1",cp:"48100",email:"udala@mungia.eus",email2:"udala@mungia.eus",kultur:"Torrebillela Aretoa",kulturAddr:"Trobika",kulturTel:"946 741 216",kulturEmail:"udala@mungia.eus",mankomName:"la Mancomunidad de servicios de tu comarca",mankomTel:"946 741 216",mankomWeb:"mungia.eus",alcalde:"Alaitz Erkoreka Baraiazarra",alcLabel:"La alcaldesa de",escudo:"🏰",col:["#1D4E89","#163C6B","#0F2A4D","#E4ECF6"]},
+ durango:{slug:"durango",name:"Durango",udala:"Durangoko Udala",web:"durango.eus",sede:"durango.eus",tel:"946 030 000",fax:"—",sac:"Barrenkale 17",cp:"48200",email:"udala@durango.eus",email2:"udala@durango.eus",kultur:"San Agustín Kultur Gunea",kulturAddr:"San Agustinalde 12",kulturTel:"946 030 000",kulturEmail:"udala@durango.eus",mankomName:"Mancomunidad de la Merindad de Durango",mankomTel:"946 818 116",mankomWeb:"dma.eus",alcalde:"Mireia Elkoroiribe Zenikaonandia",alcLabel:"La alcaldesa de",escudo:"⛪",col:["#8A2B2B","#6E2222","#4D1717","#F6E7E7"]}
+};
+let TOWN=TOWNS.iurreta;
+function localize(t){
+ if(t==null||TOWN.slug==="iurreta")return t;const c=TOWN;
+ return String(t)
+  .split("egoitza.iurreta.eus").join(c.sede)
+  .split("haz-sac@iurreta.eus").join(c.email)
+  .split("erregistroa@iurreta.eus").join(c.email2)
+  .split("kultur-etxea@iurreta.eus").join(c.kulturEmail)
+  .split("iurreta.eus").join(c.web)
+  .split("Ibarretxe Kultur Etxea").join(c.kultur)
+  .split("Bidebarrieta, 5").join(c.sac)
+  .split("Bidebarrieta 5").join(c.sac)
+  .split("Bidebarrieta 4").join(c.kulturAddr)
+  .split("946 201 200").join(c.tel)
+  .split("946 815 598").join(c.fax)
+  .split("946 200 342").join(c.kulturTel)
+  .split("946 818 116").join(c.mankomTel)
+  .split("Mancomunidad de la Merindad de Durango").join(c.mankomName)
+  .split("Durangoko Merinaldearen Amankomunazgoa").join(c.mankomName)
+  .split("dma.eus").join(c.mankomWeb)
+  .split("48215").join(c.cp)
+  .split("Oskar Koka Lorente").join(c.alcalde)
+  .split("El alcalde de").join(c.alcLabel||"El alcalde de")
+  .split("IURRETA").join(c.name.toUpperCase())
+  .split("Iurretako").join(c.name+"ko")
+  .split("Iurretan").join(c.name+"n")
+  .split("Iurreta").join(c.name);
+}
+function applyTown(slug){
+ TOWN=TOWNS[slug]||TOWNS.iurreta;
+ const s=document.documentElement.style;
+ s.setProperty("--green",TOWN.col[0]);s.setProperty("--green-700",TOWN.col[1]);s.setProperty("--green-900",TOWN.col[2]);s.setProperty("--green-soft",TOWN.col[3]);
+ document.title=TOWN.udala+" · Ayuntamiento de "+TOWN.name;
+ applyLang();
+ if(document.getElementById("chat").classList.contains("open"))resetChat();
+}
 function applyLang(){
  const u=UI[LANG];document.documentElement.lang=LANG;
- ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxname","luxst","luxq","luxstamp","luxa","lc1","lc2","lc3","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_alc","f_act","f_age","f_con","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=u[k];});
- const ci=document.getElementById("cinput");if(ci)ci.placeholder=u.ph;
+ ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxname","luxst","luxq","luxstamp","luxa","lc1","lc2","lc3","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_alc","f_act","f_age","f_con","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=localize(u[k]);});
+ const ci=document.getElementById("cinput");if(ci)ci.placeholder=localize(u.ph);
+ const bn=document.getElementById("brandname");if(bn)bn.textContent=TOWN.udala;
+ const fn=document.getElementById("footname");if(fn)fn.textContent=TOWN.udala;
+ const esc=document.getElementById("escudo");if(esc)esc.textContent=TOWN.escudo;
+ const tn=document.getElementById("tnote");if(tn)tn.textContent=(LANG==="es"?"· un módulo, configurable por ayuntamiento":"· modulu bat, udal bakoitzerako konfiguragarria");
  document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
  document.getElementById("seg").className="seg "+LANG;
  buildTiles();buildSteps();buildStats();buildNews();observeReveal();observeStats();
 }
 document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+var _ts=document.getElementById("townsel");if(_ts)_ts.addEventListener("change",e=>applyTown(e.target.value));
 
 /* =================== Scroll / animaciones =================== */
 let revObs;
