@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEAZ · Bizkaia — Enpresentzako laguntzak | Ayudas a empresas</title>
+<meta name="description" content="Ayudas y subvenciones a empresas y personas emprendedoras de Bizkaia (Guía 2026, 63 M€), con asistente IA 24/7 que te orienta a la ayuda que te corresponde, en euskera y castellano.">
+<meta property="og:title" content="BEAZ · Ayudas a empresas de Bizkaia — Asistente IA">
+<meta property="og:description" content="Encuentra en segundos la ayuda que encaja con tu empresa. Asistente virtual bilingüe 24/7.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+ :root{
+   --bg:#F5F8FB; --surface:#FFFFFF; --surface-2:#F9FBFD;
+   --ink:#0A1733; --ink-soft:#4C5A68;
+   --primary:#0B2A5B; --primary-700:#082046; --secondary:#1E5F8C;
+   --accent:#1F8FE0; --accent-ink:#0C6AB0; --accent-soft:#E6F2FC;
+   --gold:#F2A93B; --gold-soft:#FCF1DD;
+   --success:#0FB87C; --line:#E3EAF2; --line-warm:#ECE7DC;
+   --dk-bg:#081634; --dk-surface:#0B2A5B; --dk-ink:#EAF1FB; --dk-soft:#9DB0CF; --dk-line:rgba(255,255,255,.10);
+   --sh-1:0 1px 2px rgba(10,23,51,.06);
+   --sh-2:0 4px 12px rgba(10,23,51,.08);
+   --sh-3:0 16px 40px -8px rgba(10,23,51,.18);
+   --sh-4:0 24px 70px -16px rgba(8,22,52,.28);
+   --sh-accent:0 12px 32px rgba(31,143,224,.30);
+   --r-chip:12px; --r-input:14px; --r-btn:16px; --r-card:22px; --r-panel:24px; --r-pill:999px;
+   --ease:cubic-bezier(.22,1,.36,1);
+   --maxw:1200px;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html{scroll-behavior:smooth}
+ body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;color:var(--ink);font-size:1.0625rem;line-height:1.65;
+   background:radial-gradient(120% 80% at 88% -8%,rgba(31,143,224,.06),transparent 55%),var(--bg);-webkit-font-smoothing:antialiased}
+ button,input{font-family:inherit}
+ a{color:var(--primary);text-decoration:none}
+ h1,h2,h3{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+ .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+ .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+ .num{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums}
+ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+ .skip{position:absolute;left:14px;top:-60px;z-index:999;background:var(--primary);color:#fff;padding:11px 18px;border-radius:10px;font-weight:700;transition:top .2s}
+ .skip:focus{top:14px}
+
+ .topbar{background:var(--primary-700);color:#cdd9ec}
+ .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;font-size:13px;gap:14px}
+ .status{display:inline-flex;align-items:center;gap:8px}
+ .live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(15,184,124,.25);animation:beat 2.6s var(--ease) infinite}
+ @keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(15,184,124,.4)}60%{box-shadow:0 0 0 7px rgba(15,184,124,0)}}
+ .seg{position:relative;display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:3px}
+ .seg .thumb{position:absolute;top:3px;bottom:3px;width:calc(50% - 3px);border-radius:var(--r-pill);background:#fff;transition:transform .22s var(--ease)}
+ .seg.es .thumb{transform:translateX(100%)}
+ .seg button{position:relative;z-index:1;background:none;border:0;color:#cdd9ec;font-size:12px;font-weight:700;padding:3px 12px;border-radius:var(--r-pill);min-width:42px}
+ .seg button.on{color:var(--primary-700)}
+
+ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--line);transition:box-shadow .25s,padding .25s}
+ header.scrolled{box-shadow:var(--sh-2)}
+ @supports not (backdrop-filter:blur(2px)){header{background:#fff}}
+ header .wrap{display:flex;align-items:center;gap:14px;height:74px}
+ .logo{width:46px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:var(--sh-1);font-family:"Space Grotesk",sans-serif;font-weight:700;color:#fff;font-size:15px;letter-spacing:.02em}
+ .brand b{display:block;font-size:16px;color:var(--primary);font-weight:800;letter-spacing:-.01em}
+ .brand span{font-size:12px;color:var(--ink-soft)}
+ nav{margin-left:auto;display:flex;align-items:center;gap:24px}
+ nav a{font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer}
+ nav a:hover{color:var(--primary)}
+ .nav-cta{background:var(--primary);color:#fff;padding:9px 16px;border-radius:var(--r-btn);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px}
+ .nav-cta:hover{background:var(--primary-700)}
+
+ .hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,92px) 0 clamp(60px,8vw,104px)}
+ .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+ .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+ .hero h1{font-size:clamp(2.3rem,1.6rem+2.9vw,4rem);margin:14px 0 0}
+ .hero h1 .g{background:linear-gradient(120deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+ .hero .lead{margin-top:16px;font-size:clamp(1.05rem,1rem+.4vw,1.22rem);color:var(--ink-soft);max-width:520px}
+ .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+ .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;border-radius:var(--r-btn);padding:14px 22px;font-size:15px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s}
+ .btn svg{width:18px;height:18px}
+ .btn-accent{background:var(--accent);color:#fff;box-shadow:var(--sh-accent)}
+ .btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(31,143,224,.4)}
+ .btn-ghost{background:var(--surface);color:var(--primary);border:1px solid var(--line);box-shadow:var(--sh-1)}
+ .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+ .trust{margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+ .trust .live{width:7px;height:7px}
+
+ .luxcard{position:relative;background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sh-4);padding:18px;border:1px solid var(--line)}
+ .luxcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(31,143,224,.55),rgba(11,42,91,.12) 42%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+ .lux-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+ .lux-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center}
+ .lux-av svg{width:20px;height:20px;stroke:#fff}
+ .lux-head b{font-size:13.5px;color:var(--ink)}
+ .lux-head .st{font-size:11.5px;color:var(--accent-ink);display:flex;align-items:center;gap:5px}
+ .lux-msgs{display:flex;flex-direction:column;gap:9px;padding:14px 2px 4px}
+ .lux-q{align-self:flex-end;background:var(--primary);color:#fff;font-size:13px;padding:9px 13px;border-radius:14px 14px 5px 14px;max-width:80%}
+ .lux-a{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:13px;padding:9px 13px;border-radius:5px 14px 14px 14px;max-width:88%;color:var(--ink)}
+ .lux-stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:3px}
+ .lux-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+ .lux-chip{font-size:11px;font-weight:600;color:var(--primary);background:var(--accent-soft);border-radius:999px;padding:4px 10px}
+
+ .tiles .wrap{margin-top:clamp(-44px,-4vw,-30px);position:relative;z-index:5}
+ .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+ .tile{position:relative;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:18px;padding:18px 16px 16px;box-shadow:var(--sh-1);cursor:pointer;text-align:left;transition:transform .18s var(--ease),box-shadow .18s;display:flex;flex-direction:column;gap:8px}
+ .tile:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .tile.feat{border-top-color:var(--gold);background:linear-gradient(180deg,var(--gold-soft),var(--surface) 60%)}
+ .tile .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);font-weight:600}
+ .tile:hover .no{color:var(--accent-ink)}
+ .tile .ico{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;transition:.18s}
+ .tile .ico svg{width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:1.7}
+ .tile.feat .ico{background:var(--gold-soft)}
+ .tile.feat .ico svg{stroke:var(--gold)}
+ .tile:hover .ico{background:var(--primary)}
+ .tile:hover .ico svg{stroke:#fff}
+ .tile b{font-size:15px;color:var(--ink);font-weight:700}
+ .tile small{font-size:12px;color:var(--ink-soft);line-height:1.4}
+ .tile .arr{position:absolute;right:14px;top:18px;color:var(--ink-soft);transition:transform .18s}
+ .tile:hover .arr{transform:translateX(4px);color:var(--accent-ink)}
+
+ section{padding:clamp(58px,8vw,104px) 0}
+ .sec-head{max-width:620px;margin-bottom:36px}
+ .sec-head h2{font-size:clamp(1.5rem,1.1rem+1.4vw,2.1rem);margin-top:8px;color:var(--ink)}
+ .sec-head p{color:var(--ink-soft);margin-top:8px}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:26px 24px}
+ .step .n{font-family:"Space Grotesk",sans-serif;font-size:42px;font-weight:700;color:var(--accent);line-height:1}
+ .step h3{font-size:17px;margin:12px 0 6px;color:var(--ink)}
+ .step p{font-size:14px;color:var(--ink-soft)}
+
+ .band{position:relative;background:var(--dk-bg);color:var(--dk-ink);overflow:hidden}
+ .band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(31,143,224,.12) 1px,transparent 1px);background-size:30px 30px;-webkit-mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);mask:radial-gradient(120% 100% at 50% 0,#000,transparent 75%);opacity:.7}
+ .band::after{content:"";position:absolute;inset:0;opacity:.4;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+ .band .wrap{position:relative;padding:clamp(48px,7vw,80px) 0}
+ .band h2{color:#fff;font-size:clamp(1.4rem,1.1rem+1.2vw,2rem)}
+ .band .lead{color:var(--dk-soft);margin-top:8px;max-width:560px}
+ .stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+ .stat .v{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums;font-size:clamp(2rem,1.4rem+2vw,3rem);font-weight:700;color:#fff;line-height:1}
+ .stat .v .u{color:var(--accent);font-size:.7em}
+ .stat .l{color:var(--dk-soft);font-size:13.5px;margin-top:6px}
+
+ .news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+ .ncard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s}
+ .ncard:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+ .ncard .top{height:5px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+ .ncard .in{padding:22px}
+ .ncard .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-ink)}
+ .ncard h3{font-size:16.5px;margin:9px 0;color:var(--ink);line-height:1.3}
+ .ncard p{font-size:13.5px;color:var(--ink-soft)}
+ .ncard .lk{margin-top:12px;font-size:13.5px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+ .ncard:hover .lk{gap:9px}
+
+ footer{background:var(--dk-bg);color:var(--dk-soft)}
+ footer .wrap{padding:54px 0 0;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:28px}
+ footer b{color:#fff;display:block;margin-bottom:12px;font-size:15px}
+ footer a{color:var(--dk-soft);display:block;margin-bottom:7px;font-size:14px;cursor:pointer}
+ footer a:hover{color:#fff}
+ .foot-brand p{font-size:13.5px;line-height:1.7}
+ .wcag{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--accent);border:1px solid var(--dk-line);border-radius:var(--r-pill);padding:5px 12px}
+ .legal{border-top:1px solid var(--dk-line);margin-top:44px}
+ .legal .wrap{padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--dk-soft)}
+
+ .js .reveal{opacity:0;transform:translateY(18px)}
+ .js .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+ /* ===== CHATBOT ===== */
+ #fab{position:fixed;right:26px;bottom:26px;z-index:200;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 16px;border:0;border-radius:var(--r-pill);
+   background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-weight:700;font-size:15px;box-shadow:var(--sh-accent),var(--sh-2);transition:transform .25s var(--ease),box-shadow .25s}
+ #fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+ #fab:hover{transform:translateY(-2px) scale(1.03)}
+ #fab::after{content:"";position:absolute;inset:0;border-radius:var(--r-pill);box-shadow:0 0 0 0 rgba(31,143,224,.4);animation:breathe 3.2s var(--ease) infinite;pointer-events:none}
+ @keyframes breathe{0%{box-shadow:0 0 0 0 rgba(31,143,224,.4)}70%{box-shadow:0 0 0 16px rgba(31,143,224,0)}100%{box-shadow:0 0 0 0 rgba(31,143,224,0)}}
+ #fab .badge{position:absolute;top:-4px;right:-2px;background:#C2334D;color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+
+ #chat{position:fixed;right:26px;bottom:26px;z-index:210;width:404px;max-width:calc(100vw - 28px);height:640px;max-height:calc(100vh - 40px);
+   background:var(--surface);border-radius:var(--r-panel);box-shadow:var(--sh-4);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line);transform-origin:bottom right}
+ #chat.open{display:flex;animation:born .34s var(--ease)}
+ @keyframes born{from{opacity:0;transform:translateY(14px) scale(.95)}to{opacity:1;transform:none}}
+ .chead{position:relative;background:linear-gradient(135deg,var(--primary-700),var(--primary));color:#fff;padding:16px 16px 15px;display:flex;align-items:center;gap:12px}
+ .chead::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+ .chead .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center}
+ .chead .av svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8}
+ .chead .t b{font-size:14.5px;display:block}
+ .chead .t span{font-size:12px;color:#bcd0ee;display:flex;align-items:center;gap:6px}
+ .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px rgba(15,184,124,.3)}
+ .chead .x{margin-left:auto;background:rgba(255,255,255,.1);border:0;color:#fff;font-size:20px;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+ .chead .x:hover{background:rgba(255,255,255,.2)}
+ .cbody{flex:1;overflow-y:auto;padding:18px 16px;background:var(--surface-2);display:flex;flex-direction:column;gap:11px}
+ .msg{max-width:88%;font-size:14px;line-height:1.55;white-space:pre-line}
+ .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:5px 16px 16px 16px;padding:10px 14px;box-shadow:var(--sh-1)}
+ .msg.user{align-self:flex-end;background:var(--primary);color:#fff;border-radius:16px 16px 5px 16px;padding:10px 14px}
+ .msg.bot a{color:var(--accent-ink);font-weight:700}
+ .stamp{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.04em}
+ .msg-in{animation:msgin .32s var(--ease)}
+ @keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ .chips{display:flex;flex-wrap:wrap;gap:8px}
+ .chip{background:#fff;border:1px solid var(--line);color:var(--primary);border-radius:var(--r-pill);padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;min-height:36px}
+ .chip:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+ .chip.gold{border-color:var(--gold);background:var(--gold-soft);color:#9a6a13}
+ .chip.gold:hover{background:#fbe6c2}
+ /* tarjeta de recomendación dentro del chat */
+ .rec{margin-top:4px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+ .rec .rh{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:12px;padding:7px 12px;display:flex;align-items:center;gap:7px}
+ .rec .ri{padding:11px 13px;border-top:1px solid var(--line)}
+ .rec .ri:first-of-type{border-top:0}
+ .rec .ri b{font-size:13.5px;color:var(--primary);display:block}
+ .rec .ri small{font-size:12.5px;color:var(--ink-soft);display:block;margin-top:3px}
+ .rec .ri .tag{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:3px 9px}
+ .prog{display:flex;gap:6px;margin:2px 0 6px}
+ .prog i{flex:1;height:4px;border-radius:3px;background:var(--line)}
+ .prog i.on{background:var(--accent)}
+ .typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px;display:flex;gap:5px}
+ .typing i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:bn 1.2s infinite}
+ .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+ @keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+ .cfoot{border-top:1px solid var(--line);padding:11px;display:flex;gap:9px;background:#fff}
+ .cfoot input{flex:1;border:1px solid var(--line);border-radius:var(--r-pill);padding:12px 16px;font-size:14px;outline:none;transition:.15s}
+ .cfoot input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,143,224,.18)}
+ .cfoot .send{width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;cursor:pointer;transition:.15s}
+ .cfoot .send svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+ .cfoot .send:hover{background:var(--accent-ink)}
+ .clegal{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:6px 12px 9px;background:#fff}
+
+ @media(max-width:920px){
+   nav .navlinks{display:none}
+   .hero .wrap{grid-template-columns:1fr}
+   .hero .luxwrap{order:-1;max-width:440px}
+   .grid6{grid-template-columns:repeat(3,1fr)}
+   .steps,.news,.stats{grid-template-columns:1fr}
+   .stats{grid-template-columns:repeat(2,1fr)}
+   footer .wrap{grid-template-columns:1fr 1fr}
+ }
+ @media(max-width:560px){
+   .grid6{grid-template-columns:repeat(2,1fr)}
+   #fab span{display:none}#fab{padding:0;width:60px;height:60px;justify-content:center}
+   #chat{right:0;bottom:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border-radius:18px 18px 0 0}
+ }
+ @media (prefers-reduced-motion:reduce){
+   *{scroll-behavior:auto!important}
+   #fab::after,.live{animation:none}
+   #chat.open,.msg-in{animation:none}
+   .js .reveal{opacity:1;transform:none}
+ }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido" id="skip">Edukira jauzi</a>
+
+<div class="topbar"><div class="wrap">
+ <span class="status"><i class="live"></i><span id="status">Operatibo · 2026ko Laguntza Gida zabalik</span></span>
+ <span class="seg eu" id="seg" role="group" aria-label="Hizkuntza / Idioma">
+   <span class="thumb" aria-hidden="true"></span>
+   <button data-l="eu" class="on" aria-pressed="true">EU</button>
+   <button data-l="es" aria-pressed="false">ES</button>
+ </span>
+</div></div>
+
+<header id="hdr"><div class="wrap">
+ <div class="logo" aria-hidden="true">BEAZ</div>
+ <div class="brand"><b>BEAZ · Bizkaia</b><span id="bsub">Bizkaiko Sustapen Ekonomikoa</span></div>
+ <nav>
+   <span class="navlinks" style="display:flex;gap:24px">
+     <a id="n1" onclick="ask('__finder')">Laguntza-bilatzailea</a>
+     <a id="n2" onclick="ask('digital')">Digitalizazioa</a>
+     <a id="n3" onclick="ask('emprender')">Ekin</a>
+   </span>
+   <a class="nav-cta" id="ncta" href="#" onclick="openChat();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> Laguntza bilatu</a>
+ </nav>
+</div></header>
+
+<main id="contenido">
+<section class="hero"><div class="wrap">
+ <div>
+   <span class="eyebrow" id="eyebrow">BEAZ · Enpresentzako laguntzak · IA Laguntzailea</span>
+   <h1 id="heroh">Zure proiektuari <span class="g">bultzada.</span></h1>
+   <p class="lead" id="herop">Bizkaiko enpresa eta ekintzaileentzako diru-laguntzak, zerbitzuak eta finantzaketa. Esadazu zer behar duzun eta zure proiektuari dagokion laguntza topatuko dut, euskaraz eta gaztelaniaz, 24 orduz.</p>
+   <div class="cta">
+     <button class="btn btn-accent" onclick="ask('__finder')" id="herob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> <span>Zer laguntza dagokit?</span></button>
+     <a class="btn btn-ghost" href="#programak" id="herob2">Programak ikusi</a>
+   </div>
+   <div class="trust"><i class="live"></i><span id="herotrust">Laguntzailea linean · berehalako erantzuna</span></div>
+ </div>
+ <div class="luxwrap"><div class="luxcard">
+   <div class="lux-head">
+     <div class="lux-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+     <div><b>Bea</b><div class="st"><i class="dot" style="width:7px;height:7px"></i> <span id="luxst">Enpresa-laguntzailea</span></div></div>
+   </div>
+   <div class="lux-msgs">
+     <div class="lux-q" id="luxq">Enpresa bat sortu nahi dut. Zer laguntza dago?</div>
+     <div class="lux-a"><div class="lux-stamp">BEAZ · 09:41</div><span id="luxa">Ekintzaileentzat <b>Ekintzaileen Ekimenak Sustatzeko</b> programa duzu (5.000 €-tik). 3 galdera egingo dizkizut eta zuri dagozkizunak zehaztuko ditut. Hasten gara?</span>
+       <div class="lux-chips"><span class="lux-chip">Ekin</span><span class="lux-chip">Digitalizazioa</span><span class="lux-chip">Finantzaketa</span></div>
+     </div>
+   </div>
+ </div></div>
+</div></section>
+
+<div class="tiles" id="programak"><div class="wrap"><div class="grid6" id="grid6"></div></div></div>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="pasos_k">Hasi hemen</span><h2 id="pasos_h">Hiru urrats, zure laguntza</h2><p id="pasos_p">Kontatu zure proiektua eta dagokizun laguntzara eramango zaitut.</p></div>
+ <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="band reveal"><div class="wrap">
+ <span class="eyebrow" style="color:var(--accent)" id="band_k">IA Laguntzailea</span>
+ <h2 id="band_h">Enpresei arreta, itxaron gabe</h2>
+ <p class="lead" id="band_p">Laguntza bakoitza nori dagokion berehala argitzen duen laguntzailea: ETEei, autonomoei eta ekintzaileei.</p>
+ <div class="stats" id="stats"></div>
+</div></section>
+
+<section class="reveal"><div class="wrap">
+ <div class="sec-head"><span class="eyebrow" id="news_k">Albisteak</span><h2 id="news_h">Enpresentzako berriak</h2></div>
+ <div class="news" id="news"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="foot-brand">
+   <b>BEAZ · Bizkaia</b>
+   <p id="foot_dir">Bizkaiko Sustapen Ekonomikoa<br>📞 94 439 56 22<br>📍 Sabino Arana 8, Bilbao<br>🌐 beaz.bizkaia.eus</p>
+   <span class="wcag" id="wcag">✓ WCAG 2.1 AA betetzen du</span>
+ </div>
+ <div><b id="f_t1">Programak</b><a onclick="ask('emprender')">Ekin / Ekintzailetza</a><a onclick="ask('digital')">Digitalizazioa</a><a onclick="ask('idi')">I+G+b</a><a onclick="ask('inter')">Nazioartekotzea</a></div>
+ <div><b id="f_t2">Laguntza</b><a onclick="ask('__finder')" id="f_find">Laguntza-bilatzailea</a><a onclick="ask('financiacion')">Finantzaketa</a><a onclick="openChat()" id="f_asist">IA Laguntzailea</a></div>
+ <div><b id="f_t3">Irisgarritasuna</b><a id="f_a1">Irisgarritasun-adierazpena</a><a id="f_a2">Lege-oharra</a><a id="f_a3">Pribatutasuna</a></div>
+</div>
+<div class="legal"><div class="wrap"><span>© BEAZ · Bizkaiko Foru Aldundia</span><span id="disc">Enpresa-laguntzaile birtualaren erakustaldia · datu publikoak</span></div></div>
+</footer>
+
+<button id="fab" onclick="openChat()" aria-label="Laguntzailea ireki">
+ <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span id="fablabel">Lagundu?</span>
+ <span class="badge">1</span>
+</button>
+
+<div id="chat" role="dialog" aria-modal="false" aria-label="Enpresa-laguntzailea">
+ <div class="chead">
+   <div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+   <div class="t"><b id="cname">Bea · BEAZ enpresa-laguntzailea</b><span><i class="dot"></i> <span id="con">Linean · berehala erantzuten du</span></span></div>
+   <button class="x" onclick="closeChat()" aria-label="Itxi">×</button>
+ </div>
+ <div class="cbody" id="cbody" role="log" aria-live="polite" aria-label="Elkarrizketa"></div>
+ <div class="cfoot">
+   <input id="cinput" aria-label="Idatzi zure galdera" placeholder="Idatzi zure galdera…" autocomplete="off" onkeydown="if(event.key==='Enter')send()">
+   <button class="send" onclick="send()" aria-label="Bidali"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+ </div>
+ <div class="clegal" id="clegal">Orientabidezko informazioa · deialdi ofizialak beaz.bizkaia.eus atarian</div>
+</div>
+
+<script>
+document.documentElement.classList.add("js");
+
+/* ===== UI i18n ===== */
+const UI={
+ es:{status:"Operativo · Guía de Ayudas 2026 abierta",bsub:"Promoción Económica de Bizkaia",
+  n1:"Buscador de ayudas",n2:"Digitalización",n3:"Emprender",ncta:"Buscar ayuda",
+  eyebrow:"BEAZ · Ayudas a empresas · Asistente IA",heroh:'Tu proyecto, <span class="g">con impulso.</span>',
+  herop:"Subvenciones, servicios y financiación para empresas y personas emprendedoras de Bizkaia. Dime qué necesitas y te encuentro la ayuda que te corresponde, en euskera y castellano, las 24 horas.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> <span>¿Qué ayuda me corresponde?</span>',
+  herob2:"Ver programas",herotrust:"Asistente en línea · respuesta inmediata",
+  luxst:"Asistente de empresas",luxq:"Quiero crear una empresa. ¿Qué ayudas hay?",
+  luxa:"Para emprender tienes el <b>programa de Fomento de Iniciativas Emprendedoras</b> (desde 5.000 €). Te hago 3 preguntas y te concreto las que encajan contigo. ¿Empezamos?",
+  pasos_k:"Empieza aquí",pasos_h:"Tres pasos, tu ayuda",pasos_p:"Cuéntame tu proyecto y te llevo a la ayuda que te corresponde.",
+  band_k:"Asistente IA",band_h:"Atención a empresas, sin esperas",band_p:"Un asistente que aclara al instante qué ayuda corresponde a cada quién: pymes, autónomos y personas emprendedoras.",
+  news_k:"Actualidad",news_h:"Novedades para empresas",
+  foot_dir:"Promoción Económica de Bizkaia<br>📞 94 439 56 22<br>📍 Sabino Arana 8, Bilbao<br>🌐 beaz.bizkaia.eus",
+  wcag:"✓ Conforme WCAG 2.1 AA",f_t1:"Programas",f_t2:"Ayuda",f_t3:"Accesibilidad",f_find:"Buscador de ayudas",f_asist:"Asistente IA",
+  f_a1:"Declaración de accesibilidad",f_a2:"Aviso legal",f_a3:"Privacidad",
+  disc:"Demostración de asistente virtual para empresas · datos públicos",
+  cname:"Bea · Asistente de empresas de BEAZ",con:"En línea · responde al instante",fablabel:"¿Te ayudo?",
+  ph:"Escribe tu pregunta…",clegal:"Información orientativa · convocatorias oficiales en beaz.bizkaia.eus",skip:"Saltar al contenido",
+  tiles:[["__finder","Buscador de ayudas","Dime tu proyecto y te oriento",1],["emprender","Crear empresa","Fomento de iniciativas emprendedoras",0],["digital","Digitalización","Línea Básica y Avanzada",0],["idi","Innovación I+D+i","Proyectos de I+D+i y unidades",0],["inter","Internacionalización","Salir a mercados exteriores",0],["financiacion","Financiación","Seed Capital y fondos",0]],
+  steps:[["Cuéntame tu proyecto","¿Vas a crear empresa, eres pyme o startup? ¿Qué quieres impulsar?"],["Te digo qué ayuda encaja","Te propongo las subvenciones y servicios que mejor se adaptan a ti."],["Te acompaño a solicitarla","Te indico requisitos, plazos y cómo presentar la solicitud en BEAZ."]],
+  stats:[["63","en ayudas a empresas (2026)","M€"],["40","subvenciones y servicios","+"],["2","idiomas · euskera y castellano",""],["24/7","siempre disponible",""]],
+  news:[["Guía 2026","63 M€ en ayudas a empresas","18 subvenciones, 22 servicios, 8 proyectos y 7 fondos para pymes y personas emprendedoras.","__finder"],["Novedad","Aceleración de startups e I+D+i","Nuevo programa para acelerar startups y línea específica para unidades de I+D+i.","idi"],["Atención","Nuevo asistente virtual para empresas","Resuelve dudas y te orienta a la ayuda que te corresponde, 24 horas.","__chat"]]},
+ eu:{status:"Operatibo · 2026ko Laguntza Gida zabalik",bsub:"Bizkaiko Sustapen Ekonomikoa",
+  n1:"Laguntza-bilatzailea",n2:"Digitalizazioa",n3:"Ekin",ncta:"Laguntza bilatu",
+  eyebrow:"BEAZ · Enpresentzako laguntzak · IA Laguntzailea",heroh:'Zure proiektuari <span class="g">bultzada.</span>',
+  herop:"Bizkaiko enpresa eta ekintzaileentzako diru-laguntzak, zerbitzuak eta finantzaketa. Esadazu zer behar duzun eta zure proiektuari dagokion laguntza topatuko dut, euskaraz eta gaztelaniaz, 24 orduz.",
+  herob:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> <span>Zer laguntza dagokit?</span>',
+  herob2:"Programak ikusi",herotrust:"Laguntzailea linean · berehalako erantzuna",
+  luxst:"Enpresa-laguntzailea",luxq:"Enpresa bat sortu nahi dut. Zer laguntza dago?",
+  luxa:"Ekintzaileentzat <b>Ekintzaileen Ekimenak Sustatzeko</b> programa duzu (5.000 €-tik). 3 galdera egingo dizkizut eta zuri dagozkizunak zehaztuko ditut. Hasten gara?",
+  pasos_k:"Hasi hemen",pasos_h:"Hiru urrats, zure laguntza",pasos_p:"Kontatu zure proiektua eta dagokizun laguntzara eramango zaitut.",
+  band_k:"IA Laguntzailea",band_h:"Enpresei arreta, itxaron gabe",band_p:"Laguntza bakoitza nori dagokion berehala argitzen duen laguntzailea: ETEei, autonomoei eta ekintzaileei.",
+  news_k:"Albisteak",news_h:"Enpresentzako berriak",
+  foot_dir:"Bizkaiko Sustapen Ekonomikoa<br>📞 94 439 56 22<br>📍 Sabino Arana 8, Bilbao<br>🌐 beaz.bizkaia.eus",
+  wcag:"✓ WCAG 2.1 AA betetzen du",f_t1:"Programak",f_t2:"Laguntza",f_t3:"Irisgarritasuna",f_find:"Laguntza-bilatzailea",f_asist:"IA Laguntzailea",
+  f_a1:"Irisgarritasun-adierazpena",f_a2:"Lege-oharra",f_a3:"Pribatutasuna",
+  disc:"Enpresa-laguntzaile birtualaren erakustaldia · datu publikoak",
+  cname:"Bea · BEAZ enpresa-laguntzailea",con:"Linean · berehala erantzuten du",fablabel:"Lagundu?",
+  ph:"Idatzi zure galdera…",clegal:"Orientabidezko informazioa · deialdi ofizialak beaz.bizkaia.eus atarian",skip:"Edukira jauzi",
+  tiles:[["__finder","Laguntza-bilatzailea","Esadazu proiektua eta orientatuko zaitut",1],["emprender","Enpresa sortu","Ekintzaileen ekimenak sustatzea",0],["digital","Digitalizazioa","Oinarrizko eta Aurreratu lerroa",0],["idi","Berrikuntza I+G+b","I+G+b proiektuak eta unitateak",0],["inter","Nazioartekotzea","Kanpoko merkatuetara",0],["financiacion","Finantzaketa","Seed Capital eta funtsak",0]],
+  steps:[["Kontatu zure proiektua","Enpresa sortuko duzu, ETE zara edo startup? Zer bultzatu nahi duzu?"],["Dagokizun laguntza esango dizut","Zuri ondoen egokitzen zaizkizun diru-laguntza eta zerbitzuak proposatuko dizkizut."],["Eskatzen lagunduko dizut","Baldintzak, epeak eta BEAZen eskaera nola aurkeztu adieraziko dizut."]],
+  stats:[["63","enpresei laguntzeko (2026)","M€"],["40","diru-laguntza eta zerbitzu","+"],["2","hizkuntza · euskara eta gaztelania",""],["24/7","beti eskuragarri",""]],
+  news:[["2026ko Gida","63 M€ enpresentzako laguntzetan","18 diru-laguntza, 22 zerbitzu, 8 proiektu eta 7 funts ETE eta ekintzaileentzat.","__finder"],["Berria","Startup-azelerazioa eta I+G+b","Startup-ak azeleratzeko programa berria eta I+G+b unitateentzako lerroa.","idi"],["Arreta","Enpresentzako laguntzaile birtual berria","Zalantzak argitu eta dagokizun laguntzara orientatzen zaitu, 24 orduz.","__chat"]]}
+};
+let LANG="eu";
+
+/* ===== Catálogo de programas (para el buscador) ===== */
+const PROG={
+ emprender:{es:{n:"Fomento de Iniciativas Emprendedoras",d:"Ayuda a la creación de empresa para autónomos, sociedades o comunidades de bienes que inician actividad en Bizkaia. Desde 5.000 €.",tag:"Crear empresa"},
+  eu:{n:"Ekintzaileen Ekimenak Sustatzea",d:"Enpresa sortzeko laguntza, Bizkaian jarduera hasten duten autonomo, sozietate edo ondasun-erkidegoentzat. 5.000 €-tik.",tag:"Enpresa sortu"}},
+ digital:{es:{n:"Programa de Digitalización (Básica + Avanzada)",d:"Para digitalizar tu pyme: web/comercio electrónico, ciberseguridad, gestión, industria 4.0. Dos líneas según el alcance del proyecto.",tag:"Digitalización"},
+  eu:{n:"Digitalizazio Programa (Oinarrizkoa + Aurreratua)",d:"Zure ETE digitalizatzeko: web/merkataritza elektronikoa, zibersegurtasuna, kudeaketa, 4.0 industria. Bi lerro, proiektuaren arabera.",tag:"Digitalizazioa"}},
+ idi:{es:{n:"Ayudas a I+D+i",d:"Proyectos de investigación, desarrollo e innovación. Novedad 2026: línea para unidades empresariales de I+D+i.",tag:"Innovación"},
+  eu:{n:"I+G+b Laguntzak",d:"Ikerketa, garapen eta berrikuntza proiektuak. 2026ko berria: I+G+b enpresa-unitateentzako lerroa.",tag:"Berrikuntza"}},
+ inter:{es:{n:"Internacionalización",d:"Apoyo para abrir mercados exteriores: prospección, presencia internacional y consolidación fuera.",tag:"Exportar"},
+  eu:{n:"Nazioartekotzea",d:"Kanpoko merkatuak irekitzeko laguntza: prospekzioa, nazioarteko presentzia eta kanpoko finkatzea.",tag:"Esportatu"}},
+ startup:{es:{n:"Aceleración de startups",d:"Programa para acelerar startups innovadoras (novedad 2026), con acompañamiento y conexión con inversión.",tag:"Startup"},
+  eu:{n:"Startup-azelerazioa",d:"Startup berritzaileak azeleratzeko programa (2026ko berria), laguntza eta inbertsiorako konexioarekin.",tag:"Startup"}},
+ industria:{es:{n:"Inversión e industria",d:"Apoyo a proyectos de inversión productiva e industrial para crecer y modernizar tu actividad.",tag:"Crecer"},
+  eu:{n:"Inbertsioa eta industria",d:"Inbertsio produktibo eta industrialerako laguntza, zure jarduera handitu eta modernizatzeko.",tag:"Hazi"}},
+ seed:{es:{n:"Seed Capital Bizkaia",d:"Fondos de inversión públicos de Bizkaia para entrar en el capital de proyectos con potencial de crecimiento.",tag:"Financiación"},
+  eu:{n:"Seed Capital Bizkaia",d:"Bizkaiko inbertsio-funts publikoak, hazkunde-potentziala duten proiektuen kapitalean sartzeko.",tag:"Finantzaketa"}},
+ talento:{es:{n:"Bizkaia Talent",d:"Atracción y retención de talento cualificado para tu empresa.",tag:"Talento"},
+  eu:{n:"Bizkaia Talent",d:"Zure enpresarako talentu kualifikatua erakarri eta atxikitzea.",tag:"Talentua"}},
+ servicios:{es:{n:"Acompañamiento BEAZ",d:"Asesoramiento gratuito de BEAZ para identificar el recurso que mejor se adapta a tu empresa y ayudarte a tramitarlo.",tag:"Servicio"},
+  eu:{n:"BEAZ-en laguntza",d:"BEAZ-en doako aholkularitza, zure enpresari ondoen egokitzen zaion baliabidea identifikatu eta izapidetzen laguntzeko.",tag:"Zerbitzua"}}
+};
+
+/* ===== KB (motor del chat) ===== */
+const KB=[
+ {id:"saludo",keys:["hola","buenas","kaixo","egun on","epa","gabon","aupa"],
+  es:"¡Hola! 👋 Soy <b>Bea</b>, el asistente de <b>BEAZ</b> (Promoción Económica de Bizkaia). Te ayudo con las <b>ayudas a empresas</b>: crear empresa, digitalización, I+D+i, internacionalización o financiación. ¿Quieres que te diga <b>qué ayuda te corresponde</b>?",
+  eu:"Kaixo! 👋 <b>Bea</b> naiz, <b>BEAZ</b>-eko laguntzailea (Bizkaiko Sustapen Ekonomikoa). <b>Enpresentzako laguntzetan</b> laguntzen dizut: enpresa sortu, digitalizazioa, I+G+b, nazioartekotzea edo finantzaketa. <b>Zer laguntza dagokizun</b> esatea nahi duzu?"},
+ {id:"ayudas",keys:["ayuda","ayudas","subvencion","subvenciones","guia","guia de ayudas","laguntza","laguntzak","diru-laguntza","dirulaguntza","que hay","que ofreceis","programas","programa"],
+  es:"📋 <b>Guía de Ayudas a Empresas 2026</b>\nBizkaia destina <b>63 M€</b> a empresas y personas emprendedoras: <b>18 subvenciones, 22 servicios, 8 proyectos estratégicos y 7 fondos</b>.\nLas grandes líneas son: <b>crear empresa, digitalización, I+D+i, internacionalización, inversión/industria y financiación</b>.\n¿Quieres que te diga cuál encaja contigo? Escribe <b>buscador</b> o pulsa «¿Qué ayuda me corresponde?».",
+  eu:"📋 <b>Enpresentzako Laguntzen Gida 2026</b>\nBizkaiak <b>63 M€</b> bideratzen ditu enpresa eta ekintzaileentzat: <b>18 diru-laguntza, 22 zerbitzu, 8 proiektu estrategiko eta 7 funts</b>.\nLerro nagusiak: <b>enpresa sortu, digitalizazioa, I+G+b, nazioartekotzea, inbertsioa/industria eta finantzaketa</b>.\nZein dagokizun jakin nahi? Idatzi <b>bilatzailea</b> edo sakatu «Zer laguntza dagokit?»."},
+ {id:"emprender",keys:["emprender","crear","montar","crear empresa","montar empresa","nueva empresa","autonomo","darme de alta","emprendedor","startup nueva","ekin","sortu","enpresa sortu","ekintzaile","negocio nuevo","empezar negocio","iniciar actividad"],
+  es:"🚀 <b>Crear empresa (emprender)</b>\nEl programa de <b>Fomento de Iniciativas Emprendedoras</b> ayuda a quien inicia actividad en Bizkaia (autónomo, sociedad o comunidad de bienes), <b>desde 5.000 €</b>.\nAdemás, BEAZ te acompaña gratis para arrancar. ¿Te oriento con el buscador? Escribe <b>buscador</b>.",
+  eu:"🚀 <b>Enpresa sortu (ekin)</b>\n<b>Ekintzaileen Ekimenak Sustatzeko</b> programak Bizkaian jarduera hasten duenari laguntzen dio (autonomo, sozietate edo ondasun-erkidego), <b>5.000 €-tik</b>.\nGainera, BEAZ-ek doan laguntzen dizu abiatzen. Orientatu? Idatzi <b>bilatzailea</b>."},
+ {id:"digital",keys:["digital","digitalizacion","digitalizar","web","tienda online","comercio electronico","ciberseguridad","tecnologia","industria 4.0","software","kit digital","digitalizazioa","teknologia","transformacion digital"],
+  es:"💻 <b>Digitalización</b>\nHay ayudas para digitalizar tu empresa con <b>dos líneas</b>: <b>Básica</b> (web, comercio electrónico, gestión, ciberseguridad…) y <b>Avanzada</b> (proyectos de mayor alcance, industria 4.0…).\n¿Quieres saber cuál encaja con tu proyecto? Escribe <b>buscador</b>.",
+  eu:"💻 <b>Digitalizazioa</b>\nZure enpresa digitalizatzeko laguntzak daude, <b>bi lerrotan</b>: <b>Oinarrizkoa</b> (weba, merkataritza elektronikoa, kudeaketa, zibersegurtasuna…) eta <b>Aurreratua</b> (proiektu handiagoak, 4.0 industria…).\nZein dagokizun jakin nahi? Idatzi <b>bilatzailea</b>."},
+ {id:"idi",keys:["idi","i+d+i","i+d","innovacion","investigacion","desarrollo","i+g+b","berrikuntza","ikerketa","innovar","proyecto innovador"],
+  es:"🔬 <b>Innovación (I+D+i)</b>\nAyudas a proyectos de <b>investigación, desarrollo e innovación</b>. Como <b>novedad 2026</b>, hay una línea para que las <b>unidades empresariales de I+D+i</b> accedan a financiación.\nSi eres startup, también hay aceleración. ¿Te oriento? Escribe <b>buscador</b>.",
+  eu:"🔬 <b>Berrikuntza (I+G+b)</b>\n<b>Ikerketa, garapen eta berrikuntza</b> proiektuetarako laguntzak. <b>2026ko berria</b>: <b>I+G+b enpresa-unitateek</b> finantzaketa eskuratzeko lerroa.\nStartup bazara, azelerazioa ere badago. Orientatu? Idatzi <b>bilatzailea</b>."},
+ {id:"inter",keys:["internacional","internacionalizacion","exportar","exportacion","mercados exteriores","fuera","extranjero","nazioartekotzea","esportatu","kanpora"],
+  es:"🌍 <b>Internacionalización</b>\nApoyo para <b>abrir mercados exteriores</b>: prospección, presencia internacional y consolidación fuera. Encaja con pymes que quieren vender fuera de Bizkaia.\n¿Lo vemos con el buscador? Escribe <b>buscador</b>.",
+  eu:"🌍 <b>Nazioartekotzea</b>\n<b>Kanpoko merkatuak irekitzeko</b> laguntza: prospekzioa, nazioarteko presentzia eta kanpoko finkatzea. Bizkaiatik kanpora saldu nahi duten ETEentzat.\nBilatzailearekin ikusi? Idatzi <b>bilatzailea</b>."},
+ {id:"financiacion",keys:["financiacion","financiar","prestamo","credito","capital","inversion","fondos","seed capital","dinero","finantzaketa","funts","inbertsio","mailegu","kapitala"],
+  es:"💶 <b>Financiación</b>\nAdemás de subvenciones, Bizkaia ofrece <b>7 fondos de inversión</b> y <b>Seed Capital Bizkaia</b> para entrar en el capital de proyectos con potencial. Para industria/inversión hay líneas específicas.\n¿Te digo qué encaja contigo? Escribe <b>buscador</b>.",
+  eu:"💶 <b>Finantzaketa</b>\nDiru-laguntzez gain, Bizkaiak <b>7 inbertsio-funts</b> eta <b>Seed Capital Bizkaia</b> ditu, potentziala duten proiektuen kapitalean sartzeko. Industria/inbertsiorako lerro bereziak daude.\nZer dagokizun esan? Idatzi <b>bilatzailea</b>."},
+ {id:"talento",keys:["talento","contratar","empleo","trabajadores","personal","talentu","kontratatu","langile","bizkaia talent"],
+  es:"👥 <b>Talento</b>\nA través de <b>Bizkaia Talent</b> puedes atraer y retener talento cualificado para tu empresa. ¿Lo combinamos con tu proyecto? Escribe <b>buscador</b>.",
+  eu:"👥 <b>Talentua</b>\n<b>Bizkaia Talent</b>-en bidez talentu kualifikatua erakarri eta atxiki dezakezu zure enpresarako. Zure proiektuarekin uztartu? Idatzi <b>bilatzailea</b>."},
+ {id:"requisitos",keys:["requisito","requisitos","quien puede","quien lo pide","beneficiario","puedo pedir","cumplo","tamano empresa","baldintza","nork eska","betebehar"],
+  es:"✅ <b>Requisitos (general)</b>\nVarían por programa, pero suelen pedir: tener (o ir a crear) <b>empresa o actividad en Bizkaia</b>, estar al corriente de obligaciones fiscales y presentar el proyecto en plazo.\nDime tu caso y te concreto. ¿Usamos el <b>buscador</b>?",
+  eu:"✅ <b>Baldintzak (orokorra)</b>\nProgramaren arabera aldatzen dira, baina ohikoa da: <b>Bizkaian enpresa edo jarduera</b> izatea (edo sortzea), zerga-betebeharretan egunean egotea eta proiektua epean aurkeztea.\nEsadazu zure kasua eta zehaztuko dizut. <b>Bilatzailea</b> erabili?"},
+ {id:"plazos",keys:["plazo","plazos","cuando","convocatoria","fecha","abierta","cerrada","epe","noiz","deialdi","data"],
+  es:"🗓️ <b>Plazos y convocatorias</b>\nCada ayuda tiene su <b>convocatoria anual</b> con plazo propio; algunas son por orden de llegada hasta agotar fondos. Conviene no esperar al final.\nLas convocatorias y fechas oficiales están en <b>beaz.bizkaia.eus</b>. ¿Quieres que te oriente al programa que te toca? Escribe <b>buscador</b>.",
+  eu:"🗓️ <b>Epeak eta deialdiak</b>\nLaguntza bakoitzak <b>urteko deialdia</b> du bere epearekin; batzuk iristeko ordenaren arabera, funtsak agortu arte. Hobe ez azken unera arte itxarotea.\nDeialdi eta data ofizialak <b>beaz.bizkaia.eus</b> atarian daude. Dagokizun programara orientatu? Idatzi <b>bilatzailea</b>."},
+ {id:"como",keys:["como solicito","como pedir","como se pide","tramite","tramitar","solicitud","presentar","certificado digital","nola eskatu","izapide","aurkeztu","eskaera"],
+  es:"📝 <b>Cómo solicitar</b>\n1) Identifica la ayuda (te ayudo con el buscador).\n2) Reúne la documentación del proyecto.\n3) Presenta la solicitud en la <b>sede/oficina virtual de Promoción Económica</b> con certificado digital, en plazo.\nBEAZ te acompaña gratis. ☎️ 94 439 56 22.",
+  eu:"📝 <b>Nola eskatu</b>\n1) Identifikatu laguntza (bilatzailearekin laguntzen dizut).\n2) Bildu proiektuaren dokumentazioa.\n3) Aurkeztu eskaera <b>Sustapen Ekonomikoaren egoitza/bulego birtualean</b> ziurtagiri digitalarekin, epean.\nBEAZ-ek doan laguntzen dizu. ☎️ 94 439 56 22."},
+ {id:"contacto",keys:["telefono","contacto","llamar","email","correo","direccion","donde estais","kontaktu","deitu","helbide","telefonoa"],
+  es:"📞 <b>Contacto BEAZ</b>\n• Teléfono: <b>94 439 56 22</b>\n• Dirección: <b>Sabino Arana 8, Bilbao</b>\n• Web: <b>beaz.bizkaia.eus</b>\n• Subvenciones (DFB): <b>944 068 038</b>\nTe atienden y te acompañan en la solicitud.",
+  eu:"📞 <b>BEAZ kontaktua</b>\n• Telefonoa: <b>94 439 56 22</b>\n• Helbidea: <b>Sabino Arana 8, Bilbao</b>\n• Weba: <b>beaz.bizkaia.eus</b>\n• Diru-laguntzak (BFA): <b>944 068 038</b>\nArreta ematen dizute eta eskaeran laguntzen."},
+ {id:"persona",keys:["persona","hablar con alguien","humano","operador","asesor","agente","pertsona","quiero hablar","aholkulari"],
+  es:"🙋 Te derivo a una persona de BEAZ:\n• <b>94 439 56 22</b> (atención a empresas)\n• Web: <b>beaz.bizkaia.eus</b>\nTe pueden asesorar gratis y acompañarte en la tramitación.",
+  eu:"🙋 BEAZ-eko pertsona batengana bideratzen zaitut:\n• <b>94 439 56 22</b> (enpresei arreta)\n• Weba: <b>beaz.bizkaia.eus</b>\nDoan aholkatu eta izapidetzan lagun diezazukete."},
+ {id:"fuera",keys:["renta","irpf","padron","empadron","osakidetza","medico","cita medico","dni","carnet","multa","pension","paro","lanbide","vivienda alquiler","ayuda alquiler","beca"],
+  es:"ℹ️ Eso queda fuera de las ayudas a empresas de BEAZ. Para no darte información incorrecta, te oriento:\n• <b>Renta / impuestos</b> → Hacienda Foral (901 502 000).\n• <b>Padrón, multas…</b> → tu Ayuntamiento.\n• <b>Salud / médico</b> → Osakidetza.\n• <b>Empleo / paro</b> → Lanbide.\nYo te ayudo con <b>ayudas a empresas y personas emprendedoras</b>. ¿Lo vemos?",
+  eu:"ℹ️ Hori BEAZ-en enpresa-laguntzetatik kanpo dago. Informazio okerrik ez emateko, orientatzen zaitut:\n• <b>Errenta / zergak</b> → Foru Ogasuna (901 502 000).\n• <b>Errolda, isunak…</b> → zure Udala.\n• <b>Osasuna / medikua</b> → Osakidetza.\n• <b>Enplegua / langabezia</b> → Lanbide.\nNik <b>enpresa eta ekintzaileentzako laguntzetan</b> laguntzen dizut. Ikusi nahi?"},
+ {id:"gracias",keys:["gracias","eskerrik asko","ok","vale","perfecto","adios","agur","mila esker","genial"],
+  es:"¡Un placer! 😊 Recuerda que es información orientativa; consulta las convocatorias oficiales en <b>beaz.bizkaia.eus</b> o llama al <b>94 439 56 22</b>. ¡Agur y suerte con tu proyecto!",
+  eu:"Pozik! 😊 Gogoratu orientabidezko informazioa dela; begiratu deialdi ofizialak <b>beaz.bizkaia.eus</b> atarian edo deitu <b>94 439 56 22</b>. Agur eta zorte on zure proiektuarekin!"}
+];
+const CHIPS={
+ es:[["__finder","🔎 ¿Qué ayuda me corresponde?","gold"],["digital","💻 Digitalización"],["emprender","🚀 Crear empresa"],["idi","🔬 Innovar (I+D+i)"],["financiacion","💶 Financiación"]],
+ eu:[["__finder","🔎 Zer laguntza dagokit?","gold"],["digital","💻 Digitalizazioa"],["emprender","🚀 Enpresa sortu"],["idi","🔬 Berrikuntza (I+G+b)"],["financiacion","💶 Finantzaketa"]]
+};
+
+/* ===== Wizard (buscador de ayudas) ===== */
+const WIZ={
+ es:{intro:"🔎 <b>Buscador de ayudas</b>\nTe hago 3 preguntas rápidas y te digo qué ayudas encajan contigo.\n\n<b>1/3 · ¿En qué momento estás?</b>",
+  q2:"<b>2/3 · ¿Qué quieres impulsar?</b>",
+  result:"✨ <b>Esto es lo que mejor encaja contigo</b>",
+  foot:"Te lo concreto BEAZ: ☎️ 94 439 56 22. Información orientativa; convocatorias en beaz.bizkaia.eus.",
+  perfiles:[["crear","🚀 Voy a crear mi empresa"],["pyme","🏢 Pyme / autónomo en marcha"],["startup","💡 Startup innovadora"]],
+  objetivos:[["arrancar","Arrancar / financiación inicial"],["digital","Digitalizarme"],["idi","Innovar (I+D+i)"],["inter","Vender fuera"],["crecer","Crecer / invertir"],["talento","Atraer talento"]]},
+ eu:{intro:"🔎 <b>Laguntza-bilatzailea</b>\n3 galdera azkar egingo dizkizut eta zuri zer laguntza dagozkizun esango dizut.\n\n<b>1/3 · Zer momentutan zaude?</b>",
+  q2:"<b>2/3 · Zer bultzatu nahi duzu?</b>",
+  result:"✨ <b>Hau da zuri ondoen egokitzen zaizuna</b>",
+  foot:"BEAZ-ek zehaztuko dizu: ☎️ 94 439 56 22. Orientabidezko informazioa; deialdiak beaz.bizkaia.eus atarian.",
+  perfiles:[["crear","🚀 Enpresa sortuko dut"],["pyme","🏢 ETE / autonomo martxan"],["startup","💡 Startup berritzailea"]],
+  objetivos:[["arrancar","Abiatu / hasierako finantzaketa"],["digital","Digitalizatu"],["idi","Berritu (I+G+b)"],["inter","Kanpora saldu"],["crecer","Hazi / inbertitu"],["talento","Talentua erakarri"]]}
+};
+function recommend(perfil,obj){
+ let r=[];
+ const base={arrancar:["emprender","seed"],digital:["digital"],idi:["idi"],inter:["inter"],crecer:["industria","seed"],talento:["talento"]};
+ r=r.concat(base[obj]||[]);
+ if(perfil==="crear"&&!r.includes("emprender"))r.unshift("emprender");
+ if(perfil==="startup"){if(!r.includes("startup"))r.unshift("startup");if(!r.includes("seed"))r.push("seed");}
+ r.push("servicios");
+ // dedup + máx 3
+ const seen={},out=[];for(const id of r){if(!seen[id]){seen[id]=1;out.push(id);}}
+ return out.slice(0,3);
+}
+
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function match(text){const t=norm(text);let best=null,score=0;for(const it of KB){let s=0;for(const k of it.keys){const kn=norm(k);if(t.includes(kn))s+=kn.length;}if(s>score){score=s;best=it;}}return score>0?best:null;}
+function isFinderQuery(text){const t=norm(text);return ["buscador","bilatzaile","que ayuda me","cual ayuda","cual me corresponde","que me corresponde","que me toca","que puedo pedir","no se que ayuda","oriente","oriename","recomienda","zer laguntza dagokit","zer dagokit","zein laguntza"].some(k=>t.includes(norm(k)));}
+const cb=()=>document.getElementById("cbody");
+function nowHM(){const d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
+function bubble(html,who){const d=document.createElement("div");d.className="msg "+who+" msg-in";
+ if(who==="bot")d.innerHTML='<div class="stamp">BEAZ · '+nowHM()+'</div>'+html;else d.innerHTML=html;
+ cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function chips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([id,lb,cls])=>{const b=document.createElement("button");b.className="chip"+(cls?" "+cls:"");b.textContent=lb;b.onclick=()=>ask(id,lb);c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function fchips(list){const c=document.createElement("div");c.className="chips msg-in";list.forEach(([lb,fn,cls])=>{const b=document.createElement("button");b.className="chip"+(cls?" "+cls:"");b.textContent=lb;b.onclick=fn;c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;}
+function typing(){const d=document.createElement("div");d.className="typing";d.innerHTML="<i></i><i></i><i></i>";d.setAttribute("aria-label",LANG==="es"?"El asistente está escribiendo":"Laguntzailea idazten ari da");cb().appendChild(d);cb().scrollTop=cb().scrollHeight;return d;}
+function respond(it){const tp=typing();setTimeout(()=>{tp.remove();let a;if(it)a=it[LANG];else a=(LANG==="es"
+   ?"🤔 No estoy seguro de entenderte. Te ayudo con <b>ayudas a empresas</b>: crear empresa, digitalización, I+D+i, internacionalización, financiación o talento. ¿Usamos el <b>buscador</b>? También puedes llamar al 94 439 56 22."
+   :"🤔 Ez nago ziur ulertu zaitudan. <b>Enpresa-laguntzetan</b> laguntzen dizut: enpresa sortu, digitalizazioa, I+G+b, nazioartekotzea, finantzaketa edo talentua. <b>Bilatzailea</b> erabili? 94 439 56 22 telefonora ere dei dezakezu.");
+  bubble(a,"bot");if(!it||it.id==="saludo"||it.id==="ayudas")chips(CHIPS[LANG]);},520+Math.random()*380);}
+
+/* flujo wizard */
+let FIND={perfil:null};
+function startFinder(){
+ if(!document.getElementById("chat").classList.contains("open"))openChat(true);
+ FIND={perfil:null};
+ const tp=typing();setTimeout(()=>{tp.remove();
+  bubble('<div class="prog"><i class="on"></i><i></i><i></i></div>'+WIZ[LANG].intro,"bot");
+  fchips(WIZ[LANG].perfiles.map(p=>[p[1],()=>finderPerfil(p[0],p[1])]));
+ },420);
+}
+function finderPerfil(id,label){
+ bubble(label,"user");FIND.perfil=id;
+ const tp=typing();setTimeout(()=>{tp.remove();
+  bubble('<div class="prog"><i class="on"></i><i class="on"></i><i></i></div>'+WIZ[LANG].q2,"bot");
+  fchips(WIZ[LANG].objetivos.map(o=>[o[1],()=>finderObjetivo(o[0],o[1])]));
+ },420);
+}
+function finderObjetivo(id,label){
+ bubble(label,"user");
+ const recs=recommend(FIND.perfil,id);
+ const tp=typing();setTimeout(()=>{tp.remove();
+  let html='<div class="prog"><i class="on"></i><i class="on"></i><i class="on"></i></div>'+WIZ[LANG].result+'<div class="rec">';
+  html+='<div class="rh">✨ '+(LANG==="es"?"Recomendación para ti":"Zuretzako gomendioa")+'</div>';
+  recs.forEach(pid=>{const p=PROG[pid][LANG];html+='<div class="ri"><b>'+p.n+'</b><small>'+p.d+'</small><span class="tag">'+p.tag+'</span></div>';});
+  html+='</div>\n'+WIZ[LANG].foot;
+  bubble(html,"bot");
+  fchips([[LANG==="es"?"🔁 Repetir buscador":"🔁 Berriz bilatu",()=>startFinder(),"gold"],[LANG==="es"?"📝 Cómo solicitar":"📝 Nola eskatu",()=>{respond(KB.find(x=>x.id==="como"));}],[LANG==="es"?"📞 Hablar con BEAZ":"📞 BEAZ-ekin hitz egin",()=>{respond(KB.find(x=>x.id==="contacto"));}]]);
+ },680);
+}
+
+function ask(id,label){
+ if(id==="__finder"){if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(LANG==="es"?"¿Qué ayuda me corresponde?":"Zer laguntza dagokit?"),"user");startFinder();return;}
+ const it=KB.find(x=>x.id===id);if(!document.getElementById("chat").classList.contains("open"))openChat(true);bubble(label||(it?it[LANG].split("\n")[0].replace(/<[^>]+>/g,""):id),"user");respond(it);}
+function send(){const i=document.getElementById("cinput");const v=i.value.trim();if(!v)return;bubble(v,"user");i.value="";if(isFinderQuery(v)){startFinder();return;}respond(match(v));}
+
+let greeted=false,lastFocus=null;
+function greet(){if(greeted)return;greeted=true;bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
+function openChat(skip){const c=document.getElementById("chat");lastFocus=document.activeElement;c.classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)setTimeout(()=>document.getElementById("cinput").focus(),60);}
+function closeChat(){document.getElementById("chat").classList.remove("open");document.getElementById("fab").style.display="inline-flex";if(lastFocus)try{lastFocus.focus()}catch(e){}}
+function resetChat(){cb().innerHTML="";greeted=false;greet();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("chat").classList.contains("open"))closeChat();});
+document.getElementById("chat").addEventListener("keydown",e=>{
+ if(e.key!=="Tab")return;
+ const f=document.getElementById("chat").querySelectorAll('button,input,[href],[tabindex]:not([tabindex="-1"])');
+ if(!f.length)return;const first=f[0],last=f[f.length-1];
+ if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+ else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+});
+
+/* ===== Render UI ===== */
+function buildTiles(){
+ const ICON={__finder:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  emprender:'<path d="M5 16l3-8 4 3 4-7 3 12"/><path d="M4 20h16"/>',
+  digital:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+  idi:'<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 00-4 12c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2a7 7 0 00-4-12z"/>',
+  inter:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+  financiacion:'<rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/><path d="M2 10h3M19 10h3"/>'};
+ document.getElementById("grid6").innerHTML=UI[LANG].tiles.map((tl,i)=>{
+   const[id,t,d,feat]=tl;
+   return `<button class="tile${feat?' feat':''}" onclick="ask('${id}')">
+     <span class="arr" aria-hidden="true">→</span>
+     <span class="no">0${i+1}</span>
+     <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg></span>
+     <b>${t}</b><small>${d}</small></button>`;
+ }).join("");
+}
+function buildSteps(){document.getElementById("steps").innerHTML=UI[LANG].steps.map((s,i)=>`<div class="step reveal"><div class="n">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");}
+function buildStats(){document.getElementById("stats").innerHTML=UI[LANG].stats.map(s=>{
+  const isNum=/^\d+$/.test(s[0]);
+  return `<div class="stat"><div class="v">${s[2]&&s[2]!=='+'&&s[2]!=='M€'?'':''}<span class="cv" ${isNum?`data-to="${s[0]}"`:''}>${isNum?'0':s[0]}</span>${s[2]?'<span class="u">'+s[2]+'</span>':''}</div><div class="l">${s[1]}</div></div>`;
+}).join("");}
+function buildNews(){document.getElementById("news").innerHTML=UI[LANG].news.map(n=>{
+  const act=n[3]==="__chat"?"openChat()":(n[3]==="__finder"?"ask('__finder')":`ask('${n[3]}')`);
+  return `<div class="ncard reveal"><div class="top"></div><div class="in"><span class="k">${n[0]}</span><h3>${n[1]}</h3><p>${n[2]}</p><span class="lk" onclick="${act}">${LANG==='es'?'Más información':'Informazio gehiago'} →</span></div></div>`;
+}).join("");}
+
+function applyLang(){
+ const u=UI[LANG];
+ document.documentElement.lang=LANG;
+ ["status","bsub","n1","n2","n3","ncta","eyebrow","heroh","herop","herob","herob2","herotrust","luxst","luxq","luxa","pasos_k","pasos_h","pasos_p","band_k","band_h","band_p","news_k","news_h","foot_dir","wcag","f_t1","f_t2","f_t3","f_find","f_asist","f_a1","f_a2","f_a3","disc","cname","con","fablabel","clegal","skip"].forEach(k=>{const e=document.getElementById(k);if(e&&u[k]!=null)e.innerHTML=u[k];});
+ const ci=document.getElementById("cinput");if(ci)ci.placeholder=u.ph;
+ document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
+ document.getElementById("seg").className="seg "+LANG;
+ buildTiles();buildSteps();buildStats();buildNews();
+ observeReveal();observeStats();
+}
+document.getElementById("seg").addEventListener("click",e=>{if(e.target.dataset.l){LANG=e.target.dataset.l;applyLang();if(document.getElementById("chat").classList.contains("open"))resetChat();}});
+
+/* ===== Scroll efectos ===== */
+const rmotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+let revObs;
+function observeReveal(){
+ if(rmotion){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));return;}
+ if(revObs)revObs.disconnect();
+ revObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");revObs.unobserve(en.target);}});},{threshold:.12});
+ document.querySelectorAll(".reveal").forEach(el=>revObs.observe(el));
+}
+let statObs;
+function observeStats(){
+ if(statObs)statObs.disconnect();
+ statObs=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){countUp(en.target);statObs.unobserve(en.target);}});},{threshold:.5});
+ document.querySelectorAll(".cv[data-to]").forEach(el=>statObs.observe(el));
+}
+function countUp(el){
+ const to=+el.dataset.to;if(rmotion){el.textContent=to;return;}
+ let t0=null;const dur=1100;
+ function step(ts){if(!t0)t0=ts;const p=Math.min(1,(ts-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+ requestAnimationFrame(step);
+}
+addEventListener("scroll",()=>{document.getElementById("hdr").classList.toggle("scrolled",scrollY>10);},{passive:true});
+
+applyLang();
+</script>
+</body>
+</html>
