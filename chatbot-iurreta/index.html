@@ -499,7 +499,7 @@ const KB=[
   es:"🧾 <b>Impuestos y tasas</b> (IBI, vehículos/IVTM, basuras, vados, plusvalía)\n1️⃣ Entra en egoitza.iurreta.eus e identifícate con B@k/Bak-Q, certificado o DNIe.\n2️⃣ En el apartado de tributos, consulta tus recibos y descarga o paga el que corresponda.\n3️⃣ Para no estar pendiente de plazos, <b>domicilia el recibo</b> en tu banco; también puedes <b>fraccionar</b> el pago según la ordenanza.\n4️⃣ Sin medios digitales: pide cita y pásate por el SAC (Bidebarrieta 5).\n📌 Novedad 2026: nuevas ordenanzas fiscales y recargo del 50% en el IBI de viviendas vacías.\n📞 Dudas de un recibo concreto: 946 201 200.",
   eu:"🧾 <b>Zergak eta tasak</b> (OHZ, ibilgailuak/IBZ, zaborrak, bideak, gainbalioa)\n1️⃣ Sartu egoitza.iurreta.eus atarian eta identifikatu B@k/Bak-Q, ziurtagiri edo NANe-rekin.\n2️⃣ Zergen atalean, kontsultatu zure ordainagiriak eta deskargatu edo ordaindu dagokiona.\n3️⃣ Epeez ez arduratzeko, <b>helbideratu ordainagiria</b> bankuan; ordainketa <b>zatikatu</b> ere egin dezakezu ordenantzaren arabera.\n4️⃣ Baliabide digitalik gabe: eskatu hitzordua eta joan HAZ-era (Bidebarrieta 5).\n📌 2026ko berritasuna: zerga-ordenantza berriak eta %50eko errekargua etxebizitza hutsen OHZan.\n📞 Ordainagiri jakin baten zalantzak: 946 201 200."},
 
- {id:"cita",rel:["padron","sede","horario"],keys:["cita","citas","cita previa","pedir cita","reservar hora","reservar","turno","appointment","atencion presencial","atención presencial","hitzordu","hitzordua","hitzorduak"],
+ {id:"cita",rel:["padron","sede","horario"],keys:["cita","citas","cita previa","pedir cita","quiero pedir cita","quiero una cita","quiero cita","pedir cita presencial","cita presencial","reservar cita","sacar cita","coger cita","pedir hora","pedir vez","reservar hora","reservar","turno","appointment","atencion presencial","atención presencial","hitzordu","hitzordua","hitzorduak","hitzordua eskatu","hitzordua nahi dut"],
   es:"📅 <b>Cita previa</b> para el SAC (sin esperas)\n1️⃣ <b>Online:</b> entra en egoitza.iurreta.eus y abre el apartado «Cita previa».\n2️⃣ Elige el trámite (padrón, impuestos, registro, servicios sociales…) y selecciona día y hora libres.\n3️⃣ Confirma; guarda el justificante con la fecha.\n4️⃣ <b>Por teléfono:</b> si lo prefieres, llama al 946 201 200 (L-V 8:30-14:00) y te la dan.\n5️⃣ Acude al SAC (Bidebarrieta 5) a tu hora con tu DNI y la documentación del trámite.\n¿Para qué trámite la necesitas?",
   eu:"📅 <b>Hitzordua</b> HAZ-erako (itxaron gabe)\n1️⃣ <b>Online:</b> sartu egoitza.iurreta.eus atarian eta ireki «Hitzordua» atala.\n2️⃣ Aukeratu izapidea (errolda, zergak, erregistroa, gizarte-zerbitzuak…) eta hautatu egun eta ordu libreak.\n3️⃣ Berretsi; gorde dataren ziurtagiria.\n4️⃣ <b>Telefonoz:</b> nahiago baduzu, deitu 946 201 200 (A-O 8:30-14:00) eta emango dizute.\n5️⃣ Joan HAZ-era (Bidebarrieta 5) zure orduan, NAN eta izapidearen agiriekin.\nZein izapidetarako behar duzu?"},
 
@@ -760,7 +760,7 @@ function setPending(it){PENDING=it?(it.next||(it.rel&&it.rel[0])||null):null;}
 const EUW=["zer","nola","non","noiz","nor","zein","zenbat","dut","dizu","didazu","naiz","dago","ditu","duzu","duzue","behar","nahi","udala","udaletxea","udalak","herrian","herrira","ordutegia","eskatu","egin","mesedez","kaixo","nire","zure","daude","dezaket","erroldatu","erroldatzeko","ordaindu","nondik","zelan","baldintza","badago","ezkontza","hitzordua","zaborrak","liburutegia","helbidea","datuak","gordetzen","dituzu","ditut","dizut","zaitut","nago","gara","dugu","dezakezu","artatzeko","bulegoaren","jakin"];
 function looksEu(text){const w=norm(text).split(" ").filter(Boolean);if(!w.length)return false;let h=0;for(const x of w)if(EUW.indexOf(x)>=0)h++;return h>=2||(w.length<=5&&h>=1);}
 function rlang(text){return (LANG==="es"&&looksEu(text))?"eu":LANG;}
-function respondIntent(it,ml){ml=ml||LANG;setPending(it);const tp=typing();const html=it?it[ml]:FB[ml];setTimeout(()=>{tp.remove();bubble(html,"bot");if(it&&it.id==="cita"){flowChips([{label:(ml==="eu"?"📅 Eskatu hitzordua orain":"📅 Pedir cita ahora"),cta:true,echo:false,fn:citaStart}]);return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
+function respondIntent(it,ml){ml=ml||LANG;setPending(it);if(it&&it.id==="cita"){citaStart();return;}const tp=typing();const html=it?it[ml]:FB[ml];setTimeout(()=>{tp.remove();bubble(html,"bot");if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
 /* respuesta a texto libre (motor) */
 function answer(text){
  const ml=rlang(text);
@@ -782,8 +782,8 @@ function answer(text){
  else if(strong){const it=sc[0].it;topId=it.id;setPending(it);html=it[ml];follow=(it.rel||[]).slice();
    if(sc[1]&&sc[1].s>=3&&(sc[0].s-sc[1].s)<=1&&!follow.includes(sc[1].it.id)&&sc[1].it.id!=="saludo")follow.push(sc[1].it.id);}
  else{html=(ml==="eu"?"🤔 Ez nago guztiz ziur zertaz ari zaren. Hauetako gairen bat agian?":"🤔 No estoy del todo seguro de a qué te refieres. ¿Quizá alguno de estos temas?");disamb=sc.slice(0,3).map(x=>x.it.id);if(sc[0])setPending(sc[0].it);/* deja el mejor candidato como hilo por si el siguiente turno es un seguimiento */}
- setTimeout(()=>{tp.remove();bubble(html,"bot");
-   if(topId==="cita"){flowChips([{label:(ml==="eu"?"📅 Eskatu hitzordua orain":"📅 Pedir cita ahora"),cta:true,echo:false,fn:citaStart}]);return;}
+ setTimeout(()=>{tp.remove();if(topId==="cita"){citaStart();return;}bubble(html,"bot");
+   
    if(disamb)chipsFromIds(disamb,ml);
    else if(follow==="__popular"){chips(CHIPS[ml]);chipsFromIds(["persona"],ml);}
    else if(follow&&follow.length)chipsFromIds(follow,ml);
