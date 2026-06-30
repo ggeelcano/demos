@@ -762,6 +762,8 @@ function looksEu(text){const w=norm(text).split(" ").filter(Boolean);if(!w.lengt
 function rlang(text){return (LANG==="es"&&looksEu(text))?"eu":LANG;}
 function respondIntent(it,ml){ml=ml||LANG;setPending(it);if(it&&it.id==="cita"){citaStart();return;}const tp=typing();const html=it?it[ml]:FB[ml];setTimeout(()=>{tp.remove();bubble(html,"bot");if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
 /* respuesta a texto libre (motor) */
+const IA_WORKER_URL="";/* pega aqui la URL del Worker para activar el modo IA generativa; vacio = modo determinista */
+async function iaAnswer(text,ml){const tp=typing();try{const ctrl=new AbortController();const to=setTimeout(()=>ctrl.abort(),9000);const r=await fetch(IA_WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,lang:ml}),signal:ctrl.signal});clearTimeout(to);const j=await r.json();tp.remove();if(j&&j.answer){bubble(j.answer,"bot");PENDING="persona";chipsFromIds(["cita","persona"],ml);return;}throw new Error("sin answer");}catch(e){tp.remove();bubble(FB[ml],"bot");chips(CHIPS[ml]);chipsFromIds(["persona"],ml);PENDING="persona";}}
 function answer(text){
  const ml=rlang(text);
  let sc=rank(text);
@@ -776,6 +778,7 @@ function answer(text){
  if(PENDING&&isNeg(text)&&!strongContent){PENDING=null;botSay(ml==="eu"?"Ados 👍 Beste zerbaitetan lagun diezazuket?":"De acuerdo 👍 ¿Hay algo más en lo que pueda ayudarte?",()=>chips(CHIPS[ml]));return;}
  /* HILO BLINDADO: si hay conversación en marcha y no es un tema nuevo claro ni una despedida, NUNCA pierde el hilo: se queda en el tema */
  if(PENDING&&!strongContent&&!pureBye){const pit=KB.find(x=>x.id===PENDING);if(pit){respondIntent(pit,ml);return;}}
+ if(IA_WORKER_URL&&!strong){iaAnswer(text,ml);return;}
  const tp=typing();
  let html,follow=null,disamb=null,topId=null;
  if(!sc.length){html=FB[ml];follow="__popular";PENDING="persona";}
