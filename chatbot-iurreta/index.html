@@ -169,6 +169,7 @@
  #fab{position:fixed;right:26px;bottom:26px;z-index:200;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 16px;border:0;border-radius:var(--r-pill);
    background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;font-weight:700;font-size:15px;box-shadow:var(--sh-bot),var(--sh-2);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s}
  #fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+ #fab svg.avat{width:33px;height:33px;stroke:none;stroke-width:0;flex-shrink:0;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.28)}
  #fab:hover{transform:translateY(-2px) scale(1.03)}
  #fab::after{content:"";position:absolute;inset:0;border-radius:var(--r-pill);box-shadow:0 0 0 0 rgba(109,40,217,.4);animation:breathe 3.2s var(--ease) infinite;pointer-events:none}
  @keyframes breathe{0%{box-shadow:0 0 0 0 rgba(109,40,217,.4)}70%{box-shadow:0 0 0 16px rgba(109,40,217,0)}100%{box-shadow:0 0 0 0 rgba(109,40,217,0)}}
@@ -410,7 +411,21 @@
 </div>
 
 <button id="fab" onclick="openChat()" aria-label="Abrir asistente virtual">
- <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <svg class="avat" viewBox="0 0 36 36" aria-hidden="true">
+  <circle cx="18" cy="18" r="17" fill="#fff"/>
+  <circle cx="18" cy="20" r="11" fill="#F6C39A"/>
+  <path d="M9.6 17.5c.7-4.8 3.9-7.8 8.4-7.8s7.7 3 8.4 7.8" fill="#4A3728"/>
+  <circle cx="14.6" cy="20" r="1.35" fill="#231F3F"/>
+  <circle cx="21.4" cy="20" r="1.35" fill="#231F3F"/>
+  <path d="M14.6 24.2c1.1 1.2 5.7 1.2 6.8 0" stroke="#231F3F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M8.2 17.5C8.2 10.8 12.6 6.6 18 6.6s9.8 4.2 9.8 10.9" fill="none" stroke="#312B66" stroke-width="2.8" stroke-linecap="round"/>
+  <rect x="5.9" y="15.6" width="4.8" height="8" rx="2.3" fill="#312B66"/>
+  <rect x="25.3" y="15.6" width="4.8" height="8" rx="2.3" fill="#312B66"/>
+  <rect x="7" y="16.8" width="2.6" height="5.6" rx="1.3" fill="#22D3EE"/>
+  <rect x="26.4" y="16.8" width="2.6" height="5.6" rx="1.3" fill="#22D3EE"/>
+  <path d="M27.7 23.6c0 3.2-2.6 5-5.4 5.3" stroke="#312B66" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+  <circle cx="21.9" cy="29" r="1.7" fill="#22D3EE"/>
+ </svg>
  <span id="fablabel">¿Te ayudo?</span>
  <span class="badge">1</span>
 </button>
@@ -805,10 +820,10 @@ const QJ_TYPES=[
  {id:"calzada",es:"🕳️ Bache / acera",eu:"🕳️ Zuloa / espaloia"},
  {id:"limpieza",es:"🧹 Limpieza / contenedor",eu:"🧹 Garbiketa / edukiontzia"},
  {id:"otra",es:"📝 Otra cosa",eu:"📝 Beste zerbait"}];
-function qjStart(){FLOW=null;QJ={};botSay(T("Claro, damos el parte ahora mismo 📢 ¿De qué tipo es la incidencia?","Noski, partea oraintxe emango dugu 📢 Zer motatako intzidentzia da?"),()=>flowChips(QJ_TYPES.map(t=>({label:T(t.es,t.eu),fn:()=>qjWhere(t)}))));}
+function qjStart(){FLOW=qjTypeText;QJ={};botSay(T("Claro, damos el parte ahora mismo 📢 ¿De qué tipo es la incidencia?","Noski, partea oraintxe emango dugu 📢 Zer motatako intzidentzia da?"),()=>flowChips(QJ_TYPES.map(t=>({label:T(t.es,t.eu),fn:()=>qjWhere(t)}))));}
 function qjWhere(t){QJ.type=t;FLOW=qjDesc;botSay(T("Apuntado. ¿Dónde está exactamente? Escribe la calle o el punto (p. ej. «Bidebarrieta, frente al nº 5»).","Apuntatuta. Non dago zehazki? Idatzi kalea edo puntua (adib. «Bidebarrieta, 5.aren parean»)."));}
 function qjDesc(loc){QJ.loc=(loc||"").trim().slice(0,80)||"—";FLOW=qjConfirm;botSay(T("Perfecto. Ahora cuéntame en una frase qué pasa.","Ederki. Orain kontatu esaldi batean zer gertatzen den."));}
-function qjConfirm(d){QJ.desc=(d||"").trim().slice(0,140)||"—";const c=document.createElement("div");c.className="citacard msg-in";c.innerHTML='<h4>'+T("Revisa el parte","Berrikusi partea")+'</h4>'+citaRow(T("Tipo","Mota"),T(QJ.type.es,QJ.type.eu))+citaRow(T("Lugar","Lekua"),QJ.loc)+citaRow(T("Qué pasa","Zer gertatzen den"),QJ.desc);cb().appendChild(c);cb().scrollTop=cb().scrollHeight;flowChips([{label:T("✓ Enviar parte","✓ Partea bidali"),cta:true,echo:false,fn:qjDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:qjStart}]);}
+function qjConfirm(d){QJ.desc=(d||"").trim().slice(0,140)||"—";const c=document.createElement("div");c.className="citacard msg-in";c.innerHTML='<h4>'+T("Revisa el parte","Berrikusi partea")+'</h4>'+citaRow(T("Tipo","Mota"),T(QJ.type.es,QJ.type.eu))+citaRow(T("Lugar","Lekua"),QJ.loc)+citaRow(T("Qué pasa","Zer gertatzen den"),QJ.desc);cb().appendChild(c);cb().scrollTop=cb().scrollHeight;flowChips([{label:T("✓ Enviar parte","✓ Partea bidali"),cta:true,echo:false,fn:qjDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:qjStart}]);FLOW=qjConfText;}
 function qjDone(){const ref="INC-"+(new Date()).getFullYear()+"-"+Math.floor(1000+Math.random()*9000);const tp=typing();setTimeout(()=>{tp.remove();const ok=document.createElement("div");ok.className="citaok msg-in";ok.innerHTML='<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+T("¡Parte registrado!","Partea erregistratuta!")+'</div><div class="ref">'+ref+'</div><div class="meta">'+T(QJ.type.es,QJ.type.eu)+' · '+QJ.loc+'<br>'+T("El área municipal correspondiente lo revisará y le hará seguimiento.","Dagokion udal arloak aztertu eta jarraipena egingo dio.")+'<br><span style="color:var(--ink-soft)">'+T("(demo: no se guarda ningún dato)","(demoa: ez da daturik gordetzen)")+'</span></div>';cb().appendChild(ok);cb().scrollTop=cb().scrollHeight;setTimeout(()=>flowChips([{label:T("Dar otro parte","Beste parte bat"),echo:false,fn:qjStart},{label:T("Ver más trámites","Izapide gehiago"),echo:false,fn:()=>chips(CHIPS[LANG])}]),320);},700);}
 function qjCTA(ml){return [{label:(ml==="eu"?"📢 Partea eman orain":"📢 Dar parte ahora"),cta:true,echo:false,fn:qjStart},{label:(ml==="eu"?"📅 Hitzordua":"📅 Pedir cita"),echo:false,fn:()=>ask("cita")}];}
 
@@ -827,12 +842,52 @@ function fmtDay(d){const s=DN[LANG][d.getDay()]+" "+d.getDate()+" "+MN[LANG][d.g
 function citaDays(){const out=[],d=new Date();for(let i=0;i<14&&out.length<5;i++){d.setDate(d.getDate()+1);const w=d.getDay();if(w!==0&&w!==6)out.push(new Date(d));}return out;}
 function botSay(html,then){const tp=typing();setTimeout(()=>{tp.remove();bubble(html,"bot");if(then)then();},delayFor(html));}
 function flowChips(items){const c=document.createElement("div");c.className="chips msg-in";items.forEach(it=>{const b=document.createElement("button");b.className="chip"+(it.cta?" cta":"")+(it.off?" off":"");b.textContent=it.label;if(it.off){b.disabled=true;}else{b.onclick=()=>{c.querySelectorAll("button").forEach(x=>x.disabled=true);if(it.echo!==false)bubble(it.label,"user");if(it.fn)it.fn();};}c.appendChild(b);});cb().appendChild(c);cb().scrollTop=cb().scrollHeight;return c;}
-function citaStart(){FLOW=null;CITA={};botSay(T("📅 <b>Pedir cita previa — SAC de Iurreta</b>\nTe la gestiono aquí mismo en menos de un minuto. ¿Para qué trámite necesitas la cita?","📅 <b>Aurrez hitzordua eskatu — Iurretako HAZ</b>\nHemen bertan kudeatuko dizut, minutu bat baino gutxiagotan. Zer izapidetarako behar duzu hitzordua?"),()=>flowChips(CITA_SVC.map(s=>({label:T(s.es,s.eu),fn:()=>citaDate(s)}))));}
-function citaDate(svc){CITA.svc=svc;botSay(T("Perfecto. ¿Qué día te viene bien? <span style='color:var(--ink-soft)'>(atención L-V, 8:30-14:00)</span>","Ederki. Zein egun datorkizu ondo? <span style='color:var(--ink-soft)'>(arreta A-O, 8:30-14:00)</span>"),()=>flowChips(citaDays().map(d=>({label:fmtDay(d),fn:()=>citaTime(d)}))));}
-function citaTime(date){CITA.date=date;const seed=date.getDate();const off=new Set([seed%SLOTS.length,(seed*3+2)%SLOTS.length,(seed*5+4)%SLOTS.length]);botSay(T("Estas son las horas libres para el <b>"+fmtDay(date)+"</b>. Elige una:","Hauek dira <b>"+fmtDay(date)+"</b> egunerako ordu libreak. Aukeratu bat:"),()=>flowChips(SLOTS.map((t,i)=>({label:t,off:off.has(i),fn:()=>citaName(t)}))));}
+
+/* ===== Los pasos con botones tambien entienden texto escrito ===== */
+function svcById(id){return CITA_SVC.find(x=>x.id===id)||CITA_SVC[CITA_SVC.length-1];}
+function flowStrongOther(v,excl){const sc=rank(v);return (sc.length&&sc[0].s>=4&&(excl||[]).indexOf(sc[0].it.id)<0&&sc[0].it.id!=="saludo"&&sc[0].it.id!=="gracias")?sc[0].it:null;}
+function citaSvcText(v){const n=norm(v);
+ if(/(padro|empadro|errolda|volante|bolante)/.test(n))return citaDate(svcById("padron"));
+ if(/(tasa|impuest|ibi|ivtm|zerga|basur|plusval|recibo|vehicul|coche)/.test(n))return citaDate(svcById("impuestos"));
+ if(/(registro|instancia|eskaera|solicitud|papeles|documento)/.test(n))return citaDate(svcById("registro"));
+ if(/(otra|otro|beste|gestion)/.test(n))return citaDate(svcById("otra"));
+ if(flowStrongOther(v,["cita","impuestos","padron","registro"])){FLOW=null;answer(v);return;}
+ return citaDate(svcById("otra"));}
+function citaDayText(v){const n=norm(v);const days=citaDays();
+ if(/(manana|bihar)/.test(n))return citaTime(days[0]);
+ if(/(pasado|etzi)/.test(n))return citaTime(days[1]||days[0]);
+ const hit=days.find(d=>{const lb=norm(fmtDay(d));return lb.split(" ").some(w=>w.length>2&&n.includes(w))||n.includes(String(d.getDate()));});
+ if(hit)return citaTime(hit);
+ const it=flowStrongOther(v,["cita"]);if(it){FLOW=null;answer(v);return;}
+ botSay(T("No te he pillado el día 🙂 Elige uno de estos:","Ez dizut eguna harrapatu 🙂 Aukeratu hauetako bat:"),()=>flowChips(days.map(d=>({label:fmtDay(d),fn:()=>citaTime(d)}))));FLOW=citaDayText;}
+function citaHourText(v){const dig=(norm(v).match(/(\d{1,2})[:.,h]?(\d{2})?/)||[]);
+ if(dig[1]){const want=dig[1]+(dig[2]||"");const slot=SLOTS.find(s=>{const sd=s.replace(/[^0-9]/g,"");return sd===want||sd===want+"00"||s.split(":")[0].replace(/^0/,"")===dig[1].replace(/^0/,"");});
+  if(slot)return citaName(slot);}
+ const it=flowStrongOther(v,["cita","horario"]);if(it){FLOW=null;answer(v);return;}
+ botSay(T("Dime una de las horas libres de arriba (por ejemplo «9:30») 🙂","Esadazu goiko ordu libre bat (adib. «9:30») 🙂"));FLOW=citaHourText;}
+function citaConfText(v){const n=norm(v);
+ if(/^(si|bai|vale|ok|confirmo|confirmar|ados|berretsi|dale|venga)/.test(n))return citaDone();
+ if(/^(no|ez)($| )|empezar|cambiar|atzera/.test(n))return citaStart();
+ const it=flowStrongOther(v,["cita"]);if(it){FLOW=null;answer(v);return;}
+ botSay(T("¿Confirmo la cita? Pulsa «Confirmar» o dime «sí» 🙂","Hitzordua berresten dut? Sakatu «Berretsi» edo esan «bai» 🙂"));FLOW=citaConfText;}
+function qjTypeText(v){const n=norm(v);
+ if(/(farol|alumbrado|argi|bombilla|luz)/.test(n))return qjWhere(QJ_TYPES[0]);
+ if(/(bache|socavon|zulo|acera|espaloi|calzada|baldosa)/.test(n))return qjWhere(QJ_TYPES[1]);
+ if(/(limpi|contenedor|basur|edukiontzi|garbik|zikin|suci)/.test(n))return qjWhere(QJ_TYPES[2]);
+ if(flowStrongOther(v,["quejas"])){FLOW=null;answer(v);return;}
+ return qjWhere(QJ_TYPES[3]);}
+function qjConfText(v){const n=norm(v);
+ if(/^(si|bai|vale|ok|enviar|bidali|confirmo|dale|venga)/.test(n))return qjDone();
+ if(/^(no|ez)($| )|empezar|cambiar|atzera/.test(n))return qjStart();
+ const it=flowStrongOther(v,["quejas"]);if(it){FLOW=null;answer(v);return;}
+ botSay(T("¿Envío el parte? Pulsa «Enviar parte» o dime «sí» 🙂","Partea bidaltzen dut? Sakatu «Partea bidali» edo esan «bai» 🙂"));FLOW=qjConfText;}
+
+function citaStart(){FLOW=citaSvcText;CITA={};botSay(T("📅 <b>Pedir cita previa — SAC de Iurreta</b>\nTe la gestiono aquí mismo en menos de un minuto. ¿Para qué trámite necesitas la cita?","📅 <b>Aurrez hitzordua eskatu — Iurretako HAZ</b>\nHemen bertan kudeatuko dizut, minutu bat baino gutxiagotan. Zer izapidetarako behar duzu hitzordua?"),()=>flowChips(CITA_SVC.map(s=>({label:T(s.es,s.eu),fn:()=>citaDate(s)}))));}
+function citaDate(svc){CITA.svc=svc;FLOW=citaDayText;botSay(T("Perfecto. ¿Qué día te viene bien? <span style='color:var(--ink-soft)'>(atención L-V, 8:30-14:00)</span>","Ederki. Zein egun datorkizu ondo? <span style='color:var(--ink-soft)'>(arreta A-O, 8:30-14:00)</span>"),()=>flowChips(citaDays().map(d=>({label:fmtDay(d),fn:()=>citaTime(d)}))));}
+function citaTime(date){CITA.date=date;FLOW=citaHourText;const seed=date.getDate();const off=new Set([seed%SLOTS.length,(seed*3+2)%SLOTS.length,(seed*5+4)%SLOTS.length]);botSay(T("Estas son las horas libres para el <b>"+fmtDay(date)+"</b>. Elige una:","Hauek dira <b>"+fmtDay(date)+"</b> egunerako ordu libreak. Aukeratu bat:"),()=>flowChips(SLOTS.map((t,i)=>({label:t,off:off.has(i),fn:()=>citaName(t)}))));}
 function citaName(time){CITA.time=time;FLOW=citaConfirm;botSay(T("Ya casi está 🙌 Escribe tu <b>nombre y apellidos</b> para la reserva. <span style='color:var(--ink-soft)'>(demo: no se guarda ningún dato)</span>","Ia eginda 🙌 Idatzi zure <b>izen-abizenak</b> erreserbarako. <span style='color:var(--ink-soft)'>(demo: ez da daturik gordetzen)</span>"));}
 function citaRow(k,v){return '<div class="row"><span>'+k+'</span><b>'+v+'</b></div>';}
-function citaConfirm(name){CITA.name=(name||"").trim().slice(0,60)||T("Vecino/a","Herritarra");const c=document.createElement("div");c.className="citacard msg-in";c.innerHTML='<h4>'+T("Revisa tu cita","Berrikusi zure hitzordua")+'</h4>'+citaRow(T("Trámite","Izapidea"),T(CITA.svc.es,CITA.svc.eu))+citaRow(T("Día","Eguna"),fmtDay(CITA.date))+citaRow(T("Hora","Ordua"),CITA.time)+citaRow(T("Lugar","Lekua"),"SAC · Bidebarrieta 5")+citaRow(T("A nombre de","Noren izenean"),CITA.name);cb().appendChild(c);cb().scrollTop=cb().scrollHeight;flowChips([{label:T("✓ Confirmar cita","✓ Hitzordua berretsi"),cta:true,echo:false,fn:citaDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:citaStart}]);}
+function citaConfirm(name){CITA.name=(name||"").trim().slice(0,60)||T("Vecino/a","Herritarra");const c=document.createElement("div");c.className="citacard msg-in";c.innerHTML='<h4>'+T("Revisa tu cita","Berrikusi zure hitzordua")+'</h4>'+citaRow(T("Trámite","Izapidea"),T(CITA.svc.es,CITA.svc.eu))+citaRow(T("Día","Eguna"),fmtDay(CITA.date))+citaRow(T("Hora","Ordua"),CITA.time)+citaRow(T("Lugar","Lekua"),"SAC · Bidebarrieta 5")+citaRow(T("A nombre de","Noren izenean"),CITA.name);cb().appendChild(c);cb().scrollTop=cb().scrollHeight;flowChips([{label:T("✓ Confirmar cita","✓ Hitzordua berretsi"),cta:true,echo:false,fn:citaDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:citaStart}]);FLOW=citaConfText;}
 function citaDone(){const ref="IUR-"+CITA.date.getFullYear()+"-"+Math.floor(1000+Math.random()*9000);CITA.ref=ref;const tp=typing();setTimeout(()=>{tp.remove();const ok=document.createElement("div");ok.className="citaok msg-in";ok.innerHTML='<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+T("¡Cita confirmada!","Hitzordua berretsita!")+'</div><div class="ref">'+ref+'</div><div class="meta">'+T(CITA.svc.es,CITA.svc.eu)+' · <b>'+fmtDay(CITA.date)+' · '+CITA.time+'</b><br>SAC · Bidebarrieta 5, Iurreta<br>'+T("Te enviaremos un recordatorio por email y SMS.","Gogorarazpena bidaliko dizugu emailez eta SMSez.")+'</div><a class="ics"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>'+T("Añadir al calendario","Egutegira gehitu")+'</a>';cb().appendChild(ok);cb().scrollTop=cb().scrollHeight;ok.querySelector(".ics").onclick=downloadICS;setTimeout(()=>flowChips([{label:T("Pedir otra cita","Beste hitzordu bat"),echo:false,fn:citaStart},{label:T("Ver más trámites","Izapide gehiago"),echo:false,fn:()=>chips(CHIPS[LANG])}]),320);},700);}
 function downloadICS(){const d=CITA.date,parts=CITA.time.split(":"),dt=new Date(d);dt.setHours(+parts[0],+parts[1],0,0);const end=new Date(dt.getTime()+30*60000);const fmt=x=>x.getFullYear()+p2(x.getMonth()+1)+p2(x.getDate())+"T"+p2(x.getHours())+p2(x.getMinutes())+"00";const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ayuntamiento de Iurreta//Cita previa//ES","BEGIN:VEVENT","UID:"+CITA.ref+"@iurreta.eus","DTSTAMP:"+fmt(new Date()),"DTSTART:"+fmt(dt),"DTEND:"+fmt(end),"SUMMARY:"+T("Cita SAC Iurreta","HAZ hitzordua Iurreta")+" - "+T(CITA.svc.es,CITA.svc.eu),"LOCATION:Bidebarrieta 5\\, 48215 Iurreta","DESCRIPTION:"+T("Cita previa","Aurrez hitzordua")+" "+CITA.ref,"END:VEVENT","END:VCALENDAR"].join("\r\n");const blob=new Blob([ics],{type:"text/calendar;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="cita-iurreta-"+CITA.ref+".ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
 
