@@ -298,7 +298,45 @@
 .ptoast{margin-left:12px;color:var(--success);font-weight:700;font-size:13px;opacity:0;transition:.2s}
  .ptoast.show{opacity:1}
  .pnote{font-size:12px;color:var(--ink-soft);margin-top:14px;line-height:1.5}
- @media(max-width:680px){.pgrid{grid-template-columns:repeat(2,1fr)}.prow{grid-template-columns:1fr}.pcfgrow{flex-wrap:wrap}.pcfgrow label{width:100%}}
+ 
+/* ===== Capa premium del chat ===== */
+.chead{background:linear-gradient(120deg,var(--bot1) 0%,#7C3AED 45%,var(--bot2) 100%);padding:15px 16px;box-shadow:0 6px 18px -8px rgba(76,29,149,.55)}
+.chead::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% -20%,rgba(255,255,255,.28),transparent 55%);pointer-events:none}
+.chead .av{width:44px;height:44px;background:transparent;box-shadow:0 3px 10px rgba(0,0,0,.28);border:2px solid rgba(255,255,255,.75)}
+.chead .av svg.avat2{width:44px;height:44px;border-radius:50%}
+.chead .t b{font-size:15px;letter-spacing:.01em;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.chead .t span{font-size:11.5px;color:#EDE7FF;opacity:.95}
+.dot{animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}70%{box-shadow:0 0 0 6px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.chead .x{border-radius:50%;transition:.18s}.chead .x:hover{transform:rotate(90deg)}
+.cbody{background:linear-gradient(180deg,#F4F1FB 0%,var(--surface-2) 90px),var(--surface-2);padding:18px 15px 14px;gap:12px;scrollbar-width:thin;scrollbar-color:#D8D2EA transparent}
+.cbody::-webkit-scrollbar{width:6px}
+.cbody::-webkit-scrollbar-thumb{background:#D8D2EA;border-radius:6px}
+.cbody::-webkit-scrollbar-track{background:transparent}
+.msg{font-size:14px;line-height:1.6}
+.msg.bot{border:1px solid #ECE8F6;border-left:3px solid var(--bot2);border-radius:4px 18px 18px 18px;padding:11px 15px 12px;box-shadow:0 1px 2px rgba(30,20,60,.05),0 6px 16px -10px rgba(76,29,149,.18)}
+.msg.user{border-radius:18px 18px 4px 18px;padding:11px 15px;box-shadow:0 5px 14px -6px rgba(76,29,149,.45)}
+.msg-in{animation:msgin .32s cubic-bezier(.21,.9,.35,1.1)}
+@keyframes msgin{from{opacity:0;transform:translateY(9px) scale(.985)}to{opacity:1;transform:none}}
+.stamp{font-size:9.5px;opacity:.8;margin-bottom:5px}
+.chip{border:1px solid #E4DEF3;box-shadow:0 1px 2px rgba(30,20,60,.05);transition:transform .16s var(--ease),box-shadow .16s,border-color .16s,background .16s}
+.chip:hover:not(:disabled){transform:translateY(-1.5px);border-color:var(--bot1);box-shadow:0 6px 14px -6px rgba(109,40,217,.35);background:#FBFAFF}
+.chip:disabled{opacity:.45}
+.chip.cta{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border:0;box-shadow:0 5px 14px -5px rgba(109,40,217,.5)}
+.chip.cta:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1.5px)}
+.typing{border:1px solid #ECE8F6;border-radius:4px 18px 18px 18px;box-shadow:0 1px 2px rgba(30,20,60,.05)}
+.typing i{background:linear-gradient(135deg,var(--bot1),var(--bot2))}
+.cfoot{padding:12px 12px;box-shadow:0 -6px 16px -12px rgba(30,20,60,.25);border-top:1px solid #F0EDF8}
+.cfoot input{border:1.5px solid #E4DEF3;background:#FBFAFE;padding:12px 18px;font-size:14px}
+.cfoot input:focus{background:#fff;border-color:var(--bot1);box-shadow:0 0 0 4px rgba(109,40,217,.13)}
+.cfoot .send{box-shadow:0 6px 16px -6px rgba(109,40,217,.55);transition:transform .16s var(--ease),filter .16s}
+.cfoot .send:hover{transform:scale(1.06) rotate(-8deg);filter:brightness(1.1)}
+.cfoot .send:active{transform:scale(.96)}
+.citacard{border:1px solid #E4DEF3;box-shadow:0 8px 22px -12px rgba(76,29,149,.28)}
+.citaok{box-shadow:0 8px 22px -12px rgba(76,29,149,.28)}
+.clegal{opacity:.75}
+
+@media(max-width:680px){.pgrid{grid-template-columns:repeat(2,1fr)}.prow{grid-template-columns:1fr}.pcfgrow{flex-wrap:wrap}.pcfgrow label{width:100%}}
 </style>
 </head>
 <body>
@@ -441,7 +479,18 @@
 
 <div id="chat" role="dialog" aria-modal="false" aria-label="Asistente virtual del Ayuntamiento de Iurreta">
  <div class="chead">
-   <div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg></div>
+   <div class="av" aria-hidden="true"><svg class="avat2" viewBox="0 0 36 36">
+  <circle cx="18" cy="18" r="17" fill="#fff"/>
+  <circle cx="18" cy="20" r="11" fill="#F6C39A"/>
+  <path d="M9.6 17.5c.7-4.8 3.9-7.8 8.4-7.8s7.7 3 8.4 7.8" fill="#4A3728"/>
+  <circle cx="14.6" cy="20" r="1.35" fill="#231F3F"/><circle cx="21.4" cy="20" r="1.35" fill="#231F3F"/>
+  <path d="M14.6 24.2c1.1 1.2 5.7 1.2 6.8 0" stroke="#231F3F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M8.2 17.5C8.2 10.8 12.6 6.6 18 6.6s9.8 4.2 9.8 10.9" fill="none" stroke="#312B66" stroke-width="2.8" stroke-linecap="round"/>
+  <rect x="5.9" y="15.6" width="4.8" height="8" rx="2.3" fill="#312B66"/><rect x="25.3" y="15.6" width="4.8" height="8" rx="2.3" fill="#312B66"/>
+  <rect x="7" y="16.8" width="2.6" height="5.6" rx="1.3" fill="#22D3EE"/><rect x="26.4" y="16.8" width="2.6" height="5.6" rx="1.3" fill="#22D3EE"/>
+  <path d="M27.7 23.6c0 3.2-2.6 5-5.4 5.3" stroke="#312B66" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+  <circle cx="21.9" cy="29" r="1.7" fill="#22D3EE"/>
+ </svg></div>
    <div class="t"><b id="cname">Iñaki · Asistente de Iurreta</b><span><i class="dot"></i> <span id="con">En línea · responde al instante</span></span></div>
    <button class="x" onclick="closeChat()" aria-label="Cerrar">×</button>
  </div>
