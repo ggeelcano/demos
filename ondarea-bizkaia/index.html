@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ondarea · Buscador inteligente del patrimonio documental de Bizkaia</title>
+<meta name="description" content="Prototipo de buscador semántico con asistente IA sobre el fondo digitalizado de la Biblioteca Foral (Lau Haizeetara) y el Archivo Foral de Bizkaia (ARIT). Pregunta en tu idioma, en euskera o castellano.">
+<meta property="og:title" content="Ondarea · Buscador inteligente del patrimonio documental de Bizkaia">
+<meta property="og:description" content="Pregunta en lenguaje natural sobre 500 años de historia de Bizkaia. Prototipo con IA sobre Lau Haizeetara y el Archivo Foral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF6EE; --surface:#FFFFFF; --surface-2:#FDFBF5;
+  --ink:#2B2118; --ink-soft:#6B5D4F;
+  --wine:#7A1F3D; --wine-700:#5E1730; --wine-soft:#F6E8ED;
+  --gold:#B98A23; --gold-soft:#F7EFDD;
+  --line:#E9E0CF; --line-soft:#F0EADC;
+  --bot1:#6D28D9; --bot2:#06B6D4; --bot-ink:#4C1D95; --bot-soft:#F0EBFE;
+  --sh-1:0 1px 2px rgba(43,33,24,.06);
+  --sh-2:0 4px 14px rgba(43,33,24,.09);
+  --sh-3:0 18px 44px -10px rgba(43,33,24,.20);
+  --sh-bot:0 14px 34px rgba(109,40,217,.34);
+  --r-chip:12px; --r-input:16px; --r-btn:14px; --r-card:20px; --r-pill:999px;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1140px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);font-size:1.0325rem;line-height:1.62;
+  background:
+    radial-gradient(90% 60% at 85% -5%,rgba(122,31,61,.05),transparent 60%),
+    radial-gradient(70% 50% at 0% 10%,rgba(185,138,35,.06),transparent 55%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased}
+button,input{font-family:inherit}
+a{color:var(--wine);text-decoration:none}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;letter-spacing:-.015em;font-weight:600}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--wine)}
+mark{background:linear-gradient(180deg,transparent 55%,rgba(185,138,35,.38) 55%);color:inherit;padding:0 1px;border-radius:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--bot1);outline-offset:2px;border-radius:8px}
+
+/* Barra prototipo */
+.protobar{background:var(--ink);color:#D9CFC0;font-size:12.5px;text-align:center;padding:7px 14px}
+.protobar b{color:#F3E9D8}
+.protobar .mono{color:var(--gold)}
+
+/* Header */
+header{position:sticky;top:0;z-index:60;background:rgba(250,246,238,.82);backdrop-filter:blur(18px) saturate(1.25);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+header.scrolled{box-shadow:var(--sh-2)}
+@supports not (backdrop-filter:blur(2px)){header{background:var(--bg)}}
+header .wrap{display:flex;align-items:center;gap:14px;height:72px}
+.sello{width:46px;height:46px;border-radius:12px;flex:0 0 auto;background:linear-gradient(150deg,var(--wine),var(--wine-700));display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-1)}
+.sello svg{width:26px;height:26px;stroke:#F3E2C8;fill:none;stroke-width:1.6}
+.brand b{display:block;font-family:"Fraunces",serif;font-size:19px;color:var(--wine-700);font-weight:700;letter-spacing:-.01em}
+.brand span{font-size:11.5px;color:var(--ink-soft);letter-spacing:.02em}
+nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+nav a{font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+nav a:hover{color:var(--wine)}
+.nav-cta{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;padding:9px 16px;border-radius:var(--r-btn);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;box-shadow:var(--sh-bot);transition:transform .2s var(--ease)}
+.nav-cta:hover{transform:translateY(-2px)}
+.nav-cta svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+@media(max-width:760px){nav .navlink{display:none}}
+
+/* Hero + buscador */
+.hero{padding:clamp(44px,6vw,76px) 0 clamp(30px,4vw,44px);text-align:center}
+.hero h1{font-size:clamp(2.1rem,1.4rem+3vw,3.6rem);max-width:820px;margin:14px auto 0}
+.hero h1 .g{background:linear-gradient(120deg,var(--wine),#C24A6E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{margin:16px auto 0;font-size:clamp(1.02rem,1rem+.3vw,1.16rem);color:var(--ink-soft);max-width:640px}
+.hero .lead b{color:var(--ink)}
+
+.searchbox{max-width:780px;margin:30px auto 0;position:relative}
+.searchbox form{display:flex;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-input);padding:8px 8px 8px 20px;box-shadow:var(--sh-3);align-items:center;transition:border-color .2s}
+.searchbox form:focus-within{border-color:var(--bot1)}
+.searchbox .lupa{width:21px;height:21px;stroke:var(--ink-soft);fill:none;stroke-width:2;flex:0 0 auto}
+.searchbox input{flex:1;border:0;background:none;font-size:1.05rem;color:var(--ink);padding:12px 0;min-width:0}
+.searchbox input::placeholder{color:#A8998A}
+.searchbox button{background:linear-gradient(135deg,var(--bot1),var(--bot2));border:0;color:#fff;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--sh-bot);transition:transform .2s var(--ease);flex:0 0 auto}
+.searchbox button:hover{transform:translateY(-1px)}
+.searchbox button svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.ejemplos{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.ejemplos span{font-size:12.5px;color:var(--ink-soft);align-self:center;margin-right:2px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);font-size:13px;font-weight:600;color:var(--ink);padding:7px 14px;cursor:pointer;transition:all .18s var(--ease)}
+.chip:hover{border-color:var(--bot1);color:var(--bot-ink);background:var(--bot-soft);transform:translateY(-1px)}
+
+/* Cifras */
+.stats{display:flex;gap:clamp(14px,3vw,34px);justify-content:center;flex-wrap:wrap;margin:34px auto 0;padding:0 20px}
+.stat{text-align:center}
+.stat b{display:block;font-family:"Fraunces",serif;font-size:clamp(1.5rem,1.2rem+1.2vw,2.2rem);color:var(--wine-700);font-weight:700}
+.stat span{font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+/* Interpretación IA */
+#interpret{max-width:780px;margin:26px auto 0;display:none}
+#interpret.on{display:block;animation:fadeup .4s var(--ease)}
+.int-card{background:linear-gradient(135deg,rgba(109,40,217,.06),rgba(6,182,212,.06));border:1px solid rgba(109,40,217,.25);border-radius:var(--r-card);padding:16px 20px;text-align:left;display:flex;gap:14px;align-items:flex-start}
+.int-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(140deg,var(--bot1),var(--bot2));display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.int-av svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+.int-card p{font-size:14px;color:var(--ink);margin:0}
+.int-card .concepts{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.concept{background:#fff;border:1px solid rgba(109,40,217,.3);color:var(--bot-ink);font-size:12px;font-weight:700;padding:4px 11px;border-radius:var(--r-pill)}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Resultados */
+#resultados{max-width:820px;margin:20px auto 0;padding:0 20px 30px;text-align:left}
+.res-head{display:flex;align-items:baseline;gap:10px;margin:18px 0 14px}
+.res-head b{font-family:"Fraunces",serif;font-size:1.25rem;color:var(--wine-700)}
+.res-head span{font-size:13px;color:var(--ink-soft)}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:20px 22px;margin-bottom:14px;box-shadow:var(--sh-1);transition:box-shadow .2s,transform .2s var(--ease);animation:fadeup .45s var(--ease) both}
+.doc:hover{box-shadow:var(--sh-2);transform:translateY(-2px)}
+.doc-top{display:flex;gap:12px;align-items:flex-start}
+.doc-ico{width:42px;height:42px;border-radius:11px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto}
+.doc h3{font-size:1.08rem;font-weight:700;color:var(--ink)}
+.doc h3 button{all:unset;cursor:pointer;color:var(--wine-700)}
+.doc h3 button:hover{text-decoration:underline}
+.doc .meta{margin-top:3px;font-size:12.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:5px 12px}
+.doc .meta .mono{font-size:11.5px}
+.rel{margin-left:auto;flex:0 0 auto;text-align:right}
+.rel b{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--bot-ink)}
+.rel span{display:block;font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase}
+.doc .snip{margin-top:11px;font-size:14.5px;color:#4A3E31;border-left:3px solid var(--gold);padding-left:13px}
+.doc .foot{margin-top:13px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tagsrc{font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:var(--r-pill)}
+.src-lh{background:var(--wine-soft);color:var(--wine-700)}
+.src-afb{background:var(--gold-soft);color:#7A5A12}
+.doc .foot .acts{margin-left:auto;display:flex;gap:8px}
+.b-ver{background:var(--surface-2);border:1px solid var(--line);color:var(--wine-700);font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:10px;cursor:pointer}
+.b-ver:hover{border-color:var(--wine)}
+.b-ia{background:linear-gradient(135deg,var(--bot1),var(--bot2));border:0;color:#fff;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.b-ia:hover{filter:brightness(1.08)}
+.b-ia svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2}
+.nores{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-card);padding:26px;text-align:center;color:var(--ink-soft);font-size:14.5px}
+.corpus-note{margin-top:6px;font-size:12px;color:var(--ink-soft);text-align:center}
+
+/* Antes / después */
+.compare{padding:clamp(46px,6vw,70px) 0}
+.compare .wrap>p.sub{color:var(--ink-soft);max-width:600px;margin:10px 0 0}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+@media(max-width:820px){.comp-grid{grid-template-columns:1fr}}
+.comp{border-radius:var(--r-card);padding:24px;border:1px solid var(--line);background:var(--surface)}
+.comp.hoy{background:var(--surface-2)}
+.comp.ia{border-color:rgba(109,40,217,.3);background:linear-gradient(160deg,rgba(109,40,217,.05),rgba(6,182,212,.05)),#fff}
+.comp .tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:var(--r-pill);display:inline-block}
+.comp.hoy .tag{background:#EAE2D2;color:#6B5D4F}
+.comp.ia .tag{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff}
+.comp h3{margin-top:12px;font-size:1.2rem}
+.comp ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.comp li{font-size:14.5px;display:flex;gap:9px;color:#4A3E31}
+.comp li b{color:var(--ink)}
+.comp li .x{color:#B21E28;font-weight:800;flex:0 0 auto}
+.comp li .v{color:#0E8A4F;font-weight:800;flex:0 0 auto}
+.comp .q{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--ink-soft)}
+.comp.ia .q{border-color:rgba(109,40,217,.25)}
+.comp .q b{color:var(--ink);display:block;font-size:13.5px}
+
+/* Cómo funciona */
+.how{padding:0 0 clamp(50px,7vw,80px)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+@media(max-width:820px){.how-grid{grid-template-columns:1fr}}
+.how-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:22px;box-shadow:var(--sh-1)}
+.how-card .n{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;color:var(--bot-ink);background:var(--bot-soft);width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.how-card h3{font-size:1.05rem;margin-top:12px}
+.how-card p{font-size:14px;color:var(--ink-soft);margin-top:7px}
+.how-note{margin-top:18px;font-size:13.5px;color:var(--ink-soft);background:var(--gold-soft);border:1px solid #EADDBC;border-radius:14px;padding:13px 16px}
+.how-note b{color:#7A5A12}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:26px 0 90px;background:var(--surface-2)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--ink-soft)}
+
+/* ===== Asistente IA flotante ===== */
+.fab{position:fixed;right:22px;bottom:22px;z-index:90;width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;
+  background:linear-gradient(140deg,var(--bot1),var(--bot2));box-shadow:var(--sh-bot);display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease)}
+.fab:hover{transform:scale(1.07)}
+.fab svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.8}
+.fab .dot{position:absolute;top:4px;right:4px;width:13px;height:13px;border-radius:50%;background:#16A34A;border:2.5px solid #fff}
+.panel{position:fixed;right:22px;bottom:96px;z-index:95;width:min(390px,calc(100vw - 32px));max-height:min(600px,calc(100vh - 130px));
+  background:#fff;border-radius:var(--r-card);box-shadow:0 24px 70px -12px rgba(43,33,24,.35);display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;pointer-events:none;transform:translateY(14px) scale(.97);transition:all .28s var(--ease)}
+.panel.open{opacity:1;pointer-events:auto;transform:none}
+.p-head{background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;padding:15px 18px;display:flex;gap:11px;align-items:center}
+.p-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.p-av svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.8}
+.p-head b{font-size:14.5px;display:block}
+.p-head small{font-size:11.5px;opacity:.85;display:flex;align-items:center;gap:5px}
+.p-head small i{width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block}
+.p-close{margin-left:auto;background:rgba(255,255,255,.15);border:0;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:15px}
+.p-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,#FBFAFF,#F6FBFD)}
+.m-bot,.m-user{max-width:86%;font-size:13.8px;line-height:1.55;padding:10px 14px;animation:fadeup .3s var(--ease)}
+.m-bot{align-self:flex-start;background:#fff;border:1px solid #E8E3F5;border-left:3px solid var(--bot2);border-radius:5px 14px 14px 14px;color:var(--ink)}
+.m-bot b{color:var(--bot-ink)}
+.m-bot .cite{display:block;margin-top:7px;font-size:12px;color:var(--ink-soft);border-top:1px dashed #E0D8F0;padding-top:6px}
+.m-bot .cite b{color:var(--wine-700);font-weight:700}
+.m-user{align-self:flex-end;background:linear-gradient(135deg,var(--bot1),var(--bot2));color:#fff;border-radius:14px 14px 5px 14px}
+.typing{align-self:flex-start;background:#fff;border:1px solid #E8E3F5;border-radius:5px 14px 14px 14px;padding:12px 16px;display:flex;gap:5px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--bot1);opacity:.4;animation:tp 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tp{0%,100%{opacity:.35;transform:none}45%{opacity:1;transform:translateY(-3px)}}
+.p-chips{padding:8px 14px;display:flex;gap:7px;flex-wrap:wrap;background:#FBFAFF;border-top:1px solid #EFEAF8}
+.p-chips button{background:#fff;border:1px solid #E0D8F0;color:var(--bot-ink);font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--r-pill);cursor:pointer}
+.p-chips button:hover{background:var(--bot-soft);border-color:var(--bot1)}
+.p-input{display:flex;gap:9px;padding:12px 14px;background:#fff;border-top:1px solid #EFEAF8}
+.p-input input{flex:1;border:1px solid #E0D8F0;border-radius:12px;padding:11px 14px;font-size:13.8px;min-width:0}
+.p-input input:focus{border-color:var(--bot1);outline:none}
+.p-input button{background:linear-gradient(135deg,var(--bot1),var(--bot2));border:0;border-radius:12px;width:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.p-input button svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+
+<div class="protobar"><b>PROTOTIPO</b> · Demo funcional con <span class="mono">24</span> registros de muestra — en producción indexa el fondo completo de <b>Lau Haizeetara</b> (14.500+ objetos digitales) y el catálogo <b>ARIT</b> del Archivo Foral</div>
+
+<header id="hdr">
+  <div class="wrap">
+    <div class="sello" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h5"/></svg>
+    </div>
+    <div class="brand">
+      <b>Ondarea</b>
+      <span>Bizkaiko ondare dokumentala · Patrimonio documental de Bizkaia</span>
+    </div>
+    <nav>
+      <a class="navlink" href="#buscar">Buscar</a>
+      <a class="navlink" href="#compare">Hoy vs. con IA</a>
+      <a class="navlink" href="#como">Cómo funciona</a>
+      <button class="nav-cta" onclick="toggleChat(true)">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Asistente IA
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="buscar">
+  <div class="wrap">
+    <span class="eyebrow">Biblioteca Foral · Archivo Foral de Bizkaia</span>
+    <h1>Pregunta a <span class="g">500 años de historia</span> en tu idioma</h1>
+    <p class="lead">El fondo digitalizado de Bizkaia, por fin accesible con <b>búsqueda en lenguaje natural</b>, en euskera y castellano. Sin conocer signaturas, sin campos exactos, sin ser archivero.</p>
+
+    <div class="searchbox">
+      <form id="sform" onsubmit="doSearch(event)">
+        <svg class="lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="text" placeholder="Ej.: barcos que salían del puerto de Bilbao en el siglo XVIII" autocomplete="off" aria-label="Búsqueda en lenguaje natural">
+        <button type="submit">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Buscar
+        </button>
+      </form>
+      <div class="ejemplos">
+        <span>Prueba:</span>
+        <button class="chip" onclick="fillSearch('barcos y comercio del puerto de Bilbao en el siglo XVIII')">⚓ Puerto de Bilbao s. XVIII</button>
+        <button class="chip" onclick="fillSearch('ferrerías y minas de hierro de Somorrostro')">⛏️ Hierro de Somorrostro</button>
+        <button class="chip" onclick="fillSearch('mapas antiguos del Señorío de Bizkaia')">🗺️ Mapas del Señorío</button>
+        <button class="chip" onclick="fillSearch('cómo demostrar la hidalguía de mi apellido')">📜 Hidalguías</button>
+        <button class="chip" onclick="fillSearch('periódicos de Bilbao de 1900')">📰 Prensa histórica</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>14.500+</b><span>objetos digitalizados<br>en Lau Haizeetara</span></div>
+      <div class="stat"><b>38</b><span>incunables<br>del siglo XV</span></div>
+      <div class="stat"><b>2</b><span>idiomas: euskera<br>y castellano</span></div>
+      <div class="stat"><b>24/7</b><span>asistente IA que cita<br>el documento original</span></div>
+    </div>
+
+    <div id="interpret">
+      <div class="int-card">
+        <div class="int-av"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.4-.7 2.6-1.8 3.3.5.2 1 .4 1.4.7a7 7 0 0 1 3.4 6v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3a7 7 0 0 1 3.4-6c.4-.3.9-.5 1.4-.7A4 4 0 0 1 8 6a4 4 0 0 1 4-4z"/><path d="M9 17h6"/></svg></div>
+        <div>
+          <p id="int-text"></p>
+          <div class="concepts" id="int-concepts"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultados"></div>
+  </div>
+</section>
+
+<section class="compare" id="compare">
+  <div class="wrap">
+    <span class="eyebrow">El problema, en una búsqueda</span>
+    <h2 style="font-size:clamp(1.6rem,1.2rem+1.6vw,2.4rem);margin-top:10px">La misma pregunta, dos experiencias</h2>
+    <p class="sub">El fondo ya está digitalizado — la inversión difícil ya está hecha. Lo que falta es que un ciudadano normal pueda <b>encontrarlo</b>.</p>
+    <div class="comp-grid">
+      <div class="comp hoy">
+        <span class="tag">Búsqueda actual</span>
+        <h3>Catálogo por campos exactos</h3>
+        <ul>
+          <li><span class="x">✕</span><span>Exige saber <b>autor, título o signatura</b> de antemano</span></li>
+          <li><span class="x">✕</span><span>«puerto de Bilbao siglo XVIII» → <b>0 resultados</b> si el título no contiene esas palabras literales</span></li>
+          <li><span class="x">✕</span><span>Biblioteca (Lau Haizeetara) y Archivo (ARIT) son <b>dos buscadores separados</b> que no se hablan</span></li>
+          <li><span class="x">✕</span><span>Sin sinónimos, sin euskera↔castellano, sin tolerancia a grafías antiguas (Vizcaya/Bizkaia/Viscaya)</span></li>
+          <li><span class="x">✕</span><span>El usuario que no encuentra <b>escribe o llama</b> → consultas repetitivas para el personal</span></li>
+        </ul>
+        <div class="q"><b>«barcos del puerto de Bilbao s. XVIII»</b>Resultado típico: «Su búsqueda no ha producido resultados». El documento existe — pero se titula «Ordenanzas de la Ilustre Universidad y Casa de Contratación».</div>
+      </div>
+      <div class="comp ia">
+        <span class="tag">Con Ondarea</span>
+        <h3>Pregunta como a un archivero</h3>
+        <ul>
+          <li><span class="v">✓</span><span><b>Lenguaje natural</b> en euskera y castellano, con sinónimos y contexto histórico</span></li>
+          <li><span class="v">✓</span><span>Busca <b>a la vez</b> en Biblioteca Foral y Archivo Foral, y dice de dónde sale cada resultado</span></li>
+          <li><span class="v">✓</span><span>Entiende siglos, grafías antiguas y conceptos: «ferrería» encuentra también «fábrica de hierro»</span></li>
+          <li><span class="v">✓</span><span>Asistente IA que <b>responde citando el documento original</b> — nunca inventa: si no está en el fondo, lo dice</span></li>
+          <li><span class="v">✓</span><span>Cada consulta respondida sola = <b>tiempo de técnicos y archiveros liberado</b></span></li>
+        </ul>
+        <div class="q"><b>«barcos del puerto de Bilbao s. XVIII»</b>→ Ordenanzas del Consulado (1737), registros de navíos, plano de la ría… con enlace directo al documento digitalizado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como">
+  <div class="wrap">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 style="font-size:clamp(1.6rem,1.2rem+1.6vw,2.4rem);margin-top:10px">Se apoya en lo que ya existe. No sustituye nada.</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="n">01</div>
+        <h3>Indexación semántica</h3>
+        <p>Se indexan los metadatos y el texto OCR ya digitalizado de Lau Haizeetara y las fichas de ARIT. Los sistemas actuales <b>no se tocan</b>: siguen siendo la fuente de verdad.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">02</div>
+        <h3>Búsqueda en lenguaje natural</h3>
+        <p>Las consultas se entienden por significado, no por coincidencia literal: siglos, sinónimos, euskera↔castellano y grafías históricas.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">03</div>
+        <h3>Asistente que cita fuentes</h3>
+        <p>Un asistente IA responde <b>solo</b> con documentos del fondo y enlaza siempre al original digitalizado. Si no lo sabe, lo dice y deriva al personal.</p>
+      </div>
+    </div>
+    <div class="how-note">🔒 <b>Datos y soberanía:</b> el fondo es público y permanece donde está (bizkaia.eus). El índice semántico se puede alojar en infraestructura de la Diputación o de Lantik. Sin dependencia de un proveedor: el índice es exportable.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Ondarea — prototipo de buscador inteligente del patrimonio documental de Bizkaia</span>
+    <span class="mono">Demo · registros de muestra basados en fondos públicos</span>
+  </div>
+</footer>
+
+<!-- ===== Asistente IA flotante ===== -->
+<button class="fab" id="fab" onclick="toggleChat()" aria-label="Abrir asistente IA">
+  <span class="dot"></span>
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+
+<div class="panel" id="panel" role="dialog" aria-label="Asistente IA del patrimonio documental">
+  <div class="p-head">
+    <div class="p-av"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div><b>Artxibozain digitala</b><small><i></i> El archivero digital · responde citando el fondo</small></div>
+    <button class="p-close" onclick="toggleChat(false)" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="p-msgs" id="msgs"></div>
+  <div class="p-chips" id="pchips">
+    <button onclick="chipMsg('¿Qué sabéis del Consulado de Bilbao?')">Consulado de Bilbao</button>
+    <button onclick="chipMsg('¿Qué es un incunable?')">¿Qué es un incunable?</button>
+    <button onclick="chipMsg('¿Cómo pido copia de un documento?')">Pedir una copia</button>
+    <button onclick="chipMsg('Kaixo! Euskaraz badakizu?')">Euskaraz 🗣️</button>
+  </div>
+  <div class="p-input">
+    <input id="pinput" type="text" placeholder="Pregunta sobre el fondo…" onkeydown="if(event.key==='Enter')sendMsg()">
+    <button onclick="sendMsg()" aria-label="Enviar"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
+  </div>
+</div>
+
+<script>
+/* ============ CORPUS DE MUESTRA (24 registros representativos) ============ */
+const DOCS = [
+ {id:1, ico:"⚖️", t:"Ordenanzas de la Ilustre Universidad y Casa de Contratación de la M.N. y M.L. Villa de Bilbao (Consulado de Bilbao)", d:"1737", y:[1737,1737], type:"Libro impreso", col:"Fondo antiguo", src:"LH", sig:"R-1737",
+  snip:"…ordenanzas de comercio marítimo que regularon los seguros, fletamentos, naufragios y averías de los navíos que entraban y salían de la ría y puerto de Bilbao; referencia jurídica en toda América hasta el s. XIX…",
+  tags:["consulado","bilbao","comercio","maritimo","barco","navio","puerto","ria","ordenanzas","seguros","fletamento","averia","siglo xviii","derecho","mercantil"],
+  sum:"Las Ordenanzas del Consulado de Bilbao (1737) son el gran código de comercio marítimo del Antiguo Régimen: regulan seguros, fletamentos, letras de cambio, naufragios y averías del tráfico del puerto de Bilbao. Fueron derecho vigente en España e Hispanoamérica hasta bien entrado el siglo XIX. El ejemplar digitalizado pertenece al fondo antiguo de la Biblioteca Foral."},
+ {id:2, ico:"📜", t:"El Fuero, privilegios, franquezas y libertades del M.N. y M.L. Señorío de Vizcaya (Fuero Nuevo, impresión del s. XVI)", d:"1575", y:[1526,1575], type:"Libro impreso", col:"Fondo antiguo · Reserva", src:"LH", sig:"R-401",
+  snip:"…recopilación del derecho propio del Señorío: hidalguía universal de los vizcaínos, régimen de las Juntas Generales so el árbol de Guernica, exenciones fiscales y militares…",
+  tags:["fuero","señorio","vizcaya","bizkaia","juntas generales","gernika","guernica","derecho foral","hidalguia","privilegios","siglo xvi"],
+  sum:"El Fuero Nuevo de Vizcaya (1526, aquí en impresión de 1575) recopila el derecho propio del Señorío: la hidalguía universal de los vizcaínos, el funcionamiento de las Juntas Generales bajo el árbol de Gernika y las libertades fiscales y militares del territorio. Es la pieza central del fondo jurídico foral de la Biblioteca."},
+ {id:3, ico:"🗺️", t:"Mapa del M.N. y M.L. Señorío de Vizcaya — Tomás López", d:"1769", y:[1769,1769], type:"Cartografía", col:"Cartografía histórica", src:"LH", sig:"C-112",
+  snip:"…mapa grabado del Señorío con sus merindades, anteiglesias y villas; delineado por el geógrafo real Tomás López, con la costa de Bermeo a Portugalete y el curso del Ibaizábal…",
+  tags:["mapa","cartografia","señorio","vizcaya","bizkaia","tomas lopez","merindades","anteiglesias","costa","siglo xviii","plano","geografia"],
+  sum:"Mapa del Señorío de Vizcaya delineado en 1769 por Tomás López, geógrafo de S.M. Muestra merindades, anteiglesias, villas y la costa de Bermeo a Portugalete. Pieza destacada de la colección cartográfica digitalizada en Lau Haizeetara."},
+ {id:4, ico:"🗺️", t:"Plano de la ría y puerto de Bilbao desde la villa hasta la barra de Portugalete", d:"ca. 1740", y:[1700,1780], type:"Cartografía", col:"Cartografía histórica", src:"AFB", sig:"AFB, Cartografía, 58",
+  snip:"…plano de la ría con los fondeaderos, cargaderos de vena, astilleros y los pasos difíciles de la barra; anotaciones sobre el calado para navíos de comercio…",
+  tags:["plano","ria","puerto","bilbao","portugalete","barco","navio","fondeadero","astillero","barra","comercio","maritimo","siglo xviii","cartografia","mapa"],
+  sum:"Plano de la ría de Bilbao (hacia 1740) desde la villa hasta la barra de Portugalete: fondeaderos, cargaderos de mineral, astilleros y calados para los navíos mercantes. Documento clave para la historia portuaria del siglo XVIII, conservado en el Archivo Foral."},
+ {id:5, ico:"⚓", t:"Registros de navíos y averías del Consulado de Bilbao", d:"1700–1829", y:[1700,1829], type:"Fondo documental", col:"Consulado de Bilbao", src:"AFB", sig:"AFB, Consulado",
+  snip:"…libros de registro de entrada y salida de navíos del puerto de Bilbao, expedientes de averías, pólizas de seguro marítimo y pleitos mercantiles entre cargadores y capitanes…",
+  tags:["navio","barco","puerto","bilbao","consulado","averia","seguro","registro","entrada","salida","comercio","maritimo","siglo xviii","capitanes","flota"],
+  sum:"Fondo del Consulado de Bilbao en el Archivo Foral: libros de entrada y salida de navíos, expedientes de averías, seguros marítimos y pleitos mercantiles (1700–1829). Es la fuente primaria sobre qué barcos entraban y salían del puerto de Bilbao en el siglo XVIII, con cargas, capitanes y destinos."},
+ {id:6, ico:"⛏️", t:"Expedientes de minas de la zona de Somorrostro y las Encartaciones", d:"1841–1920", y:[1841,1920], type:"Fondo documental", col:"Administración de Bizkaia", src:"AFB", sig:"AFB, Minas",
+  snip:"…concesiones y demarcaciones mineras del criadero de hierro de Somorrostro (Triano, Matamoros, Ollargan), planos de labores, ferrocarriles mineros y cargaderos de la ría…",
+  tags:["minas","mineria","hierro","somorrostro","triano","encartaciones","vena","mineral","concesion","ferrocarril minero","cargadero","siglo xix","industria"],
+  sum:"Expedientes de concesiones mineras del criadero de Somorrostro (1841–1920): demarcaciones, planos de labores, ferrocarriles mineros y cargaderos. Documentan la explotación del hierro que financió la industrialización de Bizkaia."},
+ {id:7, ico:"🔥", t:"Cuentas y papeles de ferrerías de las merindades de Bizkaia", d:"s. XVI–XIX", y:[1500,1880], type:"Fondo documental", col:"Familias y empresas", src:"AFB", sig:"AFB, Familias",
+  snip:"…cuentas de compra de vena y carbón, contratos de ferrones, arriendos de ferrerías y molinos, pleitos por aguas y montes para la fabricación de hierro…",
+  tags:["ferreria","hierro","ferron","vena","carbon","fragua","forja","molino","montes","fabrica de hierro","merindades","industria"],
+  sum:"Papeles de ferrerías vizcaínas (s. XVI–XIX): cuentas de vena y carbón, contratos de ferrones, arriendos y pleitos por aguas y montes. La protoindustria del hierro de Bizkaia antes del alto horno, documentada familia a familia."},
+ {id:8, ico:"📜", t:"Expedientes de hidalguía y vizcainía (Corregimiento de Bizkaia)", d:"1570–1876", y:[1570,1876], type:"Fondo documental", col:"Judicial · Corregimiento", src:"AFB", sig:"AFB, Corregimiento",
+  snip:"…probanzas de hidalguía y limpieza de sangre, genealogías presentadas por vecinos para acreditar vizcainía originaria, con testigos, padrones y armas de sus casas solares…",
+  tags:["hidalguia","vizcainia","genealogia","apellido","limpieza de sangre","probanza","casa solar","escudo","armas","corregimiento","familia","antepasados"],
+  sum:"Expedientes de hidalguía del Corregimiento (1570–1876): probanzas genealógicas con testigos, padrones y descripciones de casas solares y escudos. Es el fondo estrella para genealogistas: la vía para documentar apellidos y antepasados vizcaínos."},
+ {id:9, ico:"🏛️", t:"Actas de las Juntas Generales de Bizkaia celebradas so el árbol de Gernika", d:"1558–1876", y:[1558,1876], type:"Fondo documental", col:"Instituciones del Señorío", src:"AFB", sig:"AFB, Juntas",
+  snip:"…libros de actas y decretos de las Juntas Generales: elección de diputados generales, repartimientos fiscales, pase foral y jura de los Fueros por los señores de Vizcaya…",
+  tags:["juntas generales","gernika","guernica","actas","decretos","diputado general","fueros","pase foral","señorio","arbol","instituciones"],
+  sum:"Actas de las Juntas Generales de Bizkaia (1558–1876): elección de diputados generales, repartimientos, pase foral y juras de los Fueros bajo el árbol de Gernika. La serie institucional que documenta el autogobierno histórico del Señorío."},
+ {id:10, ico:"✒️", t:"Protocolos notariales de Bilbao y su merindad", d:"1512–1900", y:[1512,1900], type:"Fondo documental", col:"Notarial", src:"AFB", sig:"AFB, Notarial",
+  snip:"…escrituras de testamentos, cartas de dote y arras, compraventas, fletamentos y compañías de comercio otorgadas ante los escribanos de la villa de Bilbao…",
+  tags:["notarial","protocolo","testamento","dote","compraventa","escribano","fletamento","compañia","comercio","escritura","herencia"],
+  sum:"Protocolos notariales de Bilbao (1512–1900): testamentos, dotes, compraventas, fletamentos y compañías mercantiles ante escribano. La vida económica y familiar de la villa, acto a acto."},
+ {id:11, ico:"👥", t:"Padrones y fogueraciones de las anteiglesias, villas y ciudad de Bizkaia", d:"1631–1900", y:[1631,1900], type:"Fondo documental", col:"Municipal", src:"AFB", sig:"AFB, Municipal",
+  snip:"…fogueraciones del Señorío y padrones municipales de vecinos y moradores, con oficios, edades y composición de los hogares de cada anteiglesia y villa…",
+  tags:["padron","fogueracion","vecinos","censo","poblacion","anteiglesia","villa","municipal","habitantes","hogares","demografia"],
+  sum:"Fogueraciones y padrones municipales (1631–1900): vecinos, oficios, edades y hogares de cada anteiglesia y villa. La fuente demográfica básica para historia local y genealogía."},
+ {id:12, ico:"📰", t:"El Noticiero Bilbaíno", d:"1875–1937", y:[1875,1937], type:"Prensa · Hemeroteca", col:"Hemeroteca", src:"LH", sig:"H-23",
+  snip:"…diario decano de la prensa bilbaína: información comercial y marítima del puerto, crónicas de la villa, esquelas y anuncios de las casas de comercio…",
+  tags:["periodico","prensa","hemeroteca","diario","bilbao","noticiero","siglo xix","1900","noticias","puerto","comercio"],
+  sum:"El Noticiero Bilbaíno (1875–1937), decano de la prensa local: movimiento del puerto, crónicas, esquelas y publicidad. Digitalizado en la hemeroteca de Lau Haizeetara; oro puro para historia cotidiana y empresarial."},
+ {id:13, ico:"📰", t:"La Lucha de Clases", d:"1894–1937", y:[1894,1937], type:"Prensa · Hemeroteca", col:"Hemeroteca", src:"LH", sig:"H-41",
+  snip:"…semanario socialista de Bilbao: huelgas de la zona minera, condiciones de los barracones de Gallarta y La Arboleda, crónica obrera de la ría…",
+  tags:["periodico","prensa","hemeroteca","socialista","obrero","huelga","minas","gallarta","arboleda","1900","siglo xix","trabajo"],
+  sum:"La Lucha de Clases (1894–1937), semanario socialista bilbaíno: huelgas mineras, condiciones de vida en la zona minera y crónica obrera. Complemento imprescindible de la prensa burguesa de la época."},
+ {id:14, ico:"📰", t:"Euzkadi", d:"1913–1937", y:[1913,1937], type:"Prensa · Hemeroteca", col:"Hemeroteca", src:"LH", sig:"H-57",
+  snip:"…diario nacionalista con páginas en euskera y castellano; política, cultura vasca, bertsolarismo y crónica de los pueblos de Bizkaia…",
+  tags:["periodico","prensa","hemeroteca","euzkadi","nacionalista","euskera","cultura vasca","1900","pueblos","diario"],
+  sum:"Euzkadi (1913–1937), diario con páginas en euskera y castellano: política, cultura vasca y crónica comarcal. Una de las cabeceras más consultadas de la hemeroteca digital."},
+ {id:15, ico:"🕮", t:"Colección de incunables de la Biblioteca Foral (38 obras)", d:"1472–1500", y:[1472,1500], type:"Incunable", col:"Reserva · Incunables", src:"LH", sig:"Inc. 1–38",
+  snip:"…treinta y ocho ediciones del siglo XV, entre ellas obras de derecho canónico, clásicos latinos y crónicas, testimonio de los primeros cincuenta años de la imprenta…",
+  tags:["incunable","siglo xv","imprenta","reserva","latin","cronica","derecho canonico","libro antiguo","rareza"],
+  sum:"La Biblioteca Foral conserva 38 incunables (libros impresos antes de 1501): derecho canónico, clásicos latinos y crónicas. Son las joyas de la Reserva y están digitalizados en Lau Haizeetara."},
+ {id:16, ico:"✍️", t:"Genealogía y papeles de la Casa de Butrón y otras casas solares", d:"s. XV–XVIII", y:[1400,1800], type:"Manuscrito", col:"Manuscritos", src:"LH", sig:"Ms. 94",
+  snip:"…árboles genealógicos manuscritos, memoriales de las luchas de banderizos (oñacinos y gamboínos), mayorazgos y pleitos de las casas solares de Bizkaia…",
+  tags:["manuscrito","genealogia","butron","banderizos","oñacinos","gamboinos","mayorazgo","casa solar","linaje","apellido","medieval"],
+  sum:"Manuscritos genealógicos de casas solares vizcaínas, con la Casa de Butrón a la cabeza: árboles, memoriales de las guerras de banderizos y mayorazgos. Para quien busca linajes medievales, el punto de partida."},
+ {id:17, ico:"🖼️", t:"Colección de grabados y vistas de Bilbao y su ría (s. XVIII–XIX)", d:"s. XVIII–XIX", y:[1700,1899], type:"Material gráfico", col:"Estampas y grabados", src:"LH", sig:"G-201",
+  snip:"…vistas del Arenal, el puente de San Antón, la villa desde Begoña y escenas del tráfico de la ría, en grabado y litografía de viajeros europeos…",
+  tags:["grabado","estampa","vista","bilbao","arenal","san anton","ria","litografia","imagen","arte","paisaje"],
+  sum:"Grabados y vistas de Bilbao (s. XVIII–XIX): el Arenal, San Antón, la villa desde Begoña y el trajín de la ría, según viajeros y artistas europeos. Colección gráfica digitalizada en alta resolución."},
+ {id:18, ico:"📸", t:"Fondo fotográfico: construcción del Puente de Vizcaya y la ría industrial", d:"1887–1930", y:[1887,1930], type:"Fotografía", col:"Fotografía histórica", src:"AFB", sig:"AFB, Fotografía",
+  snip:"…placas y copias fotográficas del Puente Colgante en construcción, cargaderos de mineral, botaduras en los astilleros del Nervión y vida obrera de la margen izquierda…",
+  tags:["fotografia","puente colgante","puente de vizcaya","portugalete","getxo","astillero","nervion","industrial","obrero","margen izquierda","imagen"],
+  sum:"Fotografías de la ría industrial (1887–1930): el Puente de Vizcaya en construcción, cargaderos, botaduras y vida obrera. Memoria visual de la Bizkaia que se industrializa."},
+ {id:19, ico:"🎼", t:"Gernikako Arbola y cancionero vasco impreso del s. XIX", d:"1853–1900", y:[1853,1900], type:"Partitura", col:"Fondo vasco · Música", src:"LH", sig:"FV-M-12",
+  snip:"…partituras y pliegos del himno de Iparraguirre y del cancionero popular, zortzikos y ediciones musicales bilbaínas del último tercio del siglo…",
+  tags:["musica","partitura","gernikako arbola","iparraguirre","zortziko","cancionero","euskera","fondo vasco","himno"],
+  sum:"Partituras del Gernikako Arbola de Iparraguirre y cancionero vasco del s. XIX: zortzikos y ediciones musicales bilbaínas. Parte del fondo vasco digitalizado."},
+ {id:20, ico:"📖", t:"Peru Abarca — Juan Antonio Moguel (primera edición impresa)", d:"1881", y:[1881,1881], type:"Libro impreso", col:"Fondo vasco", src:"LH", sig:"FV-338",
+  snip:"…primera novela en euskera (escrita ca. 1802, impresa en Durango en 1881): diálogos entre el rústico ilustrado Peru y el barbero Maisu Juan, monumento del euskera vizcaíno…",
+  tags:["euskera","peru abarca","moguel","literatura vasca","novela","durango","fondo vasco","vizcaino","clasico"],
+  sum:"Peru Abarca de J.A. Moguel: escrita hacia 1802 y considerada la primera novela en euskera, impresa en Durango en 1881. Monumento del dialecto vizcaíno, digitalizada en el fondo vasco."},
+ {id:21, ico:"⚔️", t:"Papeles de las guerras carlistas en Bizkaia: sitios de Bilbao", d:"1835–1876", y:[1835,1876], type:"Fondo documental", col:"Administración · Guerra", src:"AFB", sig:"AFB, Guerra",
+  snip:"…partes de guerra, suministros y bagajes, expedientes de los sitios de Bilbao (1835-36 y 1874), daños en anteiglesias y proclamas de ambos bandos…",
+  tags:["guerra carlista","sitio","bilbao","1874","bombardeo","carlistas","liberales","proclama","siglo xix","militar"],
+  sum:"Documentación de las guerras carlistas (1835–1876): partes, suministros, daños y los sitios de Bilbao de 1836 y 1874, con proclamas de ambos bandos. Fuente primaria para el conflicto que marcó el s. XIX vizcaíno."},
+ {id:22, ico:"🐟", t:"Ordenanzas y papeles de las cofradías de mareantes de Bermeo, Lekeitio y Ondarroa", d:"s. XVI–XIX", y:[1500,1899], type:"Fondo documental", col:"Instituciones", src:"AFB", sig:"AFB, Cofradías",
+  snip:"…ordenanzas de pesca, seguros mutuos de las cofradías de San Pedro, pleitos por caladeros y atalayas, y socorros a viudas de los galernazos…",
+  tags:["cofradia","mareantes","pesca","bermeo","lekeitio","ondarroa","puerto","galerna","atalaya","mar","pescadores"],
+  sum:"Papeles de las cofradías de mareantes de Bermeo, Lekeitio y Ondarroa: ordenanzas de pesca, seguros mutuos, pleitos por caladeros y socorros tras las galernas. La organización del mar en la costa vizcaína durante cuatro siglos."},
+ {id:23, ico:"🗂️", t:"Archivo personal de Antonio de Trueba, cronista del Señorío", d:"1840–1889", y:[1840,1889], type:"Archivo personal", col:"Archivos personales", src:"LH", sig:"AP-3",
+  snip:"…manuscritos, correspondencia y borradores del escritor y archivero-cronista de Bizkaia: costumbrismo de las Encartaciones y trabajos históricos sobre el Señorío…",
+  tags:["trueba","cronista","archivo personal","correspondencia","manuscrito","encartaciones","literatura","escritor","siglo xix"],
+  sum:"Archivo personal de Antonio de Trueba (1840–1889), escritor y archivero-cronista del Señorío: manuscritos, correspondencia y borradores. Ejemplo de los archivos personales custodiados y digitalizados por la Biblioteca Foral."},
+ {id:24, ico:"🕮", t:"Crónica general de España — edición gótica con noticias de Vizcaya", d:"1541", y:[1541,1541], type:"Libro impreso", col:"Fondo antiguo · Reserva", src:"LH", sig:"R-77",
+  snip:"…edición del s. XVI en letra gótica con capítulos sobre el Señorío de Vizcaya, sus fueros e historia antigua; ejemplar con anotaciones manuscritas de época…",
+  tags:["cronica","gotica","siglo xvi","vizcaya","reserva","libro antiguo","historia","fueros","anotaciones"],
+  sum:"Crónica general impresa en 1541 en letra gótica, con capítulos sobre el Señorío de Vizcaya y anotaciones manuscritas de época. Representa el fondo de Reserva del s. XVI digitalizado en Lau Haizeetara."}
+];
+
+/* ============ MOTOR DE BÚSQUEDA SEMÁNTICA (simulado) ============ */
+const SYN = {
+ "barco":["navio","buque","nave","flota","embarcacion","fragata","galeon"],
+ "barcos":["navio","buque","flota","embarcacion"],
+ "navios":["barco","navio","buque"],
+ "puerto":["ria","muelle","fondeadero","darsena","maritimo"],
+ "comercio":["mercantil","mercader","consulado","contratacion","trafico"],
+ "hierro":["ferreria","vena","mineral","mina","forja","fragua","siderurgia"],
+ "minas":["mineria","mineral","vena","hierro","concesion"],
+ "ferrerias":["ferreria","hierro","ferron","forja","fragua"],
+ "mapa":["cartografia","plano","carta","mapas"],
+ "mapas":["cartografia","plano","mapa"],
+ "plano":["cartografia","mapa"],
+ "periodico":["prensa","hemeroteca","diario","semanario","periodicos"],
+ "periodicos":["prensa","hemeroteca","diario","periodico"],
+ "prensa":["hemeroteca","periodico","diario"],
+ "apellido":["genealogia","hidalguia","linaje","familia","antepasados"],
+ "hidalguia":["vizcainia","genealogia","probanza","linaje","noble","apellido"],
+ "genealogia":["hidalguia","apellido","linaje","familia","antepasados","padron"],
+ "antepasados":["genealogia","hidalguia","padron","apellido"],
+ "familia":["genealogia","linaje","apellido"],
+ "guerra":["carlista","sitio","bombardeo","militar"],
+ "carlistas":["guerra carlista","sitio","militar"],
+ "pesca":["cofradia","mareantes","pescadores","mar","galerna"],
+ "pescadores":["cofradia","mareantes","pesca"],
+ "fueros":["fuero","derecho foral","juntas generales","señorio"],
+ "fuero":["fueros","derecho foral","señorio"],
+ "gernika":["guernica","juntas generales","arbol"],
+ "guernica":["gernika","juntas generales"],
+ "euskera":["vasco","euskara","fondo vasco","vizcaino"],
+ "fotografia":["fotografico","placa","imagen","fotos"],
+ "fotos":["fotografia","imagen","placa"],
+ "imagen":["fotografia","grabado","estampa","vista"],
+ "musica":["partitura","cancionero","zortziko","himno"],
+ "testamento":["notarial","protocolo","escribano","herencia"],
+ "herencia":["testamento","notarial","mayorazgo"],
+ "censo":["padron","fogueracion","poblacion","vecinos","habitantes"],
+ "poblacion":["padron","fogueracion","censo","vecinos"],
+ "incunables":["incunable","siglo xv","imprenta"],
+ "libro":["impreso","edicion","obra"],
+ "antiguo":["reserva","historico","viejo"],
+ "bilbao":["villa","bilbaino","bilbaina"],
+ "obrero":["huelga","trabajo","socialista","minero"],
+ "industria":["industrial","fabrica","siderurgia","astillero"]
+};
+const CENT = {"xv":[1401,1500],"xvi":[1501,1600],"xvii":[1601,1700],"xviii":[1701,1800],"xix":[1801,1900],"xx":[1901,2000],
+ "15":[1401,1500],"16":[1501,1600],"17":[1601,1700],"18":[1701,1800],"19":[1801,1900],"20":[1901,2000]};
+const STOP = new Set(["de","del","la","el","los","las","que","en","y","a","un","una","unos","sobre","con","como","para","mi","su","hay","teneis","tienen","tiene","donde","cual","cuales","que","por","al","se","es","son","o","u","e","me","qué","más","mas","antiguos","antiguas".normalize()]);
+
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+
+function parseQuery(q){
+  const nq = norm(q);
+  // siglo
+  let range=null, sigloLabel=null;
+  const m = nq.match(/siglo\s+(xviii|xvii|xvi|xv|xix|xx)|s\.?\s*(xviii|xvii|xvi|xv|xix|xx)/);
+  if(m){const r=(m[1]||m[2]); range=CENT[r]; sigloLabel="siglo "+r.toUpperCase();}
+  const y = nq.match(/\b(1[4-9]\d\d)\b/);
+  if(!range && y){const yr=+y[1]; range=[yr-15,yr+15]; sigloLabel="hacia "+y[1];}
+  // términos + expansión
+  const words = nq.replace(/[^a-z0-9ñ\s]/g," ").split(/\s+/).filter(w=>w.length>2 && !STOP.has(w));
+  const expanded = new Set();
+  words.forEach(w=>{
+    expanded.add(w);
+    if(SYN[w]) SYN[w].forEach(s=>expanded.add(s));
+    if(w.endsWith("s") && SYN[w.slice(0,-1)]) SYN[w.slice(0,-1)].forEach(s=>expanded.add(s));
+  });
+  return {words, expanded:[...expanded], range, sigloLabel};
+}
+
+function scoreDoc(doc, pq){
+  let sc = 0; const hits = new Set();
+  const hayT = norm(doc.t), hayS = norm(doc.snip), tags = doc.tags.map(norm);
+  pq.expanded.forEach(term=>{
+    const isOriginal = pq.words.includes(term);
+    const w = isOriginal ? 1 : .65;
+    if(tags.some(t=>t.includes(term)||term.includes(t))){sc += 3*w; hits.add(term);}
+    if(hayT.includes(term)){sc += 2.2*w; hits.add(term);}
+    if(hayS.includes(term)){sc += 1.4*w; hits.add(term);}
+  });
+  if(pq.range){
+    const [a,b]=pq.range, [da,db]=doc.y;
+    if(db>=a && da<=b) sc *= 1.55; else sc *= .45;
+  }
+  return {sc, hits:[...hits]};
+}
+
+function highlight(text, pq){
+  let out = text;
+  const done = new Set();
+  pq.expanded.forEach(term=>{
+    if(term.length<3 || done.has(term)) return;
+    const re = new RegExp("("+term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"[a-záéíóúñ]*)","i");
+    if(re.test(norm(out))){
+      // marcar sobre el texto original respetando acentos: búsqueda aproximada por posición
+      const nOut = norm(out); const mm = nOut.match(re);
+      if(mm){const i = nOut.indexOf(mm[0]); if(i>=0){out = out.slice(0,i)+"<mark>"+out.slice(i,i+mm[0].length)+"</mark>"+out.slice(i+mm[0].length); done.add(term);}}
+    }
+  });
+  return out;
+}
+
+const CONCEPT_LABELS = {
+ consulado:"Consulado de Bilbao", comercio:"comercio marítimo", maritimo:"comercio marítimo", barco:"navíos", navio:"navíos", buque:"navíos",
+ puerto:"puerto y ría", ria:"puerto y ría", hierro:"hierro / minería", mina:"hierro / minería", mineria:"hierro / minería", ferreria:"ferrerías",
+ mapa:"cartografía", cartografia:"cartografía", plano:"cartografía", prensa:"hemeroteca", hemeroteca:"hemeroteca", periodico:"hemeroteca",
+ hidalguia:"hidalguías", genealogia:"genealogía", apellido:"genealogía", linaje:"genealogía", fuero:"derecho foral", fueros:"derecho foral",
+ gernika:"Juntas de Gernika", guernica:"Juntas de Gernika", euskera:"fondo vasco / euskera", incunable:"incunables", pesca:"cofradías de pescadores",
+ cofradia:"cofradías de pescadores", guerra:"guerras carlistas", carlista:"guerras carlistas", fotografia:"fotografía histórica",
+ testamento:"protocolos notariales", notarial:"protocolos notariales", padron:"padrones y censos", censo:"padrones y censos", musica:"música / partituras"
+};
+
+function doSearch(ev){
+  if(ev) ev.preventDefault();
+  const q = document.getElementById("q").value.trim();
+  if(!q) return;
+  const pq = parseQuery(q);
+  const scored = DOCS.map(d=>({d, ...scoreDoc(d,pq)})).filter(x=>x.sc>1.2).sort((a,b)=>b.sc-a.sc).slice(0,6);
+  const max = scored.length ? scored[0].sc : 1;
+
+  // interpretación
+  const intEl = document.getElementById("interpret");
+  const concepts = new Set();
+  pq.expanded.forEach(t=>{const c=CONCEPT_LABELS[t]; if(c) concepts.add(c);});
+  if(pq.sigloLabel) concepts.add("⏳ "+pq.sigloLabel);
+  document.getElementById("int-text").innerHTML = scored.length
+    ? "He entendido tu consulta y he buscado por <b>significado</b> en la Biblioteca Foral y el Archivo Foral a la vez:"
+    : "He entendido la consulta, pero en este <b>corpus de muestra de 24 registros</b> no hay nada suficientemente parecido. En producción buscaría entre los 14.500+ objetos reales.";
+  document.getElementById("int-concepts").innerHTML = [...concepts].slice(0,6).map(c=>`<span class="concept">${c}</span>`).join("") || `<span class="concept">${q}</span>`;
+  intEl.classList.add("on");
+
+  // resultados
+  const R = document.getElementById("resultados");
+  if(!scored.length){
+    R.innerHTML = `<div class="nores">Sin resultados en el corpus de muestra. Prueba con: puerto de Bilbao, ferrerías, mapas, hidalguía, periódicos, incunables, Gernika, pescadores, carlistas, euskera…</div>`;
+  } else {
+    R.innerHTML = `<div class="res-head"><b>${scored.length} resultado${scored.length>1?"s":""}</b><span>ordenados por afinidad semántica</span></div>` +
+      scored.map((x,i)=>{
+        const rel = Math.round(58 + 40*(x.sc/max));
+        const srcTag = x.d.src==="LH"
+          ? `<span class="tagsrc src-lh">📚 Biblioteca Foral · Lau Haizeetara</span>`
+          : `<span class="tagsrc src-afb">🗄️ Archivo Foral · ARIT</span>`;
+        return `<article class="doc" style="animation-delay:${i*70}ms">
+          <div class="doc-top">
+            <div class="doc-ico">${x.d.ico}</div>
+            <div style="min-width:0">
+              <h3><button onclick="askDoc(${x.d.id})">${highlight(x.d.t,pq)}</button></h3>
+              <div class="meta"><span>📅 ${x.d.d}</span><span>${x.d.type}</span><span>${x.d.col}</span><span class="mono">${x.d.sig}</span></div>
+            </div>
+            <div class="rel"><b>${rel}%</b><span>afinidad</span></div>
+          </div>
+          <p class="snip">${highlight(x.d.snip,pq)}</p>
+          <div class="foot">
+            ${srcTag}
+            <div class="acts">
+              <button class="b-ver" onclick="alert('En producción: abre el objeto digitalizado en su visor original (Lau Haizeetara / ARIT).')">Ver digitalizado</button>
+              <button class="b-ia" onclick="askDoc(${x.d.id})"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>Resumen IA</button>
+            </div>
+          </div>
+        </article>`;
+      }).join("") + `<p class="corpus-note">⚠️ Corpus de demo: 24 registros representativos basados en fondos públicos. Producción = fondo completo, con enlace al objeto digital real.</p>`;
+  }
+  R.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function fillSearch(q){
+  document.getElementById("q").value = q;
+  doSearch();
+}
+
+/* ============ ASISTENTE IA ============ */
+let chatOpen = false, greeted = false;
+function toggleChat(force){
+  chatOpen = force!==undefined ? force : !chatOpen;
+  document.getElementById("panel").classList.toggle("open", chatOpen);
+  if(chatOpen && !greeted){
+    greeted = true;
+    botSay(`Kaixo! 👋 Soy el <b>archivero digital</b> de Ondarea. Respondo <b>solo con documentos del fondo</b> de la Biblioteca Foral y el Archivo Foral, citando siempre la fuente. Pregúntame por temas, personas, pueblos o épocas — en euskera o castellano.`);
+  }
+  if(chatOpen) setTimeout(()=>document.getElementById("pinput").focus(),250);
+}
+function el(tag, cls, html){const e=document.createElement(tag); e.className=cls; e.innerHTML=html; return e;}
+function pushMsg(cls, html){
+  const M = document.getElementById("msgs");
+  M.appendChild(el("div", cls, html));
+  M.scrollTop = M.scrollHeight;
+}
+function botSay(html, cite){
+  const M = document.getElementById("msgs");
+  const t = el("div","typing","<i></i><i></i><i></i>");
+  M.appendChild(t); M.scrollTop = M.scrollHeight;
+  setTimeout(()=>{
+    t.remove();
+    pushMsg("m-bot", html + (cite?`<span class="cite">📎 Fuente: <b>${cite}</b></span>`:""));
+  }, 650 + Math.min(html.length*3, 900));
+}
+function chipMsg(q){ document.getElementById("pinput").value=q; sendMsg(); }
+function sendMsg(){
+  const inp = document.getElementById("pinput");
+  const q = inp.value.trim(); if(!q) return;
+  inp.value = "";
+  pushMsg("m-user", q.replace(/</g,"&lt;"));
+  route(norm(q));
+}
+function askDoc(id){
+  const d = DOCS.find(x=>x.id===id);
+  toggleChat(true);
+  pushMsg("m-user","Resúmeme: "+d.t.slice(0,80)+(d.t.length>80?"…":""));
+  botSay(d.sum, (d.src==="LH"?"Biblioteca Foral (Lau Haizeetara), ":"Archivo Foral (ARIT), ")+d.sig);
+}
+function route(q){
+  const has = (...ws)=>ws.some(w=>q.includes(w));
+  if(has("kaixo","euskaraz","eskerrik","egun on","arratsalde")){
+    botSay(`Bai, noski! 🗣️ Euskaraz ere erantzuten dut. Adibidez: <b>«Zer dakizue Gernikako Batzar Nagusiei buruz?»</b> edo <b>«Bermeoko arrantzaleen agiriak»</b>. Fondo osoa bi hizkuntzatan bilatzen dut — galdetu lasai nahi duzuna.`);
+  } else if(has("consulado","contratacion")){
+    botSay(`El <b>Consulado de Bilbao</b> (1511-1829) fue el tribunal y gremio de los mercaderes de la villa. En el fondo hay dos piezas mayores: las <b>Ordenanzas de 1737</b> —el gran código de comercio marítimo, vigente hasta el s. XIX en media América— y el <b>fondo documental del Consulado</b> en el Archivo Foral: registros de navíos, averías y seguros. ¿Quieres que te resuma alguna?`, "Ordenanzas (1737), R-1737 · AFB, Consulado");
+  } else if(has("incunable")){
+    botSay(`Un <b>incunable</b> es un libro impreso antes de 1501, en los primeros ~50 años de la imprenta. La Biblioteca Foral conserva <b>38 incunables</b> digitalizados: derecho canónico, clásicos latinos y crónicas. Son las piezas más antiguas y valiosas de la Reserva.`, "Colección de incunables, Inc. 1–38 (Lau Haizeetara)");
+  } else if(has("copia","reproduccion","descargar","pedir","solicitar")){
+    botSay(`Los objetos digitalizados de <b>Lau Haizeetara son de acceso abierto</b>: se pueden ver y descargar online. Para reproducciones certificadas o documentos aún no digitalizados del Archivo Foral, se solicita cita en la <b>sala de consulta</b> (María Díaz de Haro 11, Bilbao) o por registro electrónico. Te dejo el paso a paso si me dices qué documento buscas.`);
+  } else if(has("gernika","guernica","juntas","fuero")){
+    botSay(`Sobre el autogobierno del Señorío el fondo es riquísimo: el <b>Fuero Nuevo</b> (1526, impresión de 1575) con la hidalguía universal y las libertades de Bizkaia, y las <b>actas de las Juntas Generales</b> celebradas so el árbol de Gernika entre 1558 y 1876: elecciones de diputados, pase foral y juras de los Fueros.`, "Fuero Nuevo R-401 (LH) · AFB, Juntas");
+  } else if(has("hidalguia","apellido","genealogia","antepasado","linaje")){
+    botSay(`Para genealogía, la ruta clásica es: 1️⃣ <b>expedientes de hidalguía y vizcainía</b> del Corregimiento (1570-1876), con probanzas y testigos; 2️⃣ <b>padrones y fogueraciones</b> municipales; 3️⃣ <b>protocolos notariales</b> (testamentos y dotes). Dime el apellido y la zona y te digo por dónde empezar.`, "AFB, Corregimiento · Municipal · Notarial");
+  } else if(has("barco","navio","puerto","ria","maritimo")){
+    botSay(`Sobre el puerto y la ría hay tres joyas: los <b>registros de navíos del Consulado</b> (entradas, salidas, cargas y averías, 1700-1829), el <b>plano de la ría</b> hacia 1740 con fondeaderos y astilleros, y las <b>Ordenanzas de 1737</b> que regulaban todo ese tráfico. ¿Te interesa una época concreta?`, "AFB, Consulado · Cartografía, 58 · R-1737")
+  } else if(has("hierro","mina","ferreria","somorrostro")){
+    botSay(`El hierro de Bizkaia está documentado en dos capas: la <b>protoindustria de las ferrerías</b> (cuentas de vena y carbón, contratos de ferrones, s. XVI-XIX) y la <b>minería contemporánea de Somorrostro</b> (concesiones, planos de labores y ferrocarriles mineros, 1841-1920). De la mina al alto horno, todo tiene papel.`, "AFB, Familias · AFB, Minas");
+  } else if(has("periodico","prensa","hemeroteca","diario","noticia")){
+    botSay(`La hemeroteca digital incluye, entre otras, tres cabeceras clave: <b>El Noticiero Bilbaíno</b> (1875-1937, decano de la prensa local), <b>La Lucha de Clases</b> (1894-1937, semanario obrero) y <b>Euzkadi</b> (1913-1937, con páginas en euskera). Puedo buscar por fecha, tema o pueblo.`, "Hemeroteca Lau Haizeetara, H-23 · H-41 · H-57");
+  } else if(has("horario","visita","donde","direccion","sala")){
+    botSay(`La <b>Biblioteca Foral</b> y la sala de consulta del <b>Archivo Foral</b> están en Bilbao (Diputación 7 y María Díaz de Haro 11). Todo lo digitalizado se consulta online sin cita. Para originales, cita previa por registro electrónico o teléfono de la Diputación (944 068 000).`);
+  } else if(has("quien eres","que eres","como funciona","ia","inteligencia")){
+    botSay(`Soy un asistente de IA conectado <b>únicamente</b> al índice del fondo documental: cada respuesta sale de documentos reales y cito la signatura. Si algo no está en el fondo, te lo digo claramente y te derivo al personal de la Biblioteca o del Archivo — <b>nunca invento</b>.`);
+  } else {
+    const pq = parseQuery(q);
+    const scored = DOCS.map(d=>({d, ...scoreDoc(d,pq)})).filter(x=>x.sc>1.2).sort((a,b)=>b.sc-a.sc).slice(0,3);
+    if(scored.length){
+      botSay(`He encontrado ${scored.length} documento${scored.length>1?"s":""} del fondo que encajan:<br>`+
+        scored.map(x=>`• <b>${x.d.t.slice(0,70)}${x.d.t.length>70?"…":""}</b> (${x.d.d})`).join("<br>")+
+        `<br>¿Quieres el resumen de alguno? También puedes verlos en el buscador de arriba.`,
+        scored.map(x=>x.d.sig).join(" · "));
+    } else {
+      botSay(`En este <b>corpus de muestra</b> (24 registros) no encuentro nada sobre eso — en producción buscaría en el fondo completo (14.500+ objetos). Prueba con: el Consulado, hidalguías, ferrerías, mapas, prensa histórica, Gernika, pescadores o incunables.`);
+    }
+  }
+}
+
+/* header shadow */
+addEventListener("scroll",()=>document.getElementById("hdr").classList.toggle("scrolled", scrollY>8));
+</script>
+</body>
+</html>
