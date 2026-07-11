@@ -287,7 +287,7 @@
  .pcfgrow input{flex:1;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13.5px;font-family:inherit;color:var(--ink)}
  .pcfgrow input:focus{outline:2px solid var(--green);border-color:var(--green)}
  .psave{background:var(--green);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;margin-top:6px}
- .psol{max-height:150px;overflow:auto;border:1px solid var(--line,#e6e9ef);border-radius:10px}
+ .psol{max-height:360px;overflow:auto;border:1px solid var(--line,#e6e9ef);border-radius:10px}
 .psolr{display:flex;gap:8px;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line,#eef0f4);font-size:12.5px}
 .psolr:last-child{border-bottom:0}
 .psolr .pd{width:6px;height:6px;border-radius:50%;background:var(--green,#0E6A4F);flex-shrink:0}
@@ -1110,7 +1110,13 @@ function loadSolicitudes(){const el=gid("psol");if(!IA_WORKER_URL){el.innerHTML=
  el.innerHTML='<div class="psolempty">…</div>';
  fetch(IA_WORKER_URL.replace(/\/$/,"")+"/citas?key=sanmigel2026").then(r=>r.json()).then(d=>{const it=(d&&d.items||[]).filter(x=>x.town===TOWN.slug);
   if(!it.length){el.innerHTML='<div class="psolempty">'+(LANG==="es"?"Aún no hay solicitudes para "+TOWN.name:TOWN.name+"(e)rako eskaerarik ez oraindik")+'</div>';return;}
-  el.innerHTML=it.slice(0,30).map(x=>{const parte=x.tipo==="parte";const when=parte?(x.lugar||""):((x.fecha||"")+" "+(x.hora||""));return '<div class="psolr"><span class="pd'+(parte?" pdp":"")+'"></span><b>'+(parte?"📢 ":"📅 ")+esc(x.svc||"")+'</b> <span>'+esc(x.nombre||when)+'</span><span class="pmeta">'+esc(x.ref||"")+' · '+esc(x.ts||"")+'</span></div>';}).join("");
+  const row=x=>{const parte=x.tipo==="parte";const when=parte?(x.lugar||""):((x.fecha||"")+" "+(x.hora||""));return '<div class="psolr"><span class="pd'+(parte?" pdp":"")+'"></span><b>'+esc(x.svc||"")+'</b> <span>'+esc(x.nombre||when)+'</span><span class="pmeta">'+esc(x.ref||"")+' · '+esc(x.ts||"")+'</span></div>';};
+  const hst='font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--green);margin:10px 0 4px;display:flex;align-items:center;gap:6px';
+  const cts=it.filter(x=>x.tipo!=="parte"),pts=it.filter(x=>x.tipo==="parte");
+  let h="";
+  if(cts.length)h+='<div style="'+hst+'">📅 '+(LANG==="es"?"Citas":"Hitzorduak")+' <span style="background:var(--green-soft);color:var(--green-700);border-radius:999px;padding:0 7px;font-size:9.5px">'+cts.length+'</span></div>'+cts.slice(0,50).map(row).join("");
+  if(pts.length)h+='<div style="'+hst+'">📢 '+(LANG==="es"?"Partes de incidencia":"Intzidentzia-parteak")+' <span style="background:var(--green-soft);color:var(--green-700);border-radius:999px;padding:0 7px;font-size:9.5px">'+pts.length+'</span></div>'+pts.slice(0,50).map(row).join("");
+  el.innerHTML=h;
  }).catch(()=>{el.innerHTML='<div class="psolempty">'+(LANG==="es"?"(sin conexión)":"(konexiorik ez)")+'</div>';});}
 function panelSave(){
  CFG={tel:(gid("pi_tel").value||"").trim(),hor:(gid("pi_hor").value||"").trim(),sede:(gid("pi_sede").value||"").trim()};
