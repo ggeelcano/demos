@@ -930,7 +930,8 @@ function answer(text){
   const desconX=mejorDestino&&w_.some(t=>t.length>3&&!STOP.has(t)&&!WEAK.has(t)&&AFFW.indexOf(t)<0&&AFFS.indexOf(t)<0&&(!pit0||pit0._kw.indexOf(t)<0)&&!(sc.length&&sc[0].it._kw.indexOf(t)>=0));
   if(pureAff||back||((isFollowup(text)||!IA_WORKER_URL)&&!sens&&!desconX)){let pid=(pureAff&&OFFER)?OFFER:PENDING;if(back&&TOPICHIST.length){pid=TOPICHIST.pop();}const pit=KB.find(x=>x.id===pid);if(pit){respondIntent(pit,ml);return;}}}
  const cand=sc.length&&sc[0].s>=2&&sc[0].it.id!=="saludo"&&sc[0].it.id!=="gracias";
- if(IA_WORKER_URL&&!strong&&!cand&&TOWN.slug==="iurreta"){iaAnswer(text,ml);return;}
+ /* En mitad de una conversacion (PENDING no sensible), un mensaje debil NO cae en "¿te refieres a...?": va a la IA con el tema a cuestas (responde o dice honestamente que no tiene el dato). El did-you-mean queda para arranques de conversacion. */
+ if(IA_WORKER_URL&&!strong&&(!cand||(PENDING&&PENDING!=="emergencias"&&PENDING!=="igualdad"))&&TOWN.slug==="iurreta"){iaAnswer(text,ml);return;}
  const tp=typing();
  let html,follow=null,disamb=null,topId=null;
  if(!sc.length){const _cw=w_.filter(t=>t.length>3&&!STOP.has(t)&&!WEAK.has(t)&&AFFW.indexOf(t)<0&&AFFS.indexOf(t)<0).length;html=(_cw>=2?FBNI:FB)[ml];follow="__popular";PENDING="persona";OFFER=null;}
