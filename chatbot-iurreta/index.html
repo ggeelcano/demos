@@ -1238,6 +1238,9 @@ addEventListener("scroll",()=>{document.getElementById("hdr").classList.toggle("
 
 applyLang();
 
+/* preseleccion de ayuntamiento por URL: ?town=mungia (o #mungia). Aditivo: por defecto Iurreta */
+try{var _tp=(new URLSearchParams(location.search).get("town")||(location.hash||"").replace(/^#/,"")||"").toLowerCase().trim();if(_tp&&TOWNS[_tp]&&_tp!=="iurreta"){var _tsel=document.getElementById("townsel");if(_tsel)_tsel.value=_tp;applyTown(_tp);}}catch(e){}
+
 /* enlaces de accion accesibles con teclado */
 document.querySelectorAll("a[onclick]:not([href])").forEach(function(a){a.setAttribute("tabindex","0");a.setAttribute("role","button");a.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();a.click();}});});
 </script>
