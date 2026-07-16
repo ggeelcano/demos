@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asesoría Ibaizabal — Gestoría y Asesoría Fiscal en Bilbao | Especialistas en normativa foral de Bizkaia</title>
+<meta name="description" content="Gestoría y asesoría fiscal, contable y laboral en Bilbao. Especialistas en normativa foral de Bizkaia: IRPF, deducciones forales, Batuz, autónomos y pymes. Consulta gratuita.">
+<meta property="og:title" content="Asesoría Ibaizabal — Gestoría en Bilbao">
+<meta property="og:description" content="Especialistas en normativa foral de Bizkaia. Autónomos desde 59€/mes. Consulta gratuita de 20 minutos.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+  :root{
+    --navy:#0e2a3a; --navy2:#123c52; --teal:#1b6d8c; --gold:#e8b34b; --gold2:#f5c96b;
+    --bg:#f7f9fb; --txt:#243642; --muted:#5d7484;
+    --chat1:#7c3aed; --chat2:#06b6d4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--txt);background:var(--bg);line-height:1.6}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;background:rgba(14,42,58,.97);backdrop-filter:blur(8px);box-shadow:0 2px 14px rgba(0,0,0,.18)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{color:#fff;font-size:1.25rem;font-weight:800;letter-spacing:.3px;text-decoration:none}
+  .logo span{color:var(--gold)}
+  nav a{color:#cfdde6;text-decoration:none;margin-left:26px;font-size:.95rem;font-weight:600}
+  nav a:hover{color:var(--gold)}
+  nav a.cta{background:var(--gold);color:var(--navy);padding:9px 18px;border-radius:24px}
+  @media(max-width:760px){nav a:not(.cta){display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 55%,var(--teal) 100%);color:#fff;padding:88px 0 72px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-140px;top:-140px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(232,179,75,.22),transparent 70%)}
+  .hero .wrap{position:relative;z-index:1}
+  .badge{display:inline-block;background:rgba(232,179,75,.16);border:1px solid rgba(232,179,75,.5);color:var(--gold2);padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;margin-bottom:20px}
+  .hero h1{font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.15;font-weight:800;max-width:720px}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p{margin:20px 0 30px;font-size:1.12rem;color:#d8e4ec;max-width:640px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 28px;border-radius:30px;font-weight:700;text-decoration:none;font-size:1rem;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-line{border:2px solid rgba(255,255,255,.55);color:#fff}
+  .stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap}
+  .stat b{display:block;font-size:1.9rem;color:var(--gold)}
+  .stat span{font-size:.9rem;color:#b9cbd7}
+
+  /* SECTIONS */
+  section{padding:74px 0}
+  .kicker{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem}
+  h2{font-size:clamp(1.5rem,3.2vw,2.2rem);color:var(--navy);margin:8px 0 14px;font-weight:800}
+  .sub{color:var(--muted);max-width:640px;margin-bottom:40px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .card{background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 4px 18px rgba(14,42,58,.07);border-top:4px solid var(--teal);transition:transform .18s}
+  .card:hover{transform:translateY(-5px)}
+  .card .ico{font-size:2rem;margin-bottom:12px}
+  .card h3{color:var(--navy);font-size:1.12rem;margin-bottom:8px}
+  .card p{font-size:.94rem;color:var(--muted)}
+  .card .precio{display:inline-block;margin-top:14px;background:#eef6f9;color:var(--teal);font-weight:800;padding:6px 14px;border-radius:18px;font-size:.9rem}
+
+  /* FORAL */
+  .foral{background:var(--navy);color:#fff}
+  .foral h2{color:#fff}
+  .foral .sub{color:#b9cbd7}
+  .foral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .foral-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px}
+  .foral-item b{color:var(--gold);display:block;margin-bottom:6px;font-size:1rem}
+  .foral-item p{font-size:.9rem;color:#cfdde6}
+
+  /* CTA RENTA */
+  .renta{background:linear-gradient(120deg,var(--gold) 0%,var(--gold2) 100%);padding:46px 0}
+  .renta .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .renta h3{color:var(--navy);font-size:1.5rem;font-weight:800}
+  .renta p{color:#5b4a22}
+  .btn-navy{background:var(--navy);color:#fff}
+
+  /* CONTACTO */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .c-item{background:#fff;border-radius:14px;padding:26px;box-shadow:0 4px 14px rgba(14,42,58,.06);text-align:center}
+  .c-item .ico{font-size:1.7rem}
+  .c-item b{display:block;color:var(--navy);margin:8px 0 4px}
+  .c-item p, .c-item a{font-size:.93rem;color:var(--muted);text-decoration:none}
+
+  footer{background:var(--navy);color:#8fa8b8;text-align:center;padding:30px 20px;font-size:.86rem}
+
+  /* ═══════════ CHAT WIDGET ═══════════ */
+  #chat-fab{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;border:none;cursor:pointer;z-index:999;
+    background:linear-gradient(135deg,var(--chat1),var(--chat2));box-shadow:0 8px 26px rgba(124,58,237,.45);
+    display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  #chat-fab:hover{transform:scale(1.08)}
+  #chat-fab svg{width:30px;height:30px;fill:#fff}
+  #chat-nudge{position:fixed;bottom:38px;right:100px;background:#fff;border-radius:14px 14px 4px 14px;box-shadow:0 6px 22px rgba(14,42,58,.22);
+    padding:12px 16px;font-size:.9rem;color:var(--navy);z-index:998;max-width:230px;cursor:pointer;display:none;animation:pop .35s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  #chat-panel{position:fixed;bottom:100px;right:24px;width:378px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 130px);
+    background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(14,42,58,.35);z-index:1000;display:none;flex-direction:column;overflow:hidden;animation:pop .25s ease}
+  #chat-panel.open{display:flex}
+  .ch-head{background:linear-gradient(135deg,var(--chat1),var(--chat2));color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px}
+  .ch-avatar{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+  .ch-head b{font-size:1rem;display:block}
+  .ch-head small{font-size:.78rem;opacity:.9}
+  .ch-head small::before{content:"●";color:#4ade80;margin-right:5px}
+  .ch-close{margin-left:auto;background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;opacity:.85}
+  .ch-msgs{flex:1;overflow-y:auto;padding:16px;background:#f4f6f9;display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:85%;padding:11px 14px;border-radius:16px;font-size:.92rem;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+  .msg.bot{background:#fff;color:var(--txt);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(14,42,58,.08);align-self:flex-start}
+  .msg.user{background:linear-gradient(135deg,var(--chat1),var(--chat2));color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+  .msg.bot a{color:var(--chat1);font-weight:700}
+  .msg .wa-btn{display:inline-block;margin-top:8px;background:#25d366;color:#fff !important;padding:8px 16px;border-radius:20px;text-decoration:none;font-weight:700;font-size:.88rem}
+  .typing{display:flex;gap:5px;padding:14px 16px;background:#fff;border-radius:16px;border-bottom-left-radius:4px;align-self:flex-start;box-shadow:0 2px 8px rgba(14,42,58,.08)}
+  .typing i{width:8px;height:8px;border-radius:50%;background:#b6a5e8;animation:blink 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  .ch-chips{display:flex;gap:8px;padding:10px 14px;overflow-x:auto;background:#f4f6f9;border-top:1px solid #e6ebf1}
+  .ch-chips::-webkit-scrollbar{display:none}
+  .chip{flex-shrink:0;background:#fff;border:1.5px solid #d9cdf5;color:var(--chat1);border-radius:18px;padding:7px 14px;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .15s}
+  .chip:hover{background:var(--chat1);color:#fff}
+  .ch-input{display:flex;gap:10px;padding:12px 14px;background:#fff;border-top:1px solid #e6ebf1}
+  .ch-input input{flex:1;border:1.5px solid #e0e6ee;border-radius:22px;padding:11px 16px;font-size:.93rem;outline:none}
+  .ch-input input:focus{border-color:var(--chat1)}
+  .ch-send{width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,var(--chat1),var(--chat2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ch-send svg{width:20px;height:20px;fill:#fff}
+  .ch-send:disabled{opacity:.5}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">Asesoría <span>Ibaizabal</span></a>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#foral">Ventaja foral</a>
+      <a href="#contacto">Contacto</a>
+      <a class="cta" href="https://wa.me/34614752539?text=Hola,%20quiero%20una%20consulta%20gratuita">Consulta gratuita</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">⚖️ Especialistas en normativa foral de Bizkaia</span>
+    <h1>Tu gestoría en Bilbao que domina lo que <em>Hacienda Foral</em> espera de ti</h1>
+    <p>Fiscal, contable y laboral para autónomos, pymes y particulares. Aplicamos cada deducción foral que te corresponde — las que una asesoría "estatal" ni conoce.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://wa.me/34614752539?text=Hola,%20quiero%20una%20consulta%20gratuita">Consulta gratuita 20 min</a>
+      <a class="btn btn-line" href="#servicios">Ver servicios y precios</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>25</b><span>años en Bilbao</span></div>
+      <div class="stat"><b>400+</b><span>clientes activos</span></div>
+      <div class="stat"><b>100%</b><span>normativa foral Bizkaia</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="kicker">Servicios</span>
+    <h2>Todo lo que tu negocio necesita, en un solo sitio</h2>
+    <p class="sub">Precios claros, sin sorpresas. Primera consulta de 20 minutos gratuita.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🧾</div><h3>Autónomos</h3><p>Contabilidad, IVA, IRPF, Batuz y TicketBAI incluidos. Olvídate de los modelos trimestrales.</p><span class="precio">desde 59 €/mes</span></div>
+      <div class="card"><div class="ico">🏢</div><h3>Pymes y SL</h3><p>Contabilidad completa, impuestos, cuentas anuales y asesoramiento fiscal continuo.</p><span class="precio">desde 149 €/mes</span></div>
+      <div class="card"><div class="ico">📋</div><h3>Declaración de la renta</h3><p>Campaña 2026: del 15 de abril al 30 de junio. Aplicamos todas las deducciones forales.</p><span class="precio">desde 60 €</span></div>
+      <div class="card"><div class="ico">👥</div><h3>Laboral y nóminas</h3><p>Nóminas, contratos, altas y bajas en Seguridad Social, despidos y bonificaciones.</p><span class="precio">desde 12 €/nómina</span></div>
+      <div class="card"><div class="ico">🏛️</div><h3>Herencias y sucesiones</h3><p>Tramitación completa de herencias con la fiscalidad foral de Bizkaia. Presupuesto en consulta gratuita.</p><span class="precio">consulta gratuita</span></div>
+      <div class="card"><div class="ico">🚀</div><h3>Emprender</h3><p>Alta de autónomo GRATIS con plan mensual. Constitución de SL desde 390 € + notaría.</p><span class="precio">alta gratis</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="foral" id="foral">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--gold)">La ventaja foral</span>
+    <h2>En Bizkaia no tributas como en el resto de España</h2>
+    <p class="sub">Bizkaia tiene su propia Norma Foral de IRPF. Si tu asesor no la domina, estás pagando de más. Ejemplos reales:</p>
+    <div class="foral-grid">
+      <div class="foral-item"><b>Deducción por comprar vivienda: VIVA</b><p>18% de lo invertido (23% si tienes menos de 36 años). En territorio común se eliminó en 2013. Aquí sigue.</p></div>
+      <div class="foral-item"><b>EPSV y planes de pensiones</b><p>Reduce tu base hasta 10.000 €/año entre aportación propia y de empresa. En territorio común: 1.500 €.</p></div>
+      <div class="foral-item"><b>Deducción por alquiler</b><p>Del 20% al 35% según tu situación, hasta 2.800 €/año. A nivel estatal apenas existe.</p></div>
+      <div class="foral-item"><b>Plazos propios</b><p>Trimestrales hasta el día 25 (no el 20), renta del 15 de abril al 30 de junio, Batuz con calendario foral.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="renta">
+  <div class="wrap">
+    <div>
+      <h3>¿Dudas con tu renta o tus impuestos?</h3>
+      <p>Pregunta ahora mismo a nuestro asistente — responde al momento, 24/7.</p>
+    </div>
+    <a class="btn btn-navy" href="#" onclick="chatOpen();return false;">💬 Preguntar al asistente</a>
+  </div>
+</div>
+
+<section id="contacto">
+  <div class="wrap">
+    <span class="kicker">Contacto</span>
+    <h2>Estamos en el centro de Bilbao</h2>
+    <div class="contact-grid">
+      <div class="c-item"><div class="ico">📍</div><b>Dirección</b><p>Gran Vía 45, 2º dcha<br>48011 Bilbao</p></div>
+      <div class="c-item"><div class="ico">📞</div><b>Teléfono / WhatsApp</b><a href="https://wa.me/34614752539">614 752 539</a></div>
+      <div class="c-item"><div class="ico">🕒</div><b>Horario</b><p>L-J 8:30-17:00<br>V 8:00-14:30</p></div>
+      <div class="c-item"><div class="ico">✉️</div><b>Email</b><a href="mailto:hola@asesoriaibaizabal.eus">hola@asesoriaibaizabal.eus</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Asesoría Ibaizabal · Gestoría y asesoría fiscal en Bilbao · Especialistas en normativa foral de Bizkaia</footer>
+
+<!-- ═══════════ CHAT ═══════════ -->
+<div id="chat-nudge" onclick="chatOpen()">👋 ¿Dudas con la renta o tus impuestos? <b>Pregúntame, soy la IA de Ibaizabal</b></div>
+<button id="chat-fab" onclick="chatToggle()" aria-label="Abrir chat">
+  <svg viewBox="0 0 24 24"><path d="M12 3C7.03 3 3 6.58 3 11c0 2.05.9 3.92 2.37 5.33L4 21l4.9-1.63c.98.27 2.02.42 3.1.42 4.97 0 9-3.58 9-8s-4.03-8-9-8zm-4 9.25c-.69 0-1.25-.56-1.25-1.25S7.31 9.75 8 9.75s1.25.56 1.25 1.25S8.69 12.25 8 12.25zm4 0c-.69 0-1.25-.56-1.25-1.25S11.31 9.75 12 9.75s1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm4 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+</button>
+
+<div id="chat-panel">
+  <div class="ch-head">
+    <div class="ch-avatar">🤖</div>
+    <div><b>Asistente Ibaizabal</b><small>En línea · responde al momento</small></div>
+    <button class="ch-close" onclick="chatToggle()">✕</button>
+  </div>
+  <div class="ch-msgs" id="ch-msgs"></div>
+  <div class="ch-chips" id="ch-chips">
+    <button class="chip" onclick="sendChip('¿Qué deducciones forales me puedo aplicar en Bizkaia?')">💰 ¿Qué me puedo deducir?</button>
+    <button class="chip" onclick="sendChip('¿Cuáles son los plazos de la renta 2026 en Bizkaia?')">📅 Plazos renta 2026</button>
+    <button class="chip" onclick="sendChip('¿Cuánto cuesta la gestoría para un autónomo?')">🧾 Precios autónomos</button>
+    <button class="chip" onclick="sendChip('Quiero pedir una cita')">📞 Pedir cita</button>
+  </div>
+  <div class="ch-input">
+    <input id="ch-in" type="text" placeholder="Escribe tu duda fiscal..." maxlength="500"
+      onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="ch-send" id="ch-send" onclick="sendMsg()" aria-label="Enviar">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const API = 'https://gg-asesor-ia.josugarciandia.workers.dev/api/chat';
+const GESTORIA = 'ibaizabal';
+let history = [];
+let busy = false;
+let opened = false;
+
+const panel = document.getElementById('chat-panel');
+const msgsEl = document.getElementById('ch-msgs');
+const nudge = document.getElementById('chat-nudge');
+
+setTimeout(() => { if (!opened) nudge.style.display = 'block'; }, 2500);
+setTimeout(() => { nudge.style.display = 'none'; }, 14000);
+
+function chatToggle() { panel.classList.contains('open') ? chatClose() : chatOpen(); }
+function chatClose() { panel.classList.remove('open'); }
+function chatOpen() {
+  opened = true;
+  nudge.style.display = 'none';
+  panel.classList.add('open');
+  if (!msgsEl.children.length) {
+    addMsg('bot', '¡Hola! 👋 Soy el asistente de Asesoría Ibaizabal. Te resuelvo dudas de fiscalidad foral de Bizkaia, precios y citas — al momento y a cualquier hora. ¿En qué te ayudo?');
+  }
+  document.getElementById('ch-in').focus();
+}
+
+function render(text) {
+  const esc = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return esc
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    .replace(/(https:\/\/wa\.me\/[^\s<)]+)/g, '<br><a class="wa-btn" href="$1" target="_blank">💬 Abrir WhatsApp</a>')
+    .replace(/(https?:\/\/[^\s<)]+)(?![^<]*<\/a>)/g, (m) => m.includes('wa.me') ? m : '<a href="' + m + '" target="_blank">' + m + '</a>');
+}
+
+function addMsg(who, text) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + who;
+  d.innerHTML = render(text);
+  msgsEl.appendChild(d);
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+}
+
+function showTyping() {
+  const t = document.createElement('div');
+  t.className = 'typing'; t.id = 'typing';
+  t.innerHTML = '<i></i><i></i><i></i>';
+  msgsEl.appendChild(t);
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+}
+function hideTyping() { document.getElementById('typing')?.remove(); }
+
+function sendChip(q) { document.getElementById('ch-in').value = q; sendMsg(); }
+
+async function sendMsg() {
+  const inp = document.getElementById('ch-in');
+  const text = inp.value.trim();
+  if (!text || busy) return;
+  inp.value = '';
+  busy = true;
+  document.getElementById('ch-send').disabled = true;
+
+  addMsg('user', text);
+  history.push({ role: 'user', content: text });
+  showTyping();
+
+  try {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ gestoria: GESTORIA, messages: history.slice(-12) }),
+    });
+    const data = await res.json();
+    hideTyping();
+    const reply = data.reply || 'Uy, algo ha fallado. Escríbenos por WhatsApp al 614 752 539 🙏';
+    addMsg('bot', reply);
+    history.push({ role: 'assistant', content: reply });
+  } catch (e) {
+    hideTyping();
+    addMsg('bot', 'No consigo conectar ahora mismo 🙈. Escríbenos por WhatsApp al 614 752 539 y te atendemos al momento: https://wa.me/34614752539');
+  }
+  busy = false;
+  document.getElementById('ch-send').disabled = false;
+}
+</script>
+</body>
+</html>
