@@ -320,6 +320,7 @@
 .chead::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% -20%,rgba(255,255,255,.28),transparent 55%);pointer-events:none}
 .chead .av{width:44px;height:44px;background:transparent;box-shadow:0 3px 10px rgba(0,0,0,.28);border:2px solid rgba(255,255,255,.75)}
 .chead .av svg.avat2{width:44px;height:44px;border-radius:50%}
+  .chead .av img.avlogo{width:100%;height:100%;border-radius:50%;object-fit:contain;background:#fff;padding:3px}
 .chead .t b{font-size:15px;letter-spacing:.01em;text-shadow:0 1px 2px rgba(0,0,0,.18)}
 .chead .t span{font-size:11.5px;color:#EDE7FF;opacity:.95}
 .dot{animation:pulse 2.2s ease-out infinite}
@@ -503,7 +504,7 @@
 
 <div id="chat" role="dialog" aria-modal="false" aria-label="Asistente virtual del Ayuntamiento de Iurreta">
  <div class="chead">
-   <div class="av" aria-hidden="true"><svg class="avat2" viewBox="0 0 36 36">
+   <div class="av" id="chatav" aria-hidden="true"><svg class="avat2" viewBox="0 0 36 36">
   <circle cx="18" cy="18" r="17" fill="#fff"/>
   <circle cx="18" cy="20" r="11" fill="#F6C39A"/>
   <path d="M9.6 17.5c.7-4.8 3.9-7.8 8.4-7.8s7.7 3 8.4 7.8" fill="#4A3728"/>
@@ -1411,7 +1412,7 @@ function applyLang(){
  const ci=document.getElementById("cinput");if(ci)ci.placeholder=localize(u.ph);
  const bn=document.getElementById("brandname");if(bn)bn.textContent=TOWN.udala;
  const fn=document.getElementById("footname");if(fn)fn.textContent=TOWN.udala;
- const esc=document.getElementById("escudo");if(esc){if(TOWN.logo){esc.innerHTML="<img src=\""+TOWN.logo+"\" alt=\""+(TOWN.udala||"")+"\">";esc.classList.add("haslogo");}else{esc.textContent=TOWN.escudo;esc.classList.remove("haslogo");}}
+ const esc=document.getElementById("escudo");if(esc){if(TOWN.logo){esc.innerHTML="<img src=\""+TOWN.logo+"\" alt=\""+(TOWN.udala||"")+"\">";esc.classList.add("haslogo");}else{esc.textContent=TOWN.escudo;esc.classList.remove("haslogo");}}var _cav=document.getElementById("chatav");if(_cav){if(window.__avbase==null)window.__avbase=_cav.innerHTML;_cav.innerHTML=TOWN.logo?("<img class=\"avlogo\" src=\""+TOWN.logo+"\" alt=\"\">"):window.__avbase;}
  const tn=document.getElementById("tnote");if(tn)tn.textContent=(LANG==="es"?"· un módulo, configurable por ayuntamiento":"· modulu bat, udal bakoitzerako konfiguragarria");
  const pb=document.getElementById("panelbtn");if(pb)pb.textContent=(LANG==="es"?"📊 Panel municipal":"📊 Udal panela");
  document.querySelectorAll("#seg button").forEach(b=>{const on=b.dataset.l===LANG;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
