@@ -334,6 +334,9 @@
 .introcard .iname{font-size:21px;font-weight:800;letter-spacing:.14em;color:var(--green-900);margin-top:6px}
 .introcard .isub{font-size:13px;color:var(--ink-soft)}
 .introcard .iclaim{font-size:12.5px;font-weight:600;color:var(--green-700);background:var(--green-soft);border-radius:999px;padding:5px 14px;margin-top:4px}
+.linkpill{margin:-4px 0 2px 6px}
+.linkpill a{display:inline-flex;align-items:center;gap:6px;background:var(--green-soft);color:var(--green-900);border:1.5px solid var(--green-700);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;text-decoration:none}
+.linkpill a:hover{filter:brightness(1.05)}
 .cbody::-webkit-scrollbar-track{background:transparent}
 .msg{font-size:14px;line-height:1.6}
 .msg.bot{border:1px solid #ECE8F6;border-left:3px solid var(--bot2);border-radius:4px 18px 18px 18px;padding:11px 15px 12px;box-shadow:0 1px 2px rgba(30,20,60,.05),0 6px 16px -10px rgba(76,29,149,.18)}
@@ -891,7 +894,33 @@ const EUW=["errolda","telefonoa","laguntza","laguntzak","apurtuta","moztuta","be
 function looksEu(text){const t=norm(text);const w=t.split(" ").filter(Boolean);if(!w.length)return false;let h=0;for(const x of w)if(EUW.indexOf(x)>=0)h++;const m=(t.match(/tx|tz|zk/g)||[]).length;return h>=2||(w.length<=5&&h>=1)||m>=2||(h>=1&&m>=1);}
 let LASTML=null;
 function rlang(text){if(LANG!=="es"){LASTML=LANG;return LANG;}if(looksEu(text)){LASTML="eu";return "eu";}const w=norm(text).split(" ").filter(Boolean);if(LASTML==="eu"&&w.length<=4&&!/[áéíóúñ]/.test(text)&&!/\b(que|para|donde|como|cuanto|hola|gracias|vale|quiero|pedir|cita|necesito|tengo|dame|puedo|hacer|pagar|sacar|el|la|los|las|una|uno|con|por|del)\b/.test(norm(text))&&!/empadron|enpadron|volante|certificado/.test(norm(text))){return "eu";}LASTML="es";return "es";}
-function respondIntent(it,ml){ml=ml||LANG;FLOW=null;setPending(it);if(it&&it.id==="cita"){FLANG=ml;LASTTID=null;citaStart();return;}const tp=typing();const html=antiLoro(it,it?it[ml]:FB[ml],ml);lastMark(it);setTimeout(()=>{tp.remove();bubble(html,"bot");if(it&&it.id==="quejas"){flowChips(qjCTA(ml));return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
+function respondIntent(it,ml){ml=ml||LANG;FLOW=null;setPending(it);if(it&&it.id==="cita"){FLANG=ml;LASTTID=null;citaStart();return;}const tp=typing();const html=antiLoro(it,it?it[ml]:FB[ml],ml);lastMark(it);setTimeout(()=>{tp.remove();bubble(html,"bot");linkPill(it,ml);if(it&&it.id==="quejas"){flowChips(qjCTA(ml));return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
+/* Pastilla "hazlo online" — SOLO Getxo: enlaza cada trámite a su página oficial (aditivo, no toca el motor) */
+const GETXO_LINKS={
+ __cita:["También en vuestra cita online oficial","https://citaprevia.getxo.eus"],
+ padron:["Volantes de padrón online","https://www.getxo.eus/es/tramites/volantes"],
+ padron_alta:["Empadronarse — pasos y cita","https://www.getxo.eus/es/servicios/detalle-tramite/64"],
+ padron_volante:["Volante de padrón online","https://www.getxo.eus/es/tramites/volantes"],
+ impuestos:["Mi Pago — pagar recibos online","https://www.getxo.eus/es/tramites/mi-pago"],
+ sede:["Sede electrónica de Getxo","https://sede.getxo.eus"],
+ registro:["Registro electrónico (sede)","https://sede.getxo.eus"],
+ quejas:["Instancias y quejas (sede)","https://sede.getxo.eus"],
+ trafico:["OTA — distintivo de residente","https://www.getxo.eus/es/desarrollo-urbanistico-sostenible/infraestructuras/personas-residentes1"],
+ residuos:["Voluminosos — pedir recogida","http://www.getxo.info-citi.es"],
+ deporte:["Getxo Kirolak — trámites online","https://getxokirolak.getxo.eus"],
+ cultura:["Entradas — Getxo Kultura","https://getxokultura.janto.es/"],
+ oposiciones:["OPE y bolsas de empleo","https://eudala.getxo.eus/ope/menuope.aspx"],
+ empleo:["OPE y bolsas de empleo","https://eudala.getxo.eus/ope/menuope.aspx"],
+ agenda:["Agenda de Getxo","https://www.getxo.eus/es/agenda"],
+ transparencia:["Portal de transparencia","https://www.getxo.eus/es/gobierno-abierto/portal-transparencianuevo"],
+ turismo:["Turismo Getxo","https://www.getxo.eus/es/turismo"]
+};
+function linkPill(it,ml){try{
+ if(!it||TOWN.slug!=="getxo")return;const L=GETXO_LINKS[it.id];if(!L)return;
+ const d=document.createElement("div");d.className="linkpill";
+ d.innerHTML='<a href="'+L[1]+'" target="_blank" rel="noopener">🔗 '+((ml||LANG)==="es"?"Hazlo online: ":"Egin online: ")+L[0]+'</a>';
+ cb().appendChild(d);cb().scrollTop=cb().scrollHeight;
+}catch(e){}}
 /* respuesta a texto libre (motor) */
 const IA_WORKER_URL="https://iurreta-ia.josugarciandia.workers.dev";let IABUSY=false;/* pega aqui la URL del Worker para activar el modo IA generativa; vacio = modo determinista */
 function crmSave(item){try{if(!IA_WORKER_URL)return;fetch(IA_WORKER_URL.replace(/\/$/,"")+"/cita",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(item)}).catch(function(){});}catch(e){}}
@@ -1044,7 +1073,7 @@ function qjConfText(v){const n=norm(v);if(flowBye(n))return;
  const it=flowStrongOther(v,["quejas"]);if(it){FLOW=null;answer(v);return;}
  botSay(T("¿Envío el parte? Pulsa «Enviar parte» o dime «sí» 🙂","Partea bidaltzen dut? Sakatu «Partea bidali» edo esan «bai» 🙂"));FLOW=qjConfText;}
 
-function citaStart(){FLOW=citaSvcText;CITA={};botSay(T("📅 <b>Pedir cita previa — SAC de "+TOWN.name+"</b>\nTe la gestiono aquí mismo en menos de un minuto. ¿Para qué trámite necesitas la cita?","📅 <b>Aurrez hitzordua eskatu — "+TOWN.name+"ko HAZ</b>\nHemen bertan kudeatuko dizut, minutu bat baino gutxiagotan. Zer izapidetarako behar duzu hitzordua?"),()=>flowChips(CITA_SVC.map(s=>({label:T(s.es,s.eu),fn:()=>citaDate(s)}))));}
+function citaStart(){FLOW=citaSvcText;CITA={};if(TOWN.slug==="getxo")setTimeout(()=>linkPill({id:"__cita"},FLANG||LANG),900);botSay(T("📅 <b>Pedir cita previa — SAC de "+TOWN.name+"</b>\nTe la gestiono aquí mismo en menos de un minuto. ¿Para qué trámite necesitas la cita?","📅 <b>Aurrez hitzordua eskatu — "+TOWN.name+"ko HAZ</b>\nHemen bertan kudeatuko dizut, minutu bat baino gutxiagotan. Zer izapidetarako behar duzu hitzordua?"),()=>flowChips(CITA_SVC.map(s=>({label:T(s.es,s.eu),fn:()=>citaDate(s)}))));}
 function citaDate(svc){CITA.svc=svc;FLOW=citaDayText;botSay(T("Perfecto. ¿Qué día te viene bien? <span style='color:var(--ink-soft)'>(atención L-V, 8:30-14:00)</span>","Ederki. Zein egun datorkizu ondo? <span style='color:var(--ink-soft)'>(arreta A-O, 8:30-14:00)</span>"),()=>flowChips(citaDays().map(d=>({label:fmtDay(d),fn:()=>citaTime(d)}))));}
 function citaTime(date){const SLOTS=getSLOTS();CITA.date=date;FLOW=citaHourText;const occ=occupiedTimes(date);botSay(T("Estas son las horas libres para el <b>"+fmtDay(date)+"</b>. Elige una:","Hauek dira <b>"+fmtDay(date)+"</b> egunerako ordu libreak. Aukeratu bat:"),()=>flowChips(SLOTS.map(t=>({label:t,off:occ.has(t),fn:()=>citaName(t)}))));}
 function citaName(time){CITA.time=time;FLOW=citaConfirm;botSay(T("Ya casi está 🙌 Escribe tu <b>nombre y apellidos</b> para la reserva. ","Ia eginda 🙌 Idatzi zure <b>izen-abizenak</b> erreserbarako. "));}
