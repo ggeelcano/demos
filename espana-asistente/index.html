@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Asistente virtual municipal · Demo</title>
+<style>
+:root{--c1:#1D4E89;--c2:#163C6B;--c3:#0F2A4D;--soft:#E4ECF6;--bot:#0E6A4F;--bot2:#31B187;--ink:#17202A;--ink-soft:#5B6B7B;--line:#E3E8EF;--bg:#F7F9FB}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:var(--c1);cursor:pointer;text-decoration:none}
+.skip{position:absolute;left:-9999px}
+/* topbar */
+.topbar{background:#0D1522;color:#cdd6e0;font-size:13px;padding:7px 0}
+.topbar .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#35D07F;box-shadow:0 0 0 3px rgba(53,208,127,.25);margin-right:6px}
+.tsearch{background:#1b2637;border:1px solid #2c3a4f;border-radius:8px;color:#fff;padding:4px 10px;font-size:13px;min-width:230px;font-family:inherit}
+.tnote{opacity:.65}
+/* header */
+header{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:14px 0}
+header .wrap{display:flex;align-items:center;gap:14px}
+.escudo{font-size:34px;background:rgba(255,255,255,.14);border-radius:12px;width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+.brand b{font-size:18px;display:block}
+.brand span{font-size:13px;opacity:.85}
+header nav{margin-left:auto;display:flex;align-items:center;gap:16px}
+.navlinks a{color:#fff;opacity:.9;font-size:14px}
+.nav-cta{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600}
+/* hero */
+.hero{background:linear-gradient(160deg,var(--c2),var(--c3));color:#fff;padding:52px 0 60px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.8;margin-bottom:10px}
+.hero h1{font-size:clamp(30px,4.5vw,44px);line-height:1.12;margin-bottom:14px}
+.hero .g{color:var(--bot2)}
+.lead{font-size:16.5px;opacity:.92;max-width:52ch}
+.cta{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 20px;font-size:15px;font-weight:700;border:0;cursor:pointer;font-family:inherit}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.btn-bot{background:var(--bot2);color:#06281C}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.trust{margin-top:18px;font-size:13px;opacity:.85}
+/* tarjeta asistente */
+.luxcard{background:#fff;color:var(--ink);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden}
+.lux-head{display:flex;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.lux-av{width:38px;height:38px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:20px}
+.lux-head b{font-size:14.5px}
+.lux-head .st{font-size:12px;color:var(--ink-soft)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#35D07F}
+.lux-msgs{padding:16px;display:flex;flex-direction:column;gap:10px;background:#FBFCFE}
+.lux-q{align-self:flex-end;background:var(--c1);color:#fff;border-radius:14px 14px 4px 14px;padding:9px 13px;font-size:13.5px;max-width:85%}
+.lux-a{background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:11px 13px;font-size:13.5px;max-width:92%}
+.lux-stamp{font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:5px;font-weight:700}
+.lux-chips{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.lux-chip{border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:12px;color:var(--c1);font-weight:600}
+/* tiles */
+.tiles{margin-top:-26px;position:relative;z-index:2}
+.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;box-shadow:0 6px 18px rgba(15,42,77,.06);transition:transform .15s}
+.tile:hover{transform:translateY(-3px)}
+.tile .ic{font-size:26px}
+.tile b{display:block;font-size:13px;margin-top:8px}
+/* secciones */
+section{padding:46px 0}
+.sec-head{max-width:60ch;margin-bottom:24px}
+.sec-head .eyebrow{color:var(--c1);opacity:1}
+h2{font-size:26px;line-height:1.2}
+.sec-head p{color:var(--ink-soft);margin-top:8px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.step .n{width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--c1);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.step b{display:block;margin-bottom:6px}
+.step p{font-size:13.5px;color:var(--ink-soft)}
+.band{background:linear-gradient(135deg,#0D1522,var(--c3));color:#fff;border-radius:0}
+.band .lead{opacity:.85}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
+.stat .v{font-size:28px;font-weight:800;color:var(--bot2)}
+.stat .l{font-size:12.5px;opacity:.75;margin-top:4px}
+/* footer */
+footer{background:#0D1522;color:#B9C4D0;padding:38px 0 0;margin-top:40px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:26px}
+footer b{color:#fff;display:block;margin-bottom:10px}
+footer a{display:block;color:#B9C4D0;font-size:13.5px;margin-bottom:7px}
+footer p{font-size:13px;line-height:1.7}
+.legal{border-top:1px solid #223047;margin-top:28px;padding:14px 0;font-size:12px}
+.legal .wrap{display:flex;justify-content:space-between;grid-template-columns:none;flex-wrap:wrap;gap:8px}
+/* chat */
+#fab{position:fixed;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;background:var(--bot);border:0;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.3);z-index:60;font-size:28px;color:#fff;display:flex;align-items:center;justify-content:center}
+.chatwrap{position:fixed;inset:0;background:rgba(13,21,34,.45);z-index:70;display:none;align-items:flex-end;justify-content:flex-end;padding:18px}
+.chatwrap.open{display:flex}
+.chatcard{width:min(430px,100%);height:min(640px,92vh);background:#fff;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.chathead{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:13px 16px;display:flex;align-items:center;gap:10px}
+.chathead .av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:20px}
+.chathead b{font-size:15px;display:block}
+.chathead .st{font-size:12px;opacity:.8}
+.chathead .x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer}
+#msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FBFCFE}
+.msg{max-width:86%;padding:10px 13px;border-radius:14px;font-size:14px;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;align-self:flex-start}
+.msg.user{background:var(--c1);color:#fff;border-radius:14px 14px 4px 14px;align-self:flex-end}
+.msg b{font-weight:700}
+.typing{align-self:flex-start;color:var(--ink-soft);font-size:13px;padding:6px 12px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;padding:0 16px 10px;background:#FBFCFE}
+.chip{border:1px solid var(--c1);color:var(--c1);background:#fff;border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff}
+.composer input{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit;outline:none}
+.composer input:focus{border-color:var(--c1)}
+.composer button{background:var(--bot);color:#fff;border:0;border-radius:12px;padding:0 18px;font-weight:700;cursor:pointer;font-family:inherit}
+.disc{font-size:10.5px;color:var(--ink-soft);text-align:center;padding:0 12px 10px;background:#fff}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.grid6{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}footer .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="topbar"><div class="wrap">
+ <span><i class="live"></i>Asistente virtual municipal · <b style="color:#fff">demo</b></span>
+ <input class="tsearch" id="tsearch" list="tlist" placeholder="🔍 Buscar tu municipio…" autocomplete="off">
+ <datalist id="tlist"></datalist>
+ <span class="tnote">· un módulo, configurable por ayuntamiento</span>
+</div></div>
+
+<header id="hdr"><div class="wrap">
+ <div class="escudo" id="escudo">🏛️</div>
+ <div class="brand"><b id="brandname">Ayuntamiento</b><span id="bsub">España</span></div>
+ <nav>
+   <span class="navlinks">
+     <a href="#tramites">Trámites</a>
+     <a onclick="ask('contacto')">Contacto</a>
+   </span>
+   <a class="nav-cta" onclick="ask('sede');return false">🔐 Sede electrónica</a>
+ </nav>
+</div></header>
+
+<main id="contenido">
+<section class="hero"><div class="wrap">
+ <div>
+   <span class="eyebrow" id="eyebrow">Asistente virtual · 24 horas</span>
+   <h1>Tu Ayuntamiento, <span class="g">más cerca.</span></h1>
+   <p class="lead" id="herop">Padrón, impuestos, cita previa e incidencias. Y si te surge cualquier duda, el asistente te ayuda al instante, las 24 horas.</p>
+   <div class="cta">
+     <button class="btn btn-bot" onclick="openChat()"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> <span>Pregunta a Clara</span></button>
+     <a class="btn btn-ghost" href="#tramites">Ver trámites</a>
+   </div>
+   <div class="trust"><i class="live"></i><span>Asistente en línea · respuesta inmediata</span></div>
+ </div>
+ <div><div class="luxcard">
+   <div class="lux-head">
+     <div class="lux-av">👩‍💼</div>
+     <div><b>Clara · Asistente</b><div class="st"><i class="dot"></i> Asistente municipal</div></div>
+   </div>
+   <div class="lux-msgs">
+     <div class="lux-q" id="luxq">¿Cómo me empadrono?</div>
+     <div class="lux-a"><div class="lux-stamp" id="luxstamp">ASISTENTE · 09:41</div><span id="luxa">Puedes empadronarte online en la sede electrónica con Cl@ve o certificado, o presencial en el Ayuntamiento con cita previa. Necesitas DNI/NIE y un justificante de domicilio. ¿Te ayudo a pedir cita?</span>
+       <div class="lux-chips"><span class="lux-chip">Empadronarme</span><span class="lux-chip">Cita previa</span><span class="lux-chip">Sede electrónica</span></div>
+     </div>
+   </div>
+ </div></div>
+</div></section>
+
+<div class="tiles" id="tramites"><div class="wrap"><div class="grid6">
+ <div class="tile" onclick="ask('padron')"><span class="ic">🏠</span><b>Padrón</b></div>
+ <div class="tile" onclick="ask('cita')"><span class="ic">📅</span><b>Cita previa</b></div>
+ <div class="tile" onclick="ask('impuestos')"><span class="ic">🧾</span><b>Impuestos / IBI</b></div>
+ <div class="tile" onclick="ask('sede')"><span class="ic">🔐</span><b>Sede electrónica</b></div>
+ <div class="tile" onclick="ask('parte')"><span class="ic">📢</span><b>Incidencias</b></div>
+ <div class="tile" onclick="ask('contacto')"><span class="ic">☎️</span><b>Contacto</b></div>
+</div></div></div>
+
+<section><div class="wrap">
+ <div class="sec-head"><span class="eyebrow">Empieza aquí</span><h2>¿Por dónde empiezo?</h2><p>Tres pasos para resolver tu gestión sin desplazarte.</p></div>
+ <div class="steps">
+  <div class="step"><span class="n">1</span><b>Pregunta a Clara</b><p>Escribe tu duda con tus palabras: «quiero empadronarme», «me ha llegado el IBI», «hay una farola rota».</p></div>
+  <div class="step"><span class="n">2</span><b>Recibe el paso a paso</b><p>Clara te dice qué documentos necesitas y por dónde hacerlo, online o presencial. Lo que no sabe, no se lo inventa: te deriva a una persona.</p></div>
+  <div class="step"><span class="n">3</span><b>Tramita al momento</b><p>Pide cita o registra una incidencia desde el propio chat, con número de referencia incluido.</p></div>
+ </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+ <span class="eyebrow" style="color:var(--bot2)">Asistente virtual</span>
+ <h2>Atención ciudadana, sin esperas</h2>
+ <p class="lead">Resuelve al instante las consultas más frecuentes —padrón, impuestos, cita, incidencias— y libera al personal de atención.</p>
+ <div class="stats">
+  <div class="stat"><div class="v" id="st1">220</div><div class="l">consultas atendidas / semana</div></div>
+  <div class="stat"><div class="v" id="st2">84%</div><div class="l">resueltas sin esperar a una persona</div></div>
+  <div class="stat"><div class="v" id="st3">8 s</div><div class="l">tiempo medio de respuesta</div></div>
+  <div class="stat"><div class="v" id="st4">24 h</div><div class="l">disponible, también festivos</div></div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div>
+   <b id="footname">Ayuntamiento</b>
+   <p id="foot_dir">Web oficial: —</p>
+ </div>
+ <div><b>Trámites</b><a onclick="ask('padron')">Empadronamiento</a><a onclick="ask('impuestos')">Impuestos / IBI</a><a onclick="ask('cita')">Cita previa</a><a onclick="ask('sede')">Sede electrónica</a></div>
+ <div><b>Ayuntamiento</b><a onclick="ask('horario')">Horarios</a><a onclick="ask('parte')">Incidencias</a><a onclick="ask('contacto')">Contacto</a></div>
+</div>
+<div class="legal"><div class="wrap"><span id="f_cr">© Ayuntamiento</span><span>Demostración de asistente virtual · datos públicos del municipio · G&amp;G Elcano</span></div></div>
+</footer>
+
+<button id="fab" onclick="openChat()" aria-label="Abrir asistente">💬</button>
+
+<div class="chatwrap" id="chatwrap" onclick="if(event.target===this)closeChat()">
+ <div class="chatcard">
+  <div class="chathead">
+   <div class="av">👩‍💼</div>
+   <div><b id="chname">Clara · Asistente</b><div class="st" id="chst">Ayuntamiento</div></div>
+   <button class="x" onclick="closeChat()" aria-label="Cerrar">×</button>
+  </div>
+  <div id="msgs"></div>
+  <div class="chips" id="chips"></div>
+  <div class="composer">
+   <input id="inp" placeholder="Escribe tu consulta…" autocomplete="off">
+   <button onclick="send()">Enviar</button>
+  </div>
+  <div class="disc">Asistente orientativo. No introduzcas datos personales sensibles. Lo que no sabe, lo deriva a una persona del Ayuntamiento.</div>
+ </div>
+</div>
+
+<script>
+"use strict";
+var IA_WORKER_URL="https://espana-ia.josugarciandia.workers.dev";
+var TOWN=null,PENDING=null,FLOW=null,IABUSY=false;
+
+/* ——— sanidad por CCAA (igual que el worker; solo nombres oficiales estables) ——— */
+var SALUD={
+"Andalucía":"el Servicio Andaluz de Salud (SAS): cita con tu tarjeta sanitaria en tu centro de salud o con la app Salud Andalucía",
+"Aragón":"Salud Aragón: cita en saludinforma.es o en tu centro de salud",
+"Asturias":"el SESPA (astursalud.es): cita en tu centro de salud",
+"Baleares":"el IB-Salut (ibsalut.es): cita en tu centro de salud",
+"Canarias":"el Servicio Canario de la Salud: cita en tu centro de salud",
+"Cantabria":"el Servicio Cántabro de Salud (scsalud.es): cita en tu centro de salud",
+"Castilla y León":"Sacyl (saludcastillayleon.es): cita en tu centro de salud",
+"Castilla-La Mancha":"el Sescam: cita en sescam.castillalamancha.es o en tu centro de salud",
+"Cataluña":"CatSalut: cita con La Meva Salut o en tu CAP",
+"C. Valenciana":"la sanidad valenciana (GVA): cita en san.gva.es, con la app GVA +Salut o en tu centro de salud",
+"Extremadura":"el Servicio Extremeño de Salud (SES): cita en tu centro de salud",
+"Galicia":"el Sergas (sergas.es): cita en tu centro de salud",
+"Madrid":"la sanidad madrileña (SERMAS): cita con la app Tarjeta Sanitaria Virtual, en comunidad.madrid o en tu centro de salud",
+"Murcia":"el Servicio Murciano de Salud (murciasalud.es): cita en tu centro de salud",
+"Navarra":"Osasunbidea: cita en tu centro de salud",
+"La Rioja":"Rioja Salud (riojasalud.es): cita en tu centro de salud",
+"Ceuta":"el INGESA: cita en tu centro de salud","Melilla":"el INGESA: cita en tu centro de salud"};
+function salud(){return SALUD[TOWN.ccaa]||"el servicio de salud de tu comunidad: cita con tu tarjeta sanitaria en tu centro de salud"}
+function hacienda(){return TOWN.ccaa==="Navarra"?"la Hacienda Foral de Navarra (sede de navarra.es)":"la Agencia Tributaria (AEAT), con Cl@ve o certificado en sede.agenciatributaria.gob.es"}
+
+/* ——— utilidades ——— */
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function contactoCorto(){return TOWN.email?("✉️ <b>"+TOWN.email+"</b>"):("el formulario de contacto de <b>"+TOWN.web+"</b>")}
+function derivaSAC(){return "Para el detalle exacto en "+TOWN.name+", contacta con atención ciudadana: "+contactoCorto()+(TOWN.web?" · 🌐 "+TOWN.web:"")}
+function bubble(html,who){var m=document.createElement("div");m.className="msg "+who;m.innerHTML=html;document.getElementById("msgs").appendChild(m);m.scrollIntoView({behavior:"smooth",block:"end"});return m}
+function typing(){var t=document.createElement("div");t.className="typing";t.textContent="Clara está escribiendo…";document.getElementById("msgs").appendChild(t);t.scrollIntoView({block:"end"});return t}
+function chips(list){var c=document.getElementById("chips");c.innerHTML="";list.forEach(function(x){var b=document.createElement("button");b.className="chip";b.textContent=x.t;b.onclick=function(){if(x.id)ask(x.id);else if(x.fn)x.fn()};c.appendChild(b)})}
+function ref(pre){return pre+"-"+Math.random().toString(36).slice(2,6).toUpperCase()}
+
+/* ——— temas deterministas (regla de oro: dato verificado o derivación honesta) ——— */
+var T={
+saludo:function(){return "👋 ¡Hola! Soy <b>Clara</b>, la asistente virtual del Ayuntamiento de <b>"+TOWN.name+"</b>. Puedo ayudarte con el <b>padrón</b>, los <b>impuestos/IBI</b>, la <b>cita previa</b>, la <b>sede electrónica</b> o registrar una <b>incidencia</b>, entre otros trámites. Y lo que no sé, no me lo invento: te derivo a una persona del Ayuntamiento. ¿En qué te ayudo?"},
+padron:function(){return "🏠 Para <b>empadronarte en "+TOWN.name+"</b>: ten a mano tu DNI/NIE y un documento del domicilio (contrato de alquiler, escritura o recibo reciente). Puedes hacerlo:\n• <b>Online</b>: en la sede electrónica enlazada desde "+TOWN.web+" (con Cl@ve, certificado o DNIe).\n• <b>Presencial</b>: en la oficina de atención ciudadana, mejor con cita.\nEl alta es gratuita. Si vives de alquiler, lleva también la autorización del titular. ¿Te ayudo a pedir cita?"},
+impuestos:function(){return "🧾 Con el <b>IBI, vehículos (IVTM), basuras, vados o plusvalía</b> de "+TOWN.name+", lo más cómodo es la sede electrónica (desde "+TOWN.web+") o el organismo provincial de recaudación: ahí consultas recibos y pagas. Mi consejo: <b>domicilia los recibos</b> y olvídate de plazos. Para dudas con un recibo concreto: "+contactoCorto()+"."},
+cita:function(){startCita();return null},
+sede:function(){return "🔐 En la <b>sede electrónica</b> puedes registrar instancias, pedir certificados (por ejemplo el de empadronamiento), pagar tributos y consultar tus expedientes, 24/7. Entra desde la web oficial <b>"+TOWN.web+"</b> y identifícate con <b>Cl@ve, certificado digital o DNIe</b> (Cl@ve se activa en clave.gob.es). Si te atascas, te atiende una persona: "+contactoCorto()+"."},
+registro:function(){return "📄 Para <b>presentar una instancia</b>: online por el registro electrónico de la sede (desde "+TOWN.web+", con Cl@ve o certificado) o presencial en el Ayuntamiento. Guarda siempre el <b>justificante de registro</b>: es tu prueba. ¿Te explico cómo entrar en la sede?"},
+obras:function(){return "🔨 Para <b>obras</b> en "+TOWN.name+": si es <b>menor</b> (reformas sin tocar estructura) suele bastar una comunicación previa o declaración responsable; si es <b>mayor</b> necesitas licencia con proyecto técnico. Se presenta por registro y Urbanismo liquida la tasa/ICIO antes de empezar. "+derivaSAC()},
+basuras:function(){return "♻️ Lo siento, los <b>días y horarios exactos de recogida y punto limpio</b> de "+TOWN.name+" no los tengo verificados en esta demo, y prefiero no inventármelos. "+derivaSAC()},
+parte:function(){startParte();return null},
+ayudas:function(){return "🤝 Los <b>servicios sociales municipales</b> te atienden para ayuda a domicilio, ayudas de emergencia o dependencia: pide cita en el Ayuntamiento ("+(TOWN.email?TOWN.email:TOWN.web)+"). El <b>Ingreso Mínimo Vital</b> lo tramita la Seguridad Social (sede.seg-social.gob.es). ¿Te ayudo con otra cosa?"},
+empleo:function(){return "💼 El <b>empleo público municipal</b> se publica en la web "+TOWN.web+", en el tablón de la sede y en el Boletín Oficial de la Provincia de "+TOWN.prov+"; las instancias van por registro dentro de plazo. Para <b>paro y prestaciones</b>: SEPE (sede.sepe.gob.es) y el servicio de empleo de tu comunidad."},
+dni:function(){return "🪪 El <b>DNI y el pasaporte</b> no los hace el Ayuntamiento, sino la Policía Nacional: pide cita en <b>citapreviadnie.es</b> y acude a una comisaría expedidora. Si necesitas un certificado de empadronamiento para el trámite, eso sí te lo doy yo: ¿te explico cómo pedirlo?"},
+medico:function(){return "🩺 La <b>cita médica</b> no es del Ayuntamiento: en "+TOWN.ccaa+" la lleva "+salud()+". Si es una <b>urgencia</b>, llama al <b>112</b>."},
+paro:function(){return "📋 El <b>paro y las prestaciones</b> no son del Ayuntamiento: se gestionan en el <b>SEPE</b> (sede.sepe.gob.es o el 060) y en el servicio autonómico de empleo. Para orientación laboral local, pregunta en el Ayuntamiento: "+contactoCorto()+"."},
+dgt:function(){return "🚗 El <b>carné de conducir y las multas de la DGT</b> se gestionan en <b>dgt.es</b> o el teléfono 060. Si la multa es <b>municipal</b> (zona azul, mal aparcado), se paga o recurre en la sede electrónica del Ayuntamiento (desde "+TOWN.web+")."},
+hacienda:function(){return "💶 La <b>Renta/IRPF, el IVA y autónomos</b> no los lleva el Ayuntamiento, sino "+hacienda()+". Los tributos <b>municipales</b> (IBI, vehículos, basuras) sí: te los explico cuando quieras."},
+bodas:function(){return "💍 ¡Enhorabuena! Para una <b>boda civil</b>: primero se tramita el expediente matrimonial en el Registro Civil; después se reserva fecha para la ceremonia (Ayuntamiento o Juzgado de Paz). Los detalles de fechas y salas en "+TOWN.name+" confírmalos con el Ayuntamiento: "+contactoCorto()+"."},
+animales:function(){return "🐶 Sobre <b>animales</b>: el censo o registro municipal de mascotas y las licencias de perros potencialmente peligrosos (PPP) se tramitan en el Ayuntamiento (para la PPP: seguro de RC, certificado de penales y aptitud psicofísica). "+derivaSAC()},
+agua:function(){return "🚰 El <b>agua</b> (altas, facturas, averías) la gestiona en muchos municipios una empresa o consorcio, no directamente el Ayuntamiento, y en "+TOWN.name+" no tengo verificado cuál es. "+derivaSAC()},
+horario:function(){return "🕘 El <b>horario exacto de atención</b> de "+TOWN.name+" no lo tengo verificado en esta demo (lo habitual es de mañana, de lunes a viernes). Lo tienes en la web oficial <b>"+TOWN.web+"</b>"+(TOWN.email?" o escribiendo a "+TOWN.email:"")+". Los trámites online no tienen horario: la sede está abierta 24/7."},
+contacto:function(){return "☎️ Canales del Ayuntamiento de <b>"+TOWN.name+"</b>:\n"+(TOWN.email?"• ✉️ Email: <b>"+TOWN.email+"</b>\n":"")+"• 🌐 Web oficial: <b>"+TOWN.web+"</b> (ahí tienes teléfonos y el formulario de contacto)\n• 🔐 Trámites online 24/7: sede electrónica, desde la propia web.\n¿Te ayudo con algún trámite?"},
+alcalde:function(){return "🏛️ En estos momentos no tengo esa información en mi base de datos municipal: en esta demo no llevo cargada la corporación de "+TOWN.name+", y prefiero decírtelo claro antes que arriesgarme. Lo tienes en la web oficial <b>"+TOWN.web+"</b>, sección Ayuntamiento."},
+fiestas:function(){return "🎉 En estos momentos no tengo esa información en mi base de datos municipal: el calendario festivo de "+TOWN.name+" no está cargado en esta demo. Lo tienes en la web oficial <b>"+TOWN.web+"</b>. En la versión completa, el Ayuntamiento carga fiestas, agenda y avisos y yo los cuento al día."},
+emergencias:function(){return "🚨 Si es una <b>emergencia</b>, llama ya al <b>112</b> (24 h). • Violencia de género: <b>016</b> (gratuito, confidencial, no deja rastro en la factura) y 112 si hay peligro. • Conducta suicida: <b>024</b>. Para incidencias no urgentes en la vía pública, puedo registrarte un parte ahora mismo."},
+multas:function(){return "🅿️ Si la multa es <b>municipal</b> (zona azul, estacionamiento), se paga o recurre en la sede electrónica del Ayuntamiento (desde "+TOWN.web+") dentro de plazo. Si es de la <b>DGT</b> (radar, carretera), en dgt.es o el 060. ¿Cuál es tu caso?"},
+identidad:function(){return "🤖 Soy <b>Clara</b>, la asistente virtual municipal. No soy una persona: soy un asistente automático que resuelve los trámites frecuentes a cualquier hora. Y algo importante: <b>no me invento nada</b>; lo que no sé, te lo digo claro y te derivo a una persona del Ayuntamiento."},
+privacidad:function(){return "🔒 Esta conversación es orientativa y <b>no guarda tus datos personales</b>. Para trámites que requieren identificarte se usa la sede electrónica del Ayuntamiento, con todas las garantías RGPD. Por eso te pido que aquí no escribas datos sensibles."},
+fiabilidad:function(){return "✅ Buena pregunta. Doy información orientativa con datos públicos del municipio y <b>no improviso</b>: lo que no está en mi base, te lo digo con la frase «no tengo esa información» y te derivo a una persona. Para trámites con validez legal, siempre la sede electrónica o la oficina de atención."},
+coste:function(){return "💸 Consultarme no cuesta nada: soy un servicio del Ayuntamiento para ayudarte con tus trámites las 24 horas. ¿Qué necesitas?"},
+gracias:function(){return "😊 ¡Ha sido un placer! Si te surge cualquier otra cosa sobre "+TOWN.name+", aquí me tienes las 24 horas. ¡Hasta pronto!"},
+persona:function(){return "🙋 Por supuesto, te paso con una persona del Ayuntamiento de "+TOWN.name+":\n"+(TOWN.email?"• ✉️ Escribe a <b>"+TOWN.email+"</b> contando tu caso.\n":"")+"• 🌐 En <b>"+TOWN.web+"</b> tienes los teléfonos y el formulario de contacto.\n• 🏢 O acércate a la oficina de atención ciudadana, mejor con cita previa."},
+fuera:function(){return "ℹ️ Eso en concreto no lo lleva el Ayuntamiento de "+TOWN.name+", pero te oriento: • Médico: "+salud()+". • DNI/pasaporte: citapreviadnie.es. • DGT: dgt.es / 060. • Renta/IVA: "+hacienda()+". • Paro: SEPE. Si tu gestión sí es municipal, dime cuál y te guío."}
+};
+
+var KEYS=[
+[/\b(hola|buenas|buenos dias|hey|ey|kaixo)\b/i,"saludo"],
+[/empadron|padron|volante|certificado de resid/i,"padron"],
+[/\bibi\b|impuesto|plusval|ivtm|vehiculo|basuras|vado|tasa|recibo/i,"impuestos"],
+[/cita previa|pedir cita|quiero( una)? cita|reservar cita/i,"cita"],
+[/sede|tramite online|certificado digital|cl@ve|clave pin|dnie/i,"sede"],
+[/instancia|registro|solicitud|presentar (un )?escrito/i,"registro"],
+[/obra|licencia|reforma|icio|urbanis/i,"obras"],
+[/basura|recogida|contenedor|punto limpio|reciclaje|escombro|voluminoso|muebles viejos/i,"basuras"],
+[/incidencia|averia|farola|bache|parte|queja|sugerencia|alumbrado|socavon/i,"parte"],
+[/ayuda|servicios sociales|dependencia|emergencia social|ingreso minimo|imv/i,"ayudas"],
+[/empleo publico|oposicion|bolsa de trabajo|ofertas de empleo/i,"empleo"],
+[/\bdni\b|pasaporte/i,"dni"],
+[/medico|centro de salud|ambulatorio|sanitar|pediatra|enfermer/i,"medico"],
+[/\bparo\b|desempleo|sepe|prestacion/i,"paro"],
+[/carne de conducir|dgt|trafico/i,"dgt"],
+[/renta|irpf|\biva\b|autonomo|declaracion|hacienda/i,"hacienda"],
+[/boda|casar|matrimonio/i,"bodas"],
+[/perro|gato|mascota|animal|ppp/i,"animales"],
+[/agua|fuga|contador/i,"agua"],
+[/horario|a que hora|abierto|cierran/i,"horario"],
+[/contacto|telefono|email|correo|direccion|donde esta/i,"contacto"],
+[/alcalde|alcaldesa|concejal|pleno|corporacion/i,"alcalde"],
+[/fiesta|feria|patron|festivo|agenda|conciertos/i,"fiestas"],
+[/emergencia|urgencia|112|violencia|maltrato|016/i,"emergencias"],
+[/multa/i,"multas"],
+[/eres (un )?(robot|bot|ia|persona)|quien eres|como te llamas/i,"identidad"],
+[/privacidad|mis datos|rgpd|proteccion de datos/i,"privacidad"],
+[/te inventas|fiable|de fiar|te equivocas|verdad/i,"fiabilidad"],
+[/cuanto cuesta|es gratis|precio/i,"coste"],
+[/gracias|perfecto|genial|vale\b/i,"gracias"],
+[/persona|humano|operador|hablar con alguien/i,"persona"]
+];
+
+/* ——— flujos: cita previa y parte de incidencia (con referencia + registro en worker) ——— */
+function startCita(){
+ FLOW={type:"cita",step:0,data:{}};
+ bubble("📅 ¡Claro! Te pido la cita con atención ciudadana. ¿Para qué trámite la necesitas?","bot");
+ chips([{t:"Padrón",fn:function(){citaSvc("Padrón")}},{t:"Impuestos",fn:function(){citaSvc("Impuestos")}},{t:"Registro",fn:function(){citaSvc("Registro / instancias")}},{t:"Otro trámite",fn:function(){citaSvc("Atención general")}}]);
+}
+function citaSvc(svc){
+ FLOW.data.svc=svc;FLOW.step=1;bubble(svc,"user");
+ var opts=[],d=new Date();
+ while(opts.length<3){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6)opts.push(new Date(d))}
+ var fmt=function(x){return x.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"})};
+ bubble("¿Qué día te viene bien?","bot");
+ chips(opts.map(function(x){return {t:fmt(x),fn:function(){citaDia(fmt(x))}}}));
+}
+function citaDia(dia){
+ FLOW.data.fecha=dia;FLOW.step=2;bubble(dia,"user");
+ bubble("¿A qué hora?","bot");
+ chips(["9:00","10:30","12:00","13:00"].map(function(h){return {t:h,fn:function(){citaHora(h)}}}));
+}
+function citaHora(h){
+ FLOW.data.hora=h;FLOW.step=3;bubble(h,"user");
+ bubble("¿A nombre de quién pongo la cita? (solo el nombre de pila, sin apellidos)","bot");
+ chips([]);
+}
+function citaNombre(n){
+ FLOW.data.nombre=n;
+ var r=ref("CP");FLOW.data.ref=r;
+ bubble("✅ ¡Hecho, "+esc(n)+"! Tu cita queda <b>solicitada</b>:\n• Trámite: "+FLOW.data.svc+"\n• Día: "+FLOW.data.fecha+", a las "+FLOW.data.hora+"\n• Referencia: <b>"+r+"</b>\nEl Ayuntamiento la confirmará por sus canales. Lleva tu DNI/NIE y la documentación del trámite. (Demo: la solicitud queda registrada de verdad en el panel.)","bot");
+ postWorker({tipo:"cita",ref:r,svc:FLOW.data.svc,fecha:FLOW.data.fecha,hora:FLOW.data.hora,nombre:n});
+ FLOW=null;PENDING="cita";
+ chips([{t:"Otra consulta",id:"saludo"},{t:"Hablar con una persona",id:"persona"}]);
+}
+function startParte(){
+ FLOW={type:"parte",step:0,data:{}};
+ bubble("📢 Vamos a registrar la incidencia. ¿Dónde está el problema? (calle y número o una referencia del lugar)","bot");
+ chips([]);
+}
+function parteLugar(l){
+ FLOW.data.lugar=l;FLOW.step=1;
+ bubble("¿Qué ocurre? Descríbelo en una frase (ej.: farola apagada, bache, contenedor roto…)","bot");
+}
+function parteDetalle(d){
+ var r=ref("PT");
+ bubble("✅ Incidencia registrada:\n• Lugar: "+esc(FLOW.data.lugar)+"\n• Detalle: "+esc(d)+"\n• Referencia: <b>"+r+"</b>\nEl servicio correspondiente la revisará. Gracias por avisar: así se arregla antes. (Demo: el parte queda registrado de verdad en el panel.)","bot");
+ postWorker({tipo:"parte",ref:r,lugar:FLOW.data.lugar,detalle:d});
+ FLOW=null;PENDING="parte";
+ chips([{t:"Otra consulta",id:"saludo"},{t:"Pedir cita",id:"cita"}]);
+}
+function postWorker(data){
+ try{
+  data.town=TOWN.slug;data.townName=TOWN.name;
+  fetch(IA_WORKER_URL+"/cita",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).catch(function(){});
+ }catch(e){}
+}
+
+/* ——— IA generativa (pregunta libre) ——— */
+function iaAnswer(text){
+ IABUSY=true;var tp=typing();
+ var ctrl=new AbortController();var to=setTimeout(function(){ctrl.abort()},9000);
+ fetch(IA_WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,topic:PENDING||"",town:TOWN.slug}),signal:ctrl.signal})
+ .then(function(r){return r.json()})
+ .then(function(j){
+  clearTimeout(to);tp.remove();
+  if(j&&j.answer){
+   var t=esc(j.answer).replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>").replace(/^[ \t]*\*[ \t]+/gm,"• ").replace(/\n{3,}/g,"\n\n");
+   bubble(t,"bot");PENDING="persona";
+   chips([{t:"Pedir cita",id:"cita"},{t:"Hablar con una persona",id:"persona"}]);
+  } else {throw new Error("sin answer")}
+ })
+ .catch(function(){
+  tp.remove();
+  bubble("⏳ Un momento… ahora mismo tengo muchas consultas. Vuelve a intentarlo en unos segundos, o contacta con el Ayuntamiento: "+contactoCorto(),"bot");
+  chips([{t:"Hablar con una persona",id:"persona"},{t:"Pedir cita",id:"cita"}]);
+ })
+ .finally(function(){IABUSY=false});
+}
+
+/* ——— router ——— */
+function ask(id){
+ openChat();
+ var label={padron:"Padrón",cita:"Cita previa",impuestos:"Impuestos / IBI",sede:"Sede electrónica",parte:"Incidencia",contacto:"Contacto",horario:"Horarios",saludo:"Hola"}[id]||id;
+ bubble(label,"user");
+ answer(id);
+}
+function answer(id){
+ var fn=T[id];if(!fn){iaAnswer(id);return}
+ var out=fn();
+ if(out===null)return; // flujo interactivo
+ var tp=typing();
+ setTimeout(function(){tp.remove();bubble(out,"bot");PENDING=id;
+  var sug={padron:[{t:"Pedir cita",id:"cita"},{t:"Sede electrónica",id:"sede"}],impuestos:[{t:"Pedir cita",id:"cita"},{t:"Hablar con una persona",id:"persona"}],sede:[{t:"Padrón",id:"padron"},{t:"Registro",id:"registro"}]}[id]||[{t:"Pedir cita",id:"cita"},{t:"Incidencia",id:"parte"},{t:"Hablar con una persona",id:"persona"}];
+  chips(sug);
+ },420+Math.random()*380);
+}
+function send(){
+ var i=document.getElementById("inp"),v=i.value.trim();
+ if(!v||IABUSY)return;i.value="";
+ bubble(esc(v),"user");
+ if(FLOW){ // dentro de un flujo
+  if(FLOW.type==="cita"&&FLOW.step===3){citaNombre(v);return}
+  if(FLOW.type==="parte"&&FLOW.step===0){parteLugar(v);return}
+  if(FLOW.type==="parte"&&FLOW.step===1){parteDetalle(v);return}
+ }
+ var norm=v.normalize("NFD").replace(/[̀-ͯ]/g,"");
+ for(var k=0;k<KEYS.length;k++){if(KEYS[k][0].test(norm)){answer(KEYS[k][1]);return}}
+ iaAnswer(v); // pregunta libre -> capa IA
+}
+document.getElementById("inp").addEventListener("keydown",function(e){if(e.key==="Enter")send()});
+
+/* ——— chat open/close ——— */
+var OPENED=false;
+function openChat(){
+ document.getElementById("chatwrap").classList.add("open");
+ if(!OPENED){OPENED=true;answer("saludo");}
+ setTimeout(function(){document.getElementById("inp").focus()},150);
+}
+function closeChat(){document.getElementById("chatwrap").classList.remove("open")}
+
+/* ——— carga del municipio (?town=slug) ——— */
+function applyTown(t){
+ TOWN=t;
+ var r=document.documentElement.style;
+ r.setProperty("--c1",t.col[0]);r.setProperty("--c2",t.col[1]);r.setProperty("--c3",t.col[2]);r.setProperty("--soft",t.col[3]);
+ document.title="Ayuntamiento de "+t.name+" · Asistente virtual (demo)";
+ document.getElementById("brandname").textContent="Ayuntamiento de "+t.name;
+ document.getElementById("bsub").textContent=t.name+" · "+t.prov;
+ document.getElementById("herop").textContent="Padrón, impuestos, cita previa e incidencias en "+t.name+". Y si te surge cualquier duda, Clara te ayuda al instante, las 24 horas.";
+ document.getElementById("chst").textContent="Ayuntamiento de "+t.name;
+ document.getElementById("luxq").textContent="¿Cómo me empadrono en "+t.name+"?";
+ document.getElementById("luxstamp").textContent=t.name.toUpperCase()+" · 09:41";
+ document.getElementById("footname").textContent="Ayuntamiento de "+t.name;
+ document.getElementById("foot_dir").innerHTML="Web oficial: "+(t.web||"—")+(t.email?"<br>✉️ "+t.email:"");
+ document.getElementById("f_cr").textContent="© Ayuntamiento de "+t.name;
+ document.getElementById("st1").textContent=t.met[0];
+ document.getElementById("st2").textContent=t.met[1]+"%";
+ document.getElementById("st3").textContent=t.met[2]+" s";
+}
+function loadTown(slug){
+ fetch("towns/"+slug+".json").then(function(r){if(!r.ok)throw 0;return r.json()}).then(applyTown)
+ .catch(function(){document.getElementById("bsub").textContent="Municipio no encontrado — usa el buscador de arriba"});
+}
+/* buscador de municipios */
+var INDEX=null;
+fetch("towns-index.json").then(function(r){return r.json()}).then(function(ix){
+ INDEX=ix;var dl=document.getElementById("tlist");
+ var frag=document.createDocumentFragment();
+ ix.forEach(function(x){var o=document.createElement("option");o.value=x.n+" ("+x.p+")";frag.appendChild(o)});
+ dl.appendChild(frag);
+});
+document.getElementById("tsearch").addEventListener("change",function(){
+ var v=this.value.trim();if(!INDEX)return;
+ var hit=INDEX.find(function(x){return (x.n+" ("+x.p+")")===v||x.n.toLowerCase()===v.toLowerCase()});
+ if(hit){location.search="?town="+hit.s}
+});
+var qs=new URLSearchParams(location.search).get("town");
+if(qs)loadTown(qs.toLowerCase().trim());
+else document.getElementById("bsub").textContent="Elige tu municipio en el buscador de arriba";
+</script>
+</body>
+</html>
