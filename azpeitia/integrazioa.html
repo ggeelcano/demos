@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="eu"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integrazio teknikoa · Azpeitiko Udala — G&amp;G Elcano</title>
+<meta name="description" content="Nola txertatzen den herritarrentzako laguntzailea udal webgunean: kode-lerro bakar bat. Cómo se integra el asistente ciudadano en la web municipal: una sola línea de código.">
+<meta name="robots" content="noindex">
+<style>
+ :root{--ink:#12151C;--soft:#5B6472;--line:#E3E7EE;--brand:#001489;--bg:#F7F8FB;--code:#0C1330}
+ *{box-sizing:border-box}
+ body{margin:0;font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+ .wrap{max-width:840px;margin:0 auto;padding:0 22px}
+ header{background:var(--brand);color:#fff;padding:38px 0 34px}
+ header .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+ header h1{margin:0;font-size:25px;line-height:1.25;letter-spacing:-.4px}
+ header p{margin:6px 0 0;opacity:.85;font-size:15px}
+ .badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:700}
+ main{padding:34px 0 90px}
+ section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:0 0 20px}
+ h2{font-size:18.5px;margin:0 0 4px;letter-spacing:-.2px}
+ h2 .eu{color:var(--brand)}
+ .sub{color:var(--soft);font-size:14.5px;margin:0 0 16px}
+ pre{background:var(--code);color:#E8ECFF;border-radius:12px;padding:17px 18px;overflow-x:auto;margin:0;
+     font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+ pre .t{color:#7DD3FC}pre .a{color:#FCD34D}pre .v{color:#86EFAC}
+ .copy{margin-top:10px;background:var(--brand);color:#fff;border:0;border-radius:9px;padding:9px 16px;font:600 14px inherit;cursor:pointer}
+ .copy:hover{filter:brightness(1.15)}
+ ul{margin:0;padding-left:20px}li{margin:7px 0}
+ li b{color:var(--brand)}
+ table{width:100%;border-collapse:collapse;font-size:14.5px}
+ td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+ td:first-child{color:var(--soft);width:44%;padding-right:16px}
+ .no{color:#B42318}.si{color:#067647}
+ .note{background:#F0F4FF;border:1px solid #C7D5FF;border-radius:12px;padding:15px 17px;font-size:14.5px;margin-top:16px}
+ footer{color:var(--soft);font-size:13.5px;text-align:center;padding:0 0 40px}
+ @media(max-width:560px){header h1{font-size:21px}section{padding:20px}}
+</style></head><body>
+
+<header><div class="wrap">
+ <div style="flex:1;min-width:260px">
+  <h1>Herritarrentzako laguntzailea · Integrazio teknikoa</h1>
+  <p>Asistente ciudadano · Cómo se integra en la web del Ayuntamiento de Azpeitia</p>
+ </div>
+ <span class="badge">G&amp;G Elcano</span>
+</div></header>
+
+<main><div class="wrap">
+
+ <section>
+  <h2><span class="eu">Kode-lerro bat</span> · Una sola línea</h2>
+  <p class="sub">Hau da udal webgunean txertatu behar den guztia. Esto es todo lo que hay que añadir a la web municipal, antes de <code>&lt;/body&gt;</code>.</p>
+<pre><span class="t">&lt;script</span> <span class="a">src</span>=<span class="v">"https://ggeelcano.github.io/demos/chatbot-iurreta/embed.js"</span> <span class="a">data-town</span>=<span class="v">"azpeitia"</span> <span class="a">data-lang</span>=<span class="v">"eu"</span> <span class="a">data-color</span>=<span class="v">"#001489"</span><span class="t">&gt;&lt;/script&gt;</span></pre>
+  <button class="copy" onclick="cp(this)">📋 Kopiatu · Copiar</button>
+  <div class="note">Orri honetan bertan martxan dago: eskuinean behean duzun botoia lerro horrek sortu du.<br>
+  <b>En esta misma página está funcionando:</b> el botón de abajo a la derecha lo ha creado esa línea.</div>
+ </section>
+
+ <section>
+  <h2><span class="eu">Zer EZ duen ukitzen</span> · Qué NO toca</h2>
+  <p class="sub">Puntu garrantzitsuena informatika arduradun batentzat. El punto que más importa a un responsable de informática.</p>
+  <table>
+   <tr><td>Udalaren sistemak · Sus sistemas</td><td class="no">✗ Ez du sarbiderik · Sin acceso</td></tr>
+   <tr><td>Datu-baseak eta erroldak · Bases de datos y padrón</td><td class="no">✗ Ez du sarbiderik · Sin acceso</td></tr>
+   <tr><td>Webgunearen CMSa (Plone) · El CMS de la web</td><td class="no">✗ Ez da aldatzen · No se modifica</td></tr>
+   <tr><td>Cookieak · Cookies</td><td class="no">✗ Bat ere ez · Ninguna</td></tr>
+   <tr><td>Kanpoko liburutegiak · Librerías externas</td><td class="no">✗ Bat ere ez · Ninguna</td></tr>
+   <tr><td>Webgunearen DOMa · El DOM de la web</td><td class="si">Botoia bakarrik · Solo el botón</td></tr>
+   <tr><td>Txata · El chat</td><td class="si">&lt;iframe&gt; isolatuan · En iframe aislado</td></tr>
+  </table>
+ </section>
+
+ <section>
+  <h2><span class="eu">Nola funtzionatzen duen</span> · Cómo funciona</h2>
+  <ul>
+   <li><b>Nukleo deterministak</b> erantzuten die ohiko galderei (errolda, zergak, hitzordua, hondakinak): erantzun horiek idatzita daude, ez ditu IAk sortzen. <span style="color:var(--soft)">El núcleo determinista responde las consultas habituales con textos redactados, no generados.</span></li>
+   <li><b>IA geruza</b> galdera librerako bakarrik erabiltzen da, eta Azpeitiko datu egiaztatuekin bakarrik. <span style="color:var(--soft)">La capa de IA solo entra en preguntas libres, y solo con datos verificados de Azpeitia.</span></li>
+   <li><b>Ez daki ⇒ ez du asmatzen.</b> Esaldi finko bat ematen du eta HAZ-era bideratzen du. Hori arau gogorra da, ez gomendio bat. <span style="color:var(--soft)">Lo que no sabe no se lo inventa: frase fija y derivación al personal. Es una regla dura.</span></li>
+   <li><b>Izapideak</b>: aurretiko hitzordua eta gorabehera-parteak, erreferentzia-zenbakiarekin. <span style="color:var(--soft)">Tramita cita previa y partes de incidencias, con número de referencia.</span></li>
+   <li><b>Edukiak</b> guk mantentzen ditugu: ordenantza edo ordutegi bat aldatzen bada, esan eta eguneratu egiten dugu. <span style="color:var(--soft)">Los contenidos los mantenemos nosotros.</span></li>
+  </ul>
+ </section>
+
+ <section>
+  <h2><span class="eu">Aukerak</span> · Parámetros</h2>
+  <table>
+   <tr><td><code>data-town</code></td><td>udalerria · el municipio (<code>azpeitia</code>)</td></tr>
+   <tr><td><code>data-lang</code></td><td><code>eu</code> edo <code>es</code>. Jarri gabe: udalerriaren lehenetsia · sin él, el idioma por defecto del municipio</td></tr>
+   <tr><td><code>data-color</code></td><td>botoiaren kolorea · color del botón</td></tr>
+   <tr><td><code>data-label</code></td><td>botoiaren testua · texto del botón</td></tr>
+   <tr><td><code>data-pos</code></td><td><code>right</code> / <code>left</code></td></tr>
+   <tr><td><code>window.ggAsistente.abrir()</code></td><td>txata beste botoi batetik irekitzeko · para abrirlo desde otro botón de la web</td></tr>
+  </table>
+  <div class="note">Erabiltzaileak botoia sakatzen duenean bakarrik kargatzen da txata (<code>loading="lazy"</code>): webgunearen abiadurari ez dio eragiten.<br>
+  <b>El chat solo se carga cuando la persona pulsa el botón</b>, así que no afecta al rendimiento de la web.</div>
+ </section>
+
+</div></main>
+
+<footer>G&amp;G Elcano 1519 Ventures S.L. · josugarciandia@ggelcano.com</footer>
+
+<script>
+function cp(b){
+ var t='<scr'+'ipt src="https://ggeelcano.github.io/demos/chatbot-iurreta/embed.js" data-town="azpeitia" data-lang="eu" data-color="#001489"><\/scr'+'ipt>';
+ navigator.clipboard.writeText(t).then(function(){b.textContent="✓ Kopiatuta · Copiado";setTimeout(function(){b.textContent="📋 Kopiatu · Copiar";},1800);});
+}
+</script>
+
+<!-- La línea real, funcionando en esta misma página -->
+<script src="../chatbot-iurreta/embed.js" data-town="azpeitia" data-lang="eu" data-color="#001489"></script>
+</body></html>
