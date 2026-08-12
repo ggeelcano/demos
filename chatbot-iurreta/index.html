@@ -466,6 +466,7 @@
     <div class="pkpi"><div class="pv" id="pk3">0<span>s</span></div><div class="pl" id="pl_k3">tiempo medio</div></div>
     <div class="pkpi"><div class="pv" id="pk4">0</div><div class="pl" id="pl_k4">satisfacción /5</div></div>
    </div>
+   <div style="margin:2px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button id="pdetonly" onclick="toggleDetOnly()" type="button" style="font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line,#cbd5e1);background:var(--card,#fff);color:inherit;cursor:pointer">○ IA generativa activa — pulsa para apagarla</button><span style="font-size:11px;color:var(--ink-soft,#64748b)">Demo: apágala y el motor determinista sigue resolviendo los trámites.</span></div>
    <div class="prow">
     <div class="pcol"><h4 id="ph_top">Temas más consultados</h4><div id="ptop"></div></div>
     <div class="pcol">
@@ -900,7 +901,7 @@ const EUW=["errolda","telefonoa","laguntza","laguntzak","apurtuta","moztuta","be
 function looksEu(text){const t=norm(text);const w=t.split(" ").filter(Boolean);if(!w.length)return false;let h=0;for(const x of w)if(EUW.indexOf(x)>=0)h++;const m=(t.match(/tx|tz|zk/g)||[]).length;return h>=2||(w.length<=5&&h>=1)||m>=2||(h>=1&&m>=1);}
 let LASTML=null;
 function rlang(text){if(LANG!=="es"){LASTML=LANG;return LANG;}if(looksEu(text)){LASTML="eu";return "eu";}const w=norm(text).split(" ").filter(Boolean);if(LASTML==="eu"&&w.length<=4&&!/[áéíóúñ]/.test(text)&&!/\b(que|para|donde|como|cuanto|hola|gracias|vale|quiero|pedir|cita|necesito|tengo|dame|puedo|hacer|pagar|sacar|el|la|los|las|una|uno|con|por|del)\b/.test(norm(text))&&!/empadron|enpadron|volante|certificado/.test(norm(text))){return "eu";}LASTML="es";return "es";}
-function respondIntent(it,ml){ml=ml||LANG;FLOW=null;setPending(it);if(it&&it.id==="cita"){FLANG=ml;LASTTID=null;citaStart();return;}const tp=typing();const html=antiLoro(it,it?it[ml]:FB[ml],ml);lastMark(it);setTimeout(()=>{tp.remove();bubble(html,"bot");linkPill(it,ml);if(it&&it.id==="quejas"){flowChips(qjCTA(ml));return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
+function respondIntent(it,ml){ml=ml||LANG;FLOW=null;setPending(it);if(it&&["saludo","gracias","cita"].indexOf(it.id)<0)track(it.id==="persona"?"persona":"det",it.id);if(it&&it.id==="cita"){FLANG=ml;LASTTID=null;citaStart();return;}const tp=typing();const html=antiLoro(it,it?it[ml]:FB[ml],ml);lastMark(it);setTimeout(()=>{tp.remove();bubble(html,"bot");linkPill(it,ml);if(it&&it.id==="quejas"){flowChips(qjCTA(ml));return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
 /* Pastilla "hazlo online": enlaza cada trámite a su página oficial (aditivo, no toca el motor).
    Formato por municipio: intent: [etiqueta_es, url, etiqueta_eu]. Sin etiqueta_eu se reutiliza la castellana.
    Solo se ponen URLs comprobadas: un enlace roto delante de un ayuntamiento cuesta la venta. */
@@ -963,9 +964,10 @@ function linkPill(it,ml){try{
  cb().appendChild(d);cb().scrollTop=cb().scrollHeight;
 }catch(e){}}
 /* respuesta a texto libre (motor) */
-const IA_WORKER_URL="https://iurreta-ia.josugarciandia.workers.dev";let IABUSY=false;/* pega aqui la URL del Worker para activar el modo IA generativa; vacio = modo determinista */
-function crmSave(item){try{if(!IA_WORKER_URL)return;fetch(IA_WORKER_URL.replace(/\/$/,"")+"/cita",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(item)}).catch(function(){});}catch(e){}}
-async function iaAnswer(text,ml){IABUSY=true;const tp=typing();try{const ctrl=new AbortController();const to=setTimeout(()=>ctrl.abort(),9000);const r=await fetch(IA_WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,lang:ml,topic:PENDING||"",town:TOWN.slug}),signal:ctrl.signal});clearTimeout(to);const j=await r.json();tp.remove();if(j&&j.answer){let tIA=esc(j.answer);tIA=tIA.replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>").replace(/^[ \t]*\*[ \t]+/gm,"• ").replace(/\n{3,}/g,"\n\n");bubble(tIA,"bot");linkPillFree(text,ml);PENDING="persona";OFFER=null;chipsFromIds(["cita","persona"],ml);return;}throw new Error("sin answer");}catch(e){tp.remove();bubble(ml==="eu"?"⏳ Une batez... eskaera asko ditut orain. Saiatu berriro segundo batzuk barru, edo deitu <b>"+TOWN.tel+"</b> telefonora ("+(TOWN.horAO||"A-O 8:30-14:00")+") eta pertsona batek lagunduko dizu.":"⏳ Un momento… ahora mismo tengo muchas consultas. Vuelve a intentarlo en unos segundos, o llama al <b>"+TOWN.tel+"</b> ("+(TOWN.horLV||"L-V 8:30-14:00")+") y te atiende una persona.","bot");chipsFromIds(["persona","cita"],ml);PENDING="persona";OFFER=null;}finally{IABUSY=false;}}
+const IA_URL="https://iurreta-ia.josugarciandia.workers.dev";let IA_WORKER_URL=IA_URL;let IABUSY=false;/* IA_URL = worker (cita/metricas), fijo. IA_WORKER_URL = capa IA generativa, apagable en vivo para la demo (window.setDetOnly). */
+function crmSave(item){try{if(!IA_URL)return;track(item&&item.tipo==="parte"?"queja":"cita","");fetch(IA_URL.replace(/\/$/,"")+"/cita",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(item)}).catch(function(){});}catch(e){}}
+function track(kind,topic){try{if(typeof process!=="undefined"&&process.versions&&process.versions.node)return;if(!IA_URL)return;var u=IA_URL.replace(/\/$/,"")+"/ev";var payload=JSON.stringify({town:TOWN.slug,kind:kind,topic:topic||""});if(typeof navigator!=="undefined"&&navigator.sendBeacon){navigator.sendBeacon(u,new Blob([payload],{type:"text/plain;charset=UTF-8"}));}else{fetch(u,{method:"POST",headers:{"Content-Type":"text/plain"},body:payload,keepalive:true}).catch(function(){});}}catch(e){}}
+async function iaAnswer(text,ml){IABUSY=true;track("ia",PENDING||"");const tp=typing();try{const ctrl=new AbortController();const to=setTimeout(()=>ctrl.abort(),9000);const r=await fetch(IA_WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text,lang:ml,topic:PENDING||"",town:TOWN.slug}),signal:ctrl.signal});clearTimeout(to);const j=await r.json();tp.remove();if(j&&j.answer){if(/no tengo esa informaci|ez daukat informazio/i.test(j.answer))track("nodata","");let tIA=esc(j.answer);tIA=tIA.replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>").replace(/^[ \t]*\*[ \t]+/gm,"• ").replace(/\n{3,}/g,"\n\n");bubble(tIA,"bot");linkPillFree(text,ml);PENDING="persona";OFFER=null;chipsFromIds(["cita","persona"],ml);return;}throw new Error("sin answer");}catch(e){tp.remove();bubble(ml==="eu"?"⏳ Une batez... eskaera asko ditut orain. Saiatu berriro segundo batzuk barru, edo deitu <b>"+TOWN.tel+"</b> telefonora ("+(TOWN.horAO||"A-O 8:30-14:00")+") eta pertsona batek lagunduko dizu.":"⏳ Un momento… ahora mismo tengo muchas consultas. Vuelve a intentarlo en unos segundos, o llama al <b>"+TOWN.tel+"</b> ("+(TOWN.horLV||"L-V 8:30-14:00")+") y te atiende una persona.","bot");chipsFromIds(["persona","cita"],ml);PENDING="persona";OFFER=null;}finally{IABUSY=false;}}
 const CITA_CANCEL={
  es:"🗓️ Claro, te ayudo con tu cita ya reservada. Para <b>anularla o cambiarla</b>, llama al SAC al <b>946 201 200</b> (L-V 8:30-14:00) con tu <b>número de referencia</b> (IUR-…) a mano, y en el momento te la anulan o te dan otra fecha. Si te viene mejor, también puedes acercarte al SAC (Bidebarrieta 5). ¿Te ayudo a pedir una nueva?",
  eu:"🗓️ Noski, lagunduko dizut hartuta duzun hitzorduarekin. <b>Bertan behera uzteko edo aldatzeko</b>, deitu HAZera <b>946 201 200</b> telefonora (A-O 8:30-14:00) zure <b>erreferentzia-zenbakia</b> (IUR-…) eskura duzula, eta unean bertan kenduko dizute edo beste data bat emango dizute. Nahiago baduzu, HAZera bertara joan zaitezke (Bidebarrieta 5). Berri bat eskatzen laguntzea nahi duzu?"};
@@ -1132,7 +1134,7 @@ function greet(){if(greeted)return;greeted=true;PENDING=null;
    : ((TOWN.logoAv||TOWN.logo)
      ? '<div class="ibadge haslogo" aria-hidden="true"><img src="'+(TOWN.logoAv||TOWN.logo)+'" alt=""></div>'
      : '<div class="ibadge" aria-hidden="true">'+(TOWN.escudo||"🏛️")+'</div>');
-  iw.innerHTML=badge+'<div class="iname">'+TOWN.name.toUpperCase()+'</div><div class="isub">'+TOWN.udala+' · '+(LANG==="es"?"Asistente de atención ciudadana":"Herritarren arretarako laguntzailea")+'</div><div class="iclaim">'+(LANG==="es"?"No inventa: lo que no sabe, lo deriva a tu ayuntamiento":"Ez du asmatzen: ez dakiena, zure udalera bideratzen du")+'</div>';
+  iw.innerHTML=badge+'<div class="iname">'+TOWN.name.toUpperCase()+'</div><div class="isub">'+TOWN.udala+' · '+(LANG==="es"?"Asistente de atención ciudadana":"Herritarren arretarako laguntzailea")+'</div><div class="iclaim">'+(LANG==="es"?"Los trámites los resuelve un motor determinista; ante la duda, deriva a tu ayuntamiento en vez de arriesgar":"Izapideak motor deterministiko batek ebazten ditu; zalantza izanez gero, udalera bideratzen zaitu, arriskatu beharrean")+'</div>';
   cb().appendChild(iw);}
  bubble(KB.find(x=>x.id==="saludo")[LANG],"bot");chips(CHIPS[LANG]);}
 function openChat(skip){const c=document.getElementById("chat");lastFocus=document.activeElement;c.classList.add("open");document.getElementById("fab").style.display="none";greet();if(!skip)setTimeout(()=>document.getElementById("cinput").focus(),60);}
@@ -1619,13 +1621,29 @@ const PANEL_I18N={
 };
 const SPARK=[3,5,9,14,18,16,12,10,13,17,11,6];
 function gid(id){return document.getElementById(id)}
+/* Métricas REALES del asistente (anónimas, agregadas). Sustituyen a los KPIs de muestra en cuanto hay datos. */
+function loadMetrics(){try{if(!IA_URL)return;var _ak=window.__ADMIN_KEY||"";if(!_ak)return;
+ fetch(IA_URL.replace(/\/$/,"")+"/metrics?key="+encodeURIComponent(_ak)+"&town="+encodeURIComponent(TOWN.slug)).then(function(r){return r.json();}).then(function(d){
+  if(!d||typeof d.total!=="number")return;
+  gid("pk1").textContent=d.total;gid("pk2").innerHTML=d.pctDet+"<span>%</span>";gid("pk3").textContent=((d.nodata||0)+(d.persona||0));gid("pk4").textContent=((d.cita||0)+(d.queja||0));
+  gid("pl_k1").textContent=LANG==="es"?"consultas (real)":"kontsultak (erreala)";
+  gid("pl_k2").textContent=LANG==="es"?"resueltas por el motor":"motorrak ebatziak";
+  gid("pl_k3").textContent=LANG==="es"?"derivadas a persona":"pertsonara bideratuak";
+  gid("pl_k4").textContent=LANG==="es"?"citas y partes":"hitzorduak eta parteak";
+  if(d.topTopics&&d.topTopics.length){var mx=d.topTopics[0].n||1;gid("ptop").innerHTML=d.topTopics.map(function(t){var lab=(typeof CHIPLABELS!=="undefined"&&CHIPLABELS[t.topic]&&CHIPLABELS[t.topic][LANG==="es"?0:1])||t.topic;return "<div class=\"ptopr\"><span>"+esc(lab)+"</span><span class=\"ptbar\"><i style=\"width:"+Math.min(100,Math.round(t.n/mx*100))+"%\"></i></span><b>"+t.n+"</b></div>";}).join("");}
+  var hdr=gid("ph_top");if(hdr)hdr.textContent=(LANG==="es"?"Temas más consultados (real)":"Kontsultatuenak (erreala)");
+ }).catch(function(){});
+}catch(e){}}
+/* Demo: apaga la capa IA generativa para enseñar que el motor determinista resuelve los trámites solo. IA_URL (worker) sigue disponible para citas/métricas. */
+function setDetOnly(on){window.__DETONLY=!!on;IA_WORKER_URL=on?"":IA_URL;var b=gid("pdetonly");if(b)b.textContent=on?(LANG==="es"?"● Solo motor determinista (IA apagada)":"● Motor deterministikoa soilik (IA itzalita)"):(LANG==="es"?"○ IA generativa activa — pulsa para apagarla":"○ IA generatiboa aktibo — sakatu itzaltzeko");}
+function toggleDetOnly(){setDetOnly(!window.__DETONLY);}
 function populatePanel(){
  const m=TOWN.met||[142,84,8,4.6,47],L=PANEL_I18N[LANG];
  gid("pn_town").textContent=TOWN.name;
  gid("pk1").textContent=m[0];gid("pk2").innerHTML=m[1]+"<span>%</span>";gid("pk3").innerHTML=m[2]+"<span>s</span>";gid("pk4").textContent=m[3].toFixed(1);
  gid("ph_sol").textContent=LANG==="es"?"🗂️ Últimas solicitudes recibidas":"🗂️ Jasotako azken eskaerak";gid("pl_k1").textContent=L.k1;gid("pl_k2").textContent=L.k2;gid("pl_k3").textContent=L.k3;gid("pl_k4").textContent=L.k4;
  const eu=m[4],es=100-eu;gid("pbeu").style.width=eu+"%";gid("peu").innerHTML="EU <b>"+eu+"%</b>";gid("pes").innerHTML="ES <b>"+es+"%</b>";
- loadSolicitudes();gid("ptop").innerHTML=L.temas.map(t=>"<div class=\"ptopr\"><span>"+t[0]+"</span><span class=\"ptbar\"><i style=\"width:"+Math.min(100,t[1]*4)+"%\"></i></span><b>"+t[1]+"%</b></div>").join("");
+ loadSolicitudes();loadMetrics();gid("ptop").innerHTML=L.temas.map(t=>"<div class=\"ptopr\"><span>"+t[0]+"</span><span class=\"ptbar\"><i style=\"width:"+Math.min(100,t[1]*4)+"%\"></i></span><b>"+t[1]+"%</b></div>").join("");
  const mx=Math.max.apply(null,SPARK);gid("pspark").innerHTML=SPARK.map(v=>"<i style=\"height:"+Math.round(v/mx*100)+"%\"></i>").join("");
  gid("pi_tel").value=CFG.tel||TOWN.tel;gid("pi_sede").value=CFG.sede||TOWN.sede;gid("pi_hor").value=CFG.hor||TOWN.horLV||"L-V 8:30-14:00";
  gid("ph_top").textContent=L.top;gid("ph_idi").textContent=L.idi;gid("ph_pico").textContent=L.pico;gid("ph_cfg").textContent=L.cfg;
