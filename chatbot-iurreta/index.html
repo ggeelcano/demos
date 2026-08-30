@@ -1079,6 +1079,46 @@ const META_WL=new Set(["usarte","usarlo","chatbot","txatbot","contribuyente","im
  DROP("coste",["zenbat balio dau","zenbat kostatzen"]);
 })();
 /*R5-meta-extra*/{const _p=KB.find(x=>x.id==="privacidad");if(_p)["que datos guardas","que datos guardas de mi","datos guardas de mi","guardas de mi","guardas datos de mi","guardas algo de mi","que guardas de mi","donde se procesan mis datos","se procesan mis datos","procesan mis datos","donde procesais los datos","procesan los datos","donde se procesan los datos","mis datos en la ue","datos en la ue","datos en europa","mis datos en europa","datos fuera de la ue","datos fuera de europa","guardas mis conversaciones","guardas la conversacion","registras lo que escribo","guardas lo que te digo","zer datu gordetzen dituzu","nire datuak non prozesatzen dira","datuak europan","nire datuak gordetzen dituzu"].forEach(k=>{if(_p.keys.indexOf(k)<0)_p.keys.push(k);});}
+/*R6-textos-1*/(function(){
+ function g(id){return KB.find(function(x){return x.id===id;});}
+ function rm(id,keys){var it=g(id);if(!it)return;it.keys=it.keys.filter(function(k){return keys.indexOf(k)<0;});}
+ function add(id,keys){var it=g(id);if(!it)return;keys.forEach(function(k){if(it.keys.indexOf(k)<0)it.keys.push(k);});}
+ function tel(){return (typeof TOWN!=="undefined"&&TOWN&&(TOWN.tel010||TOWN.tel))||"946 201 200";}
+ function nom(){return (typeof TOWN!=="undefined"&&TOWN&&TOWN.name)||"Iurreta";}
+ function udala(){return (typeof TOWN!=="undefined"&&TOWN&&TOWN.udala)||"Iurretako Udala";}
+ function web(){return (typeof TOWN!=="undefined"&&TOWN&&TOWN.web)||"iurreta.eus";}
+ /* (E) #93: parentesco solo no puede ganar un tema (las frases completas de bodas/juzgado/crisis siguen puntuando). #60: 'tiempo' suelto no es 'fuera'. */
+ ["marido","esposo","mujer","esposa","pareja","novio","novia","tiempo"].forEach(function(w){WEAK.add(w);});
+ /* #93 bis: fallecimiento -> Registro Civil (certificado de defuncion), no al vacio */
+ add("juzgado",["ha fallecido","fallecido","fallecida","fallecimiento","ha fallecido mi marido","ha fallecido mi mujer","ha fallecido mi pareja","ha muerto mi pareja","mi marido ha fallecido","mi mujer ha fallecido","tramites por fallecimiento","hil da nire senarra","hil da nire emaztea","senarra hil zait","emaztea hil zait"]);
+ /* (H) #60: ocio y planes -> agenda (no 'fuera', no juventud) */
+ add("agenda",["matar el tiempo","matar el tiempo en getxo","que hacer en getxo","que puedo hacer en getxo","que se puede hacer en getxo","que hacer hoy","que puedo hacer hoy","algo que hacer","planes para hoy","plan para hoy","planes para el finde","ocio","tiempo libre","estoy aburrido","estoy aburrida","aburrido","aburrida","zer egin getxon","zer egin gaur","aspertuta nago","aisialdia"]);
+ /* (C)(D): lo tecnico sale de identidad/privacidad y va a un tema propio */
+ rm("identidad",["que modelo de ia","modelo de ia usas","usas por debajo","que ia usas","que llm usas","zein eredu erabiltzen","quien te ha programado","quien te programa","quien lo ha programado","esto quien lo ha programado","quien ha programado esto","nork programatu du","nork programatu zaitu","programatu zaitu","nork programatu","zeinek programatu","que modelo usais","modelo de lenguaje","que modelo usas","proveedor de la ia","que ia usas por debajo","que tecnologia","en que tecnologia","zein teknologia","ia generativa de verdad","if-else","arbol de decisiones","cuatro if","aprende solo","aprendes solo","reentrenarlo","non dagoz zerbitzariak","zerbitzariak non","como funcionas"]);
+ rm("privacidad",["donde se guardan los datos","se guardan los datos","donde guardas los datos","donde se alojan los datos","alojan los datos","donde estan los datos","region ue","salen de europa","fuera de europa","datos a eeuu","manda datos a eeuu","datos a google","acaban en google","manda datos a google","proveedor de nube","donde esta el cpd","encargado del tratamiento","responsable y encargado","articulo 28","contrato del art 28","contrato de encargado","subencargado","subencargados","transferencia internacional","donde esta alojado","alojado esto","servidores de aqui","servidores en eeuu","non dagoz zerbitzariak","zerbitzariak non","donde se procesan mis datos","se procesan mis datos","procesan mis datos","donde procesais los datos","procesan los datos","donde se procesan los datos","mis datos en la ue","datos en la ue","datos en europa","mis datos en europa","datos fuera de la ue","datos fuera de europa","nire datuak non prozesatzen dira","datuak europan","datuak europatik kanpo","datuak non gordetzen","non gordetzen dira","gordetzen dira datuak","entrenar vuestro modelo","reentrena con","zero data retention"]);
+ if(!g("identidad_tecnica"))KB.push({id:"identidad_tecnica",rel:["fiabilidad","privacidad","persona"],
+  keys:["usas chatgpt","usas chat gpt","eres gemini","usas gemini","que modelo de ia","modelo de ia usas","usas por debajo","que ia usas","que llm usas","zein eredu erabiltzen","quien te ha programado","quien te programa","quien lo ha programado","esto quien lo ha programado","quien ha programado esto","nork programatu du","nork programatu zaitu","programatu zaitu","nork programatu","zeinek programatu","que modelo usais","modelo de lenguaje","que modelo usas","proveedor de la ia","que ia usas por debajo","que tecnologia","en que tecnologia","zein teknologia","ia generativa de verdad","if-else","arbol de decisiones","cuatro if","aprende solo","aprendes solo","reentrenarlo","como funcionas","como funcionas por dentro","que hay por debajo","donde se guardan los datos","se guardan los datos","donde guardas los datos","donde se alojan los datos","alojan los datos","donde estan los datos","region ue","salen de europa","fuera de europa","datos a eeuu","manda datos a eeuu","datos a google","acaban en google","manda datos a google","proveedor de nube","donde esta el cpd","encargado del tratamiento","responsable y encargado","articulo 28","contrato del art 28","contrato de encargado","subencargado","subencargados","transferencia internacional","donde esta alojado","alojado esto","servidores de aqui","servidores en eeuu","non dagoz zerbitzariak","zerbitzariak non","donde se procesan mis datos","se procesan mis datos","procesan mis datos","donde procesais los datos","procesan los datos","donde se procesan los datos","mis datos en la ue","datos en la ue","datos en europa","mis datos en europa","datos fuera de la ue","datos fuera de europa","nire datuak non prozesatzen dira","datuak europan","datuak europatik kanpo","datuak non gordetzen","non gordetzen dira","gordetzen dira datuak","entrenar vuestro modelo","reentrena con","zero data retention","usa inteligencia artificial","es inteligencia artificial","funciona con ia","adimen artifiziala erabiltzen","nola funtzionatzen duzu","zer teknologia"],
+  get es(){return "🔧 Te lo cuento tal cual. Los trámites del catálogo los resuelve un sistema propio con textos revisados por el Ayuntamiento; para preguntas fuera del catálogo uso un modelo de IA acotado a la información municipal, que puede equivocarse: por eso, ante la duda, te derivo al Ayuntamiento ("+tel()+"). La capa de IA de esta versión usa un proveedor externo; en producción se contrata con un proveedor en la UE y contrato de encargo de tratamiento. Esta conversación no se guarda, y a la IA solo llega el texto de la pregunta, sin nombre ni identificadores.";},
+  get eu(){return "🔧 Argi eta garbi esango dizut. Katalogoko izapideak Udalak berrikusitako testuak dituen sistema propio batek ebazten ditu; katalogotik kanpoko galderetarako udal informaziora mugatutako IA eredu bat erabiltzen dut, eta oker egon daiteke: horregatik, zalantza izanez gero, Udalera bideratzen zaitut ("+tel()+"). Bertsio honetako IA geruzak kanpoko hornitzaile bat erabiltzen du; ekoizpenean EBko hornitzaile batekin kontratatzen da, tratamendu-eragile kontratuarekin. Elkarrizketa hau ez da gordetzen, eta IAra galderaren testua bakarrik iristen da, izenik eta identifikatzailerik gabe.";}});
+ add("identidad",["cual es tu nombre","como te llamas","quien eres","tu nombre","tienes nombre","eres iñaki","eres inaki","inaki","iñaki","zein da zure izena","nola duzu izena","nor zara"]);
+ /* (C) #75: ficha de identidad para vecinos (sin discurso de proveedor) */
+ var T=g("identidad");if(T){
+  Object.defineProperty(T,"es",{configurable:true,enumerable:true,get:function(){return "👋 Me llamo <b>Iñaki</b>, el asistente virtual del Ayuntamiento de "+nom()+". No soy una persona: soy un programa que te ayuda con los trámites del catálogo municipal (padrón, impuestos, cita previa, residuos y más de 40 temas), en euskera y en castellano. Lo que no sé, te lo digo y te derivo al <b>"+tel()+"</b>, donde te atiende una persona. ¿Qué trámite necesitas?";}});
+  Object.defineProperty(T,"eu",{configurable:true,enumerable:true,get:function(){return "👋 <b>Iñaki</b> naiz, "+udala()+"ren laguntzaile birtuala. Ez naiz pertsona bat: udal katalogoko izapideekin laguntzen dizun programa bat naiz (errolda, zergak, hitzordua, hondakinak eta 40 gai baino gehiago), euskaraz eta gaztelaniaz. Ez dakidana esan egiten dizut eta <b>"+tel()+"</b> telefonora bideratzen zaitut, han pertsona batek artatuko zaitu. Zer izapide behar duzu?";}});}
+ /* (D) #70: privacidad para vecinos */
+ T=g("privacidad");if(T){
+  Object.defineProperty(T,"es",{configurable:true,enumerable:true,get:function(){return "🔒 Esta conversación <b>no se guarda</b>. Solo se registran las <b>citas y los partes que confirmas</b> (nombre y trámite), y puedes pedir que se borren. El responsable del tratamiento es el Ayuntamiento de "+nom()+"; para ejercer tus derechos (acceso, rectificación, supresión), entra en <b>"+web()+" &gt; Protección de datos</b>. Un consejo: no escribas aquí datos que no hagan falta, como tu DNI o datos de salud.";}});
+  Object.defineProperty(T,"eu",{configurable:true,enumerable:true,get:function(){return "🔒 Elkarrizketa hau <b>ez da gordetzen</b>. Berresten dituzun <b>hitzorduak eta parteak</b> bakarrik erregistratzen dira (izena eta izapidea), eta ezabatzeko eska dezakezu. Tratamenduaren arduraduna "+udala()+" da; zure eskubideak erabiltzeko (sarbidea, zuzenketa, ezabaketa), sartu <b>"+web()+" &gt; Datuen babesa</b> atalean. Aholku bat: ez idatzi hemen beharrezkoak ez diren datuak, NANa edo osasun-datuak esaterako.";}});}
+ /* fiabilidad: sin 'pliego', tuteo, honesta */
+ T=g("fiabilidad");if(T){
+  Object.defineProperty(T,"es",{configurable:true,enumerable:true,get:function(){return "✅ Estoy hecho para <b>no inventar</b>: los trámites del catálogo los responde un sistema propio con textos revisados por el Ayuntamiento, y lo que se sale del catálogo pasa a un modelo de IA acotado a la información municipal. Aun así <b>puedo equivocarme</b>; por eso la información es orientativa y te doy siempre la vía oficial para confirmarla (<b>"+tel()+"</b>). Si la IA no está disponible, sigo respondiendo los temas del catálogo. La seguridad del servicio sigue el <b>Esquema Nacional de Seguridad</b> en el nivel que fije el Ayuntamiento.";}});
+  Object.defineProperty(T,"eu",{configurable:true,enumerable:true,get:function(){return "✅ <b>Ez asmatzeko</b> eginda nago: katalogoko izapideak Udalak berrikusitako testuak dituen sistema propio batek erantzuten ditu, eta katalogotik kanpokoa udal informaziora mugatutako IA eredu batera pasatzen da. Hala ere <b>oker egon naiteke</b>; horregatik informazioa orientagarria da eta beti ematen dizut bide ofiziala baieztatzeko (<b>"+tel()+"</b>). IA geruza erabilgarri ez badago, katalogoko gaiei erantzuten jarraitzen dut. Zerbitzuaren segurtasunak <b>Segurtasun Eskema Nazionala</b> jarraitzen du, Udalak finkatzen duen mailan.";}});}
+ /* el tema tecnico puntua solo por frase + lista blanca, como el resto de meta */
+ if(typeof META_COM!=="undefined")META_COM.add("identidad_tecnica");
+ if(typeof META_WL!=="undefined")["chatgpt","gemini","llm","procesan","procesais","prozesatzen","eredu","hornitzailea","hornitzaile","funcionas","funtzionatzen","teknologia","tecnologia"].forEach(function(x){META_WL.add(x);});
+ if(typeof CHIPLABELS!=="undefined"&&!CHIPLABELS.identidad_tecnica)CHIPLABELS.identidad_tecnica=["🔧 Cómo funciono","🔧 Nola funtzionatzen dudan"];
+})();
+
 KB.forEach(it=>{it._kw=new Set();it._ph=[];it.keys.forEach(k=>{const kn=norm(k);if(!kn)return;if(kn.includes(" ")){it._ph.push(kn);kn.split(" ").forEach(w=>{if(w.length>2&&!STOP.has(w)&&!WEAK.has(w))it._kw.add(w);});}else if(kn.length>2&&!STOP.has(kn))it._kw.add(kn);});it._kw=[...it._kw];if(META_COM.has(it.id))it._kw=it._kw.filter(w=>META_WL.has(w));it._generic=GENERIC.has(it.id);});
 function lev(a,b){const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
 function score(it,qToks,qText){
@@ -1170,6 +1210,17 @@ rlang=function(text){if(LANG!=="es"){LASTML=LANG;return LANG;}if(looksEu(text)){
  var w=norm(text).split(" ").filter(Boolean);
  if(LASTML==="eu"&&w.length<=4&&!/[áéíóúñ]/.test(text)&&!/\b(que|para|donde|como|cuanto|hola|gracias|vale|quiero|pedir|cita|necesito|tengo|dame|puedo|hacer|pagar|sacar|el|la|los|las|una|uno|con|por|del|telefono|precio|policia|correo|ayuda|buenos|buenas|dias|tardes|noches|adios|horario|direccion|calle|numero|oficina|es|son|esta|estan|hay|mi|me|se|tambien)\b/.test(norm(text))&&!/empadron|enpadron|volante|certificado/.test(norm(text))){return "eu";}
  LASTML="es";return "es";};
+/*R6-textos-3*/(function(){
+ if(typeof THREADLESS!=="undefined"&&THREADLESS.indexOf("identidad_tecnica")<0)THREADLESS.push("identidad_tecnica");
+ var _rl6=rlang;
+ rlang=function(text){var was=LASTML;var r=_rl6(text);
+  if(r==="eu"&&LANG==="es"&&was==="eu"&&!looksEu(text)){
+   var t=norm(text);var w=t.split(" ").filter(Boolean);var ESW=(typeof R5_ESW!=="undefined")?R5_ESW:[];
+   var hint=w.some(function(x){return EUW.indexOf(x)>=0;})||/tx|tz|zk/.test(t)||w.some(function(x){return x.length>=4&&ESW.indexOf(x)<0&&/(ak|ari|tzat|rik|tik|ko)$/.test(x);});
+   if(!hint){LASTML="es";return "es";}}
+  return r;};
+})();
+
 function respondIntent(it,ml){ml=ml||LANG;FLOW=null;setPending(it);if(it&&["saludo","gracias","cita"].indexOf(it.id)<0)track(it.id==="persona"?"persona":"det",it.id);if(it&&it.id==="cita"){FLANG=ml;LASTTID=null;citaStart();return;}const tp=typing();const html=antiLoro(it,it?it[ml]:FB[ml],ml);lastMark(it);setTimeout(()=>{tp.remove();bubble(html,"bot");linkPill(it,ml);if(it&&it.id==="quejas"){flowChips(qjCTA(ml));return;}if(!it||it.id==="saludo")chips(CHIPS[ml]);else if(it.rel)chipsFromIds(it.rel,ml);},delayFor(html));}
 /* Pastilla "hazlo online": enlaza cada trámite a su página oficial (aditivo, no toca el motor).
    Formato por municipio: intent: [etiqueta_es, url, etiqueta_eu]. Sin etiqueta_eu se reutiliza la castellana.
@@ -1376,7 +1427,15 @@ function answer(text){
  /*R5-nlu-ord*/ {const nO=norm(text).replace(/[¿?¡!.,;:]/g," ").replace(/\s+/g," ").trim();const mO=nO.match(/^(?:la |el |lo |la de la |el de la |opcion |aukera )?(primera|primero|segunda|segundo|tercera|tercero|uno|dos|tres|1|2|3|lehenengoa|lehena|bigarrena|hirugarrena)(?: opcion| aukera)?$/);
   if(mO&&typeof LASTOPTS!=="undefined"&&LASTOPTS&&LASTOPTS.length){const iO={primera:0,primero:0,uno:0,"1":0,lehenengoa:0,lehena:0,segunda:1,segundo:1,dos:1,"2":1,bigarrena:1,tercera:2,tercero:2,tres:2,"3":2,hirugarrena:2}[mO[1]];const idO=LASTOPTS[iO];const itO=idO?KB.find(x=>x.id===idO):null;if(itO){LASTOPTS=null;respondIntent(itO,ml);return;}}}
  let sc=rank(text);
- /*R5-nlu-guard*/ {const nG=norm(text);
+ /*R6-textos-2*/ {const nM=norm(text);const mM=nM.match(/(^|\s)(leioa|leioako|berango|berangoko|sopela|sopelana|erandio|portugalete|santurtzi|santurce|barakaldo|baracaldo|basauri|galdakao|plentzia|urduliz|gorliz|mungia|bermeo|durango|gernika|donostia|vitoria|gasteiz)(\s|$)/);
+  if(mM&&!(new RegExp("(^|\\s)"+norm(TOWN.name)+"(ko|n|tik)?(\\s|$)")).test(nM)&&!/(sirve|sirves|servir|valdr|vale para|valer para|funcionar|mismo bot|mismo asistente|otros ayuntamientos|para todos)/.test(nM)){
+   const MM={leioa:["Leioa","leioa.eus"],leioako:["Leioa","leioa.eus"],berango:["Berango",""],berangoko:["Berango",""],sopela:["Sopela","sopela.eus"],sopelana:["Sopela","sopela.eus"],erandio:["Erandio","erandio.eus"],portugalete:["Portugalete","portugalete.org"],santurtzi:["Santurtzi","santurtzi.eus"],santurce:["Santurtzi","santurtzi.eus"],barakaldo:["Barakaldo","barakaldo.eus"],baracaldo:["Barakaldo","barakaldo.eus"],basauri:["Basauri","basauri.eus"],galdakao:["Galdakao","galdakao.eus"],plentzia:["Plentzia","plentzia.eus"],urduliz:["Urduliz","urduliz.eus"],gorliz:["Gorliz","gorliz.eus"],mungia:["Mungia","mungia.eus"],bermeo:["Bermeo","bermeo.eus"],durango:["Durango","durango.eus"],gernika:["Gernika-Lumo",""],donostia:["Donostia","donostia.eus"],vitoria:["Vitoria-Gasteiz","vitoria-gasteiz.org"],gasteiz:["Vitoria-Gasteiz","vitoria-gasteiz.org"]};
+   const mi=MM[mM[2]];
+   if(mi&&mi[0]!==TOWN.name){const fM=KB.find(x=>x.id==="fuera");if(fM){setPending(fM);lastMark(fM);}
+    const H=ml==="eu"?("ℹ️ Hori <b>"+mi[0]+"ko Udalak</b> kudeatzen du: begiratu "+(mi[1]?("<b>"+mi[1]+"</b>"):"bere udal webgunea")+" edo deitu bere arreta-telefonora. Zure kudeaketa "+TOWN.name+"koa bada, esan zein eta lagunduko dizut."):("ℹ️ Eso lo lleva el <b>Ayuntamiento de "+mi[0]+"</b>: consulta "+(mi[1]?("<b>"+mi[1]+"</b>"):"su web municipal")+" o su teléfono de atención. Si tu gestión es de "+TOWN.name+", dime cuál y te ayudo.");
+    const tpM=typing();setTimeout(()=>{tpM.remove();bubble(H,"bot");chipsFromIds(["contacto","persona"],ml);},delayFor(H));return;}}}
+
+/*R5-nlu-guard*/ {const nG=norm(text);
   /* (a) otro municipio u organismo/empresa ajena con nombre propio: no dar datos de Getxo como si fueran suyos */
   const otroMun=/(^|\s)(leioa|leioako|berango|berangoko|sopela|sopelana|erandio|portugalete|santurtzi|santurce|barakaldo|baracaldo|basauri|galdakao|plentzia|urduliz|gorliz|mungia|bermeo|durango|gernika|donostia|vitoria|gasteiz)(\s|$)/.test(nG)&&!/getxo/.test(nG)&&!/(sirve|sirves|servir|valdr|vale para|valer para|funcionar|mismo bot|mismo asistente|otros ayuntamientos|para todos)/.test(nG); /* pregunta meta de escalabilidad con nombre de municipio: no es "otro ayuntamiento" */
   const empresa=/(^|\s)(correos|iberdrola|endesa|naturgy|euskaltel|movistar|vodafone)(\s|$)/.test(nG)&&!/(no puedo pagar|cortado|ayuda)/.test(nG);
@@ -1391,6 +1450,15 @@ function answer(text){
   if(sc.length&&sc[0].it.id==="policia"&&/(oposicion|convocatoria|bolsa de|plaza de|plazas de|temario)/.test(nG))sc=sc.filter(x=>x.it.id!=="policia");
   if(pG&&/(policia|udaltzain|ertzain)/.test(nG)&&!/(urgen|emergenc|socorro|auxilio|roban|robar|atrac|pegan|pegando|paliza|ladron|incendio|accidente|ambulancia|desplom|respira|entrando|matar|morir|suicid|maltrat|agred|amenaz|112|multa|sancion|grua|vado|\bota\b|aparc|oposicion|plaza de|plazas de|convocatoria|bolsa)/.test(nG)&&!(sc.length&&sc[0].it.id==="policia")){sc=[{it:pG,s:9}].concat(sc.filter(x=>x.it.id!=="policia"));}
  }
+ /*R6-flujos:A parte por texto con tipos extra (banco, semáforo, árbol, ruido) aunque no venga la calle; cita anulada en el chat*/
+ {const nA=norm(text);
+  /* la cita creada aquí ya se anuló en el chat: "¿cuál es mi referencia / mi cita?" no debe caer en la ficha de impuestos */
+  if(typeof r6fOwnRef==="function"&&!(typeof CITA!=="undefined"&&CITA&&CITA.ref)&&nA.split(" ").filter(Boolean).length<=12&&/(mi cita|nire hitzordu|mi referencia|nire erreferentzi|la cita que|referencia de (la |mi )?cita)/.test(nA)&&!/(nueva|otra|beste|berri|pedir|eskatu|quiero cita)/.test(nA)){
+   let jC=null;try{jC=JSON.parse(localStorage.getItem("iurreta_cita_ref_"+TOWN.slug)||"null");}catch(e){}
+   if(jC&&jC.ref&&jC.cancelled){botSay(ml==="eu"?"🗓️ Txat honetan eskatu zenuen hitzordua (<b>"+jC.ref+"</b> · "+jC.svc+" · "+jC.fecha+" · "+jC.hora+") bertan behera utzi zenuen. Beste bat nahi baduzu, esan eta minutu batean eskatuko dugu.":"🗓️ La cita que pediste en este chat (<b>"+jC.ref+"</b> · "+jC.svc+" · "+jC.fecha+" · "+jC.hora+") quedó anulada. Si quieres otra, dímelo y la pedimos en un minuto.",()=>chipsFromIds(["cita","contacto"],ml));return;}}
+  if(typeof r6fQjxFromText==="function"&&!/(farol|alumbrado|bombilla|argiteri|luz de la calle|bache|socavon|zulo\b|acera|espaloi|calzada|baldosa|adoquin|hundid|contenedor|edukiontzi|papelera|basura|limpieza|zikin|suci|pintada|grafiti|escombro)/.test(nA)){
+   const tX=r6fQjxFromText(nA);
+   if(tX&&!/(pagar|tasa|recibo|precio|horario|garbigune|licencia|permiso|ordenanza|normativa|quiero poner (un|una)\b)/.test(nA)){const qitA=KB.find(x=>x.id==="quejas");if(qitA)setPending(qitA);qjStartPre(tX,r5fLoc(text)||r6fLoc(text),text,ml);return;}}}
  /*R5-flujos:E1 facetas: post-cita, info cita previa, parte por texto*/
  {const nF=norm(text);const wF=nF.split(" ").filter(Boolean).length;
   /* post-cita: con una cita confirmada en memoria, las preguntas naturales responden con SUS datos */
@@ -1447,7 +1515,9 @@ function answer(text){
   const desconX=mejorDestino&&w_.some(t=>t.length>3&&!STOP.has(t)&&!WEAK.has(t)&&AFFW.indexOf(t)<0&&AFFS.indexOf(t)<0&&(!pit0||pit0._kw.indexOf(t)<0)&&!(sc.length&&sc[0].it._kw.indexOf(t)>=0));
   if(pureAff||back||((isFollowup(text)||!IA_WORKER_URL)&&!sens&&!desconX)){let pid=(pureAff&&OFFER)?OFFER:PENDING;if(back&&TOPICHIST.length){pid=TOPICHIST.pop();}const pit=KB.find(x=>x.id===pid);if(pit){respondIntent(pit,ml);return;}}}
  const cand=sc.length&&sc[0].s>=2&&sc[0].it.id!=="saludo"&&sc[0].it.id!=="gracias";
- /* FACETA NO CUBIERTA: tema claro PERO la pregunta trae una palabra de contenido que la ficha ganadora no conoce ("¿en efectivo?", "¿los sabados?", "¿estudiantes?") -> la ficha no responde ESO: va a la IA con el tema (responde del conocimiento o dice que no tiene el dato). */
+ /*R6-textos-5*/ if(IA_WORKER_URL&&strongContent&&["adicciones","acoso_escolar"].indexOf(sc[0].it.id)>=0){respondIntent(sc[0].it,ml);return;}
+
+/* FACETA NO CUBIERTA: tema claro PERO la pregunta trae una palabra de contenido que la ficha ganadora no conoce ("¿en efectivo?", "¿los sabados?", "¿estudiantes?") -> la ficha no responde ESO: va a la IA con el tema (responde del conocimiento o dice que no tiene el dato). */
  if(IA_WORKER_URL&&strongContent){const it0=sc[0].it;
   if(["emergencias","igualdad","cita","quejas","saludo","gracias","fuera","persona"].indexOf(it0.id)<0){
    const facetX=w_.some(t=>t.length>3&&!/^\d+$/.test(t)&&!STOP.has(t)&&!WEAK.has(t)&&AFFW.indexOf(t)<0&&AFFS.indexOf(t)<0&&it0._kw.indexOf(t)<0);
@@ -1455,6 +1525,15 @@ function answer(text){
  /* En mitad de una conversacion (PENDING no sensible), un mensaje debil NO cae en "¿te refieres a...?": va a la IA con el tema a cuestas (responde o dice honestamente que no tiene el dato). El did-you-mean queda para arranques de conversacion. */
  if(IA_WORKER_URL&&!strong&&(!cand||(PENDING&&PENDING!=="emergencias"&&PENDING!=="igualdad"))){iaAnswer(text,ml);return;}
  const tp=typing();
+/*R6-textos-4*/ if(sc.length&&!strong){
+  const sens6=(PENDING==="emergencias"||PENDING==="igualdad");
+  const lone6=w_.length===1&&sc.length>=2&&sc[0].s>=2&&sc[1].s>=2&&(sc[0].s-sc[1].s)<=1; /* una palabra suelta del catalogo con varios temas cerca: el menu ayuda mas que la IA */
+  if(IA_WORKER_URL&&!sens6&&!lone6){tp.remove();iaAnswer(text,ml);return;}
+  const tel6=TOWN.tel010||TOWN.tel;
+  const H6=(ml==="eu")?("🤔 Ez daukat informazio hori nire katalogoan. Gai hauetakoren bat esan nahi duzu? Bestela, deitu <b>"+tel6+"</b> zenbakira."):("🤔 No tengo esa información en mi catálogo. ¿Te refieres a alguno de estos temas? Si no, llama al <b>"+tel6+"</b>.");
+  const ids6=sc.slice(0,3).map(x=>x.it.id);if(["emergencias","igualdad"].indexOf(sc[0].it.id)<0)setPending(sc[0].it); /* un candidato flojo sensible no debe convertirse en hilo */
+  setTimeout(()=>{tp.remove();bubble(H6,"bot");chipsFromIds(ids6,ml);},delayFor(H6));return;}
+
  let html,follow=null,disamb=null,topId=null;
  if(!sc.length){const _cw=w_.filter(t=>t.length>3&&!STOP.has(t)&&!WEAK.has(t)&&AFFW.indexOf(t)<0&&AFFS.indexOf(t)<0).length;html=(_cw>=2?FBNI:FB)[ml];follow="__popular";PENDING="persona";OFFER=null;}
  else if(strong){const it=sc[0].it;topId=it.id;setPending(it);html=antiLoro(it,it[ml],ml);lastMark(it);follow=(it.rel||[]).slice();
@@ -1777,6 +1856,134 @@ function citaConfText(v){const raw=String(v||"").trim();const n=norm(raw);
  botSay(T("¿Confirmo la cita? Pulsa «Confirmar» o dime «sí» 🙂 Si quieres cambiar el día, la hora, la oficina o el nombre, dímelo.","Hitzordua berretsiko dut? Sakatu «Berretsi» edo esan «bai» 🙂 Eguna, ordua, bulegoa edo izena aldatu nahi baduzu, esan."));FLOW=citaConfText;}
 function citaDone(){FLOW=null;const lg=FLANG||LANG;const ref=r5fRefPfx()+"-"+CITA.date.getFullYear()+"-"+Math.floor(1000+Math.random()*9000);CITA.ref=ref;PENDING="cita";OFFER=null;const o=CITA.oac;crmSave({tipo:"cita",ref:ref,town:TOWN.slug,townName:TOWN.name,svc:T(CITA.svc.es,CITA.svc.eu),fecha:fmtDay(CITA.date),hora:CITA.time,oficina:o?(o.es+" · "+o.addr):TOWN.sac,nombre:CITA.name,lang:lg});agendaSet(CITA.date,CITA.time,"chat");const tp=typing();setTimeout(()=>{tp.remove();const ok=document.createElement("div");ok.className="citaok msg-in";ok.innerHTML='<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+T("¡Cita confirmada!","Hitzordua berretsita!")+'</div><div class="ref">'+ref+'</div><div class="meta">'+T(CITA.svc.es,CITA.svc.eu)+' · <b>'+fmtDay(CITA.date)+' · '+CITA.time+'</b><br>'+r5fPlace(lg)+', '+TOWN.name+'<br>'+T("Guarda tu número de referencia o añade la cita a tu calendario.","Gorde zure erreferentzia-zenbakia edo gehitu hitzordua zure egutegira.")+'</div><a class="ics"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>'+T("Añadir al calendario","Egutegira gehitu")+'</a>';cb().appendChild(ok);cb().scrollTop=cb().scrollHeight;const SNAP={svc:CITA.svc,date:CITA.date,time:CITA.time,ref:CITA.ref,town:{name:TOWN.name,sac:o?(o.es+" ("+o.addr+")"):TOWN.sac,cp:o?o.cp:TOWN.cp,web:TOWN.web,udala:TOWN.udala,slug:TOWN.slug}};ok.querySelector(".ics").onclick=()=>downloadICS(SNAP);setTimeout(()=>flowChips([{label:T("Pedir otra cita","Beste hitzordu bat"),echo:false,fn:citaStart},{label:T("Ver más trámites","Izapide gehiago"),echo:false,fn:()=>chips(CHIPS[LANG])}]),320);},700);}
 /*R5-flujos:B-end*/
+/*R6-flujos*/
+/* ===== R6 flujos (auditor externo 30-ago) =====
+   #34 el parte ya no secuestra la conversación: una pregunta ajena a mitad del parte se responde con su ficha y se repite el paso;
+       si no hay ficha, se guarda y se responde al cerrar el parte. "déjalo / cancela / mejor no / utzi" salen limpiamente.
+   #36 tipos extra de incidencia por texto (banco, semáforo, árbol, ruido) · #31 dirección con mayúsculas · #33 tuteo en la tarjeta del parte
+   #30 anular cita: una sola mención a la cita online; la cita creada en el chat se puede anular aquí mismo (referencia GET-…)
+   #21 repetir el trámite en el paso del día no es "día mal escrito" · #20/#89 pastilla "Cita online oficial del Ayuntamiento" */
+var R6K=null; /* flujo en marcha: "qj" (parte) | "cita" — solo para el texto de salida */
+var R6_QJX={
+ mobiliario:{id:"mobiliario",es:"🪑 Mobiliario urbano / parques",eu:"🪑 Hiri-altzariak / parkeak"},
+ semaforo:{id:"semaforo",es:"🚦 Semáforo / señales",eu:"🚦 Semaforoa / seinaleak"},
+ arbolado:{id:"arbolado",es:"🌳 Árboles / jardines",eu:"🌳 Zuhaitzak / lorategiak"},
+ ruido:{id:"ruido",es:"🔊 Ruido / molestias",eu:"🔊 Zarata / eragozpenak"}};
+/* G · #20/#89: la pastilla de la cita oficial habla al vecino, no al Ayuntamiento */
+(function(){try{if(typeof GETXO_LINKS!=="undefined"&&GETXO_LINKS.__cita){GETXO_LINKS.__cita[0]="Cita online oficial del Ayuntamiento";GETXO_LINKS.__cita[2]="Udalaren hitzordu-zerbitzu ofiziala";}}catch(e){}})();
+/* tipo de incidencia solo por la palabra (para el paso "¿de qué tipo es?") */
+function r6fQjxType(n){
+ if(/(semaforo|semaforu|senal(es)? de trafico|senal de (stop|ceda)|paso de cebra|paso de peatones|oinezkoen pasabide|seinale)/.test(n))return R6_QJX.semaforo;
+ if(/\b(banco|bancos|banku|bankua|bankuak|columpio|columpios|zabu|zabua|tobogan|parque infantil|haur parke|valla|vallas|hesi|hesia|barandilla|baranda|fuente|iturri|iturria|marquesina|bolardo|pivote|mobiliario|cartel|placa)\b/.test(n))return R6_QJX.mobiliario;
+ if(/\b(arbol|arboles|zuhaitz|zuhaitza|zuhaitzak|rama|ramas|adar|adarra|seto|setos|jardin|jardines|lorategi|lorategia|hierba|belar|belarra|maleza|palmera|arbusto|arbustos)\b/.test(n))return R6_QJX.arbolado;
+ if(/(ruido|ruidos|zarata|zaratak|estruendo|musica alta|musika altu)/.test(n))return R6_QJX.ruido;
+ return null;}
+/* tipo + señal de incidencia (roto, caído, no funciona, "hay un…") en un texto libre; null si es una pregunta informativa */
+function r6fQjxFromText(n){
+ const t=r6fQjxType(n);if(!t)return null;
+ const noInfo=/\b(como|nola|donde|non|puedo|se puede|hay que|que es|cuanto|telefono|zenbat|cerca|cual|zein|horario|ordutegi)\b/.test(n);
+ const broken=/(\brot[oa]s?\b|apurtut|apurtu|fundid|apagad|caid|erori|desbordad|atascad|hundid|estropead|no funciona|ez dabil|sin luz|levantad|suelt[oa]s?\b|peligros|arrancad|oxidad|vandaliz|pintarrajead|parpade|itzalita|tirad[oa]s?\b|se ha caido|a punto de caer|\bsec[oa]s?\b|abandonad|desprendid|colgando|arriskutsu|hondatuta|lehor)/.test(n);
+ const explicitQ=/(dar parte|doy parte|poner (un|una|la) (parte|queja|reclamacion|incidencia)|quiero (quejarme|reclamar|avisar|denunciar)|kexa (bat )?jarri|partea eman|salatu nahi)/.test(n);
+ const hayUn=/\bhay (un|una|unos|unas|mucho|mucha)\b/.test(n);
+ if(t.id==="ruido"){if(noInfo&&!explicitQ)return null;return (/(noche|gau|bar\b|obra|molest|insoportable|no (me |nos )?deja|dormir|lo egin|todos los dias|egunero|terraza|local|vecino|bizilagun)/.test(n)||explicitQ)?t:null;}
+ if(broken||explicitQ)return t;
+ if(hayUn&&!noInfo)return t;
+ return null;}
+/* C · #31: primera letra en mayúscula por palabra ("amesti 8, frente al portal" -> "Amesti 8, frente al portal"); si el vecino ya usó mayúsculas se respeta */
+function r6fCap(s){try{s=String(s||"").trim().replace(/^(esta |está |es |en |hemen: |hemen )+/i,"");if(!s)return s;
+ const STOPW=/^(de|del|la|el|los|las|y|e|al|a|en|con|s\/n|junto|frente|lado|esquina|portal|delante|detras|cerca|numero|n|sin|por|para|entre|hacia|kalea|kale|parean|ondoan|aurrean|atzean|zenbakia|eta|abajo|arriba|enfrente|bar|parque|plaza|calle|avenida|paseo|parking|aparcamiento|colegio|escuela|ambulatorio|metro|estacion|rotonda|puente|playa|puerto|mercado|iglesia|farmacia|cruce|semaforo|parada|bajo|casa|edificio|bloque|acera|barrio|zona)$/;
+ return s.split(/(\s+)/).map((w,i)=>{if(!w.trim()||/\d/.test(w)||/[A-ZÁÉÍÓÚÑ]/.test(w))return w;const core=norm(w).replace(/[,.;:]+$/,"");if(i>0&&STOPW.test(core))return w;return w.charAt(0).toUpperCase()+w.slice(1);}).join("");}catch(e){return s;}}
+/* ubicación "de la avenida X" / "en la calle Y" cuando r5fLoc (que exige "en / junto a…") no la pilla */
+function r6fLoc(raw){try{const s=String(raw||"").replace(/[¿?¡!]/g," ");
+ const m=s.match(/\b(?:de|del|en)\s+(?:la |el |los |las )?((?:calle|c\/|avenida|avda\.?|plaza|paseo|parque|barrio|kalea?|etorbidea|plazan|parkea?)\s+[A-ZÁÉÍÓÚÑa-záéíóúñ0-9][^.;!?]{1,50})/i);
+ if(!m)return null;let loc=m[1].trim().replace(/\s+(que|y|hay|lleva|esta|está|desde|porque|no|se|con|ya|sigue|lleva)\b.*$/i,"").replace(/[,\s]+$/,"").trim();
+ if(loc.split(/\s+/).length<2)return null;return loc;}catch(e){return null;}}
+/* A · #34: ¿parece una pregunta ajena al paso? */
+function r6fIsQ(raw,n){return /[?¿]/.test(String(raw))||/^(perdona|perdon|oye|una (cosa|duda|pregunta)|por cierto|barkatu|aizu|y |eta )?\s*(a que hora|que hora|cuando|noiz|zer ordu|donde (esta|puedo|se|hay)|non (dago|dagoen)|cuanto|zenbat|como (se|puedo|hago|pido|saco)|nola|que (documentos|papeles|necesito|hay que)|hay que|tengo que|puedo |se puede|es obligatori|cual es|zein da|por que|para que|zergatik|telefono de|horario de)\b/.test(n);}
+/* responde a la pregunta con la ficha que corresponda y repite el paso del parte (stepFn = paso actual, again = re-pregunta). true si la ha gestionado */
+function r6fAside(raw,stepFn,again){
+ const n=norm(raw);if(!n||!r6fIsQ(raw,n))return false;
+ if(/(eso es todo|nada mas|hori da dena|besterik ez)/.test(n))return false;
+ const lg=FLANG||LANG;FLOW=stepFn;
+ /* pregunta sobre el propio parte (¿cuánto tardan? ¿me avisan?): respuesta honesta sin inventar plazos */
+ if(/(tard|arregl|reparar|cuando (lo|la|vienen|pasan)|konpon|noiz etorriko|seguimiento|jarraipen|me avis|abisatu|que pasa (despues|luego)|zer gertatzen da gero)/.test(n)&&!/(ayuntamiento|udaletx|oficina|bulego|horario|ordutegi)/.test(n)){
+  botSay(T("El plazo depende del área que lo atienda, así que no te lo puedo asegurar desde aquí; en cuanto registremos el parte, le llega con tu descripción y, si dejas contacto, te avisan del seguimiento 🙂","Epea artatzen duen arloaren araberakoa da, beraz ezin dizut hemendik ziurtatu; partea erregistratu bezain laster zure deskribapenarekin iritsiko zaie eta, kontaktua uzten baduzu, jarraipenaren berri emango dizute 🙂"),again);return true;}
+ const it=r5fStrong(raw,["quejas","medioambiente","residuos","obras","trafico","persona","fuera","saludo","gracias","insulto"],3.5);
+ if(it&&(it[lg]||it.es)){botSay(it[lg]||it.es,()=>{try{linkPill(it,lg);}catch(e){}again();});return true;}
+ QJ.later=String(raw).trim().slice(0,200);
+ botSay(T("Eso te lo miro en cuanto cerremos el parte, que ya casi está 🙂","Hori partea itxi bezain laster begiratuko dizut, ia bukatuta dago eta 🙂"),again);return true;}
+/* re-preguntas de cada paso */
+function r6fAgainWhere(){FLOW=qjDesc;botSay(T("Y ahora, ¿dónde está exactamente? (calle y número, o un punto de referencia)","Eta orain, non dago zehazki? (kalea eta zenbakia, edo erreferentzia-puntu bat)"));}
+function r6fAgainDesc(){FLOW=qjConfirm;botSay(T("Y ahora, cuéntame en una frase qué pasa"+(QJ.desc0?" (si ya está todo dicho, escribe «eso es todo»)":"")+" 🙂","Eta orain, kontatu esaldi batean zer gertatzen den"+(QJ.desc0?" (dena esanda badago, idatzi «hori da dena»)":"")+" 🙂"));}
+function r6fAskFollow(){FLOW=qjFollowText;botSay(T("¿Quieres que te avisemos del <b>seguimiento</b> de tu parte?","Partearen <b>jarraipenaren</b> berri jaso nahi duzu?"),()=>flowChips([{label:T("Sí, avisadme","Bai, abisatu"),echo:false,fn:qjAskMail},{label:T("No, anónimo","Ez, anonimoa"),echo:false,fn:()=>qjContactGot("")}]));}
+function r6fAgainSend(){FLOW=qjConfText;botSay(T("¿Envío el parte? Pulsa «Enviar parte» o dime «sí» 🙂","Partea bidaliko dut? Sakatu «Partea bidali» edo esan «bai» 🙂"),()=>flowChips([{label:T("✓ Enviar parte","✓ Partea bidali"),cta:true,echo:false,fn:qjDone},{label:T("↺ Empezar de nuevo","↺ Berriro hasi"),echo:false,fn:qjStart}]));}
+function r6fAgainType(){FLOW=qjTypeText;botSay(T("Y ahora, ¿de qué tipo es la incidencia?","Eta orain, zer motatako intzidentzia da?"),()=>flowChips(QJ_TYPES.map(t=>({label:T(t.es,t.eu),fn:()=>qjWhere(t)}))));}
+/* salida limpia de cualquier flujo: además de gracias/déjalo/cancelar, "mejor no", "paso", "lo dejo", "cancela"; texto según sea parte o cita */
+function flowBye(n){n=String(n||"");
+ if(/(eskerrik asko|mila esker|gracias|agur|adios|cancel|anul|dejalo|dejarlo|olvidalo|utzi|bertan behera|nada nada)/.test(n)||/^(mejor no|no,? (mejor )?no|paso|olvida|lo dejo|dejemoslo|no quiero seguir|no sigo|ez dut nahi|nahikoa|kito)\b[^a-z]*$/.test(n)){
+  FLOW=null;const qj=(R6K==="qj");R6K=null;
+  botSay(qj?T("Sin problema, lo dejamos aquí 🙂 Si quieres retomar el parte o cualquier otro trámite, dímelo.","Lasai, hemen utziko dugu 🙂 Partea edo beste izapideren bat egin nahi baduzu, esan."):T("Sin problema, lo dejamos aquí 🙂 Si quieres retomar la cita o cualquier otro trámite, dímelo.","Lasai, hemen utziko dugu 🙂 Hitzordua edo beste izapideren bat egin nahi baduzu, esan."),()=>chips(CHIPS[FLANG||LANG]));return true;}
+ return false;}
+/* paso "¿dónde?": pregunta ajena -> ficha y re-pregunta; ubicación -> normalizada */
+function qjDesc(loc){const raw=String(loc||"").trim();const n=norm(raw);if(n&&flowBye(n))return;
+ if(r6fAside(raw,qjDesc,r6fAgainWhere))return;
+ if(!n||/^(eso es todo|hori da dena|no (lo )?se|ni idea|ez dakit|no se donde|no me acuerdo)\b/.test(n)){FLOW=qjDesc;botSay(T("Para que lo encuentren necesito al menos la calle o un punto de referencia (p. ej. «"+(r5fOacs()&&r5fOacs().length?r5fOacs()[0].addr:TOWN.sac)+", frente al portal») 🙂","Aurkitu ahal izateko kalea edo erreferentzia-puntu bat behintzat behar dut (adib. «"+(r5fOacs()&&r5fOacs().length?r5fOacs()[0].addr:TOWN.sac)+" parean») 🙂"));return;}
+ QJ.loc=esc(r6fCap(raw).slice(0,80))||"—";FLOW=qjConfirm;botSay(T("Perfecto. Ahora cuéntame en una frase qué pasa.","Ederki. Orain kontatu esaldi batean zer gertatzen den."));}
+/* paso "¿qué pasa?": pregunta ajena -> ficha y re-pregunta (antes: "te respondo en cuanto cerremos el parte", que nunca se cumplía) */
+function qjConfirm(d){const raw=String(d||"").trim();const n=norm(raw);if(n&&flowBye(n))return;
+ if(!/(eso es todo|nada mas|hori da dena|besterik ez)/.test(n)&&r6fAside(raw,qjConfirm,r6fAgainDesc))return;
+ let desc=raw;if(/(eso es todo|nada mas|ya esta|ya lo he dicho|hori da dena|besterik ez|dena esanda)/.test(n)&&QJ.desc0)desc=QJ.desc0;else desc=esc(raw.slice(0,140));
+ QJ.desc=desc||QJ.desc0||"—";r6fAskFollow();}
+/* resto de pasos: wrappers por asignación (el paso original sigue haciendo su trabajo) */
+{const p=qjFollowText;qjFollowText=function qjFollowText(v){const raw=String(v||"");if(r6fAside(raw,qjFollowText,r6fAskFollow))return;return p(v);};}
+{const p=qjContactGot;qjContactGot=function qjContactGot(v){const raw=String(v||"");if(raw&&!/@/.test(raw)&&r6fAside(raw,qjContactGot,qjAskMail))return;return p(v);};}
+{const p=qjConfText;qjConfText=function qjConfText(v){const raw=String(v||"");const n=norm(raw);if(!/^(si|bai|vale|ok|enviar|bidali|confirmo|dale|venga|correcto)/.test(n)&&r6fAside(raw,qjConfText,r6fAgainSend))return;return p(v);};}
+{const p=qjTypeText;qjTypeText=function qjTypeText(v){const raw=String(v||"");const n=norm(raw);if(flowBye(n))return;const tx=r6fQjxType(n);if(tx&&!/(farol|alumbrado|bache|socavon|acera|contenedor|basur|limpi|otra|otro|beste)/.test(n))return qjWhere(tx);if(r6fAside(raw,qjTypeText,r6fAgainType))return;return p(v);};}
+{const p=qjStart;qjStart=function qjStart(){R6K="qj";return p();};}
+{const p=qjStartPre;qjStartPre=function qjStartPre(type,loc,text,ml){R6K="qj";return p(type,loc?r6fCap(loc):loc,text,ml);};}
+{const p=citaStart;citaStart=function citaStart(seed){R6K="cita";return p(seed);};}
+/* D · #33: tarjeta final del parte en tuteo; y si quedó una pregunta pendiente (sin ficha), se responde ahora */
+function qjDone(){FLOW=null;R6K=null;const ref="INC-"+(new Date()).getFullYear()+"-"+Math.floor(1000+Math.random()*9000);PENDING="quejas";OFFER=null;crmSave({tipo:"parte",ref:ref,town:TOWN.slug,townName:TOWN.name,svc:T(QJ.type.es,QJ.type.eu),lugar:QJ.loc,detalle:QJ.desc,nombre:QJ.contact||"",lang:(FLANG||LANG)});const tp=typing();setTimeout(()=>{tp.remove();const ok=document.createElement("div");ok.className="citaok msg-in";
+ const segEs=QJ.contact?"El área municipal correspondiente lo revisará y te informará del seguimiento.":"El área municipal correspondiente lo revisará y hará su seguimiento.";
+ const segEu=QJ.contact?"Dagokion udal arloak aztertu eta jarraipenaren berri emango dizu.":"Dagokion udal arloak aztertu eta jarraipena egingo dio.";
+ ok.innerHTML='<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+T("¡Parte registrado!","Partea erregistratuta!")+'</div><div class="ref">'+ref+'</div><div class="meta">'+T(QJ.type.es,QJ.type.eu)+' · '+QJ.loc+'<br>'+(QJ.contact?T("Seguimiento a: ","Jarraipenaren berri hona bidaliko dizugu: ")+QJ.contact+'<br>':'')+T(segEs,segEu)+'<br><span style="color:var(--ink-soft)">'+T("Registrado a través del asistente municipal; guarda la referencia por si quieres consultarlo.","Udal laguntzailearen bidez erregistratuta; gorde erreferentzia kontsultatu nahi baduzu.")+'</span></div>';cb().appendChild(ok);cb().scrollTop=cb().scrollHeight;setTimeout(()=>flowChips([{label:T("Dar otro parte","Beste parte bat"),echo:false,fn:qjStart},{label:T("Ver más trámites","Izapide gehiago"),echo:false,fn:()=>chips(CHIPS[LANG])}]),320);
+ if(QJ.later){const q=QJ.later;QJ.later=null;setTimeout(()=>{botSay(T("Y sobre lo que me preguntabas antes («"+esc(q)+"»):","Eta lehen galdetu didazunari buruz («"+esc(q)+"»):"),()=>{PENDING=null;OFFER=null;answer(q);});},1100);}},700);}
+/* E · #30: una sola mención a la cita online; la cita hecha en este chat se puede anular aquí (referencia GET-…) */
+function r6fOwnRef(){try{if(typeof CITA!=="undefined"&&CITA&&CITA.ref&&!CITA.cancelled)return CITA.ref;const j=JSON.parse(localStorage.getItem("iurreta_cita_ref_"+TOWN.slug)||"null");return (j&&j.ref&&!j.cancelled)?j.ref:null;}catch(e){return null;}}
+{const p=r5fCancelText;r5fCancelText=function r5fCancelText(ml){let H=p(ml);
+ try{const M=townLinks();if(M&&M.__cita){const dom=String(M.__cita[1]).split("//").pop();
+  if(H.split(dom).length-1>=2){H=H.split("También puedes hacerlo online, en <b>"+dom+"</b>. ").join("").split("Online ere egin dezakezu, <b>"+dom+"</b> webgunean. ").join("");}}}catch(e){}
+ const ref=r6fOwnRef();
+ if(ref){H=H.split(" ¿Te ayudo a pedir una nueva?").join("").split(" Berri bat eskatzen laguntzea nahi duzu?").join("");
+  H+=(ml==="eu"?"<br><br>Txat honetan eskatu zenuenez, hemen bertan ere <b>bertan behera utz dezaket</b>: idatzi erreferentzia (<b>"+ref+"</b>) berresteko, edo esan «bai».":"<br><br>Como la pediste aquí, también puedo <b>anularla en este chat</b>: escribe la referencia (<b>"+ref+"</b>) para confirmarlo, o dime «sí».");
+  FLOW=r6fCancelRefText;R6K="cita";}
+ return H;};}
+function r6fCancelRefText(v){const raw=String(v||"").trim();const n=norm(raw);const lg=FLANG||LANG;
+ const ref=r6fOwnRef();const m=raw.toUpperCase().match(/[A-Z]{3}-\d{4}-\d{4}/);
+ if(!ref){FLOW=null;answer(raw);return;}
+ if((m&&m[0]===ref)||(!m&&/^(si|bai|vale|ok|anula|anulala|anular|cancela|cancelala|cancelar|ezeztatu|bertan behera|kendu|confirmo|berretsi)\b/.test(n)))return r6fCancelDo(ref,lg);
+ if(m){FLOW=r6fCancelRefText;botSay(lg==="eu"?"Erreferentzia hori ("+esc(m[0])+") ez dator bat txat honetan eskatutako hitzorduarekin (<b>"+ref+"</b>). Egiaztatu zenbakia edo, beste hitzordu bat bada, deitu <b>"+TOWN.tel+"</b> telefonora.":"Esa referencia ("+esc(m[0])+") no coincide con la cita pedida en este chat (<b>"+ref+"</b>). Revisa el número o, si es otra cita, llama al <b>"+TOWN.tel+"</b>.");return;}
+ if(/^(no|ez)\b/.test(n)||flowBye(n)){if(FLOW===null&&!/^(no|ez)\b/.test(n))return;FLOW=null;botSay(T("Vale, la cita sigue en pie 🙂","Ados, hitzorduak bere horretan jarraitzen du 🙂"),()=>chipsFromIds(["cita","contacto"],lg));return;}
+ FLOW=null;answer(raw);}
+function r6fCancelDo(ref,lg){FLOW=null;R6K=null;
+ const own=(typeof CITA!=="undefined"&&CITA&&CITA.ref===ref);
+ const meta=(own&&CITA.svc&&CITA.date)?(" · "+T(CITA.svc.es,CITA.svc.eu)+" · "+fmtDay(CITA.date)+" · "+CITA.time):"";
+ try{if(own&&CITA.date&&CITA.time){const A=loadAgenda();const k=dayKey(CITA.date);if(A[k]&&A[k][CITA.time]==="chat"){delete A[k][CITA.time];saveAgenda(A);}}}catch(e){}
+ try{const key="iurreta_cita_ref_"+TOWN.slug;const j=JSON.parse(localStorage.getItem(key)||"null");if(j&&j.ref===ref){j.cancelled=true;localStorage.setItem(key,JSON.stringify(j));}}catch(e){}
+ if(own)CITA={};
+ PENDING="cita";OFFER="cita";
+ botSay(lg==="eu"?"Eginda ✅ <b>"+ref+"</b> hitzordua"+meta+" bertan behera geratu da. Beste bat nahi baduzu, esan eta minutu batean eskatuko dugu.":"Hecho ✅ La cita <b>"+ref+"</b>"+meta+" queda anulada. Si quieres otra, dímelo y la pedimos en un minuto.",()=>chipsFromIds(["cita","contacto"],lg));}
+{const p=citaDone;citaDone=function citaDone(){p();try{if(CITA&&CITA.ref)localStorage.setItem("iurreta_cita_ref_"+TOWN.slug,JSON.stringify({ref:CITA.ref,svc:T(CITA.svc.es,CITA.svc.eu),fecha:fmtDay(CITA.date),hora:CITA.time,ts:Date.now()}));}catch(e){}};}
+/* F · #21: en el paso del día, repetir el trámite ("padron") no es un día mal escrito; y "mejor para el IBI" cambia el trámite */
+{const p=citaDayText;citaDayText=function citaDayText(v){const raw=String(v||"");const n=norm(raw);
+ if(typeof CITA!=="undefined"&&CITA&&CITA.svc&&!/[?¿]/.test(raw)&&!/\d/.test(n)&&!/(lunes|martes|miercoles|jueves|viernes|sabado|domingo|astelehen|astearte|asteazken|ostegun|ostiral|larunbat|igande|manana|bihar|etzi|hoy|gaur|semana|aste\b|astean|\bdia\b|egun)/.test(n)&&n.split(" ").filter(Boolean).length<=6){
+  const svc=r5fSvcFromText(n);
+  if(svc){const same=svc.id===CITA.svc.id&&(svc.id!=="otros"||svc.es===CITA.svc.es);
+   if(same)return r5fDayChips("Eso es, la cita es para <b>"+CITA.svc.es+"</b> 🙂 ¿Qué día te viene bien?","Hori da, hitzordua <b>"+CITA.svc.eu+"</b> izapiderako da 🙂 Zein egun datorkizu ondo?");
+   if(/(mejor|cambia|cambiar|en vez|mas bien|^no,|hobeto|aldatu|nahiago)/.test(n)){botSay(T("Vale, la cambio a <b>"+svc.es+"</b> 🙂","Ados, <b>"+svc.eu+"</b> izapidera aldatuko dut 🙂"),()=>citaDate(svc));return;}}}
+ return p(v);};}
+/*R6-flujos-end*/
+
 let greeted=false,lastFocus=null;
 function greet(){if(greeted)return;greeted=true;PENDING=null;
  /* Tarjeta de bienvenida con la marca del municipio (los que la tienen activada con intro:true) */
@@ -2137,6 +2344,22 @@ if(typeof TOWNS!=="undefined"&&TOWNS.getxo){
  TOWNS.getxo.aekEu="Getxoko Udal Euskaltegiarekin";
  TOWNS.getxo.aekInfoEu=" (Romo Kultur Etxea, 4. solairua · 94 464 62 99)";
 }
+/*R6-textos-6*/if(typeof TOWNS!=="undefined"&&TOWNS.getxo){(function(g){
+ g.tel010="010 · 944 660 000";
+ /* (F) #14/#65: Getxo no tiene Juzgado de Paz */
+ g.juzgado="Getxo no tiene Juzgado de Paz: los actos del estado civil se hacen en el <b>Registro Civil de Getxo</b>, en los Juzgados de Getxo, y según lo que necesites tienes estos caminos:";
+ g.juzgadoEu="Getxok ez du Bake Epaitegirik: egoera zibileko egintzak <b>Getxoko Erregistro Zibilean</b> egiten dira, Getxoko Epaitegietan, eta behar duzunaren arabera bide hauek dituzu:";
+ g.juzgadoChip=["⚖️ Registro Civil","⚖️ Erregistro Zibila"];
+ /* (M) #41: Getxo usa HAB (Herritarrentzako Arreta Bulegoa) */
+ if(g.sacEu)g.sacEu=g.sacEu.split("HAZ").join("HAB");
+ /* (K) #81: perros y playas segun el barrido (zonas de esparcimiento canino) */
+ if(g.playasEs)g.playasEs=g.playasEs.replace(/🐶[^\n]*/,"🐶 Con perro: en <b>Ereaga, Arrigunaga y La Galea</b> hay zonas de esparcimiento canino donde pueden ir sueltos de <b>16:00 a 11:00</b>; en temporada de baño consulta las restricciones en getxo.eus (Getxo Dog Friendly). En Gorrondatxe/Azkorri y Balanar-La Bola están prohibidos todo el año.");
+ if(g.playasEu)g.playasEu=g.playasEu.replace(/🐶[^\n]*/,"🐶 Txakurrarekin: <b>Ereagan, Arrigunagan eta La Galean</b> txakurrentzako aisialdi-guneak daude, eta <b>16:00etatik 11:00etara</b> aske ibil daitezke; bainu-denboraldian begiratu murrizketak getxo.eus atarian (Getxo Dog Friendly). Gorrondatxe/Azkorrin eta Balanar-La Bolan urte osoan debekatuta daude.");
+ /* (L) #39: Garbigertu sin '24 h' y con los moviles de viernes, sabado y domingo */
+ if(g.resEs)g.resEs=g.resEs.replace(", abiertos 24 h (Ollarretxe-Salsidu, parque Txabarri-Zuazo en Romo y junto al parking de Telletxe)."," (Ollarretxe-Salsidu, parque Txabarri-Zuazo en Romo y junto al parking de Telletxe), y los Garbigertu móviles que paran en distintas plazas los viernes, sábados y domingos.");
+ if(g.resEu)g.resEu=g.resEu.replace(" puntu garbiak ere badituzu, 24 orduz zabalik (Ollarretxe-Salsidu, Txabarri-Zuazo parkea Erromon eta Telletxeko aparkalekuaren ondoan)."," puntu garbiak ere badituzu (Ollarretxe-Salsidu, Txabarri-Zuazo parkea Erromon eta Telletxeko aparkalekuaren ondoan), eta Garbigertu mugikorrak ostiral, larunbat eta igandeetan hainbat plazatan geratzen dira.");
+})(TOWNS.getxo);}
+
 const TERRI={
  bizkaia:{prov:"Bizkaia",
   hac:"la Hacienda Foral de Bizkaia (no el ayuntamiento), con BakQ/certificado en BizkaiBai (bizkaia.eus)",
@@ -2410,6 +2633,26 @@ function applyTown(slug){
  PENDING=null;OFFER=null;FLOW=null;FLANG=null;loadCfg();
  if(_ch&&_ch.classList.contains("open")){resetChat();}else{try{cb().innerHTML="";greeted=false;}catch(e){}}
 }
+/*R6-textos-7*/(function(){
+ /* (F) chip del juzgado segun municipio */
+ var _chipJ=(typeof CHIPLABELS!=="undefined"&&CHIPLABELS.juzgado)?CHIPLABELS.juzgado.slice():null;
+ var _at6=applyTown;
+ applyTown=function(slug){_at6(slug);try{if(_chipJ&&typeof CHIPLABELS!=="undefined")CHIPLABELS.juzgado=(TOWN&&TOWN.juzgadoChip)||_chipJ;}catch(e){}};
+ /* (G) #18/#10: reiniciar la conversacion limpia TODO el estado (no solo la pantalla) */
+ function _clear6(){try{PENDING=null;OFFER=null;FLOW=null;FLANG=null;TOPICHIST=[];LASTTID=null;LASTQN="";CURQ="";LASTML=null;CITA={};QJ={};if(typeof LASTOPTS!=="undefined")LASTOPTS=null;if(typeof CRISIS_LAST!=="undefined"){CRISIS_LAST=null;CRISIS_LASTML=null;}}catch(e){}}
+ var _rc6=resetChat;
+ resetChat=function(){_clear6();_rc6();};
+ window.newConversation=function(){try{resetChat();}catch(e){}};
+ /* (M) #41: en Getxo, HAZ -> HAB en toda salida en euskera (HAZean -> HABean, etc.) */
+ var _loc6=localize;
+ localize=function(t){var r=_loc6(t);try{if(typeof r==="string"&&TOWN&&TOWN.slug==="getxo"&&r.indexOf("HAZ")>=0)r=r.replace(/\bHAZ(?![A-Z])/g,"HAB");}catch(e){}return r;};
+ /* (N) #13: preguntas de biblioteca con pastilla propia (no a las entradas de Getxo Kultura) */
+ if(typeof GETXO_LINKS!=="undefined"&&!GETXO_LINKS.biblioteca)GETXO_LINKS.biblioteca=["Bibliotecas de Getxo","https://www.getxo.eus/es/bibliotecas","Getxoko liburutegiak"];
+ if(typeof GETXO_KW!=="undefined"&&!GETXO_KW.some(function(p){return p[0]==="biblioteca";}))GETXO_KW.unshift(["biblioteca",/bibliotec|liburutegi|\bbiblio\b/i]);
+ var _lp6=linkPill;
+ linkPill=function(it,ml){try{if(it&&it.id==="cultura"&&TOWN&&TOWN.slug==="getxo"&&/bibliotec|liburutegi|\bbiblio\b/.test(CURQ||""))return _lp6({id:"biblioteca"},ml);}catch(e){}return _lp6(it,ml);};
+})();
+
 function applyLang(){
  const u=UI[LANG];document.documentElement.lang=LANG;
  document.title=TOWN.udala+(LANG==="eu"?" · Herritarrentzako laguntzaile birtuala":" · Ayuntamiento de "+TOWN.name);
