@@ -137,6 +137,9 @@ section.bg-accent .text-text-muted { color: #e4eede !important; }
 section.bg-accent .bg-secondary { color: #1f2d22 !important; }
 section.bg-accent .gg-cup { color: #fdf9ee; }
 
-/* 10) Fix: el UL invisible del boton social tapaba los enlaces bajos del menu movil
-   (bug que la web original ya tenia con "Contact"). Cerrado, no captura toques. */
-.social-fab:not(.is-open) .social-fab-actions { pointer-events: none; }
+/* 10) Fix: el contenedor invisible del boton social tapaba los enlaces bajos del
+   menu movil (bug que la web original ya tenia con "Contact"). Solo el boton
+   captura toques; las acciones, unicamente con el menu social abierto. */
+.social-fab { pointer-events: none; }
+.social-fab .social-fab-toggle { pointer-events: auto; }
+.social-fab.is-open .social-fab-actions { pointer-events: auto; }
