@@ -24,6 +24,10 @@
 
 html, body { background-color: #acbe9d; }
 
+/* El panel del menú móvil (translate-x fuera de pantalla) creaba 20px de
+   scroll horizontal en algunas páginas: nunca permitir scroll lateral. */
+html, body { overflow-x: clip; }
+
 /* Tarjetas y superficies que eran blancas puras -> verde suave */
 .bg-white { background-color: #c3d2b5 !important; }
 
@@ -49,13 +53,15 @@ html, body { background-color: #acbe9d; }
   mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
 }
 
-/* 4b) Ventanas de foto de las tarjetas Tour/Eventos más grandes
-   (clases que el Tailwind compilado no incluía) */
-.w-32 { width: 8rem !important; }
-.h-32 { height: 8rem !important; }
+/* 4b) Ventanas de foto de las tarjetas Tour/Eventos en grande
+   (recuadros tipo banner, como el boceto de la jefa) */
+.gg-card-win {
+  width: 20rem;
+  max-width: 78vw;
+  height: 11rem;
+}
 @media (min-width: 768px) {
-  .md\:w-28 { width: 7rem !important; }
-  .md\:h-28 { height: 7rem !important; }
+  .gg-card-win { width: 22rem; height: 12rem; }
 }
 
 /* 5) Humo de café animado (sobre el botón-grano y el sello del tour) */
