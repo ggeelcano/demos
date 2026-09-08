@@ -46,7 +46,7 @@ html, body { overflow-x: clip; }
    El fondo arranca en el verde del final de la foto del hero (#314935)
    y los granos aparecen en fundido por encima. */
 .gg-beans-band {
-  background: linear-gradient(to bottom, #314935 0%, #41563e 22%, #5c604b 48%, #75705a 72%, #837a62 100%);
+  background: linear-gradient(to bottom, #212821 0%, #2c3529 18%, #46453a 45%, #6b6450 72%, #837a62 100%);
 }
 .coffee-fade-in {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
@@ -170,4 +170,49 @@ section.bg-accent .gg-cup { color: #fdf9ee; }
 .gg-ilustracion,
 section.bg-background:has(img[src*="hero-illustration"]) {
   background-color: #ead9b8;
+}
+
+/* 12) Fundido por scroll entre la montana del hero y los granos.
+   Una capa con la MISMA foto de granos y el MISMO tamano que la banda se
+   superpone al final del hero; su opacidad y su saturacion crecen con el
+   scroll (las mueve custom-2026.js). Cuando la banda real llega arriba, los
+   granos ya estan a maxima intensidad y el paso es continuo. */
+.gg-granos-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45svh;                 /* el JS la iguala a la altura de la banda */
+  pointer-events: none;          /* no tapa los botones del hero */
+  overflow: hidden;
+  opacity: var(--gg-beans-op, .04);
+  filter: saturate(var(--gg-beans-sat, .15)) contrast(var(--gg-beans-con, .85));
+  /* la mascara va en el contenedor: la foto de dentro esta volteada */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .16) 30%, rgb(0 0 0 / .52) 58%, rgb(0 0 0 / .84) 80%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .16) 30%, rgb(0 0 0 / .52) 58%, rgb(0 0 0 / .84) 80%, #000 100%);
+  will-change: opacity, filter;
+}
+.gg-granos-fade img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* volteada: su borde inferior tiene el mismo tono que el borde superior de
+     la banda, asi la union entre capa y banda no deja ninguna linea */
+  transform: scaleY(-1);
+}
+
+
+/* El degradado a negro del final del hero marcaba el corte: sobra con el fundido */
+.gg-hero-fade-out { display: none !important; }
+
+/* La banda entra en el MISMO fundido que la capa del hero: mientras los
+   granos son tenues se ve el degradado (verde de la vegetacion del hero
+   pasando a tierra), y al final los granos lo tapan del todo. */
+.gg-beans-band .coffee-fade-in {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: var(--gg-beans-op, .04);
+  filter: saturate(var(--gg-beans-sat, .15)) contrast(var(--gg-beans-con, .85));
+  will-change: opacity, filter;
 }
