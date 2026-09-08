@@ -144,9 +144,9 @@
     var base = src.split('_astro/')[0];          // '../' o '../../'
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
     var textos = {
-      es: ['Cerezas de café madurando en la planta'],
-      de: ['Kaffeekirschen reifen an der Pflanze'],
-      en: ['Coffee cherries ripening on the plant']
+      es: ['Leo, nuestro guía, entre los cafetos'],
+      de: ['Leo, unser Guide, zwischen den Kaffeepflanzen'],
+      en: ['Leo, our guide, among the coffee plants']
     };
     var alt = textos[lang] || textos.en;
 
@@ -166,7 +166,9 @@
       caja.appendChild(foto);
       return caja;
     }
-    col.insertBefore(nuevoMarco('exp-rama', alt[0]), marco);
+    // Leo va el primero (lo pidio la jefa); la rama de cerezas se retira
+    // porque repite lo que ya se ve en su foto.
+    col.insertBefore(nuevoMarco('exp-leo', alt[0]), marco);
   }
 
   // 6) Historia del cafe: el texto es larguisimo y la columna de la foto,
