@@ -214,7 +214,95 @@
       .forEach(function (nombre, i) { col.appendChild(nuevoMarco(nombre, alt[i])); });
   }
 
-  function init() { initSteam(); initNews(); initIlustracion(); initBeansFade(); initFotosExperiencia(); initFotosHistoria(); }
+  function idioma() { return (document.documentElement.lang || 'en').slice(0, 2); }
+
+  // 7) Fuera la galeria de la portada: sus 12 fotos ya estan en "Photo
+  //    Gallery", que queda como galeria unica.
+  function initSinGaleriaHome() {
+    if (!document.querySelector('.gg-beans-band')) return;   // solo la portada
+    var img = document.querySelector('section .grid img[alt*="Finca Los Casta"]');
+    var sec = img && img.closest('section');
+    if (sec) sec.classList.add('gg-oculta');
+  }
+
+  // 8) Dejar dicho que el idioma de la visita se acuerda al reservar.
+  function initNotaIdioma() {
+    var textos = {
+      es: 'Dinos el idioma que prefieres al hacer la reserva: lo acordamos de antemano para asignarte el guía.',
+      de: 'Bitte geben Sie die gewünschte Sprache bei der Buchung an – wir stimmen sie vorab ab.',
+      en: 'Please tell us your preferred language when booking – we arrange it in advance.'
+    };
+    var nota = textos[idioma()] || textos.en;
+
+    // a) en la respuesta de la FAQ sobre idiomas
+    var faq = [].slice.call(document.querySelectorAll('details'))
+      .filter(function (d) { return /idioma|language|sprache/i.test(d.textContent); })[0];
+    if (faq && !faq.querySelector('.gg-nota-idioma')) {
+      var cuerpo = faq.querySelector('div');
+      if (cuerpo) {
+        var s = document.createElement('strong');
+        s.className = 'gg-nota-idioma';
+        s.textContent = nota;
+        cuerpo.appendChild(s);
+      }
+    }
+
+    // b) junto a la lista de idiomas de la pagina de reserva
+    var lista = [].slice.call(document.querySelectorAll('li, p, span'))
+      .filter(function (e) {
+        return /ES\s*·\s*EN/.test(e.textContent) && e.children.length === 0;
+      })[0];
+    if (lista) {
+      var caja = lista.closest('li') || lista.parentElement;
+      if (caja && !caja.parentElement.querySelector('.gg-nota-idioma')) {
+        var p = document.createElement('p');
+        p.className = 'gg-nota-idioma';
+        p.textContent = nota;
+        caja.parentElement.appendChild(p);
+      }
+    }
+  }
+
+  // 9) Contacto: el mapa salia muy alejado y sin forma de acercarlo. Se
+  //    centra en la finca con zoom util y se anade un boton "como llegar".
+  function initMapa() {
+    var marco = document.querySelector('.privacy-map-wrapper') ||
+                document.querySelector('[class*="map-wrapper"]');
+    if (!marco || marco.querySelector('.gg-como-llegar')) return;
+
+    var destino = 'Finca+Los+Casta%C3%B1os,+Camino+de+Los+Romeros,+35489+Agaete,+Las+Palmas';
+    var lang = idioma();
+    var textos = { es: 'Cómo llegar', de: 'Anfahrt', en: 'Get directions' };
+
+    // el embed del cliente venia con un zoom fijo demasiado abierto
+    function acercar() {
+      var f = marco.querySelector('iframe[src*="maps"]');
+      if (!f || f.dataset.ggZoom) return;
+      f.dataset.ggZoom = '1';
+      f.src = 'https://www.google.com/maps?q=' + destino + '&z=15&hl=' + lang + '&output=embed';
+      f.setAttribute('allowfullscreen', '');
+    }
+    acercar();
+    // el iframe ya existe y le cambian el src al pulsar "ver mapa": hay que
+    // vigilar tambien los atributos, no solo los nodos nuevos
+    new MutationObserver(acercar).observe(marco, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ['src']
+    });
+
+    var a = document.createElement('a');
+    a.className = 'gg-como-llegar';
+    a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + destino;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = (textos[lang] || textos.en) + ' →';
+    marco.parentElement.appendChild(a);
+  }
+
+  function init() {
+    initSteam(); initNews(); initIlustracion(); initBeansFade();
+    initFotosExperiencia(); initFotosHistoria();
+    initSinGaleriaHome(); initNotaIdioma(); initMapa();
+  }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }

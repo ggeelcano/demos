@@ -250,3 +250,45 @@ section.bg-background:has(img[src*="hero-illustration"]) {
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* 15) Peticiones 8-sep de la jefa */
+
+/* 15a) Fuera la galeria de la portada: las 12 fotos ya estan todas en
+   "Photo Gallery", asi que no se pierde nada y se evita duplicarla. */
+.gg-oculta { display: none !important; }
+
+/* 15b) El logotipo (la casita) va en amarillo tambien sobre el hero, no
+   en blanco. El texto sigue cambiando de color segun el fondo. */
+header img[src*="logo-inverse"] { opacity: 0 !important; }
+header img[src*="og-default"] { opacity: 1 !important; }
+
+/* 15c) Aviso del idioma de la visita */
+.gg-nota-idioma {
+  display: block;
+  margin-top: .75rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: #4c5a4c;
+}
+.gg-beans-band ~ * .gg-nota-idioma { color: inherit; }
+
+/* 15d) Boton para abrir el mapa en grande / como llegar */
+.gg-como-llegar {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .85rem;
+  padding: .7rem 1.15rem;
+  background: #207657;
+  color: #fdf9ee;
+  font-weight: 600;
+  font-size: .9375rem;
+  letter-spacing: .02em;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.gg-como-llegar:hover { background: #1a5f46; }
+
+/* 15e) Experiencia: fotos mas grandes */
+.gg-col-fotos { max-width: 30rem !important; }
