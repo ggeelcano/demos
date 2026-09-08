@@ -52,7 +52,16 @@
     });
   }
 
-  function init() { initSteam(); initNews(); }
+  // 3) Respaldo para navegadores sin :has() — marcar la seccion de la
+  //    ilustracion para poder pintarla de arena desde el CSS.
+  function initIlustracion() {
+    var img = document.querySelector('img[src*="hero-illustration"]');
+    if (!img) return;
+    var sec = img.closest('section');
+    if (sec) sec.classList.add('gg-ilustracion');
+  }
+
+  function init() { initSteam(); initNews(); initIlustracion(); }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
