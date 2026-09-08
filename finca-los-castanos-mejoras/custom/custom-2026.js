@@ -17,7 +17,7 @@
   }
   function initSteam() {
     document.querySelectorAll('.social-fab-toggle').forEach(addSteam);
-    document.querySelectorAll('.gg-cup').forEach(addSteam);
+    // La taza de los titulares va SIN humo (peticion 8-sep).
   }
 
   // 2) Noticias editables: se cargan desde noticias.json (el cliente edita solo ese archivo)
