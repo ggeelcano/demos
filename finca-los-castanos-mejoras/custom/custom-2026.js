@@ -144,9 +144,9 @@
     var base = src.split('_astro/')[0];          // '../' o '../../'
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
     var textos = {
-      es: ['Cerezas de café madurando en la planta', 'Cafetera y tazas para la degustación'],
-      de: ['Kaffeekirschen reifen an der Pflanze', 'Kaffeekanne und Tassen für die Verkostung'],
-      en: ['Coffee cherries ripening on the plant', 'Coffee pot and cups for the tasting']
+      es: ['Cerezas de café madurando en la planta'],
+      de: ['Kaffeekirschen reifen an der Pflanze'],
+      en: ['Coffee cherries ripening on the plant']
     };
     var alt = textos[lang] || textos.en;
 
@@ -167,7 +167,6 @@
       return caja;
     }
     col.insertBefore(nuevoMarco('exp-rama', alt[0]), marco);
-    col.appendChild(nuevoMarco('exp-cata', alt[1]));
   }
 
   // 6) Historia del cafe: el texto es larguisimo y la columna de la foto,
@@ -187,11 +186,11 @@
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
     var textos = {
       es: ['Cultivos del Valle de Agaete', 'Plataneras en el valle',
-           'Cerezas de café recién recogidas', 'Gajos de mandarina'],
+           'Cerezas de café recién recogidas'],
       de: ['Anbau im Valle de Agaete', 'Bananenstauden im Tal',
-           'Frisch geerntete Kaffeekirschen', 'Mandarinenspalten'],
+           'Frisch geerntete Kaffeekirschen'],
       en: ['Crops in the Valle de Agaete', 'Banana plants in the valley',
-           'Freshly picked coffee cherries', 'Mandarin segments']
+           'Freshly picked coffee cherries']
     };
     var alt = textos[lang] || textos.en;
 
@@ -211,7 +210,7 @@
       caja.appendChild(foto);
       return caja;
     }
-    ['exp-valle', 'exp-platanos', 'exp-mano', 'exp-mandarina']
+    ['exp-valle', 'exp-platanos', 'exp-mano']
       .forEach(function (nombre, i) { col.appendChild(nuevoMarco(nombre, alt[i])); });
   }
 
