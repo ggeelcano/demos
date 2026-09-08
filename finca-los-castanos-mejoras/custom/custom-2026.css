@@ -232,3 +232,21 @@ section.bg-background:has(img[src*="hero-illustration"]) {
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* 14) Historia del cafe: la columna de la foto era sticky y con una sola
+   imagen dejaba un hueco enorme junto a un texto muy largo. Ahora lleva
+   varias fotos repartidas de arriba abajo, a la altura del texto. */
+.gg-col-historia {
+  position: static !important;   /* sin sticky: con varias fotos estorba */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.gg-col-historia img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}

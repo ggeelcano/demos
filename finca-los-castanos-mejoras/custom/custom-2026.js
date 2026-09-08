@@ -170,7 +170,52 @@
     col.appendChild(nuevoMarco('exp-cata', alt[1]));
   }
 
-  function init() { initSteam(); initNews(); initIlustracion(); initBeansFade(); initFotosExperiencia(); }
+  // 6) Historia del cafe: el texto es larguisimo y la columna de la foto,
+  //    ademas de sticky, tenia una sola imagen. Se reparten cuatro fotos mas
+  //    siguiendo lo que cuenta el texto (el valle, los platanos que
+  //    sustituyeron al cafe, las parcelas familiares y las notas de cata).
+  function initFotosHistoria() {
+    var img = document.querySelector('img[src*="plantation-view"]');
+    if (!img) return;
+    var marco = img.parentElement;
+    var col = marco && marco.parentElement;
+    if (!col || col.querySelector('.gg-foto-extra')) return;
+
+    var src = img.getAttribute('src');
+    if (src.indexOf('_astro/') < 0) return;
+    var base = src.split('_astro/')[0];
+    var lang = (document.documentElement.lang || 'en').slice(0, 2);
+    var textos = {
+      es: ['Cultivos del Valle de Agaete', 'Plataneras en el valle',
+           'Cerezas de café recién recogidas', 'Gajos de mandarina'],
+      de: ['Anbau im Valle de Agaete', 'Bananenstauden im Tal',
+           'Frisch geerntete Kaffeekirschen', 'Mandarinenspalten'],
+      en: ['Crops in the Valle de Agaete', 'Banana plants in the valley',
+           'Freshly picked coffee cherries', 'Mandarin segments']
+    };
+    var alt = textos[lang] || textos.en;
+
+    col.classList.add('gg-col-historia');
+    function nuevoMarco(nombre, texto) {
+      var caja = document.createElement('div');
+      caja.className = marco.className + ' gg-foto-extra';
+      var foto = document.createElement('img');
+      foto.src = base + 'custom/' + nombre + '-900.webp';
+      foto.srcset = base + 'custom/' + nombre + '-600.webp 600w, ' +
+                    base + 'custom/' + nombre + '-900.webp 900w';
+      foto.sizes = img.getAttribute('sizes') || '(max-width: 768px) 100vw, 50vw';
+      foto.alt = texto;
+      foto.loading = 'lazy';
+      foto.decoding = 'async';
+      foto.className = img.className;
+      caja.appendChild(foto);
+      return caja;
+    }
+    ['exp-valle', 'exp-platanos', 'exp-mano', 'exp-mandarina']
+      .forEach(function (nombre, i) { col.appendChild(nuevoMarco(nombre, alt[i])); });
+  }
+
+  function init() { initSteam(); initNews(); initIlustracion(); initBeansFade(); initFotosExperiencia(); initFotosHistoria(); }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
