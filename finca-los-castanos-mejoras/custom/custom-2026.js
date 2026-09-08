@@ -129,7 +129,48 @@
     pintar();
   }
 
-  function init() { initSteam(); initNews(); initIlustracion(); initBeansFade(); }
+  // 5) Pagina Experiencia: la columna tenia una sola foto y dos huecos
+  //    enormes. Se anaden dos fotos mas siguiendo el orden del texto:
+  //    la planta (cultivo) -> el secado -> la cafetera (degustacion).
+  function initFotosExperiencia() {
+    var img = document.querySelector('img[src*="plantation-tour"]');
+    if (!img) return;
+    var marco = img.parentElement;
+    var col = marco && marco.parentElement;
+    if (!col || col.querySelector('.gg-foto-extra')) return;
+
+    var src = img.getAttribute('src');
+    if (src.indexOf('_astro/') < 0) return;
+    var base = src.split('_astro/')[0];          // '../' o '../../'
+    var lang = (document.documentElement.lang || 'en').slice(0, 2);
+    var textos = {
+      es: ['Cerezas de café madurando en la planta', 'Cafetera y tazas para la degustación'],
+      de: ['Kaffeekirschen reifen an der Pflanze', 'Kaffeekanne und Tassen für die Verkostung'],
+      en: ['Coffee cherries ripening on the plant', 'Coffee pot and cups for the tasting']
+    };
+    var alt = textos[lang] || textos.en;
+
+    col.classList.add('gg-col-fotos');
+    function nuevoMarco(nombre, texto) {
+      var caja = document.createElement('div');
+      caja.className = marco.className + ' gg-foto-extra';
+      var foto = document.createElement('img');
+      foto.src = base + 'custom/' + nombre + '-900.webp';
+      foto.srcset = base + 'custom/' + nombre + '-600.webp 600w, ' +
+                    base + 'custom/' + nombre + '-900.webp 900w';
+      foto.sizes = img.getAttribute('sizes') || '(max-width: 768px) 80vw, 28vw';
+      foto.alt = texto;
+      foto.loading = 'lazy';
+      foto.decoding = 'async';
+      foto.className = img.className;
+      caja.appendChild(foto);
+      return caja;
+    }
+    col.insertBefore(nuevoMarco('exp-rama', alt[0]), marco);
+    col.appendChild(nuevoMarco('exp-cata', alt[1]));
+  }
+
+  function init() { initSteam(); initNews(); initIlustracion(); initBeansFade(); initFotosExperiencia(); }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }

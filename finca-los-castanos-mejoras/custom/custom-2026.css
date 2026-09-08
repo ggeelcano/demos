@@ -216,3 +216,19 @@ section.bg-background:has(img[src*="hero-illustration"]) {
   filter: saturate(var(--gg-beans-sat, .15)) contrast(var(--gg-beans-con, .85));
   will-change: opacity, filter;
 }
+
+/* 13) Pagina Experiencia: la foto suelta dejaba dos huecos enormes en su
+   columna. Ahora son tres fotos centradas que siguen el orden del texto:
+   la planta -> el secado -> la degustacion. */
+.gg-col-fotos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+.gg-col-fotos img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
