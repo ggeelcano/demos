@@ -258,7 +258,8 @@
       var caja = lista.closest('li') || lista.parentElement;
       if (caja && !caja.parentElement.querySelector('.gg-nota-idioma')) {
         var p = document.createElement('p');
-        p.className = 'gg-nota-idioma';
+        // esta va sobre la foto del hero: hace falta texto claro con sombra
+        p.className = 'gg-nota-idioma gg-nota-idioma--claro';
         p.textContent = nota;
         caja.parentElement.appendChild(p);
       }
