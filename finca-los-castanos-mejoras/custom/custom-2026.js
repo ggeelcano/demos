@@ -84,8 +84,11 @@
       capa.className = 'gg-granos-fade';
       capa.setAttribute('aria-hidden', 'true');
       var copia = document.createElement('img');
-      copia.src = granos.getAttribute('src');
-      if (granos.getAttribute('srcset')) copia.srcset = granos.getAttribute('srcset');
+      // La banda lleva la foto con el borde de abajo recortado (-roto-); la
+      // capa del hero va volteada y necesita la foto entera, sin el recorte.
+      var entera = function (s) { return s.replace(/granos-2026-roto-/g, 'granos-2026-'); };
+      copia.src = entera(granos.getAttribute('src'));
+      if (granos.getAttribute('srcset')) copia.srcset = entera(granos.getAttribute('srcset'));
       copia.sizes = granos.getAttribute('sizes') || '100vw';
       copia.alt = '';
       copia.decoding = 'async';

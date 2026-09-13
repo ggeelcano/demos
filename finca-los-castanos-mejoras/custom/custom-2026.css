@@ -44,9 +44,14 @@ html, body { overflow-x: clip; }
 
 /* 4) Banda de granos: transición transparente, sin línea negra.
    El fondo arranca en el verde del final de la foto del hero (#314935)
-   y los granos aparecen en fundido por encima. */
+   y los granos aparecen en fundido por encima.
+   Borde inferior ROTO (13-sep): la foto de los granos lleva recortado el
+   borde de abajo siguiendo la línea de los granos (granos-2026-roto-*.webp,
+   hecho con borde-roto.mjs), como tenía la web original. Por eso el último
+   tramo del fondo es el arena de la sección de la ilustración: es lo que se
+   ve entre los granos del borde. */
 .gg-beans-band {
-  background: linear-gradient(to bottom, #212821 0%, #2c3529 18%, #46453a 45%, #6b6450 72%, #837a62 100%);
+  background: linear-gradient(to bottom, #212821 0%, #2c3529 18%, #46453a 42%, #6b6450 58%, #b8a684 68%, #ead9b8 74%, #ead9b8 100%);
 }
 .coffee-fade-in {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
