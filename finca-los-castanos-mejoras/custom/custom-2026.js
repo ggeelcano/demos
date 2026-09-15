@@ -304,7 +304,57 @@
     marco.parentElement.appendChild(a);
   }
 
+  // 10) Version B "clara" (15-sep): interruptor de tema para que el cliente
+  //     compare A (verde) y B (clara) en el mismo enlace. ?tema=claro o
+  //     ?tema=verde lo fija; se recuerda en localStorage. La clase gg-claro la
+  //     pone ya un script inline en <head> para que no parpadee.
+  function initTema() {
+    var KEY = 'gg-tema';
+    var raiz = document.documentElement;
+    var q = new URLSearchParams(location.search).get('tema');
+    var tema;
+    try { tema = q || localStorage.getItem(KEY) || 'verde'; } catch (e) { tema = q || 'verde'; }
+    if (q) { try { localStorage.setItem(KEY, q); } catch (e) {} }
+    function aplicar() {
+      raiz.classList.toggle('gg-claro', tema === 'claro');
+      if (btn) btn.textContent = tema === 'claro' ? etiquetas.verde : etiquetas.claro;
+    }
+    // la unica cursiva que se conserva en B: el subtitulo del hero de la portada
+    var sub = document.querySelector('.gg-beans-band') &&   // solo en la portada
+              document.querySelector('main > section:first-of-type p.font-serif');
+    if (sub) sub.classList.add('gg-cursiva-ok');
+
+    // el menu movil no marca la pagina actual: se marca aqui comparando rutas
+    var aqui = location.pathname.replace(/index\.html$/, '');
+    [].forEach.call(document.querySelectorAll('#mobile-menu a.mobile-link'), function (a) {
+      var ruta = a.pathname.replace(/index\.html$/, '');
+      if (ruta === aqui) a.classList.add('gg-activo');
+    });
+
+    var lang = idioma();
+    var etiquetas = {
+      es: { claro: 'Ver versión clara', verde: 'Ver versión verde' },
+      de: { claro: 'Helle Version', verde: 'Grüne Version' },
+      en: { claro: 'See light version', verde: 'See green version' }
+    }[lang] || { claro: 'See light version', verde: 'See green version' };
+
+    var btn = document.querySelector('.gg-tema-btn');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gg-tema-btn';
+      btn.addEventListener('click', function () {
+        tema = tema === 'claro' ? 'verde' : 'claro';
+        try { localStorage.setItem(KEY, tema); } catch (e) {}
+        aplicar();
+      });
+      document.body.appendChild(btn);
+    }
+    aplicar();
+  }
+
   function init() {
+    initTema();
     initSteam(); initNews(); initIlustracion(); initBeansFade();
     initFotosExperiencia(); initFotosHistoria();
     initSinGaleriaHome(); initNotaIdioma(); initMapa();

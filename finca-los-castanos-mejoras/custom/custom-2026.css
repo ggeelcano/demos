@@ -305,3 +305,100 @@ header img[src*="og-default"] { opacity: 1 !important; }
   font-weight: 600;
   text-shadow: 0 2px 14px rgba(0, 0, 0, .9), 0 1px 3px rgba(0, 0, 0, .7);
 }
+
+/* ============================================================
+   16) VERSION B "CLARA" (15-sep). Respuesta a la critica de colores y
+   cursivas: fondos crema, UN solo verde (esmeralda) para botones, enlaces
+   e iconos, texto marron oscuro, ocre solo en logo y boton principal,
+   cursiva unicamente en el subtitulo del hero, cuerpo un punto mas grande.
+   Se activa con la clase gg-claro en <html> (interruptor en custom-2026.js,
+   o ?tema=claro en la URL). Sin la clase, la web queda como estaba (A).
+   ============================================================ */
+html.gg-claro {
+  --color-primary: #207657;
+  --color-primary-dark: #1a5f46;
+  --color-accent: #207657;
+  --color-accent-dark: #1a5f46;
+  --color-secondary: #c6a96b;
+  --color-secondary-light: #ead9b8;
+  --color-secondary-dark: #b09255;
+  --color-background: #f7f1e4;
+  --color-surface: #efe6d2;
+  --color-surface-warm: #ead9b8;
+  --color-text: #3a2f26;
+  --color-text-muted: #5e5147;
+  --color-text-heading: #2a1f16;
+  --color-border: #d9cbb0;
+  --color-brown-dark: #2a1f16;
+  --text-base: 1.125rem;
+  --text-sm: 1rem;
+  --text-lg: 1.25rem;
+}
+html.gg-claro, html.gg-claro body { background-color: #f7f1e4; }
+html.gg-claro .bg-white { background-color: #fdf9f0 !important; }
+html.gg-claro .gallery-section { background-color: #efe6d2 !important; }
+html.gg-claro .gallery-item, html.gg-claro .gallery-item img { background-color: #e3d9c3 !important; }
+html.gg-claro .gg-news-card { background: #fdf9f0; border-color: #d9cbb0; }
+
+/* Los bloques esmeralda (precios, "escribannos") pasan a crema con tarjetas claras */
+html.gg-claro section.bg-accent { background-color: #efe6d2 !important; color: #3a2f26; }
+html.gg-claro section.bg-accent h2,
+html.gg-claro section.bg-accent .text-text-heading { color: #2a1f16 !important; }
+html.gg-claro section.bg-accent p,
+html.gg-claro section.bg-accent li,
+html.gg-claro section.bg-accent .text-text,
+html.gg-claro section.bg-accent .text-text-muted { color: #3a2f26 !important; }
+html.gg-claro section.bg-accent .text-white { color: #2a1f16 !important; }
+html.gg-claro section.bg-accent .bg-white\/50 { background-color: #fdf9f0 !important; border-color: #d9cbb0 !important; }
+html.gg-claro section.bg-accent .bg-white\/10 { background-color: #fdf9f0 !important; }
+/* el boton "Reservar tour" de esos bloques era blanco sobre verde; sobre crema
+   se perderia, asi que pasa a esmeralda */
+html.gg-claro section.bg-accent a.bg-white,
+html.gg-claro section.bg-accent button.bg-white { background-color: #207657 !important; color: #fdf9ee !important; }
+html.gg-claro section.bg-accent a.bg-white:hover { background-color: #1a5f46 !important; }
+html.gg-claro section.bg-accent .gg-cup { color: #207657; }
+
+/* Cursiva: solo el subtitulo del hero (clase gg-cursiva-ok que pone el js).
+   El resto de "font-serif" pasa a Raleway; los parrafos-subtitulo quedan como
+   antetitulo en esmeralda y los numeros grandes conservan su tamano. */
+html.gg-claro .font-serif:not(.gg-cursiva-ok) { font-family: var(--font-sans); }
+html.gg-claro p.font-serif:not(.gg-cursiva-ok) {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #207657;
+}
+html.gg-claro section.bg-accent p.font-serif { color: #207657 !important; }
+html.gg-claro span.font-serif { font-weight: 700; }
+html.gg-claro #mobile-menu a.font-serif { font-size: 1.25rem; font-weight: 500; letter-spacing: .04em; }
+
+/* Enlace activo del menu: esmeralda con subrayado, no ocre (no se veia) */
+html.gg-claro .header-nav-link.active,
+html.gg-claro #mobile-menu a.gg-activo { color: #207657 !important; font-weight: 700; }
+html.gg-claro .header-nav-link.active { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 2px; }
+html.gg-claro .header-nav-link:hover { color: #207657; }
+
+/* Con el menu movil abierto, el texto del logo seguia en su version blanca
+   (la del hero) sobre el panel claro y no se leia. Se cambia a la gris.
+   Vale para A y B: en A tambien pasaba (blanco sobre verde). */
+body:has(#mobile-menu.translate-x-0) header img[src*="logo-text-white"] { opacity: 0 !important; }
+body:has(#mobile-menu.translate-x-0) header img[src*="logo-text-gray"] { opacity: 1 !important; }
+
+/* Interruptor A/B (solo en la preview) */
+.gg-tema-btn {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  padding: .55rem .9rem;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 999px;
+  background: rgba(253, 249, 240, .95);
+  color: #2a1f16;
+  font: 600 .8125rem/1 Raleway, system-ui, sans-serif;
+  letter-spacing: .03em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+  cursor: pointer;
+}
+.gg-tema-btn:hover { background: #fff; }
