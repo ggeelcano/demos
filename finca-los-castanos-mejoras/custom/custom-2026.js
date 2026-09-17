@@ -225,8 +225,12 @@
   //    Gallery", que queda como galeria unica.
   function initSinGaleriaHome() {
     if (!document.querySelector('.gg-beans-band')) return;   // solo la portada
-    var img = document.querySelector('section .grid img[alt*="Finca Los Casta"]');
-    var sec = img && img.closest('section');
+    // La galeria es la unica seccion de la portada con una rejilla de 12 fotos.
+    // (Antes se buscaba por el alt "Finca Los Casta..." y eso escondia la
+    // seccion "Visitas con encanto", cuya foto del equipo lleva ese mismo alt.)
+    var sec = [].slice.call(document.querySelectorAll('main section')).filter(function (s) {
+      return s.querySelectorAll('.grid img').length >= 8;
+    })[0];
     if (sec) sec.classList.add('gg-oculta');
   }
 

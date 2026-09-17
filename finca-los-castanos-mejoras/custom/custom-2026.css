@@ -360,12 +360,10 @@ html.gg-claro section.bg-accent .gg-cup { color: #207657; }
 
 /* Cursiva: solo el subtitulo del hero (clase gg-cursiva-ok que pone el js).
    El resto de "font-serif" pasa a Raleway; los parrafos-subtitulo quedan como
-   antetitulo en esmeralda y los numeros grandes conservan su tamano. */
+   segunda linea en esmeralda, al MISMO tamano que los titulares (bloque 17). */
 html.gg-claro .font-serif:not(.gg-cursiva-ok) { font-family: var(--font-sans); }
 html.gg-claro p.font-serif:not(.gg-cursiva-ok) {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: .08em;
+  font-weight: 400;
   text-transform: uppercase;
   color: #207657;
 }
@@ -378,6 +376,52 @@ html.gg-claro .header-nav-link.active,
 html.gg-claro #mobile-menu a.gg-activo { color: #207657 !important; font-weight: 700; }
 html.gg-claro .header-nav-link.active { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 2px; }
 html.gg-claro .header-nav-link:hover { color: #207657; }
+
+/* ============================================================
+   17) Ronda de Elena del 17-sep (vale para A y B)
+   ============================================================ */
+
+/* 17a) UN solo tamano de titular en toda la web: el de la cita de la portada
+   «¡Descubran el arte de cultivar café en nuestra tierra!» (17 / 19 / 21 px
+   segun pantalla, mayusculas, fina, letra espaciada). Se aplica a los h1 y h2
+   de seccion (los que llevan text-xl / text-lg) y a su segunda linea. El h1
+   grande del hero de la portada y el de la pagina de reserva no entran. */
+main h1.text-xl, main h2.text-xl, main h2.text-lg,
+main p.font-serif:not(.gg-cursiva-ok) {
+  font-size: var(--text-base) !important;
+  line-height: 1.4 !important;
+  letter-spacing: .15em !important;
+  font-weight: 300 !important;
+}
+@media (min-width: 768px) {
+  main h1.text-xl, main h2.text-xl, main h2.text-lg,
+  main p.font-serif:not(.gg-cursiva-ok) { font-size: var(--text-lg) !important; }
+}
+@media (min-width: 1024px) {
+  main h1.text-xl, main h2.text-xl, main h2.text-lg,
+  main p.font-serif:not(.gg-cursiva-ok) { font-size: var(--text-xl) !important; }
+}
+/* en la version verde la segunda linea sigue en cursiva: la cursiva a ese
+   tamano se lee mal, asi que conserva su tamano y solo pierde el espaciado */
+html:not(.gg-claro) main p.font-serif:not(.gg-cursiva-ok) {
+  font-size: var(--text-2xl) !important;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+}
+/* el subtitulo en verde en B necesita algo mas de peso que el titular para leerse */
+html.gg-claro main p.font-serif:not(.gg-cursiva-ok) { font-weight: 500 !important; }
+
+/* 17b) Fuera la taza (icono) junto a los titulares */
+.gg-cup { display: none !important; }
+
+/* 17c) Historia del cafe: las fotos iban repartidas de arriba abajo y dejaban
+   huecos enormes entre ellas. Ahora van seguidas desde arriba. */
+.gg-col-historia { justify-content: flex-start !important; }
+
+/* 17d) Fuera los dibujos decorativos de fondo (hojas y granos a baja opacidad)
+   en la version clara: Elena rodeo los del final de Experiencia. */
+html.gg-claro main img[src*="pattern-"],
+html.gg-claro main .bg-repeat { display: none !important; }
 
 /* Con el menu movil abierto, el texto del logo seguia en su version blanca
    (la del hero) sobre el panel claro y no se leia. Se cambia a la gris.
