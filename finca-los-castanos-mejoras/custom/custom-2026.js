@@ -84,11 +84,14 @@
       capa.className = 'gg-granos-fade';
       capa.setAttribute('aria-hidden', 'true');
       var copia = document.createElement('img');
-      // La banda lleva la foto con el borde de abajo recortado (-roto-); la
-      // capa del hero va volteada y necesita la foto entera, sin el recorte.
-      var entera = function (s) { return s.replace(/granos-2026-roto-/g, 'granos-2026-'); };
-      copia.src = entera(granos.getAttribute('src'));
-      if (granos.getAttribute('srcset')) copia.srcset = entera(granos.getAttribute('srcset'));
+      // (17-sep) La capa del hero ya no va en espejo: usa granos-2026-fade-*,
+      // que es la franja de ARRIBA de la foto del cliente apilada sobre la de
+      // la banda. La capa mide el doble de alto y solo se ve su mitad superior
+      // (css), asi la fila que la banda ensena arriba sigue a la que la capa
+      // ensena abajo y los granos continuan sin salto ni espejo.
+      var base = (granos.getAttribute('src') || '').split('custom/')[0];
+      copia.src = base + 'custom/granos-2026-fade-1600.webp';
+      copia.srcset = base + 'custom/granos-2026-fade-1600.webp 1600w, ' + base + 'custom/granos-2026-fade-3200.webp 3200w';
       copia.sizes = granos.getAttribute('sizes') || '100vw';
       copia.alt = '';
       copia.decoding = 'async';
@@ -373,7 +376,7 @@
     sec.setAttribute('aria-hidden', 'true');
     var img = document.createElement('img');
     img.src = base + GG_FOOT_IMG + '-1600.webp';
-    img.srcset = base + GG_FOOT_IMG + '-800.webp 800w, ' + base + GG_FOOT_IMG + '-1200.webp 1200w, ' + base + GG_FOOT_IMG + '-1600.webp 1600w';
+    img.srcset = base + GG_FOOT_IMG + '-800.webp 800w, ' + base + GG_FOOT_IMG + '-1200.webp 1200w, ' + base + GG_FOOT_IMG + '-1600.webp 1600w, ' + base + GG_FOOT_IMG + '-3200.webp 3200w';
     img.sizes = '(max-width: 767px) 300vw, 100vw';
     img.alt = '';
     img.loading = 'lazy';

@@ -51,7 +51,7 @@ html, body { overflow-x: clip; }
    tramo del fondo es el arena de la sección de la ilustración: es lo que se
    ve entre los granos del borde. */
 .gg-beans-band {
-  background: linear-gradient(to bottom, #212821 0%, #2c3529 18%, #46453a 42%, #6b6450 58%, #b8a684 68%, #ead9b8 74%, #ead9b8 100%);
+  background: linear-gradient(to bottom, #212821 0%, #2c3529 15%, #46453a 35%, #6b6450 48%, #b8a684 56%, #ead9b8 62%, #ead9b8 100%);
 }
 .coffee-fade-in {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
@@ -198,13 +198,17 @@ section.bg-background:has(img[src*="hero-illustration"]) {
   will-change: opacity, filter;
 }
 .gg-granos-fade img {
-  display: block;
+  /* (17-sep) foto apilada ARRIBA+BANDA: la imagen mide el doble que la capa
+     y cuelga por debajo, asi la capa ensena solo la mitad de ARRIBA y la banda
+     (object-bottom, misma escala) continua justo donde esta se corta.
+     Ya no hay espejo: los granos siguen de verdad. */
+  position: absolute;
+  left: 0;
+  bottom: -100%;
   width: 100%;
-  height: 100%;
+  height: 200%;
   object-fit: cover;
-  /* volteada: su borde inferior tiene el mismo tono que el borde superior de
-     la banda, asi la union entre capa y banda no deja ninguna linea */
-  transform: scaleY(-1);
+  object-position: bottom;
 }
 
 
