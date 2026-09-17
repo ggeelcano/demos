@@ -385,8 +385,31 @@
     main.appendChild(sec);
   }
 
+  // 12) 17-sep, Elena: (a) los rotulos "Tour de cafe" / "Eventos" junto a las
+  //     ventanas de foto, como botones verdes; (b) huellas de conejo de fondo
+  //     en esa seccion, que quedaba vacia a los lados.
+  function initTarjetasYHuellas() {
+    var wins = document.querySelectorAll('.gg-card-win');
+    if (!wins.length) return;
+    var sec = wins[0].closest('section');
+    [].forEach.call(wins, function (w) {
+      var a = w.closest('a');
+      if (a) a.classList.add('gg-card-btn');
+    });
+    if (sec && !sec.querySelector('.gg-huellas')) {
+      sec.classList.add('gg-sec-huellas');
+      var base = (wins[0].querySelector('img').getAttribute('src') || '').split('custom/')[0];
+      var img = document.createElement('img');
+      img.className = 'gg-huellas';
+      img.src = base + 'custom/huellas-conejo.svg';
+      img.alt = '';
+      img.setAttribute('aria-hidden', 'true');
+      sec.insertBefore(img, sec.firstChild);
+    }
+  }
+
   function init() {
-    initTema(); initBeansFoot();
+    initTema(); initBeansFoot(); initTarjetasYHuellas();
     initSteam(); initNews(); initIlustracion(); initBeansFade();
     initFotosExperiencia(); initFotosHistoria();
     initSinGaleriaHome(); initNotaIdioma(); initMapa();

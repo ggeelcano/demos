@@ -478,3 +478,38 @@ body:has(#mobile-menu.translate-x-0) header img[src*="logo-text-gray"] { opacity
 /* la regla 9 (section.bg-accent .bg-secondary) pesa mas: hay que superarla */
 html section.bg-accent a.gg-btn-verde, html.gg-claro section.bg-accent a.gg-btn-verde.text-text-heading, a.gg-btn-verde { background-color: #207657 !important; color: #fdf9ee !important; }
 section.bg-accent a.gg-btn-verde:hover, a.gg-btn-verde:hover { background-color: #1a5f46 !important; }
+
+/* 19) 17-sep, Elena: rotulos "Tour de cafe" / "Eventos" como botones verdes y
+   huellas de conejo de fondo en la seccion de las ventanas (custom-2026.js) */
+.gg-card-btn > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.15rem;
+  background: #207657 !important;
+  color: #fdf9ee !important;
+  font-weight: 600;
+  letter-spacing: .02em;
+  border-radius: 2px;
+  transition: background .2s;
+}
+.gg-card-btn > span::after { content: '→'; font-weight: 400; }
+.gg-card-btn:hover > span { background: #1a5f46 !important; }
+.gg-card-btn > svg { display: none; }
+.gg-sec-huellas { position: relative; overflow: hidden; }
+.gg-sec-huellas > div { position: relative; z-index: 1; }
+.gg-huellas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6%;
+  width: 100%;
+  height: auto;
+  opacity: .16;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 767px) {
+  /* en movil las ventanas van apiladas y ocupan casi todo: el rastro va detras, mas tenue */
+  .gg-huellas { opacity: .11; bottom: auto; top: 2%; }
+}
