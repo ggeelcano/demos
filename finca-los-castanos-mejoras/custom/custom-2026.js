@@ -357,8 +357,33 @@
     aplicar();
   }
 
+  // 11) Final de la portada (17-sep, Elena): cerrar la pagina con una banda de
+  //     granos con el borde recortado por el contorno de los granos, como la
+  //     de arriba pero SIN degradado. Se usa la misma foto recortada, volteada
+  //     para que el borde roto quede arriba. Pendiente: foto de granos TOSTADOS
+  //     del cliente; cuando llegue se cambia la ruta en GG_FOOT_IMG.
+  var GG_FOOT_IMG = 'custom/granos-2026-roto';
+  function initBeansFoot() {
+    var band = document.querySelector('.gg-beans-band');
+    var main = document.querySelector('main');
+    if (!band || !main || main.querySelector('.gg-beans-foot')) return;
+    var base = (band.querySelector('img').getAttribute('src') || '').split('custom/')[0];
+    var sec = document.createElement('section');
+    sec.className = 'gg-beans-foot';
+    sec.setAttribute('aria-hidden', 'true');
+    var img = document.createElement('img');
+    img.src = base + GG_FOOT_IMG + '-1600.webp';
+    img.srcset = base + GG_FOOT_IMG + '-800.webp 800w, ' + base + GG_FOOT_IMG + '-1200.webp 1200w, ' + base + GG_FOOT_IMG + '-1600.webp 1600w';
+    img.sizes = '(max-width: 767px) 300vw, 100vw';
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    sec.appendChild(img);
+    main.appendChild(sec);
+  }
+
   function init() {
-    initTema();
+    initTema(); initBeansFoot();
     initSteam(); initNews(); initIlustracion(); initBeansFade();
     initFotosExperiencia(); initFotosHistoria();
     initSinGaleriaHome(); initNotaIdioma(); initMapa();
