@@ -386,11 +386,12 @@
     var sec = document.createElement('section');
     sec.className = 'gg-beans-foot';
     sec.setAttribute('aria-hidden', 'true');
-    // (21-sep) el mismo azulejo repetido, volteado. Elena pide aqui granos
-    // TOSTADOS: cuando mande la foto se hace su azulejo y se cambia el sufijo.
+    // (21-sep tarde) azulejo de granos TOSTADOS, hecho con la muestra que
+    // mando Elena (custom/tostado-tile-roto-545.webp), repetido y volteado.
+    var base = (band.querySelector('img').getAttribute('src') || '').split('custom/')[0];
     var img = document.createElement('div');
     img.className = 'gg-tile';
-    img.style.backgroundImage = 'url(' + ggTile(band.querySelector('img'), '-roto') + ')';
+    img.style.backgroundImage = 'url(' + base + 'custom/tostado-tile-roto-545.webp)';
     sec.appendChild(img);
     main.appendChild(sec);
   }
