@@ -78,7 +78,7 @@
     if (!band) return;
     var hero = band.previousElementSibling;
     if (!hero || hero.tagName !== 'SECTION') return;
-    var fotoHero = hero.querySelector('img[src*="hero."]');
+    var fotoHero = hero.querySelector('img[src*="hero."], img[src*="hero-2026"]');
     var fondo = fotoHero && fotoHero.parentElement;
     var granos = band.querySelector('img');
     if (!fondo || !granos) return;
