@@ -513,3 +513,21 @@ section.bg-accent a.gg-btn-verde:hover, a.gg-btn-verde:hover { background-color:
   /* en movil las ventanas van apiladas y ocupan casi todo: el rastro va detras, mas tenue */
   .gg-huellas { opacity: .11; bottom: auto; top: 2%; }
 }
+
+/* 20) 21-sep: la banda, la capa del hero y el pie usan un AZULEJO de granos
+   (foto Cascara Gold + su espejo) repetido en horizontal. Granos pequenos y
+   tira infinita, como la panoramica que monto Elena. */
+.gg-tile {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center bottom;
+  pointer-events: none;
+}
+.gg-beans-band .gg-tile { z-index: 1; }
+.gg-granos-fade .gg-tile,
+.gg-beans-foot .gg-tile { transform: scaleY(-1); }   /* el borde roto queda arriba */
+.gg-beans-foot { line-height: 0; }
+/* la capa del hero ya no lleva <img>: la regla 12 del img no aplica */
+.gg-granos-fade { overflow: hidden; }

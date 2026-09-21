@@ -64,6 +64,15 @@
   // 4) Fundido por scroll entre la montana del hero y los granos: al bajar,
   //    los granos aparecen sobre la montana casi invisibles y van ganando
   //    opacidad y color hasta quedar a maxima intensidad.
+  // (21-sep) Ruta del azulejo de granos segun la densidad de pantalla (alto
+  // 1150 para moviles retina, 800 para el resto). sufijo: '' entero, '-roto'
+  // con el borde de abajo recortado por los granos.
+  function ggTile(imgBanda, sufijo) {
+    var base = (imgBanda.getAttribute('src') || '').split('custom/')[0];
+    var alto = (window.devicePixelRatio || 1) > 1.3 ? 1150 : 800;
+    return base + 'custom/granos-2026-tile' + sufijo + '-' + alto + '.webp';
+  }
+
   function initBeansFade() {
     var band = document.querySelector('.gg-beans-band');
     if (!band) return;
@@ -78,23 +87,28 @@
     var negro = fondo.querySelector('.bottom-0.bg-gradient-to-b');
     if (negro) negro.classList.add('gg-hero-fade-out');
 
+    // (21-sep) Elena quiere la banda como su panoramica antigua: granos
+    // pequenos y tira muy larga ("pegar tres"). La foto va ahora como AZULEJO
+    // (custom/granos-2026-tile-*, la foto + su espejo) que el css repite en
+    // horizontal. La banda lleva el azulejo con el borde de abajo roto y esta
+    // capa del hero el azulejo entero volteado; mismo alto en las dos, asi el
+    // grano sale del mismo tamano y la union es continua.
+    if (!band.querySelector('.gg-tile')) {
+      var azulejo = document.createElement('div');
+      azulejo.className = 'gg-tile coffee-fade-in';
+      azulejo.style.backgroundImage = 'url(' + ggTile(granos, '-roto') + ')';
+      band.appendChild(azulejo);
+      granos.classList.add('gg-oculta');
+    }
+
     var capa = fondo.querySelector('.gg-granos-fade');
     if (!capa) {
       capa = document.createElement('div');
       capa.className = 'gg-granos-fade';
       capa.setAttribute('aria-hidden', 'true');
-      var copia = document.createElement('img');
-      // (17-sep) La capa del hero ya no va en espejo: usa granos-2026-fade-*,
-      // que es la franja de ARRIBA de la foto del cliente apilada sobre la de
-      // la banda. La capa mide el doble de alto y solo se ve su mitad superior
-      // (css), asi la fila que la banda ensena arriba sigue a la que la capa
-      // ensena abajo y los granos continuan sin salto ni espejo.
-      var base = (granos.getAttribute('src') || '').split('custom/')[0];
-      copia.src = base + 'custom/granos-2026-fade-1600.webp';
-      copia.srcset = base + 'custom/granos-2026-fade-1600.webp 1600w, ' + base + 'custom/granos-2026-fade-3200.webp 3200w';
-      copia.sizes = granos.getAttribute('sizes') || '100vw';
-      copia.alt = '';
-      copia.decoding = 'async';
+      var copia = document.createElement('div');
+      copia.className = 'gg-tile';
+      copia.style.backgroundImage = 'url(' + ggTile(granos, '') + ')';
       capa.appendChild(copia);
       fondo.appendChild(capa);
     }
@@ -364,23 +378,19 @@
   //     granos con el borde recortado por el contorno de los granos, como la
   //     de arriba pero SIN degradado. Se usa la misma foto recortada, volteada
   //     para que el borde roto quede arriba. Pendiente: foto de granos TOSTADOS
-  //     del cliente; cuando llegue se cambia la ruta en GG_FOOT_IMG.
-  var GG_FOOT_IMG = 'custom/granos-2026-roto';
+  //     del cliente; cuando llegue se hace su azulejo (panorama-cascara.mjs).
   function initBeansFoot() {
     var band = document.querySelector('.gg-beans-band');
     var main = document.querySelector('main');
     if (!band || !main || main.querySelector('.gg-beans-foot')) return;
-    var base = (band.querySelector('img').getAttribute('src') || '').split('custom/')[0];
     var sec = document.createElement('section');
     sec.className = 'gg-beans-foot';
     sec.setAttribute('aria-hidden', 'true');
-    var img = document.createElement('img');
-    img.src = base + GG_FOOT_IMG + '-1600.webp';
-    img.srcset = base + GG_FOOT_IMG + '-800.webp 800w, ' + base + GG_FOOT_IMG + '-1200.webp 1200w, ' + base + GG_FOOT_IMG + '-1600.webp 1600w, ' + base + GG_FOOT_IMG + '-3200.webp 3200w';
-    img.sizes = '(max-width: 767px) 300vw, 100vw';
-    img.alt = '';
-    img.loading = 'lazy';
-    img.decoding = 'async';
+    // (21-sep) el mismo azulejo repetido, volteado. Elena pide aqui granos
+    // TOSTADOS: cuando mande la foto se hace su azulejo y se cambia el sufijo.
+    var img = document.createElement('div');
+    img.className = 'gg-tile';
+    img.style.backgroundImage = 'url(' + ggTile(band.querySelector('img'), '-roto') + ')';
     sec.appendChild(img);
     main.appendChild(sec);
   }
