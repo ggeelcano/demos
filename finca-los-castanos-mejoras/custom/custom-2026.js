@@ -149,10 +149,12 @@
     if (src.indexOf('_astro/') < 0) return;
     var base = src.split('_astro/')[0];          // '../' o '../../'
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
+    // (21-sep) Leo salia aqui y en la pagina del Tour: Elena pide otra foto.
+    // Van las cerezas en la rama (el cultivo), y debajo sigue el secado.
     var textos = {
-      es: ['Leo, nuestro guía, entre los cafetos'],
-      de: ['Leo, unser Guide, zwischen den Kaffeepflanzen'],
-      en: ['Leo, our guide, among the coffee plants']
+      es: ['Cerezas de café madurando en el cafeto'],
+      de: ['Reifende Kaffeekirschen am Strauch'],
+      en: ['Coffee cherries ripening on the plant']
     };
     var alt = textos[lang] || textos.en;
 
@@ -172,9 +174,7 @@
       caja.appendChild(foto);
       return caja;
     }
-    // Leo va el primero (lo pidio la jefa); la rama de cerezas se retira
-    // porque repite lo que ya se ve en su foto.
-    col.insertBefore(nuevoMarco('exp-leo', alt[0]), marco);
+    col.insertBefore(nuevoMarco('exp-cerezas', alt[0]), marco);
   }
 
   // 6) Historia del cafe: el texto es larguisimo y la columna de la foto,
