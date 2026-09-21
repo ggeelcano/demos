@@ -206,12 +206,13 @@
     if (src.indexOf('_astro/') < 0) return;
     var base = src.split('_astro/')[0];
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
+    // (21-sep) la flor del cafeto, muestra de Elena, abre la columna
     var textos = {
-      es: ['Cultivos del Valle de Agaete', 'Plataneras en el valle',
+      es: ['Flor del cafeto', 'Cultivos del Valle de Agaete', 'Plataneras en el valle',
            'Cerezas de café recién recogidas'],
-      de: ['Anbau im Valle de Agaete', 'Bananenstauden im Tal',
+      de: ['Kaffeeblüte', 'Anbau im Valle de Agaete', 'Bananenstauden im Tal',
            'Frisch geerntete Kaffeekirschen'],
-      en: ['Crops in the Valle de Agaete', 'Banana plants in the valley',
+      en: ['Coffee blossom', 'Crops in the Valle de Agaete', 'Banana plants in the valley',
            'Freshly picked coffee cherries']
     };
     var alt = textos[lang] || textos.en;
@@ -232,7 +233,7 @@
       caja.appendChild(foto);
       return caja;
     }
-    ['exp-valle', 'exp-platanos', 'exp-mano']
+    ['exp-flor', 'exp-valle', 'exp-platanos', 'exp-mano']
       .forEach(function (nombre, i) { col.appendChild(nuevoMarco(nombre, alt[i])); });
   }
 
