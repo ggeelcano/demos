@@ -499,19 +499,20 @@ section.bg-accent a.gg-btn-verde:hover, a.gg-btn-verde:hover { background-color:
 .gg-sec-huellas { position: relative; overflow: hidden; }
 .gg-sec-huellas > div { position: relative; z-index: 1; }
 .gg-huellas {
+  /* (21-sep) bucle cerrado alrededor de las ventanas, sin silueta (boceto de
+     Elena del 19-sep): ocupa la seccion entera, de arriba abajo */
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 6%;
+  inset: 3% 0;
   width: 100%;
-  height: auto;
+  height: 94%;
+  object-fit: fill;
   opacity: .16;
   pointer-events: none;
   user-select: none;
 }
 @media (max-width: 767px) {
   /* en movil las ventanas van apiladas y ocupan casi todo: el rastro va detras, mas tenue */
-  .gg-huellas { opacity: .11; bottom: auto; top: 2%; }
+  .gg-huellas { opacity: .11; }
 }
 
 /* 20) 21-sep: la banda, la capa del hero y el pie usan un AZULEJO de granos
