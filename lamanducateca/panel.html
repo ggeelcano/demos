@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Manducateca · Panel de pedidos</title>
+<meta name="description" content="Panel donde La Manducateca recibe cada pedido preparado por el asistente de WhatsApp: selección, total, entrega, fecha y cliente.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="img/avatar.jpg" type="image/jpeg">
+<style>
+  :root{--ink:#111;--ink2:#2a2a2a;--papel:#faf8f2;--blanco:#fff;--linea:#e8e3d6;--gris:#6b6a63;--amarillo:#ffe25a;--amarillo2:#f5d33a;--ok:#1d7a4d;--rojo:#b42318;--ambar:#b7791f;--azul:#1f5fbf;--sombra:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05)}
+  *{box-sizing:border-box}
+  html{overflow-x:hidden}
+  body{margin:0;background:var(--papel);color:var(--ink);font-family:"Segoe UI",Helvetica,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4}
+  .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;border-radius:6px;z-index:10}
+  .skip:focus{left:8px}
+  .top{background:var(--ink);color:#fff;padding:12px 16px}
+  .top .in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+  .marca img{height:30px;width:auto;display:block;background:#fff;border-radius:6px;padding:3px 6px}
+  .top .sub{color:rgba(255,255,255,.7);font-size:13px;flex:1;min-width:0;white-space:nowrap}
+  @media (max-width:520px){.top .sub{display:none}.top .in{justify-content:space-between}}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:var(--amarillo);color:var(--ink);text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:9px;border:0;cursor:pointer;font-family:inherit}
+  .btn:hover,.btn:focus-visible{background:var(--amarillo2);outline:2px solid #fff;outline-offset:2px}
+  .btn.sec{background:transparent;color:var(--ink);border:1px solid var(--linea)}
+  .btn.sec:hover,.btn.sec:focus-visible{background:#f0ede4;outline:2px solid var(--ink);outline-offset:1px}
+  main{max-width:1080px;margin:0 auto;padding:16px 16px 48px}
+  h1{font-size:22px;margin:6px 0 2px;letter-spacing:-.01em}
+  .intro{margin:0 0 16px;color:var(--gris);font-size:14px;max-width:72ch}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 16px}
+  @media (min-width:700px){.stats{grid-template-columns:repeat(5,1fr)}}
+  .stat{background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:12px 14px;box-shadow:var(--sombra)}
+  .stat b{display:block;font-size:24px;line-height:1.1;letter-spacing:-.02em}
+  .stat span{font-size:12px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em}
+  .stat small{display:block;font-size:11px;color:var(--gris);margin-top:2px;text-transform:none;letter-spacing:0}
+  .filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
+  .filtros label{font-size:13px;color:var(--gris);display:flex;flex-direction:column;gap:3px;min-width:0}
+  .filtros select{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--linea);border-radius:8px;background:#fff;color:var(--ink);max-width:100%}
+  .filtros select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+  .filtros .acciones{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+  .lista{display:grid;gap:12px}
+  .card{background:var(--blanco);border:1px solid var(--linea);border-left:5px solid var(--linea);border-radius:12px;padding:14px 14px 12px;box-shadow:var(--sombra)}
+  .card.p-hoy{border-left-color:var(--rojo)}
+  .card.p-alta{border-left-color:var(--amarillo2)}
+  .card.p-normal{border-left-color:var(--azul)}
+  .card.p-baja{border-left-color:#c9c5b8}
+  .card header{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+  .card h2{margin:0;font-size:17px;letter-spacing:-.01em}
+  .card .loc{color:var(--gris);font-size:13px;margin-top:2px}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .b{font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;background:#f0ede4;color:var(--ink2);white-space:nowrap}
+  .b.hoy{background:#fde8e5;color:var(--rojo)}
+  .b.alta{background:#fff3c4;color:#8a6a00}
+  .b.baja{background:#eef0f3;color:#4f5560}
+  .b.ej{background:#e8f1ff;color:var(--azul)}
+  .b.ok{background:#e3f4ea;color:var(--ok)}
+  .b.aviso{background:#fde8e5;color:var(--rojo)}
+  .sel{display:flex;gap:10px;align-items:flex-start;margin:6px 0 10px;flex-wrap:wrap}
+  .sel .thumbs{display:flex;gap:4px;flex-wrap:wrap;flex:0 0 auto;max-width:100%}
+  .sel .thumbs img{width:44px;height:44px;object-fit:cover;border-radius:6px;border:1px solid var(--linea);background:#fff}
+  .sel ul{margin:0;padding:0;list-style:none;font-size:13.5px;flex:1;min-width:200px}
+  .sel li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--linea);padding:3px 0}
+  .sel li span:last-child{white-space:nowrap;font-weight:600}
+  .sel li.total{border-bottom:0;font-weight:700;padding-top:6px}
+  .datos{margin:0;display:grid;grid-template-columns:1fr;gap:6px 14px;font-size:14px}
+  @media (min-width:560px){.datos{grid-template-columns:1fr 1fr}}
+  @media (min-width:900px){.datos{grid-template-columns:1fr 1fr 1fr}}
+  .datos div{min-width:0}
+  .datos dt{font-size:11.5px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em}
+  .datos dd{margin:0;overflow-wrap:anywhere}
+  .datos .ancho{grid-column:1/-1}
+  .datos .aviso dd{color:var(--rojo);font-weight:600}
+  .card footer{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--linea);font-size:13.5px}
+  .card footer label{display:flex;gap:6px;align-items:center;color:var(--gris)}
+  .card footer select{font:inherit;font-size:13.5px;padding:5px 8px;border:1px solid var(--linea);border-radius:7px;background:#fff;color:var(--ink)}
+  .card footer select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+  details summary{cursor:pointer;color:var(--azul);font-weight:600;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
+  details{flex:1 1 100%}
+  .conv{margin-top:8px;background:#efeae2;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:4px;max-height:360px;overflow:auto}
+  .conv p{margin:0;max-width:86%;padding:6px 9px;border-radius:8px;font-size:13.5px;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+  .conv .asistente{align-self:flex-start;background:#fff}
+  .conv .cliente{align-self:flex-end;background:#d9fdd3}
+  .vacio{background:var(--blanco);border:1px dashed var(--linea);border-radius:12px;padding:24px;text-align:center;color:var(--gris)}
+  .nota{margin:18px 0 0;font-size:12.5px;color:var(--gris)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#lista">Ir a la lista de pedidos</a>
+<header class="top">
+  <div class="in">
+    <div class="marca"><img src="img/logo.png" alt="La Manducateca"></div>
+    <div class="sub">Panel de pedidos por WhatsApp · demo</div>
+    <a class="btn" href="index.html">Probar el asistente</a>
+  </div>
+</header>
+<main>
+  <h1>Pedidos preparados por el asistente</h1>
+  <p class="intro">Cada conversación de WhatsApp llega aquí ya ordenada: qué quiere el cliente, la selección con precios, el total, la entrega, la fecha y su nombre. Solo queda confirmar disponibilidad y cobrar. Los marcados como «Ejemplo» son de muestra; los demás los has creado tú desde el asistente en este dispositivo.</p>
+
+  <section class="stats" aria-label="Resumen">
+    <div class="stat"><b id="s-total">0</b><span>Pedidos</span></div>
+    <div class="stat"><b id="s-nuevos">0</b><span>Sin confirmar</span></div>
+    <div class="stat"><b id="s-importe">0 €</b><span>Importe estimado</span></div>
+    <div class="stat"><b id="s-semana">0</b><span>Para esta semana</span></div>
+    <div class="stat"><b id="s-tiempo">0 min</b><span>Tiempo ahorrado</span><small>estimado, 10 min por pedido</small></div>
+  </section>
+
+  <section class="filtros" aria-label="Filtros">
+    <label>Tipo<select id="f-tipo"><option value="">Todos</option></select></label>
+    <label>Estado<select id="f-estado"><option value="">Todos</option></select></label>
+    <label>Entrega<select id="f-entrega"><option value="">Todas</option><option value="recogida">Recogida</option><option value="envio">Envío</option></select></label>
+    <label>Orden<select id="f-orden"><option value="prioridad">Prioridad</option><option value="fecha">Más recientes</option><option value="dia">Día de entrega</option></select></label>
+    <div class="acciones">
+      <button type="button" class="btn sec" id="borrar-pruebas">Borrar mis pruebas</button>
+      <button type="button" class="btn sec" id="restaurar">Restaurar ejemplos</button>
+    </div>
+  </section>
+
+  <section class="lista" id="lista" aria-live="polite"></section>
+  <p class="nota">En la versión real el panel es compartido por todo el equipo, cada pedido nuevo llega también por correo, y el cliente recibe la confirmación por el WhatsApp de La Manducateca. Los precios son los de la tienda online a fecha de la demo.</p>
+</main>
+
+<script src="datos.js"></script>
+<script src="comun.js"></script>
+<script>
+(() => {
+  const M = window.Mandu;
+  const $ = s => document.querySelector(s);
+  const lista = $("#lista");
+  for (const [v, n] of M.ESTADOS) { const o = document.createElement("option"); o.value = v; o.textContent = n; $("#f-estado").appendChild(o); }
+
+  const relativa = iso => {
+    const d = new Date(iso), ms = Date.now() - d.getTime(), h = Math.floor(ms / 3600e3);
+    const fecha = d.toLocaleDateString("es-ES", { day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+    if (h < 1) return `hace ${Math.max(1, Math.floor(ms / 60e3))} min · ${fecha}`;
+    if (h < 24) return `hace ${h} h · ${fecha}`;
+    const dias = Math.floor(h / 24);
+    return `${dias === 1 ? "ayer" : "hace " + dias + " días"} · ${fecha}`;
+  };
+  const campo = (f, k) => { const c = f.campos.find(x => x[0] === k); return c ? c[1] : ""; };
+  const enSemana = s => { const f = s.ficha.datos.fecha; if (!f || !f.iso) return false; const d = new Date(f.iso + "T12:00:00"), h = new Date(); const lim = new Date(h); lim.setDate(lim.getDate() + 7); return d >= new Date(h.getFullYear(), h.getMonth(), h.getDate()) && d <= lim; };
+
+  function pintar() {
+    const todas = M.cargar();
+    const ft = $("#f-tipo").value, fe = $("#f-estado").value, fen = $("#f-entrega").value, orden = $("#f-orden").value;
+    const tipos = [...new Set(todas.map(s => s.ficha.datos.tipo).filter(Boolean))].sort();
+    const sel = $("#f-tipo"); const actual = sel.value;
+    sel.innerHTML = '<option value="">Todos</option>' + tipos.map(t => `<option${t === actual ? " selected" : ""}>${t.replace(/</g, "&lt;")}</option>`).join("");
+    let l = todas.filter(s => (!ft || s.ficha.datos.tipo === ft) && (!fe || s.estado === fe) && (!fen || (s.ficha.datos.entrega && s.ficha.datos.entrega.modo === fen)));
+    l.sort((a, b) => orden === "fecha" ? b.fecha.localeCompare(a.fecha) : orden === "dia" ? ((a.ficha.datos.fecha && a.ficha.datos.fecha.iso) || "9").localeCompare((b.ficha.datos.fecha && b.ficha.datos.fecha.iso) || "9") : (a.ficha.clasificacion.orden - b.ficha.clasificacion.orden) || b.fecha.localeCompare(a.fecha));
+
+    $("#s-total").textContent = todas.length;
+    $("#s-nuevos").textContent = todas.filter(s => s.estado === "nuevo").length;
+    $("#s-importe").textContent = M.eur(todas.reduce((s, x) => s + (x.ficha.datos.total || 0), 0));
+    $("#s-semana").textContent = todas.filter(enSemana).length;
+    $("#s-tiempo").textContent = (todas.length * 10) + " min";
+
+    lista.innerHTML = "";
+    if (!l.length) { const v = document.createElement("div"); v.className = "vacio"; v.textContent = todas.length ? "Ningún pedido coincide con los filtros." : "Todavía no hay pedidos. Prueba el asistente y verás aquí el primero."; lista.appendChild(v); return; }
+    for (const s of l) lista.appendChild(tarjeta(s));
+  }
+
+  function tarjeta(s) {
+    const f = s.ficha, c = f.clasificacion, d = f.datos;
+    const a = document.createElement("article"); a.className = "card p-" + c.prioridad.toLowerCase(); a.setAttribute("aria-label", `${d.tipo} de ${d.nombre || "cliente sin nombre"}`);
+    const head = document.createElement("header");
+    const tit = document.createElement("div");
+    const h2 = document.createElement("h2"); h2.textContent = d.tipo + (d.personas ? ` · ${d.personas} ${d.tipoId === "evento" ? "invitados" : "personas"}` : "") + (d.nombre ? ` · ${d.nombre}` : ""); tit.appendChild(h2);
+    const donde = d.entrega ? (d.entrega.modo === "recogida" ? "🏪 Recogida en tienda" : "🚚 Envío a " + (d.entrega.lugar || "domicilio")) : d.tipoId === "evento" ? "🎪 Montaje en el evento" : d.tipoId === "cata" ? "🏪 En la tienda" : d.tipoId === "raclette" ? "🏪 Recogida en tienda" : "Entrega sin definir";
+    const loc = document.createElement("div"); loc.className = "loc"; loc.textContent = `${donde} · ${d.fecha ? "📅 " + d.fecha.texto : d.tipoId === "cata" && d.lineas && d.lineas[0] ? "📅 " + d.lineas[0].corto : "sin fecha"} · ${relativa(s.fecha)}`; tit.appendChild(loc);
+    head.appendChild(tit);
+    const badges = document.createElement("div"); badges.className = "badges";
+    const badge = (t, cls) => { const b = document.createElement("span"); b.className = "b " + (cls || ""); b.textContent = t; badges.appendChild(b); };
+    badge(c.prioridad === "Hoy" ? "Para hoy" : "Prioridad " + c.prioridad.toLowerCase(), c.prioridad.toLowerCase());
+    if (d.confirmado) badge("Cliente conforme", "ok");
+    if (c.atencion) badge("Pide persona", "aviso");
+    if (d.entrega && d.entrega.zona === "fuera") badge("Fuera de península", "aviso");
+    if (s.ejemplo) badge("Ejemplo", "ej");
+    head.appendChild(badges);
+    a.appendChild(head);
+
+    if (d.lineas && d.lineas.length) {
+      const sel = document.createElement("div"); sel.className = "sel";
+      const th = document.createElement("div"); th.className = "thumbs";
+      for (const l of d.lineas.filter(x => x.img).slice(0, 6)) { const im = new Image(); im.src = M.IMG_BASE + l.img; im.alt = l.n; im.loading = "lazy"; im.referrerPolicy = "no-referrer"; im.onerror = () => im.remove(); th.appendChild(im); }
+      if (th.children.length) sel.appendChild(th);
+      const ul = document.createElement("ul");
+      for (const l of d.lineas) { const li = document.createElement("li"); const s1 = document.createElement("span"); s1.textContent = (l.cant > 1 ? l.cant + " × " : "") + l.n; const s2 = document.createElement("span"); s2.textContent = M.eur(l.p * l.cant); li.append(s1, s2); ul.appendChild(li); }
+      const tot = document.createElement("li"); tot.className = "total"; const t1 = document.createElement("span"); t1.textContent = "Total" + (d.envio ? " + envío " + M.eur(d.envio) : ""); const t2 = document.createElement("span"); t2.textContent = M.eur(d.total + (d.envio || 0)); tot.append(t1, t2); ul.appendChild(tot);
+      sel.appendChild(ul);
+      a.appendChild(sel);
+    }
+
+    const dl = document.createElement("dl"); dl.className = "datos";
+    const fila = (k, v, cls) => { if (!v) return; const w = document.createElement("div"); if (cls) w.className = cls; const dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; w.append(dt, dd); dl.appendChild(w); };
+    fila("Ocasión", d.ocasion);
+    fila("Evento", campo(f, "Evento"));
+    fila("Raclette", campo(f, "Raclette"));
+    fila("Presupuesto", campo(f, "Presupuesto"));
+    fila("Gustos", d.gustos);
+    fila("Bebida", campo(f, "Bebida"));
+    fila("Cliente", d.nombre);
+    fila("Teléfono", campo(f, "Teléfono"));
+    fila("Nota en la caja", d.dedicatoria && d.dedicatoria !== "Sin nota" ? d.dedicatoria : "", "ancho");
+    if (d.avisos && d.avisos.length) fila("Avisos", d.avisos.join(" · "), "ancho aviso");
+    a.appendChild(dl);
+
+    const foot = document.createElement("footer");
+    const lab = document.createElement("label"); lab.textContent = "Estado";
+    const sel = document.createElement("select"); sel.setAttribute("aria-label", "Estado del pedido");
+    for (const [v, n] of M.ESTADOS) { const o = document.createElement("option"); o.value = v; o.textContent = n; if (v === s.estado) o.selected = true; sel.appendChild(o); }
+    sel.addEventListener("change", () => { M.actualizar(s.id, x => { x.estado = sel.value; }); pintar(); });
+    lab.appendChild(sel); foot.appendChild(lab);
+    const det = document.createElement("details");
+    const sum = document.createElement("summary"); sum.textContent = "Ver conversación"; det.appendChild(sum);
+    const conv = document.createElement("div"); conv.className = "conv";
+    for (const m of s.conversacion || []) { const p = document.createElement("p"); p.className = m.quien; p.textContent = m.texto; conv.appendChild(p); }
+    det.appendChild(conv); foot.appendChild(det);
+    a.appendChild(foot);
+    return a;
+  }
+
+  for (const id of ["f-tipo", "f-estado", "f-entrega", "f-orden"]) $("#" + id).addEventListener("change", pintar);
+  $("#borrar-pruebas").addEventListener("click", () => { M.borrar(s => !s.ejemplo); pintar(); });
+  $("#restaurar").addEventListener("click", () => { M.restaurarEjemplos(); pintar(); });
+  M.sembrar();
+  pintar();
+})();
+</script>
+</body>
+</html>
