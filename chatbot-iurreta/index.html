@@ -1341,6 +1341,15 @@ const META_WL=new Set(["usarte","usarlo","chatbot","txatbot","contribuyente","im
  drop("objetos_perdidos",["oficina de objetos perdidos"]);
  ["santa","barbara","marina","ayer","atzo","cargo","debagoieneko","bergarako","udal"].forEach(w=>WEAK.add(w));
  ["casa"].forEach(w=>STOP.add(w));
+ /* R8-3: verbos vascos genéricos que arrastraban ("utzi"→adicciones, "atera"→certificado, "moztu"→agua, "hitz egin"→alcaldía) */
+ ["utzi","atera","moztu","hitz","egin"].forEach(w=>WEAK.add(w));
+ add("ayudas",["dsbe","rgi","diru sarrerak bermatzeko","diru-sarrerak bermatzeko errenta","renta de garantia","etxerik gabe","non lo egin","no tengo donde dormir","sin hogar","dormir en la calle","etxetik bota"]);
+ add("residuos",["koltxoi","koltxoia","koltxoi zaharra","altzari zaharra","altzari zaharrak"]);
+ add("objetos_perdidos",["aurkitu ditut","aurkitu dut","he encontrado","diru-zorroa galdu","zorroa galdu","galdu dut","giltzak galdu"]);
+ add("euskera",["habe","habe euskaltegi"]);
+ add("cita",["zita","zita bat","sita","sita previa"]);
+ add("animales",["txakur lizentzia","lizentzia txakurra","licencia de perro","ppp","perro peligroso","txakur arriskutsua"]);
+ add("agenda",["antzerki","antzerki sarrerak","sarrerak erosi","entradas del teatro","entradas para el teatro"]);
  /* R8-2: barrios y lugares que se llevaban el tema (I23) */
  drop("deporte",["musakola","iturripe","uarkape"]); add("deporte",["polideportivo de musakola","musakolako kiroldegia","polideportivo de iturripe","iturripeko kiroldegia","fronton uarkape","uarkape frontoia"]);
  drop("residuos",["debagoiena"]); drop("cultura",["amaia antzokia"]); drop("turismo",["garagartza","meatzerreka","bedona"]);
@@ -1832,8 +1841,8 @@ function answer(text){
   /* info de cita previa: "¿es obligatoria?", "¿puedo ir sin cita?", "¿por teléfono?" -> dato del municipio ANTES de arrancar el flujo */
   if(/(cita|hitzordu|txanda)/.test(nF)&&/(obligator|derrigor|nahitaez|beharrezko|hace falta|falta cita|sin cita|puedo ir sin|es necesari|necesari[oa] (pedir |la |una )?cita|por telefono|telefonoz|que numero|a que numero|dos personas|bi pertsona|para que tramites|zein izapide)/.test(nF)&&!/(anular|cancelar|cambiar|aldatu|ezeztatu)/.test(nF)){r5fSayCitaInfo(ml);return;}
   /* parte por texto: incidencia concreta (tipo + estado/lugar) o arranque explicito -> flujo de parte con tipo y lugar precargados */
-  {const tQ=/(farol|alumbrado|bombilla|argiteri|luz de la calle|luz en (la|toda la) calle|kalean argirik|kaleko argi|kale argi)/.test(nF)?0:/(cacas?\b|excremento|mierda de perro|txakur kaka|kakak)/.test(nF)?2:/(bache|socavon|zulo(a|ak)?\b|acera|espaloi|calzada|baldosa|adoquin|hundid)/.test(nF)?1:/(contenedor|edukiontzi|papelera|zakarrontzi|basura|limpieza|zikin|suci|pintada|grafiti|escombro|cacas?\b|excremento|mierda de perro|txakur kaka|kakak)/.test(nF)?2:-1;
-   const broken=/(\brot[oa]s?\b|fundid|apagad|caid|desbordad|gainezka|atascad|hundid|apurtut|estropead|no funciona|ez dabil|sin luz|sin recoger|\bllen[oa]\b|suci|levantad|suelt[oa]\b|peligros|abandonad|lleva .* sin|no (se )?enciende|parpade|itzalita|erorita|tirad[oa]s? por)/.test(nF);
+  {const tQ=/(farol|alumbrado|bombilla|argiteri|luz de la calle|luz en (la|toda la) calle|kalean argirik|kaleko argi|kale argi)/.test(nF)?0:/(cacas?\b|excremento|mierda de perro|txakur kaka|kakak)/.test(nF)?2:/(bache|socavon|zulo(a|ak)?\b|acera|espaloi|calzada|baldosa|adoquin|hundid)/.test(nF)?1:/(contenedor|edukiontzi|papelera|zakarrontzi|basura|limpieza|zikin|suci|pintada|grafiti|graffiti|escombro|cacas?\b|excremento|mierda de perro|txakur kaka|kakak)/.test(nF)?2:-1;
+   const broken=/(\brot[oa]s?\b|fundid|apagad|caid|desbordad|gainezka|atascad|hundid|apurtut|estropead|no funciona|ez dabil|sin luz|sin recoger|\bllen[oa]\b|suci|levantad|suelt[oa]\b|peligros|abandonad|lleva .* sin|margotu dituzte|pintatu dituzte|han pintado|hautsi dute|apurtu dute|no (se )?enciende|parpade|itzalita|erorita|tirad[oa]s? por)/.test(nF);
    const noInfo=/\b(como|nola|donde|non|puedo|se puede|hay que|que es|cuanto|telefono|zenbat)\b/.test(nF);
    const explicitQ=/\b(dar parte|doy parte|poner (un|una|la) (parte|queja|reclamacion|incidencia)|pongo una queja|quiero (quejarme|reclamar)|kexa (bat )?jarri|partea eman|abrir una incidencia|registrar una incidencia|dar de alta una incidencia)\b/.test(nF)&&!noInfo;
    if(tQ>=0&&(broken||explicitQ||/\bhay (un|una|unos|unas|mucho|mucha|muchos|muchas|varios|varias)\b/.test(nF)||/\bhay [a-z]+s\b/.test(nF)||/\bno hay luz\b/.test(nF)||/\b(bat|batzuk) (dago|daude)\b/.test(nF)||/\b(beteta|gainezka) (dago|daude)\b/.test(nF)||/\b(hondatuta|apurtuta|itzalita|erorita) (dago|daude)\b/.test(nF)||PENDING==="quejas")&&!/(pagar|tasa|recibo|precio|horario|garbigune|voluminoso|colchon|mueble)/.test(nF)){qjStartPre(QJ_TYPES[tQ],r5fLoc(text),text,ml);return;}
@@ -2579,7 +2588,9 @@ function r7fQjType(n){if(/(farol|alumbrado|bombilla|argiteri|luz de la calle)/.t
   if(typeof R7_FORCE!=="undefined"&&R7_FORCE==="eu")return r;
   if(looksEu(text))return r;
   const t=norm(text),w=t.split(" ").filter(Boolean),ESW=(typeof R5_ESW!=="undefined")?R5_ESW:[];
-  const e=w.filter(x=>ESW.indexOf(x)>=0||/^(que|quien|donde|como|cuando|cuanto|cuanta|quiero|necesito|tengo|puedo|hay|el|la|los|las|mi|me|se|de|del|en|con|por|para|un|una|es|son|esta|no|ayuntamiento|he|ha|han|has|hemos|lo|le|les|y|o|al|yo|tu|su|sus|mis|pero|ya|muy|mas|este|eso|esto|hola|buenas|gracias|perdido|perdida|pagar|donde|cual|tiene|tienen)$/.test(x)).length;
+  if(/\b(ba al|al (da|dago|daude|du|dute|dira|duzu))\b/.test(t))return r;
+  if(w.length<=2&&/^(vale|bale|ok|okay|ados)$/.test(w[0]||"")&&prev){LASTML=prev;return prev;}
+  const e=w.filter(x=>ESW.indexOf(x)>=0||/^(que|quien|donde|como|cuando|cuanto|cuanta|quiero|necesito|tengo|puedo|hay|el|la|los|las|mi|me|se|de|del|en|con|por|para|un|una|es|son|esta|no|ayuntamiento|he|ha|han|has|hemos|lo|le|les|y|o|al|yo|tu|su|sus|mis|pero|ya|muy|mas|este|eso|esto|hola|buenas|gracias|perdido|perdida|pagar|donde|cual|tiene|tienen|municipal|policia|biblioteca|polideportivo|basura|horario|telefono)$/.test(x)).length;
   if(e>=1){LASTML="es";return "es";}/* sin señal vasca (looksEu ya descartado) basta una palabra castellana */
   /* inglés o francés: mejor castellano que euskera */
   if(w.filter(x=>/^(the|is|are|what|where|how|when|can|do|you|my|i|hello|please|thanks|je|vous|ou|est|comment|bonjour|merci|mon|ma|want|need|live|register)$/.test(x)).length>=2){LASTML="es";return "es";}
@@ -2648,6 +2659,13 @@ function r7fQjType(n){if(/(farol|alumbrado|bombilla|argiteri|luz de la calle)/.t
   if(MEN.test(t))return byCat("menores");
   if(PART.test(t)&&VIOL.test(t))return byCat(WIT.test(t)&&!/\b(me|nau|dit|zidan|ninduen)\b/.test(t)?"testigo":"genero")||byCat("genero");
   if(/(gizon|mutil)\w*\s+(bat|batek)\b.{0,40}(emazte|neska|emakume)\w*.{0,20}(jotzen|erasotzen)|(emazte|neska|emakume)\w*\w*.{0,20}(jotzen|erasotzen)\s+(dio|ari)/.test(t))return byCat("testigo")||byCat("genero");
+  /* R8-3 (ronda 2, 30-sep): dialecto de Debagoiena ("gura", "joten", "akabau"), amenazas en futuro y con lugar */
+  if(/(pastill|pastis|pilula|botika|medicament)\w*.{0,40}\b(guztiak|danak|todas|asko)\b.{0,20}(hartu|tomar|tomado|tomarme)|(hartu|tomado|tomarme|tomar)\w*.{0,20}(pastill|pilula|botika)\w*\s+(guztiak|danak|todas)|(pastill|pilula|botika)\w*\s+(guztiak|danak)\s+hartu|(pastill|pilula|botika)\w*.{0,30}\bhartu\b.{0,20}\b(guztiak|danak|asko)\b|me\s+las\s+voy\s+a\s+tomar\s+todas/.test(t))return byCat("sobredosis")||byCat("suicidio");
+  if(/\bbizi\s+gura\b|ez\s+(dot|dut)\s+(gehiago\s+|jada\s+)?bizi\s+(gura|nahi)|\b(hil|akabau|akabatu)\s+(nahi|gura)\s+(dot|dut|nuke)|(neure|nire)\s+burua\s+(akabau|akabatu|hil|moztu)|\bhil\s+nahiko\s+nuke|\bhil\s+egingo\s+naiz|hiltzea\s+pentsatzen|\b(salto|jauzi)\s+egin(go)?\s+(nahi\s+)?(dut|dot|naiz)|\bbotako\s+naiz\b|\burkatu\b|besoak\s+ebaki|bizitzarekin\s+bukatu|bizitza\s+bukatu\s+nahi|bizitzaz\s+nekatuta|mundu\s+honetatik\s+joan|\bme\s+(tiro|lanzo|arrojo)\s+(del?|desde|por|al|a\s+la)\b|\bme\s+voy\s+a\s+(tirar|lanzar)\s+(del?|desde|por|al|a\s+la)\b|\bme\s+voy\s+a\s+(colgar|ahorcar)\b|\bvoy\s+a\s+(saltar|lanzarme|tirarme)\s+(del?|desde|por|al|a\s+la)\b|\b(colgarme|ahorcarme)\b/.test(t))return byCat("suicidio");
+  if(/\b(aitak|amak|aitaordeak|amaordeak)\s+(joten|jo\s+egiten|jotzen|jipoitu)\w*\s+(nau|naute|deust|dit)\b|(ikaskide|ikasle)\w*\s+.{0,25}(jotzen|jipoitu|jo)\w*\s+(naute|nau)\b|(amak|aitak)\s+ez\s+dit\s+jaten\s+ematen|etxean\s+bakarrik\s+uzten\s+nau|\b(senor|hombre|tio|adulto)\s+(que\s+)?(molesta|toca|acosa|persigue)\w*\s+a\s+(ninos|ninas|crios|menores|un\s+nino|una\s+nina)/.test(t))return byCat("menores");
+  if(/\b(semeak|alabak|bilobak)\s+.{0,30}(dirua\s+kentzen|jo\s+egiten|jotzen|lapurtzen)|adinekoa\s+naiz.{0,50}(\bjo\b|kentzen|lapurt)/.test(t))return byCat("mayores");
+  if(/\b(senarrak|mutil[- ]?lagunak|bikotekideak|gizonak)\s+.{0,30}(joten|jo\s+egiten|jotzen|jipoitu|kolpatzen|mehatxatzen)|\b(mutil[- ]?lagunak|senarrak|bikotekideak)\s+.{0,40}(kontrolatzen\s+dit|ez\s+dit\s+.{0,25}uzten)/.test(t))return byCat(/\b(du|dio|ari)\b/.test(t)&&!/\b(nau|dit|deust|naute)\b/.test(t)?"testigo":"genero")||byCat("genero");
+  if(/\b(aita|aitak)\s+(amari|ama)\b.{0,15}(jotzen|\bjo\b)|\bgizon\w*\s+(bat|batek)\s+emakume\s+bat\s+jotzen/.test(t))return byCat("testigo")||byCat("genero");
   return null;}
  const _ch=crisisHit;
  crisisHit=function(text){
@@ -2657,6 +2675,8 @@ function r7fQjType(n){if(/(farol|alumbrado|bombilla|argiteri|luz de la calle)/.t
   if(c&&c.cat&&/^(testigo|genero|menores|mayores)$/.test(c.cat)&&typeof CRISIS_ANIMAL!=="undefined"&&CRISIS_ANIMAL.test(lim)&&!(typeof CRISIS_PERSONA!=="undefined"&&CRISIS_PERSONA.test(lim))&&!/(mujer|chica|novia|pareja|senora|marido|emazte|neska|emakume)/.test(lim))return null;
   /* "el marido de mi hija la maltrata" / "mi yerno le pega a mi hija": violencia machista (016), no infancia */
   if(c&&c.cat==="menores"&&/(yerno|marido\s+de\s+mi\s+(hija|nieta|hermana)|novio\s+de\s+mi\s+(hija|nieta)|pareja\s+de\s+mi\s+(hija|nieta))/.test(lim))c=byCat("genero")||c;
+  /* "gizon batek emakume bat jotzen du": una mujer adulta, no un menor (salía el 116 111) */
+  if(c&&c.cat==="menores"&&/(emakume|emazte|neska|andre|mujer|senora|chica)\w*/.test(lim)&&!/(haur|\bume|nino|nina|menor|crio|txiki|bebe|semea|alaba|ikaskide|institutu)/.test(lim))c=byCat("testigo")||byCat("genero")||c;
   if(c)return c;
   return extra(lim);};
  const _cl=crisisLang;
@@ -2710,6 +2730,44 @@ function r7fQjType(n){if(/(farol|alumbrado|bombilla|argiteri|luz de la calle)/.t
   if(/\b(quien|quienes|nor|nork)\s+(vive|viven|bizi)\b|\bcitas de (hoy|manana|otros|otras personas|la gente|los vecinos)\b|\b(dame|ensename|muestrame|pasame|erakutsi|eman)\b.{0,25}\b(citas|quejas|partes|datos|hitzorduak|kexak)\b.{0,15}\b(de|del|otros|besteen)\b|\bdatos de (otro|mi|un) vecin/.test(n))return F("datos_terceros");
   /* petición clara de cita ("me das cita el jueves", "pídeme cita para el padrón", "kiero sita") */
   if(/\b(cita|sita|hitzordu\w*|txanda)\b/.test(n)&&/\b(quiero|kiero|quisiera|necesito|pedir|pideme|pidame|dame|me das|me da|me puedes dar|reservar|reservame|sacar|coger|eskatu|eskatzea|nahi|behar|podrias)\b/.test(n)&&!/(anular|cancelar|cambiar|aldatu|ezeztatu|obligator|derrigor|sin cita|medico|mediku|osakidetza|\bdni\b|\bnan\b|pasaporte|renta|errenta|hacienda|ogasun|\bitv\b|\bdgt\b|piscina|polideportivo|kiroldegi|padel|pista)/.test(n))return F("cita");
+  /* R8-3b: seguimiento "¿y la dirección / el teléfono?" -> el tema de antes */
+  if(PENDING&&/^(eta|y|e)\s+(helbidea|la direccion|direccion|telefonoa|el telefono|telefono|emaila|el email|posta elektronikoa)\s*\??$/.test(n)){const it=KB.find(x=>x.id===PENDING);if(it)return [{it:it,s:20}].concat(sc.filter(x=>x.it!==it));}
+  /* dirección del BAZ / del Ayuntamiento */
+  if(/(helbide|direccion|non dago|donde esta)/.test(n)&&/(\bbaz|udaletxe|ayuntamiento|\budal(a|aren|eko)?\b|herritarren arreta)/.test(n)&&!/(liburutegi|kiroldegi|garbigune|euskaltegi|udaltzaing|justizia)/.test(n))return F("ubicacion");
+  /* residencias y centros de día: servicios sociales */
+  if(/(zahar etxe|zaharren egoitza|residencia de (mayores|ancianos)|eguneko zentro|centro de dia)/.test(n))return F("ayudas");
+  /* talar / podar un árbol propio: medio ambiente (no agua por "moztu") */
+  if(/(zuhaitz|arbol)\w*.{0,30}(moztu|talar|cortar|kendu|podar|inausi)/.test(n))return F("medioambiente");
+  /* R8-3: dirección / correo / "dónde está" DE una instalación concreta -> su ficha (no el BAZ ni el padrón por "helbidea") */
+  if(/(helbide|non dago|non daukat|donde esta|direccion|\bemail\b|correo|posta elektroniko|telefono|telefonoa)/.test(n)){
+   if(/(justizia|justicia|juzgado|epaitegi)/.test(n))return F("juzgado");
+   if(/(liburutegi|biblioteca|biblioteka|kulturate)/.test(n))return F("cultura");
+   if(/(kiroldegi|polideportivo|musakola|iturripe|igerileku|piscina)/.test(n))return F("deporte");
+   if(/(garbigune|mankomunitate|mancomunidad)/.test(n))return F("residuos");
+   if(/euskaltegi/.test(n))return F("euskera");
+   if(/(udaltzaing|policia)/.test(n))return F("policia");
+   if(/(gizarte zerbitzu|ongizate|servicios sociales)/.test(n))return F("ayudas");
+  }
+  /* biblioteca de un barrio: cultura, no las fiestas del barrio */
+  if(/(liburutegi|biblioteca|biblioteka)/.test(n)&&!/(cita|hitzordu)/.test(n))return F("cultura");
+  /* la iglesia de San Juan Bautista es turismo, no Sanjuanak */
+  if(/(iglesia|eliza|parroquia)/.test(n)&&/san juan/.test(n))return F("turismo");
+  /* "partido judicial" no es política */
+  if(/partido judicial|epai[- ]?barruti/.test(n))return F("juzgado");
+  /* DNI / pasaporte: Policía Nacional (no "oficina de turismo") */
+  if(/\b(dni|nan|pasaporte|pasaportea)\b/.test(n)&&!/(padron|errolda|empadron)/.test(n))return F("fuera");
+  /* autobús entre ciudades, Alsa */
+  if(/\balsa\b|(autobus|\bbus\b)\w*\s+(de|a|hacia|para|madril|madrid|bilbo|bilbao|gasteiz|donostia|vitoria)\b/.test(n))return F("transporte");
+  /* fallecimiento + trámite: padrón (baja por defunción), no animales */
+  if(/(hil da|hil zait|hil zen|ha muerto|ha fallecido|fallecid|murio)/.test(n)&&/(padron|errolda|baja|izapide|tramite)/.test(n))return F("padron");
+  /* pedir un idioma */
+  if(/(euskaraz|gaztelaniaz|erdaraz|ingelesez|en euskera|en castellano|en ingles)\s+(hitz|mesedez|por favor|habla|hablame|hablar)/.test(n))return F("idioma");
+  /* entradas de espectáculos: agenda, no vado ("sarrera") */
+  if(/(antzerki|kontzertu|ikuskizun|teatro|concierto)\w*.{0,20}(sarrera|entrada)|sarrerak erosi|\bentradas? (para|del|de)\b/.test(n))return F("agenda");
+  /* licencia de perro: animales, no licencia de obra */
+  if(/(txakur|perro)\w*.{0,15}(lizentzia|licencia)|(lizentzia|licencia).{0,15}(txakur|perro)/.test(n))return F("animales");
+  /* oficina de Hacienda: foral, no municipal */
+  if(/(ogasun|hacienda)\w*\s+(bulego|oficina)/.test(n))return F("fuera");
   /* R8-2: fiestas (Sanjuanak, barrios) -> festivos, que es la ficha que tiene las fechas (I52) */
   if(/(sanjuan|san juan(es)? |fiestas? de(l| los)? barrio|auzoetako jai|(cuando|que dia) son las fiestas|noiz dira (herriko )?jaiak|jaiak noiz)/.test(n))return F("festivos");
   /* sugerencias y propuestas: quejas y sugerencias (no el folleto turístico del parque) */
@@ -3269,7 +3327,7 @@ function r8OtroMun(nG){
  const ownHit=[...own].some(w=>w&&new RegExp("(^|\\s)"+w+"(k?o|n|ra|tik|rako|an|ean|en|eko|era|etik|ren|ar|arra|arrak)?(\\s|$)").test(nG));
  if(ownHit)return null;
  if(/(vengo de|venimos de|vivia en|vivo ahora en|me mudo|me he mudado|mudarme|mudanza|me cambio de|traslad|desde |antes vivia|etxez aldatu|bizi nintzen|etorri naiz|etorri gara|etorri berri)/.test(nG))return null;
- if(/(autobus|\bbus\b|lurraldebus|bizkaibus|\btren\b|renfe|euskotren|como (voy|llego|ir|se va)|ir a |ir hasta|nola (joan|iritsi)|joateko|joan nahi|iristeko|carretera|kilometros|km)/.test(nG))return null;
+ if(/(autobus|\bbus\b|\balsa\b|lurraldebus|bizkaibus|\btren\b|renfe|euskotren|como (voy|llego|ir|se va)|ir a |ir hasta|nola (joan|iritsi)|joateko|joan nahi|iristeko|carretera|kilometros|km)/.test(nG))return null;
  /* R8: el juzgado / Registro Civil del partido judicial (Bergara) no es "otro ayuntamiento": lo explica la ficha de justicia */
  if(/(epaitegi|juzgado|registro civil|erregistro zibil|tribunal|justizia|justicia)/.test(nG))return null;
  /* "soy de Oñati y quiero apuntarme a Musakola": el otro pueblo es el origen; lo que pide es de aquí */
