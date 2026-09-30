@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es" data-v="20260930">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Gusta Vieja · Abacería gourmet en Fuengirola</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Propuesta de nueva tienda online para La Gusta Vieja: catálogo fácil desde el móvil, buscador, disponibilidad clara y aviso por WhatsApp de los productos agotados.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Gusta Vieja">
+<meta property="og:title" content="La Gusta Vieja · así podría ser vuestra tienda en el móvil">
+<meta property="og:description" content="Los 893 productos con buscador, categorías a mano y aviso por WhatsApp de los agotados. Ejemplo visual, no es la tienda oficial.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/gustavieja/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/gustavieja/">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#catalogo">Ir al catálogo</a>
+
+<div class="topbar">
+  <span>Envío gratis en península a partir de 100 €</span>
+  <span class="sep" aria-hidden="true">·</span>
+  <span>Pedidos y dudas por WhatsApp <a href="https://wa.me/34622123420" target="_blank" rel="noopener">622 123 420</a></span>
+</div>
+
+<header class="site-header" id="top">
+  <div class="header-row">
+    <a class="brand" href="#top" aria-label="La Gusta Vieja, inicio">
+      <img src="logo.webp" alt="La Gusta Vieja, abacería" width="600" height="113">
+    </a>
+    <div class="header-actions">
+      <a class="icon-btn wa-icon" href="https://wa.me/34622123420" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/><path d="M9 8.5c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5a7 7 0 0 0 3.3 3c.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .6-.3 1.4-.8 1.7-.6.4-1.3.5-2 .3A9.4 9.4 0 0 1 8.6 11c-.2-.9-.1-1.8.4-2.5Z"/></svg>
+      </a>
+      <button class="icon-btn cart-btn" id="cartOpen" aria-label="Abrir cesta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span id="cartCount" class="count">0</span>
+      </button>
+    </div>
+  </div>
+  <form class="search" role="search" onsubmit="return false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="search" type="search" placeholder="Busca vino, queso, anchoas, jamón…" autocomplete="off" aria-label="Buscar en la tienda">
+    <button type="button" id="searchClear" hidden aria-label="Borrar búsqueda">×</button>
+  </form>
+</header>
+
+<main>
+  <section class="hero">
+    <img src="hero.webp" alt="Estantería de vinos en la tienda de La Gusta Vieja" width="1600" height="1301" fetchpriority="high">
+    <div class="hero-copy">
+      <p class="eyebrow">Abacería · Fuengirola</p>
+      <h1>Vinos, ibéricos, quesos y conservas de nuestra tierra</h1>
+      <p>Los 893 productos de la tienda, fáciles de encontrar desde el móvil. Y si algo está agotado, lo preguntas por WhatsApp en un toque.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#catalogo">Ver la tienda</a>
+        <a class="btn ghost" href="https://wa.me/34622123420" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tiles" aria-label="Categorías destacadas">
+    <div class="tiles-row" id="tiles"></div>
+  </section>
+
+  <section class="catalog" id="catalogo">
+    <div class="catalog-head">
+      <h2>La tienda</h2>
+      <p id="resultCount" aria-live="polite">Cargando el catálogo…</p>
+    </div>
+    <nav class="chips" id="cats" aria-label="Categorías"></nav>
+    <nav class="chips sub" id="subs" hidden aria-label="Subcategorías"></nav>
+    <nav class="chips sub2" id="subs2" hidden aria-label="Zonas y tipos"></nav>
+    <div class="toolbar">
+      <label class="switch">
+        <input type="checkbox" id="onlyAvailable" checked>
+        <span class="track" aria-hidden="true"></span>
+        <span>Solo disponibles</span>
+      </label>
+      <label class="sort">Ordenar
+        <select id="sort">
+          <option value="rec">Recomendados</option>
+          <option value="low">Precio: de menor a mayor</option>
+          <option value="high">Precio: de mayor a menor</option>
+          <option value="az">Nombre, A–Z</option>
+        </select>
+      </label>
+    </div>
+    <div class="product-grid" id="products"></div>
+    <div class="more-wrap"><button class="btn secondary" id="loadMore" hidden>Ver más productos</button></div>
+  </section>
+
+  <section class="wa-block">
+    <div>
+      <p class="eyebrow">¿No lo encuentras?</p>
+      <h2>Lo que no está en la web, lo buscamos</h2>
+      <p>Escríbenos por WhatsApp y te decimos si lo tenemos en tienda o cuándo vuelve a entrar.</p>
+      <a class="btn wa" href="https://wa.me/34622123420?text=Hola%2C%20La%20Gusta%20Vieja.%20Busco%20un%20producto%3A%20" target="_blank" rel="noopener">WhatsApp 622 123 420</a>
+    </div>
+  </section>
+
+  <section class="info-strip" aria-label="Información de compra">
+    <div><strong>Envío en 48 h</strong><span>A toda la península, con seguimiento</span></div>
+    <div><strong>Gratis desde 100 €</strong><span>Agrupa tu pedido y te ahorras el envío</span></div>
+    <div><strong>Tienda en Fuengirola</strong><span>Avda. de la Estación 2 · 952 57 64 16</span></div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="eyebrow">La Gusta Vieja</p>
+      <p>Abacería gourmet en Fuengirola. Vinos, jamón, ibéricos, quesos, conservas y productos de nuestra tierra.</p>
+    </div>
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=La+Gusta+Vieja+Avda+de+la+Estaci%C3%B3n+2+Fuengirola" target="_blank" rel="noopener">Avda. de la Estación 2, 29640 Fuengirola (Málaga)</a>
+      <a href="tel:+34952576416">952 57 64 16</a>
+      <a href="https://wa.me/34622123420" target="_blank" rel="noopener">WhatsApp 622 123 420</a>
+      <a href="mailto:info@lagustavieja.com">info@lagustavieja.com</a>
+    </div>
+    <div>
+      <p class="eyebrow">Síguenos</p>
+      <a href="https://www.instagram.com/lagusta_vieja/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/lagustavieja/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div>
+      <p class="eyebrow">Ayuda</p>
+      <a href="https://lagustavieja.com/content/1-entrega" target="_blank" rel="noopener">Envíos y devoluciones</a>
+      <a href="https://lagustavieja.com/content/2-aviso-legal" target="_blank" rel="noopener">Aviso legal</a>
+      <a href="https://lagustavieja.com/content/3-terminos-y-condiciones" target="_blank" rel="noopener">Términos y condiciones</a>
+      <a href="https://lagustavieja.com/content/7-politica-de-privacidad" target="_blank" rel="noopener">Política de privacidad</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© La Gusta Vieja · Fuengirola</span>
+    <span>Ejemplo visual de nueva tienda. Precios y stock tomados de lagustavieja.com el 30 de septiembre de 2026; el pago se haría en la tienda oficial.</span>
+  </div>
+</footer>
+
+<dialog id="productDialog" class="product-dialog" aria-labelledby="detailTitle">
+  <button class="close" data-close="productDialog" aria-label="Cerrar">×</button>
+  <div id="productDetail"></div>
+</dialog>
+
+<dialog id="cartDialog" class="cart-dialog" aria-labelledby="cartTitle">
+  <div class="cart-head">
+    <div><p class="eyebrow">La Gusta Vieja</p><h2 id="cartTitle">Tu cesta</h2></div>
+    <button class="close" data-close="cartDialog" aria-label="Cerrar">×</button>
+  </div>
+  <div id="cartContent"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
