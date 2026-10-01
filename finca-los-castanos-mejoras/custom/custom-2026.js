@@ -120,6 +120,13 @@
       // tile-b: encima, el mismo trozo volteado, que casa con el borde de arriba
       // de tile-a; ya cae en la zona casi transparente del degradado.
       var sube = ggTile(granos, '').replace('granos-2026-tile-', 'granos-2026-sube-');
+      // tile-0: el MISMO azulejo de la banda, entero, colgando por debajo de la
+      // capa: solo asoma su franja superior, la que la banda (mas baja que el
+      // azulejo) no ensena. Asi la union capa/banda es la misma foto, sin salto.
+      var t0 = document.createElement('div');
+      t0.className = 'gg-tile gg-tile-0';
+      t0.style.backgroundImage = 'url(' + ggTile(granos, '') + ')';
+      capa.appendChild(t0);
       ['gg-tile gg-tile-a', 'gg-tile gg-tile-b', 'gg-tile gg-tile-c'].forEach(function (cls) {
         var d = document.createElement('div');
         d.className = cls;
@@ -137,9 +144,12 @@
     // k baja de 12 a 1,2 al bajar, y con el todo el tramo va cogiendo cuerpo.
     var altoBanda = 0;
     function medir() {
-      altoBanda = band.getBoundingClientRect().height;
+      // la banda es mas baja que el azulejo (css: background-size auto 132%):
+      // la referencia para la escala del grano es el alto del azulejo
+      altoBanda = band.getBoundingClientRect().height * 1.32;
       capa.style.setProperty('--gg-band-h', altoBanda + 'px');
-      capa.style.height = Math.round(altoBanda * 1.2216) + 'px';
+      capa.style.setProperty('--gg-band-real', band.getBoundingClientRect().height + 'px');
+      capa.style.height = Math.round(altoBanda * 1.30) + 'px';
     }
     var ultimo = '';
     function fundir(p) {

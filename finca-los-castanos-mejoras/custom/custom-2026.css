@@ -626,7 +626,46 @@ main > section:first-of-type span {
   inset: auto 0 0 0;                 /* anclados abajo */
   height: calc(var(--gg-band-h, 45svh) * .4072);   /* misma escala de grano que la banda */
   background-position: center bottom;
+  transform: none;
 }
-.gg-granos-fade .gg-tile-a { bottom: 0; transform: none; }
-.gg-granos-fade .gg-tile-b { bottom: calc(var(--gg-band-h, 45svh) * .4072); transform: scaleY(-1); }
-.gg-granos-fade .gg-tile-c { bottom: calc(var(--gg-band-h, 45svh) * .8144); transform: none; }
+/* --gg-band-h = alto del AZULEJO de la banda (T); --gg-band-real = alto visible de la banda.
+   s = T - real = franja del azulejo que la banda no ensena y que asoma aqui. */
+.gg-granos-fade { --gg-s: calc(var(--gg-band-h, 45svh) - var(--gg-band-real, 34svh)); }
+.gg-granos-fade .gg-tile-0 { height: var(--gg-band-h, 45svh); bottom: calc(var(--gg-band-real, 34svh) * -1); }
+.gg-granos-fade .gg-tile-a { bottom: var(--gg-s); }
+.gg-granos-fade .gg-tile-b { bottom: calc(var(--gg-s) + var(--gg-band-h, 45svh) * .4072); transform: scaleY(-1); }
+.gg-granos-fade .gg-tile-c { bottom: calc(var(--gg-s) + var(--gg-band-h, 45svh) * .8144); }
+
+/* 27) 1-oct, Yulia: la banda de cascara "mas corta por arriba y por abajo"
+   (mas apaisada). Baja de 45 a 34 svh; el azulejo se pinta al 132 % anclado
+   abajo, asi el grano conserva su tamano y solo se ven menos filas. */
+.gg-beans-band { height: 34svh !important; min-height: 14rem !important; }
+.gg-beans-band .gg-tile { background-size: auto 132%; }
+
+/* 28) 1-oct, Elena: "vamos a unificarlo todo: si ponemos una pequena linea
+   vertical beige en un lado de la ventanita, hay que hacer lo mismo en todas".
+   Misma linea que el aviso (5 px, arena) en todos los recuadros de texto:
+   preguntas frecuentes, precios, tarjetas de contacto, ofertas de empleo,
+   la tarjeta del mapa y los avisos. Las tarjetas que son una foto no la llevan. */
+main details.border,
+main article.border,
+main div[class*="bg-white/50"][class*="border"],
+main a.items-start.gap-4.p-5.border,
+main div.p-5.rounded-none.border,
+main div.consent-revoke,
+main div[class*="bg-surface/95"].border,
+main .border-l-4.border-secondary,
+main .gg-aviso {
+  border-left: 5px solid #c6a96b !important;
+}
+
+/* 28b) Experiencia: la foto del secado (y la que lleva encima) al mismo ancho
+   y proporcion que las demas fotos de la pagina, no mas pequenas. */
+.gg-col-fotos { max-width: none !important; width: 100%; }
+.gg-col-fotos > div { max-width: none !important; width: 100%; }
+
+/* 28c) Galeria: las miniaturas aparecen todas de golpe, sin animacion de entrada */
+.gallery-item { opacity: 1 !important; transform: none !important; }
+/* 28d) en la version clara, la regla de las tarjetas de precios pisaba el color de la linea */
+html main section.bg-accent div[class*="bg-white/50"][class*="border"],
+html.gg-claro main section.bg-accent div[class*="bg-white/50"][class*="border"] { border-left-color: #c6a96b !important; }
