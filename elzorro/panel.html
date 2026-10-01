@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Zorro Gastro Bar · Panel de reservas</title>
+<meta name="description" content="Panel donde El Zorro Gastro Bar recibe cada reserva preparada por el asistente de WhatsApp: día, hora, personas, nombre y peticiones.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" href="img/avatar.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--fondo:#09090b;--caja:#18181b;--caja2:#1f1f23;--linea:#2e2e33;--tinta:#f4f4f5;--gris:#a1a1aa;--ambar:#f59e0b;--naranja:#ea580c;--ok:#34d399;--rojo:#f87171;--azul:#7cb7ff;--titulo:"Outfit","Segoe UI",Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box}
+  html{overflow-x:hidden}
+  body{margin:0;background:var(--fondo);color:var(--tinta);font-family:"Segoe UI",Helvetica,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4}
+  .skip{position:absolute;left:-999px;top:8px;background:#fff;color:#111;padding:8px 12px;border-radius:6px;z-index:10}
+  .skip:focus{left:8px}
+  .top{border-bottom:1px solid var(--linea);padding:12px 16px;background:rgba(9,9,11,.9)}
+  .top .in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:10px;font-family:var(--titulo);font-weight:800;font-size:21px;letter-spacing:.06em;color:var(--ambar);white-space:nowrap}
+  .marca img{width:34px;height:34px;border-radius:8px;display:block}
+  .marca small{font-family:"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);border-left:1px solid var(--linea);padding-left:10px}
+  .top .sub{color:var(--gris);font-size:13px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:640px){.top .sub{display:none}.top .in{justify-content:space-between}}
+  @media (max-width:380px){.marca small{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,var(--ambar),var(--naranja));color:#09090b;text-decoration:none;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;border:0;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .btn:hover,.btn:focus-visible{filter:brightness(1.08);outline:2px solid #fff;outline-offset:2px}
+  .btn.sec{background:transparent;color:var(--tinta);border:1px solid var(--linea);font-weight:600}
+  .btn.sec:hover,.btn.sec:focus-visible{background:var(--caja2);outline:2px solid var(--ambar);outline-offset:1px;filter:none}
+  main{max-width:1080px;margin:0 auto;padding:18px 16px 48px}
+  h1{font-family:var(--titulo);font-weight:800;font-size:26px;margin:6px 0 4px;letter-spacing:-.01em}
+  .intro{margin:0 0 18px;color:var(--gris);font-size:14px;max-width:74ch}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px}
+  @media (min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stat{background:var(--caja);border:1px solid var(--linea);border-radius:14px;padding:12px 14px;min-width:0}
+  .stat b{display:block;font-family:var(--titulo);font-weight:800;font-size:28px;line-height:1.1}
+  .stat.dest b{color:var(--ambar)}
+  .stat span{font-size:11.5px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em}
+  .filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin:0 0 6px}
+  .filtros label{font-size:12.5px;color:var(--gris);display:flex;flex-direction:column;gap:3px;min-width:0}
+  select{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--linea);border-radius:9px;background:var(--caja);color:var(--tinta);max-width:100%}
+  select:focus-visible{outline:2px solid var(--ambar);outline-offset:1px}
+  .filtros .acciones{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+  .dia{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--linea)}
+  .dia h2{font-family:var(--titulo);font-weight:800;font-size:19px;margin:0}
+  .dia h2 em{font-style:normal;color:var(--ambar)}
+  .dia span{font-size:13px;color:var(--gris)}
+  .lista{display:grid;gap:10px}
+  .card{display:grid;grid-template-columns:auto 1fr;gap:0 14px;background:var(--caja);border:1px solid var(--linea);border-left:4px solid var(--linea);border-radius:14px;padding:14px}
+  .card.e-nuevo{border-left-color:var(--ambar)}
+  .card.e-confirmada{border-left-color:var(--ok)}
+  .card.e-sinhueco{border-left-color:var(--azul)}
+  .card.e-cancelada,.card.e-noshow{border-left-color:#52525b;opacity:.72}
+  .card .hora{font-family:var(--titulo);font-weight:800;font-size:24px;line-height:1.1;min-width:64px}
+  .card .hora small{display:block;font-family:"Segoe UI",Helvetica,Arial,sans-serif;font-weight:500;font-size:11.5px;color:var(--gris);margin-top:4px;white-space:nowrap}
+  .cuerpo{min-width:0}
+  .card header{display:flex;gap:8px 10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+  .card h3{margin:0;font-size:17px;font-weight:650;overflow-wrap:anywhere}
+  .card h3 span{color:var(--gris);font-weight:500}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .b{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--caja2);color:var(--gris);white-space:nowrap;border:1px solid var(--linea)}
+  .b.nuevo{color:var(--ambar);border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.1)}
+  .b.ok{color:var(--ok);border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.08)}
+  .b.aviso{color:var(--rojo);border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08)}
+  .b.ej{color:var(--azul);border-color:rgba(124,183,255,.35);background:rgba(124,183,255,.08)}
+  .datos{margin:0;display:grid;grid-template-columns:1fr;gap:6px 16px;font-size:14px}
+  @media (min-width:640px){.datos{grid-template-columns:1fr 1fr}}
+  .datos div{min-width:0}
+  .datos dt{font-size:11px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em}
+  .datos dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
+  .datos .ancho{grid-column:1/-1}
+  .datos .aviso dd{color:var(--rojo);font-weight:600}
+  .card footer{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--linea);font-size:13.5px}
+  .card footer label{display:flex;gap:6px;align-items:center;color:var(--gris);flex-wrap:wrap}
+  .card footer select{font-size:13.5px;padding:5px 8px;background:var(--caja2)}
+  .envio{flex:1 1 100%;display:flex;flex-direction:column;gap:4px}
+  .envio small{color:var(--gris);font-size:12px}
+  .envio p{margin:0;align-self:flex-start;max-width:100%;background:#d9fdd3;color:#111b21;padding:7px 10px;border-radius:8px 8px 8px 0;font-size:13.5px;overflow-wrap:anywhere}
+  details{flex:1 1 100%}
+  details summary{cursor:pointer;color:var(--ambar);font-weight:600;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:focus-visible{outline:2px solid var(--ambar);outline-offset:2px;border-radius:4px}
+  .conv{margin-top:8px;background:#efeae2;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:4px;max-height:360px;overflow:auto}
+  .conv p{margin:0;max-width:86%;padding:6px 9px;border-radius:8px;font-size:13.5px;color:#111b21;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+  .conv .asistente{align-self:flex-start;background:#fff}
+  .conv .cliente{align-self:flex-end;background:#d9fdd3}
+  .conv .sistema{align-self:center;background:#e1f2fb;font-size:12px;color:#3b5560;max-width:100%;text-align:center}
+  .vacio{background:var(--caja);border:1px dashed var(--linea);border-radius:14px;padding:24px;text-align:center;color:var(--gris);margin-top:18px}
+  .nota{margin:24px 0 0;font-size:12.5px;color:var(--gris);max-width:80ch}
+  @media (max-width:420px){.card{grid-template-columns:1fr;gap:6px 0}.card .hora{display:flex;align-items:baseline;gap:10px}.card .hora small{margin:0}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#lista">Ir a la lista de reservas</a>
+<header class="top">
+  <div class="in">
+    <div class="marca"><img src="img/avatar.png" alt="">EL ZORRO <small>Gastro Bar</small></div>
+    <div class="sub">Panel de reservas por WhatsApp · demo</div>
+    <a class="btn" href="index.html">Probar el asistente</a>
+  </div>
+</header>
+<main>
+  <h1>Reservas preparadas por el asistente</h1>
+  <p class="intro">Cada conversación de WhatsApp llega aquí ya ordenada: día, hora, personas, nombre y lo que haya pedido el cliente. Solo queda confirmarla, y al cambiar el estado el cliente recibe el mensaje por WhatsApp. Las marcadas como «Ejemplo» son de muestra; las demás las has creado tú desde el asistente en este dispositivo.</p>
+
+  <section class="stats" aria-label="Resumen">
+    <div class="stat dest"><b id="s-pend">0</b><span>Pendientes de confirmar</span></div>
+    <div class="stat"><b id="s-hoy">0</b><span id="s-hoy-t">Reservas hoy</span></div>
+    <div class="stat"><b id="s-cub">0</b><span id="s-cub-t">Comensales hoy</span></div>
+    <div class="stat"><b id="s-sem">0</b><span>Comensales en 7 días</span></div>
+  </section>
+
+  <section class="filtros" aria-label="Filtros">
+    <label>Día<select id="f-dia"><option value="">Todos</option><option value="hoy">Hoy</option><option value="manana">Mañana</option><option value="semana">Próximos 7 días</option></select></label>
+    <label>Estado<select id="f-estado"><option value="">Todos</option></select></label>
+    <div class="acciones">
+      <button type="button" class="btn sec" id="borrar-pruebas">Borrar mis pruebas</button>
+      <button type="button" class="btn sec" id="restaurar">Restaurar ejemplos</button>
+    </div>
+  </section>
+
+  <section id="lista" aria-live="polite"></section>
+  <p class="nota">En la versión real el panel lo comparte todo el equipo, cada reserva nueva avisa también por WhatsApp o correo al encargado, y el recordatorio sale solo el día de la reserva. Horario, turnos, tope de 20 comensales y 7 días de antelación son los mismos que en el formulario de vuestra web.</p>
+</main>
+
+<script src="datos.js"></script>
+<script src="comun.js"></script>
+<script>
+(() => {
+  const M = window.Zorro;
+  const $ = s => document.querySelector(s);
+  const lista = $("#lista");
+  for (const [v, n] of M.ESTADOS) { const o = document.createElement("option"); o.value = v; o.textContent = n; $("#f-estado").appendChild(o); }
+
+  const relativa = iso => {
+    const ms = Date.now() - new Date(iso).getTime(), h = Math.floor(ms / 3600e3);
+    if (h < 1) return `hace ${Math.max(1, Math.floor(ms / 60e3))} min`;
+    if (h < 24) return `hace ${h} h`;
+    const dias = Math.floor(h / 24);
+    return dias === 1 ? "ayer" : `hace ${dias} días`;
+  };
+  const hoyIso = () => M.iso(M.hoy());
+  const enDias = f => Math.round((M.deIso(f) - M.hoy()) / 864e5);
+  const viva = s => s.estado !== "cancelada" && s.estado !== "noshow";
+  const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+
+  function pintar() {
+    const todas = M.cargar().filter(s => s.ficha && s.ficha.datos.fecha);
+    const fd = $("#f-dia").value, fe = $("#f-estado").value;
+    const h = hoyIso();
+    // el resumen mira al primer día con reservas a partir de hoy (si hoy está cerrado, el siguiente)
+    const futuras = todas.filter(s => s.ficha.datos.fecha >= h && viva(s));
+    const ref = futuras.some(s => s.ficha.datos.fecha === h) || !futuras.length ? h : futuras.map(s => s.ficha.datos.fecha).sort()[0];
+    const cuando = ref === h ? "hoy" : enDias(ref) === 1 ? "mañana" : "el " + M.fechaBonita(M.deIso(ref), "es").split(" ")[0];
+    const delDia = futuras.filter(s => s.ficha.datos.fecha === ref);
+    $("#s-pend").textContent = todas.filter(s => s.estado === "nuevo" && s.ficha.datos.fecha >= h).length;
+    $("#s-hoy").textContent = delDia.length; $("#s-hoy-t").textContent = "Reservas " + cuando;
+    $("#s-cub").textContent = delDia.reduce((a, s) => a + (s.ficha.datos.personas || 0), 0); $("#s-cub-t").textContent = "Comensales " + cuando;
+    $("#s-sem").textContent = futuras.filter(s => enDias(s.ficha.datos.fecha) <= 7).reduce((a, s) => a + (s.ficha.datos.personas || 0), 0);
+
+    const l = todas.filter(s => {
+      const k = enDias(s.ficha.datos.fecha);
+      return (!fe || s.estado === fe) && (!fd || (fd === "hoy" && k === 0) || (fd === "manana" && k === 1) || (fd === "semana" && k >= 0 && k <= 7));
+    });
+    lista.innerHTML = "";
+    if (!l.length) { const v = document.createElement("div"); v.className = "vacio"; v.textContent = todas.length ? "Ninguna reserva coincide con los filtros." : "Todavía no hay reservas. Prueba el asistente y verás aquí la primera."; lista.appendChild(v); return; }
+    const dias = [...new Set(l.map(s => s.ficha.datos.fecha))].sort((a, b) => (a < h) - (b < h) || (a < h ? b.localeCompare(a) : a.localeCompare(b)));
+    for (const f of dias) {
+      const delF = l.filter(s => s.ficha.datos.fecha === f).sort((a, b) => (a.ficha.datos.minutos || 0) - (b.ficha.datos.minutos || 0) || a.fecha.localeCompare(b.fecha));
+      const k = enDias(f), vivas = delF.filter(viva);
+      const cab = document.createElement("div"); cab.className = "dia";
+      const h2 = document.createElement("h2");
+      const pref = k === 0 ? "Hoy" : k === 1 ? "Mañana" : k < 0 ? "Pasada" : "";
+      if (pref) { const em = document.createElement("em"); em.textContent = pref + " · "; h2.appendChild(em); }
+      h2.appendChild(document.createTextNode(cap(M.fechaBonita(M.deIso(f), "es"))));
+      const sp = document.createElement("span"); sp.textContent = `${vivas.length} ${vivas.length === 1 ? "reserva" : "reservas"} · ${vivas.reduce((a, s) => a + (s.ficha.datos.personas || 0), 0)} comensales`;
+      cab.append(h2, sp); lista.appendChild(cab);
+      const grupo = document.createElement("div"); grupo.className = "lista";
+      for (const s of delF) grupo.appendChild(tarjeta(s));
+      lista.appendChild(grupo);
+    }
+  }
+
+  function tarjeta(s) {
+    const d = s.ficha.datos;
+    const a = document.createElement("article"); a.className = "card e-" + s.estado; a.setAttribute("aria-label", `Reserva de ${d.nombre || "cliente sin nombre"} a las ${d.hora}`);
+    const hora = document.createElement("div"); hora.className = "hora"; hora.textContent = d.hora || "--:--";
+    const rec = document.createElement("small"); rec.textContent = "Recibida " + relativa(s.fecha); hora.appendChild(rec);
+    const cuerpo = document.createElement("div"); cuerpo.className = "cuerpo";
+    const head = document.createElement("header");
+    const h3 = document.createElement("h3"); h3.textContent = d.nombre || "Sin nombre";
+    const sp = document.createElement("span"); sp.textContent = ` · ${M.personasTxt(d.personas || 0, "es")}` + (d.ninos ? ` (${d.ninos} ${d.ninos === 1 ? "niño" : "niños"})` : ""); h3.appendChild(sp);
+    head.appendChild(h3);
+    const badges = document.createElement("div"); badges.className = "badges";
+    const badge = (t, cls) => { const b = document.createElement("span"); b.className = "b " + (cls || ""); b.textContent = t; badges.appendChild(b); };
+    const nombreEstado = (M.ESTADOS.find(e => e[0] === s.estado) || [0, s.estado])[1];
+    badge(s.estado === "sinhueco" ? "Sin hueco" : nombreEstado, s.estado === "nuevo" ? "nuevo" : s.estado === "confirmada" ? "ok" : "");
+    if (d.cancelada) badge("Canceló el cliente", "aviso");
+    else if (d.asistencia) badge("Dice que viene", "ok");
+    if ((d.personas || 0) >= 8) badge("Grupo grande", "aviso");
+    if (d.avisos.some(x => /Alergia/.test(x))) badge("Alergia", "aviso");
+    if (d.avisos.some(x => /persona/.test(x))) badge("Pide persona", "aviso");
+    if (d.preguntas && d.preguntas.length) badge("Pregunta pendiente", "aviso");
+    if (d.lang === "en") badge("EN");
+    if (s.ejemplo) badge("Ejemplo", "ej");
+    head.appendChild(badges);
+    cuerpo.appendChild(head);
+
+    const dl = document.createElement("dl"); dl.className = "datos";
+    const fila = (k, v, cls) => { if (!v) return; const w = document.createElement("div"); if (cls) w.className = cls; const dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; w.append(dt, dd); dl.appendChild(w); };
+    fila("Peticiones", d.peticiones.join("\n"));
+    fila("Teléfono", "El del WhatsApp del cliente");
+    if (d.preguntas && d.preguntas.length) fila("Pregunta sin contestar", d.preguntas.join("\n"), "aviso");
+    const otros = d.avisos.filter(x => !/Alergia/.test(x)); if (otros.length) fila("Avisos", otros.join(" · "), "aviso");
+    cuerpo.appendChild(dl);
+
+    const foot = document.createElement("footer");
+    const lab = document.createElement("label"); lab.textContent = "Estado";
+    const sel = document.createElement("select"); sel.setAttribute("aria-label", "Estado de la reserva");
+    for (const [v, n] of M.ESTADOS) { const o = document.createElement("option"); o.value = v; o.textContent = n; if (v === s.estado) o.selected = true; sel.appendChild(o); }
+    sel.addEventListener("change", () => { M.actualizar(s.id, x => { x.estado = sel.value; }); pintar(); });
+    lab.appendChild(sel); foot.appendChild(lab);
+    const msg = M.mensajeCliente(s);
+    if (msg) { const e = document.createElement("div"); e.className = "envio"; const sm = document.createElement("small"); sm.textContent = "Mensaje que recibe el cliente por WhatsApp:"; const p = document.createElement("p"); p.textContent = msg; e.append(sm, p); foot.appendChild(e); }
+    const det = document.createElement("details");
+    const sum = document.createElement("summary"); sum.textContent = "Ver conversación"; det.appendChild(sum);
+    const conv = document.createElement("div"); conv.className = "conv";
+    for (const m of s.conversacion || []) { const p = document.createElement("p"); p.className = m.quien; p.textContent = m.texto; conv.appendChild(p); }
+    det.appendChild(conv); foot.appendChild(det);
+    cuerpo.appendChild(foot);
+    a.append(hora, cuerpo);
+    return a;
+  }
+
+  for (const id of ["f-dia", "f-estado"]) $("#" + id).addEventListener("change", pintar);
+  $("#borrar-pruebas").addEventListener("click", () => { M.borrar(s => !s.ejemplo); pintar(); });
+  $("#restaurar").addEventListener("click", () => { M.restaurarEjemplos(); pintar(); });
+  M.sembrar();
+  pintar();
+})();
+</script>
+</body>
+</html>
