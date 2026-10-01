@@ -120,7 +120,7 @@
       // tile-b: encima, el mismo trozo volteado, que casa con el borde de arriba
       // de tile-a; ya cae en la zona casi transparente del degradado.
       var sube = ggTile(granos, '').replace('granos-2026-tile-', 'granos-2026-sube-');
-      ['gg-tile gg-tile-a', 'gg-tile gg-tile-b'].forEach(function (cls) {
+      ['gg-tile gg-tile-a', 'gg-tile gg-tile-b', 'gg-tile gg-tile-c'].forEach(function (cls) {
         var d = document.createElement('div');
         d.className = cls;
         d.style.backgroundImage = 'url(' + sube + ')';
@@ -129,31 +129,47 @@
       fondo.appendChild(capa);
     }
 
+    // (1-oct noche) TRANSICION de verdad: los granos cubren un tramo grande del
+    // final de la foto (1,22 veces el alto de la banda) y con el scroll pasan
+    // de invisibles a casi transparentes y de ahi a plena intensidad.
+    // La mascara es alfa(y) = y^k (y = 0 arriba de la capa, 1 abajo): abajo vale
+    // siempre 1, igual que el borde de la banda, asi no hay raya en la union;
+    // k baja de 12 a 1,2 al bajar, y con el todo el tramo va cogiendo cuerpo.
     var altoBanda = 0;
     function medir() {
       altoBanda = band.getBoundingClientRect().height;
       capa.style.setProperty('--gg-band-h', altoBanda + 'px');
+      capa.style.height = Math.round(altoBanda * 1.2216) + 'px';
     }
-    // (1-oct tarde) Arriba del todo NO se ve ningun grano. La altura de la
-    // capa depende de cuantos px de banda asoman ya por abajo (v): empieza en
-    // 0, al principio crece algo mas rapido que el scroll (asi el borde de la
-    // banda nunca entra "a pelo") y se va frenando hasta 0,8 veces la banda.
-    function alto(v) {
-      var tope = altoBanda * 0.8;
-      var L = v <= 0 ? 0 : tope * (1 - Math.exp(-1.7 * v / tope));
-      capa.style.height = Math.round(L) + 'px';
+    var ultimo = '';
+    function fundir(p) {
+      if (p <= 0) { capa.style.visibility = 'hidden'; ultimo = ''; return; }
+      capa.style.visibility = 'visible';
+      var q = 1 - p, k = 1.2 + 10.8 * q * q * q;
+      var paradas = [];
+      for (var i = 0; i <= 14; i++) {
+        var y = i / 14;
+        paradas.push('rgba(0,0,0,' + Math.pow(y, k).toFixed(3) + ') ' + (y * 100).toFixed(1) + '%');
+      }
+      var g = 'linear-gradient(to bottom,' + paradas.join(',') + ')';
+      if (g === ultimo) return;
+      ultimo = g;
+      capa.style.setProperty('-webkit-mask-image', g, 'important');
+      capa.style.setProperty('mask-image', g, 'important');
     }
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       medir();
-      return alto(altoBanda * 0.5);
+      return fundir(0.6);
     }
 
     var pedido = false;
     function pintar() {
       pedido = false;
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      alto(vh - band.getBoundingClientRect().top);
+      // 0 arriba del todo; 1 cuando el borde de arriba de la banda va por el 30 % de la pantalla
+      var p = (vh - band.getBoundingClientRect().top) / (vh * 0.7);
+      fundir(p > 1 ? 1 : p);
     }
     function alScroll() {
       if (!pedido) { pedido = true; requestAnimationFrame(pintar); }
