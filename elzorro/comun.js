@@ -70,12 +70,12 @@
   const num = s => (/^\d+$/.test(s) ? +s : PAL[s] || UNO[s]);
 
   // Solo abren de noche, así que «a las 9» son las 21:00
-  const RE_H_RELOJ = /\b(\d{1,2})(?:[:.]|\s?h\s?)(\d{2})\b/;
+  const RE_H_RELOJ = /\b(\d{1,2})(?:[:.]|\s?h\s?)(\d{2})(?!\d)/;
   const RE_H_LAS = new RegExp("\\b(?:a|sobre|hacia|para|de|desde) las? " + NUM + "(?: y (media|cuarto)| (menos cuarto))?\\b");
   const RE_H_SUFIJO = /\b(\d{1,2})\s?(?:pm|p\.m\.?|h|hrs|horas)\b/;
   const RE_H_AT = new RegExp("\\bat (?:around |about )?" + NUM + "(?:\\s?(?:pm|o'?clock))?(?: (thirty|fifteen))?\\b");
-  const RE_H_HALF = new RegExp("\\bhalf past " + NUM + "\\b");
-  const RE_H_SOLA = new RegExp("^" + NUM + "(?: y (media|cuarto)| (menos cuarto)| (thirty|fifteen))?$");
+  const RE_H_HALF = new RegExp("\\bhalf (?:past )?" + NUM + "\\b");
+  const RE_H_SOLA = new RegExp("^(?:las? )?" + NUM + "(?: y (media|cuarto)| (menos cuarto)| (thirty|fifteen))?$");
   function parseHora(n, paso) {
     let m, h, min = 0;
     const frac = s => /media|thirty|half/.test(s || "") ? 30 : /menos cuarto/.test(s || "") ? -15 : /cuarto|fifteen/.test(s || "") ? 15 : 0;
@@ -85,6 +85,7 @@
     else if ((m = n.match(RE_H_HALF))) { h = num(m[1]); min = 30; }
     else if ((m = n.match(RE_H_AT))) { h = num(m[1]); min = frac(m[2]); }
     else if (paso === "hora" && (m = n.trim().match(RE_H_SOLA))) { h = num(m[1]); min = frac(m[2] || m[3] || m[4]); }
+    else if (paso === "hora" && (m = n.trim().match(/^([012]\d)([0-5]\d)$/))) { h = +m[1]; min = +m[2]; }
     else return null;
     if (h == null || h > 24 || min > 59) return null;
     if (min < 0) { h -= 1; min += 60; }
@@ -96,6 +97,7 @@
   const MES_N = {}; MESES.es.forEach((m, i) => { MES_N[norm(m)] = i; }); MESES.en.forEach((m, i) => { MES_N[m.toLowerCase()] = i; }); MES_N.setiembre = 8;
   const MES_RE = Object.keys(MES_N).join("|");
   const RE_F_SEMANA = new RegExp("\\b(" + Object.keys(SEMANA).join("|") + ")\\b");
+  const RE_F_SEMD = new RegExp("\\b(" + Object.keys(SEMANA).join("|") + ") (?:dia |the )?(\\d{1,2})(?:st|nd|rd|th)?\\b(?! ?(?:personas|comensales|pax|people|adultos|adults|ninos|ninas|kids|children|of us|y media|y cuarto|h\\b|:|pm))");
   const RE_F_DMES = new RegExp("\\b(\\d{1,2})(?:st|nd|rd|th)? (?:de |of )?(" + MES_RE + ")\\b");
   const RE_F_MESD = new RegExp("\\b(" + MES_RE + ") (?:the )?(\\d{1,2})(?:st|nd|rd|th)?\\b");
   const RE_F_BARRA = /\b(\d{1,2})\s?\/\s?(\d{1,2})\b/;
@@ -112,10 +114,17 @@
     if ((m = n.match(RE_F_DMES))) { const r = conMes(+m[1], MES_N[m[2]], m[0]); if (r) return r; }
     if ((m = n.match(RE_F_MESD))) { const r = conMes(+m[2], MES_N[m[1]], m[0]); if (r) return r; }
     if ((m = n.match(RE_F_BARRA)) && +m[2] >= 1 && +m[2] <= 12) { const r = conMes(+m[1], +m[2] - 1, m[0]); if (r) return r; }
+    // «sábado 10»: vale el número si de verdad cae en ese día; si no cuadra, manda el día de la semana y se avisa
+    let duda = false;
+    if ((m = n.match(RE_F_SEMD)) && +m[2] >= 1 && +m[2] <= 31) {
+      const r = delMes(+m[2], m[0]);
+      if (r && r.d.getDay() === SEMANA[m[1]]) return r;
+      duda = true;
+    }
     if ((m = n.match(RE_F_SEMANA))) {
       let k = (SEMANA[m[1]] - base.getDay() + 7) % 7;
       if (k === 0 && PERIODOS[base.getDay()] && !turnos(base).length) k = 7;
-      return sal(mas(base, k), m[0]);
+      return { ...sal(mas(base, k), m[0]), duda };
     }
     if ((m = n.match(/\b(este |el |this )?(finde|fin de semana|weekend)\b/))) return { finde: true, resto: n.replace(m[0], " ") };
     if ((m = n.match(RE_F_EL)) && +m[1] >= 1 && +m[1] <= 31) { const r = delMes(+m[1], m[0]); if (r) return r; }
@@ -130,35 +139,46 @@
   const RE_PARA = new RegExp("\\b(?:para|somos|seremos|seriamos|vamos|iremos|vendremos|venimos|mesa de|grupo de|table for|party of|group of|for|we are|we're|we'll be|we will be|there are|there will be|there's) (?:a ser |ser |unos |unas |como |about |around |a |solo |just )?" + NUM + "\\b" + NO_SIGUE);
   const RE_PERS = new RegExp("\\b" + NUM + " ?(?:personas?|comensales|pax|people|persons?|guests|of us|adultos?|adults?)\\b");
   const RE_SOLO_NUM = new RegExp("^(?:unos |unas |about )?" + NUM + "$");
-  function parsePersonas(n, paso, estricto) {
+  const RE_MAS = new RegExp("\\b(\\d{1,2}|un|una|uno|one|" + Object.keys(PAL).join("|") + ") (?:personas? |people |person |guests? )?(mas|more|menos|fewer|less)\\b(?! o menos| or less)");
+  const RE_RANGO = /\b(\d{1,2}) ?(?:o|u|or|-) ?(\d{1,2})\b(?! ?(?:de |\/|:|h\b|pm))/;
+  function parsePersonas(n, paso, estricto, actual) {
     let total = null, ninos = 0, m;
     const k = n.match(RE_NINOS); if (k) ninos = num(k[1]) || 0;
     const a = n.match(RE_ADULTOS);
+    // «seremos 2 más» o «uno menos» sobre una reserva que ya tiene personas
+    if (actual && (m = n.match(RE_MAS))) return { total: Math.max(1, actual + (num(m[1]) || 1) * (/mas|more/.test(m[2]) ? 1 : -1)), ninos };
     if (a && k) total = num(a[1]) + ninos;
     else if ((m = n.match(RE_PERS))) total = num(m[1]);
     else if (!estricto && (m = n.match(RE_PARA))) total = num(m[1]);
     else if (/\b(pareja|los dos|las dos|a couple|the two of us|just two)\b/.test(n)) total = 2;
     else if (/\b(una persona|solo yo|yo sol[oa]|one person|just me|myself)\b/.test(n)) total = 1;
     else if ((paso === "personas" || paso === "personasMas") && (m = n.trim().match(RE_SOLO_NUM))) total = num(m[1]);
+    // «somos 4 o 5»: se reserva para el número mayor y se deja apuntado
+    let rango = null;
+    if ((m = n.match(RE_RANGO)) && +m[1] < +m[2] && +m[2] <= 60 && (total === +m[1] || total === +m[2] || (total == null && (paso === "personas" || paso === "personasMas")))) { total = +m[2]; rango = [+m[1], +m[2]]; }
     if (total == null && !ninos) return null;
-    return { total, ninos };
+    return { total, ninos, rango };
   }
 
   const RE_NOMBRE = /(?:a nombre de|al nombre de|me llamo|mi nombre es|\bsoy|under the name of|under the name|\bunder|my name is|name is|\bi am|\bi'm|nombre:|name:)\s+([A-Za-zÀ-ÿ'’ -]{2,40})/i;
-  const NO_NOMBRE = /^(celiac|coeliac|al[eé]rgic|allergic|intolerant|vegan|vegetarian|yo\b|el\b|la\b|un\b|una\b|de\b|a\b|from\b|cliente|nosotros|the\b|not\b|sorry|looking|interested)/i;
+  const NO_NOMBRE = /^(celiac|coeliac|al[eé]rgic|allergic|intolerant|vegan|vegetarian|yo\b|el\b|la\b|un\b|una\b|de\b|a\b|from\b|cliente|nosotros|the\b|not\b|sorry|looking|interested|coming|going|calling|writing|afraid|sure\b|here\b|just\b|also\b|wondering|trying|planning|thinking|bringing|happy|fine\b|good\b|with\b|in\b|at\b|on\b|en\b|con\b|del\b|al\b|que\b|muy\b|mi\b|tu\b|su\b|los\b|las\b|nuev[oa]\b|otr[oa]\b)/i;
+  // En el paso del nombre casi todo vale como nombre, salvo lo que claramente es otra cosa (un botón, una duda, un cambio)
+  const NO_ES_NOMBRE = /^(reserv\w*|mesa|carta|menu|recordatorio|reminder|manana|hoy|tomorrow|today|tonight|somos|mas|menos|uno|cancel\w*|cambi\w*|hora|horario|direccion|dia|alergi\w*|allerg\w*|trona|terraza|cumple\w*|gracias|book\w*|table|see|ver|change|quiero|tengo|hay|necesit\w*|nada|nothing|none|vamos|mejor|que|para|with|the|and|is|are|we|you|i|need|coming|otra|another|llegar\w*|tarde|late|envia\w*|send|yes|si|no|ok|okay|vale|hola|hello|hi|please|como|donde|cuando|cuanto|lunes|martes|miercoles|jueves|viernes|sabado|monday|tuesday|wednesday|thursday|friday|saturday|sunday|personas?|people|nombre|name|este|finde|puede|puedo|a|al|en|con|sin|por|el|la|los|las|un|una|unos|mi|es|esta|eso|lo|it|there)$/;
+  const RE_TELEFONO = /\+?\d[\d\s.-]{7,}\d/;
   const RE_CORTE = /\s+(?:y|e|para|el|la|a las|somos|con|and|for|at|on|please|por favor|gracias|thanks)\b|[,.;:!?¿¡\d]/i;
   const titulo = s => s.split(/\s+/).filter(Boolean).map((w, i) => (i && /^(de|del|la|las|los|y|van|von|da|di)$/i.test(w)) ? w.toLowerCase() : (w === w.toLowerCase() || w === w.toUpperCase()) ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w).join(" ");
   function parseNombre(t, paso) {
     const m = t.match(RE_NOMBRE);
     if (m) { const s = limpiar(m[1].split(RE_CORTE)[0]); if (s.length >= 2 && !NO_NOMBRE.test(s)) return { nombre: titulo(s) }; }
     if (paso === "nombre") {
-      const s = limpiar(t.replace(/^(pon(?:la|lo|me)? a nombre de|a nombre de|al nombre de|nombre|name|it's|es|soy|me llamo|i am|i'm|my name is|under)\s+/i, "").replace(/[,.]?\s*(muchas gracias|gracias|por favor|thanks|thank you|please)\s*$/i, ""));
-      if (s && s.length <= 40 && !/\d/.test(s) && s.split(/\s+/).length <= 5 && !/[?¿]/.test(t) && !/^(s[ií]|no|vale|ok|okay|hola|gracias|nada|yes|sure|thanks|perfecto|claro|eso|cancelar)$/i.test(s)) return { nombre: titulo(s), debil: true };
+      const s = limpiar(t.replace(RE_TELEFONO, " ").replace(/^(pon(?:la|lo|me)? a nombre de|a nombre de|al nombre de|nombre|name|it's|es|soy|me llamo|i am|i'm|my name is|under)\s+/i, "").replace(/[,.]?\s*(muchas gracias|gracias|por favor|thanks|thank you|please)\s*$/i, ""));
+      const pals = norm(s).split(/[\s'’-]+/).filter(Boolean), raras = pals.filter(p => NO_ES_NOMBRE.test(p)).length;
+      if (s.length >= 2 && s.length <= 40 && /^[A-Za-zÀ-ÿ'’. -]+$/.test(s) && pals.length <= 5 && !/[?¿]/.test(t) && !NO_ES_NOMBRE.test(pals[0]) && raras * 2 <= pals.length && !/^(s[ií]|sure|thanks|perfecto|claro|eso|genial|great|perfect)$/i.test(s)) return { nombre: titulo(s), debil: true };
     }
     return null;
   }
 
-  const ALERGENOS = [["gluten", /gluten|celiac|coeliac|trigo|wheat/], ["lactosa", /lactos|lacteos|dairy|leche\b|\bmilk/], ["frutos secos", /frutos secos|nuez|nueces|almendra|avellana|\bnuts?\b/], ["cacahuete", /cacahuete|\bmani\b|peanut/], ["marisco", /marisco|crustaceo|shellfish|gambas?\b|langostino|prawn/], ["pescado", /pescado|\bfish\b/], ["huevo", /huevo|\beggs?\b/], ["soja", /\bsoja\b|\bsoy\b/], ["sésamo", /sesamo|sesame/], ["mostaza", /mostaza|mustard/]];
+  const ALERGENOS = [["gluten", /gluten|celiac|coeliac|trigo|wheat/], ["lactosa", /lactos|lacteos|dairy|leche\b|\bmilk/], ["frutos secos", /frutos secos|nuez|nueces|almendra|avellana|\bnuts?\b/], ["cacahuete", /cacahuete|\bmani\b|peanut/], ["marisco", /marisco|crustaceo|shellfish|gambas?\b|langostino|prawn/], ["pescado", /pescado|\bfish\b/], ["huevo", /huevo|\beggs?\b/], ["soja", /\bsoja\b|\bsoya\b|\bsoy (sauce|beans?|milk|allergy)|to soy\b/], ["sésamo", /sesamo|sesame/], ["mostaza", /mostaza|mustard/]];
   const ALERGENO_EN = { gluten: "gluten", lactosa: "lactose", "frutos secos": "nuts", cacahuete: "peanut", marisco: "shellfish", pescado: "fish", huevo: "egg", soja: "soy", "sésamo": "sesame", mostaza: "mustard" };
   function parsePeticiones(n, t, paso) {
     const l = [];
@@ -186,7 +206,7 @@
   // ---------- preguntas frecuentes ----------
   const RE_HORARIO = /horario|abris|abrir|abierto|cerrais|cerrado|a que hora (abr|cerr|empez)|hasta que hora|opening (hours|times)|what time do you|are you open|when do you (open|close)|do you open|\bopen (on|today|tonight)\b|closing time/;
   const RE_DONDE = /donde estais|donde esta|donde os|direccion|como llegar|como se llega|como llego|ubicacion|\bmapa\b|google maps|where are you|where is|address|location|directions|how (do i|do we|to) get/;
-  const RE_CARTA = /\bcarta\b|\bmenu\b|que teneis|que hay (de|para) (comer|cenar|picar)|\bprecios\b|what do you (have|serve)|\bfood\b|que se come|platos/;
+  const RE_CARTA = /\bcarta\b|\bmenu\b|que teneis|que hay (de|para) (comer|cenar|picar)|\bprecios?\b|\bprices?\b|what do you (have|serve)|\bfood\b|que se come|platos/;
   const RE_RESERVA = /reserv|\bmesa\b|\bbook|\btable\b|\bcenar\b|\bdinner\b|\bhueco\b|\bsitio\b/;
   const precio = (it, lang) => it.p != null ? eur(it.p) : it.pt ? it.pt[lang] : "";
   function lineaPlato(sec, it, lang) {
@@ -223,13 +243,18 @@
     if (!g.preguntas.includes(t)) g.preguntas.push(t);
     return { texto: g.lang === "en" ? "I'm not sure about that and I'd rather not guess. I've passed your question to the team and they'll answer you here." : "Eso no lo sé seguro y prefiero no inventármelo. Le dejo la pregunta apuntada al equipo y te contestan por aquí.", pendiente: true };
   }
-  function faq(g, n, t) {
+  function faq(g, n, t, esPregunta) {
     const en = g.lang === "en", lang = en ? "en" : "es";
     const horario = RE_HORARIO.test(n), donde = RE_DONDE.test(n);
     if (horario && donde) return { texto: faqHorario(g, "").texto + "\n\n" + faqDonde(g).texto };
     if (horario) return faqHorario(g, n);
     if (donde) return faqDonde(g);
     if (/aparca|parking|\bpark\b/.test(n)) return noLoSe(g, t);
+    if (esPregunta && /\bcancel|\banula/.test(n)) return { texto: en ? "Yes. Just write to me here and I'll cancel it; the sooner you let us know, the easier it is for the team to give the table to someone else." : "Sí. Me escribes por aquí y la cancelo; cuanto antes avises, más fácil es para el equipo dar la mesa a otra gente." };
+    // con alergias no se enseña el plato sin más: primero el aviso
+    const ALERGIA = /alergen|allergen|gluten|celiac|coeliac|lactos|alergi|allerg/;
+    const avisoAlergia = { texto: en ? "I don't have the allergen sheet for each dish, so I won't tell you something that might not be safe. What I do know: the Justin Beaber wings have peanut butter. Tell me the allergy and I'll add it to the booking for the kitchen." : "No tengo la ficha de alérgenos de cada plato y no te quiero decir algo que no sea seguro. Lo que sí sé: las alitas Justin Beaber llevan mantequilla de cacahuete. Dime la alergia y la anoto en la reserva para que cocina lo tenga en cuenta." };
+    if (ALERGIA.test(n)) return avisoAlergia;
     // platos concretos antes que secciones enteras
     const platos = []; for (const s of D.CARTA) for (const it of s.items) if (it.re.test(n)) platos.push([s, it]);
     const sec = D.CARTA.find(s => s.re.test(n));
@@ -241,7 +266,6 @@
     if (sec) return cartaSeccion(g, sec);
     if (/coctel|cocktail|\bcopas?\b|bebidas?|cerveza|\bvinos?\b|drinks?|\bbeers?\b|\bwine|gin ?tonic|mojito|spritz|sangria/.test(n)) return { texto: en ? "There are craft cocktails and draught beer. I don't have the drinks list with prices here yet; you'll see it at the bar." : "Hay cócteles artesanales y cerveza de grifo. La carta de bebidas con precios todavía no la tengo aquí; os la enseñan en el local." };
     if (/vegetarian|vegan/.test(n)) return { texto: en ? "On the menu without meat or fish I can see the boletus & truffle croquettes, the stuffed jalapeños and several loaded fries. For a strict diet the kitchen should confirm it, so I'll note it on the booking." : "Sin carne ni pescado veo en la carta las croquetas de boletus y trufa, los jalapeños rellenos y varias patatas. Si es una dieta estricta conviene que lo confirme cocina, así que lo anoto en la reserva." };
-    if (/alergen|allergen|gluten|celiac|coeliac|lactos|alergi|allerg/.test(n)) return { texto: en ? "I don't have the allergen sheet for each dish, so I won't tell you something that might not be safe. What I do know: the Justin Beaber wings have peanut butter. Tell me the allergy and I'll add it to the booking for the kitchen." : "No tengo la ficha de alérgenos de cada plato y no te quiero decir algo que no sea seguro. Lo que sí sé: las alitas Justin Beaber llevan mantequilla de cacahuete. Dime la alergia y la anoto en la reserva para que cocina lo tenga en cuenta." };
     if (/terraza|terrace|outside|outdoor/.test(n)) return { texto: en ? "Yes, El Zorro is mostly about its terrace. If you'd like to sit there I'll note it as a preference on the booking." : "Sí, El Zorro es sobre todo terraza. Si queréis sentaros ahí lo anoto como preferencia en la reserva." };
     if (/hamburgues|burger/.test(n)) return noLoSe(g, t);
     if (/para llevar|a domicilio|recoger|take ?away|take ?out|delivery|glovo|just ?eat|uber/.test(n)) return noLoSe(g, t);
@@ -252,15 +276,19 @@
     if (/telefono|llamar|\bnumero\b|\bphone\b|\bcall\b/.test(n)) return { texto: en ? `The phone number is ${TELEFONO}. They pick up from 19:00, when they open.` : `El teléfono es el ${TELEFONO}. Lo cogen a partir de las 19:00, cuando abren.` };
     if (/\bcomer\b|mediodia|\bcomida\b|almuerzo|brunch|desayun|\blunch\b|breakfast/.test(n)) return { texto: en ? "Right now we only open in the evening, from 19:00." : "Ahora mismo abrimos solo por la noche, a partir de las 19:00." };
     if (RE_CARTA.test(n)) return cartaGeneral(g);
+    if (/^ ?(adios|hasta luego|hasta pronto|hasta manana|nos vemos|chao|bye|goodbye|see you)\b/.test(n)) return { texto: en ? "See you soon! 🦊" : "¡Hasta pronto! 🦊", cortesia: true };
     const gracias = /^ ?(vale |ok |perfecto |genial |great |perfect )?((muchas |mil )?gracias|thanks?( you)?( very much| a lot| so much)?|cheers)\b/.test(n);
     const vale = /^ ?(ok|okay|vale|perfecto|genial|great|perfect|estupendo|de acuerdo) ?$/.test(n);
-    if (gracias || (vale && (g.cerrado || !g.iniciada))) return { texto: g.cerrado ? (en ? "Thank you! See you soon 🦊" : "¡A vosotros! Nos vemos pronto 🦊") : (en ? "You're welcome!" : "¡A ti!"), cortesia: true };
+    if (gracias) return { texto: g.cerrado ? (en ? "Thank you! See you soon 🦊" : "¡A vosotros! Nos vemos pronto 🦊") : (en ? "You're welcome!" : "¡A ti!"), cortesia: true };
+    if (vale && (g.cerrado || !g.iniciada)) return { texto: g.cerrado ? (en ? "Great! See you soon 🦊" : "¡Perfecto! Nos vemos pronto 🦊") : (en ? "Great. If you need anything else, I'm here." : "Perfecto. Si necesitas algo más, aquí estoy."), cortesia: true };
+    // cualquier otra pregunta que no sepa contestar va al equipo, en vez de devolver el menú de opciones
+    if (esPregunta && !RE_RESERVA.test(n) && n.replace(/[^a-z]/g, "").length > 3) return noLoSe(g, t);
     return null;
   }
 
   // ---------- conversación ----------
   function nuevoEstado() {
-    return { lang: null, paso: null, iniciada: false, finde: false, ofrecerDias: null, personas: null, ninos: 0, fecha: null, hora: null, horaPedida: null, nombre: null, peticiones: [], peticionesVistas: false, notas: [], preguntas: [], avisos: {}, fallos: {}, mapa: null, cerrado: false, cancelada: false, recordado: false, asistencia: false, espera: null, atencion: false, dijoInfantil: false };
+    return { lang: null, paso: null, iniciada: false, finde: false, ofrecerDias: null, personas: null, ninos: 0, fecha: null, hora: null, horaPedida: null, nombre: null, peticiones: [], peticionesVistas: false, notas: [], preguntas: [], avisos: {}, fallos: {}, mapa: null, cerrado: false, cancelada: false, recordado: false, asistencia: false, espera: null, atencion: false, dijoInfantil: false, rango: null, telefono: null, valida: null };
   }
   function siguiente(g) {
     if (!g.personas) return g.paso === "personasMas" ? "personasMas" : "personas";
@@ -270,7 +298,8 @@
     if (!g.peticionesVistas) return g.peticiones.some(p => p.pendiente) ? "alergia" : "peticiones";
     return "confirmar";
   }
-  const petTxt = (g, lang) => [...g.peticiones.filter(p => !p.pendiente).map(p => p[lang]), ...g.notas];
+  const completa = g => !!(g.personas && g.fecha && g.hora != null && g.nombre);
+  const petTxt = (g, lang) => [...g.peticiones.filter(p => !p.pendiente).map(p => p[lang]), ...(g.rango && lang === "es" ? [g.rango] : []), ...g.notas];
   function resumen(g) {
     const en = g.lang === "en", lang = en ? "en" : "es";
     const l = [`📅 ${cap(fechaBonita(g.fecha.d, lang))}`, `🕘 ${hhmm(g.hora)}`, `👥 ${personasTxt(g.personas, lang)}` + (g.ninos ? (en ? ` (${g.ninos} ${g.ninos === 1 ? "child" : "children"})` : ` (${g.ninos} ${g.ninos === 1 ? "niño" : "niños"})`) : ""), `🙋 ${g.nombre}`];
@@ -313,13 +342,15 @@
   function extraer(g, t, n, atajo) {
     const x = { peticiones: [] };
     if (atajo) { if (atajo.startsWith("#fecha:")) x.fecha = { d: deIso(atajo.slice(7)) }; return x; }
-    let r = n;
+    // si deja un teléfono se guarda aparte, para que sus cifras no se lean como hora ni como personas
+    const tel = t.match(RE_TELEFONO); let r = n;
+    if (tel && tel[0].replace(/\D/g, "").length >= 9) { x.telefono = tel[0].trim(); r = n.replace(RE_TELEFONO, " "); }
     // en el paso del nombre, «Domingo Pérez» es un nombre y no un día
-    const soloNombre = g.paso === "nombre" && !/\d/.test(n) && !/cambi|mejor|change|better|\ba las\b/.test(n);
+    const soloNombre = g.paso === "nombre" && !/\d/.test(r) && !/cambi|mejor|change|better|\ba las\b/.test(r);
     if (!soloNombre) {
       const h = parseHora(r, g.paso); if (h) { x.hora = h.min; x.horaLiteral = RE_H_RELOJ.test(r); r = h.resto; }
       const f = parseFecha(r, g.paso); if (f) { x.fecha = f; r = f.resto || r; }
-      const p = parsePersonas(r, g.paso, g.paso === "peticiones" || g.paso === "alergia"); if (p) x.personas = p;
+      const p = parsePersonas(r, g.paso, g.paso === "peticiones" || g.paso === "alergia", g.personas); if (p) x.personas = p;
     }
     const nom = parseNombre(t, g.paso); if (nom) { x.nombre = nom.nombre; x.nombreDebil = !!nom.debil; }
     x.peticiones = parsePeticiones(n, t, g.paso);
@@ -329,10 +360,12 @@
   // Aplica lo entendido al estado y devuelve las frases que hay que decirle al cliente antes de seguir
   function aplicar(g, x) {
     const en = g.lang === "en", lang = en ? "en" : "es", pre = [], hecho = [];
+    if (x.telefono) g.telefono = x.telefono;
     if (x.personas) {
       const p = x.personas.total;
       if (p != null && p > 0) {
         g.personas = p; hecho.push("personas");
+        if (x.personas.rango) { g.rango = `Serán entre ${x.personas.rango[0]} y ${x.personas.rango[1]} personas`; pre.push(en ? `I'll book for ${p}; if you end up being fewer, just tell me.` : `La dejo para ${p}; si al final sois menos, me avisas.`); } else g.rango = null;
         if (p > MAX_PERSONAS) { g.avisos.grupo = `Grupo de ${p}: por encima del tope de ${MAX_PERSONAS} del formulario`; pre.push(en ? `For ${p} people the team arranges the booking directly, because tables need to be set up. I'll take your details and pass them on.` : `Para ${p} personas la reserva la organiza directamente el equipo, porque hay que montar mesas. Te tomo los datos y se lo paso.`); }
         else if (p >= GRUPO_GRANDE) g.avisos.grupo = `Grupo grande (${p})`; else delete g.avisos.grupo;
       }
@@ -347,6 +380,7 @@
         else if (diasHasta(d) === 0 && !turnos(d).length) { g.fecha = null; pre.push(en ? "It's too late for me to book a table for tonight, bookings close an hour before we shut." : "Para hoy ya no me da tiempo a dejarte mesa, las reservas se cierran una hora antes del cierre."); }
         else {
           g.fecha = { iso: iso(d), d }; hecho.push("fecha");
+          if (x.fecha.duda) pre.push(en ? `I've taken it as ${fechaBonita(d, "en")}.` : `Lo tomo como el ${fechaBonita(d, "es")}.`);
           if (diasHasta(d) > MAX_DIAS) { g.avisos.plazo = `Fuera del plazo de ${MAX_DIAS} días del formulario`; pre.push(en ? `Bookings normally open ${MAX_DIAS} days ahead. I'll note it anyway and the team will tell you if they can hold it.` : `Las reservas se abren con ${MAX_DIAS} días de antelación. Te la dejo anotada igualmente y el equipo te dice si ya puede bloquearla.`); } else delete g.avisos.plazo;
           if (g.hora != null && x.hora == null) { g.horaPedida = g.hora; g.hora = null; }
         }
@@ -385,7 +419,9 @@
     if (hecho.includes("hora")) partes.push((en ? "at " : "a las ") + hhmm(g.hora));
     if (partes.length >= 2 || (hecho.includes("hora") && !x.horaLiteral)) acuse = (en ? "Got it: " : "Anotado: ") + partes.join(" ") + ".";
     else if (hecho.includes("nombre") && !partes.length) acuse = en ? `Thanks, ${g.nombre.split(" ")[0]}.` : `Gracias, ${g.nombre.split(" ")[0]}.`;
-    return { pre: [...new Set(pre)], hecho, acuse };
+    // un «Anotado.» suelto sobra si ya hay otra frase que lo dice
+    const unicas = [...new Set(pre)], seco = en ? "Noted." : "Anotado.";
+    return { pre: acuse || unicas.length > 1 ? unicas.filter(p => p !== seco) : unicas, hecho, acuse };
   }
 
   function cerrar(g, pre) {
@@ -409,7 +445,9 @@
   }
   function cancelar(g) {
     const en = g.lang === "en";
-    g.cancelada = true; g.espera = null; g.paso = null;
+    // si se cancela a medio cambiar la hora o el día, la reserva que se anula es la última que se envió completa
+    if (!completa(g) && g.valida) Object.assign(g, g.valida);
+    g.cancelada = true; g.espera = null; g.paso = null; g.horaPedida = null;
     return { texto: en ? "Cancelled. Thanks for letting us know in time, that way the team can give the table to someone else. See you next time!" : "Cancelada. Gracias por avisar con tiempo, así el equipo puede dar la mesa a otra gente. ¡Hasta la próxima!", ficha: ficha(g), opciones: en ? ["Book another table"] : ["Reservar otra mesa"] };
   }
 
@@ -430,25 +468,35 @@
     if (g.cancelada) { const lang = g.lang; Object.assign(g, nuevoEstado(), { lang }); reinicio = true; }
     const fin = r => { if (reinicio) r.reinicio = true; return r; };
     const conPaso = r => { // tras contestar una duda, retoma la pregunta que estaba pendiente
-      if (g.cerrado || !g.iniciada) { if (!r.opciones && !g.cerrado && !r.cortesia) r.opciones = en ? ["Book a table", "See the menu"] : ["Reservar mesa", "Ver la carta"]; if (g.cerrado && r.pendiente) r.ficha = ficha(g); return fin(r); }
+      if ((g.cerrado && completa(g)) || (!g.cerrado && !g.iniciada)) { if (!r.opciones && !g.cerrado && !r.cortesia) r.opciones = en ? ["Book a table", "See the menu"] : ["Reservar mesa", "Ver la carta"]; if (g.cerrado && r.pendiente) r.ficha = ficha(g); return fin(r); }
       g.paso = siguiente(g); const q = pregunta(g);
-      return fin({ texto: r.texto + "\n\n" + q.texto, opciones: q.opciones });
+      return fin({ texto: r.texto + "\n\n" + q.texto, opciones: q.opciones || r.opciones });
     };
 
     // recordatorio del día de la reserva (simulado)
-    if (g.cerrado && (atajo === "#recordatorio" || /recordatorio|reminder/.test(n))) return recordatorio(g);
-    if (g.espera === "asistencia") {
+    if (g.cerrado && completa(g) && (atajo === "#recordatorio" || /recordatorio|reminder/.test(n))) return recordatorio(g);
+    if (g.espera === "cancelar") {
+      // había contestado «no» al recordatorio y se le ha preguntado si la cancela
+      g.espera = null;
+      if (RE_SI.test(n) || RE_CANCELAR.test(n)) return cancelar(g);
+      if (/^ ?(no|nop|nope)\b|manten|keep/.test(n)) { g.asistencia = true; return { texto: en ? `Fine, I'll keep it as it is: ${fraseReserva(g, "en")}.` : `De acuerdo, la mantengo como está: ${fraseReserva(g, "es")}.`, ficha: ficha(g) }; }
+    }
+    if (g.espera === "asistencia" && completa(g)) {
       if (RE_CANCELAR.test(n)) return cancelar(g);
       if (RE_SI.test(n) || /alli estaremos|iremos|we'?ll be there|still coming|por supuesto|of course/.test(n)) {
         g.asistencia = true; g.espera = null;
         return { texto: en ? `Perfect! We'll be waiting for you at ${hhmm(g.hora)} at Carrer de Catalunya, 45. If anything comes up, just write to me here.` : `¡Perfecto! Os esperamos a las ${hhmm(g.hora)} en Carrer de Catalunya, 45. Si surge algo, escríbeme por aquí.`, ficha: ficha(g) };
       }
+      if (/^ ?(no|nop|nope)\b/.test(n) && !/\d/.test(n)) {
+        g.espera = "cancelar";
+        return { texto: en ? "Oh, what a pity. Shall I cancel the booking?" : "Vaya, qué pena. ¿Cancelo la reserva?", opciones: en ? ["Yes, cancel it", "No, keep it"] : ["Sí, cancélala", "No, mantenla"] };
+      }
     }
     if (RE_HUMANO.test(n)) {
       g.atencion = true;
       const r = { texto: en ? `Of course. I'll let the team know so someone writes to you here. If it's urgent, the phone is ${TELEFONO} (from 19:00).` : `Claro. Aviso al equipo para que te escriba alguien por aquí. Si corre prisa, el teléfono es el ${TELEFONO} (a partir de las 19:00).` };
-      if (g.cerrado) { r.ficha = ficha(g); return r; }
-      if (!g.iniciada) return fin(r);
+      if (g.cerrado && completa(g)) { r.ficha = ficha(g); return r; }
+      if (!g.iniciada && !g.cerrado) return fin(r);
       g.paso = siguiente(g); const q = pregunta(g);
       return { texto: r.texto + (en ? "\n\nMeanwhile, I can carry on with the booking. " : "\n\nMientras tanto, si quieres sigo con la reserva. ") + q.texto, opciones: q.opciones };
     }
@@ -456,21 +504,31 @@
       if (g.cerrado) return cancelar(g);
       if (g.iniciada) { const lang = g.lang; Object.assign(g, nuevoEstado(), { lang }); return { texto: en ? "No problem, I'll leave it there. If you want a table another day, just tell me." : "Sin problema, lo dejo sin hacer. Si otro día queréis mesa, me dices.", opciones: en ? ["Book a table", "See the menu"] : OPCIONES_INICIO.slice(0, 2) }; }
     }
+    // cancelar o cambiar una reserva que no se hizo en esta conversación: no se abre una nueva, se avisa al equipo
+    if (!g.cerrado && !g.iniciada && ((RE_CANCELAR.test(n) && !esPregunta) || /(cambi|modific|mover|retras|adelant|chang|modif|mov)\w* .{0,20}(reserva|booking|reservation)|\b(mi|nuestra) reserva\b|\b(my|our) (booking|reservation)\b/.test(n)) && !/\bhacer\b|\bmake\b/.test(n)) {
+      g.atencion = true; if (!g.preguntas.includes(t)) g.preguntas.push(t);
+      return fin({ texto: en ? "I can't find a booking made from this chat. I've passed your message to the team and they'll answer you here." : "No encuentro ninguna reserva hecha desde este chat. Le paso tu mensaje al equipo y te contestan por aquí.", opciones: en ? ["Book a table", "See the menu"] : OPCIONES_INICIO.slice(0, 2) });
+    }
 
     // cambios pedidos con botón o con frase («cambiar la hora»)
-    const cambio = atajo === "#hora" || /cambi\w* (la |de )?hora|otra hora|mas tarde|mas pronto|change the time|another time|different time|\blater\b|\bearlier\b|we'?ll be late/.test(n) ? "hora"
+    const despedida = /see you|talk (to you )?later|hasta luego|nos vemos/.test(n);
+    const cambio = atajo === "#hora" || (!despedida && /cambi\w* (la |de )?hora|otra hora|mas tarde|mas pronto|change the time|another time|different time|\blater\b|\bearlier\b|we'?ll be late/.test(n)) ? "hora"
       : atajo === "#dia" || /cambi\w* (el |de )?dia|otro dia|change the (day|date)|another day|different day/.test(n) ? "fecha"
       : /cambi\w* (las |de |el numero de )?personas|change the (number|party)/.test(n) ? "personas"
       : atajo === "#nota" || /anadir (una )?nota|add a note/.test(n) ? "nota" : null;
+
+    // «quiero otra reserva» tras haber enviado una: es una reserva nueva, la anterior no se toca
+    if (g.cerrado && /(otra|nueva|another|new) (reserva|mesa|booking|table|reservation)|reservar otra|book another/.test(n)) { const lang = g.lang; Object.assign(g, nuevoEstado(), { lang }); reinicio = true; }
 
     const x = RE_HORARIO.test(n) && !RE_RESERVA.test(n) ? { peticiones: [] } : extraer(g, t, n, atajo);
     const fuerte = x.hora != null || x.fecha || x.personas || (x.nombre && !x.nombreDebil) || x.peticiones.length > 0;
     const quiereReserva = RE_RESERVA.test(n);
 
     // dudas: carta, horario, dirección… (sin perder el hilo de la reserva)
-    if (!atajo && !cambio && (!fuerte || (esPregunta && !quiereReserva && !x.personas && x.hora == null && !(x.nombre && !x.nombreDebil)))) {
+    const esSi = g.paso === "confirmar" && (RE_SI.test(n) || /^ ?(perfecto|genial|vale|ok) gracias/.test(n));
+    if (!atajo && !cambio && !esSi && (!fuerte || (esPregunta && !quiereReserva && !x.personas && !x.fecha && x.hora == null && !(x.nombre && !x.nombreDebil)))) {
       const yaContestando = g.paso === "peticiones" || g.paso === "alergia";
-      const f = yaContestando && !esPregunta ? null : faq(g, n, t);
+      const f = yaContestando && !esPregunta ? null : faq(g, n, t, esPregunta);
       if (f) return conPaso(f);
     }
     if (!g.iniciada && !g.cerrado) {
@@ -489,7 +547,13 @@
     if (cambio === "personas" && !x.personas) g.personas = null;
     if (cambio === "nota" && !x.peticiones.length) { g.peticionesVistas = false; g.paso = "peticiones"; return { texto: en ? "Sure, tell me what to add." : "Claro, dime qué añado." }; }
 
+    // sobre una reserva ya enviada, un cambio que no se puede hacer (domingo, hora sin turno) no borra lo que había
+    const previa = g.cerrado && completa(g) ? { fecha: g.fecha, hora: g.hora } : null;
     const { pre, hecho, acuse } = aplicar(g, x);
+    if (previa && !cambio && !(x.fecha && x.fecha.finde)) {
+      if (!g.fecha) { g.fecha = previa.fecha; g.hora = previa.hora; g.horaPedida = null; g.ofrecerDias = null; pre.push(en ? "I'll leave the booking as it was." : "Dejo la reserva como estaba."); }
+      else if (g.hora == null && g.fecha.iso === previa.fecha.iso) { g.hora = previa.hora; g.horaPedida = null; pre.push(en ? `I'll leave it at ${hhmm(g.hora)} as it was. If you'd like another time, tell me which.` : `La dejo a las ${hhmm(g.hora)} como estaba. Si quieres otra hora, dime cuál.`); }
+    }
     let entendido = hecho.length > 0 || !!cambio || pre.length > 0 || !!x.fecha || x.hora != null;
 
     if (pasoAntes === "peticiones" || pasoAntes === "alergia") {
@@ -497,9 +561,8 @@
       if (nada && !x.peticiones.length) { g.peticiones = g.peticiones.filter(p => !p.pendiente); g.peticionesVistas = true; entendido = true; }
       else if (!x.peticiones.length && !hecho.length && !cambio) { g.notas.push(t); g.peticionesVistas = true; pre.push(en ? "Noted, I'll pass it on as you wrote it." : "Anotado, se lo paso tal cual."); entendido = true; }
     }
-    if (g.cerrado && pasoAntes == null && !hecho.length && !cambio) {
+    if (g.cerrado && completa(g) && pasoAntes == null && !entendido) {
       // mensaje suelto tras la reserva: no se pierde, va al equipo
-      if (quiereReserva && /otra|another|nueva|new/.test(n)) { const lang = g.lang; Object.assign(g, nuevoEstado(), { lang, iniciada: true }); reinicio = true; g.paso = "personas"; return fin(pregunta(g)); }
       g.notas.push(t);
       return { texto: en ? "I'll pass that on to the team just as you wrote it." : "Se lo paso al equipo tal cual para que lo tengan en cuenta.", ficha: ficha(g) };
     }
@@ -508,7 +571,10 @@
     if (paso === "confirmar") {
       if (g.cerrado) {
         g.paso = null;
-        return { texto: (pre.length ? pre.join(" ") + "\n\n" : "") + (en ? `Change noted ✅ It now stands as: ${fraseReserva(g, "en")}, under ${g.nombre}. I've passed it on to the team.` : `Cambio anotado ✅ Queda así: ${fraseReserva(g, "es")}, a nombre de ${g.nombre}. Se lo paso al equipo.`), ficha: ficha(g) };
+        const cola = hecho.length || cambio
+          ? (en ? `Change noted ✅ It now stands as: ${fraseReserva(g, "en")}, under ${g.nombre}. I've passed it on to the team.` : `Cambio anotado ✅ Queda así: ${fraseReserva(g, "es")}, a nombre de ${g.nombre}. Se lo paso al equipo.`)
+          : (en ? `It still stands as: ${fraseReserva(g, "en")}, under ${g.nombre}.` : `Sigue así: ${fraseReserva(g, "es")}, a nombre de ${g.nombre}.`);
+        return { texto: (pre.length ? pre.join(" ") + "\n\n" : "") + cola, ficha: ficha(g) };
       }
       if (pasoAntes === "confirmar" && !hecho.length && !cambio) {
         if (atajo === "#si" || RE_SI.test(n) || /esta bien|todo bien|asi\b/.test(n)) return fin(cerrar(g, []));
@@ -537,6 +603,7 @@
     return { prioridad, orden, atencion: g.atencion };
   }
   function ficha(g) {
+    if (completa(g)) g.valida = { fecha: g.fecha, hora: g.hora, personas: g.personas };
     const avisos = Object.values(g.avisos);
     if (g.atencion) avisos.push("Pide hablar con una persona");
     const pets = petTxt(g, "es");
@@ -545,7 +612,7 @@
     if (g.fecha) campos.push(["Día", cap(fechaBonita(g.fecha.d, "es"))]);
     if (g.hora != null) campos.push(["Hora", hhmm(g.hora)]);
     if (g.personas) campos.push(["Personas", String(g.personas) + (g.ninos ? ` (${g.ninos} ${g.ninos === 1 ? "niño" : "niños"})` : "")]);
-    campos.push(["A nombre de", g.nombre || "Sin dato"], ["Teléfono", "El del WhatsApp del cliente"]);
+    campos.push(["A nombre de", g.nombre || "Sin dato"], ["Teléfono", g.telefono ? `${g.telefono} (lo ha dado el cliente)` : "El del WhatsApp del cliente"]);
     if (pets.length) campos.push(["Peticiones", pets.join("\n")]);
     if (g.preguntas.length) campos.push(["Preguntas sin contestar", g.preguntas.join("\n")]);
     if (g.lang === "en") campos.push(["Idioma", "Inglés"]);
