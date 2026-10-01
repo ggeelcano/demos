@@ -134,24 +134,26 @@
       altoBanda = band.getBoundingClientRect().height;
       capa.style.setProperty('--gg-band-h', altoBanda + 'px');
     }
-    function alto(p) {
-      var e = p * p * (3 - 2 * p);                           // arranque y final suaves
-      capa.style.height = Math.round(altoBanda * (0.14 + 0.66 * e)) + 'px';
+    // (1-oct tarde) Arriba del todo NO se ve ningun grano. La altura de la
+    // capa depende de cuantos px de banda asoman ya por abajo (v): empieza en
+    // 0, al principio crece algo mas rapido que el scroll (asi el borde de la
+    // banda nunca entra "a pelo") y se va frenando hasta 0,8 veces la banda.
+    function alto(v) {
+      var tope = altoBanda * 0.8;
+      var L = v <= 0 ? 0 : tope * (1 - Math.exp(-1.7 * v / tope));
+      capa.style.height = Math.round(L) + 'px';
     }
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       medir();
-      return alto(0.6);
+      return alto(altoBanda * 0.5);
     }
 
     var pedido = false;
     function pintar() {
       pedido = false;
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      var caja = band.getBoundingClientRect();
-      // 0 cuando la banda asoma por abajo; 1 cuando su borde de arriba va por el 20 % de la pantalla
-      var p = (vh - caja.top) / (vh * 0.8);
-      alto(p < 0 ? 0 : (p > 1 ? 1 : p));
+      alto(vh - band.getBoundingClientRect().top);
     }
     function alScroll() {
       if (!pedido) { pedido = true; requestAnimationFrame(pintar); }
