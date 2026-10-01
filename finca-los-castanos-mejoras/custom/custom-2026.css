@@ -606,3 +606,27 @@ main > section:first-of-type li,
 main > section:first-of-type span {
   text-shadow: 0 1px 12px rgb(0 0 0 / .95), 0 1px 3px rgb(0 0 0 / .85);
 }
+
+/* 26) 1-oct: transicion hero -> granos "mas suave que las manos de un nino".
+   La banda va siempre opaca sobre arena; la capa del hero crece en altura con
+   el scroll (custom-2026.js) y se funde hacia arriba con un degradado largo
+   en curva suave. Su borde inferior es siempre opaco, como el superior de la
+   banda: no hay raya en la union. Anula la opacidad por scroll de 12) y 4). */
+.gg-beans-band { background: #ead9b8 !important; }
+.gg-beans-band .coffee-fade-in,
+.gg-beans-band .gg-tile { opacity: 1 !important; filter: none !important; }
+.gg-granos-fade {
+  opacity: 1 !important;
+  filter: none !important;
+  height: 9svh;                      /* el js la va cambiando */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .02) 12%, rgb(0 0 0 / .07) 24%, rgb(0 0 0 / .16) 36%, rgb(0 0 0 / .30) 48%, rgb(0 0 0 / .48) 60%, rgb(0 0 0 / .67) 72%, rgb(0 0 0 / .84) 84%, rgb(0 0 0 / .95) 93%, #000 100%) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .02) 12%, rgb(0 0 0 / .07) 24%, rgb(0 0 0 / .16) 36%, rgb(0 0 0 / .30) 48%, rgb(0 0 0 / .48) 60%, rgb(0 0 0 / .67) 72%, rgb(0 0 0 / .84) 84%, rgb(0 0 0 / .95) 93%, #000 100%) !important;
+  will-change: height;
+}
+.gg-granos-fade .gg-tile {
+  inset: auto 0 0 0;                 /* anclados abajo */
+  height: calc(var(--gg-band-h, 45svh) * .4072);   /* misma escala de grano que la banda */
+  background-position: center bottom;
+}
+.gg-granos-fade .gg-tile-a { bottom: 0; transform: none; }
+.gg-granos-fade .gg-tile-b { bottom: calc(var(--gg-band-h, 45svh) * .4072); transform: scaleY(-1); }

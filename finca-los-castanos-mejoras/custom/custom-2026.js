@@ -101,30 +101,47 @@
       granos.classList.add('gg-oculta');
     }
 
+    // (1-oct) Transicion rehecha. Antes capa y banda cambiaban de OPACIDAD con
+    // el scroll, y como detras de una hay foto y detras de la otra un fondo liso,
+    // a media transicion se veia una raya en la union. Ahora:
+    //  - la banda va siempre opaca;
+    //  - la capa del hero va siempre con su borde de abajo opaco (mismo grano
+    //    que el borde de arriba de la banda => sin raya) y un degradado de
+    //    transparencia larguisimo hacia arriba;
+    //  - lo que cambia con el scroll es la ALTURA de la capa: los granos van
+    //    "subiendo" por la foto poco a poco, de 0,2 a 1,9 veces el alto de la banda.
     var capa = fondo.querySelector('.gg-granos-fade');
     if (!capa) {
       capa = document.createElement('div');
       capa.className = 'gg-granos-fade';
       capa.setAttribute('aria-hidden', 'true');
-      var copia = document.createElement('div');
-      copia.className = 'gg-tile';
-      copia.style.backgroundImage = 'url(' + ggTile(granos, '') + ')';
-      capa.appendChild(copia);
+      // tile-a: las filas REALES de la foto que van justo encima de la banda
+      // (granos-2026-sube-*, 0,4072 veces su alto): continua la banda sin espejo.
+      // tile-b: encima, el mismo trozo volteado, que casa con el borde de arriba
+      // de tile-a; ya cae en la zona casi transparente del degradado.
+      var sube = ggTile(granos, '').replace('granos-2026-tile-', 'granos-2026-sube-');
+      ['gg-tile gg-tile-a', 'gg-tile gg-tile-b'].forEach(function (cls) {
+        var d = document.createElement('div');
+        d.className = cls;
+        d.style.backgroundImage = 'url(' + sube + ')';
+        capa.appendChild(d);
+      });
       fondo.appendChild(capa);
     }
 
-    var raiz = document.documentElement;   // las variables las leen capa Y banda
-    function set(op, sat, con) {
-      raiz.style.setProperty('--gg-beans-op', op);
-      raiz.style.setProperty('--gg-beans-sat', sat);
-      raiz.style.setProperty('--gg-beans-con', con);
+    var altoBanda = 0;
+    function medir() {
+      altoBanda = band.getBoundingClientRect().height;
+      capa.style.setProperty('--gg-band-h', altoBanda + 'px');
     }
-    // Misma altura que la banda => los granos salen del mismo tamano
-    function medir() { capa.style.height = band.getBoundingClientRect().height + 'px'; }
+    function alto(p) {
+      var e = p * p * (3 - 2 * p);                           // arranque y final suaves
+      capa.style.height = Math.round(altoBanda * (0.14 + 0.66 * e)) + 'px';
+    }
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       medir();
-      return set(1, 1, 1);
+      return alto(0.6);
     }
 
     var pedido = false;
@@ -132,13 +149,9 @@
       pedido = false;
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var caja = band.getBoundingClientRect();
-      // 0 cuando la banda asoma por abajo; 1 cuando la pantalla es ya solo granos
-      var p = (vh - caja.top) / Math.max(1, vh - caja.height);
-      p = p < 0 ? 0 : (p > 1 ? 1 : p);
-      var e = p * p * (3 - 2 * p);                          // arranque y final suaves
-      set((0.04 + 0.96 * e).toFixed(3),
-          (0.15 + 0.95 * e).toFixed(3),
-          (0.85 + 0.25 * e).toFixed(3));
+      // 0 cuando la banda asoma por abajo; 1 cuando su borde de arriba va por el 20 % de la pantalla
+      var p = (vh - caja.top) / (vh * 0.8);
+      alto(p < 0 ? 0 : (p > 1 ? 1 : p));
     }
     function alScroll() {
       if (!pedido) { pedido = true; requestAnimationFrame(pintar); }
