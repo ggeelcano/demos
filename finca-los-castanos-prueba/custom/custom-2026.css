@@ -1,0 +1,720 @@
+/* ============================================================
+   Finca Los Castaños — Mejoras septiembre 2026 (G&G Elcano)
+   Paleta nueva: esmeralda #207657 · verde claro #ACBE9D · arena #C6A96B
+   ============================================================ */
+
+/* 1) Paleta global: fondo en tonos verdes (adiós ventanas blancas) */
+:root, :host {
+  --color-primary: #207657;
+  --color-primary-dark: #1a5f46;
+  --color-accent: #207657;
+  --color-accent-dark: #1a5f46;
+  --color-secondary: #c6a96b;
+  --color-secondary-light: #ead9b8;
+  --color-secondary-dark: #b09255;
+  --color-background: #acbe9d;
+  --color-surface: #bccdae;
+  --color-surface-warm: #e6dfc8;
+  --color-text: #2f3a30;
+  --color-text-muted: #4c5a4c;
+  --color-text-heading: #1f2d22;
+  --color-border: #93a883;
+  --announce-h: 0px;
+}
+
+html, body { background-color: #acbe9d; }
+
+/* El panel del menú móvil (translate-x fuera de pantalla) creaba 20px de
+   scroll horizontal en algunas páginas: nunca permitir scroll lateral. */
+html, body { overflow-x: clip; }
+
+/* Tarjetas y superficies que eran blancas puras -> verde suave */
+.bg-white { background-color: #c3d2b5 !important; }
+
+/* 2) Fotos de contenido más grandes (excepto galería) */
+@media (min-width: 768px) {
+  main .max-w-md[data-animate] { max-width: 34rem; }
+  main .grid.md\:grid-cols-2 .max-w-md { max-width: 34rem; }
+}
+
+/* 3) Galería: fondo verde + placeholders (nada de huecos blancos al cargar) */
+.gallery-section { background-color: #9db38c !important; }
+.gallery-item { background-color: #8fa67e !important; min-height: 40px; }
+.gallery-item img { background-color: #8fa67e; }
+
+/* 4) Banda de granos: transición transparente, sin línea negra.
+   El fondo arranca en el verde del final de la foto del hero (#314935)
+   y los granos aparecen en fundido por encima.
+   Borde inferior ROTO (13-sep): la foto de los granos lleva recortado el
+   borde de abajo siguiendo la línea de los granos (granos-2026-roto-*.webp,
+   hecho con borde-roto.mjs), como tenía la web original. Por eso el último
+   tramo del fondo es el arena de la sección de la ilustración: es lo que se
+   ve entre los granos del borde. */
+.gg-beans-band {
+  background: linear-gradient(to bottom, #212821 0%, #2c3529 15%, #46453a 35%, #6b6450 48%, #b8a684 56%, #ead9b8 62%, #ead9b8 100%);
+}
+.coffee-fade-in {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .22) 22%, rgb(0 0 0 / .6) 45%, rgb(0 0 0 / .9) 65%, #000 80%) !important;
+}
+
+/* 4b) Ventanas de foto de las tarjetas Tour/Eventos en grande
+   (recuadros tipo banner, como el boceto de la jefa) */
+.gg-card-win {
+  width: 20rem;
+  max-width: 78vw;
+  height: 11rem;
+}
+@media (min-width: 768px) {
+  .gg-card-win { width: 22rem; height: 12rem; }
+}
+
+/* 5) Humo de café animado (sobre el botón-grano y el sello del tour) */
+.gg-steam-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 88%;
+  width: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.gg-steam {
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 7px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,.85));
+  filter: blur(3px);
+  opacity: 0;
+  animation: gg-steam-rise 3.2s ease-in-out infinite;
+}
+.gg-steam:nth-child(2) { left: -10px; height: 20px; animation-delay: 1.1s; animation-duration: 3.8s; }
+.gg-steam:nth-child(3) { left: 4px; height: 22px; animation-delay: 2.2s; animation-duration: 3.5s; }
+@keyframes gg-steam-rise {
+  0%   { transform: translateY(6px) scaleX(1); opacity: 0; }
+  25%  { opacity: .8; }
+  60%  { opacity: .45; }
+  100% { transform: translateY(-30px) scaleX(1.6) translateX(4px); opacity: 0; }
+}
+
+/* Taza decorativa con humo junto a titulares del tour */
+.gg-cup {
+  position: relative;
+  display: inline-block;
+  width: 2.1em;
+  height: 2.1em;
+  vertical-align: -0.45em;
+  margin-left: .35em;
+}
+.gg-cup svg { width: 100%; height: 100%; }
+.gg-cup .gg-steam { background: linear-gradient(to top, rgba(31,45,34,0), rgba(31,45,34,.55)); }
+
+/* 6) Aviso destacado (carpa / noticias) */
+.gg-aviso {
+  display: block;
+  background: #e6dfc8;
+  border-left: 5px solid #c6a96b;
+  color: #1f2d22;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem auto;
+  max-width: 48rem;
+  font-size: 1.0625rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(31,45,34,.12);
+}
+
+/* 7) Noticias */
+.gg-news-grid { display: grid; gap: 1.5rem; max-width: 52rem; margin: 0 auto; }
+.gg-news-card {
+  background: #c3d2b5;
+  border: 1px solid #93a883;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(31,45,34,.10);
+}
+.gg-news-card img { width: 100%; height: auto; display: block; }
+.gg-news-body { padding: 1.25rem 1.5rem 1.5rem; }
+.gg-news-date {
+  font-size: .8125rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #207657;
+  font-weight: 700;
+}
+.gg-news-card h3 { margin: .35rem 0 .5rem; font-size: 1.3125rem; color: #1f2d22; }
+.gg-news-card p { margin: 0; color: #2f3a30; line-height: 1.7; }
+
+/* 8) Bloque renovación con foto de la tienda */
+.gg-tienda-figure { max-width: 44rem; margin: 1.5rem auto 0; }
+.gg-tienda-figure img { width: 100%; height: auto; border-radius: 2px; box-shadow: 0 8px 30px rgba(31,45,34,.18); }
+.gg-tienda-figure figcaption { margin-top: .6rem; font-size: .9375rem; color: #4c5a4c; text-align: center; }
+
+/* 9) Secciones con fondo esmeralda: texto claro para buen contraste */
+section.bg-accent { color: #eef4ea; }
+section.bg-accent h2,
+section.bg-accent .text-text-heading { color: #fdf9ee !important; }
+section.bg-accent p,
+section.bg-accent li,
+section.bg-accent .text-text,
+section.bg-accent .text-text-muted { color: #e4eede !important; }
+section.bg-accent .bg-secondary { color: #1f2d22 !important; }
+section.bg-accent .gg-cup { color: #fdf9ee; }
+
+/* 10) Fix: el contenedor invisible del boton social tapaba los enlaces bajos del
+   menu movil (bug que la web original ya tenia con "Contact"). Solo el boton
+   captura toques; las acciones, unicamente con el menu social abierto. */
+.social-fab { pointer-events: none; }
+.social-fab .social-fab-toggle { pointer-events: auto; }
+.social-fab.is-open .social-fab-actions { pointer-events: auto; }
+
+/* 11) Seccion de la ilustracion y la cita: fondo arena en vez de verde
+   (peticion 8-sep). La ilustracion es un PNG con transparencia, asi que
+   solo hay que cambiar el fondo de la seccion. */
+.gg-ilustracion,
+section.bg-background:has(img[src*="hero-illustration"]) {
+  background-color: #ead9b8;
+}
+
+/* 12) Fundido por scroll entre la montana del hero y los granos.
+   Una capa con la MISMA foto de granos y el MISMO tamano que la banda se
+   superpone al final del hero; su opacidad y su saturacion crecen con el
+   scroll (las mueve custom-2026.js). Cuando la banda real llega arriba, los
+   granos ya estan a maxima intensidad y el paso es continuo. */
+.gg-granos-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45svh;                 /* el JS la iguala a la altura de la banda */
+  pointer-events: none;          /* no tapa los botones del hero */
+  overflow: hidden;
+  opacity: var(--gg-beans-op, .04);
+  filter: saturate(var(--gg-beans-sat, .15)) contrast(var(--gg-beans-con, .85));
+  /* la mascara va en el contenedor: la foto de dentro esta volteada */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .16) 30%, rgb(0 0 0 / .52) 58%, rgb(0 0 0 / .84) 80%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .16) 30%, rgb(0 0 0 / .52) 58%, rgb(0 0 0 / .84) 80%, #000 100%);
+  will-change: opacity, filter;
+}
+.gg-granos-fade img {
+  /* (17-sep) foto apilada ARRIBA+BANDA: la imagen mide el doble que la capa
+     y cuelga por debajo, asi la capa ensena solo la mitad de ARRIBA y la banda
+     (object-bottom, misma escala) continua justo donde esta se corta.
+     Ya no hay espejo: los granos siguen de verdad. */
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 200%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+
+/* El degradado a negro del final del hero marcaba el corte: sobra con el fundido */
+.gg-hero-fade-out { display: none !important; }
+
+/* La banda entra en el MISMO fundido que la capa del hero: mientras los
+   granos son tenues se ve el degradado (verde de la vegetacion del hero
+   pasando a tierra), y al final los granos lo tapan del todo. */
+.gg-beans-band .coffee-fade-in {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: var(--gg-beans-op, .04);
+  filter: saturate(var(--gg-beans-sat, .15)) contrast(var(--gg-beans-con, .85));
+  will-change: opacity, filter;
+}
+
+/* 13) Pagina Experiencia: la foto suelta dejaba dos huecos enormes en su
+   columna. Ahora son tres fotos centradas que siguen el orden del texto:
+   la planta -> el secado -> la degustacion. */
+.gg-col-fotos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+.gg-col-fotos img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 14) Historia del cafe: la columna de la foto era sticky y con una sola
+   imagen dejaba un hueco enorme junto a un texto muy largo. Ahora lleva
+   varias fotos repartidas de arriba abajo, a la altura del texto. */
+.gg-col-historia {
+  position: static !important;   /* sin sticky: con varias fotos estorba */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.gg-col-historia img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 15) Peticiones 8-sep de la jefa */
+
+/* 15a) Fuera la galeria de la portada: las 12 fotos ya estan todas en
+   "Photo Gallery", asi que no se pierde nada y se evita duplicarla. */
+.gg-oculta { display: none !important; }
+
+/* 15b) El logotipo (la casita) va en amarillo tambien sobre el hero, no
+   en blanco. El texto sigue cambiando de color segun el fondo. */
+header img[src*="logo-inverse"] { opacity: 0 !important; }
+header img[src*="og-default"] { opacity: 1 !important; }
+
+/* 15c) Aviso del idioma de la visita */
+.gg-nota-idioma {
+  display: block;
+  margin-top: .75rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: #4c5a4c;
+}
+.gg-beans-band ~ * .gg-nota-idioma { color: inherit; }
+
+/* 15d) Boton para abrir el mapa en grande / como llegar */
+.gg-como-llegar {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .85rem;
+  padding: .7rem 1.15rem;
+  background: #207657;
+  color: #fdf9ee;
+  font-weight: 600;
+  font-size: .9375rem;
+  letter-spacing: .02em;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.gg-como-llegar:hover { background: #1a5f46; }
+
+/* 15e) Experiencia: fotos mas grandes */
+.gg-col-fotos { max-width: 30rem !important; }
+
+/* 15f) La nota del idioma en la pagina de reserva va sobre la foto del hero:
+   en el gris del texto normal no se leia. */
+.gg-nota-idioma--claro {
+  color: #fdf9ee !important;
+  font-weight: 600;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .9), 0 1px 3px rgba(0, 0, 0, .7);
+}
+
+/* ============================================================
+   16) VERSION B "CLARA" (15-sep). Respuesta a la critica de colores y
+   cursivas: fondos crema, UN solo verde (esmeralda) para botones, enlaces
+   e iconos, texto marron oscuro, ocre solo en logo y boton principal,
+   cursiva unicamente en el subtitulo del hero, cuerpo un punto mas grande.
+   Se activa con la clase gg-claro en <html> (interruptor en custom-2026.js,
+   o ?tema=claro en la URL). Sin la clase, la web queda como estaba (A).
+   ============================================================ */
+html.gg-claro {
+  --color-primary: #207657;
+  --color-primary-dark: #1a5f46;
+  --color-accent: #207657;
+  --color-accent-dark: #1a5f46;
+  --color-secondary: #c6a96b;
+  --color-secondary-light: #ead9b8;
+  --color-secondary-dark: #b09255;
+  --color-background: #f7f1e4;
+  --color-surface: #efe6d2;
+  --color-surface-warm: #ead9b8;
+  --color-text: #3a2f26;
+  --color-text-muted: #5e5147;
+  --color-text-heading: #2a1f16;
+  --color-border: #d9cbb0;
+  --color-brown-dark: #2a1f16;
+  --text-base: 1.125rem;
+  --text-sm: 1rem;
+  --text-lg: 1.25rem;
+}
+html.gg-claro, html.gg-claro body { background-color: #f7f1e4; }
+html.gg-claro .bg-white { background-color: #fdf9f0 !important; }
+html.gg-claro .gallery-section { background-color: #efe6d2 !important; }
+html.gg-claro .gallery-item, html.gg-claro .gallery-item img { background-color: #e3d9c3 !important; }
+html.gg-claro .gg-news-card { background: #fdf9f0; border-color: #d9cbb0; }
+
+/* Los bloques esmeralda (precios, "escribannos") pasan a crema con tarjetas claras */
+html.gg-claro section.bg-accent { background-color: #efe6d2 !important; color: #3a2f26; }
+html.gg-claro section.bg-accent h2,
+html.gg-claro section.bg-accent .text-text-heading { color: #2a1f16 !important; }
+html.gg-claro section.bg-accent p,
+html.gg-claro section.bg-accent li,
+html.gg-claro section.bg-accent .text-text,
+html.gg-claro section.bg-accent .text-text-muted { color: #3a2f26 !important; }
+html.gg-claro section.bg-accent .text-white { color: #2a1f16 !important; }
+html.gg-claro section.bg-accent .bg-white\/50 { background-color: #fdf9f0 !important; border-color: #d9cbb0 !important; }
+html.gg-claro section.bg-accent .bg-white\/10 { background-color: #fdf9f0 !important; }
+/* el boton "Reservar tour" de esos bloques era blanco sobre verde; sobre crema
+   se perderia, asi que pasa a esmeralda */
+html.gg-claro section.bg-accent a.bg-white,
+html.gg-claro section.bg-accent button.bg-white { background-color: #207657 !important; color: #fdf9ee !important; }
+html.gg-claro section.bg-accent a.bg-white:hover { background-color: #1a5f46 !important; }
+html.gg-claro section.bg-accent .gg-cup { color: #207657; }
+
+/* Cursiva: solo el subtitulo del hero (clase gg-cursiva-ok que pone el js).
+   El resto de "font-serif" pasa a Raleway; los parrafos-subtitulo quedan como
+   segunda linea en esmeralda, al MISMO tamano que los titulares (bloque 17). */
+html.gg-claro .font-serif:not(.gg-cursiva-ok) { font-family: var(--font-sans); }
+html.gg-claro p.font-serif:not(.gg-cursiva-ok) {
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #207657;
+}
+html.gg-claro section.bg-accent p.font-serif { color: #207657 !important; }
+html.gg-claro span.font-serif { font-weight: 700; }
+html.gg-claro #mobile-menu a.font-serif { font-size: 1.25rem; font-weight: 500; letter-spacing: .04em; }
+
+/* Enlace activo del menu: esmeralda con subrayado, no ocre (no se veia) */
+html.gg-claro .header-nav-link.active,
+html.gg-claro #mobile-menu a.gg-activo { color: #207657 !important; font-weight: 700; }
+html.gg-claro .header-nav-link.active { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 2px; }
+html.gg-claro .header-nav-link:hover { color: #207657; }
+
+/* ============================================================
+   17) Ronda de Elena del 17-sep (vale para A y B)
+   ============================================================ */
+
+/* 17a) UN solo tamano de titular en toda la web: el de la cita de la portada
+   «¡Descubran el arte de cultivar café en nuestra tierra!» (17 / 19 / 21 px
+   segun pantalla, mayusculas, fina, letra espaciada). Se aplica a los h1 y h2
+   de seccion (los que llevan text-xl / text-lg) y a su segunda linea. El h1
+   grande del hero de la portada y el de la pagina de reserva no entran. */
+main h1.text-xl, main h2.text-xl, main h2.text-lg,
+main p.font-serif:not(.gg-cursiva-ok) {
+  font-size: var(--text-base) !important;
+  line-height: 1.4 !important;
+  letter-spacing: .15em !important;
+  font-weight: 300 !important;
+}
+@media (min-width: 768px) {
+  main h1.text-xl, main h2.text-xl, main h2.text-lg,
+  main p.font-serif:not(.gg-cursiva-ok) { font-size: var(--text-lg) !important; }
+}
+@media (min-width: 1024px) {
+  main h1.text-xl, main h2.text-xl, main h2.text-lg,
+  main p.font-serif:not(.gg-cursiva-ok) { font-size: var(--text-xl) !important; }
+}
+/* en la version verde la segunda linea sigue en cursiva: la cursiva a ese
+   tamano se lee mal, asi que conserva su tamano y solo pierde el espaciado */
+html:not(.gg-claro) main p.font-serif:not(.gg-cursiva-ok) {
+  font-size: var(--text-2xl) !important;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+}
+/* el subtitulo en verde en B necesita algo mas de peso que el titular para leerse */
+html.gg-claro main p.font-serif:not(.gg-cursiva-ok) { font-weight: 500 !important; }
+
+/* 17b) Fuera la taza (icono) junto a los titulares */
+.gg-cup { display: none !important; }
+
+/* 17c) Historia del cafe: las fotos iban repartidas de arriba abajo y dejaban
+   huecos enormes entre ellas. Ahora van seguidas desde arriba. */
+.gg-col-historia { justify-content: flex-start !important; }
+
+/* 17d) (RETIRADO el 17-sep por la tarde) Los dibujos decorativos de fondo
+   (hojas y granos, pattern-*.svg) se habian ocultado en la version clara por
+   una lectura equivocada de una captura; Elena los quiere ("buscar esta
+   grafica vectorial"). Se quedan como en la web original. */
+
+/* 17e) Banda de granos al final de la portada, borde roto arriba y sin
+   degradado. El fondo es el de la seccion de contacto (surface), que asoma
+   entre los granos del borde. La crea custom-2026.js (initBeansFoot). */
+.gg-beans-foot {
+  position: relative;
+  height: 34svh;
+  min-height: 12rem;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  line-height: 0;
+}
+.gg-beans-foot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;       /* la parte recortada de la foto... */
+  transform: scaleY(-1);         /* ...queda arriba al voltearla */
+}
+/* la seccion de contacto pierde el aire de abajo: la banda va pegada */
+main > section:has(+ .gg-beans-foot) { padding-bottom: 2rem !important; }
+
+/* Con el menu movil abierto, el texto del logo seguia en su version blanca
+   (la del hero) sobre el panel claro y no se leia. Se cambia a la gris.
+   Vale para A y B: en A tambien pasaba (blanco sobre verde). */
+body:has(#mobile-menu.translate-x-0) header img[src*="logo-text-white"] { opacity: 0 !important; }
+body:has(#mobile-menu.translate-x-0) header img[src*="logo-text-gray"] { opacity: 1 !important; }
+
+/* Interruptor A/B (solo en la preview) */
+.gg-tema-btn {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  padding: .55rem .9rem;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 999px;
+  background: rgba(253, 249, 240, .95);
+  color: #2a1f16;
+  font: 600 .8125rem/1 Raleway, system-ui, sans-serif;
+  letter-spacing: .03em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+  cursor: pointer;
+}
+.gg-tema-btn:hover { background: #fff; }
+
+/* 18) 17-sep, Elena: el boton "Reservar ahora" de la tarjeta "La ruta del cafe"
+   en verde (era ocre). Vale para la version verde y la clara. */
+/* la regla 9 (section.bg-accent .bg-secondary) pesa mas: hay que superarla */
+html section.bg-accent a.gg-btn-verde, html.gg-claro section.bg-accent a.gg-btn-verde.text-text-heading, a.gg-btn-verde { background-color: #207657 !important; color: #fdf9ee !important; }
+section.bg-accent a.gg-btn-verde:hover, a.gg-btn-verde:hover { background-color: #1a5f46 !important; }
+
+/* 19) 17-sep, Elena: rotulos "Tour de cafe" / "Eventos" como botones verdes y
+   huellas de conejo de fondo en la seccion de las ventanas (custom-2026.js) */
+.gg-card-btn > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.15rem;
+  background: #207657 !important;
+  color: #fdf9ee !important;
+  font-weight: 600;
+  letter-spacing: .02em;
+  border-radius: 2px;
+  transition: background .2s;
+}
+.gg-card-btn > span::after { content: '→'; font-weight: 400; }
+.gg-card-btn:hover > span { background: #1a5f46 !important; }
+.gg-card-btn > svg { display: none; }
+.gg-sec-huellas { position: relative; overflow: hidden; }
+.gg-sec-huellas > div { position: relative; z-index: 1; }
+.gg-huellas {
+  /* (21-sep) bucle cerrado alrededor de las ventanas, sin silueta (boceto de
+     Elena del 19-sep): ocupa la seccion entera, de arriba abajo */
+  position: absolute;
+  inset: 3% 0;
+  width: 100%;
+  height: 94%;
+  object-fit: fill;
+  opacity: .16;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 767px) {
+  /* en movil las ventanas van apiladas y ocupan casi todo: el rastro va detras, mas tenue */
+  .gg-huellas { opacity: .11; }
+}
+
+/* 20) 21-sep: la banda, la capa del hero y el pie usan un AZULEJO de granos
+   (foto Cascara Gold + su espejo) repetido en horizontal. Granos pequenos y
+   tira infinita, como la panoramica que monto Elena. */
+.gg-tile {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center bottom;
+  pointer-events: none;
+}
+.gg-beans-band .gg-tile { z-index: 1; }
+.gg-granos-fade .gg-tile,
+.gg-beans-foot .gg-tile { transform: scaleY(-1); }   /* el borde roto queda arriba */
+.gg-beans-foot { line-height: 0; }
+/* la capa del hero ya no lleva <img>: la regla 12 del img no aplica */
+.gg-granos-fade { overflow: hidden; }
+
+/* 21) 21-sep, Elena: cuatro variedades (nombradas bajo el contador) y la
+   seccion "Nuestro cafe y mas" de la portada se queda VERDE tambien en la
+   version clara ("aqui se puede dejar el color verde"). */
+.gg-variedades {
+  display: block;
+  margin-top: .25rem;
+  font-size: .8125rem;
+  line-height: 1.35;
+  color: #207657;
+  letter-spacing: .02em;
+}
+html.gg-claro section.gg-verde-fijo { background-color: #acbe9d !important; }
+html.gg-claro section.gg-verde-fijo .text-text-muted,
+html.gg-claro section.gg-verde-fijo .text-text { color: #2f3a30 !important; }
+html.gg-claro section.gg-verde-fijo h2 { color: #1f2d22 !important; }
+html.gg-claro section.gg-verde-fijo .text-secondary { color: #c6a96b !important; }
+html.gg-claro section.gg-verde-fijo .gg-variedades { color: #1a5f46; }
+
+/* 22) Pie con granos tostados (azulejo 510x545 de la muestra de Elena). Los
+   granos tostados son mas pequenos que la cascara: la banda del pie va mas
+   baja para que no se vean gigantes. */
+.gg-beans-foot { height: 26svh; min-height: 10rem; }
+.gg-beans-foot .gg-tile { background-size: auto 100%; }
+
+/* 23) 21-sep, Elena: en el hero de la portada "la letra en cursiva un poco
+   mas grande y bajarla un par de milimetros; todo lo que viene debajo tambien
+   bajara un poquito". */
+main > section:first-of-type p.gg-cursiva-ok {
+  /* (1-oct) el 1.15em de antes pisaba los tamanos por pantalla y en tablet y
+     escritorio la dejaba MAS PEQUENA (20 px en vez de 36). Tamanos fijos, todos
+     mayores que los originales (21 / 30 / 36 px). */
+  font-size: 1.6rem !important;
+  line-height: 1.2 !important;
+  margin-top: .85rem !important;
+  text-shadow: 0 2px 14px rgb(0 0 0 / .95), 0 1px 3px rgb(0 0 0 / .9), 0 0 22px rgb(0 0 0 / .6) !important;
+}
+@media (min-width: 640px) {
+  main > section:first-of-type p.gg-cursiva-ok { font-size: 2.3rem !important; }
+}
+@media (min-width: 768px) {
+  main > section:first-of-type p.gg-cursiva-ok { font-size: 2.8rem !important; margin-top: 1.1rem !important; }
+}
+
+/* 24) 21-sep, Elena: en Contacto "es suficiente con una sola linea abajo, sin
+   la de arriba". El h1 se queda para buscadores y lectores de pantalla pero
+   no se ve; la linea verde hace de titular. */
+.gg-sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* 25) 28-sep, Elena: "que se aprecien mas los colores y no quede todo
+   excesivamente oscurecido". La web original ponia sobre la foto del hero un
+   velo negro del 65/45/60 % y ademas un foco radial del 60 %. Se aclaran los
+   dos: el velo a 30/10/28 % y el foco, solo detras del texto, al 34 %. La
+   legibilidad la sostienen las sombras del propio texto, que se refuerzan. */
+main > section:first-of-type .bg-gradient-to-b.from-black\/65 {
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / .30) 0%, rgb(0 0 0 / .10) 42%, rgb(0 0 0 / .28) 100%) !important;
+}
+main > section:first-of-type .hero-spotlight {
+  background-image: radial-gradient(ellipse 62% 46% at 50% 47%, rgb(0 0 0 / .34), rgb(0 0 0 / .20) 50%, transparent) !important;
+}
+main > section:first-of-type h1 {
+  text-shadow: 0 2px 18px rgb(0 0 0 / .9), 0 1px 4px rgb(0 0 0 / .75), 0 0 2px rgb(0 0 0 / .5) !important;
+}
+main > section:first-of-type p,
+main > section:first-of-type li,
+main > section:first-of-type span {
+  text-shadow: 0 1px 12px rgb(0 0 0 / .95), 0 1px 3px rgb(0 0 0 / .85);
+}
+
+/* 26) 1-oct: transicion hero -> granos "mas suave que las manos de un nino".
+   La banda va siempre opaca sobre arena; la capa del hero crece en altura con
+   el scroll (custom-2026.js) y se funde hacia arriba con un degradado largo
+   en curva suave. Su borde inferior es siempre opaco, como el superior de la
+   banda: no hay raya en la union. Anula la opacidad por scroll de 12) y 4). */
+.gg-beans-band { background: #ead9b8 !important; }
+.gg-beans-band .coffee-fade-in,
+.gg-beans-band .gg-tile { opacity: 1 !important; filter: none !important; }
+.gg-granos-fade {
+  opacity: 1 !important;
+  filter: none !important;
+  height: 0;                         /* el js le da 1,22 veces el alto de la banda */
+  visibility: hidden;                /* arriba del todo no hay granos */
+  /* la mascara (alfa = y^k) la pone custom-2026.js segun el scroll */
+}
+.gg-granos-fade .gg-tile {
+  inset: auto 0 0 0;                 /* anclados abajo */
+  height: calc(var(--gg-band-h, 45svh) * .4072);   /* misma escala de grano que la banda */
+  background-position: center bottom;
+  transform: none;
+}
+/* --gg-band-h = alto del AZULEJO de la banda (T); --gg-band-real = alto visible de la banda.
+   s = T - real = franja del azulejo que la banda no ensena y que asoma aqui. */
+.gg-granos-fade { --gg-s: calc(var(--gg-band-h, 45svh) - var(--gg-band-real, 34svh)); }
+.gg-granos-fade .gg-tile-0 { height: var(--gg-band-h, 45svh); bottom: calc(var(--gg-band-real, 34svh) * -1); }
+.gg-granos-fade .gg-tile-a { bottom: var(--gg-s); }
+.gg-granos-fade .gg-tile-b { bottom: calc(var(--gg-s) + var(--gg-band-h, 45svh) * .4072); transform: scaleY(-1); }
+.gg-granos-fade .gg-tile-c { bottom: calc(var(--gg-s) + var(--gg-band-h, 45svh) * .8144); }
+
+/* 27) 1-oct, Yulia: la banda de cascara "mas corta por arriba y por abajo"
+   (mas apaisada). Baja de 45 a 34 svh; el azulejo se pinta al 132 % anclado
+   abajo, asi el grano conserva su tamano y solo se ven menos filas. */
+.gg-beans-band { height: 34svh !important; min-height: 14rem !important; }
+.gg-beans-band .gg-tile { background-size: auto 132%; }
+
+/* 28) 1-oct, Elena: "vamos a unificarlo todo: si ponemos una pequena linea
+   vertical beige en un lado de la ventanita, hay que hacer lo mismo en todas".
+   Misma linea que el aviso (5 px, arena) en todos los recuadros de texto:
+   preguntas frecuentes, precios, tarjetas de contacto, ofertas de empleo,
+   la tarjeta del mapa y los avisos. Las tarjetas que son una foto no la llevan. */
+main details.border,
+main article.border,
+main div[class*="bg-white/50"][class*="border"],
+main a.items-start.gap-4.p-5.border,
+main div.p-5.rounded-none.border,
+main div.consent-revoke,
+main div[class*="bg-surface/95"].border,
+main .border-l-4.border-secondary,
+main .gg-aviso,
+main div.flex.items-center.gap-3.bg-background.p-4 {
+  border-left: 5px solid #c6a96b !important;
+}
+
+/* 28b) Experiencia: la foto del secado (y la que lleva encima) al mismo ancho
+   y proporcion que las demas fotos de la pagina, no mas pequenas. */
+.gg-col-fotos { max-width: none !important; width: 100%; }
+.gg-col-fotos > div { max-width: none !important; width: 100%; }
+
+/* 28c) Galeria: las miniaturas aparecen todas de golpe, sin animacion de entrada */
+.gallery-item { opacity: 1 !important; transform: none !important; }
+/* 28d) en la version clara, la regla de las tarjetas de precios pisaba el color de la linea */
+html main section.bg-accent div[class*="bg-white/50"][class*="border"],
+html.gg-claro main section.bg-accent div[class*="bg-white/50"][class*="border"] { border-left-color: #c6a96b !important; }
+
+/* 29) 1-oct (revision): la capa del fundido lleva UNA sola imagen (azulejo alto).
+   Medidas y posicion las pone custom-2026.js en pixeles enteros. Sustituye a los
+   tramos tile-0 / a / b / c de antes (rayas de union y espejo). */
+.gg-granos-fade .gg-tile-alto {
+  inset: 0 !important;
+  height: auto !important;
+  transform: none !important;
+  background-repeat: repeat-x;
+}
+
+/* 30) 1-oct tarde, Josu: "quiero que la transicion al cafe sea suave, no de golpe".
+   Antes los granos crecian con el scroll y con dos vueltas de rueda tapaban media foto.
+   Ahora es un FUNDIDO FIJO, sin nada que dependa del scroll:
+   - la portada mide una pantalla + la zona de fundido (--gg-zona = 1,5 x el alto de la
+     banda); el texto sigue centrado en la primera pantalla y la foto continua debajo;
+   - en la zona, los granos aparecen con un degradado largo (curva suave en los dos
+     extremos) que llega a opaco justo donde empieza la banda: sin raya en la union.
+     Abajo van las filas REALES de la foto de cascara que siguen por encima de la banda
+     (azulejo alto); arriba, donde el degradado casi no deja ver nada (< 17 %), ese mismo
+     azulejo en espejo (.gg-tile-espejo) para alargar el fundido;
+   - arriba del todo no se ve ningun grano: la zona empieza en el borde de la pantalla.
+   --gg-zona la pone custom-2026.js en pixeles enteros; este valor inicial es casi igual
+   para que la foto no se reencuadre al cargar. */
+.gg-hero-zona {
+  --gg-zona: max(51svh, 21rem);
+  min-height: calc(100svh + var(--gg-zona)) !important;
+  padding-bottom: var(--gg-zona);
+}
+.gg-hero-zona .hero-spotlight { bottom: var(--gg-zona); }
+main > section.gg-hero-zona .bg-gradient-to-b.from-black\/65 {
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / .30) 0, rgb(0 0 0 / .10) calc((100% - var(--gg-zona)) * .42), rgb(0 0 0 / .28) calc(100% - var(--gg-zona)), rgb(0 0 0 / .28) 100%) !important;
+}
+.gg-hero-zona .gg-granos-fade {
+  visibility: visible !important;
+  height: var(--gg-zona) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  will-change: auto;
+  -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0) 0%, rgb(0 0 0 / 0.001) 4.17%, rgb(0 0 0 / 0.004) 8.33%, rgb(0 0 0 / 0.012) 12.5%, rgb(0 0 0 / 0.026) 16.67%, rgb(0 0 0 / 0.047) 20.83%, rgb(0 0 0 / 0.074) 25%, rgb(0 0 0 / 0.109) 29.17%, rgb(0 0 0 / 0.151) 33.33%, rgb(0 0 0 / 0.2) 37.5%, rgb(0 0 0 / 0.254) 41.67%, rgb(0 0 0 / 0.314) 45.83%, rgb(0 0 0 / 0.379) 50%, rgb(0 0 0 / 0.447) 54.17%, rgb(0 0 0 / 0.517) 58.33%, rgb(0 0 0 / 0.587) 62.5%, rgb(0 0 0 / 0.657) 66.67%, rgb(0 0 0 / 0.725) 70.83%, rgb(0 0 0 / 0.788) 75%, rgb(0 0 0 / 0.847) 79.17%, rgb(0 0 0 / 0.898) 83.33%, rgb(0 0 0 / 0.94) 87.5%, rgb(0 0 0 / 0.973) 91.67%, rgb(0 0 0 / 0.993) 95.83%, rgb(0 0 0 / 1) 100%) !important;
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0) 0%, rgb(0 0 0 / 0.001) 4.17%, rgb(0 0 0 / 0.004) 8.33%, rgb(0 0 0 / 0.012) 12.5%, rgb(0 0 0 / 0.026) 16.67%, rgb(0 0 0 / 0.047) 20.83%, rgb(0 0 0 / 0.074) 25%, rgb(0 0 0 / 0.109) 29.17%, rgb(0 0 0 / 0.151) 33.33%, rgb(0 0 0 / 0.2) 37.5%, rgb(0 0 0 / 0.254) 41.67%, rgb(0 0 0 / 0.314) 45.83%, rgb(0 0 0 / 0.379) 50%, rgb(0 0 0 / 0.447) 54.17%, rgb(0 0 0 / 0.517) 58.33%, rgb(0 0 0 / 0.587) 62.5%, rgb(0 0 0 / 0.657) 66.67%, rgb(0 0 0 / 0.725) 70.83%, rgb(0 0 0 / 0.788) 75%, rgb(0 0 0 / 0.847) 79.17%, rgb(0 0 0 / 0.898) 83.33%, rgb(0 0 0 / 0.94) 87.5%, rgb(0 0 0 / 0.973) 91.67%, rgb(0 0 0 / 0.993) 95.83%, rgb(0 0 0 / 1) 100%) !important;
+}
+.gg-granos-fade .gg-tile-espejo {
+  inset: 0 0 auto 0 !important;      /* arriba de la capa; el alto lo pone el js */
+  transform: scaleY(-1) !important;  /* fila 0 del azulejo alto abajo: continua sin salto */
+  background-repeat: repeat-x;
+  background-position: 50% 0;
+}
