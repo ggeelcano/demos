@@ -561,11 +561,19 @@ html.gg-claro section.gg-verde-fijo .gg-variedades { color: #1a5f46; }
    mas grande y bajarla un par de milimetros; todo lo que viene debajo tambien
    bajara un poquito". */
 main > section:first-of-type p.gg-cursiva-ok {
-  font-size: 1.15em;
+  /* (1-oct) el 1.15em de antes pisaba los tamanos por pantalla y en tablet y
+     escritorio la dejaba MAS PEQUENA (20 px en vez de 36). Tamanos fijos, todos
+     mayores que los originales (21 / 30 / 36 px). */
+  font-size: 1.6rem !important;
+  line-height: 1.2 !important;
   margin-top: .85rem !important;
+  text-shadow: 0 2px 14px rgb(0 0 0 / .95), 0 1px 3px rgb(0 0 0 / .9), 0 0 22px rgb(0 0 0 / .6) !important;
+}
+@media (min-width: 640px) {
+  main > section:first-of-type p.gg-cursiva-ok { font-size: 2.3rem !important; }
 }
 @media (min-width: 768px) {
-  main > section:first-of-type p.gg-cursiva-ok { margin-top: 1.1rem !important; }
+  main > section:first-of-type p.gg-cursiva-ok { font-size: 2.8rem !important; margin-top: 1.1rem !important; }
 }
 
 /* 24) 21-sep, Elena: en Contacto "es suficiente con una sola linea abajo, sin
@@ -577,4 +585,24 @@ main > section:first-of-type p.gg-cursiva-ok {
   margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0);
   white-space: nowrap; border: 0;
+}
+
+/* 25) 28-sep, Elena: "que se aprecien mas los colores y no quede todo
+   excesivamente oscurecido". La web original ponia sobre la foto del hero un
+   velo negro del 65/45/60 % y ademas un foco radial del 60 %. Se aclaran los
+   dos: el velo a 30/10/28 % y el foco, solo detras del texto, al 34 %. La
+   legibilidad la sostienen las sombras del propio texto, que se refuerzan. */
+main > section:first-of-type .bg-gradient-to-b.from-black\/65 {
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / .30) 0%, rgb(0 0 0 / .10) 42%, rgb(0 0 0 / .28) 100%) !important;
+}
+main > section:first-of-type .hero-spotlight {
+  background-image: radial-gradient(ellipse 62% 46% at 50% 47%, rgb(0 0 0 / .34), rgb(0 0 0 / .20) 50%, transparent) !important;
+}
+main > section:first-of-type h1 {
+  text-shadow: 0 2px 18px rgb(0 0 0 / .9), 0 1px 4px rgb(0 0 0 / .75), 0 0 2px rgb(0 0 0 / .5) !important;
+}
+main > section:first-of-type p,
+main > section:first-of-type li,
+main > section:first-of-type span {
+  text-shadow: 0 1px 12px rgb(0 0 0 / .95), 0 1px 3px rgb(0 0 0 / .85);
 }
