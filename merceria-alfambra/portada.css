@@ -1,0 +1,116 @@
+/* Portada nueva de Mercería Alfambra. Va encima del tema Warehouse y solo toca lo que cuelga de .alf */
+.alf {
+  --alf-teal: #5da099;
+  --alf-teal-osc: #3e7a74;
+  --alf-teal-claro: #e9f3f1;
+  --alf-tinta: #2f3437;
+  --alf-gris: #6b6f72;
+  --alf-crema: #faf7f2;
+  --alf-madera: #8b5e3c;
+  --alf-borde: #e3e7e6;
+  font-family: 'Karla', sans-serif;
+  color: var(--alf-tinta);
+  padding-bottom: 8px;
+}
+.alf *, .alf *::before, .alf *::after { box-sizing: border-box; }
+.alf img { display: block; max-width: 100%; }
+.alf a { text-decoration: none; }
+.alf a:focus-visible, .alf button:focus-visible, .alf .alf-carril:focus-visible { outline: 3px solid var(--alf-teal); outline-offset: 2px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Botones */
+.alf-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 10px 20px; border-radius: 6px;
+  font-weight: 700; font-size: 16px; line-height: 1.2; text-align: center;
+  border: 2px solid var(--alf-teal); transition: background-color .15s, color .15s;
+}
+.alf-btn--lleno { background: var(--alf-teal); color: #fff !important; }
+.alf-btn--lleno:hover { background: var(--alf-teal-osc); border-color: var(--alf-teal-osc); }
+.alf-btn--borde { background: #fff; color: var(--alf-teal-osc) !important; }
+.alf-btn--borde:hover { background: var(--alf-teal-claro); }
+
+/* Cabecera de la portada */
+.alf-hero { position: relative; margin: 0 0 8px; background: var(--alf-crema); border-radius: 0 0 10px 10px; overflow: hidden; }
+.alf-hero__foto img { width: 100%; height: 220px; object-fit: cover; object-position: 50% 40%; }
+.alf-hero__texto { padding: 20px 16px 24px; }
+.alf-hero__antes { margin: 0 0 6px; color: var(--alf-madera); font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+.alf-hero h1 { margin: 0 0 12px; font-family: 'Karla', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.15; color: var(--alf-tinta); text-transform: none; letter-spacing: -.01em; }
+.alf-hero__sub { margin: 0 0 18px; font-size: 17px; line-height: 1.5; color: #4a4f52; }
+.alf-hero__botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.alf-hero__botones .alf-btn { flex: 1 1 180px; }
+.alf-hero__wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--alf-teal-osc) !important; font-weight: 700; font-size: 15px; }
+.alf-hero__wa .fa { font-size: 22px; color: #25a35a; }
+
+@media (min-width: 768px) {
+  .alf-hero { border-radius: 10px; margin-top: 16px; min-height: 440px; display: flex; align-items: center; }
+  .alf-hero__foto { position: absolute; inset: 0; }
+  .alf-hero__foto img { height: 100%; object-position: 70% 50%; }
+  .alf-hero::before { content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(250,247,242,.97) 0%, rgba(250,247,242,.93) 42%, rgba(250,247,242,.55) 60%, rgba(250,247,242,0) 75%); }
+  .alf-hero__texto { position: relative; z-index: 2; max-width: 540px; padding: 40px 44px; }
+  .alf-hero h1 { font-size: 40px; }
+  .alf-hero__botones .alf-btn { flex: 0 0 auto; }
+}
+
+/* Bloques */
+.alf-bloque { margin: 36px 0 0; }
+.alf-titulo { margin: 0 0 16px; font-family: 'Karla', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; color: var(--alf-tinta); text-transform: none; }
+.alf-titulo--peq { font-size: 19px; margin-bottom: 12px; }
+@media (min-width: 768px) { .alf-bloque { margin-top: 52px; } .alf-titulo { font-size: 30px; } .alf-titulo--peq { font-size: 21px; } }
+
+/* Secciones */
+.alf-secciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 768px) { .alf-secciones { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; } }
+.alf-sec { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--alf-borde); border-radius: 8px; overflow: hidden; color: var(--alf-tinta) !important; transition: box-shadow .15s, transform .15s; }
+.alf-sec:hover { box-shadow: 0 6px 18px rgba(0,0,0,.08); transform: translateY(-2px); }
+.alf-sec__foto { display: block; aspect-ratio: 1 / 1; background: #f1f1f1; overflow: hidden; }
+.alf-sec__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.alf-sec:hover .alf-sec__foto img { transform: scale(1.04); }
+.alf-sec__nombre { padding: 10px 12px 0; font-weight: 700; font-size: 17px; line-height: 1.2; }
+.alf-sec__desc { padding: 4px 12px 0; font-size: 14px; line-height: 1.35; color: var(--alf-gris); }
+.alf-sec__n { margin-top: auto; padding: 8px 12px 12px; font-size: 13px; font-weight: 700; color: var(--alf-teal-osc); }
+@media (max-width: 380px) { .alf-sec__desc { display: none; } .alf-sec__nombre { font-size: 15px; } }
+
+/* Lo más buscado */
+.alf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.alf-chips a { display: inline-block; padding: 9px 14px; border-radius: 999px; border: 1px solid #cfe2df; background: var(--alf-teal-claro); color: var(--alf-teal-osc) !important; font-weight: 700; font-size: 15px; line-height: 1.2; }
+.alf-chips a:hover { background: var(--alf-teal); border-color: var(--alf-teal); color: #fff !important; }
+
+/* Novedades */
+.alf-cab { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.alf-cab .alf-titulo { margin-bottom: 2px; }
+.alf-cab__sub { margin: 0; color: var(--alf-gris); font-size: 15px; }
+.alf-cab__acciones { display: none; gap: 8px; }
+@media (min-width: 768px) { .alf-cab__acciones { display: flex; } }
+.alf-flecha { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--alf-borde); background: #fff; color: var(--alf-tinta); font-size: 22px; line-height: 1; cursor: pointer; }
+.alf-flecha:hover { border-color: var(--alf-teal); color: var(--alf-teal-osc); }
+.alf-carril { display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2px 2px 12px; scrollbar-width: thin; }
+@media (min-width: 576px) { .alf-carril { grid-auto-columns: 30%; } }
+@media (min-width: 992px) { .alf-carril { grid-auto-columns: calc((100% - 5 * 16px) / 6); gap: 16px; } }
+.alf-prod { scroll-snap-align: start; display: flex; flex-direction: column; color: var(--alf-tinta) !important; }
+.alf-prod__foto { position: relative; display: block; aspect-ratio: 1 / 1; background: #f1f1f1; border-radius: 8px; overflow: hidden; }
+.alf-prod__foto img { width: 100%; height: 100%; object-fit: cover; }
+.alf-prod__nuevo { position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 4px; background: var(--alf-madera); color: #fff; font-size: 12px; font-weight: 700; }
+.alf-prod__nombre { margin-top: 8px; font-size: 15px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; }
+.alf-prod:hover .alf-prod__nombre { color: var(--alf-teal-osc); }
+.alf-prod__precio { margin-top: 4px; font-weight: 700; font-size: 16px; color: #c0392b; }
+.alf-centro { margin: 12px 0 0; text-align: center; }
+
+/* Confianza */
+.alf-confianza { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; background: var(--alf-teal-claro); border-radius: 10px; }
+@media (min-width: 992px) { .alf-confianza { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 22px 24px; } }
+.alf-conf { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.4; color: #4a4f52; }
+.alf-conf .fa { flex: none; width: 28px; font-size: 24px; color: var(--alf-teal-osc); text-align: center; margin-top: 2px; }
+.alf-conf b { display: block; color: var(--alf-tinta); font-size: 15px; }
+.alf-conf a { color: var(--alf-teal-osc) !important; font-weight: 700; }
+@media (max-width: 380px) { .alf-confianza { grid-template-columns: 1fr; } }
+
+/* La tienda */
+.alf-tienda { display: grid; gap: 20px; align-items: center; }
+@media (min-width: 768px) { .alf-tienda { grid-template-columns: 1fr 1fr; gap: 40px; } }
+.alf-tienda__foto img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; }
+.alf-tienda__texto p { font-size: 16px; line-height: 1.6; color: #4a4f52; }
+.alf-tienda__dir { margin: 0 0 16px; font-style: normal; font-weight: 700; font-size: 16px; }
+.alf-tienda__dir .fa { color: var(--alf-madera); margin-right: 6px; }
