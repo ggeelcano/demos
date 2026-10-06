@@ -1,0 +1,85 @@
+<div class="envoltura">
+  <nav class="migas" aria-label="Estás en"><ol><li><a href="index.html">Inicio</a></li><li aria-current="page">Mi cesta</li></ol></nav>
+  <ol class="pasos" id="pasos" aria-label="Pasos del pedido">
+    <li data-paso="cesta"><span>1</span><em>Cesta</em></li>
+    <li data-paso="datos"><span>2</span><em>Datos de envío</em></li>
+    <li data-paso="pago"><span>3</span><em>Pago</em></li>
+  </ol>
+
+  <!-- Paso 1: cesta -->
+  <section id="paso-cesta" aria-labelledby="t-cesta">
+    <h1 class="titulo-pagina" id="t-cesta" style="margin-bottom:18px">Mi <span class="brocha">cesta</span></h1>
+    <div class="pedido">
+      <div class="tabla-cesta" id="tabla-cesta" data-local></div>
+      <aside class="resumen" aria-labelledby="t-res1">
+        <h2 id="t-res1">Resumen</h2>
+        <div id="resumen-cesta"></div>
+        <button class="btn btn-naranja btn-ancho" type="button" id="a-datos">Tramitar pedido <svg class="ico" aria-hidden="true"><use href="#i-flecha-der"/></svg></button>
+        <p style="font-size:12.5px;color:var(--texto-suave);margin-top:12px;display:flex;gap:8px;align-items:center"><svg class="ico" aria-hidden="true" style="width:18px;height:18px"><use href="#i-candado"/></svg>Pago seguro con tarjeta, Bizum o PayPal</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Paso 2: datos de envío -->
+  <section id="paso-datos" aria-labelledby="t-datos" hidden>
+    <h1 class="titulo-pagina" id="t-datos" style="margin-bottom:18px" tabindex="-1">Datos de <span class="brocha">envío</span></h1>
+    <div class="pedido">
+      <form class="form-pedido" id="form-datos" novalidate>
+        <p class="error-form entera" id="error-datos" role="alert" hidden></p>
+        <div class="campo entera"><label for="d-nombre">Nombre y apellidos</label><input id="d-nombre" name="nombre" autocomplete="name" required><span class="error" id="e-nombre" hidden></span></div>
+        <div class="campo"><label for="d-email">Correo electrónico</label><input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="a-email"><span class="ayuda" id="a-email">Te enviamos aquí la confirmación y el seguimiento.</span><span class="error" id="e-email" hidden></span></div>
+        <div class="campo"><label for="d-tel">Teléfono móvil</label><input id="d-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="a-tel"><span class="ayuda" id="a-tel">Para el repartidor. 9 cifras.</span><span class="error" id="e-tel" hidden></span></div>
+        <div class="campo entera"><label for="d-dir">Dirección</label><input id="d-dir" name="dir" autocomplete="street-address" required placeholder="Calle, número, piso y puerta"><span class="error" id="e-dir" hidden></span></div>
+        <div class="campo"><label for="d-cp">Código postal</label><input id="d-cp" name="cp" autocomplete="postal-code" inputmode="numeric" maxlength="5" required><span class="error" id="e-cp" hidden></span></div>
+        <div class="campo"><label for="d-pob">Población</label><input id="d-pob" name="pob" autocomplete="address-level2" required><span class="error" id="e-pob" hidden></span></div>
+        <div class="campo entera"><label for="d-prov">Provincia</label><select id="d-prov" name="prov" autocomplete="address-level1" required><option value="">Elige la provincia</option></select><span class="error" id="e-prov" hidden></span></div>
+        <div class="campo entera"><label for="d-notas">Notas para el envío (opcional)</label><textarea id="d-notas" name="notas" placeholder="Por ejemplo: dejar en el bar de abajo si no estoy"></textarea></div>
+        <div class="botones-paso entera">
+          <button class="btn btn-borde" type="button" data-volver="cesta"><svg class="ico" aria-hidden="true"><use href="#i-flecha-izq"/></svg> Volver a la cesta</button>
+          <button class="btn btn-naranja" type="submit">Continuar al pago <svg class="ico" aria-hidden="true"><use href="#i-flecha-der"/></svg></button>
+        </div>
+      </form>
+      <aside class="resumen" aria-labelledby="t-res2"><h2 id="t-res2">Tu pedido</h2><div id="resumen-datos"></div></aside>
+    </div>
+  </section>
+
+  <!-- Paso 3: pago -->
+  <section id="paso-pago" aria-labelledby="t-pago" hidden>
+    <h1 class="titulo-pagina" id="t-pago" style="margin-bottom:18px" tabindex="-1">Forma de <span class="brocha">pago</span></h1>
+    <div class="pedido">
+      <form class="bloque-pago" id="form-pago" novalidate>
+        <h2>Envío</h2>
+        <div class="opciones" role="radiogroup" aria-label="Forma de envío">
+          <label class="opcion"><input type="radio" name="envio" value="estandar" checked><span><strong>Envío a domicilio 24/48 h</strong><span class="det" id="det-envio"></span></span><span class="marca-pago" id="precio-envio"></span></label>
+        </div>
+        <p style="font-size:13.5px;margin:-8px 0 20px" id="dir-envio"></p>
+        <h2>Pago</h2>
+        <div class="opciones" role="radiogroup" aria-label="Forma de pago">
+          <label class="opcion"><input type="radio" name="pago" value="tarjeta" checked><span><strong>Tarjeta de crédito o débito</strong><span class="det">Pago seguro en la pasarela del banco</span></span><span class="marca-pago" aria-hidden="true">VISA · MC</span></label>
+          <label class="opcion"><input type="radio" name="pago" value="bizum"><span><strong>Bizum</strong><span class="det">Pagas desde la app de tu banco</span></span><span class="marca-pago" style="color:#028ea0" aria-hidden="true">bizum</span></label>
+          <label class="opcion"><input type="radio" name="pago" value="paypal"><span><strong>PayPal</strong><span class="det">Entras en tu cuenta de PayPal</span></span><span class="marca-pago" style="color:#003087;font-style:italic" aria-hidden="true">PayPal</span></label>
+        </div>
+        <label class="casilla"><input type="checkbox" id="acepto" required><span>He leído y acepto las <a class="enlace" href="ayuda.html#legal" target="_blank">condiciones de compra</a> y la <a class="enlace" href="ayuda.html#legal" target="_blank">política de privacidad</a>.</span></label>
+        <p class="error-form" id="error-pago" role="alert" hidden></p>
+        <div class="botones-paso">
+          <button class="btn btn-borde" type="button" data-volver="datos"><svg class="ico" aria-hidden="true"><use href="#i-flecha-izq"/></svg> Volver a los datos</button>
+          <button class="btn btn-naranja" type="submit" id="btn-pagar">Pagar</button>
+        </div>
+      </form>
+      <aside class="resumen" aria-labelledby="t-res3"><h2 id="t-res3">Tu pedido</h2><div id="resumen-pago"></div></aside>
+    </div>
+  </section>
+
+  <!-- Confirmación -->
+  <section id="paso-ok" aria-labelledby="t-ok" hidden>
+    <div class="confirmado">
+      <svg class="ico ico-ok" aria-hidden="true"><use href="#i-check"/></svg>
+      <h1 id="t-ok" tabindex="-1">¡Pedido recibido!</h1>
+      <p class="num" id="ok-num"></p>
+      <p id="ok-texto"></p>
+      <div class="caja-resumen" id="ok-resumen"></div>
+      <p class="nota-demo"><strong>Esto es una demostración.</strong> No se ha cobrado nada ni se ha enviado ningún pedido. En la tienda real aquí se cobra con la pasarela de pago y a Urbanmoto le llega el aviso del pedido al momento.</p>
+      <p><a class="btn btn-naranja" href="index.html">Seguir comprando <svg class="ico" aria-hidden="true"><use href="#i-flecha-der"/></svg></a></p>
+    </div>
+  </section>
+</div>
