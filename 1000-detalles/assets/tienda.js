@@ -63,12 +63,12 @@
     abrir($('#cesta'));
   };
   function lineaHTML(i) {
-    const det = [...(i.ops || []), i.txt ? 'Texto: «' + i.txt.replace(/\n/g, ' / ') + '»' : '', i.fecha ? 'Evento: ' + new Date(i.fecha + 'T12:00').toLocaleDateString('es-ES') : '', i.foto ? 'Foto: ' + i.foto : ''].filter(Boolean);
+    const det = [...(i.ops || []), i.txt ? 'Texto: «' + i.txt.replace(/\n/g, ' / ') + '»' : '', i.fecha ? 'Evento: ' + new Date(i.fecha + 'T12:00').toLocaleDateString('es-ES') : '', i.foto ? 'Foto: ' + i.foto : '', i.min > 1 ? `Mínimo ${i.min}` : ''].filter(Boolean);
     return `<div class="linea-cesta" data-k="${esc(i.k)}">
       <img src="${esc(i.img)}" alt="" width="72" height="72">
       <div><h3><a href="producto.html?id=${esc(i.id)}">${esc(i.n)}</a></h3>
         ${det.length ? `<ul>${det.map(d => `<li>${esc(d)}</li>`).join('')}</ul>` : ''}
-        <div class="cantidad"><button type="button" data-menos aria-label="Quitar una unidad">−</button><input type="number" min="1" value="${i.q}" aria-label="Cantidad de ${esc(i.n)}"><button type="button" data-mas aria-label="Añadir una unidad">+</button></div>
+        <div class="cantidad"><button type="button" data-menos aria-label="Quitar una unidad">−</button><input type="number" min="${i.min || 1}" value="${i.q}" aria-label="Cantidad de ${esc(i.n)}"><button type="button" data-mas aria-label="Añadir una unidad">+</button></div>
       </div>
       <div class="linea-cesta__precio">${euros(i.u * i.q)}<button type="button" class="quitar">Quitar</button></div>
     </div>`;
@@ -97,7 +97,7 @@
     const l = e.target.closest('.linea-cesta'); if (!l) return;
     const it = cesta.find(i => i.k === l.dataset.k); if (!it) return;
     if (e.target.closest('[data-mas]')) it.q++;
-    else if (e.target.closest('[data-menos]')) it.q = Math.max(1, it.q - 1);
+    else if (e.target.closest('[data-menos]')) it.q = Math.max(it.min || 1, it.q - 1);
     else if (e.target.closest('.quitar')) cesta = cesta.filter(i => i !== it);
     else return;
     guardar();
@@ -106,7 +106,7 @@
   });
   lineas && lineas.addEventListener('change', e => {
     const l = e.target.closest('.linea-cesta'); const it = l && cesta.find(i => i.k === l.dataset.k);
-    if (it) { it.q = Math.max(1, parseInt(e.target.value, 10) || 1); guardar(); }
+    if (it) { it.q = Math.max(it.min || 1, parseInt(e.target.value, 10) || 1); guardar(); }
   });
   pintarCesta();
   addEventListener('storage', e => { if (e.key === CLAVE) { try { cesta = JSON.parse(e.newValue) || []; } catch (er) { cesta = []; } pintarCesta(); } });
@@ -192,9 +192,13 @@
   });
 
   /* ---------------- formulario de contacto ---------------- */
+  // Es una web de prueba: no se envía nada, así que se ofrece el WhatsApp con el mensaje ya escrito
   $$('form[data-contacto]').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault();
-    f.innerHTML = '<p class="ok-form" role="status"><b>¡Mensaje enviado!</b> Te contestaremos en breve. Si es urgente, escríbenos por WhatsApp al 611 37 53 73.</p>';
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const msg = ($('#c-msg', f) || {}).value || '';
+    const wa = `https://wa.me/${WA}?text=${encodeURIComponent(msg.trim())}`;
+    f.innerHTML = `<div class="ok-form" role="status"><p style="margin:0 0 8px"><b>Esta web es una versión de prueba y el mensaje no se ha enviado.</b></p><p style="margin:0">Escríbenos por <a href="${wa}">WhatsApp al 611 37 53 73</a> (te dejamos tu mensaje ya escrito) o a <a href="mailto:clientes1000detalles@gmail.com">clientes1000detalles@gmail.com</a> y te contestamos en breve.</p></div>`;
   }));
 
   /* ---------------- ficha de producto ---------------- */
@@ -207,30 +211,46 @@
   }
   function grande(ruta) { return REMOTO + ruta.replace(/\.jpg$/, '_xxl.webp'); }
   function mini(ruta) { return REMOTO + ruta.replace(/\.jpg$/, '_xl.webp'); }
+  // set, pack, caja…: el precio no es por unidad
+  const UNIDAD = {
+    '': ['unidad', 'unidades', 'por unidad'], set: ['set', 'sets', 'precio del set'], pack: ['pack', 'packs', 'precio del pack'],
+    lote: ['lote', 'lotes', 'precio del lote'], kit: ['kit', 'kits', 'precio del kit'], caja: ['caja', 'cajas', 'precio de la caja'],
+  };
+  // grupos que deciden la combinación de su web (el precio sale de la tabla p.k); 'param' (embolsado, pegatina) suma aparte
+  const DIM = { color: 0, size: 1, classification: 2 };
+
   function pintarFicha(D, id) {
     const p0 = D.p[id];
-    const p = p0 && { ...p0, ops: p0.ops.map(i => D.g[i]), gal: p0.gal.map(g => D.pref + g) };
-    if (!p) { fichaBox.innerHTML = '<p class="vacio">Este detalle ya no está disponible. <a href="productos.html">Ver todos los detalles</a></p>'; return; }
+    if (!p0) { fichaBox.innerHTML = '<p class="vacio">Este detalle ya no está disponible. <a href="productos.html">Ver todos los detalles</a></p>'; return; }
+    const p = { ...p0, ops: p0.ops.map(i => D.g[i]), gal: p0.gal.map(g => D.pref + g) };
+    const U = UNIDAD[p.u || ''] || UNIDAD[''];
     document.title = `${p.n} | 1000 Detalles`;
     const occ = D.occ[p.occ] || null;
     const migas = $('#migas-ficha');
     if (migas) migas.innerHTML = `<li><a href="index.html">Inicio</a></li>${occ ? `<li><a href="${occ.url}">${esc(occ.n)}</a></li>` : ''}${occ && p.tipo ? `<li><a href="${occ.url}?tipo=${p.tipo}">${esc(D.tipos[p.tipo] || '')}</a></li>` : ''}<li aria-current="page">${esc(p.n)}</li>`;
-    const minimo = (p.c + ' ' + (p.nota || '')).match(/m[ií]nimo (?:son )?(\d+)/i);
-    const qMin = minimo ? +minimo[1] : 1;
-    const agotado = p.st === 'OutOfStock' || /^agotado\b/i.test((p.nota || '').trim());
     const gal = p.gal.length ? p.gal : [];
+    // filas de combinación: primero las más concretas (un 0 en la fila vale para cualquier opción)
+    const filas = p.k.slice().sort((a, b) => b.slice(0, 3).filter(Boolean).length - a.slice(0, 3).filter(Boolean).length);
+    const filaDe = sel => filas.find(r => [0, 1, 2].every(d => r[d] === 0 || r[d] === sel[d]));
+    // de entrada, la combinación más barata (es el «desde» del listado)
+    const barata = p.k.filter(r => r[3] != null).sort((a, b) => a[3] - b[3])[0];
+    const inicial = g => {
+      if (g.t in DIM && barata && barata[DIM[g.t]]) { const i = g.o.findIndex(o => o[3] === barata[DIM[g.t]]); if (i >= 0) return i; }
+      return Math.max(0, g.o.findIndex(o => o[2]));
+    };
     const grupos = p.ops.map((g, gi) => {
       const nombre = `op${gi}`;
-      const sel = Math.max(0, g.o.findIndex(o => o[2]));
+      const sel = inicial(g);
       const ver = g.h ? `<button type="button" class="opcion__ver" data-ayuda="${esc(REMOTO + g.h)}" data-titulo="${esc(g.l)}">Ver ejemplos</button>` : '';
       if (g.o.length <= 10) {
         return `<fieldset class="opcion" data-grupo="${gi}"><legend>${esc(g.l)} ${ver}</legend><div class="pastillas">${g.o.map((o, oi) => `<label class="pastilla"><input type="radio" name="${nombre}" value="${oi}" ${oi === sel ? 'checked' : ''}><span>${esc(o[0])}${o[1] ? ` <small>+${euros(o[1])}</small>` : ''}</span></label>`).join('')}</div></fieldset>`;
       }
       return `<div class="campo opcion" data-grupo="${gi}"><label for="${nombre}">${esc(g.l)}</label> ${ver}<select id="${nombre}" name="${nombre}">${g.o.map((o, oi) => `<option value="${oi}" ${oi === sel ? 'selected' : ''}>${esc(o[0])}${o[1] ? ` (+${euros(o[1])})` : ''}</option>`).join('')}</select></div>`;
     }).join('');
-    const hayGrabado = p.ops.some(g => /grab|personaliz|nombre|texto|frase/i.test(g.l)) || /personaliz|grabad|con nombre|con su nombre/i.test(p.n);
+    const hayGrabado = p.ops.some(g => /grab|personaliz|nombre|texto|frase/i.test(g.l)) || /personaliz|grabad|con nombre|con su nombre/i.test(p.n)
+      || p.d.some(t => /(escribe|pon|indica|indícanos)[^.]{0,40}nombre|nombre y (la )?fecha/i.test(t));
     const hayFoto = p.ops.some(g => /foto/i.test(g.l)) || /con foto/i.test(p.n);
-    const desde = p.alto && p.alto > p.pr + 0.001 && !p.ops.some(g => g.o.some(o => o[1] > 0));
+    const waTxt = extra => `https://wa.me/${WA}?text=${encodeURIComponent('Hola, tengo una duda sobre «' + p.n + '»' + (extra ? ' (' + extra + ')' : ''))}`;
     fichaBox.innerHTML = `
       <div class="ficha">
         <div class="galeria">
@@ -240,25 +260,26 @@
         <div class="ficha__info">
           <h1>${esc(p.n)}</h1>
           ${p.c && !/^(novedad\.?|oferta\.?)$/i.test(p.c) ? `<p class="ficha__corta">${esc(p.c)}</p>` : ''}
-          <p class="ficha__precio">${p.a ? `<del>${euros(p.a)}</del>` : ''}<span id="precio-unidad">${desde ? 'Desde ' : ''}${euros(p.pr)}</span> <small>IVA incluido · por unidad</small></p>
-          <p class="ficha__plazos">Sin personalizar llega en 2-7 días; con grabado, en 7-15 días.</p>
-          ${agotado ? '<p class="aviso">Ahora mismo está agotado. Escríbenos y te avisamos cuando vuelva.</p>' : ''}
+          <p class="ficha__precio"><del id="precio-antes"></del><span id="precio-unidad"></span> <small id="precio-nota">IVA incluido · ${U[2]}</small></p>
+          <p class="ficha__plazos">Sin personalizar llega en 3-7 días naturales; con grabado, en 10-15 (hasta 25 en marzo, abril y mayo).</p>
+          <p class="aviso" id="aviso-ficha" hidden></p>
           <form id="form-ficha" novalidate>
             ${grupos}
             ${hayGrabado ? `<div class="campo" id="campo-texto"><label for="texto-grabado">Texto para personalizar</label><textarea id="texto-grabado" rows="2" maxlength="300" placeholder="Por ejemplo: Lucía y Marcos · 12-06-2027"></textarea><small id="ayuda-texto">Escríbelo tal y como quieres que salga.</small></div>` : ''}
             ${hayFoto ? `<div class="campo" id="campo-foto"><label for="foto-cliente">Tu foto</label><input type="file" id="foto-cliente" accept="image/*"><small>JPG o PNG. Cuanto más grande, mejor sale.</small><div class="foto-previa" id="foto-previa" hidden></div></div>` : ''}
             <div class="campo"><label for="fecha-evento">Fecha del evento <span style="font-weight:400">(opcional)</span></label><input type="date" id="fecha-evento"><small>Con la fecha nos organizamos para que lo tengas antes.</small></div>
             <div class="comprar">
-              <div class="cantidad"><button type="button" id="q-menos" aria-label="Quitar una unidad">−</button><input id="q" type="number" min="${qMin}" value="${qMin}" inputmode="numeric" aria-label="Cantidad"><button type="button" id="q-mas" aria-label="Añadir una unidad">+</button></div>
-              <button class="btn btn--rosa" type="submit" ${agotado ? 'disabled' : ''}>${agotado ? 'Agotado' : 'Añadir a la cesta'}</button>
+              <div class="cantidad"><button type="button" id="q-menos" aria-label="Quitar una">−</button><input id="q" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad"><button type="button" id="q-mas" aria-label="Añadir una">+</button></div>
+              <button class="btn btn--rosa" type="submit" id="btn-comprar">Añadir a la cesta</button>
+              <a class="btn" id="btn-wa" hidden href="${waTxt()}">${ICO.wa} Pregúntanos por WhatsApp</a>
               <p class="comprar__total" id="total-linea" aria-live="polite"></p>
+              <p class="comprar__total" id="aviso-minimo" hidden></p>
             </div>
           </form>
           <div class="ficha__extra">
-            ${qMin > 1 ? `<p>${ICO.reloj}<span>Pedido mínimo: ${qMin} unidades.</span></p>` : ''}
             <p>${ICO.camion}<span>Envío a península 5,50 €. <b>Gratis a partir de 110 €.</b></span></p>
             <p>${ICO.tarjeta}<span>Tarjeta, Bizum, PayPal o en 3, 6 o 12 meses con seQura.</span></p>
-            <p>${ICO.wa}<span><a href="https://wa.me/${WA}?text=${encodeURIComponent('Hola, tengo una duda sobre «' + p.n + '»')}">¿Dudas con este detalle? Escríbenos por WhatsApp</a></span></p>
+            <p>${ICO.wa}<span><a href="${waTxt()}">¿Dudas con este detalle? Escríbenos por WhatsApp</a></span></p>
           </div>
         </div>
       </div>
@@ -279,13 +300,42 @@
 
     const form = $('#form-ficha'), q = $('#q');
     const elegido = gi => { const g = $(`[data-grupo="${gi}"]`); const v = g.querySelector('input:checked, select'); return v ? +v.value : 0; };
+    const textoOps = () => p.ops.map((g, gi) => [g, g.o[elegido(gi)]]).filter(([g, o]) => !/^(sin|no)\b/i.test(o[0]))
+      .map(([g, o]) => /embols|lazo/i.test(g.l) ? `Embolsado: ${o[0]}` : /pegatina/i.test(g.l) ? `Pegatina: ${o[0].replace(/^pegatina\s*/i, '')}` : `${g.l.replace(/[?¿:]/g, '').trim()}: ${o[0]}`);
+    let estado = { u: null, min: 1 };
     function recalcular() {
-      let u = p.pr;
-      p.ops.forEach((g, gi) => { u += g.o[elegido(gi)][1] || 0; });
-      const extra = u - p.pr;
-      $('#precio-unidad').textContent = (desde && !extra ? 'Desde ' : '') + euros(u);
-      const n = Math.max(qMin, parseInt(q.value, 10) || qMin);
-      $('#total-linea').innerHTML = `${n} ${n === 1 ? 'unidad' : 'unidades'} × ${euros(u)} = <b>${euros(u * n)}</b>`;
+      const sel = [0, 0, 0];
+      p.ops.forEach((g, gi) => { if (g.t in DIM) sel[DIM[g.t]] = g.o[elegido(gi)][3]; });
+      const r = filaDe(sel);
+      let modo = 'ok', u = null, antes = null, min = 1;
+      if (p.nd) modo = 'agotado';
+      else if (p.cons) modo = 'consultar';
+      else if (!r) modo = 'nocomb';
+      else if (r[3] == null) modo = 'consultar';
+      else { u = r[3]; antes = r[4]; min = r[5] || 1; }
+      let extra = 0;
+      p.ops.forEach((g, gi) => { if (g.t === 'param') extra += g.o[elegido(gi)][1] || 0; });
+      if (u != null) u += extra;
+      $('#precio-unidad').textContent = u != null ? euros(u) : modo === 'agotado' ? 'No disponible' : 'Precio a consultar';
+      $('#precio-antes').textContent = u != null && antes ? euros(antes + extra) : '';
+      $('#precio-nota').hidden = u == null;
+      const aviso = $('#aviso-ficha');
+      aviso.hidden = modo === 'ok';
+      aviso.textContent = { agotado: 'Ahora mismo está agotado. Si te interesa, pregúntanos por WhatsApp y te decimos si va a volver.', consultar: 'El precio de esta opción hay que consultarlo. Escríbenos y te lo decimos.', nocomb: 'Esa combinación no está disponible. Prueba con otra opción o pregúntanos.' }[modo] || '';
+      const btn = $('#btn-comprar'), wa = $('#btn-wa');
+      btn.hidden = modo === 'consultar' || modo === 'nocomb';
+      btn.disabled = modo !== 'ok';
+      btn.textContent = modo === 'agotado' ? 'Agotado' : 'Añadir a la cesta';
+      wa.hidden = !btn.hidden;
+      wa.href = waTxt(textoOps().join(', '));
+      // pedido mínimo de esa combinación (el de su web)
+      q.min = min;
+      if ((parseInt(q.value, 10) || 0) < min) q.value = min;
+      const am = $('#aviso-minimo');
+      am.hidden = min <= 1 || modo !== 'ok';
+      am.innerHTML = `${ICO.reloj} Pedido mínimo con esta opción: <b>${min} ${U[1]}</b>. Si necesitas menos, pregúntanos.`;
+      const n = Math.max(min, parseInt(q.value, 10) || min);
+      $('#total-linea').innerHTML = u != null ? `${n} ${n === 1 ? U[0] : U[1]} × ${euros(u)} = <b>${euros(u * n)}</b>` : '';
       const ct = $('#campo-texto');
       if (ct) {
         const g = p.ops.findIndex(g => /grab|personaliz/i.test(g.l));
@@ -298,12 +348,14 @@
         const g = p.ops.findIndex(g => /foto/i.test(g.l));
         cf.hidden = g >= 0 && /^(sin|no)\b/i.test(p.ops[g].o[elegido(g)][0]);
       }
-      return u;
+      estado = { u, min, modo };
+      return estado;
     }
     form.addEventListener('change', recalcular);
-    q.addEventListener('input', recalcular);
-    $('#q-menos').addEventListener('click', () => { q.value = Math.max(qMin, (parseInt(q.value, 10) || qMin) - 1); recalcular(); });
-    $('#q-mas').addEventListener('click', () => { q.value = (parseInt(q.value, 10) || qMin) + 1; recalcular(); });
+    q.addEventListener('input', () => { const n = parseInt(q.value, 10); if (n >= estado.min) recalcular(); });
+    q.addEventListener('change', recalcular);
+    $('#q-menos').addEventListener('click', () => { q.value = Math.max(estado.min, (parseInt(q.value, 10) || estado.min) - 1); recalcular(); });
+    $('#q-mas').addEventListener('click', () => { q.value = (parseInt(q.value, 10) || estado.min) + 1; recalcular(); });
     const fc = $('#foto-cliente');
     fc && fc.addEventListener('change', () => {
       const f = fc.files[0], pv = $('#foto-previa');
@@ -312,12 +364,11 @@
     });
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const u = recalcular();
-      const n = Math.max(qMin, parseInt(q.value, 10) || qMin);
-      const ops = p.ops.map((g, gi) => [g, g.o[elegido(gi)]]).filter(([g, o]) => !/^(sin|no)\b/i.test(o[0]))
-        .map(([g, o]) => /embols|lazo/i.test(g.l) ? `Embolsado: ${o[0]}` : /pegatina/i.test(g.l) ? `Pegatina: ${o[0].replace(/^pegatina\s*/i, '')}` : `${g.l.replace(/[?¿:]/g, '').trim()}: ${o[0]}`);
+      const st = recalcular();
+      if (st.modo !== 'ok') return;
+      const n = Math.max(st.min, parseInt(q.value, 10) || st.min);
       const ct = $('#campo-texto'), cf = $('#campo-foto');
-      anadirCesta({ id, n: p.n, img: p.img, u, q: n, ops, txt: ct && !ct.hidden ? $('#texto-grabado').value.trim() : '', fecha: $('#fecha-evento').value, foto: cf && !cf.hidden && fc.files[0] ? fc.files[0].name : '' });
+      anadirCesta({ id, n: p.n, img: p.img, u: st.u, q: n, min: st.min, ud: p.u || '', ops: textoOps(), txt: ct && !ct.hidden ? $('#texto-grabado').value.trim() : '', fecha: $('#fecha-evento').value, foto: cf && !cf.hidden && fc.files[0] ? fc.files[0].name : '' });
     });
     recalcular();
 
@@ -330,31 +381,46 @@
     $('.cerrar', modal).addEventListener('click', () => modal.close());
     modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
 
-    // relacionados: misma sección
-    const rel = Object.entries(D.p).filter(([k, x]) => k !== id && x.tipo === p.tipo && x.occ === p.occ).slice(0, 4);
+    // relacionados: misma sección, primero los disponibles
+    const rel = Object.entries(D.p).filter(([k, x]) => k !== id && x.tipo === p.tipo && x.occ === p.occ && !x.nd).slice(0, 4);
     if (rel.length) $('#relacionados').innerHTML = `<h2>Productos relacionados</h2><div class="rejilla">${rel.map(([k, x]) => tarjetaHTML(k, x)).join('')}</div>`;
   }
   function tarjetaHTML(k, x) {
+    const precio = x.nd ? '<span class="tarjeta__iva">No disponible</span>' : `${x.a ? `<del>${euros(x.a)}</del>` : ''}${x.desde ? '<span class="tarjeta__iva">Desde</span> ' : ''}${euros(x.pr)} <span class="tarjeta__iva">IVA incl.</span>`;
     return `<article class="tarjeta"><a class="tarjeta__img" href="producto.html?id=${k}" tabindex="-1" aria-hidden="true"><img src="${esc(x.img)}" alt="" loading="lazy" width="300" height="300">${x.i2 ? `<img class="alt" data-src="${esc(REMOTO + x.i2)}" alt="" width="300" height="300">` : ''}</a>
       <h3 class="tarjeta__nombre"><a href="producto.html?id=${k}">${esc(x.n)}</a></h3>
-      <p class="tarjeta__precio">${x.a ? `<del>${euros(x.a)}</del>` : ''}${euros(x.pr)} <span class="tarjeta__iva">IVA incl.</span></p></article>`;
+      <p class="tarjeta__precio">${precio}</p></article>`;
   }
 
   /* ---------------- pedido ---------------- */
+  // Portes según el código postal: Baleares (07) tarifa de 15 € si no se ha consultado antes; Canarias, Ceuta y Melilla, sin envío
+  const zonaDe = cp => { const d = String(cp || '').trim().slice(0, 2); if (/^(35|38|51|52)$/.test(d)) return 'fuera'; if (d === '07') return 'baleares'; return 'peninsula'; };
   const ped = $('#pedido');
   if (ped) {
     const res = $('#resumen-lineas');
+    const cp = $('#p-cp'), avisoCp = $('#p-cp-aviso');
     const pintar = () => {
       if (!cesta.length) { ped.innerHTML = '<div class="cesta-vacia"><p>Tu cesta está vacía.</p><a class="btn" href="productos.html">Ver detalles</a></div>'; return false; }
-      const s = subtotal();
+      const s = subtotal(), z = zonaDe(cp && cp.value);
+      const envio = z === 'baleares' ? 15 : z === 'fuera' ? null : portes(s);
+      const etiqueta = z === 'baleares' ? 'Envío a Baleares' : 'Envío península';
       res.innerHTML = cesta.map(i => `<p><span>${i.q} × ${esc(i.n)}</span><span>${euros(i.u * i.q)}</span></p>`).join('') +
-        `<p style="margin-top:12px"><span>Subtotal</span><span>${euros(s)}</span></p><p><span>Envío península</span><span>${portes(s) ? euros(portes(s)) : 'Gratis'}</span></p><p class="total"><span>Total (IVA incluido)</span><span>${euros(s + portes(s))}</span></p>`;
+        `<p style="margin-top:12px"><span>Subtotal</span><span>${euros(s)}</span></p>` +
+        (envio == null ? '<p><span>Envío</span><span>No disponible</span></p>' : `<p><span>${etiqueta}</span><span>${envio ? euros(envio) : 'Gratis'}</span></p>`) +
+        `<p class="total"><span>Total (IVA incluido)</span><span>${euros(s + (envio || 0))}</span></p>`;
+      if (avisoCp) {
+        avisoCp.textContent = z === 'fuera' ? 'No enviamos a Canarias, Ceuta ni Melilla.' : z === 'baleares' ? 'A Baleares el envío va según el peso, de 10 a 15 €. Si no nos consultas antes, se aplica la tarifa de 15 €.' : '';
+        avisoCp.style.color = z === 'fuera' ? '#b3261e' : '';
+      }
+      if (cp) cp.setCustomValidity(z === 'fuera' ? 'No enviamos a Canarias, Ceuta ni Melilla.' : '');
       return true;
     };
     if (pintar()) {
+      cp && cp.addEventListener('input', pintar);
       const f = $('#form-pedido');
       f.addEventListener('submit', e => {
         e.preventDefault();
+        pintar();
         if (!f.checkValidity()) { f.reportValidity(); return; }
         const nombre = $('#p-nombre').value.trim(), email = $('#p-email').value.trim();
         const num = '1000-' + String(Date.now()).slice(-5);
@@ -362,7 +428,7 @@
         cesta = []; guardar();
         ped.innerHTML = `<div class="confirmacion" role="status"><div class="circulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></div>
           <h1 class="titulo" style="margin-top:18px">¡Gracias, ${esc(nombre)}!</h1>
-          <p>Hemos recibido tu pedido <b>${num}</b>. Te mandamos el justificante a <b>${esc(email)}</b>${pago === 'transferencia' ? ' con el número de cuenta para la transferencia' : ''}.</p>
+          <p>Hemos recibido tu pedido <b>${num}</b>. Te mandamos una copia a <b>${esc(email)}</b>${pago === 'transferencia' ? ' con el número de cuenta para la transferencia' : ''}: revísala bien.</p>
           <p>Si has dejado la fecha del evento, la tenemos en cuenta para que te llegue antes.</p>
           <p style="font-size:14px;color:var(--texto-2)">Pedido de prueba: en esta versión no se cobra nada.</p>
           <a class="btn" href="index.html">Volver al inicio</a></div>`;
