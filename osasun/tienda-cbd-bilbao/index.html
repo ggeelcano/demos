@@ -356,6 +356,8 @@ html, body {
 #cookie-law-info-bar #wt-cli-reject-btn,#cookie-law-info-bar #wt-cli-accept-all-btn{background:#333!important;color:#fff!important;margin:0!important}
 #cookie-law-info-bar .cli_settings_button{margin:0!important}
 .os-tel,.os-tel:hover,.os-tel:focus{color:inherit;text-decoration:none}
+/* 12) Bilbao, Basauri y Portugalete: en móvil el bloque de productos medía 90 px (Elementor: ancho del contenido 90 px en esa sección) */
+@media (max-width:767px){.elementor-1954 .elementor-element.elementor-element-7b31378>.elementor-container,.elementor-4636 .elementor-element.elementor-element-7b31378>.elementor-container,.elementor-4722 .elementor-element.elementor-element-7b31378>.elementor-container{max-width:none!important}}
 .os-oferta{position:fixed;z-index:99990;left:12px;right:12px;bottom:12px;max-width:380px;margin:0 auto;background:#fff;color:#111;border-radius:22px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:26px 22px 18px;text-align:center;font-family:Arial,Helvetica,sans-serif;transform:translateY(130%);transition:transform .45s ease}
 .os-oferta.os-ver{transform:none}
 .os-oferta[hidden]{display:none}
@@ -1280,45 +1282,5 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 //# sourceURL=../wp-includes/js/wp-emoji-loader.min.js
 </script>
 
-<div id="os-oferta" class="os-oferta" role="dialog" aria-labelledby="os-oferta-t" hidden>
-<button type="button" class="os-x" aria-label="Cerrar">&times;</button>
-<p id="os-oferta-t" class="os-oferta-t">¿30% de descuento en tu primer aceite de CBD?</p>
-<p class="os-oferta-s">Regístrate para recibir el descuento.</p>
-<form novalidate><label for="os-oferta-email" class="os-sr">Email</label>
-<input id="os-oferta-email" type="email" placeholder="Email" autocomplete="email" required>
-<button type="submit" class="os-si">¡Lo quiero!</button></form>
-<button type="button" class="os-no">No, prefiero pagar más</button>
-</div>
-<script id="osasun-oferta">
-(function(){
-  var K="os_oferta_cerrada", pop=document.getElementById("os-oferta"); if(!pop) return;
-  function leer(){try{return localStorage.getItem(K)}catch(e){return null}}
-  function guardar(){try{localStorage.setItem(K,"1")}catch(e){}}
-  if(leer()) return;
-  var clic=false;
-  document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#cookie-law-info-bar .cli_action_button,#wt-cli-reject-btn,#wt-cli-accept-all-btn,#wt-cli-privacy-save-btn"))clic=true},true);
-  var decidido=function(){return clic||/(?:^|;\s*)viewed_cookie_policy=/.test(document.cookie)};
-  var listo=false, t0=null, visto=false;
-  function mostrar(){ if(visto) return; visto=true; pop.hidden=false; requestAnimationFrame(function(){requestAnimationFrame(function(){pop.classList.add("os-ver")})}); }
-  function cerrar(){ pop.classList.remove("os-ver"); guardar(); setTimeout(function(){pop.hidden=true},450); }
-  // Primero las cookies. Después, a los 6 s o al bajar un 40 % de la página, el descuento.
-  var iv=setInterval(function(){
-    if(!decidido()) return;
-    if(t0===null) t0=Date.now();
-    var bajado=(window.scrollY+innerHeight)/document.documentElement.scrollHeight>0.4;
-    if(Date.now()-t0>6000||bajado){clearInterval(iv);mostrar();}
-  },400);
-  pop.querySelector(".os-x").onclick=cerrar;
-  pop.querySelector(".os-no").onclick=cerrar;
-  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&visto)cerrar()});
-  pop.querySelector("form").onsubmit=function(e){
-    e.preventDefault(); var i=document.getElementById("os-oferta-email");
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value)){i.focus();i.setAttribute("aria-invalid","true");return;}
-    guardar();
-    this.outerHTML='<p class="os-oferta-s" role="status" style="font-weight:700">¡Hecho! Te llegará el código a tu email.</p>';
-    setTimeout(cerrar,3500);
-  };
-})();
-</script>
 </body>
 </html>
