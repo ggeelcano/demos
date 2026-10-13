@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Txibirita Herbodietética · Herbolario en el Casco Viejo de Bilbao</title>
+<meta name="description" content="Herbolario en la calle Tendería 36, Casco Viejo de Bilbao. Suplementos, plantas a granel y cosmética natural. Encarga online y recoge en tienda.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#5b7d5f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Txibirita Herbodietética">
+<meta property="og:title" content="Txibirita Herbodietética">
+<meta property="og:description" content="Tu herbolario en la calle Tendería 36. Encarga online y recoge en tienda.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/txibirita/img/og.jpg">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/txibirita/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Allura&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<div class="aviso">Encarga online y recógelo en la calle Tendería 36 · Te avisamos por WhatsApp cuando esté listo</div>
+
+<header class="cabecera">
+  <div class="cab-fila contenedor">
+    <button class="hamburguesa" type="button" aria-label="Abrir menú de categorías" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <a class="marca" href="#" aria-label="Txibirita Herbodietética, inicio">
+      <img src="img/logo.png" alt="" width="52" height="52">
+      <span class="marca-txt"><span class="marca-nombre">Txibirita</span><span class="marca-sub">Herbodietética</span></span>
+    </a>
+    <form class="buscador" role="search" id="buscador">
+      <label for="q" class="vh">Buscar productos</label>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="q" name="q" type="search" placeholder="¿Qué estás buscando? Colágeno, magnesio, tila…" autocomplete="off" aria-autocomplete="list" aria-controls="sugerencias">
+      <div class="sugerencias" id="sugerencias" role="listbox" hidden></div>
+    </form>
+    <nav class="iconos" aria-label="Accesos">
+      <a href="#tienda" class="icono"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span>Tienda</span></a>
+      <a href="https://wa.me/34688625579" class="icono icono-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9.5c.3 2 2.2 4.3 4.6 5l1.2-1.2 1.7.9c-.3 1-1.2 1.7-2.3 1.6C11 15.5 8.5 13 8.2 10.2c-.1-1.1.6-2 1.6-2.3l.9 1.7Z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+      <button type="button" class="icono" id="abrir-encargo" aria-controls="encargo"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span>Mi encargo</span><b class="contador" id="contador" aria-live="polite">0</b></button>
+    </nav>
+  </div>
+  <nav class="menu" id="menu" aria-label="Categorías">
+    <div class="menu-cab"><span>Categorías</span><button type="button" class="cerrar" id="cerrar-menu" aria-label="Cerrar menú">×</button></div>
+    <ul class="contenedor" id="menu-lista"></ul>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <section class="hero" aria-roledescription="carrusel" aria-label="Destacados">
+    <div class="hero-pista" id="hero-pista">
+      <article class="slide slide-tienda" aria-roledescription="diapositiva" aria-label="1 de 3">
+        <div class="slide-foto"><img src="img/escaparate.jpg" alt="Escaparate de Txibirita en la calle Tendería, con el rótulo de la tienda" width="1000" height="1164" fetchpriority="high"></div>
+        <div class="slide-cuerpo">
+          <div class="slide-tarjeta">
+            <p class="antetitulo">Desde la calle Tendería</p>
+            <h2>Encárgalo online y pásate a recogerlo</h2>
+            <p>Elige tus productos, dinos qué día vienes y te lo dejamos preparado. Pagas en la tienda.</p>
+            <div class="botones"><a class="btn" href="#catalogo">Ver productos</a><a class="btn btn-borde" href="#como-funciona">Cómo funciona</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="slide slide-otono" aria-roledescription="diapositiva" aria-label="2 de 3" id="slide-otono">
+        <div class="slide-bodegon" data-bodegon="defensas"></div>
+        <div class="slide-cuerpo">
+          <div class="slide-tarjeta">
+            <p class="antetitulo">Recomendación de otoño</p>
+            <h2>Prepara tus defensas antes del frío</h2>
+            <p>Propóleo, equinácea y jalea real. Pregúntanos cuál te conviene.</p>
+            <div class="botones"><a class="btn" href="#catalogo" data-filtro="Defensas">Ver defensas</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="slide slide-oferta" aria-roledescription="diapositiva" aria-label="3 de 3">
+        <div class="slide-bodegon" data-bodegon="colageno"></div>
+        <div class="slide-cuerpo">
+          <div class="slide-tarjeta">
+            <p class="antetitulo">Oferta en tienda</p>
+            <h2>Con 2 colágenos Belleza, te regalamos 1 de piel, cabello y uñas</h2>
+            <p>La misma oferta que tenemos en el escaparate, ahora también para encargar.</p>
+            <div class="botones"><a class="btn btn-morado" href="#catalogo" data-filtro="Colágeno y belleza">Ver colágenos</a></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <button class="hero-flecha prev" type="button" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <button class="hero-flecha next" type="button" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <div class="hero-puntos" id="hero-puntos"></div>
+  </section>
+
+  <section class="favoritos" aria-labelledby="t-fav">
+    <div class="contenedor fav-fila">
+      <div class="fav-titulo">
+        <h2 id="t-fav"><span>Favoritos</span> del mes</h2>
+        <a class="btn-mini" href="#catalogo">Ver todos</a>
+      </div>
+      <ul class="fav-lista" id="fav-lista"></ul>
+    </div>
+  </section>
+
+  <section class="contenedor cats" aria-label="Busca por necesidad">
+    <ul class="cats-lista" id="cats-lista"></ul>
+  </section>
+
+  <section class="contenedor intro" aria-labelledby="t-intro">
+    <h1 id="t-intro">Txibirita, tu herbolario en el Casco Viejo de Bilbao</h1>
+    <p>En la calle Tendería te ayudamos a cuidarte con productos naturales: <a href="#catalogo" data-filtro="Plantas a granel">plantas a granel</a>, <a href="#catalogo" data-filtro="Suplementos">suplementos</a>, <a href="#catalogo" data-filtro="Colágeno y belleza">colágeno</a> y todo lo que no encuentras en el supermercado. Si no sabes qué necesitas, entra y pregúntanos.</p>
+    <div class="bloques" id="bloques"></div>
+  </section>
+
+  <section class="contenedor carrusel-sec" aria-labelledby="t-pedidos">
+    <h2 class="titulo-sec" id="t-pedidos">- Lo más pedido -</h2>
+    <div class="carrusel" data-carrusel>
+      <button class="car-flecha prev" type="button" aria-label="Ver anteriores"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      <ul class="car-pista" id="car-pedidos"></ul>
+      <button class="car-flecha next" type="button" aria-label="Ver siguientes"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    </div>
+  </section>
+
+  <section class="como" id="como-funciona" aria-labelledby="t-como">
+    <div class="contenedor">
+      <h2 id="t-como">Así funciona tu encargo</h2>
+      <ol class="pasos">
+        <li><span class="paso-n">1</span><h3>Elige tus productos</h3><p>Búscalos por nombre o por necesidad y añádelos a tu encargo. También las plantas a granel.</p></li>
+        <li><span class="paso-n">2</span><h3>Dinos cuándo vienes</h3><p>Escoge el día y si pasas por la mañana o por la tarde. Nos llega tu encargo por WhatsApp.</p></li>
+        <li><span class="paso-n">3</span><h3>Recógelo en Tendería 36</h3><p>Te escribimos cuando esté preparado. Pagas en la tienda, sin gastos de envío.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contenedor granel" id="granel" aria-labelledby="t-granel">
+    <div class="granel-texto">
+      <p class="antetitulo">Plantas e infusiones</p>
+      <h2 id="t-granel">A granel, como siempre</h2>
+      <p>Te preparamos la planta que necesites en bolsa. Elige la planta y la cantidad, la añadimos a tu encargo y la pesamos en tienda.</p>
+      <form class="granel-form" id="granel-form">
+        <div class="campo">
+          <label for="planta">Planta</label>
+          <select id="planta" name="planta"></select>
+        </div>
+        <div class="campo">
+          <label for="gramos">Cantidad</label>
+          <select id="gramos" name="gramos"><option>50 g</option><option selected>100 g</option><option>250 g</option></select>
+        </div>
+        <button class="btn" type="submit">Añadir al encargo</button>
+      </form>
+      <p class="nota">Precio según peso, te lo decimos al preparar el encargo.</p>
+    </div>
+    <ul class="granel-chips" id="granel-chips" aria-label="Plantas más pedidas"></ul>
+  </section>
+
+  <section class="contenedor carrusel-sec" aria-labelledby="t-cosm">
+    <h2 class="titulo-sec" id="t-cosm">- Para el otoño -</h2>
+    <div class="carrusel" data-carrusel>
+      <button class="car-flecha prev" type="button" aria-label="Ver anteriores"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      <ul class="car-pista" id="car-otono"></ul>
+      <button class="car-flecha next" type="button" aria-label="Ver siguientes"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    </div>
+  </section>
+
+  <section class="contenedor banners" aria-label="En nuestro escaparate">
+    <a class="banner banner-alergia" href="https://wa.me/34688625579?text=Hola%2C%20quer%C3%ADa%20preguntaros%20por%20algo%20para%20la%20alergia" target="_blank" rel="noopener">
+      <span class="banner-txt"><b>¿Alergia?</b><span>Entra y pregúntanos, o escríbenos por WhatsApp</span></span>
+      <span class="banner-img" data-img="alergia"></span>
+    </a>
+    <a class="banner banner-jalea" href="#catalogo" data-filtro="Defensas">
+      <span class="banner-txt"><b>Hay una jalea real</b><span>para cada necesidad</span></span>
+      <span class="banner-img" data-img="jalea"></span>
+    </a>
+    <a class="banner banner-detox" href="#catalogo" data-filtro="Detox">
+      <span class="banner-txt"><b>Ahora es el momento DETOX</b><span>Te ayudamos a elegir el tuyo</span></span>
+      <span class="banner-img" data-img="detox"></span>
+    </a>
+  </section>
+
+  <section class="contenedor catalogo" id="catalogo" aria-labelledby="t-cat">
+    <h2 class="titulo-sec" id="t-cat">- Todos los productos -</h2>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+    <p class="resultado" id="resultado" aria-live="polite"></p>
+    <ul class="rejilla" id="rejilla"></ul>
+  </section>
+
+  <section class="ventajas" aria-labelledby="t-vent">
+    <div class="contenedor">
+      <h2 id="t-vent" class="titulo-mayus">¿Por qué encargar en Txibirita?</h2>
+      <ul class="vent-lista">
+        <li><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M4 10h16v10H4zM3 6h18l-1 4H4zM10 14h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><h3>Recogida sin gastos</h3><p>Lo preparamos y lo recoges en la calle Tendería 36, en pleno Casco Viejo.</p></li>
+        <li><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><h3>Te avisamos por WhatsApp</h3><p>Cuando tu encargo esté listo te escribimos. Sin esperas en el mostrador.</p></li>
+        <li><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><h3>Consejo de verdad</h3><p>Trato cercano de siempre. Te ayudamos a elegir lo que mejor te va.</p></li>
+        <li><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.5"/></svg><h3>Pagas al recoger</h3><p>No hace falta pagar online. Revisas tu encargo en la tienda y pagas allí.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contenedor tienda" id="tienda" aria-labelledby="t-tienda">
+    <div class="tienda-foto">
+      <img src="img/calle-tenderia.jpg" alt="Calle Tendería del Casco Viejo de Bilbao con la tienda Txibirita a la derecha" width="1024" height="640" loading="lazy">
+    </div>
+    <div class="tienda-datos">
+      <p class="antetitulo">Ven a vernos</p>
+      <h2 id="t-tienda">Calle Tendería 36, Bilbao</h2>
+      <p class="estado" id="estado"></p>
+      <table class="horario" aria-label="Horario de apertura">
+        <tbody id="horario"></tbody>
+      </table>
+      <div class="botones">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Txibirita+Herbodiet%C3%A9tica+Dendarikale+36+Bilbao" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-borde" href="https://wa.me/34688625579" target="_blank" rel="noopener">WhatsApp 688 62 55 79</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie-fila">
+    <div class="pie-marca">
+      <img src="img/logo.png" alt="Logotipo de Txibirita Herbodietética" width="96" height="96" loading="lazy">
+      <p class="pie-lema">Tu punto de encuentro con la salud</p>
+    </div>
+    <div>
+      <h2>Tienda</h2>
+      <p>Dendarikale / Calle Tendería, 36<br>48005 Bilbao, Bizkaia</p>
+      <p><a href="https://wa.me/34688625579" target="_blank" rel="noopener">WhatsApp 688 62 55 79</a></p>
+    </div>
+    <div>
+      <h2>Horario</h2>
+      <p>Lunes a viernes<br>10:00 a 13:30 y 17:00 a 20:00</p>
+      <p>Sábados 11:00 a 14:00</p>
+    </div>
+    <div>
+      <h2>Categorías</h2>
+      <ul class="pie-cats" id="pie-cats"></ul>
+    </div>
+  </div>
+  <p class="pie-legal contenedor">© 2026 Txibirita Herbodietética · Bilbao</p>
+</footer>
+
+<div class="velo" id="velo" hidden></div>
+
+<aside class="encargo" id="encargo" aria-labelledby="t-encargo" aria-hidden="true" inert>
+  <div class="enc-cab">
+    <h2 id="t-encargo">Mi encargo</h2>
+    <button type="button" class="cerrar" id="cerrar-encargo" aria-label="Cerrar encargo">×</button>
+  </div>
+  <div class="enc-cuerpo">
+    <p class="enc-vacio" id="enc-vacio">Todavía no has añadido nada. Busca tus productos y pulsa <b>Añadir</b>.</p>
+    <ul class="enc-lista" id="enc-lista"></ul>
+    <p class="enc-total" id="enc-total" hidden></p>
+    <form class="enc-form" id="enc-form" hidden novalidate>
+      <h3>¿Cuándo pasas a recogerlo?</h3>
+      <div class="campo"><label for="dia">Día</label><select id="dia" name="dia" required></select></div>
+      <fieldset class="campo franjas" id="franjas"><legend>Franja</legend></fieldset>
+      <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="given-name" required></div>
+      <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required></div>
+      <div class="campo"><label for="nota">Algo que debamos saber (opcional)</label><textarea id="nota" name="nota" rows="2"></textarea></div>
+      <label class="check"><input type="checkbox" id="acepto" required> Acepto que Txibirita use mis datos solo para gestionar este encargo.</label>
+      <p class="error" id="error" role="alert"></p>
+      <button class="btn btn-ancho" type="submit">Enviar encargo por WhatsApp</button>
+      <p class="nota">Se abrirá WhatsApp con tu encargo ya escrito. Solo tienes que enviarlo.</p>
+    </form>
+  </div>
+</aside>
+
+<dialog class="ficha" id="ficha" aria-labelledby="ficha-nombre">
+  <button type="button" class="cerrar" id="cerrar-ficha" aria-label="Cerrar ficha">×</button>
+  <div class="ficha-img"><img id="ficha-img" alt="" width="440" height="440"></div>
+  <div class="ficha-txt">
+    <p class="tarj-marca" id="ficha-marca"></p>
+    <h2 id="ficha-nombre"></h2>
+    <p class="tarj-formato" id="ficha-formato"></p>
+    <p class="ficha-desc" id="ficha-desc"></p>
+    <p class="tarj-precio" id="ficha-precio"></p>
+    <div class="tarj-acciones">
+      <div class="cantidad"><button type="button" data-c="-1" aria-label="Quitar uno">−</button><input id="ficha-cant" type="number" min="1" max="20" value="1" aria-label="Cantidad"><button type="button" data-c="1" aria-label="Añadir uno">+</button></div>
+      <button type="button" class="btn" id="ficha-anadir">Añadir al encargo</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toast-txt"></span><button type="button" id="toast-ver">Ver encargo</button></div>
+
+<script src="datos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
