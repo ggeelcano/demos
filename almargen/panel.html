@@ -125,8 +125,8 @@
   <p class="nota">En la versión real el panel lo comparte todo el equipo, cada reserva nueva avisa también por WhatsApp o correo al encargado, y el mensaje para confirmar asistencia sale solo el día antes. Horario, turnos y tope de 6 comensales por reserva online son los que ofrece vuestro motor de reservas de CoverManager; a partir de 7 personas es solicitud de grupo.</p>
 </main>
 
-<script src="datos.js"></script>
-<script src="comun.js"></script>
+<script src="datos.js?v=2"></script>
+<script src="comun.js?v=2"></script>
 <script>
 (() => {
   const M = window.Margen;
@@ -212,7 +212,7 @@
     const dl = document.createElement("dl"); dl.className = "datos";
     const fila = (k, v, cls) => { if (!v) return; const w = document.createElement("div"); if (cls) w.className = cls; const dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; w.append(dt, dd); dl.appendChild(w); };
     fila("Peticiones", d.peticiones.join("\n"));
-    fila("Teléfono", "El del WhatsApp del cliente");
+    fila("Teléfono", (s.ficha.campos.find(c => c[0] === "Teléfono") || [0, "El del WhatsApp del cliente"])[1]);
     if (d.preguntas && d.preguntas.length) fila("Pregunta sin contestar", d.preguntas.join("\n"), "aviso");
     const otros = d.avisos.filter(x => !/Alergia/.test(x)); if (otros.length) fila("Avisos", otros.join(" · "), "aviso");
     cuerpo.appendChild(dl);
