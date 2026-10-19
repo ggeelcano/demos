@@ -1,0 +1,93 @@
+/* Bricolemar — asistente de la tienda (chat flotante) */
+.asis { --asis-sube: 0px; position: fixed; right: 20px; bottom: calc(20px + var(--asis-sube)); z-index: 80; font-size: 14px; }
+.asis-fab { width: 60px; height: 60px; border-radius: 50%; border: 0; background: var(--rojo); color: #fff; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(162, 28, 57, .45); position: relative; transition: transform .2s, background .2s; }
+.asis-fab:hover { background: var(--rojo-osc); transform: translateY(-2px); }
+.asis-fab > svg { width: 28px; height: 28px; }
+.asis-fab:not(.visto) { animation: asis-latido 2.6s ease-out 1.5s 3; }
+@keyframes asis-latido { 0% { box-shadow: 0 6px 20px rgba(162, 28, 57, .45), 0 0 0 0 rgba(162, 28, 57, .45); } 70% { box-shadow: 0 6px 20px rgba(162, 28, 57, .45), 0 0 0 16px rgba(162, 28, 57, 0); } 100% { box-shadow: 0 6px 20px rgba(162, 28, 57, .45), 0 0 0 0 rgba(162, 28, 57, 0); } }
+.asis-punto { position: absolute; top: 3px; right: 3px; width: 14px; height: 14px; border-radius: 50%; background: #1fa64a; border: 2px solid #fff; }
+.asis-fab.visto .asis-punto { display: none; }
+.asis-tip { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%); background: var(--tinta); color: #fff; font-size: 13px; font-weight: 500; white-space: nowrap; padding: 8px 12px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.asis-fab:hover .asis-tip, .asis-fab:focus-visible .asis-tip { opacity: 1; }
+.asis.abierto .asis-tip { display: none; }
+
+.asis-panel { position: absolute; right: 0; bottom: 74px; width: min(400px, calc(100vw - 40px)); height: min(640px, calc(100vh - 120px - var(--asis-sube))); background: #fff; border-radius: 12px; box-shadow: 0 18px 50px rgba(20, 24, 33, .28); display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--borde); transform-origin: bottom right; animation: asis-entra .25s cubic-bezier(.16, 1, .3, 1); }
+.asis-panel[hidden] { display: none; }
+@keyframes asis-entra { from { opacity: 0; transform: translateY(12px) scale(.97); } }
+.asis-cab { display: flex; align-items: center; gap: 10px; padding: 12px 10px 12px 14px; background: var(--rojo); color: #fff; }
+.asis-avatar { width: 38px; height: 38px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; position: relative; }
+.asis-avatar img { width: 26px; height: 26px; }
+.asis-avatar::after { content: ""; position: absolute; right: -1px; bottom: -1px; width: 11px; height: 11px; border-radius: 50%; background: #1fa64a; border: 2px solid var(--rojo); }
+.asis-info { flex: 1; min-width: 0; }
+.asis-info h2 { font-size: 16px; margin: 0; }
+.asis-info p { margin: 0; font-size: 12.5px; opacity: .9; }
+.asis-boton { width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #fff; display: grid; place-items: center; flex: none; }
+.asis-boton:hover { background: rgba(255, 255, 255, .16); }
+.asis-boton svg { width: 20px; height: 20px; }
+.asis-boton:focus-visible { outline-color: #fff; }
+
+.asis-cuerpo { flex: 1; overflow-y: auto; padding: 16px 14px 8px; background: var(--fondo); display: flex; flex-direction: column; gap: 8px; overscroll-behavior: contain; }
+.asis-msg { max-width: 88%; padding: 9px 13px; border-radius: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.asis-msg p { margin: 0; }
+.asis-msg p + p { margin-top: 8px; }
+.asis-msg.bot { align-self: flex-start; background: #fff; border: 1px solid var(--borde); border-bottom-left-radius: 4px; }
+.asis-msg.yo { align-self: flex-end; background: var(--rojo); color: #fff; border-bottom-right-radius: 4px; }
+.asis-msg a { color: var(--rojo); font-weight: 600; }
+.asis-msg.nuevo { animation: asis-msg .25s ease-out; }
+@keyframes asis-msg { from { opacity: 0; transform: translateY(6px); } }
+.asis-escribe { display: inline-flex; gap: 4px; padding: 4px 2px; }
+.asis-escribe i { width: 7px; height: 7px; border-radius: 50%; background: var(--gris-2); animation: asis-punto 1.4s infinite both; }
+.asis-escribe i:nth-child(2) { animation-delay: .2s; }
+.asis-escribe i:nth-child(3) { animation-delay: .4s; }
+@keyframes asis-punto { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
+
+.asis-prods { display: grid; gap: 6px; align-self: stretch; margin: -2px 0 4px; }
+.asis-prod { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 10px; align-items: center; background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 8px 10px 8px 8px; }
+.asis-prod-img img { width: 64px; height: 64px; object-fit: contain; border-radius: 6px; background: #fff; }
+.asis-prod h3 { font-size: 13px; font-weight: 600; margin: 0 0 2px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.asis-prod h3 a { text-decoration: none; color: var(--texto); }
+.asis-prod h3 a:hover { color: var(--rojo); text-decoration: underline; }
+.asis-precio { margin: 0; font-size: 15px; }
+.asis-precio small { font-size: 11.5px; color: var(--gris); font-weight: 400; }
+.asis-disp { margin: 2px 0 0; font-size: 12px; font-weight: 500; }
+.asis-disp.ok { color: var(--verde); }
+.asis-disp.lento { color: var(--ambar); }
+.asis-anadir { border: 2px solid var(--rojo); background: var(--rojo); color: #fff; font-weight: 600; font-size: 13px; border-radius: 6px; padding: 0 12px; min-height: 36px; align-self: center; }
+.asis-anadir:hover { background: var(--rojo-osc); border-color: var(--rojo-osc); }
+.asis-anadir.hecho { background: #fff; color: var(--verde); border-color: var(--verde); }
+.asis-anadir.hecho::before { content: "✓ "; }
+.asis-vercesta { grid-column: 2 / -1; justify-self: end; font-size: 12.5px; font-weight: 600; color: var(--rojo); margin-top: -2px; }
+
+.asis-chips { display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px; background: var(--fondo); border-top: 1px solid var(--borde); scrollbar-width: thin; }
+.asis-chips[hidden] { display: none; }
+.asis-chips button { flex: none; border: 1px solid var(--rojo); color: var(--rojo); background: #fff; border-radius: 18px; padding: 6px 12px; font-size: 13px; font-weight: 500; min-height: 34px; }
+.asis-chips button:hover { background: var(--rojo-claro); }
+.asis-form { display: flex; gap: 8px; align-items: flex-end; padding: 10px 12px; border-top: 1px solid var(--borde); background: #fff; }
+.asis-form textarea { flex: 1; min-width: 0; resize: none; border: 1px solid var(--borde); border-radius: 10px; padding: 10px 12px; max-height: 110px; line-height: 1.4; font-size: 15px; }
+.asis-form textarea:focus { border-color: var(--rojo); outline: 2px solid rgba(162, 28, 57, .25); outline-offset: 0; }
+.asis-form button { width: 44px; height: 44px; flex: none; border: 0; border-radius: 10px; background: var(--rojo); color: #fff; display: grid; place-items: center; }
+.asis-form button:hover { background: var(--rojo-osc); }
+.asis-form button svg { width: 20px; height: 20px; }
+.asis-form.ocupado button { opacity: .55; cursor: progress; }
+.asis-pie { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 0 14px 10px; background: #fff; font-size: 12px; color: var(--gris); }
+.asis-persona { display: inline-flex; align-items: center; gap: 6px; color: var(--verde); font-weight: 600; font-size: 13px; text-decoration: none; min-height: 32px; }
+.asis-persona:hover { text-decoration: underline; }
+.asis-persona svg { width: 17px; height: 17px; }
+
+@media (max-width: 600px) {
+  .asis { right: 16px; bottom: calc(16px + var(--asis-sube)); }
+  .asis-fab { width: 56px; height: 56px; }
+  .asis-tip { display: none; }
+  .asis.abierto .asis-fab { display: none; }
+  .asis-panel { position: fixed; inset: 0; width: auto; height: auto; border-radius: 0; border: 0; animation: none; }
+  .asis-form textarea { font-size: 16px; }
+  html.asis-bloqueo, html.asis-bloqueo body { overflow: hidden; }
+}
+@media (max-width: 360px) {
+  .asis-info h2 { font-size: 15px; }
+  .asis-pie span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .asis-fab, .asis-panel, .asis-msg.nuevo, .asis-escribe i { animation: none !important; transition: none !important; }
+}
+@media print { .asis { display: none; } }
