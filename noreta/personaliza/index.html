@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personaliza tu vela de bautizo | Noreta</title>
+<meta name="description" content="Escribe el nombre, la fecha y la parroquia y mira cómo queda tu vela de bautizo antes de comprarla.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Noreta · Personaliza tu vela y mírala antes de comprar">
+<meta property="og:description" content="Propuesta para noretatienda.com: la vela se ve con el nombre del cliente antes de pagar.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/noreta/personaliza/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600&family=Fredoka:wght@400;500;600&family=Montserrat:wght@200;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#personaliza">Saltar a la personalización</a>
+
+<div class="topbar"><strong>ENVÍO GRATIS</strong> A ESPAÑA (Península) a partir de 49,95€ · Consultas 696 14 63 42</div>
+<header class="cab">
+  <a class="logo" href="../"><img src="img/noreta-logo.png" alt="Noreta" width="172" height="49"></a>
+  <button class="carrito-btn" id="abrirCesta" type="button" aria-label="Abrir la cesta">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span id="numCesta">0</span>
+  </button>
+</header>
+
+<nav class="migas" aria-label="Estás aquí"><a href="../">Inicio</a> › <a href="../#bautizo">Bautizo</a> › <span id="migaModelo">Vela bautizo Angela</span></nav>
+
+<main id="personaliza">
+
+  <div class="producto">
+    <section class="vista" aria-label="Vista previa de tu vela">
+      <div class="lienzo" id="lienzo"></div>
+      <div class="caras" role="group" aria-label="Cara de la vela">
+        <button type="button" data-cara="frente" aria-pressed="true">Delante</button>
+        <button type="button" data-cara="detras" aria-pressed="false">Detrás (frase)</button>
+      </div>
+      <p class="aviso-vista">Vista previa orientativa. Antes de fabricar te mandamos el diseño final por email para que lo apruebes.</p>
+    </section>
+
+    <section class="modelos" aria-labelledby="tModelos">
+      <h2 id="tModelos" class="paso"><span>1</span> Elige el modelo</h2>
+      <div class="chips" id="chips" role="radiogroup" aria-label="Modelo de vela"></div>
+      <p class="nota">Si cambias de modelo, lo que has escrito se mantiene.</p>
+    </section>
+
+    <section class="ficha">
+      <h1 id="nombreModelo">Vela bautizo Angela</h1>
+      <p class="precio" id="precioVela">42,00 €</p>
+      <p class="plazo">Hecha por encargo: 4 a 8 días laborables + envío</p>
+
+      <form id="form" novalidate>
+        <h2 class="paso"><span>2</span> Escribe los datos</h2>
+        <div class="campo" data-campo="nombre">
+          <label for="nombre">Nombre del bebé</label>
+          <input id="nombre" name="nombre" autocomplete="off" autocapitalize="words" spellcheck="false" maxlength="20" placeholder="Ej.: Lola" aria-describedby="nombreAyuda">
+          <p class="ayuda" id="nombreAyuda">Tal cual quieres verlo, con sus tildes.</p>
+        </div>
+        <div class="campo" data-campo="fecha">
+          <label for="fecha">Fecha del bautizo</label>
+          <input id="fecha" name="fecha" type="date" aria-describedby="fechaAyuda">
+          <p class="ayuda" id="fechaAyuda">Se imprimirá así: <b id="fechaImpresa">—</b></p>
+          <div class="plazos" id="plazos" role="status" aria-live="polite" hidden></div>
+        </div>
+        <div class="campo" data-campo="parroquia">
+          <label for="parroquia">Parroquia o iglesia</label>
+          <input id="parroquia" name="parroquia" autocomplete="off" maxlength="40" placeholder="Ej.: Parroquia San Jerónimo" aria-describedby="parroquiaAyuda">
+          <p class="ayuda" id="parroquiaAyuda">Escribe también «Parroquia» o «Iglesia» si quieres que aparezca.</p>
+        </div>
+        <div class="campo" data-campo="ciudad">
+          <label for="ciudad">Ciudad</label>
+          <input id="ciudad" name="ciudad" autocomplete="address-level2" maxlength="28" placeholder="Ej.: Valencia">
+        </div>
+        <p class="solo-nombre" id="soloNombre" hidden>Este modelo lleva delante solo el nombre y la fecha.</p>
+
+        <div class="campo frase">
+          <label class="interruptor"><input type="checkbox" id="conFrase"> <span>Añadir una frase en la parte de atrás <small>(opcional)</small></span></label>
+          <div id="fraseCaja" hidden>
+            <label for="frase" class="sr">Frase de la parte de atrás</label>
+            <textarea id="frase" name="frase" rows="4" maxlength="180" placeholder="Escribe tu frase o elige una de abajo"></textarea>
+            <p class="ayuda"><span id="fraseCuenta">0</span>/180 caracteres. Mejor corta: se lee mejor en la vela.</p>
+            <div class="sugerencias" id="sugerencias"></div>
+          </div>
+        </div>
+
+        <div id="setCaja" class="set" hidden>
+          <h2 class="paso"><span>3</span> Completa el set <small>(mismos datos, sin volver a escribirlos)</small></h2>
+          <label class="extra">
+            <input type="checkbox" id="conRec">
+            <img id="recImg" src="img/recordatorio-angela.webp" alt="" width="72" height="72">
+            <span><b id="recNombre">Recordatorio a juego</b><br>Díptico A6 con los mismos datos. <em class="dto">La vela sale con un 20 % de descuento.</em></span>
+          </label>
+          <div id="recOpciones" class="rec-opciones" hidden>
+            <label for="recCantidad">Cantidad</label>
+            <select id="recCantidad"></select>
+            <label for="padrinos">Mis padrinos son</label>
+            <input id="padrinos" maxlength="80" placeholder="Ej.: Ana y Javier" autocomplete="off">
+          </div>
+          <label class="extra">
+            <input type="checkbox" id="conPorta">
+            <img src="img/portavelas.webp" alt="" width="72" height="72">
+            <span><b>Portavelas de madera</b> · 3,95 €<br><em class="dto" id="portaDto">Con el recordatorio, la vela sale a mitad de precio.</em></span>
+          </label>
+        </div>
+
+        <div class="revisa" id="revisa">
+          <h2 class="paso"><span id="pasoRevisa">3</span> Revisa cómo quedará</h2>
+          <dl id="resumen"></dl>
+          <label class="confirma"><input type="checkbox" id="revisado"> He revisado el nombre, la fecha y el lugar. Están bien escritos.</label>
+        </div>
+      </form>
+
+      <div class="barra" id="barra">
+        <div class="barra-total"><span id="totalTxt">42,00 €</span><small id="faltaTxt">Falta: nombre, fecha</small></div>
+        <button type="button" class="boton" id="anadir" aria-describedby="faltaTxt">Añadir al carrito</button>
+      </div>
+
+      <details class="info">
+        <summary>Medidas y acabado</summary>
+        <p>Vela ancha 19 × Ø7 cm. Cera blanca de calidad con impresión premium y barniz brillo protector. Los detalles en oro se pintan con pan de oro a mano. Va en caja individual blanca de regalo.</p>
+      </details>
+      <details class="info">
+        <summary>Envío y plazos</summary>
+        <p>Preparación de 4 a 8 días laborables desde que apruebas el diseño. Envío normal (Península) 3-6 días, 3,50 € y gratis desde 49,95 €. Express (Península) 1-2 días, 9,00 €. Ceuta y Canarias 3-6 días, 16,00 €.</p>
+      </details>
+    </section>
+  </div>
+</main>
+
+<div class="tira" id="tira" aria-hidden="true"><span>Así va quedando</span><div id="tiraLienzo"></div></div>
+
+<dialog id="cesta" aria-labelledby="tCesta">
+  <div class="dlg-cab"><h2 id="tCesta">Tu cesta</h2><button type="button" class="cerrar" data-cerrar aria-label="Cerrar la cesta">×</button></div>
+  <div id="cestaCuerpo"></div>
+</dialog>
+
+<dialog id="pedido" aria-labelledby="tPedido">
+  <div class="dlg-cab"><h2 id="tPedido">Así os llega el pedido</h2><button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+  <div id="pedidoCuerpo"></div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
