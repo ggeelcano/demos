@@ -9,363 +9,413 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Carmolamp · Lámparas y ventiladores de techo">
 <meta property="og:description" content="La tienda de iluminación de Navalmoral de la Mata, ahora también online.">
-<meta property="og:image" content="https://ggeelcano.github.io/demos/carmolamp/assets/tienda/hero-showroom.jpg?v=1">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/carmolamp/assets/tienda/hero-showroom.jpg?v=2">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="1200">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="legal/cookie-banner.css">
 <style>
 :root{
-  --ink:#1d1d1b; --muted:#5b5f66; --line:#e4e6ea; --soft:#f3f4f6; --soft2:#f7f8fa;
-  --blue:#1846d1; --blue-d:#0f2f96; --cyan:#00b6e3; --sale:#cc1f1a; --ok:#137a3e;
-  --r:10px; --wrap:1280px;
-  --f:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --bg:#f2f2f2; --ink:#111827; --txt:#4d4d4d; --muted:#5f6368; --band:#737373; --dark:#3d3f44; --line:#d6d6d6;
+  --sage:#5e785f; --beige:#efe6e1; --cyan:#0a7fae;
+  --f:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --h:'Outfit','IBM Plex Sans',system-ui,sans-serif;
+  --wrap:1280px;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
-body{margin:0;font-family:var(--f);font-size:15px;line-height:1.55;color:var(--ink);background:#fff}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{margin:0;font-family:var(--f);font-weight:300;font-size:15px;line-height:1.5;color:var(--ink);background:var(--bg)}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
 h1,h2,h3,p{margin:0}
-:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+strong,b{font-weight:600}
+:focus-visible{outline:2px solid #111;outline-offset:2px}
 .sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:#111;color:#fff;padding:10px 16px;text-decoration:none}
 .skip:focus{top:8px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
-@media(min-width:768px){.wrap{padding:0 24px}}
-svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-/* Barra de confianza */
-.topbar{background:var(--soft);font-size:12px;color:#33363b}
-.topbar ul{list-style:none;margin:0 auto;padding:6px 16px;display:flex;justify-content:center;gap:28px;max-width:var(--wrap)}
-.topbar li{display:flex;align-items:center;gap:6px;white-space:nowrap}
-.topbar li:not(:first-child){display:none}
-.topbar svg{width:14px;height:14px;stroke:var(--ok);stroke-width:2.4}
-@media(min-width:700px){.topbar li:nth-child(2){display:flex}.topbar ul{justify-content:space-between}}
-@media(min-width:1024px){.topbar li{display:flex!important}}
+.wrap{max-width:calc(var(--wrap) + 32px);margin:0 auto;padding:0 16px}
+@media(min-width:1312px){.wrap{max-width:var(--wrap);padding:0}}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 /* Cabecera */
-.hdr{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
-.hdr-row{display:flex;align-items:center;gap:4px;padding-top:6px;padding-bottom:6px}
-.burger,.ico{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:44px;min-height:44px;background:none;border:0;border-radius:8px;text-decoration:none;font-size:11px;color:#2b2e33;padding:0 4px;position:relative}
-.burger:hover,.ico:hover{background:var(--soft)}
-.logo{display:block;flex:1 1 auto;min-width:0;margin-right:auto}
-.logo img{height:auto;width:100%;max-width:230px}
-.ico.solo-d{display:none}
+.hdr{position:sticky;top:0;z-index:40;background:#fff}
+.hdr-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;height:64px;padding:0 4px}
+.hdr-l,.hdr-r{display:flex;align-items:center}
+.hdr-r{justify-content:flex-end}
+.hbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:40px;min-height:44px;padding:0 4px;border:0;background:none;font-size:14px;font-weight:300;color:var(--ink);text-decoration:none;white-space:nowrap}
+.hbtn svg.i{width:26px;height:26px;stroke-width:1.5}
+.hbtn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cnt{font-size:13px}
+.logo{display:block;padding:0 4px}
+.logo img{height:34px;width:auto}
 .logo .lg-d{display:none}
-.ico .lbl{display:none}
-.ico .n{position:absolute;top:3px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--sale);color:#fff;font-size:11px;font-weight:600;line-height:18px;text-align:center;padding:0 4px}
-.ico .n[hidden]{display:none}
-.search{display:flex;align-items:center;border:1px solid #c9ccd2;border-radius:8px;background:#fff;height:44px;padding-left:12px}
-.search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,70,209,.15)}
-.search input{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:14px;background:transparent;color:var(--ink);height:100%}
-.search input::placeholder{color:#6b7078}
-.search button{border:0;background:none;width:44px;height:42px;display:grid;place-items:center;color:#4a4e55}
-.search-m{padding-bottom:8px}
-.search-m .search{height:42px}
-.search-d{display:none}
-.rating{display:none}
-.menu{display:none}
+.hcirc{display:grid;place-items:center;width:40px;height:44px;border:0;background:none;padding:0;color:var(--ink);text-decoration:none}
+.hcirc span{display:grid;place-items:center;width:30px;height:30px;border:1.5px solid #111;border-radius:50%}
+.hcirc svg.i{width:16px;height:16px;stroke-width:2}
+.llamar,.pill.search-d{display:none}
+.pill{display:flex;align-items:center;border:1px solid #111;border-radius:9999px;background:#fff;height:40px;padding-left:14px}
+.pill input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:14px;color:var(--ink);height:100%}
+.pill input::placeholder{color:#6b6f75}
+.pill:focus-within{box-shadow:0 0 0 2px #fff,0 0 0 4px #111}
+.pill button{width:40px;height:38px;border:0;background:none;display:grid;place-items:center;padding:0}
+.pill button svg.i{width:19px;height:19px;stroke-width:2}
+.search-m{padding:0 12px 12px}
+.search-m[hidden]{display:none}
+@media(min-width:360px){.logo img{height:40px}}
+@media(min-width:390px){.logo img{height:44px}.hdr-row{padding:0 8px}}
 @media(min-width:1024px){
-  .burger{display:none}
-  .hdr-row{gap:24px;padding-top:14px;padding-bottom:14px}
-  .logo{flex:none;margin-right:0}
-  .logo img{max-width:none;width:auto;height:46px}
-  .logo .lg-m{display:none}.logo .lg-d{display:block}
-  .search-d{display:flex;flex:1;max-width:560px}
-  .search-m{display:none}
-  .rating{display:flex;flex-direction:column;font-size:11px;color:#3a3e44;line-height:1.35;margin-left:auto}
-  .rating strong{font-weight:600}
-  .rating .st{display:flex;align-items:center;gap:6px}
-  .ico .lbl{display:block}
-  .ico.solo-d{display:inline-flex}
-  .ico{padding:0 8px}
-  .menu{display:block;border-top:1px solid var(--line)}
-  .menu ul{list-style:none;margin:0 auto;padding:0 24px;max-width:var(--wrap);display:flex;justify-content:space-between}
-  .menu a{display:flex;align-items:center;gap:6px;padding:12px 4px;font-size:13.5px;font-weight:600;text-decoration:none;border-bottom:3px solid transparent}
-  .menu a:hover{border-bottom-color:var(--blue)}
-  .pct{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--sale);color:#fff;font-size:11px;font-weight:700}
+  .hdr-row{height:96px;padding:0 16px}
+  .hbtn .lbl{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+  .hbtn{padding:0 8px}
+  .hdr-l{gap:12px}
+  .logo .lg-m{display:none}.logo .lg-d{display:block;height:42px}
+  .hcirc{display:none}
+  .llamar{display:block;font-size:12px;font-weight:400;line-height:1.25;text-transform:uppercase;text-align:center;text-decoration:none;margin-right:12px}
+  .llamar:hover{text-decoration:underline}
+  .pill.search-d{display:flex;width:256px;height:32px;padding-left:10px}
+  .search-d input{font-size:13.5px}
+  .search-d button{width:32px;height:30px}
+  .search-m{display:none!important}
 }
-.stars{display:inline-flex;gap:2px}
-.stars svg{width:15px;height:15px;fill:#f5a623}
+@media(min-width:1024px) and (max-width:1199px){.llamar{display:none}.hcirc[href^="tel"]{display:grid;margin-right:6px}}
 
-/* Franja negra */
-.promo{background:var(--ink);color:#fff;font-size:12px}
-@media(min-width:700px){.promo{font-size:13px}}
-.promo .wrap{display:flex;align-items:center;justify-content:center;gap:10px 16px;padding-top:7px;padding-bottom:7px;text-align:left}
-.promo .m-no{display:none}
-@media(min-width:700px){.promo .m-no{display:inline}}
-.promo b{font-weight:700;letter-spacing:.02em}
-.promo a{flex:none;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);text-decoration:none;font-weight:600;font-size:12.5px;border-radius:20px;padding:4px 14px}
-
-/* Banner principal */
-.hero{background:linear-gradient(115deg,#0d2a8a 0%,#1846d1 55%,#1a5fe0 100%);color:#fff;overflow:hidden}
-.hero-in{position:relative;display:grid;grid-template-columns:1fr;max-width:var(--wrap);margin:0 auto}
-.hero-foto{position:relative;aspect-ratio:16/9;overflow:hidden}
-.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.hero-foto::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,42,138,.55),rgba(13,42,138,0) 45%)}
-.hero-txt{padding:22px 16px 26px;position:relative}
-.hero-k{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#bfe9ff}
-.hero h1{font-size:clamp(30px,8.6vw,56px);font-weight:800;line-height:1.02;letter-spacing:-.01em;margin:6px 0 8px;text-transform:uppercase}
-.hero-sub{font-size:16px;color:#e8eeff;max-width:30ch}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#fff;color:var(--blue-d);font-weight:700;font-size:14px;text-decoration:none;border-radius:24px;padding:11px 22px;border:0}
-.hero-cta:hover{background:#eaf1ff}
-.badge-circ{position:absolute;right:12px;top:calc((100vw - 0px)*9/16 - 74px);width:118px;height:118px;border-radius:50%;background:var(--sale);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25);line-height:1.05;z-index:2}
-.badge-circ small{font-size:11px;font-weight:600}
-.badge-circ strong{font-size:30px;font-weight:800;letter-spacing:-.02em}
-.badge-circ span{font-size:10.5px;font-weight:600;max-width:9ch}
-@media(min-width:900px){
-  .hero-in{grid-template-columns:1.05fr 1fr 230px;align-items:center;min-height:330px}
-  .hero-txt{padding:36px 24px 36px 24px;order:1}
-  .hero-foto{order:2;aspect-ratio:auto;height:100%;min-height:330px}
-  .hero-foto::after{background:linear-gradient(90deg,#1846d1 0%,rgba(24,70,209,0) 28%,rgba(26,95,224,0) 72%,#1a5fe0 100%)}
-  .badge-wrap{order:3;display:grid;place-items:center}
-  .badge-circ{position:static;width:176px;height:176px}
-  .badge-circ strong{font-size:46px}
-  .badge-circ small{font-size:14px}
-  .badge-circ span{font-size:13px}
+/* Carrusel */
+.hero{position:relative;overflow:hidden;background:#000;max-width:var(--wrap);margin:0 auto}
+.sl-track{display:flex;transition:transform .6s ease;touch-action:pan-y}
+.slide{position:relative;flex:0 0 100%;height:460px;color:#fff;overflow:hidden}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 46%,rgba(0,0,0,.08) 100%)}
+.slide-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 24px 56px;text-align:center}
+.slide .k{font:500 18px/1.2 var(--h)}
+.slide .t{margin:8px 0 10px;font:italic 300 34px/1.08 var(--f)}
+.slide .t b{display:block;font-weight:600}
+.slide .s{font-size:15.5px;line-height:1.4;max-width:34ch;margin:0 auto}
+.btn-o{display:inline-flex;align-items:center;justify-content:center;min-height:46px;margin-top:18px;padding:0 30px;border:1px solid #fff;background:transparent;color:#fff;text-decoration:none;font:400 14px var(--f);letter-spacing:.22em;text-transform:uppercase}
+.btn-o:hover{background:#fff;color:#111}
+.sl-arr{position:absolute;top:34%;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;display:grid;place-items:center;padding:0}
+.sl-arr:hover{background:rgba(0,0,0,.75)}
+.sl-arr svg.i{stroke-width:2.2}
+.sl-arr.prev{left:10px}.sl-arr.next{right:10px}
+.sl-dots{position:absolute;left:0;right:0;bottom:12px;z-index:2;display:flex;justify-content:center;gap:2px}
+.sl-dots button{width:28px;height:28px;border:0;background:none;padding:0;display:grid;place-items:center}
+.sl-dots span{display:block;width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.55);transition:width .3s}
+.sl-dots [aria-current="true"] span{width:20px;background:#fff}
+@media(min-width:1024px){
+  .slide{height:560px}
+  .slide img{left:auto;right:0;width:64%}
+  .slide::after{background:linear-gradient(90deg,#000 0%,#000 36%,rgba(0,0,0,.55) 46%,rgba(0,0,0,0) 60%)}
+  .slide-txt{top:0;right:auto;width:46%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 48px 56px}
+  .slide .k{font-size:32px}
+  .slide .t{font-size:48px;margin:18px 0 26px}
+  .slide .s{font-size:24px;line-height:1.35;max-width:26ch}
+  .btn-o{font-size:18px;min-height:52px;padding:0 46px;margin-top:40px}
+  .sl-arr{top:calc(50% - 24px);width:48px;height:48px}
+  .sl-arr.prev{left:24px;background:none}.sl-arr.prev:hover{background:rgba(255,255,255,.12)}
+  .sl-arr.next{right:16px}
+  .sl-dots{bottom:22px}
 }
 
-/* Secciones */
-.sec{padding:40px 0}
-.sec-h{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-bottom:22px;text-align:center}
-.sec-h h2{font-size:clamp(20px,5.2vw,26px);font-weight:600;line-height:1.25}
-.sec-h.izq{justify-content:space-between;text-align:left}
-.vt{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;white-space:nowrap;background:none;border:0;padding:6px 0}
-.vt:hover{text-decoration:underline}
-@media(min-width:900px){.sec{padding:56px 0}}
+/* Bloques */
+.box{background:#fff;max-width:var(--wrap);margin:0 auto}
+.band{display:block;margin:0;background:var(--band);color:#fff;text-align:center;font:400 16px/1.25 var(--f);text-transform:uppercase;padding:7px 12px}
+.sec{margin-top:24px}
+@media(min-width:1024px){.sec{margin-top:32px}}
+.btn-d{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 24px;border:1px solid #111;background:transparent;color:#111;text-decoration:none;font:400 13.5px var(--f);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.btn-d:hover{background:#111;color:#fff}
+.btn-k{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:1px solid #111;background:#111;color:#fff;text-decoration:none;font:500 13.5px var(--f);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.btn-k:hover{background:#333;border-color:#333}
+.btn-k svg.i,.btn-d svg.i{width:18px;height:18px}
+.mas{display:flex;justify-content:center;margin-top:24px}
+.mas .btn-d{min-width:260px}
+.mas [hidden]{display:none}
 
-/* Raíles con flechas */
-.rail-w{position:relative}
-.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 16px 8px;margin:0 -16px;scroll-padding-left:16px;list-style:none;overscroll-behavior-x:contain}
-@media(min-width:768px){.rail{margin:0 -24px;padding:4px 24px 8px;scroll-padding-left:24px}}
-@media(min-width:900px){.rail{gap:14px;margin:0;padding:4px 2px 8px;scroll-padding-left:0}}
-.rail::-webkit-scrollbar{display:none}
-.rail>li{scroll-snap-align:start;flex:none}
-.arr{display:none}
-@media(min-width:900px){
-  .arr{display:grid;place-items:center;position:absolute;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:3}
-  .arr:hover{border-color:#bfc3ca}
-  .arr.prev{left:-14px}.arr.next{right:-14px}
-  .arr[disabled]{opacity:0;pointer-events:none}
+/* Losas de categoría */
+.tiles-box{padding:12px 0 16px}
+.tiles{list-style:none;margin:0;padding:12px 16px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{aspect-ratio:1/1.08}
+.tile.of{grid-column:1/-1;aspect-ratio:2/1}
+.tile>button,.tile>a{position:relative;display:block;width:100%;height:100%;border:0;padding:0;overflow:hidden;background:none;text-decoration:none;color:#fff}
+.ti{position:absolute;inset:0;display:grid;place-items:center;padding:8% 12% 30%;background-image:var(--noise),var(--g)}
+.ti img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s}
+.tile>*:hover img{transform:scale(1.05)}
+.cap{position:absolute;left:0;right:0;bottom:0;min-height:42px;display:flex;align-items:center;justify-content:center;padding:6px 8px;background:rgba(30,30,32,.82);font:italic 400 14.5px/1.2 var(--h);letter-spacing:-.01em;text-align:center}
+.of-t{font:300 46px/1 var(--h);color:#4a4744;letter-spacing:.03em;white-space:nowrap;transform:perspective(520px) rotateY(-16deg) rotate(2deg)}
+.of-t small{display:block;font-size:.36em;letter-spacing:.12em;margin-top:6px;text-align:center}
+.g1{--g:radial-gradient(120% 90% at 30% 20%,#f8f4ef 0%,#ddd3c6 100%)}
+.g2{--g:radial-gradient(120% 90% at 70% 25%,#f5f6f7 0%,#c8ccd1 100%)}
+.g3{--g:radial-gradient(120% 90% at 50% 10%,#fbfbfb 0%,#d5d5d5 100%)}
+.g4{--g:radial-gradient(120% 90% at 40% 20%,#eff3ed 0%,#c2cdbf 100%)}
+.g5{--g:radial-gradient(120% 90% at 60% 20%,#f6eee4 0%,#d5c1a7 100%)}
+.g6{--g:radial-gradient(120% 90% at 50% 30%,#efefef 0%,#b9b9b9 100%)}
+.g7{--g:radial-gradient(120% 90% at 35% 25%,#f0f3f6 0%,#c0c8d2 100%)}
+.g8{--g:radial-gradient(120% 90% at 50% 40%,#f7f1ea 0%,#ddd0c0 100%)}
+@media(min-width:700px){
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .tile.of{grid-column:auto;aspect-ratio:1/1.08}
+  .cap{min-height:50px;font-size:17px}
+}
+@media(min-width:1024px){
+  .tiles-box{padding:16px 0 16px}
+  .tiles{grid-template-columns:repeat(20,minmax(0,1fr));padding:16px 0 0}
+  .tile,.tile.of{grid-column:span 4;aspect-ratio:auto;height:320px}
+  .tiles>.tile:nth-child(-n+4){grid-column:span 5}
+  .of-t{font-size:clamp(34px,3.3vw,48px)}
+}
+@media(min-width:1024px) and (max-width:1311px){.tiles{padding:16px 16px 0}}
+
+/* Tarjetas de producto */
+.cards{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cards>li{min-width:0}
+@media(min-width:700px){.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.cards.cuatro>li:nth-child(4){display:none}}
+@media(min-width:1024px){.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:24px}.cards.cuatro>li:nth-child(4){display:block}}
+.card{display:flex;flex-direction:column;height:100%;background:#fff;border-radius:6px;padding:10px}
+.card-h{display:flex;flex-direction:column;gap:3px}
+.card h3{font:600 14px/1.2 var(--h);text-transform:uppercase;letter-spacing:-.005em;color:var(--ink)}
+.card h3 button{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit}
+.card h3 button:hover{text-decoration:underline}
+.pr{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;line-height:1.2}
+.pr strong{font-weight:400;font-size:16px;color:var(--ink);white-space:nowrap}
+.pr s{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.card-m{font-size:12px;font-weight:400;color:var(--muted);margin:4px 0 10px}
+.card-f{margin-top:auto}
+.card-img{position:relative;display:block;width:100%;border:0;padding:9%;background:var(--bg);aspect-ratio:1/1}
+.card-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.badge{position:absolute;top:8px;left:8px;background:#111;color:#fff;font:600 12px/1 var(--f);padding:5px 7px;border-radius:3px}
+.card-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;min-height:30px;padding:6px 8px;background:var(--dark);color:#fff;font:600 10.5px/1.3 var(--h);text-transform:uppercase;text-align:center;letter-spacing:.02em}
+.card-bar{flex-direction:column}
+.add{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;margin-top:10px;border:1px solid #111;background:#fff;color:#111;font:400 12px var(--f);letter-spacing:.12em;text-transform:uppercase}
+.add:hover{background:#111;color:#fff}
+.add .m-no{display:none}
+@media(min-width:700px){
+  .card{padding:16px}
+  .card-h{flex-direction:row;justify-content:space-between;align-items:flex-start;gap:12px}
+  .card h3{font-size:17px}
+  .pr{flex-direction:column;align-items:flex-end;flex:none;gap:0}
+  .pr strong{font-size:19px}
+  .card-bar{font-size:11.5px;flex-direction:row}
+  .card-bar span:not(:last-child)::after{content:"|";content:"|" / "";margin:0 7px;font-weight:400}
+  .add .m-no{display:inline}
 }
 
-/* Círculos de categoría y estilo */
-.circ{width:132px;text-align:center}
-.circ button{background:none;border:0;padding:0;width:100%;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13.5px;line-height:1.3}
-.circ .disc{width:120px;height:120px;border-radius:50%;background:var(--soft);display:grid;place-items:center;overflow:hidden;transition:transform .25s}
-.circ img{width:76%;height:76%;object-fit:contain;mix-blend-mode:multiply}
-.circ button:hover .disc{transform:scale(1.04)}
-@media(min-width:900px){.circ{width:calc((100% - 14px*5)/6)}.circ .disc{width:150px;height:150px}.circ button{font-size:14.5px}}
-
-/* Tarjeta de producto */
-.card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;height:100%}
-.card:hover{box-shadow:0 6px 22px rgba(20,24,40,.08)}
-.card-img{display:block;border:0;padding:12px;background:#fff;aspect-ratio:1/1}
-.card-img img{width:100%;height:100%;object-fit:contain}
-.badge{position:absolute;top:10px;left:10px;background:var(--sale);color:#fff;font-size:12px;font-weight:700;border-radius:4px;padding:2px 7px}
-.card-b{display:flex;flex-direction:column;gap:3px;padding:2px 12px 12px;flex:1}
-.brand{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.card h3{font-size:14px;font-weight:600;line-height:1.3}
-.card h3 button{background:none;border:0;padding:0;text-align:left;font-weight:600}
-.card h3 button:hover{color:var(--blue)}
-.det{font-size:12.5px;color:var(--muted);line-height:1.4}
-.price{margin-top:auto;padding-top:8px;display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px}
-.price strong{font-size:17px;font-weight:700}
-.price strong.sale{color:var(--sale)}
-.price s{font-size:13px;color:var(--muted)}
-.add{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border:1.5px solid var(--blue);background:#fff;color:var(--blue);border-radius:8px;font-weight:600;font-size:13.5px}
-.add:hover{background:var(--blue);color:#fff}
-.add svg{width:18px;height:18px}
-.rail>li.pc{width:min(46vw,232px)}
-@media(min-width:900px){.rail>li.pc{width:calc((100% - 14px*4)/5)}}
-
-/* Mosaico de la exposición */
-.mos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mos a,.mos button{display:block;text-align:center;text-decoration:none;background:none;border:0;padding:0;font-size:14px}
-.mos figure{margin:0}
-.mos .ph{overflow:hidden;border-radius:var(--r);aspect-ratio:4/3;background:var(--soft)}
-.mos img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.mos button:hover img{transform:scale(1.04)}
-.mos figcaption{padding:8px 4px 0}
-.mos .big{grid-column:1/-1}
-.mos .big .ph{aspect-ratio:16/10}
+/* Bloque ventiladores (cabecera de categoría) */
+.cat-hero{display:grid;background:var(--sage);color:#fff;overflow:hidden}
+.cat-hero-txt{padding:28px 20px 8px}
+.cat-hero h2{font:600 32px/1.05 var(--f);letter-spacing:-.01em}
+.cat-hero .sub{font:600 13.5px/1.3 var(--f);text-transform:uppercase;margin:8px 0 8px;letter-spacing:-.005em}
+.cat-hero p.d{font-style:italic;font-size:15px;line-height:1.45;max-width:62ch}
+.cat-hero .btn-o{margin-top:18px;font-size:13px;letter-spacing:.14em;min-height:44px;padding:0 22px}
+.cat-hero-img{display:grid;place-items:center;padding:26px 20px 34px}
+.halo{width:min(190px,52vw);aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:0 0 50px 22px rgba(255,255,255,.45);display:grid;place-items:center}
+.halo img{width:74%;mix-blend-mode:multiply}
 @media(min-width:900px){
-  .mos{grid-template-columns:1.9fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
-  .mos .big{grid-column:1;grid-row:1/3}
-  .mos .big .ph{aspect-ratio:auto;height:calc(100% - 34px)}
-  .mos .big figure{height:100%}
-  .mos .big button{height:100%}
+  .cat-hero{grid-template-columns:1fr 420px;min-height:352px;align-items:center}
+  .cat-hero-txt{padding:48px 0 48px 80px}
+  .cat-hero h2{font-size:48px}
+  .cat-hero .sub{font-size:17px}
+  .cat-hero-img{padding:30px}
+  .halo{width:280px}
 }
 
-/* Bloque ventiladores */
-.vent{display:grid;gap:16px}
-.vent-card{position:relative;border-radius:var(--r);overflow:hidden;background:#0f2f96;color:#fff;min-height:280px;display:flex;align-items:flex-end}
-.vent-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.vent-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(9,22,70,.92) 0%,rgba(9,22,70,.55) 45%,rgba(9,22,70,0) 75%)}
-.vent-card div{position:relative;z-index:1;padding:20px}
-.vent-card h3{font-size:22px;font-weight:700;line-height:1.15}
-.vent-card p{font-size:14px;color:#e3e9ff;margin-top:6px}
-.vent-card .hero-cta{margin-top:12px;font-size:13px;padding:9px 18px}
-@media(min-width:900px){
-  .vent{grid-template-columns:300px 1fr;align-items:stretch}
-  .vent .rail>li.pc{width:calc((100% - 14px*3)/4)}
+/* Estilos en damero */
+.est{display:grid;background:#fff}
+.est-p{display:grid}
+.est-i{position:relative;aspect-ratio:16/10;background-image:var(--noise),radial-gradient(120% 100% at 50% 30%,#eeefef 0%,#c4c6c8 100%)}
+.est-i img{position:absolute;left:18%;top:7%;width:64%;height:86%;object-fit:contain;mix-blend-mode:multiply}
+.est-t{padding:26px 20px 30px;background:#fff}
+.est-p:nth-child(4n+1) .est-t,.est-p:nth-child(4n+4) .est-t{background:var(--beige)}
+.est-t h3{font:600 28px/1.1 var(--f);letter-spacing:-.01em}
+.est-t p{font-style:italic;font-size:15px;line-height:1.45;margin:10px 0 18px;max-width:46ch}
+@media(min-width:700px){
+  .est-p{grid-template-columns:1fr 1fr}
+  .est-i{aspect-ratio:auto;min-height:300px}
+  .est-t{display:flex;flex-direction:column;justify-content:center;padding:32px 36px}
+  .est-p:nth-child(even) .est-i{order:2}
+}
+@media(min-width:1024px){
+  .est{grid-template-columns:1fr 1fr}
+  .est-i,.est-t{height:320px;min-height:0}
+  .est-p:nth-child(even) .est-i{order:0}
+  .est-p:nth-child(n+3) .est-i{order:2}
+  .est-t{padding:32px 40px}
+  .est-t h3{font-size:30px}
 }
 
 /* Catálogo */
-.cat-bar{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;margin:0 -16px;padding:2px 16px}
+.tool{background:#fff;margin-top:16px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.crumb{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:14.5px;font-weight:400}
+.crumb li+li::before{content:">";content:">" / "";margin-right:8px}
+.crumb [aria-current]{font-weight:600}
+.tool-r{display:flex;align-items:center;gap:12px;font-size:14px;color:#333;margin-left:auto}
+.tool-r select{font:inherit;font-size:14px;font-weight:400;color:var(--ink);border:1px solid #c4c4c4;border-radius:6px;background:#fff;height:40px;padding:0 10px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:12px -16px 0;padding:2px 16px}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid #c9ccd2;background:#fff;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:500;min-height:40px}
-.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.cat-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);flex-wrap:wrap}
-.cat-tools label{display:flex;align-items:center;gap:8px}
-.cat-tools select{font:inherit;font-size:13px;border:1px solid #c9ccd2;border-radius:8px;padding:8px 10px;background:#fff;color:var(--ink);min-height:40px}
-.filtro-act{display:inline-flex;align-items:center;gap:6px;background:#eaf0ff;color:var(--blue-d);border:0;border-radius:16px;padding:6px 12px;font-size:12.5px;font-weight:600}
+.chip{flex:none;min-height:40px;padding:0 14px;border:1px solid #bdbdbd;border-radius:6px;background:#fff;font-size:13.5px;font-weight:400}
+.chip:hover{border-color:#111}
+.chip[aria-pressed="true"]{background:#111;border-color:#111;color:#fff}
+.filtro-act{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:#fff;border:1px solid #111;border-radius:6px;padding:6px 12px;font-size:13px;font-weight:500}
 .filtro-act[hidden]{display:none}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:0}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.chips{margin:0;padding:2px}}
-@media(min-width:1024px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.cat-bar{flex-direction:column}}
-@media(min-width:1200px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
-.mas{display:flex;justify-content:center;margin-top:22px}
-.mas .btn{min-width:240px}
-.mas .btn[hidden]{display:none}
-.vacio{grid-column:1/-1;text-align:center;padding:40px 16px;color:var(--muted)}
-.vacio a{color:var(--blue);font-weight:600}
+.vacio{grid-column:1/-1;background:#fff;text-align:center;padding:40px 16px;color:var(--muted);border-radius:6px}
+.vacio a{color:var(--ink);font-weight:600}
+@media(min-width:1024px){.chips{margin:12px 0 0;padding:2px 0}}
 
 /* Ventajas */
-.ventajas{background:var(--soft2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.ventajas ul{list-style:none;margin:0;padding:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px}
-.ventajas li{display:flex;gap:12px;align-items:flex-start}
-.ventajas svg{width:30px;height:30px;color:var(--blue);stroke-width:1.6}
-.ventajas strong{display:block;font-size:14px;font-weight:600;line-height:1.3}
-.ventajas span{display:block;font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:2px}
-@media(min-width:900px){.ventajas ul{grid-template-columns:repeat(4,1fr);padding:30px 0}}
+.vj{list-style:none;margin:0;padding:16px;display:grid;gap:16px}
+.vj li{background:var(--bg);display:flex;flex-direction:column}
+.vj img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.vj div{padding:22px 20px 26px;color:var(--txt)}
+.vj .lb{font:600 12.5px/1.3 var(--f);text-transform:uppercase;letter-spacing:.01em}
+.vj h3{font:600 25px/1.15 var(--f);margin:10px 0 10px;letter-spacing:-.01em}
+.vj p{font-size:15px;line-height:1.5}
+.vj .btn-d{margin-top:16px}
+@media(min-width:700px){.vj .ancho{flex-direction:row}.vj .ancho img{width:42%;aspect-ratio:auto;min-height:100%}.vj .ancho div{align-self:center;padding:28px 36px}}
+@media(min-width:1024px){
+  .vj{grid-template-columns:repeat(3,1fr);gap:32px}
+  .vj .ancho{grid-column:1/-1}.vj .ancho img{width:400px}
+  .vj div{padding:36px 40px 40px}
+  .vj h3{font-size:30px;margin:14px 0}
+}
 
 /* Opiniones */
-.op-top{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:22px;text-align:center}
-.op-top .nota{font-size:40px;font-weight:700;line-height:1}
-.op-top .stars svg{width:22px;height:22px}
-.op-top p{font-size:13px;color:var(--muted)}
-.ops{display:grid;gap:14px;list-style:none;margin:0;padding:0}
-.ops li{border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;background:#fff}
-.ops blockquote{margin:0;font-size:14px;line-height:1.55}
-.ops cite{font-style:normal;font-size:13px;font-weight:600}
-.ops cite span{font-weight:400;color:var(--muted)}
-@media(min-width:700px){.ops{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1100px){.ops{grid-template-columns:repeat(4,1fr)}}
+.op-top{background:#fff;margin-top:16px;padding:18px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;text-align:center}
+.op-top .nota{font:600 38px/1 var(--h)}
+.op-top p{font-size:14px;color:var(--muted);font-weight:400}
+.stars{display:inline-flex;gap:2px}
+.stars svg{width:18px;height:18px;fill:#111}
+.ops{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.ops li{background:#fff;border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.ops blockquote{margin:0;font-style:italic;font-size:15px;line-height:1.5}
+.ops cite{font:600 13px var(--f);font-style:normal;text-transform:uppercase;letter-spacing:.02em}
+.ops cite span{font-weight:400;color:var(--muted);text-transform:none}
+@media(min-width:700px){.ops{grid-template-columns:repeat(2,1fr);gap:16px}}
+@media(min-width:1100px){.ops{grid-template-columns:repeat(4,1fr);gap:24px}}
 
-/* Tienda física */
-.tienda{display:grid;gap:20px}
+/* Bienvenidos */
+.bien{background-image:var(--noise),radial-gradient(90% 120% at 50% 30%,#d6d6d6 0%,#bdbdbd 100%);padding:32px 20px 36px;text-align:center}
+.bien h2{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;font:600 26px/1.15 var(--f);letter-spacing:-.01em;margin-bottom:16px}
+.bien h2 img{height:24px;width:auto}
+.bien p{font-size:15.5px;line-height:1.55;text-align:left;max-width:1200px;margin:0 auto 10px}
+.bien .btn-d{margin-top:12px}
+@media(min-width:900px){.bien{padding:48px 40px 40px}.bien h2{font-size:36px}.bien h2 img{height:32px}.bien p{text-align:justify;font-size:16px}}
+
+/* Tienda */
+.tienda{display:grid;gap:22px;padding:22px 16px 26px}
+.tienda-info h2{font:600 28px/1.1 var(--f);letter-spacing:-.01em;margin-bottom:10px}
+.tienda-info>p{font-size:15.5px}
+.dl{display:grid;gap:14px;margin:20px 0}
+.dl>div{display:flex;gap:12px;align-items:flex-start}
+.dl svg{margin-top:2px}
+.dl dt{font:600 12.5px var(--f);text-transform:uppercase;color:var(--txt);letter-spacing:.02em}
+.dl dd{margin:2px 0 0;font-size:15px}
+.dl dd a{font-weight:500}
+.hor{border-collapse:collapse;font-size:14.5px;margin-top:2px}
+.hor th{text-align:left;font-weight:500;padding:3px 14px 3px 0;white-space:nowrap;vertical-align:top}
+.hor td{padding:3px 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
 .tienda-fotos{display:grid;gap:12px}
 .tienda-fotos figure{margin:0}
-.tienda-fotos img{width:100%;border-radius:var(--r);object-fit:cover}
+.tienda-fotos img{width:100%;object-fit:cover}
 .tienda-fotos .pano{aspect-ratio:1080/327}
 .tienda-fotos .dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .tienda-fotos .dos img{aspect-ratio:4/3}
-.tienda-fotos figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
-.tienda-info h2{font-size:clamp(20px,5.2vw,26px);font-weight:600;line-height:1.25;margin-bottom:10px}
-.tienda-info>p{color:#33363b;font-size:14.5px}
-.dl{display:grid;gap:14px;margin:18px 0}
-.dl>div{display:flex;gap:12px;align-items:flex-start}
-.dl svg{color:var(--blue);margin-top:2px}
-.dl dt{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.dl dd{margin:0;font-size:14.5px}
-.dl dd a{color:var(--ink);font-weight:600}
-.hor{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
-.hor th{text-align:left;font-weight:500;padding:3px 12px 3px 0;white-space:nowrap;vertical-align:top}
-.hor td{padding:3px 0}
-.btns{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;border:1.5px solid var(--blue)}
-.btn.pri{background:var(--blue);color:#fff}
-.btn.pri:hover{background:var(--blue-d);border-color:var(--blue-d)}
-.btn.sec2{background:#fff;color:var(--blue)}
-.btn.sec2:hover{background:#eef3ff}
-.btn.wa{background:#128c4a;border-color:#128c4a;color:#fff}
-.btn.wa:hover{background:#0e7038}
-@media(min-width:900px){.tienda{grid-template-columns:1.25fr 1fr;gap:40px;align-items:start}}
-
-/* Marcas */
-.marcas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;list-style:none;margin:0;padding:0}
-.marcas li{font-size:22px;font-weight:700;letter-spacing:.02em;color:#8d929a}
-.marcas li:nth-child(2){font-style:italic;font-weight:600}
-.marcas li:nth-child(3){letter-spacing:.18em;font-weight:500;font-size:19px}
-.marcas li:nth-child(5){font-weight:800;letter-spacing:.12em;font-size:19px}
-
-/* Texto SEO */
-.seo{max-width:880px;margin:0 auto;font-size:14px;color:#3a3e44}
-.seo h2{font-size:18px;font-weight:600;margin-bottom:10px;color:var(--ink)}
-.seo p+p{margin-top:10px}
+.tienda-fotos figcaption{font-size:13px;color:var(--muted);margin-top:6px;font-style:italic}
+@media(min-width:900px){.tienda{grid-template-columns:1fr 1.2fr;gap:48px;padding:48px 64px 52px;align-items:center}.tienda-info h2{font-size:36px}}
 
 /* Pie */
-.pie{background:#16181c;color:#d5d8de;margin-top:8px;font-size:14px}
-.pie a{color:#fff;text-decoration:none}
-.pie a:hover{text-decoration:underline}
-.pie-top{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;padding-top:40px;padding-bottom:28px}
-.pie h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:12px;font-weight:600}
-.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.pie .lnk{background:none;border:0;padding:0;color:#fff;font-size:14px;text-align:left}
-.pie .lnk:hover{text-decoration:underline}
-.pie-marca{grid-column:1/-1}
-.pie-marca img{height:auto;width:220px;background:#fff;border-radius:8px;padding:10px 12px}
-.pie-marca p{margin-top:12px;max-width:36ch;color:#b9bec7;font-size:13.5px}
-.pie-bot{border-top:1px solid #2c3036;padding-top:16px;padding-bottom:24px;display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:#a3a9b3}
-@media(min-width:900px){.pie-top{grid-template-columns:1.4fr 1fr 1fr 1fr 1fr}.pie-marca{grid-column:auto}.pie-bot{flex-direction:row;justify-content:space-between}}
+.pie{background:#fff;margin-top:32px;color:var(--txt)}
+.pie-in{max-width:1200px;margin:0 auto;padding:36px 16px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
+.pie h2{font:600 18px/1.2 var(--h);text-transform:uppercase;text-align:center;border-bottom:1px solid var(--txt);padding-bottom:4px;margin-bottom:12px;letter-spacing:-.01em}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.pie li{font-size:14px;line-height:1.35}
+.pie a,.pie .lnk{color:var(--txt);text-decoration:none;font-weight:300}
+.pie a:hover,.pie .lnk:hover{text-decoration:underline;color:#111}
+.pie .lnk{background:none;border:0;padding:0;font-size:14px;text-align:left}
+.pie address{font-style:normal;font-size:14px;line-height:1.45}
+.pie-tile{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--cyan);color:#fff!important;text-decoration:none!important;padding:16px 16px 14px;text-align:center}
+.pie-tile .a{font:italic 300 30px/1 var(--f)}
+.pie-tile img{width:100%;max-width:300px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.pie-tile .b{font:700 40px/1 var(--h);letter-spacing:-.01em}
+.pie-tile:hover .b{text-decoration:underline}
+.pie-bot{background:var(--bg);text-align:center;font-size:13px;font-weight:400;color:#555;padding:22px 16px 30px;line-height:1.6}
+@media(min-width:1000px){.pie-in{grid-template-columns:repeat(4,1fr) 228px;padding:40px 16px 56px;gap:16px}.pie h2{font-size:20px}.pie-tile{grid-column:5;grid-row:1}}
 
-/* Diálogos: ficha, cesta y menú */
+/* Diálogos */
 dialog{border:0;padding:0;color:var(--ink);background:#fff;max-width:none;max-height:none}
-dialog::backdrop{background:rgba(15,18,25,.55)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
 .x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:#fff;border-radius:50%;display:grid;place-items:center;z-index:2}
-.x:hover{background:var(--soft)}
-#ficha{width:min(920px,calc(100% - 24px));border-radius:14px;margin:auto}
-.ficha{display:grid;grid-template-columns:1fr}
-.ficha-img{background:#fff;padding:24px;display:grid;place-items:center;border-bottom:1px solid var(--line)}
-.ficha-img img{width:100%;max-width:380px;aspect-ratio:1/1;object-fit:contain}
-.ficha-txt{padding:20px;display:flex;flex-direction:column;gap:8px}
-.ficha-txt h2{font-size:22px;font-weight:600;line-height:1.25}
-.ficha-txt .price strong{font-size:26px}
-.ficha-txt .add{background:var(--blue);color:#fff;min-height:48px;font-size:15px}
-.ficha-txt .add:hover{background:var(--blue-d)}
-.ficha-nota{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:4px}
-.ficha-nota svg{width:18px;height:18px;color:var(--ok);margin-top:1px}
-.iva{font-size:12px;color:var(--muted)}
-@media(min-width:760px){.ficha{grid-template-columns:1.1fr 1fr}.ficha-img{border-bottom:0;border-right:1px solid var(--line);padding:36px}.ficha-txt{padding:40px 32px 32px}}
+.x:hover{background:var(--bg)}
+#ficha{width:min(1040px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:auto;margin:auto;background:var(--bg)}
+.ficha{display:grid}
+.ficha-img{display:grid;place-items:center;padding:28px}
+.ficha-img img{width:100%;max-width:400px;aspect-ratio:1/1;object-fit:contain;mix-blend-mode:multiply}
+.ficha-txt{background:#fff;padding:22px 20px 26px;display:flex;flex-direction:column;gap:10px}
+.ficha-ref{font-size:14px;font-weight:400;color:var(--muted)}
+.ficha-txt h2{font:700 22px/1.2 var(--h);text-transform:uppercase;letter-spacing:-.01em}
+.ficha-pr{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.ficha-pr strong{font-weight:400;font-size:28px}
+.ficha-pr s{color:var(--muted);font-size:15px}
+.ficha-pr .badge{position:static}
+.iva{font-size:12.5px;color:var(--muted);margin-top:-6px;font-weight:400}
+.ficha-btns{display:grid;gap:10px;margin:6px 0 8px}
+.bar{background:var(--band);color:#fff;font:600 17px/1.2 var(--f);padding:6px 8px;margin-top:8px}
+.ficha-dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px}
+.ficha-dl dt{font-weight:600}
+.ficha-dl dd{margin:0}
+.ficha-nota{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.ficha-nota li{display:flex;gap:8px}
+.ficha-nota svg.i{width:18px;height:18px;margin-top:1px}
+@media(min-width:800px){.ficha{grid-template-columns:1.05fr 1fr}.ficha-img{padding:48px}.ficha-txt{padding:40px 40px 36px;margin:24px 24px 24px 0}.ficha-txt h2{font-size:24px}}
 
-#cesta,#menu{height:100%;max-height:100dvh;margin:0;border-radius:0}
-#cesta{width:min(420px,100%);margin-left:auto}
-#menu{width:min(340px,88%);margin-right:auto}
+#cesta{height:100%;max-height:100dvh;margin:0 0 0 auto;width:min(420px,100%)}
 .panel{display:flex;flex-direction:column;height:100%}
-.panel-h{display:flex;align-items:center;justify-content:space-between;padding:12px 8px 12px 18px;border-bottom:1px solid var(--line)}
-.panel-h h2{font-size:17px;font-weight:600}
+.panel-h{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 10px 18px;border-bottom:1px solid var(--line)}
+.panel-h h2{font:600 18px var(--h);text-transform:uppercase}
 .panel-h .x{position:static}
 .panel-b{flex:1;overflow-y:auto;padding:8px 18px}
 .panel-f{border-top:1px solid var(--line);padding:16px 18px 20px;display:grid;gap:10px}
 .lin{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.lin img{width:64px;height:64px;object-fit:contain;border:1px solid var(--line);border-radius:8px;background:#fff}
-.lin p{font-size:13.5px;font-weight:600;line-height:1.3}
-.lin small{display:block;font-size:12.5px;color:var(--muted);font-weight:400}
-.qty{display:inline-flex;align-items:center;border:1px solid #c9ccd2;border-radius:8px;margin-top:6px}
+.lin img{width:64px;height:64px;object-fit:contain;background:var(--bg);mix-blend-mode:multiply}
+.lin p{font:600 13px/1.3 var(--h);text-transform:uppercase}
+.lin small{display:block;font:400 13px var(--f);color:var(--muted);text-transform:none;margin-top:2px}
+.qty{display:inline-flex;align-items:center;border:1px solid #bdbdbd;margin-top:6px}
 .qty button{width:34px;height:34px;border:0;background:none;font-size:17px}
-.qty span{min-width:22px;text-align:center;font-size:13.5px}
+.qty span{min-width:22px;text-align:center;font-size:13.5px;font-weight:400}
 .lin .del{border:0;background:none;color:var(--muted);font-size:12.5px;text-decoration:underline;align-self:start;padding:4px}
-.tot{display:flex;justify-content:space-between;font-size:16px;font-weight:700}
-.panel-f .nota{font-size:12.5px;color:var(--muted)}
+.tot{display:flex;justify-content:space-between;font-size:16px;font-weight:600}
+.panel-f .nota{font-size:12.5px;color:var(--muted);font-weight:400}
 .cesta-vacia{padding:40px 0;text-align:center;color:var(--muted)}
-.menu-m{list-style:none;margin:0;padding:0}
-.menu-m li{border-bottom:1px solid var(--line)}
-.menu-m button,.menu-m a{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:0;padding:14px 2px;font-size:15px;font-weight:500;text-decoration:none;text-align:left}
-.menu-m .pct{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--sale);color:#fff;font-size:11px;font-weight:700}
-.menu-c{padding:18px 0;font-size:13.5px;color:#3a3e44;display:grid;gap:8px}
-.menu-c a{font-weight:600;color:var(--blue)}
 
-.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);background:var(--ink);color:#fff;border-radius:10px;padding:12px 16px;font-size:14px;display:flex;gap:12px;align-items:center;z-index:60;transition:transform .3s;max-width:calc(100% - 32px)}
+#menu{width:100%;max-height:100dvh;margin:0;overflow:auto}
+.menu-top{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;height:64px;padding:0 4px}
+.menu-in{padding:0 12px 16px}
+.tiles-menu{padding:0}
+.tiles-menu .tile,.tiles-menu .tile.of{aspect-ratio:1/.92;height:auto;grid-column:auto}
+.tiles-menu .tile.of{grid-column:1/-1;aspect-ratio:2.4/1}
+.tiles-menu .ti{padding:10px 16% 50px}
+.tiles-menu .of-t{font-size:40px}
+.menu-links{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 22px;font-size:14.5px}
+.menu-links a{display:inline-flex;align-items:center;min-height:40px;text-decoration:none;font-weight:400}
+.menu-links a:hover{text-decoration:underline}
+@media(min-width:390px){.menu-top{padding:0 8px}}
+@media(min-width:700px){.tiles-menu{grid-template-columns:repeat(3,minmax(0,1fr))}.tiles-menu .tile.of{grid-column:auto;aspect-ratio:1/.92}.tiles-menu .ti{padding:10px 16% 58px}}
+@media(min-width:1024px){
+  .menu-top{height:96px;padding:0 16px}
+  .menu-in{padding:0 16px 16px}
+  .tiles-menu{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .tiles-menu>.tile:nth-child(-n+4),.tiles-menu .tile,.tiles-menu .tile.of{grid-column:auto;height:185px;aspect-ratio:auto}
+  .tiles-menu .of-t{font-size:44px}
+  .tiles-menu .ti{padding:10px 22% 58px}
+  .tiles-menu .cap{font-size:16px}
+}
+
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,160%);background:#111;color:#fff;padding:12px 16px;font-size:14px;font-weight:400;display:flex;gap:12px;align-items:center;z-index:60;transition:transform .3s;max-width:calc(100% - 32px)}
 .toast.on{transform:translate(-50%,0)}
-.toast button{background:none;border:0;color:#9fd0ff;font-weight:600;text-decoration:underline;padding:4px}
+.toast button{background:none;border:0;color:#fff;font-weight:600;text-decoration:underline;padding:4px;white-space:nowrap}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
@@ -376,300 +426,229 @@ dialog::backdrop{background:rgba(15,18,25,.55)}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
-  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2.5 4h2.6l2.3 10.6a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L20.4 8H6.2"/><circle cx="9.3" cy="19.2" r="1.3"/><circle cx="17" cy="19.2" r="1.3"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2l1.3-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
   <symbol id="i-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
   <symbol id="i-r" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></symbol>
-  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></symbol>
-  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5l-8.8 8.8a2 2 0 0 1-2.9-2.9z"/><path d="M14.5 6.5L17 4l3 3-2.5 2.5"/></symbol>
-  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5L5 4h14l2 5.5a2.5 2.5 0 0 1-4.5 1.3 2.5 2.5 0 0 1-4.5 0 2.5 2.5 0 0 1-4.5 0A2.5 2.5 0 0 1 3 9.5z"/><path d="M10 20v-5h4v5"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 18.5l1.3-3.8A7.5 7.5 0 1 1 8.6 18z"/><path d="M9 10.5h6M9 13.5h4"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.6-.4z"/></symbol>
 </svg>
 
-<div class="topbar" role="region" aria-label="Ventajas de comprar en Carmolamp">
-  <ul>
-    <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>4,8 de 5 en Google con 32 reseñas</li>
-    <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Tienda en Navalmoral de la Mata desde 2004</li>
-    <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Recogida gratis en tienda</li>
-    <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Te asesoramos por WhatsApp</li>
-  </ul>
-</div>
-
 <header class="hdr">
-  <div class="wrap hdr-row">
-    <button class="burger" type="button" id="abrirMenu" aria-label="Abrir menú de categorías" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
-    <a class="logo" href="./" aria-label="Carmolamp, inicio">
-      <img class="lg-m" src="assets/logo-word.png" width="1856" height="158" alt="Carmolamp">
-      <img class="lg-d" src="assets/logo-h.png" width="1660" height="208" alt="Carmolamp, iluminación, muebles y decoración">
-    </a>
-    <form class="search search-d" role="search" data-buscar>
-      <label class="sr" for="q1">Buscar en la tienda</label>
-      <input id="q1" type="search" placeholder="Buscar un producto, categoría o estilo…" autocomplete="off">
-      <button type="submit" aria-label="Buscar"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></button>
-    </form>
-    <div class="rating" aria-label="Valoración de 4,8 sobre 5 en Google con 32 reseñas">
-      <span>Valoración de <strong>4,8</strong> sobre 5</span>
-      <span class="st"><span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>en Google</span>
+  <div class="hdr-row">
+    <div class="hdr-l">
+      <button class="hbtn" type="button" id="abrirMenu" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><span class="lbl">Menú</span></button>
+      <button class="hbtn" type="button" id="abrirCesta" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-cart"/></svg><span class="lbl">Cesta</span><span class="cnt">(<span id="nCesta">0</span>)</span><span class="sr" id="nCestaSr">, vacía</span></button>
     </div>
-    <a class="ico solo-d" href="#tienda"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span class="lbl">La tienda</span><span class="sr">La tienda</span></a>
-    <a class="ico" href="tel:+34927530333"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span class="lbl">Llamar</span><span class="sr">Llamar al 927 530 333</span></a>
-    <button class="ico" type="button" id="abrirCesta" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-bag"/></svg><span class="lbl">Mi cesta</span><span class="sr">Abrir mi cesta</span><span class="n" id="nCesta" hidden>0</span></button>
+    <a class="logo" href="./">
+      <img class="lg-m" src="assets/logo-v.png" width="560" height="185" alt="Carmolamp, inicio">
+      <img class="lg-d" src="assets/logo-h.png" width="1660" height="208" alt="Carmolamp, iluminación, muebles y decoración. Inicio">
+    </a>
+    <div class="hdr-r">
+      <a class="llamar" href="tel:+34927530333">Llamar<br>927 530 333</a>
+      <form class="pill search-d" role="search" data-buscar>
+        <label class="sr" for="q1">Buscar en la tienda</label>
+        <input id="q1" type="search" placeholder="Buscar..." autocomplete="off">
+        <button type="submit" aria-label="Buscar"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></button>
+      </form>
+      <a class="hcirc" href="tel:+34927530333"><span><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="sr">Llamar al 927 530 333</span></a>
+      <button class="hcirc" type="button" id="abrirBuscar" aria-expanded="false" aria-controls="buscarM"><span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span><span class="sr">Buscar</span></button>
+    </div>
   </div>
-  <div class="wrap search-m">
-    <form class="search" role="search" data-buscar>
+  <div class="search-m" id="buscarM" hidden>
+    <form class="pill" role="search" data-buscar>
       <label class="sr" for="q2">Buscar en la tienda</label>
       <input id="q2" type="search" placeholder="¿Qué lámpara buscas?" autocomplete="off">
       <button type="submit" aria-label="Buscar"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></button>
     </form>
   </div>
-  <nav class="menu" aria-label="Categorías">
-    <ul>
-      <li><a href="#catalogo" data-cat="colgantes">Colgantes</a></li>
-      <li><a href="#catalogo" data-cat="plafones">Plafones</a></li>
-      <li><a href="#catalogo" data-cat="ventiladores">Ventiladores de techo</a></li>
-      <li><a href="#catalogo" data-cat="sobremesa">Lámparas de mesa</a></li>
-      <li><a href="#catalogo" data-cat="pie">Lámparas de pie</a></li>
-      <li><a href="#catalogo" data-cat="exterior">Exterior</a></li>
-      <li><a href="#catalogo" data-cat="tecnico">Técnico y LED</a></li>
-      <li><a href="#anexo">Muebles</a></li>
-      <li><a href="#catalogo" data-ofertas>OFERTAS <span class="pct" aria-hidden="true">%</span></a></li>
-    </ul>
-  </nav>
 </header>
 
-<div class="promo">
-  <div class="wrap">
-    <span><b>TE LO INSTALAMOS:</b> lámparas y ventiladores<span class="m-no"> de techo</span> montados en tu casa</span>
-    <a href="tel:+34633216193"><svg class="i" aria-hidden="true" style="width:15px;height:15px"><use href="#i-phone"/></svg>633 21 61 93</a>
-  </div>
-</div>
-
 <main id="main">
+<h1 class="sr">Carmolamp, tienda de lámparas, ventiladores de techo y decoración en Navalmoral de la Mata</h1>
 
-<section class="hero" aria-labelledby="h-hero">
-  <div class="hero-in">
-    <div class="hero-foto">
+<section class="hero" aria-roledescription="carrusel" aria-label="Novedades de Carmolamp" id="sl">
+  <div class="sl-track">
+    <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
       <img src="assets/tienda/hero-showroom.jpg" width="1600" height="1200" alt="Exposición de Carmolamp con decenas de lámparas colgantes encendidas" fetchpriority="high">
-    </div>
-    <div class="hero-txt">
-      <p class="hero-k">Nueva temporada</p>
-      <h1 id="h-hero">Ofertas de otoño</h1>
-      <p class="hero-sub">En colgantes, plafones LED y ventiladores de techo con luz.</p>
-      <a class="hero-cta" href="#catalogo" data-ofertas>Ver las ofertas <svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-r"/></svg></a>
-    </div>
-    <div class="badge-wrap">
-      <p class="badge-circ"><small>Hasta el</small><strong>−23 %</strong><span>en una selección</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="sec" aria-labelledby="h-cat">
-  <div class="wrap">
-    <div class="sec-h"><h2 id="h-cat">Las categorías más populares</h2></div>
-    <div class="rail-w">
-      <button class="arr prev" type="button" aria-label="Ver categorías anteriores"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
-      <ul class="rail" id="railCat"></ul>
-      <button class="arr next" type="button" aria-label="Ver más categorías"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
-    </div>
-  </div>
-</section>
-
-<section class="sec" style="padding-top:8px" aria-labelledby="h-of">
-  <div class="wrap">
-    <div class="sec-h izq"><h2 id="h-of">Ofertas de otoño</h2><a class="vt" href="#catalogo" data-ofertas>Ver todas</a></div>
-    <div class="rail-w">
-      <button class="arr prev" type="button" aria-label="Ofertas anteriores"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
-      <ul class="rail" id="railOf"></ul>
-      <button class="arr next" type="button" aria-label="Más ofertas"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
-    </div>
-  </div>
-</section>
-
-<section class="sec" style="background:var(--soft2)" aria-labelledby="h-expo">
-  <div class="wrap">
-    <div class="sec-h"><h2 id="h-expo">Así es nuestra exposición</h2></div>
-    <div class="mos">
-      <div class="big"><button type="button" data-cat="colgantes"><figure><div class="ph"><img src="assets/tienda/hero-showroom.jpg" width="1600" height="1200" loading="lazy" alt="Sala de colgantes de Carmolamp con todas las lámparas encendidas"></div><figcaption>La sala de colgantes</figcaption></figure></button></div>
-      <button type="button" data-cat="colgantes"><figure><div class="ph"><img src="assets/tienda/colgantes-cristal.jpg" width="1600" height="1200" loading="lazy" alt="Colgantes de cristal y esferas doradas encendidas"></div><figcaption>Cristal y dorado</figcaption></figure></button>
-      <button type="button" data-estilo="moderno"><figure><div class="ph"><img src="assets/tienda/campana-oro.jpg" width="1600" height="2133" loading="lazy" alt="Campana negra con interior dorado colgada en la exposición" style="object-position:50% 35%"></div><figcaption>Campanas modernas</figcaption></figure></button>
-      <button type="button" data-estilo="moderno"><figure><div class="ph"><img src="assets/tienda/escaparate-negras.jpg" width="1600" height="1200" loading="lazy" alt="Lámparas colgantes negras en el escaparate de la tienda"></div><figcaption>El escaparate</figcaption></figure></button>
-      <button type="button" data-cat="plafones"><figure><div class="ph"><img src="assets/tienda/plafon-espiral.jpg" width="1600" height="1200" loading="lazy" alt="Plafón LED de diseño en espiral encendido"></div><figcaption>Plafones LED</figcaption></figure></button>
-    </div>
-  </div>
-</section>
-
-<section class="sec" aria-labelledby="h-est">
-  <div class="wrap">
-    <div class="sec-h"><h2 id="h-est">Lámparas por estilo</h2></div>
-    <div class="rail-w">
-      <ul class="rail" id="railEst"></ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec" style="padding-top:8px" aria-labelledby="h-vent">
-  <div class="wrap">
-    <div class="sec-h izq"><h2 id="h-vent">Ventiladores de techo con luz</h2><a class="vt" href="#catalogo" data-cat="ventiladores">Ver todos</a></div>
-    <div class="vent">
-      <div class="vent-card">
-        <img src="assets/tienda/ventilador-led.jpg" width="1600" height="900" loading="lazy" alt="Ventilador de techo con aspas retráctiles y luz LED instalado en una vivienda" style="object-position:50% 30%">
-        <div>
-          <h3>Lo eliges aquí y te lo dejamos funcionando en casa</h3>
-          <p>Motor DC silencioso, aspas que se esconden y luz regulable con mando.</p>
-          <a class="hero-cta" href="https://wa.me/34633216193?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20instalaci%C3%B3n%20de%20un%20ventilador%20de%20techo" rel="noopener">Pedir instalación</a>
-        </div>
+      <div class="slide-txt">
+        <p class="k">Otoño 2026</p>
+        <h2 class="t">Ofertas <b>de otoño</b></h2>
+        <p class="s">Hasta un 23 % menos en colgantes, plafones LED y ventiladores de techo.</p>
+        <a class="btn-o" href="#catalogo" data-ofertas>Ver ofertas</a>
       </div>
-      <div class="rail-w" style="min-width:0">
-        <button class="arr prev" type="button" aria-label="Ventiladores anteriores"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
-        <ul class="rail" id="railVent"></ul>
-        <button class="arr next" type="button" aria-label="Más ventiladores"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
+    </div>
+    <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 3">
+      <img src="assets/tienda/ventilador-led.jpg" width="1600" height="900" alt="Ventilador de techo con luz LED instalado en una vivienda" style="object-position:50% 30%">
+      <div class="slide-txt">
+        <p class="k">Ventiladores de techo</p>
+        <h2 class="t">Con luz y mando, <b>te lo instalamos</b></h2>
+        <p class="s">Motor DC silencioso y aspas que se esconden. Lo eliges aquí y te lo dejamos funcionando en casa.</p>
+        <a class="btn-o" href="#catalogo" data-cat="ventiladores">Ver ventiladores</a>
+      </div>
+    </div>
+    <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 3">
+      <img src="assets/tienda/colgantes-cristal.jpg" width="1600" height="1200" alt="Colgantes de cristal y esferas doradas encendidos en la exposición">
+      <div class="slide-txt">
+        <p class="k">Navalmoral de la Mata</p>
+        <h2 class="t">Ven a verlas <b>encendidas</b></h2>
+        <p class="s">Toda la exposición funcionando, en la carretera de Madrid a Lisboa, km 180,7. Desde 2004.</p>
+        <a class="btn-o" href="#tienda">Cómo llegar</a>
       </div>
     </div>
   </div>
+  <button class="sl-arr prev" type="button" aria-label="Diapositiva anterior"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
+  <button class="sl-arr next" type="button" aria-label="Diapositiva siguiente"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
+  <div class="sl-dots" id="slDots"></div>
 </section>
 
-<section class="sec" id="catalogo" aria-labelledby="h-catalogo" style="padding-top:16px">
-  <div class="wrap">
-    <div class="sec-h izq"><h2 id="h-catalogo">Todo el catálogo</h2></div>
-    <div class="cat-bar">
-      <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
-      <div class="cat-tools">
-        <span><span id="nRes" aria-live="polite">40 productos</span> <button type="button" class="filtro-act" id="filtroAct" hidden></button></span>
-        <label>Ordenar
-          <select id="orden">
-            <option value="rel">Destacados</option>
-            <option value="asc">Precio: de menor a mayor</option>
-            <option value="desc">Precio: de mayor a menor</option>
-            <option value="dto">Mayor descuento</option>
-          </select>
-        </label>
-      </div>
+<section class="box tiles-box" aria-labelledby="h-prod">
+  <h2 class="band" id="h-prod">Nuestros productos</h2>
+  <ul class="tiles" id="tilesHome"></ul>
+</section>
+
+<section class="wrap sec" aria-labelledby="h-of">
+  <h2 class="band" id="h-of">Ofertas de otoño</h2>
+  <ul class="cards cuatro" id="gOf"></ul>
+  <div class="mas"><a class="btn-d" href="#catalogo" data-ofertas>Ver todas las ofertas</a></div>
+</section>
+
+<section class="wrap sec" aria-labelledby="h-vent">
+  <div class="cat-hero">
+    <div class="cat-hero-txt">
+      <h2 id="h-vent">Ventiladores de techo</h2>
+      <p class="sub">Con luz, mando y motor silencioso</p>
+      <p class="d">Fresco en verano y luz todo el año en el mismo aparato. Hay modelos con aspas retráctiles que desaparecen al apagarlo, de madera para salones rústicos y de colores para habitaciones infantiles. Te lo instalamos en casa y te lo dejamos funcionando.</p>
+      <a class="btn-o" href="#catalogo" data-cat="ventiladores">Ver todos los ventiladores</a>
     </div>
-    <ul class="grid" id="grid"></ul>
-    <div class="mas"><button type="button" class="btn sec2" id="verMas" hidden>Ver más productos</button></div>
+    <div class="cat-hero-img" aria-hidden="true"><div class="halo"><img src="assets/p/vent-anuska.jpg" width="470" height="470" alt="" loading="lazy"></div></div>
   </div>
+  <ul class="cards cuatro" id="gVent"></ul>
 </section>
 
-<section class="ventajas" aria-label="Por qué comprar en Carmolamp">
-  <div class="wrap">
-    <ul>
-      <li><svg class="i" aria-hidden="true"><use href="#i-bulb"/></svg><div><strong>Exposición encendida</strong><span>Ves cada lámpara funcionando antes de llevártela.</span></div></li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-tool"/></svg><div><strong>Instalación a domicilio</strong><span>Montamos lámparas y ventiladores en tu casa.</span></div></li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-store"/></svg><div><strong>Recogida en tienda</strong><span>Reserva online y recógelo en el km 180,7.</span></div></li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><div><strong>Asesoramiento real</strong><span>Te ayudamos a elegir por teléfono o WhatsApp.</span></div></li>
-    </ul>
-  </div>
+<section class="wrap sec" aria-labelledby="h-est">
+  <h2 class="band" id="h-est">Lámparas por estilo</h2>
+  <div class="est" id="est"></div>
 </section>
 
-<section class="sec" id="opiniones" aria-labelledby="h-op">
-  <div class="wrap">
-    <div class="op-top">
-      <h2 id="h-op" class="sr">Opiniones de clientes</h2>
-      <span class="nota">4,8</span>
-      <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-      <p>32 reseñas en Google</p>
-    </div>
-    <ul class="ops">
-      <li><blockquote>«Distintas tonalidades de luz y velocidades del ventilador, programables incluso. Atención y servicio excelente. Muy satisfechos. Enhorabuena y gracias a Carmolamp, concretamente a Carlos.»</blockquote><cite>Mc XIV <span>· Google</span></cite></li>
-      <li><blockquote>«Tiene un montón de mercancía, variedad y diseños. Es fantástica la tienda, indudablemente volveré a comprar allí.»</blockquote><cite>Carmen C. <span>· Google</span></cite></li>
-      <li><blockquote>«Me gusta mucho, por la variedad de elementos de decoración e iluminación que tienen, muy buena calidad y buen precio. Lo recomiendo 100%.»</blockquote><cite>Ana R. <span>· Google</span></cite></li>
-      <li><blockquote>«Hoy mismo lo he llevado a la tienda y ya está puesto y funcionando. Todo perfecto. Totalmente recomendable.»</blockquote><cite>Emilio <span>· Google</span></cite></li>
-    </ul>
-  </div>
-</section>
-
-<section class="sec" id="tienda" style="background:var(--soft2)" aria-labelledby="h-tienda">
-  <div class="wrap tienda">
-    <div class="tienda-fotos">
-      <figure><img class="pano" src="assets/tienda/fachada-panoramica.jpg" width="1080" height="327" loading="lazy" alt="Fachada de Carmolamp al anochecer con los escaparates iluminados"><figcaption>La tienda, en la carretera de Madrid a Lisboa</figcaption></figure>
-      <div class="dos" id="anexo">
-        <figure><img src="assets/tienda/fachada-anexo.jpg" width="465" height="327" loading="lazy" alt="Edificio anexo de Carmolamp con muebles y decoración"><figcaption>El anexo: muebles auxiliares y decoración</figcaption></figure>
-        <figure><img src="assets/tienda/cat-muebles.jpg" width="400" height="334" loading="lazy" alt="Aparador de madera de la sección de muebles" style="object-fit:contain;background:#fff"><figcaption>Aparadores, mesas y espejos</figcaption></figure>
-      </div>
-    </div>
-    <div class="tienda-info">
-      <h2 id="h-tienda">Ven a ver las lámparas encendidas</h2>
-      <p>Estamos en Navalmoral de la Mata desde 2004, con aparcamiento a pie de tienda. La exposición se recorre por estilos y en el edificio de al lado tienes los muebles y la decoración.</p>
-      <dl class="dl">
-        <div><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><div><dt>Dirección</dt><dd>Carr. Madrid-Lisboa, km 180,7<br>10300 Navalmoral de la Mata (Cáceres)</dd></div></div>
-        <div><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><div><dt>Teléfono y WhatsApp</dt><dd><a href="tel:+34927530333">927 530 333</a> · <a href="https://wa.me/34633216193" rel="noopener">633 21 61 93</a></dd></div></div>
-        <div><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><div><dt>Correo</dt><dd><a href="mailto:carmolamp@yahoo.es">carmolamp@yahoo.es</a></dd></div></div>
-        <div><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><div><dt>Horario</dt><dd>
-          <table class="hor"><caption class="sr">Horario de apertura</caption>
-            <tr><th scope="row">Lunes a miércoles</th><td>10:00 a 13:30 · 17:30 a 20:00</td></tr>
-            <tr><th scope="row">Jueves y viernes</th><td>9:30 a 14:00 · 17:30 a 21:00</td></tr>
-            <tr><th scope="row">Sábado</th><td>10:00 a 14:00</td></tr>
-            <tr><th scope="row">Domingo</th><td>Cerrado</td></tr>
-          </table></dd></div></div>
-      </dl>
-      <div class="btns">
-        <a class="btn pri" href="https://www.google.com/maps/search/?api=1&amp;query=Carmolamp%20Navalmoral%20de%20la%20Mata" rel="noopener"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-pin"/></svg>Cómo llegar</a>
-        <a class="btn wa" href="https://wa.me/34633216193" rel="noopener"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-wa"/></svg>WhatsApp</a>
-      </div>
+<section class="wrap sec" id="catalogo" aria-labelledby="h-catalogo">
+  <h2 class="band" id="h-catalogo">Todo el catálogo</h2>
+  <div class="tool">
+    <nav aria-label="Estás en"><ol class="crumb" id="crumb"></ol></nav>
+    <div class="tool-r">
+      <span id="nRes" aria-live="polite">40 modelos</span>
+      <label class="sr" for="orden">Ordenar</label>
+      <select id="orden">
+        <option value="rel">Destacados</option>
+        <option value="asc">Precio: de menor a mayor</option>
+        <option value="desc">Precio: de mayor a menor</option>
+        <option value="dto">Mayor descuento</option>
+      </select>
     </div>
   </div>
+  <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+  <button type="button" class="filtro-act" id="filtroAct" hidden></button>
+  <ul class="cards" id="grid"></ul>
+  <div class="mas"><button type="button" class="btn-d" id="verMas" hidden>Ver más productos</button></div>
 </section>
 
-<section class="sec" aria-labelledby="h-marcas">
-  <div class="wrap">
-    <div class="sec-h"><h2 id="h-marcas">Marcas con las que trabajamos</h2></div>
-    <ul class="marcas">
-      <li>FABRILAMP</li><li>Alemar</li><li>VIMALUZ</li><li>AJP</li><li>GABAR</li>
-    </ul>
+<section class="box sec" aria-label="Por qué comprar en Carmolamp">
+  <ul class="vj">
+    <li><img src="assets/tienda/campana-oro.jpg" width="1600" height="2133" loading="lazy" alt="Campana negra con interior dorado encendida en la exposición" style="object-position:50% 30%"><div><p class="lb">Exposición</p><h3>Las lámparas, encendidas</h3><p>En la tienda ves cada modelo funcionando con su luz real. Así eliges el tono y la potencia sin sorpresas al llegar a casa.</p></div></li>
+    <li><img src="assets/tienda/cat-ventiladores.jpg" width="490" height="320" loading="lazy" alt="Ventilador de techo con luz instalado en un salón"><div><p class="lb">Instalación</p><h3>Te la dejamos montada</h3><p>Instalamos lámparas y ventiladores de techo en tu casa. Pregúntanos el precio de la instalación al hacer el pedido.</p></div></li>
+    <li><img src="assets/tienda/escaparate-vinilo.jpg" width="1600" height="2133" loading="lazy" alt="Escaparate de Carmolamp con lámparas colgantes" style="object-position:50% 45%"><div><p class="lb">Recogida en tienda</p><h3>Reserva y pásate a por ella</h3><p>Haz el pedido desde la web y recógelo en el km 180,7, con aparcamiento en la puerta y sin gastos de envío.</p></div></li>
+    <li class="ancho"><img src="assets/tienda/escaparate-negras.jpg" width="1600" height="1200" loading="lazy" alt="Lámparas colgantes negras en el escaparate"><div><p class="lb">Asesoramiento</p><h3>¿Dudas con la medida o los vatios?</h3><p>Mándanos por WhatsApp una foto de la habitación y te recomendamos modelo, medida y tono de luz. Si buscas algo que no ves en la web, lo pedimos al proveedor.</p><a class="btn-d" href="https://wa.me/34633216193" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a></div></li>
+  </ul>
+</section>
+
+<section class="wrap sec" id="opiniones" aria-labelledby="h-op">
+  <h2 class="band" id="h-op">Opiniones en Google</h2>
+  <div class="op-top">
+    <span class="nota">4,8</span>
+    <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+    <p>4,8 de 5 con 32 reseñas en Google</p>
   </div>
+  <ul class="ops">
+    <li><blockquote>«Distintas tonalidades de luz y velocidades del ventilador, programables incluso. Atención y servicio excelente. Muy satisfechos. Enhorabuena y gracias a Carmolamp, concretamente a Carlos.»</blockquote><cite>Mc XIV <span>· Google</span></cite></li>
+    <li><blockquote>«Tiene un montón de mercancía, variedad y diseños. Es fantástica la tienda, indudablemente volveré a comprar allí.»</blockquote><cite>Carmen C. <span>· Google</span></cite></li>
+    <li><blockquote>«Me gusta mucho, por la variedad de elementos de decoración e iluminación que tienen, muy buena calidad y buen precio. Lo recomiendo 100%.»</blockquote><cite>Ana R. <span>· Google</span></cite></li>
+    <li><blockquote>«Hoy mismo lo he llevado a la tienda y ya está puesto y funcionando. Todo perfecto. Totalmente recomendable.»</blockquote><cite>Emilio <span>· Google</span></cite></li>
+  </ul>
 </section>
 
-<section class="sec" style="padding-top:8px" aria-labelledby="h-seo">
-  <div class="wrap seo">
-    <h2 id="h-seo">Tu tienda de lámparas en Navalmoral de la Mata</h2>
-    <p>Carmolamp es una tienda de iluminación y decoración en el km 180,7 de la carretera de Madrid a Lisboa. Desde 2004 vendemos lámparas y ventiladores de techo a clientes de Navalmoral, del Campo Arañuelo y de la comarca de La Vera.</p>
-    <p>En la web tienes una parte del catálogo. Si buscas un modelo concreto o una pieza que no aparece, escríbenos por WhatsApp: trabajamos con los catálogos completos de nuestros proveedores y te lo pedimos.</p>
+<section class="box sec bien" aria-labelledby="h-bien">
+  <h2 id="h-bien">Bienvenidos a <img src="assets/logo-word.png" width="1856" height="158" alt="Carmolamp" loading="lazy"></h2>
+  <p>Carmolamp abrió en 2004 en el km 180,7 de la carretera de Madrid a Lisboa, en Navalmoral de la Mata. Desde entonces vendemos lámparas, ventiladores de techo y decoración a clientes de Navalmoral, del Campo Arañuelo y de La Vera.</p>
+  <p>La exposición se recorre con las lámparas encendidas, así que ves la luz real de cada modelo antes de llevártelo. En el edificio de al lado tienes los muebles auxiliares y la decoración.</p>
+  <p>Trabajamos con Fabrilamp, Alemar, Vimaluz, AJP y Gabar. En la web tienes una parte del catálogo; si buscas un modelo que no aparece, escríbenos por WhatsApp y lo pedimos al proveedor.</p>
+  <a class="btn-d" href="https://www.google.com/maps/search/?api=1&amp;query=Carmolamp%20Navalmoral%20de%20la%20Mata" rel="noopener">Cómo llegar</a>
+</section>
+
+<section class="box sec tienda" id="tienda" aria-labelledby="h-tienda">
+  <div class="tienda-info">
+    <h2 id="h-tienda">La tienda</h2>
+    <p>Aparcamiento a pie de tienda. La exposición se recorre por estilos y en el edificio de al lado están los muebles y la decoración.</p>
+    <dl class="dl">
+      <div><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><div><dt>Dirección</dt><dd>Carr. Madrid-Lisboa, km 180,7<br>10300 Navalmoral de la Mata (Cáceres)</dd></div></div>
+      <div><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><div><dt>Teléfono y WhatsApp</dt><dd><a href="tel:+34927530333">927 530 333</a> · <a href="https://wa.me/34633216193" rel="noopener">633 21 61 93</a></dd></div></div>
+      <div><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><div><dt>Correo</dt><dd><a href="mailto:carmolamp@yahoo.es">carmolamp@yahoo.es</a></dd></div></div>
+      <div><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><div><dt>Horario</dt><dd>
+        <table class="hor"><caption class="sr">Horario de apertura</caption>
+          <tr><th scope="row">Lunes a miércoles</th><td>10:00 a 13:30 · 17:30 a 20:00</td></tr>
+          <tr><th scope="row">Jueves y viernes</th><td>9:30 a 14:00 · 17:30 a 21:00</td></tr>
+          <tr><th scope="row">Sábado</th><td>10:00 a 14:00</td></tr>
+          <tr><th scope="row">Domingo</th><td>Cerrado</td></tr>
+        </table></dd></div></div>
+    </dl>
+    <div class="btns">
+      <a class="btn-k" href="https://www.google.com/maps/search/?api=1&amp;query=Carmolamp%20Navalmoral%20de%20la%20Mata" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+      <a class="btn-d" href="https://wa.me/34633216193" rel="noopener" style="min-height:48px"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    </div>
+  </div>
+  <div class="tienda-fotos">
+    <figure><img class="pano" src="assets/tienda/fachada-panoramica.jpg" width="1080" height="327" loading="lazy" alt="Fachada de Carmolamp al anochecer con los escaparates iluminados"><figcaption>La tienda, en la carretera de Madrid a Lisboa</figcaption></figure>
+    <div class="dos" id="anexo">
+      <figure><img src="assets/tienda/fachada-anexo.jpg" width="465" height="327" loading="lazy" alt="Edificio anexo de Carmolamp con muebles y decoración"><figcaption>El anexo: muebles y decoración</figcaption></figure>
+      <figure><img src="assets/tienda/cat-muebles.jpg" width="400" height="334" loading="lazy" alt="Aparador de madera de la sección de muebles" style="object-fit:contain;background:#fff"><figcaption>Aparadores, mesas y espejos</figcaption></figure>
+    </div>
   </div>
 </section>
 
 </main>
 
 <footer class="pie">
-  <div class="wrap pie-top">
-    <div class="pie-marca">
-      <img src="assets/logo-h.png" width="1660" height="208" loading="lazy" alt="Carmolamp, iluminación, muebles y decoración">
-      <p>Iluminación, muebles y decoración en Navalmoral de la Mata desde 2004.</p>
-    </div>
-    <nav aria-labelledby="f1"><h2 id="f1">Atención al cliente</h2><ul>
-      <li><a href="tel:+34927530333">927 530 333</a></li>
-      <li><a href="https://wa.me/34633216193" rel="noopener">WhatsApp 633 21 61 93</a></li>
-      <li><a href="mailto:carmolamp@yahoo.es">carmolamp@yahoo.es</a></li>
-      <li><a href="#tienda">Horario y cómo llegar</a></li>
+  <div class="pie-in">
+    <nav aria-labelledby="f1"><h2 id="f1">Información</h2><ul>
+      <li><a href="#tienda">La tienda y horario</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="legal/aviso-legal.html">Aviso legal</a></li>
+      <li><a href="legal/politica-privacidad.html">Política de privacidad</a></li>
+      <li><a href="legal/politica-cookies.html">Política de cookies</a></li>
+      <li><button type="button" class="lnk" onclick="if(window.GGConsent)window.GGConsent.open()">Configurar cookies</button></li>
     </ul></nav>
     <nav aria-labelledby="f2"><h2 id="f2">Comprar</h2><ul>
       <li><a href="#catalogo" data-cat="colgantes">Colgantes</a></li>
+      <li><a href="#catalogo" data-cat="plafones">Plafones</a></li>
       <li><a href="#catalogo" data-cat="ventiladores">Ventiladores de techo</a></li>
       <li><a href="#catalogo" data-cat="exterior">Iluminación exterior</a></li>
       <li><a href="#catalogo" data-ofertas>Ofertas</a></li>
     </ul></nav>
-    <nav aria-labelledby="f3"><h2 id="f3">Carmolamp</h2><ul>
-      <li><a href="#tienda">La tienda</a></li>
-      <li><a href="#anexo">Muebles y decoración</a></li>
-      <li><a href="#opiniones">Opiniones</a></li>
+    <nav aria-labelledby="f3"><h2 id="f3">Pedidos</h2><ul>
+      <li><a href="https://wa.me/34633216193" rel="noopener">Pedido por WhatsApp</a></li>
+      <li><a href="tel:+34927530333">Llamar al 927 530 333</a></li>
+      <li><a href="mailto:carmolamp@yahoo.es">carmolamp@yahoo.es</a></li>
     </ul></nav>
-    <nav aria-labelledby="f4"><h2 id="f4">Información legal</h2><ul>
-      <li><a href="legal/aviso-legal.html">Aviso legal</a></li>
-      <li><a href="legal/politica-privacidad.html">Privacidad</a></li>
-      <li><a href="legal/politica-cookies.html">Cookies</a></li>
-      <li><button type="button" class="lnk" onclick="if(window.GGConsent)window.GGConsent.open()">Configurar cookies</button></li>
-    </ul></nav>
+    <div><h2>Visítanos</h2>
+      <address>Carr. Madrid-Lisboa, km 180,7<br>10300 Navalmoral de la Mata<br>(Cáceres)</address>
+    </div>
+    <a class="pie-tile" href="#tienda"><span class="a">Ven a vernos</span><img src="assets/tienda/desde-2004.jpg" width="640" height="440" loading="lazy" alt="Fachada y exposición de Carmolamp, desde 2004"><span class="b">km 180,7</span></a>
   </div>
-  <div class="wrap pie-bot">
-    <span>Precios con IVA incluido.</span>
-    <span>© 2026 Carmolamp · Navalmoral de la Mata (Cáceres)</span>
-  </div>
+  <div class="pie-bot">Precios con IVA incluido · © 2026 Carmolamp · Navalmoral de la Mata (Cáceres)</div>
 </footer>
 
 <dialog id="ficha" aria-labelledby="fichaT">
@@ -677,15 +656,21 @@ dialog::backdrop{background:rgba(15,18,25,.55)}
   <div class="ficha">
     <div class="ficha-img"><img id="fichaImg" alt=""></div>
     <div class="ficha-txt">
-      <p class="brand" id="fichaCat"></p>
+      <p class="ficha-ref" id="fichaCat"></p>
       <h2 id="fichaT"></h2>
-      <p class="det" id="fichaDet" style="font-size:14px"></p>
-      <p class="price" id="fichaPrecio"></p>
+      <p class="ficha-pr" id="fichaPrecio"></p>
       <p class="iva">IVA incluido</p>
-      <button class="add" type="button" id="fichaAdd"><svg class="i" aria-hidden="true"><use href="#i-bag"/></svg>Añadir a la cesta</button>
-      <a class="btn sec2" id="fichaWa" href="#" rel="noopener" style="margin-top:2px"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
-      <p class="ficha-nota"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Te confirmamos disponibilidad y plazo antes de cobrar nada.</p>
-      <p class="ficha-nota"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Recogida gratis en la tienda o instalación a domicilio.</p>
+      <div class="ficha-btns">
+        <button class="btn-k" type="button" id="fichaAdd">Añadir a la cesta</button>
+        <a class="btn-d" id="fichaWa" href="#" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
+      </div>
+      <h3 class="bar">Características</h3>
+      <dl class="ficha-dl" id="fichaDl"></dl>
+      <h3 class="bar">En Carmolamp</h3>
+      <ul class="ficha-nota">
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Te confirmamos disponibilidad y plazo antes de cobrar nada.</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Recogida gratis en la tienda o instalación a domicilio.</li>
+      </ul>
     </div>
   </div>
 </dialog>
@@ -696,35 +681,27 @@ dialog::backdrop{background:rgba(15,18,25,.55)}
     <div class="panel-b" id="cestaB"></div>
     <div class="panel-f" id="cestaF">
       <div class="tot"><span>Total</span><span id="cestaTot">0,00 €</span></div>
-      <a class="btn wa" id="cestaWa" href="#" rel="noopener"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-wa"/></svg>Enviar pedido por WhatsApp</a>
+      <a class="btn-k" id="cestaWa" href="#" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Enviar pedido por WhatsApp</a>
       <p class="nota">Te contestamos con la disponibilidad. Puedes recogerlo en tienda o pedir que te lo instalemos.</p>
     </div>
   </div>
 </dialog>
 
 <dialog id="menu" aria-labelledby="menuT">
-  <div class="panel">
-    <div class="panel-h"><h2 id="menuT">Categorías</h2><button class="x" type="button" data-cerrar aria-label="Cerrar menú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
-    <div class="panel-b">
-      <ul class="menu-m">
-        <li><button type="button" data-ofertas>Ofertas <span class="pct" aria-hidden="true">%</span></button></li>
-        <li><button type="button" data-cat="colgantes">Colgantes</button></li>
-        <li><button type="button" data-cat="plafones">Plafones</button></li>
-        <li><button type="button" data-cat="ventiladores">Ventiladores de techo</button></li>
-        <li><button type="button" data-cat="sobremesa">Lámparas de mesa</button></li>
-        <li><button type="button" data-cat="pie">Lámparas de pie</button></li>
-        <li><button type="button" data-cat="apliques">Apliques</button></li>
-        <li><button type="button" data-cat="exterior">Exterior</button></li>
-        <li><button type="button" data-cat="tecnico">Técnico y LED</button></li>
-        <li><a href="#anexo" data-cerrar-menu>Muebles y decoración</a></li>
-        <li><a href="#tienda" data-cerrar-menu>La tienda y horario</a></li>
-      </ul>
-      <div class="menu-c">
-        <span>¿Dudas? Llámanos o escríbenos</span>
-        <a href="tel:+34927530333">927 530 333</a>
-        <a href="https://wa.me/34633216193" rel="noopener">WhatsApp 633 21 61 93</a>
-      </div>
-    </div>
+  <div class="menu-top">
+    <div><button class="hbtn" type="button" data-cerrar><svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span class="lbl">Cerrar</span></button></div>
+    <h2 id="menuT" class="sr">Menú</h2>
+    <a class="logo" href="./"><img class="lg-m" src="assets/logo-v.png" width="560" height="185" alt="Carmolamp, inicio"><img class="lg-d" src="assets/logo-h.png" width="1660" height="208" alt="Carmolamp, inicio"></a>
+    <div></div>
+  </div>
+  <div class="menu-in">
+    <ul class="tiles tiles-menu" id="tilesMenu"></ul>
+    <ul class="menu-links">
+      <li><a href="#tienda" data-cerrar-menu>La tienda y horario</a></li>
+      <li><a href="#opiniones" data-cerrar-menu>Opiniones</a></li>
+      <li><a href="tel:+34927530333">Llamar al 927 530 333</a></li>
+      <li><a href="https://wa.me/34633216193" rel="noopener">WhatsApp 633 21 61 93</a></li>
+    </ul>
   </div>
 </dialog>
 
@@ -734,53 +711,91 @@ dialog::backdrop{background:rgba(15,18,25,.55)}
 const P=[{"id":"ivanna-2l-niquel","nombre":"Colgante Ivanna 2 luces","detalle":"Níquel y madera blanca · Ø50 cm","cat":"colgantes","estilo":"nordico","precio":75.46,"antes":null},{"id":"tunez-estampado","nombre":"Colgante Túnez","detalle":"Blanco estampado · E27 · Ø40 cm","cat":"colgantes","estilo":"clasico","precio":60.38,"antes":null},{"id":"karla-topo","nombre":"Colgante Karla regulable","detalle":"Topo y beis · 2×E27","cat":"colgantes","estilo":"moderno","precio":63.43,"antes":null},{"id":"colgante-yute","nombre":"Colgante Yute","detalle":"Pantalla de cuerda natural · E27","cat":"colgantes","estilo":"rustico","precio":34.51,"antes":null},{"id":"lumiere-negro","nombre":"Colgante Lumiere","detalle":"Negro · E27 · Ø39 cm","cat":"colgantes","estilo":"moderno","precio":54.32,"antes":null},{"id":"maldivas-verde","nombre":"Colgante Maldivas","detalle":"Verde claro · Ø40 cm","cat":"colgantes","estilo":"nordico","precio":40.41,"antes":null},{"id":"arce-madera","nombre":"Colgante Arce","detalle":"Madera natural · E27","cat":"colgantes","estilo":"nordico","precio":57.75,"antes":null},{"id":"ekaterina","nombre":"Colgante Ekaterina","detalle":"Acabado cuero · E27","cat":"colgantes","estilo":"clasico","precio":52.21,"antes":62.98},{"id":"plafon-natasha-72w","nombre":"Plafón LED Natasha 72 W","detalle":"Cañizo · 3 tonos de luz · Ø49 cm","cat":"plafones","estilo":"rustico","precio":89.21,"antes":102.16},{"id":"plafon-chacho","nombre":"Plafón Chacho 3 focos","detalle":"Níquel · 3×GU10","cat":"plafones","estilo":"moderno","precio":35.71,"antes":null},{"id":"plafon-elara-129w","nombre":"Plafón LED Elara 129 W","detalle":"Cromo · mando y memoria · Ø58 cm","cat":"plafones","estilo":"moderno","precio":138.23,"antes":null},{"id":"plafon-tatiana-96w","nombre":"Plafón LED Tatiana 96 W","detalle":"Blanco y madera oscura · Ø60 cm","cat":"plafones","estilo":"nordico","precio":143.91,"antes":null},{"id":"plafon-cooper","nombre":"Plafón Cooper","detalle":"Cuero · 3×E14 · Ø32 cm","cat":"plafones","estilo":"clasico","precio":50.94,"antes":null},{"id":"vent-esparta","nombre":"Ventilador Esparta","detalle":"Aspas retráctiles · luz LED · motor DC · 107 cm","cat":"ventiladores","estilo":"moderno","precio":80.82,"antes":null},{"id":"vent-hayate","nombre":"Ventilador Hayate","detalle":"3 aspas roble · motor DC · 120 cm","cat":"ventiladores","estilo":"rustico","precio":92.23,"antes":105.62},{"id":"vent-nalon","nombre":"Ventilador Nalón","detalle":"Aspas desplegables · luz LED · motor DC","cat":"ventiladores","estilo":"moderno","precio":49.88,"antes":60.16},{"id":"vent-moda-canizo","nombre":"Ventilador Moda 72 W","detalle":"Blanco y cañizo · 7.200 lm · 108 cm","cat":"ventiladores","estilo":"rustico","precio":122.54,"antes":null},{"id":"vent-gladiator","nombre":"Ventilador Gladiator","detalle":"Negro y madera · 59 W · 107 cm","cat":"ventiladores","estilo":"rustico","precio":136.58,"antes":null},{"id":"vent-anuska","nombre":"Ventilador Anuska","detalle":"8 aspas negro y oro · 60 W","cat":"ventiladores","estilo":"clasico","precio":162.93,"antes":191.68},{"id":"vent-dani","nombre":"Ventilador Dani","detalle":"Blanco · 59 W · 106 cm · con mando","cat":"ventiladores","estilo":"moderno","precio":63.19,"antes":null},{"id":"vent-pitufo","nombre":"Ventilador Pitufo RGB","detalle":"Luz de colores · blanco y haya · 107 cm","cat":"ventiladores","estilo":"infantil","precio":110.89,"antes":129.53},{"id":"vent-oporto","nombre":"Ventilador Oporto","detalle":"Negro y marrón · 46 W · temporizador","cat":"ventiladores","estilo":"clasico","precio":222.89,"antes":null},{"id":"sobremesa-bergen","nombre":"Lámpara de mesa Bergen","detalle":"Nórdica · blanco y madera","cat":"sobremesa","estilo":"nordico","precio":71.17,"antes":null},{"id":"sobremesa-nueva-york","nombre":"Lámpara de mesa Nueva York","detalle":"Cuero · pantalla beis · 44 cm","cat":"sobremesa","estilo":"clasico","precio":44.69,"antes":54.59},{"id":"sobremesa-foz","nombre":"Lámpara de mesa Foz","detalle":"Cerámica blanca y negra · 41 cm","cat":"sobremesa","estilo":"moderno","precio":31.79,"antes":null},{"id":"sobremesa-etna","nombre":"Lámpara de mesa Etna","detalle":"Cromo · 1 luz","cat":"sobremesa","estilo":"clasico","precio":18.49,"antes":24.14},{"id":"flexo-rutilo","nombre":"Flexo Rutilo","detalle":"Rojo · articulado","cat":"sobremesa","estilo":"infantil","precio":20.09,"antes":null},{"id":"pie-delza","nombre":"Lámpara de pie Delza","detalle":"Blanco y madera natural · 147 cm","cat":"pie","estilo":"nordico","precio":59.36,"antes":null},{"id":"pie-myrian","nombre":"Lámpara de pie Myrian","detalle":"Cuero y madera oscura","cat":"pie","estilo":"clasico","precio":105.8,"antes":null},{"id":"pie-maldivas","nombre":"Lámpara de pie Maldivas","detalle":"Rosa · E27","cat":"pie","estilo":"infantil","precio":61.93,"antes":null},{"id":"aplique-tatiana","nombre":"Aplique Tatiana","detalle":"Blanco y madera · pantalla textil","cat":"apliques","estilo":"nordico","precio":35.35,"antes":43.99},{"id":"ext-comino","nombre":"Aplique exterior Comino","detalle":"Oro viejo · E27","cat":"exterior","estilo":"clasico","precio":31.49,"antes":null},{"id":"ext-torva","nombre":"Aplique exterior Torva","detalle":"Antracita · E27","cat":"exterior","estilo":"moderno","precio":43.58,"antes":null},{"id":"ext-mentol","nombre":"Aplique exterior Mentol","detalle":"Gris · E27","cat":"exterior","estilo":"moderno","precio":31.48,"antes":33.68},{"id":"farola-terva","nombre":"Farola Terva 3 luces","detalle":"Antracita · IP44 · 190 cm","cat":"exterior","estilo":"clasico","precio":116.41,"antes":null},{"id":"farola-auriga","nombre":"Farola Auriga 3 luces","detalle":"Aluminio negro · IP44 · 220 cm","cat":"exterior","estilo":"clasico","precio":162.34,"antes":null},{"id":"solar-kira","nombre":"Aplique solar Kira","detalle":"Sensor de movimiento · IP65 · 450 lm","cat":"exterior","estilo":"moderno","precio":13.97,"antes":null},{"id":"down-gabro","nombre":"Downlight Gabro 24 W","detalle":"Superficie · 3 tonos · Ø29 cm","cat":"tecnico","estilo":"moderno","precio":19,"antes":24.8},{"id":"down-tanzanita","nombre":"Downlight Tanzanita 9 W","detalle":"Empotrable · 6500 K · corte 13 cm","cat":"tecnico","estilo":"moderno","precio":8.35,"antes":null},{"id":"down-diorita","nombre":"Downlight Diorita 18 W","detalle":"Superficie níquel · 3 tonos · Ø22 cm","cat":"tecnico","estilo":"moderno","precio":22.07,"antes":null}];
 P.forEach((p,i)=>{p.img='assets/p/'+p.id+'.jpg';p.orden=i;p.dto=p.antes?Math.round((1-p.precio/p.antes)*100):0;});
 const CATS={colgantes:'Colgantes',plafones:'Plafones',ventiladores:'Ventiladores de techo',sobremesa:'Lámparas de mesa',pie:'Lámparas de pie',apliques:'Apliques',exterior:'Exterior',tecnico:'Técnico y LED'};
-const CAT_IMG={colgantes:['arce-madera','Lámparas colgantes'],plafones:['plafon-natasha-72w','Plafones de techo'],ventiladores:['vent-hayate','Ventiladores de techo'],sobremesa:['sobremesa-foz','Lámparas de mesa'],pie:['pie-myrian','Lámparas de pie'],apliques:['aplique-tatiana','Apliques de pared'],exterior:['ext-torva','Iluminación exterior'],tecnico:['down-diorita','Downlights y LED']};
-const ESTILOS={clasico:['sobremesa-nueva-york','Estilo clásico'],moderno:['lumiere-negro','Estilo moderno'],rustico:['colgante-yute','Estilo rústico'],nordico:['maldivas-verde','Estilo nórdico'],infantil:['flexo-rutilo','Infantil y juvenil']};
+const ESTILOS={clasico:'Clásico',moderno:'Moderno',rustico:'Rústico',nordico:'Nórdico',infantil:'Infantil y juvenil'};
+const TILES=[
+  ['colgantes','Colgantes','p/arce-madera.jpg','g1'],
+  ['plafones','Plafones','p/plafon-tatiana-96w.jpg','g2'],
+  ['ventiladores','Ventiladores de techo','p/vent-esparta.jpg','g3'],
+  ['sobremesa','Lámparas de mesa','p/sobremesa-foz.jpg','g5'],
+  ['pie','Lámparas de pie','p/pie-myrian.jpg','g4'],
+  ['exterior','Exterior','p/ext-torva.jpg','g7'],
+  ['tecnico','Técnico y LED','p/down-gabro.jpg','g6'],
+  ['muebles','Muebles y decoración','tienda/cat-muebles.jpg','g1'],
+  ['ofertas','Ofertas de otoño',null,'g8']
+];
+const EST=[
+  ['clasico','sobremesa-nueva-york','Pantallas de tela, bronce y acabados en cuero. Lámparas que encajan en salones de siempre y en casas de pueblo.'],
+  ['moderno','lumiere-negro','Metal negro, cromo y líneas limpias. Plafones LED y colgantes para cocinas y salones actuales.'],
+  ['rustico','colgante-yute','Cuerda, cañizo y madera natural. Dan una luz cálida y quedan bien con vigas y paredes de piedra.'],
+  ['nordico','maldivas-verde','Madera clara, blancos y verdes suaves. Luz tranquila para dormitorios y salones con mucha claridad.']
+];
 const WA='34633216193';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const eur=n=>n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const byId=id=>P.find(p=>p.id===id);
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const suave=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
 
-function precioHTML(p){return p.antes?`<strong class="sale">${eur(p.precio)}</strong><s><span class="sr">Antes </span>${eur(p.antes)}</s>`:`<strong>${eur(p.precio)}</strong>`;}
+function precioHTML(p){return p.antes?`<strong>${eur(p.precio)}</strong><s><span class="sr">Antes </span>${eur(p.antes)}</s><span class="sr">, ${p.dto} % de descuento</span>`:`<strong>${eur(p.precio)}</strong>`;}
 function cardHTML(p){
+  const bar=p.detalle.split(' · ').map(t=>`<span>${esc(t)}</span>`).join(' ');
   return `<article class="card">
-    <button class="card-img" type="button" data-abrir="${p.id}" tabindex="-1" aria-hidden="true"><img src="${p.img}" width="470" height="470" loading="lazy" alt="${esc(p.nombre)}"></button>
-    ${p.dto?`<span class="badge">−${p.dto} %</span>`:''}
-    <div class="card-b">
-      <p class="brand">Fabrilamp</p>
-      <h3><button type="button" data-abrir="${p.id}">${esc(p.nombre)}</button></h3>
-      <p class="det">${esc(p.detalle)}</p>
-      <p class="price">${precioHTML(p)}</p>
-      <button class="add" type="button" data-add="${p.id}" aria-label="Añadir ${esc(p.nombre)} a la cesta"><svg class="i" aria-hidden="true"><use href="#i-bag"/></svg>Añadir</button>
+    <div class="card-h"><h3><button type="button" data-abrir="${p.id}">${esc(p.nombre)}</button></h3><p class="pr">${precioHTML(p)}</p></div>
+    <p class="card-m">Fabrilamp · ${CATS[p.cat]}</p>
+    <div class="card-f">
+      <button class="card-img" type="button" data-abrir="${p.id}" tabindex="-1" aria-hidden="true"><img src="${p.img}" width="470" height="470" loading="lazy" alt="">${p.dto?`<span class="badge">−${p.dto} %</span>`:''}</button>
+      <p class="card-bar">${bar}</p>
+      <button class="add" type="button" data-add="${p.id}" aria-label="Añadir ${esc(p.nombre)} a la cesta">Añadir<span class="m-no">&nbsp;a la cesta</span></button>
     </div></article>`;
 }
-function circHTML(img,label,attr){return `<li class="circ"><button type="button" ${attr}><span class="disc"><img src="assets/p/${img}.jpg" width="470" height="470" loading="lazy" alt=""></span>${label}</button></li>`;}
+function tileHTML([k,l,img,g]){
+  const attr=k==='ofertas'?'data-ofertas':k==='muebles'?'':`data-cat="${k}"`;
+  const dentro=img?`<img src="assets/${img}" width="470" height="470" loading="lazy" alt="">`:`<span class="of-t" aria-hidden="true">OFERTAS<small>hasta −23 %</small></span>`;
+  const ini=k==='muebles'?`<a href="#tienda" data-cerrar-menu>`:`<button type="button" ${attr}>`, fin=k==='muebles'?'</a>':'</button>';
+  return `<li class="tile${k==='ofertas'?' of':''}">${ini}<span class="ti ${g}">${dentro}</span><span class="cap">${l}</span>${fin}</li>`;
+}
+$('#tilesHome').innerHTML=TILES.map(tileHTML).join('');
+$('#tilesMenu').innerHTML=TILES.map(tileHTML).join('');
+$('#gOf').innerHTML=P.filter(p=>p.antes).sort((a,b)=>b.dto-a.dto||a.orden-b.orden).slice(0,4).map(p=>`<li>${cardHTML(p)}</li>`).join('');
+$('#gVent').innerHTML=P.filter(p=>p.cat==='ventiladores').slice(0,4).map(p=>`<li>${cardHTML(p)}</li>`).join('');
+$('#est').innerHTML=EST.map(([k,img,txt])=>`<div class="est-p"><div class="est-i"><img src="assets/p/${img}.jpg" width="470" height="470" loading="lazy" alt=""></div><div class="est-t"><h3>Estilo ${ESTILOS[k].toLowerCase()}</h3><p>${txt}</p><div><button type="button" class="btn-d" data-estilo="${k}">Ver estilo ${ESTILOS[k].toLowerCase()}</button></div></div></div>`).join('');
 
-$('#railCat').innerHTML=Object.entries(CAT_IMG).map(([k,[img,l]])=>circHTML(img,l,`data-cat="${k}"`)).join('');
-$('#railEst').innerHTML=Object.entries(ESTILOS).map(([k,[img,l]])=>circHTML(img,l,`data-estilo="${k}"`)).join('');
-$('#railOf').innerHTML=P.filter(p=>p.antes).sort((a,b)=>b.dto-a.dto).map(p=>`<li class="pc">${cardHTML(p)}</li>`).join('');
-$('#railVent').innerHTML=P.filter(p=>p.cat==='ventiladores').map(p=>`<li class="pc">${cardHTML(p)}</li>`).join('');
+/* Carrusel */
+(()=>{
+  const sl=$('#sl'),tr=sl.querySelector('.sl-track'),sls=[...tr.children],dots=$('#slDots');let si=0;
+  dots.innerHTML=sls.map((_,i)=>`<button type="button" aria-label="Ver diapositiva ${i+1} de ${sls.length}"><span></span></button>`).join('');
+  const ir=i=>{si=(i+sls.length)%sls.length;tr.style.transform=`translateX(${-100*si}%)`;sls.forEach((s,k)=>{const on=k===si;s.inert=!on;s.setAttribute('aria-hidden',String(!on));});[...dots.children].forEach((d,k)=>d.setAttribute('aria-current',String(k===si)));};
+  sl.querySelector('.prev').addEventListener('click',()=>ir(si-1));
+  sl.querySelector('.next').addEventListener('click',()=>ir(si+1));
+  dots.addEventListener('click',e=>{const b=e.target.closest('button');if(b)ir([...dots.children].indexOf(b));});
+  let x0=null;
+  tr.addEventListener('pointerdown',e=>{x0=e.clientX;});
+  tr.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>45)ir(si+(dx<0?1:-1));});
+  tr.addEventListener('pointercancel',()=>{x0=null;});
+  ir(0);
+})();
 
 /* Catálogo con filtros */
 const st={cat:'todo',estilo:null,ofertas:false,q:'',orden:'rel',todo:false};
 $('#chips').innerHTML=[['todo','Todo'],['ofertas','Ofertas'],...Object.entries(CATS)].map(([k,l])=>`<button type="button" class="chip" data-chip="${k}" aria-pressed="false">${l}</button>`).join('');
 function render(){
   let L=P.filter(p=>(st.cat==='todo'||p.cat===st.cat)&&(!st.estilo||p.estilo===st.estilo)&&(!st.ofertas||p.antes));
-  if(st.q){const w=norm(st.q).split(/\s+/).filter(Boolean);L=L.filter(p=>{const t=norm(p.nombre+' '+p.detalle+' '+CATS[p.cat]+' '+p.estilo+' fabrilamp');return w.every(x=>t.includes(x)||t.includes(x.replace(/s$/,'')));});}
+  if(st.q){const w=norm(st.q).split(/\s+/).filter(Boolean);L=L.filter(p=>{const t=norm(p.nombre+' '+p.detalle+' '+CATS[p.cat]+' '+ESTILOS[p.estilo]+' fabrilamp');return w.every(x=>t.includes(x)||t.includes(x.replace(/s$/,'')));});}
   const o=st.orden;L.sort(o==='asc'?(a,b)=>a.precio-b.precio:o==='desc'?(a,b)=>b.precio-a.precio:o==='dto'?(a,b)=>b.dto-a.dto||a.orden-b.orden:(a,b)=>a.orden-b.orden);
-  const tope=st.todo?L.length:(innerWidth<700?10:innerWidth<1200?12:15);
+  const tope=st.todo?L.length:(innerWidth<700?10:innerWidth<1024?12:16);
   $('#verMas').hidden=L.length<=tope;
   $('#verMas').textContent=`Ver ${L.length-tope} productos más`;
   $('#grid').innerHTML=L.length?L.slice(0,tope).map(p=>`<li>${cardHTML(p)}</li>`).join(''):`<li class="vacio">No hemos encontrado nada con «${esc(st.q)}». <a href="https://wa.me/${WA}?text=${encodeURIComponent('Hola, busco '+st.q)}" rel="noopener">Pregúntanos por WhatsApp</a> y lo buscamos en el catálogo completo.</li>`;
-  $('#nRes').textContent=L.length+(L.length===1?' producto':' productos');
+  $('#nRes').textContent=L.length+(L.length===1?' modelo':' modelos');
   const chipAct=st.ofertas?'ofertas':st.cat;
   $$('.chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.chip===chipAct)));
+  const actual=st.q?`«${esc(st.q)}»`:st.estilo?'Estilo '+ESTILOS[st.estilo].toLowerCase():st.ofertas?'Ofertas':st.cat!=='todo'?CATS[st.cat]:'';
+  $('#crumb').innerHTML=`<li><a href="./">Inicio</a></li>`+(actual?`<li>Catálogo</li><li aria-current="page">${actual}</li>`:`<li aria-current="page">Catálogo</li>`);
   const fa=$('#filtroAct');
-  if(st.estilo||st.q){fa.hidden=false;fa.innerHTML=(st.q?`«${esc(st.q)}»`:ESTILOS[st.estilo][1])+' <span aria-hidden="true">✕</span><span class="sr"> Quitar filtro</span>';}else fa.hidden=true;
+  if(st.estilo||st.q){fa.hidden=false;fa.innerHTML=(st.q?`«${esc(st.q)}»`:'Estilo '+ESTILOS[st.estilo].toLowerCase())+' <span aria-hidden="true">✕</span><span class="sr"> Quitar filtro</span>';}else fa.hidden=true;
 }
-function irCatalogo(){const m=$('#menu');if(m.open)m.close();$('#catalogo').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+function irCatalogo(){const m=$('#menu');if(m.open)m.close();$('#catalogo').scrollIntoView({behavior:suave()});}
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-cat],[data-estilo],[data-ofertas],[data-chip],[data-abrir],[data-add],[data-cerrar],[data-cerrar-menu]');
   if(!t)return;
@@ -804,16 +819,7 @@ $$('[data-buscar]').forEach(f=>{
   f.addEventListener('submit',e=>{e.preventDefault();st.q=inp.value.trim();st.todo=false;st.cat='todo';st.estilo=null;st.ofertas=false;render();irCatalogo();});
   inp.addEventListener('input',()=>{$$('[data-buscar] input').forEach(i=>{if(i!==inp)i.value=inp.value});if(!inp.value.trim()&&st.q){st.q='';render();}});
 });
-
-/* Flechas de los raíles */
-$$('.rail-w').forEach(w=>{
-  const r=w.querySelector('.rail'),pv=w.querySelector('.prev'),nx=w.querySelector('.next');
-  if(!pv)return;
-  const upd=()=>{pv.disabled=r.scrollLeft<4;nx.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-4;};
-  pv.addEventListener('click',()=>r.scrollBy({left:-r.clientWidth*.9,behavior:'smooth'}));
-  nx.addEventListener('click',()=>r.scrollBy({left:r.clientWidth*.9,behavior:'smooth'}));
-  r.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
-});
+$('#abrirBuscar').addEventListener('click',e=>{const b=e.currentTarget,m=$('#buscarM'),abrir=m.hidden;m.hidden=!abrir;b.setAttribute('aria-expanded',String(abrir));if(abrir)$('#q2').focus();});
 
 /* Ficha de producto */
 let fichaId=null;
@@ -821,8 +827,9 @@ function abrirFicha(id){
   const p=byId(id);if(!p)return;fichaId=id;
   $('#fichaImg').src=p.img;$('#fichaImg').alt=p.nombre+', '+p.detalle;
   $('#fichaCat').textContent='Fabrilamp · '+CATS[p.cat];
-  $('#fichaT').textContent=p.nombre;$('#fichaDet').textContent=p.detalle;
-  $('#fichaPrecio').innerHTML=precioHTML(p)+(p.dto?`<span class="badge" style="position:static">−${p.dto} %</span>`:'');
+  $('#fichaT').textContent=p.nombre;
+  $('#fichaPrecio').innerHTML=precioHTML(p)+(p.dto?`<span class="badge" aria-hidden="true">−${p.dto} %</span>`:'');
+  $('#fichaDl').innerHTML=`<dt>Marca</dt><dd>Fabrilamp</dd><dt>Categoría</dt><dd>${CATS[p.cat]}</dd><dt>Estilo</dt><dd>${ESTILOS[p.estilo]}</dd><dt>Detalles</dt><dd>${p.detalle.split(' · ').map(esc).join('<br>')}</dd>`;
   $('#fichaWa').href=`https://wa.me/${WA}?text=${encodeURIComponent('Hola, me interesa el '+p.nombre+' ('+eur(p.precio)+') que he visto en la web. ¿Lo tenéis disponible?')}`;
   $('#ficha').showModal();
 }
@@ -835,8 +842,8 @@ function guardar(){try{localStorage.setItem('carmolamp-cesta',JSON.stringify(ces
 function pintarCesta(){
   const ids=Object.keys(cesta).filter(id=>byId(id)&&cesta[id]>0);
   const n=ids.reduce((s,id)=>s+cesta[id],0), tot=ids.reduce((s,id)=>s+cesta[id]*byId(id).precio,0);
-  const b=$('#nCesta');b.hidden=!n;b.textContent=n;
-  $('#abrirCesta .sr').textContent='Abrir mi cesta'+(n?', '+n+(n===1?' producto':' productos'):'');
+  $('#nCesta').textContent=n;
+  $('#nCestaSr').textContent=n?', '+n+(n===1?' producto':' productos'):', vacía';
   $('#cestaB').innerHTML=ids.length?ids.map(id=>{const p=byId(id);return `<div class="lin"><img src="${p.img}" alt=""><div><p>${esc(p.nombre)}<small>${eur(p.precio)}</small></p><div class="qty"><button type="button" data-q="${id}" data-d="-1" aria-label="Quitar una unidad de ${esc(p.nombre)}">−</button><span aria-label="${cesta[id]} unidades">${cesta[id]}</span><button type="button" data-q="${id}" data-d="1" aria-label="Añadir una unidad de ${esc(p.nombre)}">+</button></div></div><button type="button" class="del" data-q="${id}" data-d="x">Quitar</button></div>`}).join(''):'<p class="cesta-vacia">Tu cesta está vacía.</p>';
   $('#cestaF').hidden=!ids.length;
   $('#cestaTot').textContent=eur(tot);
