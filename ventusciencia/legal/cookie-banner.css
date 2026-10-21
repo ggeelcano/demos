@@ -1,0 +1,299 @@
+/* ──────────────────────────────────────────────────────────────
+   GG Elcano · Banner de cookies (AEPD 2023 compliant)
+   3 botones con jerarquía visual equivalente: Aceptar / Rechazar / Configurar.
+   Variables CSS heredables: si el host define --accent, se usa; si no, fallback.
+   Drop-in sin dependencias.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  --ggc-accent: var(--accent, #1a1a1a);
+  --ggc-accent-contrast: var(--white, #ffffff);
+  --ggc-bg: #ffffff;
+  --ggc-text: #1a1a1a;
+  --ggc-muted: #5a5a5a;
+  --ggc-border: #d8d8d8;
+  --ggc-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+  --ggc-radius: 8px;
+}
+
+/* Contenedor raíz — oculto hasta que JS decide mostrarlo */
+.ggc-root {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 99999;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ggc-text);
+  pointer-events: none;
+}
+
+.ggc-root[hidden] { display: none; }
+
+.ggc-banner,
+.ggc-panel {
+  pointer-events: auto;
+  background: var(--ggc-bg);
+  box-shadow: var(--ggc-shadow);
+  border-top: 1px solid var(--ggc-border);
+  padding: 20px clamp(16px, 4vw, 32px);
+  max-width: 100%;
+}
+
+/* Banner simple (vista inicial) */
+.ggc-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.ggc-banner h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--ggc-text);
+}
+
+.ggc-banner p {
+  margin: 0;
+  color: var(--ggc-muted);
+  font-size: 14px;
+}
+
+.ggc-banner p a {
+  color: var(--ggc-text);
+  text-decoration: underline;
+}
+
+.ggc-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Los 3 botones deben tener MISMA jerarquía visual (AEPD 2023). */
+.ggc-btn {
+  appearance: none;
+  border: 1.5px solid var(--ggc-text);
+  background: var(--ggc-bg);
+  color: var(--ggc-text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 11px 20px;
+  border-radius: var(--ggc-radius);
+  cursor: pointer;
+  min-width: 150px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ggc-btn:hover,
+.ggc-btn:focus-visible {
+  background: var(--ggc-text);
+  color: var(--ggc-bg);
+}
+
+.ggc-btn:focus-visible {
+  outline: 2px solid var(--ggc-accent);
+  outline-offset: 2px;
+}
+
+/* Panel de configuración */
+.ggc-panel-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ggc-panel h2 {
+  font-size: 18px;
+  margin: 0 0 14px 0;
+}
+
+.ggc-panel p.ggc-intro {
+  color: var(--ggc-muted);
+  margin: 0 0 18px 0;
+  font-size: 14px;
+}
+
+.ggc-category {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding: 14px 0;
+  border-top: 1px solid var(--ggc-border);
+}
+
+.ggc-category h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.ggc-category p {
+  font-size: 13px;
+  color: var(--ggc-muted);
+  margin: 0;
+}
+
+/* Toggle accesible con checkbox real */
+.ggc-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.ggc-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.ggc-toggle input:disabled {
+  cursor: not-allowed;
+}
+
+.ggc-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #c6c6c6;
+  border-radius: 999px;
+  transition: background-color 0.15s ease;
+}
+
+.ggc-toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.18s ease;
+}
+
+.ggc-toggle input:checked + .ggc-toggle-slider {
+  background: var(--ggc-text);
+}
+
+.ggc-toggle input:checked + .ggc-toggle-slider::before {
+  transform: translateX(20px);
+}
+
+.ggc-toggle input:focus-visible + .ggc-toggle-slider {
+  outline: 2px solid var(--ggc-accent);
+  outline-offset: 2px;
+}
+
+.ggc-toggle input:disabled + .ggc-toggle-slider {
+  opacity: 0.7;
+}
+
+.ggc-panel-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ggc-border);
+}
+
+/* Placeholder para iframe bloqueado */
+.ggc-consent-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 300px;
+  padding: 30px 20px;
+  background: #f4f2ef;
+  border: 1px dashed #bfbab3;
+  border-radius: var(--ggc-radius);
+  text-align: center;
+  color: #3a3530;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.ggc-consent-fallback p {
+  margin: 0;
+  max-width: 420px;
+}
+
+.ggc-consent-fallback button {
+  appearance: none;
+  border: 1.5px solid #3a3530;
+  background: #3a3530;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: var(--ggc-radius);
+  cursor: pointer;
+}
+
+.ggc-consent-fallback button:hover,
+.ggc-consent-fallback button:focus-visible {
+  background: #fff;
+  color: #3a3530;
+}
+
+.ggc-consent-fallback button:focus-visible {
+  outline: 2px solid var(--ggc-accent);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .ggc-banner-inner {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+  .ggc-actions,
+  .ggc-panel-actions {
+    justify-content: stretch;
+  }
+  /* Movil: neutralizar el font boosting de Chrome y garantizar que los tres
+     botones quepan a 390px (se apilan a ancho completo si no caben en fila). */
+  .ggc-root {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  .ggc-banner,
+  .ggc-panel {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .ggc-banner h2 { font-size: 16px; }
+  .ggc-banner p { font-size: 13px; }
+  .ggc-actions .ggc-btn {
+    flex: 1 1 100%;
+    min-width: 0;
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+  .ggc-btn {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 0;
+  }
+}
+
+/* Accesibilidad: respeta reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ggc-toggle-slider,
+  .ggc-toggle-slider::before,
+  .ggc-btn {
+    transition: none;
+  }
+}
