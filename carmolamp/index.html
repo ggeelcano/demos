@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carmolamp · Tienda de lámparas y ventiladores de techo en Navalmoral de la Mata</title>
-<meta name="description" content="Lámparas colgantes, plafones, ventiladores de techo con luz e iluminación exterior. Tienda en Navalmoral de la Mata (Cáceres) desde 2004, con recogida en tienda e instalación a domicilio.">
+<meta name="description" content="Lámparas, plafones, iluminación técnica y de exterior, ventiladores de techo, calefacción, pequeño electrodoméstico, relojes y muebles. Tienda en Navalmoral de la Mata (Cáceres) desde 2004, con recogida en tienda e instalación a domicilio.">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Carmolamp · Lámparas y ventiladores de techo">
 <meta property="og:description" content="La tienda de iluminación de Navalmoral de la Mata, ahora también online.">
-<meta property="og:image" content="https://ggeelcano.github.io/demos/carmolamp/assets/tienda/hero-showroom.jpg?v=3">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/carmolamp/assets/tienda/hero-showroom.jpg?v=4">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="1200">
 <meta name="theme-color" content="#000000">
@@ -452,6 +452,35 @@ body.en-ficha .toast{bottom:88px}
 .toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
 .toast button{background:none;border:0;color:#fff;font-weight:700;text-decoration:underline;padding:4px;white-space:nowrap}
 
+/* Menú por secciones (árbol del croquis) */
+@media(min-width:1200px){
+  .nav-d{position:relative}
+  .nav-d>li.mega{position:static}
+  .dd.mega{left:16px;right:16px;padding:26px 36px 22px}
+  .dd-cols{display:grid;grid-template-columns:repeat(var(--n),max-content);gap:0 56px}
+  .dd.mega .dd-cols{justify-content:space-between}
+  .dd-b+.dd-b{margin-top:18px}
+  .dd a.dd-h{display:block;font:700 14px/1.2 var(--f);text-transform:uppercase;letter-spacing:.03em;padding:4px 0 8px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+  .dd-l{display:grid;grid-auto-flow:column;column-gap:36px}
+  .dd .dd-l a{padding:6px 0 4px;font:600 15px/1.25 var(--f);white-space:nowrap}
+}
+.menu-l>ul>li>details{border-bottom:1px solid #ececec}
+.menu-l summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding-top:3px;font:700 16px/1.2 var(--f);cursor:pointer;list-style:none}
+.menu-l summary::-webkit-details-marker{display:none}
+.menu-l summary::after{content:'';flex:none;width:8px;height:8px;border-right:2px solid #000;border-bottom:2px solid #000;transform:rotate(45deg);margin:-5px 6px 0 12px;transition:transform .2s}
+.menu-l details[open]>summary::after{transform:rotate(-135deg);margin-top:3px}
+.menu-l details ul{padding:0 0 10px 14px}
+.menu-l details a{min-height:40px;font-weight:600;font-size:15px;border-bottom:0}
+.mas-sec{display:grid;gap:10px;padding:0 10px;max-width:1600px;margin:10px auto 0}
+.mas-sec a{display:flex;align-items:center;gap:20px;border:1px solid #000;background:#fff;color:var(--txt);text-decoration:none;padding:20px 22px;min-height:112px}
+.mas-sec a:hover h3{text-decoration:underline}
+.mas-sec svg.i{width:42px;height:42px;stroke-width:1.6}
+.mas-sec h3{font:600 clamp(20px,.6vw + 14px,23px)/1.15 var(--f)}
+.mas-sec p{font-size:15px;line-height:1.4;margin-top:6px}
+@media(min-width:900px){.mas-sec{grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}}
+.vacio a.btn-k{display:inline-flex;margin-top:18px;background:#000;color:#fff;border:1px solid #000;padding:4px 24px 0;text-decoration:none;font-weight:600}
+.vacio a.btn-k:hover{background:#333}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -483,6 +512,8 @@ body.en-ficha .toast{bottom:88px}
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.7 6.7a1.4 1.4 0 0 1-2 0z"/><circle cx="8" cy="8" r="1.4"/></symbol>
   <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></symbol>
   <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3.5 5h17l-6.5 7.5V19l-4 2v-8.5z"/></symbol>
+  <symbol id="i-heat" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="12.5" rx="2"/><path d="M7.5 5v12.5M12 5v12.5M16.5 5v12.5M6 20.5v-3M18 20.5v-3"/></symbol>
+  <symbol id="i-kettle" viewBox="0 0 24 24"><path d="M5.5 20h11l-1.3-9.6A2 2 0 0 0 13.2 8.6H8.8a2 2 0 0 0-2 1.8z"/><path d="M8.5 8.6l.9-3.6h3.2l.9 3.6"/><path d="M15.4 11.5h1.6a2.3 2.3 0 0 1 0 4.6h-1"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.6-.4z"/></symbol>
 </svg>
 
@@ -520,21 +551,7 @@ body.en-ficha .toast{bottom:88px}
     <button class="menu-b" type="button" id="mBtn" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Menú</button>
     <button class="ib" type="button" data-cesta aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-cart"/></svg><span class="n-c" aria-hidden="true">0</span><span class="sr">Carrito<span class="n-sr">, vacío</span></span></button>
   </div>
-  <ul class="wrap nav-d">
-    <li><button type="button" aria-expanded="false" aria-controls="dd1">Iluminación interior<span class="caret" aria-hidden="true"></span></button>
-      <div class="dd" id="dd1"><p>Lámparas por tipo</p>
-        <a href="#/colgantes">Lámparas colgantes</a><a href="#/plafones">Plafones</a><a href="#/sobremesa">Lámparas de mesa y flexos</a><a href="#/pie">Lámparas de pie</a><a href="#/apliques">Apliques de pared</a>
-        <a class="todo" href="#/interior">Ver toda la iluminación interior</a></div></li>
-    <li><a href="#/exterior">Iluminación exterior</a></li>
-    <li><button type="button" aria-expanded="false" aria-controls="dd2">Estilos<span class="caret" aria-hidden="true"></span></button>
-      <div class="dd" id="dd2"><p>Elige tu estilo</p>
-        <a href="#/estilo/moderno">Moderno</a><a href="#/estilo/nordico">Nórdico</a><a href="#/estilo/rustico">Rústico</a><a href="#/estilo/clasico">Clásico</a><a href="#/estilo/infantil">Infantil y juvenil</a></div></li>
-    <li><a href="#/ventiladores">Ventiladores</a></li>
-    <li><a href="#/tecnico">Técnico y LED</a></li>
-    <li><a href="#tienda">Muebles y decoración</a></li>
-    <li><a href="#/ofertas">Ofertas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
+  <ul class="wrap nav-d" id="navD"></ul>
 </nav>
 
 <main id="main">
@@ -600,8 +617,8 @@ body.en-ficha .toast{bottom:88px}
 </section>
 
 <section class="wrap intro" aria-labelledby="h1">
-  <h1 id="h1">Tienda de lámparas, ventiladores de techo y decoración</h1>
-  <p>Te lo ponemos fácil para <b>elegir, iluminar y decorar tu casa</b>: lámparas de techo, de pie y de mesa, apliques de interior y exterior, <b>ventiladores de techo con luz</b> e iluminación LED. Tienda en <b>Navalmoral de la Mata desde 2004</b>, con recogida gratis e instalación a domicilio.</p>
+  <h1 id="h1">Tienda de iluminación, ventilación y muebles</h1>
+  <p>Te lo ponemos fácil para <b>iluminar y amueblar tu casa</b>: lámparas, plafones, flexos e iluminación técnica y de exterior, <b>ventiladores y calefacción</b>, pequeño electrodoméstico, relojes y muebles. Tienda en <b>Navalmoral de la Mata desde 2004</b>, con recogida gratis e instalación a domicilio.</p>
 </section>
 
 <section class="wrap sec" aria-labelledby="h-fav">
@@ -621,14 +638,19 @@ body.en-ficha .toast{bottom:88px}
     <p class="sec-p">Si buscas <b>variedad, calidad y buen precio</b>, aquí tienes por dónde empezar. Y si prefieres verlas en persona, toda la exposición está encendida en la tienda.</p>
   </div>
   <ul class="tiles">
-    <li><a class="tile" href="#/colgantes"><img src="assets/tienda/campana-oro.jpg" width="1600" height="2133" loading="lazy" alt="" style="object-position:50% 42%"><span>Lámparas colgantes</span></a></li>
-    <li><a class="tile" href="#/plafones"><img src="assets/tienda/plafon-espiral.jpg" width="1600" height="1200" loading="lazy" alt=""><span>Plafones</span></a></li>
-    <li><a class="tile cut" href="#/sobremesa"><img src="assets/p/sobremesa-foz.jpg" width="470" height="470" loading="lazy" alt=""><span>Lámparas de mesa</span></a></li>
-    <li><a class="tile" href="#/ventiladores"><img src="assets/tienda/ventilador-led.jpg" width="1600" height="900" loading="lazy" alt=""><span>Ventiladores</span></a></li>
-    <li><a class="tile cut" href="#/exterior"><img src="assets/p/ext-torva.jpg" width="470" height="470" loading="lazy" alt=""><span>Exterior</span></a></li>
-    <li><a class="tile" href="#/tecnico"><img src="assets/tienda/regleta-led.jpg" width="1600" height="2133" loading="lazy" alt=""><span>Iluminación LED</span></a></li>
-    <li><a class="tile cut" href="#tienda"><img src="assets/tienda/cat-muebles.jpg" width="400" height="334" loading="lazy" alt=""><span>Muebles y decoración</span></a></li>
+    <li><a class="tile" href="#/c/decorativa"><img src="assets/tienda/campana-oro.jpg" width="1600" height="2133" loading="lazy" alt="" style="object-position:50% 42%"><span>Iluminación interior</span></a></li>
+    <li><a class="tile" href="#/c/ventilacion"><img src="assets/tienda/ventilador-led.jpg" width="1600" height="900" loading="lazy" alt=""><span>Ventilación</span></a></li>
+    <li><a class="tile" href="#/c/plafones"><img src="assets/tienda/plafon-espiral.jpg" width="1600" height="1200" loading="lazy" alt=""><span>Plafones</span></a></li>
+    <li><a class="tile cut" href="#/c/flexos"><img src="assets/p/flexo-rutilo.jpg" width="470" height="470" loading="lazy" alt=""><span>Flexos</span></a></li>
+    <li><a class="tile cut" href="#/c/exterior"><img src="assets/p/ext-torva.jpg" width="470" height="470" loading="lazy" alt=""><span>Iluminación exterior</span></a></li>
+    <li><a class="tile" href="#/c/tecnica"><img src="assets/tienda/regleta-led.jpg" width="1600" height="2133" loading="lazy" alt=""><span>Iluminación técnica</span></a></li>
+    <li><a class="tile cut" href="#/c/muebles"><img src="assets/tienda/cat-muebles.jpg" width="400" height="334" loading="lazy" alt=""><span>Muebles</span></a></li>
     <li><a class="tile" href="#/ofertas"><img src="assets/tienda/escaparate-negras.jpg" width="1600" height="1200" loading="lazy" alt=""><span>Zona ofertas</span><em class="pct">Hasta −23 %</em></a></li>
+  </ul>
+  <ul class="mas-sec" aria-label="Más secciones">
+    <li><a href="#/c/calefaccion"><svg class="i" aria-hidden="true"><use href="#i-heat"/></svg><div><h3>Calefacción</h3><p>Estufas, radiadores, emisores térmicos, toalleros eléctricos y deshumidificadores.</p></div></a></li>
+    <li><a href="#/c/electrodomestico"><svg class="i" aria-hidden="true"><use href="#i-kettle"/></svg><div><h3>Pequeño electrodoméstico</h3><p>Cafeteras, tostadores, freidoras sin aceite, batidoras y secadores.</p></div></a></li>
+    <li><a href="#/c/relojes"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><div><h3>Relojes</h3><p>Relojes para decorar la casa.</p></div></a></li>
   </ul>
 </section>
 
@@ -638,7 +660,7 @@ body.en-ficha .toast{bottom:88px}
   </div>
   <ul class="est">
     <li class="t1"><a class="tile" href="#/estilo/moderno"><img src="assets/tienda/rincon-cartel.jpg" width="1600" height="2133" loading="lazy" alt="" style="object-position:50% 48%"><span>Moderno</span></a></li>
-    <li class="t2"><a class="tile cut" href="#/estilo/nordico"><img src="assets/p/arce-madera.jpg" width="470" height="470" loading="lazy" alt=""><span>Nórdico</span></a></li>
+    <li class="t2"><a class="tile cut" href="#/estilo/nature"><img src="assets/p/arce-madera.jpg" width="470" height="470" loading="lazy" alt=""><span>Nature</span></a></li>
     <li class="t3"><a class="tile" href="#/estilo/rustico"><img src="assets/tienda/escaparate-vinilo.jpg" width="1600" height="2133" loading="lazy" alt="" style="object-position:20% 28%"><span>Rústico</span></a></li>
     <li class="t4"><a class="tile" href="#/estilo/clasico"><img src="assets/tienda/hero-showroom.jpg" width="1600" height="1200" loading="lazy" alt="" style="object-position:58% 50%"><span>Clásico</span></a></li>
   </ul>
@@ -733,7 +755,7 @@ body.en-ficha .toast{bottom:88px}
         <h2 id="h-filt">Filtrar por</h2>
         <div class="f-g"><h3>Categorías</h3><ul id="fCats"></ul></div>
         <div class="f-g" id="fEstG"><h3>Estilo</h3><ul id="fEst"></ul></div>
-        <div class="f-g"><h3><label for="fMax">Precio</label></h3>
+        <div class="f-g" id="fPreG"><h3><label for="fMax">Precio</label></h3>
           <input type="range" id="fMax" min="10" max="230" step="5" value="230">
           <div class="f-rng"><span>10 €</span><span id="fMaxV">hasta 230 €</span></div>
         </div>
@@ -801,16 +823,19 @@ body.en-ficha .toast{bottom:88px}
       <li><a href="#tienda">La tienda</a></li>
       <li><a href="#opiniones">Opiniones</a></li>
       <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Carmolamp%20Navalmoral%20de%20la%20Mata" rel="noopener">Cómo llegar</a></li>
-      <li><a href="#tienda">Muebles y decoración</a></li>
       <li><a href="#/ofertas">Ofertas de otoño</a></li>
     </ul></nav>
     <nav aria-labelledby="f3"><h2 id="f3">Comprar</h2><ul>
-      <li><a href="#/colgantes">Lámparas colgantes</a></li>
-      <li><a href="#/plafones">Plafones</a></li>
-      <li><a href="#/ventiladores">Ventiladores de techo</a></li>
-      <li><a href="#/sobremesa">Lámparas de mesa</a></li>
-      <li><a href="#/exterior">Iluminación exterior</a></li>
-      <li><a href="#/tecnico">Técnico y LED</a></li>
+      <li><a href="#/c/decorativa">Iluminación decorativa interior</a></li>
+      <li><a href="#/c/plafones">Plafones</a></li>
+      <li><a href="#/c/flexos">Flexos</a></li>
+      <li><a href="#/c/tecnica">Iluminación técnica</a></li>
+      <li><a href="#/c/exterior">Iluminación exterior</a></li>
+      <li><a href="#/c/ventilacion">Ventilación</a></li>
+      <li><a href="#/c/calefaccion">Calefacción</a></li>
+      <li><a href="#/c/electrodomestico">Pequeño electrodoméstico</a></li>
+      <li><a href="#/c/relojes">Relojes</a></li>
+      <li><a href="#/c/muebles">Muebles</a></li>
     </ul></nav>
     <div>
       <nav aria-labelledby="f4"><h2 id="f4">Legal</h2><ul>
@@ -844,58 +869,111 @@ body.en-ficha .toast{bottom:88px}
 
 <dialog id="menu" aria-labelledby="menuT">
   <div class="menu-h"><h2 id="menuT">Menú</h2><button class="ib" type="button" data-cerrar aria-label="Cerrar menú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
-  <nav class="menu-l" aria-label="Menú principal">
-    <h3>Iluminación interior</h3>
-    <ul><li><a href="#/colgantes">Lámparas colgantes</a></li><li><a href="#/plafones">Plafones</a></li><li><a href="#/sobremesa">Lámparas de mesa y flexos</a></li><li><a href="#/pie">Lámparas de pie</a></li><li><a href="#/apliques">Apliques de pared</a></li><li><a href="#/interior">Ver toda la iluminación interior</a></li></ul>
-    <h3>Más categorías</h3>
-    <ul><li><a href="#/exterior">Iluminación exterior</a></li><li><a href="#/ventiladores">Ventiladores de techo</a></li><li><a href="#/tecnico">Técnico y LED</a></li><li><a href="#/ofertas">Ofertas de otoño</a></li><li><a href="#/todo">Todo el catálogo</a></li></ul>
-    <h3>Estilos</h3>
-    <ul><li><a href="#/estilo/moderno">Moderno</a></li><li><a href="#/estilo/nordico">Nórdico</a></li><li><a href="#/estilo/rustico">Rústico</a></li><li><a href="#/estilo/clasico">Clásico</a></li><li><a href="#/estilo/infantil">Infantil y juvenil</a></li></ul>
-    <h3>Carmolamp</h3>
-    <ul><li><a href="#tienda">La tienda y el horario</a></li><li><a href="#tienda">Muebles y decoración</a></li><li><a href="#opiniones">Opiniones</a></li><li><a href="tel:+34927530333">Llamar al 927 530 333</a></li><li><a href="https://wa.me/34633216193" rel="noopener">WhatsApp 633 21 61 93</a></li></ul>
-  </nav>
+  <nav class="menu-l" id="menuL" aria-label="Menú principal"></nav>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"><span id="toastT"></span><button type="button" id="toastVer">Ver carrito</button></div>
 
 <script>
 const P=[{"id":"ivanna-2l-niquel","nombre":"Colgante Ivanna 2 luces","detalle":"Níquel y madera blanca · Ø50 cm","cat":"colgantes","estilo":"nordico","precio":75.46,"antes":null},{"id":"tunez-estampado","nombre":"Colgante Túnez","detalle":"Blanco estampado · E27 · Ø40 cm","cat":"colgantes","estilo":"clasico","precio":60.38,"antes":null},{"id":"karla-topo","nombre":"Colgante Karla regulable","detalle":"Topo y beis · 2×E27","cat":"colgantes","estilo":"moderno","precio":63.43,"antes":null},{"id":"colgante-yute","nombre":"Colgante Yute","detalle":"Pantalla de cuerda natural · E27","cat":"colgantes","estilo":"rustico","precio":34.51,"antes":null},{"id":"lumiere-negro","nombre":"Colgante Lumiere","detalle":"Negro · E27 · Ø39 cm","cat":"colgantes","estilo":"moderno","precio":54.32,"antes":null},{"id":"maldivas-verde","nombre":"Colgante Maldivas","detalle":"Verde claro · Ø40 cm","cat":"colgantes","estilo":"nordico","precio":40.41,"antes":null},{"id":"arce-madera","nombre":"Colgante Arce","detalle":"Madera natural · E27","cat":"colgantes","estilo":"nordico","precio":57.75,"antes":null},{"id":"ekaterina","nombre":"Colgante Ekaterina","detalle":"Acabado cuero · E27","cat":"colgantes","estilo":"clasico","precio":52.21,"antes":62.98},{"id":"plafon-natasha-72w","nombre":"Plafón LED Natasha 72 W","detalle":"Cañizo · 3 tonos de luz · Ø49 cm","cat":"plafones","estilo":"rustico","precio":89.21,"antes":102.16},{"id":"plafon-chacho","nombre":"Plafón Chacho 3 focos","detalle":"Níquel · 3×GU10","cat":"plafones","estilo":"moderno","precio":35.71,"antes":null},{"id":"plafon-elara-129w","nombre":"Plafón LED Elara 129 W","detalle":"Cromo · mando y memoria · Ø58 cm","cat":"plafones","estilo":"moderno","precio":138.23,"antes":null},{"id":"plafon-tatiana-96w","nombre":"Plafón LED Tatiana 96 W","detalle":"Blanco y madera oscura · Ø60 cm","cat":"plafones","estilo":"nordico","precio":143.91,"antes":null},{"id":"plafon-cooper","nombre":"Plafón Cooper","detalle":"Cuero · 3×E14 · Ø32 cm","cat":"plafones","estilo":"clasico","precio":50.94,"antes":null},{"id":"vent-esparta","nombre":"Ventilador Esparta","detalle":"Aspas retráctiles · luz LED · motor DC · 107 cm","cat":"ventiladores","estilo":"moderno","precio":80.82,"antes":null},{"id":"vent-hayate","nombre":"Ventilador Hayate","detalle":"3 aspas roble · motor DC · 120 cm","cat":"ventiladores","estilo":"rustico","precio":92.23,"antes":105.62},{"id":"vent-nalon","nombre":"Ventilador Nalón","detalle":"Aspas desplegables · luz LED · motor DC","cat":"ventiladores","estilo":"moderno","precio":49.88,"antes":60.16},{"id":"vent-moda-canizo","nombre":"Ventilador Moda 72 W","detalle":"Blanco y cañizo · 7.200 lm · 108 cm","cat":"ventiladores","estilo":"rustico","precio":122.54,"antes":null},{"id":"vent-gladiator","nombre":"Ventilador Gladiator","detalle":"Negro y madera · 59 W · 107 cm","cat":"ventiladores","estilo":"rustico","precio":136.58,"antes":null},{"id":"vent-anuska","nombre":"Ventilador Anuska","detalle":"8 aspas negro y oro · 60 W","cat":"ventiladores","estilo":"clasico","precio":162.93,"antes":191.68},{"id":"vent-dani","nombre":"Ventilador Dani","detalle":"Blanco · 59 W · 106 cm · con mando","cat":"ventiladores","estilo":"moderno","precio":63.19,"antes":null},{"id":"vent-pitufo","nombre":"Ventilador Pitufo RGB","detalle":"Luz de colores · blanco y haya · 107 cm","cat":"ventiladores","estilo":"infantil","precio":110.89,"antes":129.53},{"id":"vent-oporto","nombre":"Ventilador Oporto","detalle":"Negro y marrón · 46 W · temporizador","cat":"ventiladores","estilo":"clasico","precio":222.89,"antes":null},{"id":"sobremesa-bergen","nombre":"Lámpara de mesa Bergen","detalle":"Nórdica · blanco y madera","cat":"sobremesa","estilo":"nordico","precio":71.17,"antes":null},{"id":"sobremesa-nueva-york","nombre":"Lámpara de mesa Nueva York","detalle":"Cuero · pantalla beis · 44 cm","cat":"sobremesa","estilo":"clasico","precio":44.69,"antes":54.59},{"id":"sobremesa-foz","nombre":"Lámpara de mesa Foz","detalle":"Cerámica blanca y negra · 41 cm","cat":"sobremesa","estilo":"moderno","precio":31.79,"antes":null},{"id":"sobremesa-etna","nombre":"Lámpara de mesa Etna","detalle":"Cromo · 1 luz","cat":"sobremesa","estilo":"clasico","precio":18.49,"antes":24.14},{"id":"flexo-rutilo","nombre":"Flexo Rutilo","detalle":"Rojo · articulado","cat":"sobremesa","estilo":"infantil","precio":20.09,"antes":null},{"id":"pie-delza","nombre":"Lámpara de pie Delza","detalle":"Blanco y madera natural · 147 cm","cat":"pie","estilo":"nordico","precio":59.36,"antes":null},{"id":"pie-myrian","nombre":"Lámpara de pie Myrian","detalle":"Cuero y madera oscura","cat":"pie","estilo":"clasico","precio":105.8,"antes":null},{"id":"pie-maldivas","nombre":"Lámpara de pie Maldivas","detalle":"Rosa · E27","cat":"pie","estilo":"infantil","precio":61.93,"antes":null},{"id":"aplique-tatiana","nombre":"Aplique Tatiana","detalle":"Blanco y madera · pantalla textil","cat":"apliques","estilo":"nordico","precio":35.35,"antes":43.99},{"id":"ext-comino","nombre":"Aplique exterior Comino","detalle":"Oro viejo · E27","cat":"exterior","estilo":"clasico","precio":31.49,"antes":null},{"id":"ext-torva","nombre":"Aplique exterior Torva","detalle":"Antracita · E27","cat":"exterior","estilo":"moderno","precio":43.58,"antes":null},{"id":"ext-mentol","nombre":"Aplique exterior Mentol","detalle":"Gris · E27","cat":"exterior","estilo":"moderno","precio":31.48,"antes":33.68},{"id":"farola-terva","nombre":"Farola Terva 3 luces","detalle":"Antracita · IP44 · 190 cm","cat":"exterior","estilo":"clasico","precio":116.41,"antes":null},{"id":"farola-auriga","nombre":"Farola Auriga 3 luces","detalle":"Aluminio negro · IP44 · 220 cm","cat":"exterior","estilo":"clasico","precio":162.34,"antes":null},{"id":"solar-kira","nombre":"Aplique solar Kira","detalle":"Sensor de movimiento · IP65 · 450 lm","cat":"exterior","estilo":"moderno","precio":13.97,"antes":null},{"id":"down-gabro","nombre":"Downlight Gabro 24 W","detalle":"Superficie · 3 tonos · Ø29 cm","cat":"tecnico","estilo":"moderno","precio":19,"antes":24.8},{"id":"down-tanzanita","nombre":"Downlight Tanzanita 9 W","detalle":"Empotrable · 6500 K · corte 13 cm","cat":"tecnico","estilo":"moderno","precio":8.35,"antes":null},{"id":"down-diorita","nombre":"Downlight Diorita 18 W","detalle":"Superficie níquel · 3 tonos · Ø22 cm","cat":"tecnico","estilo":"moderno","precio":22.07,"antes":null}];
-P.forEach((p,i)=>{p.img='assets/p/'+p.id+'.jpg';p.orden=i;p.dto=p.antes?Math.round((1-p.precio/p.antes)*100):0;p.ah=p.antes?Math.round((p.antes-p.precio)*100)/100:0;});
-const CATS={colgantes:'Lámparas colgantes',plafones:'Plafones',ventiladores:'Ventiladores de techo',sobremesa:'Lámparas de mesa',pie:'Lámparas de pie',apliques:'Apliques de pared',exterior:'Iluminación exterior',tecnico:'Técnico y LED'};
-const TIPO={colgantes:'Lámpara colgante',plafones:'Plafón de techo',ventiladores:'Ventilador de techo',sobremesa:'Lámpara de mesa',pie:'Lámpara de pie',apliques:'Aplique de pared',exterior:'Iluminación exterior',tecnico:'Downlight LED'};
-const INTERIOR=['colgantes','plafones','sobremesa','pie','apliques'];
-const TECHO=['colgantes','plafones','ventiladores','apliques'];
-const ESTILOS={moderno:'Moderno',nordico:'Nórdico',rustico:'Rústico',clasico:'Clásico',infantil:'Infantil y juvenil'};
+
+/* Árbol de categorías: el de Fabrilamp según el croquis de Carlos (23-oct) y las secciones de Gabar en Muebles */
+const slug=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const N=(k,t,n,h)=>({k,t,n:n||t,h:h||[]});
+const hojas=(lista,pre)=>lista.map(t=>N(slug(t),t,pre?pre+' '+t:t));
+const TREE=[
+  N('decorativa','Iluminación decorativa interior','Iluminación decorativa interior',[
+    N('lamparas','Lámparas','Lámparas de techo',[N('clasica','Clásicas','Lámparas clásicas'),N('moderna','Modernas','Lámparas modernas'),N('rustica','Rústicas','Lámparas rústicas'),N('infantil','Infantiles','Lámparas infantiles'),N('nature','Nature','Lámparas nature')]),
+    N('colgantes','Colgantes','Lámparas colgantes',[N('clasico','Clásicos','Colgantes clásicos'),N('moderno','Modernos','Colgantes modernos'),N('rustico','Rústicos','Colgantes rústicos'),N('infantil','Infantiles','Colgantes infantiles'),N('nature','Nature','Colgantes nature'),N('accesorios','Accesorios','Accesorios para colgantes')]),
+    N('sobremesas','Sobremesas','Lámparas de sobremesa',[N('clasico','Clásicas','Sobremesas clásicas'),N('moderno','Modernas','Sobremesas modernas'),N('rustico','Rústicas','Sobremesas rústicas'),N('infantil','Infantiles','Sobremesas infantiles'),N('decoracion','Decoración','Sobremesas de decoración'),N('nature','Nature','Sobremesas nature'),N('accesorios','Accesorios','Accesorios de sobremesa')]),
+    N('apliques','Apliques','Apliques de pared',[N('clasico','Clásicos','Apliques clásicos'),N('moderno','Modernos','Apliques modernos'),N('rustico','Rústicos','Apliques rústicos'),N('nature','Nature','Apliques nature'),N('infantil','Infantiles','Apliques infantiles'),N('accesorios','Accesorios','Accesorios de aplique')]),
+    N('pies-salon','Pies de salón','Pies de salón',[N('clasico','Clásicos','Pies de salón clásicos'),N('moderno','Modernos','Pies de salón modernos'),N('nature','Nature','Pies de salón nature'),N('accesorios','Accesorios','Accesorios de pie de salón')]),
+    N('focos','Focos')
+  ]),
+  N('plafones','Plafones','Plafones de techo',[N('moderno','Modernos','Plafones modernos'),N('pantalla','De pantalla','Plafones de pantalla'),N('clasico','Clásicos','Plafones clásicos'),N('rustico','Rústicos','Plafones rústicos')]),
+  N('flexos','Flexos','Flexos',[N('bombilla','De bombilla','Flexos de bombilla'),N('led','LED','Flexos LED')]),
+  N('tecnica','Iluminación técnica','Iluminación técnica',[
+    N('downlights','Downlights','Downlights',[N('superficie','De superficie','Downlights de superficie'),N('empotrados','Empotrados','Downlights empotrados'),N('accesorios','Accesorios','Accesorios para downlights')]),
+    N('paneles','Paneles','Paneles LED'),
+    N('proyectores','Proyectores','Proyectores',[N('led','Proyector LED','Proyectores LED'),N('solar','Proyector LED solar','Proyectores LED solares'),N('sensor','Proyector LED con sensor','Proyectores LED con sensor'),N('faroles','Faroles LED')]),
+    N('empotrables','Empotrables','Empotrables',[N('bombilla','De bombilla','Empotrables de bombilla'),N('led','LED integrado','Empotrables de LED integrado')]),
+    N('campanas','Campanas','Campanas industriales'),
+    N('focos-carriles','Focos y carriles'),
+    N('emergencia','Luces de emergencia'),
+    N('estancas','Pantallas estancas'),
+    N('regletas','Regletas')
+  ]),
+  N('exterior','Iluminación exterior','Iluminación exterior',[
+    N('apliques','Apliques de exterior','Apliques de exterior',[N('clasico','Clásicos','Apliques de exterior clásicos'),N('moderno','Modernos','Apliques de exterior modernos'),N('solar','Solares','Apliques solares')]),
+    N('colgantes','Colgantes de exterior'),
+    N('sobremuro','Sobremuros','Sobremuros de exterior'),
+    N('farolas','Farolas','Farolas de exterior'),
+    N('suelo','De suelo','Iluminación de suelo')
+  ]),
+  N('ventilacion','Ventilación','Ventilación',[
+    N('aspas-tradicionales','Aspas tradicionales','Ventiladores de techo con aspas tradicionales'),
+    N('aspas-retractiles','Aspas retráctiles','Ventiladores de techo con aspas retráctiles'),
+    N('plafon','Ventilador plafón','Ventiladores plafón'),
+    N('pie','Ventilador de pie','Ventiladores de pie'),
+    N('sobremesa-pared','Sobremesa y pared','Ventiladores de sobremesa y pared'),
+    N('nebulizadores','Nebulizadores y climatizadores'),
+    N('industrial','Ventilador industrial','Ventiladores industriales')
+  ]),
+  N('calefaccion','Calefacción','Calefacción',hojas(['Estufas y braseros','Termoventiladores','Convectores','Termoventiladores cerámicos','Radiadores de aceite','Radiadores de mica','Emisores térmicos','Split','Toalleros eléctricos','Tendederos eléctricos','Calefacción textil','Deshumidificadores','Calefacción industrial','Calefacción exterior'])),
+  N('electrodomestico','Pequeño electrodoméstico','Pequeño electrodoméstico',hojas(['Tostador','Hervidor de agua','Cafetera','Exprimidor','Batidora de vaso','Batidora de mano','Sandwichera','Grill y plancha','Freidora sin aceite / Mini horno','Báscula de cocina','Hornillos','Amasadora','Báscula de baño','Secador'])),
+  N('relojes','Relojes'),
+  N('muebles','Muebles','Muebles',[
+    N('deco-vive','Deco + Vive (interior)','Muebles de interior y decoración',hojas(['Alfombras','Aparadores','Bancos','Banquetas','Cabezales','Cojines','Cómodas','Consolas','Escritorios','Espejos','Estantes y vitrinas','Lámparas','Mecedoras','Mesas','Mesas auxiliares','Mesas de centro','Mesitas de noche','Muebles de TV','Pufs','Relojes','Sillas','Sillones','Sillones relax','Sinfonieres','Taburetes'])),
+    N('out','Out (exterior)','Muebles de exterior',hojas(['Sims','Delta','Cube','White','Tape','Corner','Star','Wick','Cires','Legno','Kurve','Atesso','Tonda','Strixe','Soffice','Croci','Piazza','Bianco','Relax','Sabbia','Dualis'],'Colección'))
+  ])
+];
+const NODO={};
+(function indexar(lista,padre){for(const n of lista){n.padre=padre||null;n.p=padre?padre.p+'/'+n.k:n.k;NODO[n.p]=n;indexar(n.h,n);}})(TREE);
 const DESC={
-  colgantes:'Lámparas de techo colgantes de una o varias luces, en cristal, madera, cuerda o metal. Para el salón, el comedor y la cocina.',
-  plafones:'Plafones LED y de varias luces que van pegados al techo. Muchos traen mando y tres tonos de luz.',
-  ventiladores:'Ventiladores de techo con luz, mando y motor silencioso. Te los instalamos en casa.',
-  sobremesa:'Lámparas de mesa, de mesilla y flexos para leer o trabajar.',
-  pie:'Lámparas de pie para dar luz de ambiente al salón o a un rincón de lectura.',
-  apliques:'Apliques de pared para pasillos, cabeceros y escaleras.',
-  exterior:'Apliques, farolas y luces solares para fachadas, porches y jardines.',
-  tecnico:'Downlights empotrables y de superficie para cocinas, oficinas y locales.',
-  interior:'Colgantes, plafones, lámparas de mesa y de pie y apliques para cada habitación de la casa.',
+  decorativa:'Lámparas de techo, colgantes, sobremesas, apliques y pies de salón en estilo clásico, moderno, rústico, infantil y nature.',
+  'decorativa/colgantes':'Lámparas de techo colgantes de una o varias luces, en cristal, madera, cuerda o metal. Para el salón, el comedor y la cocina.',
+  'decorativa/sobremesas':'Lámparas de mesa y de mesilla para el dormitorio, el salón o el despacho.',
+  'decorativa/apliques':'Apliques de pared para pasillos, cabeceros y escaleras.',
+  'decorativa/pies-salon':'Lámparas de pie para dar luz de ambiente al salón o a un rincón de lectura.',
+  plafones:'Plafones que van pegados al techo, buena opción para techos bajos, pasillos y dormitorios. Muchos traen mando y tres tonos de luz.',
+  flexos:'Flexos de bombilla y LED para estudiar o trabajar con buena luz.',
+  tecnica:'Downlights, paneles, proyectores, empotrables y campanas para cocinas, garajes, oficinas y locales.',
+  exterior:'Apliques, colgantes, sobremuros, farolas e iluminación de suelo para fachadas, porches y jardines.',
+  ventilacion:'Ventiladores de techo con aspas tradicionales o retráctiles, ventiladores plafón, de pie y de sobremesa, nebulizadores y climatizadores. Los de techo te los instalamos en casa.',
+  calefaccion:'Estufas, radiadores, emisores térmicos, toalleros eléctricos y deshumidificadores para el invierno.',
+  electrodomestico:'Cafeteras, tostadores, freidoras sin aceite, batidoras, básculas y secadores.',
+  relojes:'Relojes para decorar la casa.',
+  muebles:'Muebles de interior, muebles auxiliares y colecciones de exterior de Gabar.',
+  'muebles/deco-vive':'Aparadores, mesas, sillas, cómodas, espejos, alfombras y el resto de muebles de interior y decoración.',
+  'muebles/out':'Colecciones de muebles para terraza y jardín.',
   ofertas:'Modelos rebajados hasta un 23 % mientras queden unidades.',
   todo:'Una parte de nuestro catálogo. Si buscas un modelo que no ves, escríbenos por WhatsApp y lo pedimos al proveedor.'
 };
+const RUTA={'ivanna-2l-niquel':'decorativa/colgantes/nature','tunez-estampado':'decorativa/colgantes/clasico','karla-topo':'decorativa/colgantes/moderno','colgante-yute':'decorativa/colgantes/rustico','lumiere-negro':'decorativa/colgantes/moderno','maldivas-verde':'decorativa/colgantes/nature','arce-madera':'decorativa/colgantes/nature','ekaterina':'decorativa/colgantes/clasico','plafon-natasha-72w':'plafones/rustico','plafon-chacho':'plafones/moderno','plafon-elara-129w':'plafones/moderno','plafon-tatiana-96w':'plafones/pantalla','plafon-cooper':'plafones/clasico','vent-esparta':'ventilacion/aspas-retractiles','vent-hayate':'ventilacion/aspas-tradicionales','vent-nalon':'ventilacion/aspas-retractiles','vent-moda-canizo':'ventilacion/aspas-retractiles','vent-gladiator':'ventilacion/aspas-retractiles','vent-anuska':'ventilacion/plafon','vent-dani':'ventilacion/aspas-retractiles','vent-pitufo':'ventilacion/aspas-retractiles','vent-oporto':'ventilacion/aspas-tradicionales','sobremesa-bergen':'decorativa/sobremesas/nature','sobremesa-nueva-york':'decorativa/sobremesas/clasico','sobremesa-foz':'decorativa/sobremesas/moderno','sobremesa-etna':'decorativa/sobremesas/clasico','flexo-rutilo':'flexos/bombilla','pie-delza':'decorativa/pies-salon/nature','pie-myrian':'decorativa/pies-salon/clasico','pie-maldivas':'decorativa/pies-salon','aplique-tatiana':'decorativa/apliques/nature','ext-comino':'exterior/apliques/clasico','ext-torva':'exterior/apliques/moderno','ext-mentol':'exterior/apliques/moderno','farola-terva':'exterior/farolas','farola-auriga':'exterior/farolas','solar-kira':'exterior/apliques/solar','down-gabro':'tecnica/downlights/superficie','down-tanzanita':'tecnica/downlights/empotrados','down-diorita':'tecnica/downlights/superficie'};
+P.forEach((p,i)=>{p.img='assets/p/'+p.id+'.jpg';p.orden=i;p.dto=p.antes?Math.round((1-p.precio/p.antes)*100):0;p.ah=p.antes?Math.round((p.antes-p.precio)*100)/100:0;if(p.estilo==='nordico')p.estilo='nature';p.ruta=RUTA[p.id];});
+const ESTILOS={moderno:'Moderno',nature:'Nature',rustico:'Rústico',clasico:'Clásico',infantil:'Infantil'};
 const EST_TXT={
   clasico:'Pantallas de tela, bronce y acabados en cuero. Lámparas que encajan en salones de siempre y en casas de pueblo.',
   moderno:'Metal negro, cromo y líneas limpias. Plafones LED y colgantes para cocinas y salones actuales.',
   rustico:'Cuerda, cañizo y madera natural. Dan una luz cálida y quedan bien con vigas y paredes de piedra.',
-  nordico:'Madera clara, blancos y verdes suaves. Luz tranquila para dormitorios y salones con mucha claridad.',
+  nature:'Madera clara, fibras naturales y colores suaves. Luz tranquila para dormitorios y salones con mucha claridad.',
   infantil:'Colores alegres y luz de colores para habitaciones de niños y jóvenes.'
 };
 const USO={
-  colgantes:'Pensada para el salón, el comedor o la cocina.',
+  'decorativa/colgantes':'Pensada para el salón, el comedor o la cocina.',
+  'decorativa/sobremesas':'Para la mesilla, el escritorio o un aparador.',
+  'decorativa/pies-salon':'Da luz de ambiente al salón o a un rincón de lectura sin hacer obra.',
+  'decorativa/apliques':'Se fija a la pared y queda bien en pasillos, cabeceros y escaleras.',
   plafones:'Va pegado al techo, así que es buena opción para techos bajos, pasillos y dormitorios.',
-  ventiladores:'Fresco en verano y luz todo el año en el mismo aparato. Si quieres, te lo instalamos en casa.',
-  sobremesa:'Para la mesilla, el escritorio o un aparador.',
-  pie:'Da luz de ambiente al salón o a un rincón de lectura sin hacer obra.',
-  apliques:'Se fija a la pared y queda bien en pasillos, cabeceros y escaleras.',
+  flexos:'Para estudiar o trabajar con la luz donde la necesitas.',
+  ventilacion:'Fresco en verano y luz todo el año en el mismo aparato. Si quieres, te lo instalamos en casa.',
   exterior:'Para fachadas, porches y jardines.',
-  tecnico:'Luz técnica para cocinas, oficinas y locales.'
+  tecnica:'Luz técnica para cocinas, oficinas y locales.'
 };
+const TIPOS={'decorativa/lamparas':'Lámpara de techo','decorativa/colgantes':'Lámpara colgante','decorativa/sobremesas':'Lámpara de sobremesa','decorativa/apliques':'Aplique de pared','decorativa/pies-salon':'Lámpara de pie','decorativa/focos':'Foco',plafones:'Plafón de techo',flexos:'Flexo','tecnica/downlights':'Downlight',tecnica:'Iluminación técnica','exterior/apliques':'Aplique de exterior','exterior/farolas':'Farola de exterior',exterior:'Iluminación exterior','ventilacion/aspas-tradicionales':'Ventilador de techo','ventilacion/aspas-retractiles':'Ventilador de techo','ventilacion/plafon':'Ventilador de techo',ventilacion:'Ventilador'};
+const TECHO=['decorativa/lamparas','decorativa/colgantes','decorativa/apliques','plafones','ventilacion/aspas-tradicionales','ventilacion/aspas-retractiles','ventilacion/plafon'];
+const VENT_TECHO=['ventilacion/aspas-tradicionales','ventilacion/aspas-retractiles','ventilacion/plafon'];
+const ALIAS={colgantes:'c/decorativa/colgantes',plafones:'c/plafones',ventiladores:'c/ventilacion',sobremesa:'c/decorativa/sobremesas',pie:'c/decorativa/pies-salon',apliques:'c/decorativa/apliques',exterior:'c/exterior',tecnico:'c/tecnica',interior:'c/decorativa','estilo/nordico':'estilo/nature'};
 const FAV=['vent-esparta','plafon-natasha-72w','colgante-yute','arce-madera','sobremesa-foz','vent-hayate','lumiere-negro','plafon-tatiana-96w','ext-torva','tunez-estampado','vent-dani','ivanna-2l-niquel'];
 const WA='34633216193';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -906,6 +984,13 @@ const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 const suave=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
 const ico=id=>`<svg class="i" aria-hidden="true"><use href="#${id}"/></svg>`;
 const waUrl=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const enRuta=(p,r)=>p.ruta===r||p.ruta.startsWith(r+'/');
+const deRuta=r=>P.filter(p=>enRuta(p,r));
+const cadena=r=>{const c=[];for(let n=NODO[r];n;n=n.padre)c.unshift(n);return c;};
+const buscaMapa=(p,M)=>{const c=cadena(p.ruta);for(let i=c.length;i>0;i--){const v=M[c[i-1].p];if(v)return v;}return '';};
+const tipoDe=p=>buscaMapa(p,TIPOS)||NODO[p.ruta].n;
+const instalable=p=>TECHO.some(r=>enRuta(p,r));
+const ventTecho=p=>VENT_TECHO.some(r=>enRuta(p,r));
 
 function precioHTML(p){
   if(!p.antes)return `<strong>${eur(p.precio)}</strong>`;
@@ -915,13 +1000,35 @@ function cardHTML(p){
   return `<article class="card">
     <div class="card-img"><img src="${p.img}" width="470" height="470" loading="lazy" alt=""></div>
     <h3><a href="#/p/${p.id}">${esc(p.nombre)}</a></h3>
-    <p class="pr">${precioHTML(p)}</p>${p.cat==='ventiladores'?`<span class="tag">${ico('i-tool')}Te lo instalamos</span>`:''}
+    <p class="pr">${precioHTML(p)}</p>${ventTecho(p)?`<span class="tag">${ico('i-tool')}Te lo instalamos</span>`:''}
     <button class="add" type="button" data-add="${p.id}" aria-label="Añadir ${esc(p.nombre)} al carrito">${ico('i-cart')}Añadir al carrito</button>
   </article>`;
 }
 const lis=L=>L.map(p=>`<li>${cardHTML(p)}</li>`).join('');
 $('#cFav').innerHTML=lis(FAV.map(byId));
 $('#cOf').innerHTML=lis(P.filter(p=>p.antes).sort((a,b)=>b.dto-a.dto||a.orden-b.orden));
+
+/* Menús a partir del árbol */
+function listaDD(r,cols){const n=NODO[r];if(!n.h.length)return '';return `<ul class="dd-l" style="grid-template-rows:repeat(${Math.ceil(n.h.length/(cols||1))},auto)">${n.h.map(h=>`<li><a href="#/c/${h.p}">${esc(h.t)}</a></li>`).join('')}</ul>`;}
+function bloqueDD(b){const [r,cols]=Array.isArray(b)?b:[b,1];return `<div class="dd-b"><a class="dd-h" href="#/c/${r}">${esc(NODO[r].t)}</a>${listaDD(r,cols)}</div>`;}
+const MENU=[
+  {t:'Iluminación',id:'ddIl',cols:[['decorativa'],['plafones','flexos'],['tecnica'],['exterior']]},
+  {t:'Ventilación',id:'ddVe',cols:[['ventilacion']]},
+  {t:'Calefacción',id:'ddCa',cols:[[['calefaccion',2]]]},
+  {t:'Pequeño electrodoméstico',id:'ddEl',cols:[[['electrodomestico',2]]]},
+  {t:'Relojes',href:'#/c/relojes'},
+  {t:'Muebles',id:'ddMu',cols:[[['muebles/deco-vive',3]],[['muebles/out',3]]]},
+  {t:'Ofertas',href:'#/ofertas'},
+  {t:'Contacto',href:'#contacto'}
+];
+$('#navD').innerHTML=MENU.map(m=>m.href?`<li><a href="${m.href}">${m.t}</a></li>`:`<li${m.cols.length>1?' class="mega"':''}><button type="button" aria-expanded="false" aria-controls="${m.id}">${m.t}<span class="caret" aria-hidden="true"></span></button><div class="dd${m.cols.length>1?' mega':''}" id="${m.id}"><div class="dd-cols" style="--n:${m.cols.length}">${m.cols.map(col=>`<div class="dd-col">${col.map(bloqueDD).join('')}</div>`).join('')}</div></div></li>`).join('');
+const detM=r=>{const n=NODO[r];if(!n.h.length)return `<li><a href="#/c/${r}">${esc(n.t)}</a></li>`;return `<li><details><summary>${esc(n.t)}</summary><ul><li><a href="#/c/${r}">Ver todo</a></li>${n.h.map(h=>`<li><a href="#/c/${h.p}">${esc(h.t)}</a></li>`).join('')}</ul></details></li>`;};
+$('#menuL').innerHTML=`<h3>Iluminación</h3><ul>${['decorativa','plafones','flexos','tecnica','exterior'].map(detM).join('')}</ul>
+  <h3>Ventilación y hogar</h3><ul>${['ventilacion','calefaccion','electrodomestico','relojes'].map(detM).join('')}</ul>
+  <h3>Muebles</h3><ul>${['muebles/deco-vive','muebles/out'].map(detM).join('')}</ul>
+  <h3>Más</h3><ul><li><a href="#/ofertas">Ofertas de otoño</a></li><li><a href="#/todo">Todo el catálogo</a></li></ul>
+  <h3>Estilos</h3><ul>${Object.keys(ESTILOS).map(k=>`<li><a href="#/estilo/${k}">${ESTILOS[k]}</a></li>`).join('')}</ul>
+  <h3>Carmolamp</h3><ul><li><a href="#tienda">La tienda y el horario</a></li><li><a href="#opiniones">Opiniones</a></li><li><a href="tel:+34927530333">Llamar al 927 530 333</a></li><li><a href="https://wa.me/34633216193" rel="noopener">WhatsApp 633 21 61 93</a></li></ul>`;
 
 /* Carrusel principal */
 (()=>{
@@ -943,12 +1050,13 @@ $('#cOf').innerHTML=lis(P.filter(p=>p.antes).sort((a,b)=>b.dto-a.dto||a.orden-b.
 /* Carruseles de productos */
 function initCar(car){
   const tr=car.querySelector('.car-track'),dots=car.querySelector('.car-dots'),prev=car.querySelector('.prev'),next=car.querySelector('.next');
-  const paso=()=>{const li=tr.children[0];return li?li.getBoundingClientRect().width+(parseFloat(getComputedStyle(tr).columnGap)||0):tr.clientWidth;};
+  const hueco=()=>parseFloat(getComputedStyle(tr).columnGap)||0;
+  const paso=()=>{const li=tr.children[0];return li?li.getBoundingClientRect().width+hueco():tr.clientWidth;};
   const upd=()=>{
     if(!tr.clientWidth)return;
     const max=tr.scrollWidth-tr.clientWidth,s=paso();
     prev.disabled=tr.scrollLeft<=2;next.disabled=tr.scrollLeft>=max-2;
-    const vis=Math.max(1,Math.round((tr.clientWidth+(parseFloat(getComputedStyle(tr).columnGap)||0))/s)),tot=Math.max(1,tr.children.length-vis+1),pos=Math.min(tot-1,Math.round(tr.scrollLeft/s));
+    const vis=Math.max(1,Math.round((tr.clientWidth+hueco())/s)),tot=Math.max(1,tr.children.length-vis+1),pos=Math.min(tot-1,Math.round(tr.scrollLeft/s));
     if(dots.children.length!==tot)dots.innerHTML='<span></span>'.repeat(tot);
     [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===pos));
   };
@@ -975,6 +1083,7 @@ function mostrar(v){
 function hashActual(){try{return decodeURIComponent(location.hash);}catch(e){return location.hash;}}
 function ruta(ev){
   const h=hashActual(),antes=vista;
+  if(h.startsWith('#/')&&ALIAS[h.slice(2)]){location.replace('#/'+ALIAS[h.slice(2)]);return;}
   if(h.startsWith('#/p/')&&byId(h.slice(4)))verFicha(byId(h.slice(4)));
   else if(h.startsWith('#/')&&h.length>2)verLista(h.slice(2));
   else{
@@ -990,10 +1099,10 @@ addEventListener('hashchange',ruta);
 
 /* Listado */
 const lst={key:null,estilo:null,max:null,orden:'rel'};
-function buscar(q){const w=norm(q).split(/\s+/).filter(Boolean);return P.filter(p=>{const t=norm(p.nombre+' '+p.detalle+' '+CATS[p.cat]+' '+TIPO[p.cat]+' '+ESTILOS[p.estilo]+' fabrilamp');return w.every(x=>t.includes(x)||t.includes(x.replace(/e?s$/,'')));});}
+function buscar(q){const w=norm(q).split(/\s+/).filter(Boolean);return P.filter(p=>{const t=norm(p.nombre+' '+p.detalle+' '+cadena(p.ruta).map(n=>n.t+' '+n.n).join(' ')+' '+tipoDe(p)+' '+ESTILOS[p.estilo]+' fabrilamp');return w.every(x=>t.includes(x)||t.includes(x.replace(/e?s$/,'')));});}
 function baseLista(key){
-  if(CATS[key])return{t:CATS[key],d:DESC[key],L:P.filter(p=>p.cat===key),miga:INTERIOR.includes(key)?[['Iluminación interior','#/interior'],[CATS[key]]]:[[CATS[key]]]};
-  if(key==='interior')return{t:'Iluminación interior',d:DESC.interior,L:P.filter(p=>INTERIOR.includes(p.cat)),miga:[['Iluminación interior']]};
+  if(key.startsWith('c/')&&NODO[key.slice(2)]){const r=key.slice(2),n=NODO[r],c=cadena(r);
+    return{t:n.n,d:DESC[r]||`${n.n}. Si no encuentras el modelo que buscas, pregúntanos por WhatsApp y lo pedimos al proveedor.`,L:deRuta(r),miga:c.map((x,i)=>i<c.length-1?[x.t,'#/c/'+x.p]:[x.t]),nodo:n};}
   if(key==='ofertas')return{t:'Ofertas de otoño',d:DESC.ofertas,L:P.filter(p=>p.antes),miga:[['Ofertas']]};
   if(key.startsWith('estilo/')&&ESTILOS[key.slice(7)]){const e=key.slice(7);return{t:'Estilo '+ESTILOS[e].toLowerCase(),d:EST_TXT[e],L:P.filter(p=>p.estilo===e),miga:[['Estilos'],[ESTILOS[e]]],estilo:e};}
   if(key.startsWith('buscar/')){const q=key.slice(7);return{t:`Búsqueda: «${q}»`,d:'Resultados en nuestro catálogo online. Si no ves lo que buscas, pregúntanos: tenemos mucho más en la tienda.',L:buscar(q),miga:[['Búsqueda']],q};}
@@ -1005,7 +1114,7 @@ function verLista(key){
   mostrar('list');pintarLista();
 }
 function pintarLista(){
-  const b=baseLista(lst.key);
+  const b=baseLista(lst.key),n=b.nodo;
   const tope=Math.max(10,Math.ceil(Math.max(0,...b.L.map(p=>p.precio))/5)*5);
   const rng=$('#fMax');rng.max=tope;rng.value=lst.max??tope;
   $('#fMaxV').textContent='hasta '+(lst.max??tope)+' €';
@@ -1013,13 +1122,21 @@ function pintarLista(){
   const o=lst.orden;L.sort(o==='asc'?(a,c)=>a.precio-c.precio:o==='desc'?(a,c)=>c.precio-a.precio:o==='dto'?(a,c)=>c.dto-a.dto||a.orden-c.orden:(a,c)=>a.orden-c.orden);
   $('#lT').textContent=b.t;$('#lD').textContent=b.d;
   $('#lMiga').innerHTML=migaHTML(b.miga);
-  const subs=INTERIOR.includes(lst.key)||lst.key==='interior'?INTERIOR.map(k=>[k,CATS[k]]):[...Object.entries(CATS),['ofertas','Ofertas']];
-  $('#lSubs').innerHTML=subs.map(([k,l])=>`<a href="#/${k}"${k===lst.key?' aria-current="page"':''}>${l}</a>`).join('');
-  $('#lN').textContent=`Hay ${L.length} producto${L.length===1?'':'s'}.`;
-  $('#lGrid').innerHTML=L.length?lis(L):(b.q&&!b.L.length?`<li class="vacio">No hemos encontrado nada con «${esc(b.q)}». <a href="${waUrl('Hola, busco '+b.q)}" rel="noopener">Pregúntanos por WhatsApp</a> y lo buscamos en el catálogo completo.</li>`:`<li class="vacio">No hay modelos con estos filtros. <button type="button" data-reset>Quitar filtros</button></li>`);
-  $('#fCats').innerHTML=[...Object.entries(CATS),['ofertas','Ofertas']].map(([k,l])=>`<li><a href="#/${k}"${k===lst.key?' aria-current="page"':''}>${l}<small>${k==='ofertas'?P.filter(p=>p.antes).length:P.filter(p=>p.cat===k).length}</small></a></li>`).join('');
+  let grupo=TREE,actual=null;
+  if(n){if(n.h.length)grupo=n.h;else{grupo=n.padre?n.padre.h:TREE;actual=n.p;}}
+  const pastilla=x=>`<a href="#/c/${x.p}"${x.p===actual?' aria-current="page"':''}>${esc(x.t)}</a>`;
+  $('#lSubs').innerHTML=grupo.map(pastilla).join('')+(n?'':`<a href="#/ofertas"${lst.key==='ofertas'?' aria-current="page"':''}>Ofertas</a>`);
+  $('#fCats').innerHTML=grupo.map(x=>{const k=deRuta(x.p).length;return `<li><a href="#/c/${x.p}"${x.p===actual?' aria-current="page"':''}>${esc(x.t)}${k?`<small>${k}</small>`:''}</a></li>`;}).join('');
+  $('#lN').textContent=b.L.length?`Hay ${L.length} producto${L.length===1?'':'s'}.`:'Catálogo en preparación.';
+  let vacio;
+  if(b.q&&!b.L.length)vacio=`<li class="vacio">No hemos encontrado nada con «${esc(b.q)}». <a href="${waUrl('Hola, busco '+b.q)}" rel="noopener">Pregúntanos por WhatsApp</a> y lo buscamos en el catálogo completo.</li>`;
+  else if(!b.L.length)vacio=`<li class="vacio"><b>Estamos cargando el catálogo de esta sección.</b><br>Mientras tanto, pregúntanos por WhatsApp por el modelo que buscas y te decimos precio y plazo.<br><a class="btn-k" href="${waUrl('Hola, busco algo de '+b.t.toLowerCase()+'.')}" rel="noopener">${ico('i-wa')}Preguntar por WhatsApp</a></li>`;
+  else vacio=`<li class="vacio">No hay modelos con estos filtros. <button type="button" data-reset>Quitar filtros</button></li>`;
+  $('#lGrid').innerHTML=L.length?lis(L):vacio;
   $('#fEstG').hidden=!!b.estilo||!b.L.length;
-  $('#fEst').innerHTML=Object.keys(ESTILOS).map(k=>{const n=b.L.filter(p=>p.estilo===k).length;return n?`<li><button type="button" data-fest="${k}" aria-pressed="${lst.estilo===k}">${ESTILOS[k]}<small>${n}</small></button></li>`:'';}).join('');
+  $('#fEst').innerHTML=Object.keys(ESTILOS).map(k=>{const c=b.L.filter(p=>p.estilo===k).length;return c?`<li><button type="button" data-fest="${k}" aria-pressed="${lst.estilo===k}">${ESTILOS[k]}<small>${c}</small></button></li>`:'';}).join('');
+  $('#fPreG').hidden=!b.L.length;
+  $('#lOrden').closest('label').hidden=!b.L.length;
   $('#fReset').hidden=!(lst.estilo||lst.max!=null);
 }
 $('#fMax').addEventListener('input',e=>{const v=+e.target.value;lst.max=v>=+e.target.max?null:v;pintarLista();});
@@ -1032,19 +1149,20 @@ $('#fReset').addEventListener('click',quitarFiltros);
 let fichaId=null;
 function verFicha(p){
   fichaId=p.id;mostrar('prod');
-  $('#pMiga').innerHTML=migaHTML([[CATS[p.cat],'#/'+p.cat],[p.nombre]]);
+  const c=cadena(p.ruta),hoja=c[c.length-1],padre=c.length>1?c[c.length-2].p:c[0].p;
+  $('#pMiga').innerHTML=migaHTML([...c.map(x=>[x.t,'#/c/'+x.p]),[p.nombre]]);
   $('#pImg').src=p.img;$('#pImg').alt=p.nombre+', '+p.detalle.replace(/ · /g,', ');
   $('#pT').textContent=p.nombre;
-  $('#pFeat').innerHTML=`<li>${ico('i-tag')}Marca<b>Fabrilamp</b></li><li>${ico('i-bulb')}Tipo<b>${TIPO[p.cat]}</b></li><li>${ico('i-half')}Estilo<b>${ESTILOS[p.estilo]}</b></li>`;
+  $('#pFeat').innerHTML=`<li>${ico('i-tag')}Marca<b>Fabrilamp</b></li><li>${ico('i-bulb')}Tipo<b>${tipoDe(p)}</b></li><li>${ico('i-half')}Estilo<b>${ESTILOS[p.estilo]}</b></li>`;
   $('#pPr').innerHTML=(p.antes?`<s><span class="sr">Antes </span>${eur(p.antes)}</s>`:'')+`<strong>${p.antes?'<span class="sr">Ahora </span>':''}${eur(p.precio)}</strong><span class="iva">IVA incluido</span>`+(p.antes?`<span class="ahorro">−${eur(p.ah)}<span class="sr"> de descuento</span></span>`:'');
-  $('#pOk').innerHTML=`<span class="ok v">Recogida gratis</span>`+(TECHO.includes(p.cat)?`<span class="ok a">Instalación a domicilio</span>`:'');
+  $('#pOk').innerHTML=`<span class="ok v">Recogida gratis</span>`+(instalable(p)?`<span class="ok a">Instalación a domicilio</span>`:'');
   $('#pWa').href=waUrl(`Hola, me interesa el ${p.nombre} (${eur(p.precio)}) que he visto en la web. ¿Lo tenéis disponible?`);
-  $('#pMeta').innerHTML=`<p><b>Categoría</b> <a href="#/${p.cat}">${CATS[p.cat]}</a></p><p><b>Marca</b> Fabrilamp</p>`;
-  $('#pDesc').textContent=`${p.nombre} de Fabrilamp, de estilo ${ESTILOS[p.estilo].toLowerCase()}: ${p.detalle.replace(/ · /g,', ').replace(/^./,c=>c.toLowerCase())}. ${USO[p.cat]} Si tienes dudas con la medida o el tono de luz, mándanos una foto de la habitación por WhatsApp y te aconsejamos.`;
-  $('#pSpec').innerHTML=`<dt>Tipo de producto</dt><dd>${TIPO[p.cat]}</dd><dt>Marca</dt><dd>Fabrilamp</dd><dt>Estilo</dt><dd>${ESTILOS[p.estilo]}</dd><dt>Acabado y medidas</dt><dd>${p.detalle.split(' · ').map(esc).join('<br>')}</dd><dt>Recogida</dt><dd>Gratis en la tienda de Navalmoral</dd>`+(TECHO.includes(p.cat)?`<dt>Instalación</dt><dd>A domicilio, pregúntanos el precio</dd>`:'');
-  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id);
-  const mas=P.filter(x=>x.cat!==p.cat&&x.estilo===p.estilo);
-  $('#cRel').innerHTML=lis([...rel,...mas].slice(0,10));
+  $('#pMeta').innerHTML=`<p><b>Categoría</b> <a href="#/c/${hoja.p}">${esc(hoja.n)}</a></p><p><b>Marca</b> Fabrilamp</p>`;
+  $('#pDesc').textContent=[`${p.nombre} de Fabrilamp, de estilo ${ESTILOS[p.estilo].toLowerCase()}: ${p.detalle.replace(/ · /g,', ').replace(/^./,x=>x.toLowerCase())}.`,buscaMapa(p,USO),'Si tienes dudas con la medida o el tono de luz, mándanos una foto de la habitación por WhatsApp y te aconsejamos.'].filter(Boolean).join(' ');
+  $('#pSpec').innerHTML=`<dt>Tipo de producto</dt><dd>${tipoDe(p)}</dd><dt>Categoría</dt><dd>${c.map(x=>esc(x.t)).join(' › ')}</dd><dt>Marca</dt><dd>Fabrilamp</dd><dt>Estilo</dt><dd>${ESTILOS[p.estilo]}</dd><dt>Acabado y medidas</dt><dd>${p.detalle.split(' · ').map(esc).join('<br>')}</dd><dt>Recogida</dt><dd>Gratis en la tienda de Navalmoral</dd>`+(instalable(p)?`<dt>Instalación</dt><dd>A domicilio, pregúntanos el precio</dd>`:'');
+  const otros=P.filter(x=>x.id!==p.id);
+  const rel=[...otros.filter(x=>x.ruta===p.ruta),...otros.filter(x=>x.ruta!==p.ruta&&enRuta(x,padre)),...otros.filter(x=>!enRuta(x,padre)&&enRuta(x,c[0].p))];
+  $('#cRel').innerHTML=lis((rel.length?rel:otros.filter(x=>x.estilo===p.estilo)).slice(0,10));
   const car=$('#cRel').closest('.car');$('#cRel').scrollLeft=0;if(car._upd)car._upd();
   $('#bbPr').textContent=eur(p.precio);
 }
