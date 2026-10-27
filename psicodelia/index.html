@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta para Psicodelia</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Tres mejoras para la ficha de producto y la compra desde el móvil en psicodelia.es, con un ejemplo hecho con vuestros productos.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Propuesta para Psicodelia">
+<meta property="og:description" content="Tres mejoras para la ficha y la compra desde el móvil, con un ejemplo hecho con vuestros productos.">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/psicodelia/">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/psicodelia/capturas/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#401c17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Magic Retro";src:url(fonts/magic_retro-webfont.woff2) format("woff2");font-display:swap}
+:root{--marron:#401c17;--fondo:#f9ecec;--linea:#ecd9d6;--mostaza:#f5b83d;--amarillo:#f9e45b;--rojo:#c9473f;--oliva:#6b6838;--oliva2:#585529;--salvia:#8b8f6a;--tierra:#6b4219;--suave:#7a5a55;--retro:"Magic Retro",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Rubik,system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--marron);background:var(--fondo);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.cab{background:var(--marron);color:#fff}
+.cab .logo{height:64px;background:url(img/logo.jpg) 45% center/auto 100% no-repeat}
+.rayas{height:7px;background:linear-gradient(90deg,var(--tierra) 0 16.6%,var(--amarillo) 0 33.3%,var(--mostaza) 0 50%,var(--rojo) 0 66.6%,var(--oliva) 0 83.3%,var(--salvia) 0)}
+.envoltura{max-width:880px;margin:0 auto;padding:0 16px}
+.intro{padding:28px 0 8px}
+.etiqueta{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--oliva)}
+h1{font-family:var(--retro);font-weight:400;font-size:34px;line-height:1.1;margin:6px 0 14px}
+.intro p{max-width:640px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:30px;background:var(--oliva);color:#fff;font-family:var(--retro);font-size:22px;text-decoration:none;margin-top:18px}
+.btn:hover{background:var(--oliva2)}
+.btn svg{width:22px;height:22px}
+.mejora{background:#fff;border-radius:20px;padding:22px 16px 18px;margin:22px 0}
+.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--marron);color:#fff;font-weight:700;font-size:16px;margin-bottom:8px}
+h2{font-family:var(--retro);font-weight:400;font-size:28px;line-height:1.15;margin-bottom:10px}
+.mejora p{margin-bottom:10px;color:#4f2c26}
+.mejora p b{color:var(--marron)}
+.hoy{border-left:4px solid var(--rojo);padding-left:12px}
+.prop{border-left:4px solid var(--oliva);padding-left:12px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.par figure a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--linea);background:var(--fondo)}
+.par figcaption{font-size:14px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.par figcaption i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dato{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 4px}
+.dato div{flex:1 1 140px;background:var(--fondo);border-radius:12px;padding:10px 12px}
+.dato b{display:block;font-size:24px;line-height:1.1}
+.dato span{font-size:14px;color:var(--suave)}
+.como{padding:6px 0 10px}
+.como ul{list-style:none;margin:10px 0}
+.como li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--linea)}
+.como li:last-child{border:0}
+.como li::before{content:"";position:absolute;left:4px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--mostaza)}
+.firma{background:var(--marron);color:#f3e3df;margin-top:26px;padding:26px 0 34px;font-size:16px}
+.firma b{font-family:var(--retro);font-weight:400;font-size:26px;color:#fff;display:block;margin-bottom:4px}
+.firma a{color:var(--mostaza)}
+@media (min-width:760px){
+  h1{font-size:46px}
+  .mejora{padding:30px 30px 26px}
+  h2{font-size:34px}
+  .par{max-width:640px;gap:22px}
+}
+</style>
+</head>
+<body>
+<header class="cab"><div class="logo" role="img" aria-label="Psicodelia"></div><div class="rayas"></div></header>
+
+<main class="envoltura">
+  <section class="intro">
+    <div class="etiqueta">Propuesta para psicodelia.es</div>
+    <h1>Tres mejoras para la ficha y la compra desde el móvil</h1>
+    <p>El 9 de octubre hicimos una compra de prueba en vuestra tienda con un móvil normal, con los <b>Zapatos Sendra 530 Pete</b>. Estas son las tres cosas que cambiaríamos. En cada una tenéis cómo se ve hoy y cómo quedaría.</p>
+    <a class="btn" href="ficha.html?p=m1">Probar el ejemplo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </section>
+
+  <section class="mejora">
+    <span class="num">1</span>
+    <h2>El botón de compra siempre a mano</h2>
+    <p class="hoy"><b>Hoy.</b> La cabecera y el buscador ocupan un tercio de la pantalla y no se mueven al bajar. En la primera vista solo caben la foto y el nombre; el precio asoma por abajo. Para llegar a «Añadir al carrito» hay que bajar casi dos pantallas.</p>
+    <p class="prop"><b>Propuesta.</b> Cabecera fina con la lupa en un icono, precio y opciones justo debajo de la foto y una barra fija abajo con el precio y el botón «Añadir».</p>
+    <div class="dato">
+      <div><b>300 px</b><span>de cabecera fija hoy (de 844 de pantalla)</span></div>
+      <div><b>1.450 px</b><span>hasta el botón de compra hoy</span></div>
+    </div>
+    <div class="par">
+      <figure><figcaption><i style="background:var(--rojo)"></i>Hoy</figcaption><a href="capturas/antes-1.jpg" target="_blank"><img src="capturas/antes-1.jpg" alt="Ficha actual en el móvil: cabecera grande y el precio al borde de la pantalla" loading="lazy"></a></figure>
+      <figure><figcaption><i style="background:var(--oliva)"></i>Propuesta</figcaption><a href="capturas/despues-1.jpg" target="_blank"><img src="capturas/despues-1.jpg" alt="Ficha propuesta: precio, colores y barra de compra en la primera pantalla" loading="lazy"></a></figure>
+    </div>
+  </section>
+
+  <section class="mejora">
+    <span class="num">2</span>
+    <h2>Colores, tallas y plazo claros</h2>
+    <p class="hoy"><b>Hoy.</b> Cada color es un producto aparte. El 530 Pete negro y el Mad Dog Tang no se enlazan entre sí, y lo mismo pasa con otros Sendra (4133 Cuervo, 3241 Cuervo Flora, 3565 Steel) y con prendas como la camisa Malina o el chaleco King. La talla sale con el 39 ya marcado: si el cliente no lo cambia, se lleva un 39. Y el plazo de entrega va debajo del botón, en rojo y en mayúsculas, hablando de la saturación de la fábrica.</p>
+    <p class="prop"><b>Propuesta.</b> Miniaturas para cambiar de color sin salir de la ficha y tallas en botones sin ninguna marcada; si no eliges, te lo pide. Al lado, un enlace «¿Dudas con la talla?» que abre vuestro WhatsApp. El plazo va junto al botón y en tono normal, separando lo que tenéis en tienda (24/48 h) de lo que pedís a fábrica.</p>
+    <div class="par">
+      <figure><figcaption><i style="background:var(--rojo)"></i>Hoy</figcaption><a href="capturas/antes-2.jpg" target="_blank"><img src="capturas/antes-2.jpg" alt="Ficha actual: talla 39 preseleccionada y aviso de plazo en mayúsculas debajo del botón" loading="lazy"></a></figure>
+      <figure><figcaption><i style="background:var(--oliva)"></i>Propuesta</figcaption><a href="capturas/despues-2.jpg" target="_blank"><img src="capturas/despues-2.jpg" alt="Ficha propuesta: miniaturas de color, tallas en botones y plazo junto al botón" loading="lazy"></a></figure>
+    </div>
+  </section>
+
+  <section class="mejora">
+    <span class="num">3</span>
+    <h2>Una cesta que confirma y un pedido más corto</h2>
+    <p class="hoy"><b>Hoy.</b> Al pulsar «Añadir al carrito» no aparece ningún aviso; solo cambia el número del icono. En el carrito, un pedido de 238 € muestra «Transporte 6,99 €» aunque la web anuncia envío gratis desde 150 €. Aunque luego se descuente, ese cargo aparece justo antes de pagar. El pedido tiene cuatro pasos y el primero pide tratamiento (Sr./Sra.), contraseña y dos casillas de privacidad.</p>
+    <p class="prop"><b>Propuesta.</b> Al añadir se abre la cesta con el producto, lo que falta para el envío gratis y el total real. El pedido cabe en una página con datos, dirección y pago, sin crear cuenta y con una sola casilla.</p>
+    <div class="par">
+      <figure><figcaption><i style="background:var(--rojo)"></i>Hoy</figcaption><a href="capturas/antes-3.jpg" target="_blank"><img src="capturas/antes-3.jpg" alt="Carrito actual: transporte de 6,99 euros en un pedido de 238 euros" loading="lazy"></a></figure>
+      <figure><figcaption><i style="background:var(--oliva)"></i>Propuesta</figcaption><a href="capturas/despues-3.jpg" target="_blank"><img src="capturas/despues-3.jpg" alt="Cesta propuesta: confirmación, envío gratis y total" loading="lazy"></a></figure>
+    </div>
+  </section>
+
+  <section class="como">
+    <h2>Cómo se haría</h2>
+    <ul>
+      <li>Sobre vuestra PrestaShop actual, con el mismo dominio, los mismos productos y los mismos pagos (Redsys y PayPal). No hay que cambiar de plataforma.</li>
+      <li>El ejemplo está hecho con vuestras fotos, precios y textos. La cesta y el pedido son de prueba y no cobran nada.</li>
+      <li>Si os encaja, os pasamos presupuesto cerrado con plazos.</li>
+    </ul>
+    <a class="btn" href="ficha.html?p=m1">Probar el ejemplo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </section>
+</main>
+
+<footer class="firma">
+  <div class="envoltura">
+    <b>Josu Garciandia</b>
+    G&amp;G Elcano · Bizkaia<br>
+    WhatsApp <a href="https://wa.me/34614752539">614 75 25 39</a> · <a href="mailto:josugarciandia@ggelcano.com">josugarciandia@ggelcano.com</a>
+  </div>
+</footer>
+</body>
+</html>

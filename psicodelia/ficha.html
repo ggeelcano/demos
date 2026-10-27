@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Psicodelia · Ejemplo de ficha</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#401c17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Magic Retro";src:url(fonts/magic_retro-webfont.woff2) format("woff2");font-display:swap}
+:root{
+  --marron:#401c17;--marron2:#2a110d;--fondo:#f9ecec;--blanco:#fff;--linea:#ecd9d6;
+  --mostaza:#f5b83d;--amarillo:#f9e45b;--rojo:#c9473f;--oliva:#6b6838;--oliva2:#585529;--salvia:#8b8f6a;--tierra:#6b4219;
+  --texto:#401c17;--suave:#7a5a55;--ok:#2f7a45;
+  --retro:"Magic Retro",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Rubik,system-ui,sans-serif;font-size:16px;line-height:1.45;color:var(--texto);background:var(--fondo);overflow-x:hidden}
+img{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:inherit}
+.oculto{display:none!important}
+
+/* Cabecera fina */
+.top{position:sticky;top:0;z-index:30;background:var(--marron);color:#fff}
+.top .barra{display:flex;align-items:center;gap:4px;height:56px;padding:0 6px;max-width:1200px;margin:0 auto}
+.ico{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;flex:none;position:relative}
+.ico svg{width:24px;height:24px}
+.logo{flex:1;height:44px;display:block;background:url(img/logo.jpg) 45% center/auto 100% no-repeat;min-width:0}
+.cuenta{position:absolute;top:4px;right:2px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--rojo);color:#fff;font-size:12px;font-weight:600;line-height:19px;text-align:center}
+.rayas{height:6px;background:linear-gradient(90deg,var(--tierra) 0 16.6%,var(--amarillo) 0 33.3%,var(--mostaza) 0 50%,var(--rojo) 0 66.6%,var(--oliva) 0 83.3%,var(--salvia) 0)}
+
+/* Buscador desplegable */
+.buscador{position:fixed;inset:0;z-index:60;background:rgba(42,17,13,.55)}
+.buscador .caja{background:var(--fondo);padding:12px 12px 8px;max-height:85vh;overflow:auto}
+.buscador .fila{display:flex;gap:8px;align-items:center}
+.buscador input{flex:1;min-width:0;height:46px;border:2px solid var(--marron);border-radius:12px;padding:0 14px;background:#fff;font-size:16px}
+.resultados a{display:flex;gap:12px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--linea);text-decoration:none}
+.resultados img{width:56px;height:56px;object-fit:cover;border-radius:8px;background:#fff}
+.resultados b{display:block;font-weight:500;font-size:15px}
+.resultados span{font-size:14px;color:var(--suave)}
+
+/* Menú */
+.menu{position:fixed;inset:0;z-index:60;background:rgba(42,17,13,.55)}
+.menu nav{width:min(86vw,340px);height:100%;background:var(--marron);color:#fff;padding:12px 0;overflow:auto}
+.menu nav a{display:block;padding:14px 22px;font-family:var(--retro);font-size:24px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
+.menu nav small{display:block;font-family:Rubik,sans-serif;font-size:13px;opacity:.7}
+
+main{max-width:1200px;margin:0 auto}
+.migas{font-size:13px;color:var(--suave);padding:10px 16px}
+.migas a{text-decoration:none}
+
+/* Ficha */
+.ficha{display:block}
+.galeria{position:relative;background:#fff}
+.pista{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.pista::-webkit-scrollbar{display:none}
+.pista img{flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:contain;scroll-snap-align:center;background:#fff}
+.contador{position:absolute;right:12px;bottom:12px;background:rgba(64,28,23,.82);color:#fff;font-size:13px;padding:3px 10px;border-radius:20px}
+.puntos{display:flex;gap:6px;justify-content:center;padding:10px 0 0;background:var(--fondo)}
+.puntos i{width:7px;height:7px;border-radius:50%;background:#d8c3bf}
+.puntos i.on{background:var(--marron)}
+
+.datos{padding:14px 16px 0}
+.marca{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--oliva)}
+h1{font-family:var(--retro);font-weight:400;font-size:28px;line-height:1.12;margin:2px 0 8px}
+.precio{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px}
+.precio b{font-size:26px;font-weight:700}
+.precio s{color:var(--suave);font-size:16px}
+.dto{background:var(--rojo);color:#fff;font-size:13px;font-weight:600;padding:2px 8px;border-radius:6px}
+.iva{font-size:13px;color:var(--suave);margin-top:2px}
+
+.opcion{margin-top:18px}
+.opcion-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:15px;margin-bottom:8px}
+.opcion-h a{font-size:14px;color:var(--oliva2);text-underline-offset:3px;white-space:nowrap}
+.colores{display:flex;gap:10px;flex-wrap:wrap}
+.color{width:64px;border-radius:10px;border:2px solid transparent;padding:2px;background:#fff}
+.color img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:7px}
+.color[aria-pressed=true]{border-color:var(--marron)}
+.tallas{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px}
+.talla{height:46px;border-radius:10px;border:1.5px solid #cdb5b0;background:#fff;font-weight:500;font-size:15px}
+.talla[aria-pressed=true]{background:var(--marron);border-color:var(--marron);color:#fff}
+.aviso-talla{color:var(--rojo);font-size:14px;font-weight:500;margin-top:8px}
+@keyframes sacude{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sacude{animation:sacude .3s 2}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:54px;border-radius:30px;background:var(--oliva);color:#fff;font-family:var(--retro);font-size:22px;letter-spacing:.01em;text-decoration:none}
+.btn:active{background:var(--oliva2)}
+.btn.claro{background:#fff;color:var(--marron);border:2px solid var(--marron);font-family:Rubik,sans-serif;font-size:16px;font-weight:600}
+.anadir{margin-top:18px}
+
+.puntos-info{list-style:none;margin:16px 0 4px;background:#fff;border-radius:14px;padding:4px 14px}
+.puntos-info li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea);font-size:15px}
+.puntos-info li:last-child{border:0}
+.puntos-info svg{width:22px;height:22px;flex:none;margin-top:1px;color:var(--oliva)}
+.puntos-info small{display:block;color:var(--suave);font-size:14px}
+.ok{color:var(--ok);font-weight:600}
+.progreso{height:6px;border-radius:4px;background:#efe1de;margin-top:7px;overflow:hidden}
+.progreso i{display:block;height:100%;background:var(--mostaza);border-radius:4px}
+
+details{background:#fff;border-radius:14px;margin-top:10px}
+summary{list-style:none;padding:15px 14px;font-weight:600;display:flex;justify-content:space-between;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;font-weight:400}
+details[open] summary::after{content:"−"}
+details p{padding:0 14px 15px;font-size:15px;color:#5a3a35}
+
+.mas{padding:28px 0 10px}
+.mas h2,.listado h2{font-family:var(--retro);font-weight:400;font-size:26px;padding:0 16px 10px}
+.carril{display:flex;gap:12px;overflow-x:auto;padding:0 16px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.carril::-webkit-scrollbar{display:none}
+.tarjeta{flex:0 0 42%;max-width:220px;scroll-snap-align:start;text-decoration:none;background:#fff;border-radius:12px;overflow:hidden}
+.tarjeta img{aspect-ratio:1;object-fit:cover;width:100%}
+.tarjeta div{padding:8px 10px 10px;font-size:14px}
+.tarjeta b{display:block;font-weight:500;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tarjeta .p{font-weight:600;margin-top:4px}
+.tarjeta .p s{font-weight:400;color:var(--suave);font-size:13px;margin-left:4px;white-space:nowrap}
+.motas{display:flex;gap:4px;margin-top:6px}
+.motas i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+
+.listado{padding:6px 0 10px}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+.rejilla .tarjeta{max-width:none}
+.filtros{display:flex;gap:8px;overflow-x:auto;padding:0 16px 12px;scrollbar-width:none}
+.filtros a{flex:none;padding:8px 14px;border-radius:20px;background:#fff;border:1.5px solid #cdb5b0;font-size:14px;text-decoration:none}
+.filtros a.on{background:var(--marron);color:#fff;border-color:var(--marron)}
+
+footer{background:var(--marron);color:#f3e3df;margin-top:30px;padding:22px 16px 110px;font-size:14px;text-align:center}
+footer b{font-family:var(--retro);font-weight:400;font-size:24px;display:block;color:#fff}
+footer a{color:var(--mostaza)}
+
+/* Barra fija de compra */
+.fija{position:fixed;left:0;right:0;bottom:0;z-index:25;background:#fff;box-shadow:0 -4px 16px rgba(64,28,23,.14);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .2s}
+.fija.ver{transform:none}
+.fija .info{min-width:0;flex:1}
+.fija .info b{display:block;font-size:18px}
+.fija .info span{display:block;font-size:13px;color:var(--suave);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fija .btn{width:auto;flex:none;padding:0 22px;height:50px;font-size:19px}
+
+/* Cesta */
+.velo{position:fixed;inset:0;z-index:50;background:rgba(42,17,13,.5)}
+.panel{position:fixed;z-index:55;left:0;right:0;bottom:0;max-height:88vh;background:var(--fondo);border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+.panel-h{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 10px 18px}
+.panel-h h2{font-family:var(--retro);font-weight:400;font-size:26px}
+.panel-c{overflow:auto;padding:0 16px}
+.panel-p{padding:12px 16px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);background:var(--fondo)}
+.anadido{display:flex;gap:8px;align-items:center;background:#e4f1e6;color:var(--ok);font-weight:600;font-size:15px;padding:10px 12px;border-radius:12px;margin-bottom:12px}
+.linea{display:flex;gap:12px;background:#fff;border-radius:12px;padding:10px;margin-bottom:10px}
+.linea img{width:76px;height:76px;object-fit:cover;border-radius:8px;flex:none}
+.linea .t{flex:1;min-width:0;font-size:14px}
+.linea .t b{display:block;font-weight:500;font-size:15px;line-height:1.25}
+.linea .t span{color:var(--suave)}
+.linea .abajo{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.stepper{display:flex;align-items:center;border:1.5px solid #cdb5b0;border-radius:10px;overflow:hidden}
+.stepper button{width:36px;height:34px;font-size:18px}
+.stepper span{min-width:26px;text-align:center;color:var(--texto)!important}
+.quitar{font-size:13px;text-decoration:underline;color:var(--suave)}
+.totales{font-size:15px}
+.totales div{display:flex;justify-content:space-between;padding:3px 0}
+.totales .total{font-size:18px;font-weight:700;padding-top:6px}
+.envio-msg{font-size:14px;margin:4px 0 10px}
+.panel-p .btn+.btn{margin-top:8px}
+.vacia{padding:30px 0;text-align:center;color:var(--suave)}
+
+/* Pedido en una página */
+.pedido{position:fixed;inset:0;z-index:70;background:var(--fondo);overflow:auto}
+.pedido .top .barra{justify-content:space-between}
+.pedido .top h2{font-family:var(--retro);font-weight:400;font-size:24px}
+.pedido form{max-width:560px;margin:0 auto;padding:14px 16px 40px}
+.resumen{background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:15px}
+.resumen summary{padding:0;font-weight:500}
+.resumen summary::after{content:none}
+.bloque{background:#fff;border-radius:14px;padding:14px;margin-bottom:14px}
+.bloque h3{font-size:16px;font-weight:600;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.bloque h3 i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--marron);color:#fff;font-size:13px;display:grid;place-items:center}
+.campo{display:block;margin-bottom:10px}
+.campo span{display:block;font-size:14px;margin-bottom:4px;color:#5a3a35}
+.campo input{width:100%;height:48px;border:1.5px solid #cdb5b0;border-radius:10px;padding:0 12px;font-size:16px;background:#fff}
+.campo input:focus{outline:2px solid var(--mostaza);border-color:var(--marron)}
+.dos{display:grid;grid-template-columns:1fr 1.6fr;gap:10px}
+.nota{font-size:13px;color:var(--suave);margin-top:-2px;margin-bottom:8px}
+.pago{display:flex;align-items:center;gap:12px;border:1.5px solid #cdb5b0;border-radius:10px;padding:12px;margin-bottom:8px;font-size:15px}
+.pago:has(input:checked){border-color:var(--marron);background:#fbf4f3}
+.pago input{width:20px;height:20px;accent-color:var(--marron)}
+.casilla{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:10px 0}
+.casilla input{width:20px;height:20px;flex:none;accent-color:var(--marron);margin-top:1px}
+.fin{position:fixed;inset:0;z-index:80;background:rgba(42,17,13,.6);display:grid;place-items:center;padding:16px}
+.fin div{background:#fff;border-radius:18px;padding:24px 20px;max-width:380px;text-align:center}
+.fin h3{font-family:var(--retro);font-weight:400;font-size:26px;margin-bottom:8px}
+.fin p{font-size:15px;margin-bottom:16px;color:#5a3a35}
+
+@media (min-width:900px){
+  .ficha{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:0 24px}
+  .galeria{position:sticky;top:76px;align-self:start;border-radius:16px;overflow:hidden}
+  .puntos{display:none}
+  .datos{padding:0}
+  h1{font-size:36px}
+  .migas{padding:12px 24px}
+  .mas h2,.listado h2{padding-left:24px}
+  .carril{padding:0 24px 8px}
+  .tarjeta{flex-basis:200px}
+  .rejilla{grid-template-columns:repeat(4,1fr);padding:0 24px}
+  .filtros{padding:0 24px 14px}
+  .panel{left:auto;top:0;width:420px;max-height:none;border-radius:0}
+  .fija{display:none}
+  footer{padding-bottom:30px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="barra">
+    <button class="ico" id="bMenu" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="logo" href="ficha.html?p=m1" aria-label="Psicodelia"></a>
+    <button class="ico" id="bBuscar" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+    <button class="ico" id="bCesta" aria-label="Cesta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cuenta oculto" id="nCesta">0</span></button>
+  </div>
+  <div class="rayas"></div>
+</header>
+
+<main id="vista"></main>
+
+<footer>
+  <b>Psicodelia</b>
+  Rúa Nova, 25 · 15003 A Coruña<br>
+  Tel. <a href="tel:+34981925598">981 925 598</a> · WhatsApp <a href="https://wa.me/34604002256">604 002 256</a><br>
+  <span style="opacity:.7">Envío gratis a península desde 150 €</span>
+</footer>
+
+<div class="fija" id="fija" aria-hidden="true">
+  <div class="info"><b id="fPrecio"></b><span id="fSel"></span></div>
+  <button class="btn" id="fBtn">Añadir</button>
+</div>
+
+<div class="buscador oculto" id="buscador">
+  <div class="caja">
+    <div class="fila"><input id="q" type="search" placeholder="Busca botas, camisas, Sendra…" autocomplete="off"><button class="ico" id="cerrarBuscar" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="resultados" id="resultados"></div>
+  </div>
+</div>
+
+<div class="menu oculto" id="menu"><nav id="menuNav"></nav></div>
+
+<div class="velo oculto" id="velo"></div>
+<aside class="panel oculto" id="cesta" aria-label="Tu cesta">
+  <div class="panel-h"><h2>Tu cesta</h2><button class="ico" id="cerrarCesta" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="panel-c" id="cestaC"></div>
+  <div class="panel-p" id="cestaP"></div>
+</aside>
+
+<section class="pedido oculto" id="pedido"></section>
+
+<script src="catalog.js"></script>
+<script>
+(function(){
+const CATS = window.PSI_CATS, PRODS = window.PSI_PRODUCTS;
+const GRATIS = 150, PORTE = 6.99, WA = '34604002256';
+const $ = s => document.querySelector(s);
+const eur = n => n.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const byId = id => PRODS.find(p => p.id === id);
+const catName = k => (CATS.find(c => c.key === k) || {}).name || '';
+const params = new URLSearchParams(location.search);
+
+// Cesta: se guarda en el navegador si se puede; si no, solo en memoria
+let cesta = [];
+try { cesta = JSON.parse(localStorage.getItem('psi-demo-cesta') || '[]').filter(l => byId(l.pid)); } catch (e) {}
+const guardar = () => { try { localStorage.setItem('psi-demo-cesta', JSON.stringify(cesta)); } catch (e) {} };
+const lineas = () => cesta.map(l => { const p = byId(l.pid); const c = p.colors.find(x => x.id === l.cid) || p.colors[0]; return {...l, p, c}; });
+const subtotal = () => lineas().reduce((a, l) => a + l.p.price * l.qty, 0);
+const porte = s => s >= GRATIS || s === 0 ? 0 : PORTE;
+
+function plazo(c){
+  return c.stock === 'tienda'
+    ? {t:'En tienda: sale en 24/48 h', s:'Lo tenemos en Rúa Nova y lo enviamos ya.'}
+    : {t:'Bajo pedido: ' + c.days.replace(' días','') + ' días laborables', s:'Lo pedimos a fábrica para ti. ¿Lo necesitas para una fecha? <a href="https://wa.me/' + WA + '">Pregúntanos</a>.'};
+}
+function envioHtml(extra){
+  const s = subtotal() + (extra || 0);
+  const pct = Math.min(100, s / GRATIS * 100);
+  const txt = s >= GRATIS ? '<span class="ok">Tienes el envío gratis</span>' : 'Te faltan <b>' + eur(GRATIS - s) + '</b> para el envío gratis';
+  return txt + '<div class="progreso"><i style="width:' + pct + '%"></i></div>';
+}
+function tarjeta(p){
+  const c = p.colors[0];
+  const motas = p.colors.length > 1 ? '<div class="motas">' + p.colors.map(x => '<i style="background:' + x.hex + '"></i>').join('') + '</div>' : '';
+  return '<a class="tarjeta" href="ficha.html?p=' + p.id + '"><img loading="lazy" src="' + c.imgs[0] + '" alt=""><div><b>' + esc(p.model) + '</b><div class="p">' + eur(p.price) + (p.was ? '<s>' + eur(p.was) + '</s>' : '') + '</div>' + motas + '</div></a>';
+}
+
+// ---------- Ficha ----------
+let P, C, talla = null;
+function ficha(p){
+  P = p; C = p.colors.find(c => String(c.id) === params.get('c')) || p.colors[0];
+  document.title = p.model + ' · Psicodelia';
+  const dto = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
+  const unaTalla = !p.sizes.length;
+  const sizeLabel = p.sizeKind === 'Edad' ? 'Edad' : (p.sizeKind || 'Talla');
+  const desc = (p.desc && p.desc.length > p.short.length ? p.desc : p.short) || '';
+  const otros = PRODS.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 10);
+  $('#vista').innerHTML =
+    '<nav class="migas"><a href="ficha.html?cat=' + p.cat + '">' + esc(catName(p.cat)) + '</a> › ' + esc(p.sub) + '</nav>' +
+    '<div class="ficha">' +
+      '<div><div class="galeria"><div class="pista" id="pista"></div><span class="contador" id="contador"></span></div><div class="puntos" id="puntos"></div></div>' +
+      '<div class="datos">' +
+        (p.brand ? '<div class="marca">' + esc(p.brand) + '</div>' : '') +
+        '<h1>' + esc(p.model) + '</h1>' +
+        '<div class="precio"><b>' + eur(p.price) + '</b>' + (p.was ? '<s>' + eur(p.was) + '</s><span class="dto">-' + dto + '%</span>' : '') + '</div>' +
+        '<div class="iva">IVA incluido</div>' +
+        (p.colors.length > 1 || p.colors[0].name ? '<div class="opcion"><div class="opcion-h"><span>Color: <b id="cNombre"></b></span>' + (p.colors.length > 1 ? '<span style="font-size:14px;color:var(--suave)">' + p.colors.length + ' colores</span>' : '') + '</div><div class="colores" id="colores"></div></div>' : '') +
+        (unaTalla ? '' : '<div class="opcion" id="optTalla"><div class="opcion-h"><span>' + esc(sizeLabel) + ': <b id="tNombre">elige una</b></span><a href="https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, tengo una duda con la talla de ' + p.model) + '">¿Dudas con la talla?</a></div><div class="tallas" id="tallas"></div><div class="aviso-talla oculto" id="avisoTalla">' + (p.sizeKind === 'Edad' ? 'Elige la edad' : 'Elige tu talla') + ' para añadirlo a la cesta</div></div>') +
+        '<button class="btn anadir" id="anadir">Añadir a la cesta</button>' +
+        '<ul class="puntos-info">' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><div id="plazo"></div></li>' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 12v8H4v-8M2 8h20v4H2zM12 20V8M12 8c-2-4-6-4-6-1.5S10 8 12 8zm0 0c2-4 6-4 6-1.5S14 8 12 8z"/></svg><div style="flex:1">Envío gratis a península desde 150 €<small id="envio"></small></div></li>' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><div>Cambios y devoluciones<small>Si no te queda bien, lo cambias.</small></div></li>' +
+        '</ul>' +
+        '<details open><summary>Descripción</summary><p>' + esc(desc) + '</p></details>' +
+        '<details><summary>Envíos y devoluciones</summary><p>Envío a península gratis a partir de 150 €; por debajo, ' + eur(PORTE) + '. Los artículos en tienda salen en 24/48 h y los de fábrica tardan lo que indica cada uno. Puedes cambiar o devolver tu compra: <a href="https://psicodelia.es/content/3-condiciones-de-uso" target="_blank" rel="noopener">condiciones de compra</a>.</p></details>' +
+        '<details><summary>Nuestra tienda en A Coruña</summary><p>Rúa Nova, 25 · 15003 A Coruña<br>Tel. 981 925 598 · WhatsApp 604 002 256</p></details>' +
+      '</div>' +
+    '</div>' +
+    (otros.length ? '<section class="mas"><h2>También te puede gustar</h2><div class="carril">' + otros.map(tarjeta).join('') + '</div></section>' : '');
+
+  pintarColores(); pintarTallas(); pintarColor();
+  $('#anadir').onclick = anadir;
+  $('#fBtn').onclick = anadir;
+  // Barra fija: visible siempre que el botón grande no esté en pantalla
+  const io = new IntersectionObserver(([e]) => {
+    const fuera = !e.isIntersecting;
+    $('#fija').classList.toggle('ver', fuera);
+    $('#fija').setAttribute('aria-hidden', String(!fuera));
+  });
+  io.observe($('#anadir'));
+}
+function revisarFija(){
+  const b = $('#anadir'); if (!b) return;
+  const r = b.getBoundingClientRect(), fuera = r.bottom < 56 || r.top > innerHeight;
+  $('#fija').classList.toggle('ver', fuera); $('#fija').setAttribute('aria-hidden', String(!fuera));
+}
+function pintarColores(){
+  const box = $('#colores'); if (!box) return;
+  box.innerHTML = P.colors.length > 1 ? P.colors.map(c => '<button class="color" data-c="' + c.id + '" aria-label="' + esc(c.name) + '" title="' + esc(c.name) + '"><img src="' + c.imgs[0] + '" alt=""></button>').join('') : '';
+  box.onclick = e => { const b = e.target.closest('.color'); if (!b) return; C = P.colors.find(c => String(c.id) === b.dataset.c); pintarColor(); };
+}
+function pintarColor(){
+  if ($('#cNombre')) $('#cNombre').textContent = C.name;
+  document.querySelectorAll('.color').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === String(C.id))));
+  const pista = $('#pista');
+  pista.innerHTML = C.imgs.map((s, i) => '<img src="' + s + '" alt="' + esc(P.model + ' ' + C.name) + '"' + (i ? ' loading="lazy"' : '') + '>').join('');
+  pista.scrollLeft = 0;
+  const n = C.imgs.length;
+  $('#puntos').innerHTML = n > 1 ? C.imgs.map((_, i) => '<i' + (i ? '' : ' class="on"') + '></i>').join('') : '';
+  $('#contador').textContent = n > 1 ? '1/' + n : '';
+  $('#contador').classList.toggle('oculto', n < 2);
+  pista.onscroll = () => { const i = Math.round(pista.scrollLeft / pista.clientWidth); $('#contador').textContent = (i + 1) + '/' + n; document.querySelectorAll('#puntos i').forEach((d, k) => d.classList.toggle('on', k === i)); };
+  const pl = plazo(C);
+  $('#plazo').innerHTML = '<b>' + pl.t + '</b><small>' + pl.s + '</small>';
+  pintarEnvio(); pintarFija();
+}
+function pintarTallas(){
+  const box = $('#tallas'); if (!box) return;
+  box.innerHTML = P.sizes.map(s => '<button class="talla" aria-pressed="false">' + esc(s) + '</button>').join('');
+  box.onclick = e => { const b = e.target.closest('.talla'); if (!b) return; talla = b.textContent; box.querySelectorAll('.talla').forEach(x => x.setAttribute('aria-pressed', String(x === b))); $('#tNombre').textContent = talla; $('#avisoTalla').classList.add('oculto'); pintarFija(); };
+}
+function pintarEnvio(){ $('#envio').innerHTML = subtotal() > 0 ? envioHtml() : (P.price >= GRATIS ? '<span class="ok">Con este artículo el envío te sale gratis</span>' : envioHtml(P.price).replace('Te faltan', 'Con este artículo te faltan')); }
+function pintarFija(){
+  $('#fPrecio').textContent = eur(P.price);
+  $('#fSel').textContent = [P.colors.length > 1 ? C.name : '', P.sizes.length ? (talla ? 'Talla ' + talla : 'Elige talla') : ''].filter(Boolean).join(' · ');
+}
+function anadir(){
+  if (P.sizes.length && !talla) {
+    const o = $('#optTalla');
+    o.scrollIntoView({behavior:'smooth', block:'center'});
+    $('#avisoTalla').classList.remove('oculto');
+    const t = $('#tallas'); t.classList.remove('sacude'); void t.offsetWidth; t.classList.add('sacude');
+    return;
+  }
+  const l = cesta.find(x => x.pid === P.id && x.cid === C.id && x.size === talla);
+  if (l) l.qty++; else cesta.push({pid:P.id, cid:C.id, size:talla, qty:1});
+  guardar(); contador(); pintarEnvio();
+  abrirCesta({p:P, c:C, size:talla});
+}
+
+// ---------- Listado ----------
+function listado(cat){
+  const c = CATS.find(x => x.key === cat) || CATS[0];
+  const sub = params.get('sub');
+  const items = PRODS.filter(p => p.cat === c.key && (!sub || p.sub === sub));
+  document.title = c.name + ' · Psicodelia';
+  const subs = [...new Set(PRODS.filter(p => p.cat === c.key).map(p => p.sub))];
+  $('#vista').innerHTML = '<nav class="migas"><a href="ficha.html?p=m1">Inicio</a> › ' + esc(c.name) + '</nav><section class="listado"><h2>' + esc(c.name) + '</h2>' +
+    '<div class="filtros"><a href="ficha.html?cat=' + c.key + '"' + (sub ? '' : ' class="on"') + '>Todo</a>' + subs.map(s => '<a href="ficha.html?cat=' + c.key + '&sub=' + encodeURIComponent(s) + '"' + (s === sub ? ' class="on"' : '') + '>' + esc(s) + '</a>').join('') + '</div>' +
+    '<div class="rejilla">' + items.map(tarjeta).join('') + '</div></section>';
+}
+
+// ---------- Cesta ----------
+function contador(){ const n = cesta.reduce((a, l) => a + l.qty, 0); $('#nCesta').textContent = n; $('#nCesta').classList.toggle('oculto', !n); }
+function abrirCesta(recien){
+  const ls = lineas();
+  const s = subtotal(), env = porte(s);
+  $('#cestaC').innerHTML =
+    (recien ? '<div class="anadido"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Añadido a tu cesta</div>' : '') +
+    (ls.length ? ls.map((l, i) => '<div class="linea"><img src="' + l.c.imgs[0] + '" alt=""><div class="t"><b>' + esc(l.p.model) + '</b><span>' + [l.p.colors.length > 1 ? esc(l.c.name) : '', l.size ? (l.p.sizeKind === 'Edad' ? 'Edad ' : 'Talla ') + esc(l.size) : ''].filter(Boolean).join(' · ') + '</span><div class="abajo"><div class="stepper"><button data-i="' + i + '" data-d="-1" aria-label="Quitar uno">−</button><span>' + l.qty + '</span><button data-i="' + i + '" data-d="1" aria-label="Añadir uno">+</button></div><b>' + eur(l.p.price * l.qty) + '</b></div><button class="quitar" data-q="' + i + '">Quitar</button></div></div>').join('')
+      : '<div class="vacia">Tu cesta está vacía</div>');
+  $('#cestaP').innerHTML = ls.length ?
+    '<div class="envio-msg">' + envioHtml() + '</div>' +
+    '<div class="totales"><div><span>Productos</span><span>' + eur(s) + '</span></div><div><span>Envío a península</span><span>' + (env ? eur(env) : '<span class="ok">Gratis</span>') + '</span></div><div class="total"><span>Total</span><span>' + eur(s + env) + '</span></div></div>' +
+    '<div style="height:10px"></div><button class="btn" id="tramitar">Tramitar pedido</button><button class="btn claro" id="seguir">Seguir comprando</button>'
+    : '<button class="btn claro" id="seguir">Seguir comprando</button>';
+  $('#velo').classList.remove('oculto'); $('#cesta').classList.remove('oculto');
+  $('#seguir').onclick = cerrarCesta;
+  if ($('#tramitar')) $('#tramitar').onclick = pedido;
+}
+function cerrarCesta(){ $('#velo').classList.add('oculto'); $('#cesta').classList.add('oculto'); }
+$('#cestaC').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.q !== undefined) cesta.splice(+b.dataset.q, 1);
+  else { const l = cesta[+b.dataset.i]; l.qty += +b.dataset.d; if (l.qty < 1) cesta.splice(+b.dataset.i, 1); }
+  guardar(); contador(); if (P) pintarEnvio(); abrirCesta();
+};
+$('#bCesta').onclick = () => abrirCesta();
+$('#cerrarCesta').onclick = cerrarCesta;
+$('#velo').onclick = cerrarCesta;
+
+// ---------- Pedido en una sola página ----------
+function pedido(){
+  cerrarCesta();
+  const ls = lineas(), s = subtotal(), env = porte(s), tot = s + env;
+  $('#pedido').innerHTML =
+    '<header class="top"><div class="barra"><button class="ico" id="volver" aria-label="Volver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2>Finalizar pedido</h2><span class="ico"></span></div><div class="rayas"></div></header>' +
+    '<form id="fPedido">' +
+      '<details class="resumen"><summary><span>' + (n => n + (n === 1 ? ' artículo' : ' artículos'))(ls.reduce((a, l) => a + l.qty, 0)) + ' · ver resumen</span><b>' + eur(tot) + '</b></summary>' +
+        ls.map(l => '<div style="display:flex;justify-content:space-between;gap:10px;padding-top:8px;font-size:14px"><span>' + l.qty + ' × ' + esc(l.p.model) + (l.size ? ' · ' + esc(l.size) : '') + '</span><span>' + eur(l.p.price * l.qty) + '</span></div>').join('') +
+        '<div style="display:flex;justify-content:space-between;padding-top:8px;font-size:14px"><span>Envío</span><span>' + (env ? eur(env) : 'Gratis') + '</span></div></details>' +
+      '<div class="bloque"><h3><i>1</i>Tus datos</h3>' +
+        '<label class="campo"><span>Email</span><input type="email" autocomplete="email" inputmode="email" required></label>' +
+        '<label class="campo"><span>Móvil (para el transportista)</span><input type="tel" autocomplete="tel" inputmode="tel" required></label>' +
+        '<p class="nota">Compras sin crear cuenta.</p></div>' +
+      '<div class="bloque"><h3><i>2</i>Dirección de envío</h3>' +
+        '<label class="campo"><span>Nombre y apellidos</span><input autocomplete="name" required></label>' +
+        '<label class="campo"><span>Calle, número y piso</span><input autocomplete="street-address" required></label>' +
+        '<div class="dos"><label class="campo"><span>Código postal</span><input autocomplete="postal-code" inputmode="numeric" required></label><label class="campo"><span>Población</span><input autocomplete="address-level2" required></label></div>' +
+        '<p class="nota">Envío a península: ' + (env ? eur(env) + ' (gratis desde 150 €)' : 'gratis') + '.</p></div>' +
+      '<div class="bloque"><h3><i>3</i>Pago</h3>' +
+        '<label class="pago"><input type="radio" name="pago" checked> Tarjeta</label>' +
+        '<label class="pago"><input type="radio" name="pago"> PayPal</label>' +
+        '<label class="casilla"><input type="checkbox" required> <span>He leído y acepto la <a href="https://psicodelia.es/content/3-condiciones-de-uso" target="_blank" rel="noopener">política de privacidad y las condiciones de compra</a></span></label>' +
+        '<label class="casilla"><input type="checkbox"> <span>Quiero recibir novedades (opcional)</span></label>' +
+      '</div>' +
+      '<button class="btn" type="submit">Pagar ' + eur(tot) + '</button>' +
+    '</form>';
+  $('#pedido').classList.remove('oculto'); $('#pedido').scrollTop = 0; $('#fija').classList.remove('ver');
+  document.body.style.overflow = 'hidden';
+  $('#volver').onclick = () => { $('#pedido').classList.add('oculto'); document.body.style.overflow = ''; revisarFija(); };
+  $('#fPedido').onsubmit = e => {
+    e.preventDefault();
+    const d = document.createElement('div'); d.className = 'fin';
+    d.innerHTML = '<div><h3>Esto es un ejemplo</h3><p>Aquí se pasaría al pago seguro del banco o a PayPal. No se ha hecho ningún pedido ni cargo.</p><button class="btn" type="button">Volver a la tienda</button></div>';
+    document.body.appendChild(d);
+    d.querySelector('button').onclick = () => { d.remove(); $('#pedido').classList.add('oculto'); document.body.style.overflow = ''; revisarFija(); };
+  };
+}
+
+// ---------- Buscador y menú ----------
+$('#bBuscar').onclick = () => { $('#buscador').classList.remove('oculto'); $('#q').focus(); buscar(); };
+$('#cerrarBuscar').onclick = () => $('#buscador').classList.add('oculto');
+$('#buscador').onclick = e => { if (e.target.id === 'buscador') $('#buscador').classList.add('oculto'); };
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function buscar(){
+  const q = norm($('#q').value.trim());
+  const r = (q ? PRODS.filter(p => norm(p.model + ' ' + (p.brand || '') + ' ' + p.sub + ' ' + catName(p.cat)).includes(q)) : PRODS.filter(p => p.cat === 'calzado')).slice(0, 12);
+  $('#resultados').innerHTML = r.length ? r.map(p => '<a href="ficha.html?p=' + p.id + '"><img src="' + p.colors[0].imgs[0] + '" alt=""><div><b>' + esc(p.model) + '</b><span>' + eur(p.price) + (p.colors.length > 1 ? ' · ' + p.colors.length + ' colores' : '') + '</span></div></a>').join('') : '<p style="padding:14px 2px;color:var(--suave)">Sin resultados</p>';
+}
+$('#q').oninput = buscar;
+$('#menuNav').innerHTML = CATS.map(c => '<a href="ficha.html?cat=' + c.key + '">' + esc(c.name) + '<small>' + esc(c.subs.join(' · ')) + '</small></a>').join('');
+$('#bMenu').onclick = () => $('#menu').classList.remove('oculto');
+$('#menu').onclick = e => { if (e.target.id === 'menu') $('#menu').classList.add('oculto'); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { cerrarCesta(); $('#buscador').classList.add('oculto'); $('#menu').classList.add('oculto'); } });
+
+// ---------- Arranque ----------
+contador();
+if (params.get('cat')) listado(params.get('cat'));
+else ficha(byId(params.get('p')) || PRODS[0]);
+if (params.get('cesta') === '1') abrirCesta();
+if (params.get('pedido') === '1' && cesta.length) pedido();
+})();
+</script>
+</body>
+</html>
