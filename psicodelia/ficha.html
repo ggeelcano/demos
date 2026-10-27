@@ -3,8 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Psicodelia · Ejemplo de ficha</title>
+<title>Psicodelia · Moda rockabilly y vintage en A Coruña</title>
 <meta name="robots" content="noindex">
+<meta name="description" content="Calzado Sendra, ropa de cuero y camisetas de cine y música. Tienda en Rúa Nova, A Coruña, con envío gratis a península desde 150 €.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Psicodelia · Tienda online">
+<meta property="og:description" content="Moda rockabilly y vintage desde Rúa Nova, A Coruña.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/psicodelia/capturas/og-tienda.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="theme-color" content="#401c17">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,7 +119,7 @@ details p{padding:0 14px 15px;font-size:15px;color:#5a3a35}
 
 .mas{padding:28px 0 10px}
 .mas h2,.listado h2{font-family:var(--retro);font-weight:400;font-size:26px;padding:0 16px 10px}
-.carril{display:flex;gap:12px;overflow-x:auto;padding:0 16px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.carril{display:flex;gap:12px;overflow-x:auto;padding:0 16px 8px;scroll-padding-inline:16px;scroll-snap-type:x mandatory;scrollbar-width:none}
 .carril::-webkit-scrollbar{display:none}
 .tarjeta{flex:0 0 42%;max-width:220px;scroll-snap-align:start;text-decoration:none;background:#fff;border-radius:12px;overflow:hidden}
 .tarjeta img{aspect-ratio:1;object-fit:cover;width:100%}
@@ -129,6 +136,39 @@ details p{padding:0 14px 15px;font-size:15px;color:#5a3a35}
 .filtros{display:flex;gap:8px;overflow-x:auto;padding:0 16px 12px;scrollbar-width:none}
 .filtros a{flex:none;padding:8px 14px;border-radius:20px;background:#fff;border:1.5px solid #cdb5b0;font-size:14px;text-decoration:none}
 .filtros a.on{background:var(--marron);color:#fff;border-color:var(--marron)}
+
+/* Portada */
+.hero{display:block;background:var(--marron)}
+.hero img{width:100%;aspect-ratio:1.9;object-fit:cover;object-position:79% center}
+.intro{padding:18px 16px 6px}
+.intro p{color:var(--suave);font-size:15px;max-width:620px}
+.bloque-h{font-family:var(--retro);font-weight:400;font-size:26px;padding:26px 16px 10px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+.cat{display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;min-width:0}
+.cat .fotos{display:flex}
+.cat img{width:100%;aspect-ratio:1;object-fit:cover;min-width:0}
+.cat.ancha{grid-column:1/-1}
+.cat.ancha img{width:33.333%;object-fit:contain}
+.cat span{padding:8px 12px 11px;font-family:var(--retro);font-size:23px;line-height:1.1}
+.cat small{display:block;margin-top:3px;font-family:Rubik,sans-serif;font-size:13px;color:var(--suave);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.destacado{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;margin:28px 16px 0;background:var(--marron);color:#fff;border-radius:16px;overflow:hidden}
+.destacado img{width:100%;height:100%;object-fit:cover}
+.destacado div{padding:14px 14px 14px 16px}
+.destacado h2{font-family:var(--retro);font-weight:400;font-size:28px;line-height:1.05;margin-bottom:6px}
+.destacado p{font-size:14px;color:#f3e3df;margin-bottom:14px}
+.btn.peque{display:inline-flex;width:auto;height:46px;padding:0 20px;font-size:19px}
+.destacado .btn{background:var(--mostaza);color:var(--marron)}
+.ventajas{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:26px 16px 0}
+.ventajas li{display:flex;gap:10px;background:#fff;border-radius:14px;padding:12px;font-size:14px;line-height:1.3}
+.ventajas svg{width:22px;height:22px;flex:none;color:var(--oliva)}
+.ventajas b{display:block;font-weight:600}
+.ventajas small{color:var(--suave);font-size:13px}
+.local{padding:0 16px}
+.local .caja{display:grid;gap:14px;background:#fff;border-radius:16px;overflow:hidden;padding:0 16px 16px;font-size:15px}
+.local .caja .rayas{margin:0 -16px}
+.local b{font-family:var(--retro);font-weight:400;font-size:26px;display:block;margin-bottom:2px}
+.local .acciones{display:grid;gap:8px}
+.mas .ver-todo{display:none}
 
 footer{background:var(--marron);color:#f3e3df;margin-top:30px;padding:22px 16px 110px;font-size:14px;text-align:center}
 footer b{font-family:var(--retro);font-weight:400;font-size:24px;display:block;color:#fff}
@@ -201,7 +241,7 @@ footer a{color:var(--mostaza)}
   .datos{padding:0}
   h1{font-size:36px}
   .migas{padding:12px 24px}
-  .mas h2,.listado h2{padding-left:24px}
+  .mas h2,.listado h2{padding-left:24px;padding-right:24px}
   .carril{padding:0 24px 8px}
   .tarjeta{flex-basis:200px}
   .rejilla{grid-template-columns:repeat(4,1fr);padding:0 24px}
@@ -209,6 +249,25 @@ footer a{color:var(--mostaza)}
   .panel{left:auto;top:0;width:420px;max-height:none;border-radius:0}
   .fija{display:none}
   footer{padding-bottom:30px}
+  .hero{margin:16px 24px 0;border-radius:16px;overflow:hidden}
+  .hero img{aspect-ratio:1600/480}
+  .intro{padding:24px 24px 6px}
+  .bloque-h{padding:30px 24px 12px}
+  .cats{grid-template-columns:repeat(4,1fr);gap:16px;padding:0 24px}
+  .cat.ancha{grid-column:span 2}
+  .cat.ancha img{aspect-ratio:2/3}
+  .destacado{grid-template-columns:320px 1fr;margin:34px 24px 0}
+  .destacado div{padding:30px 40px}
+  .destacado h2{font-size:42px}
+  .destacado p{font-size:16px;max-width:420px}
+  .ventajas{grid-template-columns:repeat(4,1fr);gap:16px;padding:34px 24px 0}
+  .local{padding:0 24px}
+  .local .caja{grid-template-columns:1fr 340px;align-items:center;gap:14px 36px;padding:0 36px 26px}
+  .local .caja .rayas{grid-column:1/-1;margin:0 -36px 8px}
+  .carril{scroll-padding-inline:24px}
+  .portada .carril{display:grid;grid-template-columns:repeat(6,1fr);overflow:visible}
+  .portada .carril .tarjeta:nth-child(n+7){display:none}
+  .mas .ver-todo{display:inline;float:right;font-family:Rubik,sans-serif;font-size:15px;font-weight:500;margin-top:10px;color:var(--oliva2)}
 }
 </style>
 </head>
@@ -216,7 +275,7 @@ footer a{color:var(--mostaza)}
 <header class="top">
   <div class="barra">
     <button class="ico" id="bMenu" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="logo" href="ficha.html?p=m1" aria-label="Psicodelia"></a>
+    <a class="logo" href="ficha.html" aria-label="Psicodelia, ir al inicio"></a>
     <button class="ico" id="bBuscar" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
     <button class="ico" id="bCesta" aria-label="Cesta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cuenta oculto" id="nCesta">0</span></button>
   </div>
@@ -303,7 +362,7 @@ function ficha(p){
   const desc = (p.desc && p.desc.length > p.short.length ? p.desc : p.short) || '';
   const otros = PRODS.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 10);
   $('#vista').innerHTML =
-    '<nav class="migas"><a href="ficha.html?cat=' + p.cat + '">' + esc(catName(p.cat)) + '</a> › ' + esc(p.sub) + '</nav>' +
+    '<nav class="migas"><a href="ficha.html">Inicio</a> › <a href="ficha.html?cat=' + p.cat + '">' + esc(catName(p.cat)) + '</a> › ' + esc(p.sub) + '</nav>' +
     '<div class="ficha">' +
       '<div><div class="galeria"><div class="pista" id="pista"></div><span class="contador" id="contador"></span></div><div class="puntos" id="puntos"></div></div>' +
       '<div class="datos">' +
@@ -393,9 +452,38 @@ function listado(cat){
   const items = PRODS.filter(p => p.cat === c.key && (!sub || p.sub === sub));
   document.title = c.name + ' · Psicodelia';
   const subs = [...new Set(PRODS.filter(p => p.cat === c.key).map(p => p.sub))];
-  $('#vista').innerHTML = '<nav class="migas"><a href="ficha.html?p=m1">Inicio</a> › ' + esc(c.name) + '</nav><section class="listado"><h2>' + esc(c.name) + '</h2>' +
+  $('#vista').innerHTML = '<nav class="migas"><a href="ficha.html">Inicio</a> › ' + esc(c.name) + '</nav><section class="listado"><h2>' + esc(c.name) + '</h2>' +
     '<div class="filtros"><a href="ficha.html?cat=' + c.key + '"' + (sub ? '' : ' class="on"') + '>Todo</a>' + subs.map(s => '<a href="ficha.html?cat=' + c.key + '&sub=' + encodeURIComponent(s) + '"' + (s === sub ? ' class="on"' : '') + '>' + esc(s) + '</a>').join('') + '</div>' +
     '<div class="rejilla">' + items.map(tarjeta).join('') + '</div></section>';
+}
+
+// ---------- Portada ----------
+function portada(){
+  const foto = id => byId(id).colors[0].imgs[0];
+  const FOTO_CAT = {mujer:'m38', hombre:'m15', camisetas:'m51', ninos:'m61', complementos:'m79', regalos:'m84'};
+  const cat = (c, fotos) => '<a class="cat' + (fotos.length > 1 ? ' ancha' : '') + '" href="ficha.html?cat=' + c.key + '"><div class="fotos">' + fotos.map(id => '<img loading="lazy" src="' + foto(id) + '" alt="">').join('') + '</div><span>' + esc(c.name) + '<small>' + esc(c.subs.join(' · ')) + '</small></span></a>';
+  const ico = d => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>';
+  const rebajados = PRODS.filter(p => p.was);
+  const camisetas = PRODS.filter(p => p.cat === 'camisetas');
+  document.title = 'Psicodelia · Moda rockabilly y vintage en A Coruña';
+  $('#fija').classList.add('oculto');
+  $('#vista').classList.add('portada');
+  $('#vista').innerHTML =
+    '<a class="hero" href="ficha.html?cat=mujer"><img src="img/slider-ave-otono.jpg" alt="Ave Otoño: la nueva temporada ya está en Psicodelia"></a>' +
+    '<div class="intro"><h1>Moda rockabilly y vintage en A Coruña</h1><p>Calzado Sendra hecho en España, ropa de cuero y camisetas de cine y música. Lo tienes en nuestra tienda de Rúa Nova o en casa, con envío gratis a península desde 150 €.</p></div>' +
+    '<h2 class="bloque-h">Secciones</h2>' +
+    '<div class="cats">' + cat(CATS.find(c => c.key === 'calzado'), ['m3', 'm8', 'm11']) + CATS.filter(c => c.key !== 'calzado').map(c => cat(c, [FOTO_CAT[c.key]])).join('') + '</div>' +
+    '<section class="mas"><h2>Sendra con descuento<a class="ver-todo" href="ficha.html?cat=calzado">Ver calzado</a></h2><div class="carril">' + rebajados.map(tarjeta).join('') + '</div></section>' +
+    '<section class="destacado"><img loading="lazy" src="img/banner-creepers.jpg" alt="Creepers de ante gris con suela gruesa"><div><h2>Creepers</h2><p>Del negro de siempre al leopardo, con la suela gorda que no pasa de moda.</p><a class="btn peque" href="ficha.html?cat=calzado&sub=Creepers">Ver creepers</a></div></section>' +
+    '<section class="mas"><h2>Camisetas de cine y música<a class="ver-todo" href="ficha.html?cat=camisetas">Ver todas</a></h2><div class="carril">' + camisetas.map(tarjeta).join('') + '</div></section>' +
+    '<ul class="ventajas">' +
+      '<li>' + ico('<path d="M20 12v8H4v-8M2 8h20v4H2zM12 20V8M12 8c-2-4-6-4-6-1.5S10 8 12 8zm0 0c2-4 6-4 6-1.5S14 8 12 8z"/>') + '<div><b>Envío gratis</b><small>A península desde 150 €</small></div></li>' +
+      '<li>' + ico('<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>') + '<div><b>Sale en 24/48 h</b><small>Si lo tenemos en tienda</small></div></li>' +
+      '<li>' + ico('<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>') + '<div><b>Cambios</b><small>Si no te queda bien, lo cambias</small></div></li>' +
+      '<li>' + ico('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.8A8 8 0 1 1 21 12z"/>') + '<div><b>¿Dudas?</b><small><a href="https://wa.me/' + WA + '">WhatsApp 604 002 256</a></small></div></li>' +
+    '</ul>' +
+    '<h2 class="bloque-h">Nuestra tienda</h2>' +
+    '<section class="local"><div class="caja"><div class="rayas"></div><div><b>Rúa Nova, 25</b>15003 A Coruña<br>Tel. <a href="tel:+34981925598">981 925 598</a></div><div class="acciones"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Psicodelia, Rúa Nova 25, A Coruña') + '" target="_blank" rel="noopener">Cómo llegar</a><a class="btn claro" href="https://wa.me/' + WA + '">Escríbenos por WhatsApp</a></div></div></section>';
 }
 
 // ---------- Cesta ----------
@@ -477,7 +565,7 @@ function buscar(){
   $('#resultados').innerHTML = r.length ? r.map(p => '<a href="ficha.html?p=' + p.id + '"><img src="' + p.colors[0].imgs[0] + '" alt=""><div><b>' + esc(p.model) + '</b><span>' + eur(p.price) + (p.colors.length > 1 ? ' · ' + p.colors.length + ' colores' : '') + '</span></div></a>').join('') : '<p style="padding:14px 2px;color:var(--suave)">Sin resultados</p>';
 }
 $('#q').oninput = buscar;
-$('#menuNav').innerHTML = CATS.map(c => '<a href="ficha.html?cat=' + c.key + '">' + esc(c.name) + '<small>' + esc(c.subs.join(' · ')) + '</small></a>').join('');
+$('#menuNav').innerHTML = '<a href="ficha.html">Inicio</a>' + CATS.map(c => '<a href="ficha.html?cat=' + c.key + '">' + esc(c.name) + '<small>' + esc(c.subs.join(' · ')) + '</small></a>').join('');
 $('#bMenu').onclick = () => $('#menu').classList.remove('oculto');
 $('#menu').onclick = e => { if (e.target.id === 'menu') $('#menu').classList.add('oculto'); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { cerrarCesta(); $('#buscador').classList.add('oculto'); $('#menu').classList.add('oculto'); } });
@@ -485,7 +573,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') { cerrarCest
 // ---------- Arranque ----------
 contador();
 if (params.get('cat')) listado(params.get('cat'));
-else ficha(byId(params.get('p')) || PRODS[0]);
+else if (params.get('p')) ficha(byId(params.get('p')) || PRODS[0]);
+else portada();
 if (params.get('cesta') === '1') abrirCesta();
 if (params.get('pedido') === '1' && cesta.length) pedido();
 })();
