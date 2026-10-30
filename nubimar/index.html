@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nubimar Forwarder · Transitario en Bilbao | Marítimo, aéreo y terrestre</title>
+<meta name="description" content="Transitario en Erandio (Bizkaia) desde el año 2000. Transporte marítimo a Centro y Sudamérica, camión completo y grupaje con el Este de Europa, carga aérea y envíos a Cuba. Pida su cotización.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nubimar Forwarder · Transitario en Bilbao">
+<meta property="og:description" content="Marítimo, aéreo y terrestre desde Bilbao. ISO 9001:2015. Pida su cotización en dos minutos.">
+<meta property="og:site_name" content="Nubimar Forwarder">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/nubimar/">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/nubimar/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="theme-color" content="#0a2a3f">
+<link rel="icon" href="assets/simbolo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-1920.jpg" media="(min-width: 900px)">
+<style>
+:root{
+  --navy:#0a2a3f; --navy-2:#113a55; --navy-3:#1b4a68;
+  --green:#6bd100; --green-2:#58b000; --green-ink:#2f7d00;
+  --sky:#eef4f8; --line:#d7e1e8; --ink:#14212b; --muted:#4a5b69;
+  --white:#fff; --radius:4px; --wrap:1240px; --head:72px;
+  --shadow:0 10px 40px rgba(10,42,63,.18);
+}
+*{box-sizing:border-box}
+[id]{scroll-margin-top:calc(var(--head) + 12px)}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--white);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--green-ink)}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(30px,4vw,44px);font-weight:600}
+h3{font-size:21px;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--navy);color:#fff;padding:10px 16px;z-index:200;border-radius:var(--radius)}
+.skip:focus{top:12px}
+:focus-visible{outline:3px solid #1f8fd6;outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--radius);border:2px solid transparent;font:600 16px/1 Inter,sans-serif;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--green);color:var(--navy)}
+.btn-primary:hover{background:#7ee11a}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-3)}
+.btn-ghost{background:transparent;border-color:var(--navy);color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* Barra superior */
+.topbar{background:var(--navy);color:#cfe0ea;font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:38px}
+.topbar a{color:#fff;text-decoration:none;font-weight:500}
+.topbar a:hover{text-decoration:underline}
+.topbar .iso{display:flex;align-items:center;gap:8px}
+.topbar .iso::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+
+/* Cabecera */
+.head{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
+.head .wrap{display:flex;align-items:center;gap:32px;height:var(--head)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);flex:none}
+.brand img{width:46px;height:46px}
+.brand b{display:block;font-size:20px;font-weight:700;letter-spacing:.04em;line-height:1}
+.brand small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.22em;color:var(--muted);margin-top:4px}
+.nav{display:flex;gap:4px;margin-right:auto}
+.nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:16px;padding:10px 12px;border-radius:var(--radius)}
+.nav a:hover{background:var(--sky)}
+.head-cta{display:flex;align-items:center;gap:12px}
+.burger{display:none;width:48px;height:48px;border:0;background:transparent;border-radius:var(--radius);cursor:pointer;color:var(--navy)}
+.burger svg{width:26px;height:26px}
+.drawer{display:none}
+
+/* Portada */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero picture,.hero-img{position:absolute;inset:0;width:100%;height:100%}
+.hero-img{object-fit:cover;object-position:35% 55%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,42,63,.92) 0%,rgba(10,42,63,.72) 38%,rgba(10,42,63,.15) 70%,rgba(10,42,63,0) 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:48px;align-items:center;min-height:min(78vh,660px);padding-top:64px;padding-bottom:96px}
+.hero h1{font-size:clamp(38px,5.4vw,66px);font-weight:700;max-width:12ch}
+.hero .lead{font-size:clamp(17px,1.6vw,20px);color:#e2edf3;max-width:34ch;margin-top:20px}
+.hero .hero-acc{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .btn-ghost{border-color:#fff;color:#fff}
+.hero .btn-ghost:hover{background:#fff;color:var(--navy)}
+
+/* Caja de cotización (estilo buscador) */
+.panel{background:#fff;color:var(--ink);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.tab{appearance:none;border:0;background:#f5f8fa;font:600 16px Inter,sans-serif;color:var(--muted);padding:16px 12px;cursor:pointer;border-bottom:3px solid transparent;display:flex;align-items:center;justify-content:center;gap:8px}
+.tab svg{width:18px;height:18px}
+.tab[aria-selected="true"]{background:#fff;color:var(--navy);border-bottom-color:var(--green)}
+.tabpanel{padding:24px}
+.tabpanel[hidden]{display:none}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label,.legend{font-size:14px;font-weight:600;color:var(--navy)}
+.field .opt{font-weight:400;color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=month],select,textarea{width:100%;min-height:48px;padding:12px 14px;border:1px solid #9fb2c0;border-radius:var(--radius);font:16px Inter,sans-serif;color:var(--ink);background:#fff}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#1f8fd6;box-shadow:0 0 0 3px rgba(31,143,214,.25)}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#c62828;box-shadow:0 0 0 3px rgba(198,40,40,.15)}
+.modos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border:0;padding:0;margin:0 0 16px}
+.modos legend{margin-bottom:8px;padding:0}
+.modo{position:relative}
+.modo input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.modo span{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border:1px solid #9fb2c0;border-radius:var(--radius);font-size:14px;font-weight:600;color:var(--navy);text-align:center}
+.modo svg{width:28px;height:28px}
+.modo input:checked+span{border:2px solid var(--navy);background:var(--sky);padding:11px 5px}
+.modo input:focus-visible+span{outline:3px solid #1f8fd6;outline-offset:2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.panel .btn{width:100%}
+.nota{font-size:14px;color:var(--muted);margin-top:12px}
+.err{color:#b71c1c;font-size:14px;font-weight:600;min-height:0}
+.err:not(:empty){margin-bottom:12px}
+
+/* Datos clave */
+.datos{background:#fff;border-bottom:1px solid var(--line)}
+.datos ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.datos li{padding:28px 24px;border-left:1px solid var(--line)}
+.datos li:first-child{border-left:0;padding-left:0}
+.datos strong{display:block;font-size:26px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
+.datos span{display:block;color:var(--muted);font-size:15px;margin-top:4px}
+
+/* Secciones */
+.sec{padding:96px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+.sec-head p{color:var(--muted);max-width:52ch;margin-top:14px;font-size:18px}
+.kicker{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-ink);margin-bottom:12px}
+
+/* Tarjetas de servicio */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card-vis{height:150px;background:var(--navy);display:grid;place-items:center;position:relative;overflow:hidden}
+.card-vis::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(107,209,0,.22),transparent 55%),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 22px)}
+.card-vis svg{position:relative;width:84px;height:84px;color:var(--green)}
+.card-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-body p{color:var(--muted);font-size:16px}
+.card-body a{margin-top:auto;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;color:var(--navy)}
+.card-body a svg{width:18px;height:18px;transition:transform .2s}
+.card-body a:hover{text-decoration:underline}
+.card:hover .card-body a svg{transform:translateX(4px)}
+
+/* Bloque terrestre */
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.split-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--sky)}
+.split-img img{width:100%;height:100%;object-fit:cover}
+.split-img figcaption{position:absolute;left:0;bottom:0;background:var(--navy);color:#fff;font-size:14px;padding:10px 16px}
+.split h2{margin-bottom:20px}
+.split p{color:var(--muted);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:8px 0 24px}
+.chips li{border:1px solid var(--line);background:var(--sky);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:500;color:var(--navy)}
+.checks{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:none;width:22px;height:22px;color:var(--green-ink);margin-top:2px}
+
+/* Mapa de rutas */
+.rutas{background:var(--navy);color:#fff}
+.rutas .sec-head p{color:#c3d6e2}
+.rutas .kicker{color:var(--green)}
+.mapa-grid{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:center}
+.mapa{position:relative}
+.mapa svg{width:100%;height:auto;display:block}
+.mapa .lbl{font:600 22px Inter,sans-serif;fill:#fff;paint-order:stroke;stroke:var(--navy);stroke-width:6px}
+.mapa .lbl.sm{font-size:19px;fill:#c3d6e2}
+.r-mar{fill:none;stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-dasharray:10 10;animation:flujo 1.6s linear infinite}
+.r-ter{fill:none;stroke:#8fd3ff;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:2 7;animation:flujo 1.2s linear infinite}
+@keyframes flujo{to{stroke-dashoffset:-20}}
+.pulso{transform-origin:678px 227px;animation:pulso 2.2s ease-out infinite}
+@keyframes pulso{from{transform:scale(.4);opacity:.9}to{transform:scale(2.4);opacity:0}}
+.leyenda{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.leyenda li{padding:16px 0;border-top:1px solid rgba(255,255,255,.14)}
+.leyenda li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.leyenda b{display:flex;align-items:center;gap:10px;font-size:17px}
+.leyenda i{display:inline-block;width:28px;height:0;border-top:3px dashed var(--green)}
+.leyenda i.t{border-top:3px dotted #8fd3ff}
+.leyenda i.a{border-top:3px solid #fff;opacity:.6}
+.leyenda span{display:block;color:#c3d6e2;font-size:15px;margin-top:4px;padding-left:38px}
+
+/* Cotizador por pasos */
+.cotizador{background:var(--sky)}
+.coti{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.pasos{list-style:none;margin:0;padding:0;counter-reset:p;display:grid;gap:4px}
+.pasos li{counter-increment:p;display:flex;align-items:center;gap:14px;padding:14px 0;color:var(--muted);font-weight:600}
+.pasos li::before{content:counter(p);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid #9fb2c0;font-size:15px;flex:none;background:#fff}
+.pasos li[aria-current="step"]{color:var(--navy)}
+.pasos li[aria-current="step"]::before{border-color:var(--navy);background:var(--navy);color:#fff}
+.pasos li.hecho{color:var(--navy)}
+.pasos li.hecho::before{content:"✓";background:var(--green);border-color:var(--green);color:var(--navy)}
+.coti-side p{color:var(--muted);font-size:16px;margin-top:20px}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.form-card fieldset{border:0;margin:0;padding:0;min-width:0}
+.form-card fieldset[hidden]{display:none}
+.form-card h3{margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 16px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin-bottom:16px}
+.chk input{width:20px;height:20px;margin:2px 0 0;flex:none;accent-color:var(--navy)}
+.acciones{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.resumen{background:var(--sky);border:1px solid var(--line);border-radius:var(--radius);padding:20px;font:14.5px/1.6 ui-monospace,Consolas,monospace;white-space:pre-wrap;color:var(--ink);max-height:360px;overflow:auto;margin:16px 0 20px}
+.ok-head{display:flex;gap:14px;align-items:center}
+.ok-head svg{width:40px;height:40px;color:var(--green-ink);flex:none}
+.dest{font-size:15px;color:var(--muted);margin-top:12px}
+
+/* Empresa */
+.empresa .split{grid-template-columns:1fr 1fr}
+.sellos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:64px}
+.sello{border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:6px;min-height:120px}
+.sello strong{font-size:18px;color:var(--navy)}
+.sello span{color:var(--muted);font-size:15px}
+.sello img{height:34px;width:auto;margin-bottom:6px;align-self:flex-start}
+
+/* Banda llamada */
+.banda{background:var(--green)}
+.banda .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:40px;padding-bottom:40px}
+.banda p{font-size:clamp(22px,2.6vw,30px);font-weight:600;color:var(--navy);letter-spacing:-.01em;line-height:1.25}
+.banda .btn-dark{flex:none}
+
+/* Contacto */
+.contacto-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.dir{font-size:18px;color:var(--ink);margin-bottom:24px}
+.tels{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.deps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.deps li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.deps span{color:var(--muted)}
+.deps a{font-weight:600;color:var(--navy);text-decoration:none;word-break:break-all}
+.deps a:hover{text-decoration:underline}
+.mapa-gm{border:0;width:100%;height:100%;min-height:440px;border-radius:var(--radius);background:var(--sky)}
+
+/* Pie */
+.pie{background:#071f2f;color:#c3d6e2;font-size:15px}
+.pie .wrap{padding-top:64px;padding-bottom:32px}
+.pie-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.pie .brand{color:#fff}
+.pie .brand small{color:#9fb7c6}
+.pie h2{font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pie a{color:#c3d6e2;text-decoration:none}
+.pie a:hover{color:#fff;text-decoration:underline}
+.pie-legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);margin-top:48px;padding-top:24px;font-size:14px;color:#9fb7c6}
+
+/* Responsive */
+@media (max-width:1100px){
+  .nav{display:none}
+  .burger{display:inline-grid;place-items:center}
+  .head .wrap{justify-content:space-between}
+  .head-cta .btn{display:none}
+  .drawer{position:fixed;inset:var(--head) 0 auto 0;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:8px 24px 24px;z-index:99}
+  .drawer.open{display:block}
+  .drawer a{display:block;padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:18px}
+  .drawer .btn{margin-top:20px;width:100%;border-bottom:0}
+  .cards{grid-template-columns:1fr 1fr}
+  .hero .wrap{grid-template-columns:minmax(0,1fr) 400px;gap:32px}
+  .pie-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .hero::after{background:linear-gradient(180deg,rgba(10,42,63,.55) 0%,rgba(10,42,63,.85) 60%,var(--navy) 100%)}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:56px;padding-bottom:40px}
+  .hero-img{object-position:20% 40%}
+  .hero h1{max-width:14ch}
+  .datos ul{grid-template-columns:1fr 1fr}
+  .datos li{padding:20px 16px 20px 0;border-left:0;border-top:1px solid var(--line)}
+  .datos li:nth-child(-n+2){border-top:0}
+  .datos li:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+  .split,.empresa .split,.mapa-grid,.coti,.contacto-grid{grid-template-columns:1fr;gap:40px}
+  .sellos{grid-template-columns:1fr 1fr}
+  .sec{padding:72px 0}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .banda .wrap{flex-direction:column;align-items:flex-start}
+  .pasos{grid-template-columns:repeat(3,auto);justify-content:start;gap:16px}
+  .pasos li{padding:0;font-size:14px;gap:8px}
+  .coti-side p{display:none}
+  .mapa-gm{min-height:320px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .topbar .iso{display:none}
+  .topbar .wrap{justify-content:center}
+  .brand small{letter-spacing:.16em}
+  .cards,.grid2,.grid3,.sellos{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .tabpanel{padding:20px 16px}
+  .form-card{padding:24px 16px}
+  .datos strong{font-size:21px}
+  .mapa .lbl{display:none}
+  .pasos li span{display:none}
+  .pie-grid{grid-template-columns:1fr}
+  .acciones .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="iso">Empresa certificada ISO 9001:2015</span>
+    <a href="tel:+34944315782">Tel. 944 315 782</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Nubimar Forwarder, inicio">
+      <img src="assets/simbolo.png" alt="" width="46" height="46">
+      <span><b>NUBIMAR</b><small>FORWARDER</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#terrestre">Terrestre</a>
+      <a href="#rutas">Rutas</a>
+      <a href="#cuba">Cuba</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-primary" href="#cotizar">Pedir cotización</a>
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Menú móvil">
+    <a href="#servicios">Servicios</a>
+    <a href="#terrestre">Terrestre</a>
+    <a href="#rutas">Rutas</a>
+    <a href="#cuba">Cuba</a>
+    <a href="#empresa">Empresa</a>
+    <a href="#contacto">Contacto</a>
+    <a class="btn btn-primary" href="#cotizar">Pedir cotización</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="inicio" aria-labelledby="h1">
+    <picture>
+      <source media="(min-width: 900px)" srcset="assets/hero-1920.jpg">
+      <img class="hero-img" src="assets/hero-900.jpg" alt="Camión de lona de Nubimar junto a las grúas de la ría de Bilbao" width="900" height="880" fetchpriority="high">
+    </picture>
+    <div class="wrap">
+      <div>
+        <h1 id="h1">Transporte internacional desde Bilbao</h1>
+        <p class="lead">Barcos a Centro y Sudamérica y camiones con el Este de Europa. También carga aérea, con corresponsales en los principales aeropuertos. Desde el año 2000.</p>
+        <div class="hero-acc">
+          <a class="btn btn-primary" href="#cotizar">Pedir cotización</a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+
+      <div class="panel" id="panel">
+        <div class="tabs" role="tablist" aria-label="Acciones rápidas">
+          <button class="tab" role="tab" id="t-precio" aria-selected="true" aria-controls="p-precio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>Pedir precio
+          </button>
+          <button class="tab" role="tab" id="t-envio" aria-selected="false" aria-controls="p-envio" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Consultar envío
+          </button>
+        </div>
+
+        <form class="tabpanel" id="p-precio" role="tabpanel" aria-labelledby="t-precio" novalidate>
+          <fieldset class="modos">
+            <legend class="legend">Tipo de transporte</legend>
+            <label class="modo"><input type="radio" name="hmodo" value="Marítimo" checked><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h24l-3 6H8z"/><path d="M8 20v-5h6v5M14 20v-8h6v8M20 20v-5h5v5"/><path d="M3 29c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1 2 1 4 1"/></svg>Marítimo</span></label>
+            <label class="modo"><input type="radio" name="hmodo" value="Aéreo"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l26-9-3 5-9 3 1 9-3 1-4-8-5 2-2-2 3-2z"/></svg>Aéreo</span></label>
+            <label class="modo"><input type="radio" name="hmodo" value="Terrestre"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h18v14H2zM20 13h6l4 5v4H20z"/><circle cx="8" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg>Terrestre</span></label>
+          </fieldset>
+          <div class="duo">
+            <div class="field"><label for="h-origen">Origen</label><input id="h-origen" type="text" autocomplete="off" placeholder="Ciudad o puerto"></div>
+            <div class="field"><label for="h-destino">Destino</label><input id="h-destino" type="text" autocomplete="off" placeholder="Ciudad o puerto"></div>
+          </div>
+          <p class="err" id="h-err" role="alert"></p>
+          <button class="btn btn-primary" type="submit">Continuar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="nota">Le pedimos los datos de la carga en el siguiente paso.</p>
+        </form>
+
+        <form class="tabpanel" id="p-envio" role="tabpanel" aria-labelledby="t-envio" hidden novalidate>
+          <div class="field"><label for="e-ref">Referencia del envío</label><input id="e-ref" type="text" autocomplete="off" placeholder="Expediente, BL, AWB o CMR"></div>
+          <div class="field"><label for="e-dep">Departamento</label>
+            <select id="e-dep">
+              <option value="sea@nubimar.com">Marítimo o aéreo</option>
+              <option value="nubimar@nubimar.com">Terrestre</option>
+            </select>
+          </div>
+          <p class="err" id="e-err" role="alert"></p>
+          <button class="btn btn-dark" type="submit">Consultar</button>
+          <p class="nota">Tráfico le contesta con la situación del envío.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="datos" aria-label="Nubimar en datos">
+    <div class="wrap">
+      <ul>
+        <li><strong>Desde 2000</strong><span>Transitario en Bizkaia</span></li>
+        <li><strong>ISO 9001:2015</strong><span>Calidad certificada</span></li>
+        <li><strong>ES · PL · CZ</strong><span>Idiomas del equipo de tráfico</span></li>
+        <li><strong>EXPEDIMAR</strong><span>Corresponsal oficial en Cuba</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="servicios" aria-labelledby="h-serv">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Servicios</span>
+          <h2 id="h-serv">Soluciones de transporte</h2>
+          <p>Nos adaptamos a lo que necesita cada envío en servicio, precio y financiación. Usted nos cuenta la carga y nosotros buscamos la mejor forma de moverla.</p>
+        </div>
+        <a class="btn btn-ghost" href="#cotizar">Pedir cotización</a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-vis" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M4 20h24l-3 6H8z"/><path d="M8 20v-5h6v5M14 20v-8h6v8M20 20v-5h5v5"/><path d="M3 29c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1 2 1 4 1"/></svg></div>
+          <div class="card-body">
+            <h3>Marítimo</h3>
+            <p>Esté donde esté la mercancía, buscamos el servicio y el puerto de salida que mejor le encajan. Nuestro fuerte es Centro y Sudamérica, pero operamos con cualquier puerto del mundo.</p>
+            <a href="#rutas">Ver rutas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-vis" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3 17l26-9-3 5-9 3 1 9-3 1-4-8-5 2-2-2 3-2z"/></svg></div>
+          <div class="card-body">
+            <h3>Aéreo</h3>
+            <p>Tenemos un acuerdo de corresponsalía con una multinacional del transporte aéreo. Eso nos da estructura propia o asociada en la mayoría de los aeropuertos importantes del mundo.</p>
+            <a href="#cotizar">Pedir precio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-vis" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M2 8h18v14H2zM20 13h6l4 5v4H20z"/><circle cx="8" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg></div>
+          <div class="card-body">
+            <h3>Terrestre</h3>
+            <p>Cargas completas y parciales con Centro y Este de Europa, en camión de lona, frigorífico o minitir. Trabajamos con transportistas que van en exclusiva con nosotros.</p>
+            <a href="#terrestre">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="card" id="cuba">
+          <div class="card-vis" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="3" y="9" width="26" height="15"/><path d="M8 9v15M13 9v15M18 9v15M23 9v15"/><path d="M16 2.5l1.3 2.7 3 .4-2.2 2 .6 2.9L16 9.1l-2.7 1.4.6-2.9-2.2-2 3-.4z" fill="currentColor" stroke="none"/></svg></div>
+          <div class="card-body">
+            <h3>Cuba</h3>
+            <p>Llevamos mercancía a Cuba desde el año 2000 y somos corresponsal oficial de EXPEDIMAR, una de las principales transitarias que gestiona la entrada de carga en la isla.</p>
+            <a href="#cotizar" data-modo="Marítimo" data-destino="Cuba">Pedir precio a Cuba <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="terrestre" aria-labelledby="h-ter" style="padding-top:0">
+    <div class="wrap split">
+      <figure class="split-img" style="margin:0">
+        <img src="assets/terrestre.jpg" alt="Semirremolque de lona cargado en la ribera de la ría" loading="lazy" width="1400" height="516" style="object-position:30% 50%">
+        <figcaption>Ribera de la ría, Bilbao</figcaption>
+      </figure>
+      <div>
+        <span class="kicker">Terrestre</span>
+        <h2 id="h-ter">Con el Este de Europa, hablando con el chófer</h2>
+        <p>Exportamos e importamos mercancía con todos los países del Este europeo, en carga completa o parcial.</p>
+        <ul class="chips" aria-label="Países">
+          <li>Alemania</li><li>Polonia</li><li>Rep. Checa</li><li>Eslovaquia</li><li>Hungría</li><li>Eslovenia</li><li>Rumanía</li><li>Bulgaria</li>
+        </ul>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span>Equipo de tráfico de origen polaco, checo y español, en contacto directo con la cabina.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span>Preaviso de llegada a los puntos de carga y descarga.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span>Situación del camión cuando la necesite.</span></li>
+        </ul>
+        <a class="btn btn-dark" href="#cotizar" data-modo="Terrestre">Pedir precio de camión</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rutas" id="rutas" aria-labelledby="h-rutas">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Rutas</span>
+          <h2 id="h-rutas">Desde Bilbao, hacia América y el Este de Europa</h2>
+          <p>Estas son las rutas que más movemos. Si su destino no aparece, pregúntenos: trabajamos con cualquier puerto y con los principales aeropuertos.</p>
+        </div>
+      </div>
+      <div class="mapa-grid">
+        <div class="mapa">
+          <svg viewBox="0 40 1000 700" role="img" aria-labelledby="mapa-t">
+            <title id="mapa-t">Mapa de rutas: marítimas desde Bilbao a Cuba, Centroamérica y Sudamérica; por carretera desde Bilbao al Este de Europa</title>
+            <image href="assets/puntos.svg" x="0" y="0" width="1000" height="825"/>
+            <path class="r-mar" d="M678 227Q430 200 175 381"/>
+            <path class="r-mar" d="M678 227Q400 270 140 430"/>
+            <path class="r-mar" d="M678 227Q560 460 403 688"/>
+            <path class="r-ter" d="M678 227Q745 150 829 143"/>
+            <path class="r-ter" d="M678 227Q725 170 788 164"/>
+            <path class="r-ter" d="M678 227Q745 185 817 189"/>
+            <path class="r-ter" d="M678 227Q770 200 861 217"/>
+            <path class="r-ter" d="M678 227Q760 225 844 232"/>
+            <g fill="#8fd3ff"><circle cx="829" cy="143" r="5"/><circle cx="788" cy="164" r="5"/><circle cx="817" cy="189" r="5"/><circle cx="861" cy="217" r="5"/><circle cx="844" cy="232" r="5"/></g>
+            <g fill="#6bd100"><circle cx="175" cy="381" r="7"/><circle cx="140" cy="430" r="7"/><circle cx="403" cy="688" r="7"/></g>
+            <circle class="pulso" cx="678" cy="227" r="12" fill="#6bd100"/>
+            <circle cx="678" cy="227" r="8" fill="#fff" stroke="#6bd100" stroke-width="4"/>
+            <text class="lbl" x="664" y="262" text-anchor="end">Bilbao</text>
+            <text class="lbl" x="192" y="370">Cuba</text>
+            <text class="lbl" x="152" y="465">Centroamérica</text>
+            <text class="lbl" x="418" y="700">Sudamérica</text>
+            <text class="lbl sm" x="845" y="118" text-anchor="middle">Este de Europa</text>
+          </svg>
+        </div>
+        <ul class="leyenda">
+          <li><b><i aria-hidden="true"></i>Marítimo</b><span>Centro y Sudamérica, Caribe y Cuba. Cualquier puerto del mundo.</span></li>
+          <li><b><i class="t" aria-hidden="true"></i>Carretera</b><span>Alemania, Polonia, Rep. Checa, Eslovaquia, Hungría, Eslovenia, Rumanía y Bulgaria.</span></li>
+          <li><b><i class="a" aria-hidden="true"></i>Aéreo</b><span>Red de corresponsales en los principales aeropuertos.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cotizador" id="cotizar" aria-labelledby="h-coti">
+    <div class="wrap coti">
+      <div class="coti-side">
+        <span class="kicker">Cotización</span>
+        <h2 id="h-coti">Pida precio en dos minutos</h2>
+        <ol class="pasos" aria-label="Pasos">
+          <li aria-current="step"><span>Ruta</span></li>
+          <li><span>Mercancía</span></li>
+          <li><span>Contacto</span></li>
+        </ol>
+        <p>Con estos datos el departamento que lleva su envío puede darle precio sin tener que volver a llamarle.</p>
+      </div>
+
+      <form class="form-card" id="coti" novalidate>
+        <fieldset data-paso="1">
+          <legend class="sr">Paso 1 de 3: ruta</legend>
+          <h3>¿Qué hay que mover y adónde?</h3>
+          <div class="modos" role="radiogroup" aria-label="Tipo de transporte">
+            <label class="modo"><input type="radio" name="modo" value="Marítimo" checked><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h24l-3 6H8z"/><path d="M8 20v-5h6v5M14 20v-8h6v8M20 20v-5h5v5"/></svg>Marítimo</span></label>
+            <label class="modo"><input type="radio" name="modo" value="Aéreo"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l26-9-3 5-9 3 1 9-3 1-4-8-5 2-2-2 3-2z"/></svg>Aéreo</span></label>
+            <label class="modo"><input type="radio" name="modo" value="Terrestre"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h18v14H2zM20 13h6l4 5v4H20z"/><circle cx="8" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg>Terrestre</span></label>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="origen">Origen</label><input id="origen" name="origen" type="text" required placeholder="Ciudad, puerto o aeropuerto"></div>
+            <div class="field"><label for="destino">Destino</label><input id="destino" name="destino" type="text" required placeholder="Ciudad, puerto o aeropuerto"></div>
+            <div class="field"><label for="fecha">Fecha aproximada de carga</label><input id="fecha" name="fecha" type="month"></div>
+            <div class="field"><label for="incoterm">Incoterm <span class="opt">(si lo sabe)</span></label>
+              <select id="incoterm" name="incoterm">
+                <option value="">No lo sé</option><option>EXW</option><option>FCA</option><option>FOB</option><option>CFR</option><option>CIF</option><option>DAP</option><option>DDP</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset data-paso="2" hidden>
+          <legend class="sr">Paso 2 de 3: mercancía</legend>
+          <h3>Cuéntenos la carga</h3>
+          <div class="field"><label for="mercancia">Mercancía</label><input id="mercancia" name="mercancia" type="text" required placeholder="Ej.: maquinaria, alimentación, piezas de acero"></div>
+          <div class="grid2">
+            <div class="field"><label for="tipo">Tipo de carga</label><select id="tipo" name="tipo" required></select></div>
+            <div class="field" id="f-camion"><label for="camion">Tipo de camión</label>
+              <select id="camion" name="camion"><option>Lona</option><option>Frigorífico</option><option>Minitir</option><option>Me da igual</option></select>
+            </div>
+          </div>
+          <div class="grid3">
+            <div class="field"><label for="bultos">Bultos o palets</label><input id="bultos" name="bultos" type="number" min="1" inputmode="numeric"></div>
+            <div class="field"><label for="peso">Peso total (kg)</label><input id="peso" name="peso" type="number" min="1" inputmode="numeric" required></div>
+            <div class="field"><label for="volumen">Volumen (m³) <span class="opt">(opcional)</span></label><input id="volumen" name="volumen" type="number" min="0" step="0.1" inputmode="decimal"></div>
+          </div>
+          <label class="chk"><input type="checkbox" name="peligrosa" id="peligrosa"><span>Es mercancía peligrosa (ADR, IMO o IATA)</span></label>
+        </fieldset>
+
+        <fieldset data-paso="3" hidden>
+          <legend class="sr">Paso 3 de 3: contacto</legend>
+          <h3>¿A quién le enviamos el precio?</h3>
+          <div class="grid2">
+            <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization" required></div>
+            <div class="field"><label for="nombre">Persona de contacto</label><input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="field"><label for="notas">Algo más que debamos saber <span class="opt">(opcional)</span></label><textarea id="notas" name="notas"></textarea></div>
+          <label class="chk"><input type="checkbox" id="acepto" required><span>Acepto que Nubimar Forwarder, S.L. use estos datos para responder a mi petición, según la <a href="legal.html#privacidad">política de privacidad</a>.</span></label>
+        </fieldset>
+
+        <div id="hecho" hidden tabindex="-1">
+          <div class="ok-head">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>
+            <h3 style="margin:0">Su petición está preparada</h3>
+          </div>
+          <p class="dest" id="dest"></p>
+          <div class="resumen" id="resumen"></div>
+          <div class="acciones">
+            <button class="btn btn-ghost" type="button" id="editar">Editar</button>
+            <span style="display:flex;gap:12px;flex-wrap:wrap">
+              <button class="btn btn-ghost" type="button" id="copiar">Copiar texto</button>
+              <a class="btn btn-primary" id="enviar" href="#">Enviar a Nubimar</a>
+            </span>
+          </div>
+        </div>
+
+        <p class="err" id="c-err" role="alert"></p>
+        <div class="acciones" id="nav-pasos">
+          <button class="btn btn-ghost" type="button" id="atras" hidden>Atrás</button>
+          <button class="btn btn-primary" type="submit" id="siguiente" style="margin-left:auto">Siguiente</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec empresa" id="empresa" aria-labelledby="h-emp">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="kicker">Empresa</span>
+          <h2 id="h-emp">Transitarios en la ría desde el año 2000</h2>
+          <p style="margin-top:20px">Nubimar Forwarder nació en el año 2000 de la mano de un equipo con muchos años en el sector logístico. Como transitario, nuestro trabajo es facilitarle la exportación y la importación de su mercancía, sea cual sea.</p>
+          <p>Nos ajustamos a lo que necesita cada cliente en servicio, precio y financiación, tanto en marítimo como en terrestre. Ese trabajo en todos los departamentos nos llevó a la certificación de calidad ISO 9001:2015.</p>
+          <p>Estamos en Erandio, a 10 km de Bilbao, junto a la ría.</p>
+        </div>
+        <figure class="split-img" style="margin:0;aspect-ratio:16/10">
+          <img src="assets/ria.jpg" alt="Grúas de la ría de Bilbao" loading="lazy" width="860" height="504">
+          <figcaption>Ría de Bilbao</figcaption>
+        </figure>
+      </div>
+      <div class="sellos">
+        <div class="sello"><strong>ISO 9001:2015</strong><span>Sistema de gestión de calidad certificado</span></div>
+        <div class="sello"><strong>EXPEDIMAR</strong><span>Corresponsal oficial para Cuba</span></div>
+        <div class="sello"><strong>FIATA</strong><span>Federación internacional de transitarios</span></div>
+        <div class="sello"><strong>TIMOCOM ID 012095</strong><span>Bolsa de cargas europea</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda" aria-label="Llamar a Nubimar">
+    <div class="wrap">
+      <p>¿Tiene una carga lista? Hable directamente con tráfico.</p>
+      <a class="btn btn-dark" href="tel:+34944315782">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>944 315 782
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="contacto" aria-labelledby="h-cont">
+    <div class="wrap contacto-grid">
+      <div>
+        <span class="kicker">Contacto</span>
+        <h2 id="h-cont">Hablemos de su envío</h2>
+        <address class="dir" style="font-style:normal;margin-top:20px">Ribera de Axpe, 11, portal D-1, mód. L-211<br>48950 Erandio (Bizkaia)</address>
+        <div class="tels">
+          <a class="btn btn-dark" href="tel:+34944315782">Tel. 944 315 782</a>
+          <a class="btn btn-ghost" href="mailto:jon@nubimar.com">Escribir a comercial</a>
+        </div>
+        <ul class="deps">
+          <li><span>Comercial</span><a href="mailto:jon@nubimar.com">jon@nubimar.com</a></li>
+          <li><span>Tráfico marítimo</span><a href="mailto:sea@nubimar.com">sea@nubimar.com</a></li>
+          <li><span>Tráfico terrestre</span><a href="mailto:nubimar@nubimar.com">nubimar@nubimar.com</a></li>
+          <li><span>Administración</span><a href="mailto:administracion@nubimar.com">administracion@nubimar.com</a></li>
+        </ul>
+      </div>
+      <iframe class="mapa-gm" title="Mapa: Nubimar Forwarder en Ribera de Axpe 11, Erandio" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Ribera+de+Axpe+11,+48950+Erandio,+Bizkaia&z=15&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <a class="brand" href="#inicio" aria-label="Nubimar Forwarder, inicio">
+          <img src="assets/simbolo.png" alt="" width="46" height="46">
+          <span><b>NUBIMAR</b><small>FORWARDER</small></span>
+        </a>
+        <p style="margin-top:20px;max-width:32ch">Transitario en Erandio (Bizkaia). Marítimo, aéreo y terrestre desde el año 2000.</p>
+      </div>
+      <nav aria-labelledby="pie-serv"><h2 id="pie-serv">Servicios</h2>
+        <ul><li><a href="#servicios">Marítimo</a></li><li><a href="#servicios">Aéreo</a></li><li><a href="#terrestre">Terrestre</a></li><li><a href="#cuba">Cuba</a></li></ul>
+      </nav>
+      <nav aria-labelledby="pie-emp"><h2 id="pie-emp">Empresa</h2>
+        <ul><li><a href="#empresa">Quiénes somos</a></li><li><a href="#rutas">Rutas</a></li><li><a href="#cotizar">Pedir cotización</a></li><li><a href="#contacto">Contacto</a></li></ul>
+      </nav>
+      <div><h2>Contacto</h2>
+        <ul><li><a href="tel:+34944315782">944 315 782</a></li><li><a href="mailto:jon@nubimar.com">jon@nubimar.com</a></li><li>Ribera de Axpe, 11<br>48950 Erandio</li></ul>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>© <span id="anio">2026</span> Nubimar Forwarder, S.L. · NIF B95112603</span>
+      <span><a href="legal.html">Aviso legal</a> · <a href="legal.html#privacidad">Privacidad</a> · <a href="legal.html#cookies">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  $('#anio').textContent = new Date().getFullYear();
+
+  // Menú móvil
+  const burger = $('.burger'), drawer = $('#drawer');
+  const cerrarMenu = () => { drawer.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Abrir menú'); };
+  burger.addEventListener('click', () => {
+    const abrir = !drawer.classList.contains('open');
+    drawer.classList.toggle('open', abrir);
+    burger.setAttribute('aria-expanded', abrir);
+    burger.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
+  });
+  $$('a', drawer).forEach(a => a.addEventListener('click', cerrarMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) { cerrarMenu(); burger.focus(); } });
+
+  // Pestañas de la portada
+  const tabs = $$('[role=tab]');
+  const elegir = t => {
+    tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; $('#' + x.getAttribute('aria-controls')).hidden = !on; });
+    t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => elegir(t));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); elegir(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]); }
+    });
+  });
+
+  // Cotizador por pasos
+  const form = $('#coti'), pasos = $$('fieldset[data-paso]', form), marcas = $$('.pasos li');
+  const err = $('#c-err'), atras = $('#atras'), sig = $('#siguiente'), hecho = $('#hecho'), navPasos = $('#nav-pasos');
+  const TIPOS = {
+    'Marítimo': ['Contenedor 20\'', 'Contenedor 40\'', 'Contenedor 40\' High Cube', 'Contenedor frigorífico', 'Grupaje (LCL)', 'Carga fuera de gálibo'],
+    'Aéreo': ['Carga general', 'Perecedera', 'Urgente / courier'],
+    'Terrestre': ['Camión completo', 'Carga parcial / grupaje']
+  };
+  const DESTINO = { 'Marítimo': 'sea@nubimar.com', 'Aéreo': 'sea@nubimar.com', 'Terrestre': 'nubimar@nubimar.com' };
+  const DEP = { 'Marítimo': 'tráfico marítimo', 'Aéreo': 'marítimo y aéreo', 'Terrestre': 'tráfico terrestre' };
+  let paso = 0;
+
+  const modo = () => form.modo.value;
+  const rellenarTipos = () => {
+    const sel = $('#tipo'), prev = sel.value;
+    sel.innerHTML = TIPOS[modo()].map(t => `<option>${t}</option>`).join('');
+    if (TIPOS[modo()].includes(prev)) sel.value = prev;
+    $('#f-camion').hidden = modo() !== 'Terrestre';
+  };
+  $$('input[name=modo]', form).forEach(r => r.addEventListener('change', rellenarTipos));
+  rellenarTipos();
+
+  const mostrar = n => {
+    paso = n;
+    pasos.forEach((f, i) => f.hidden = i !== n);
+    marcas.forEach((m, i) => { m.classList.toggle('hecho', i < n); m.toggleAttribute('aria-current', false); if (i === n) m.setAttribute('aria-current', 'step'); });
+    atras.hidden = n === 0;
+    sig.textContent = n === pasos.length - 1 ? 'Preparar petición' : 'Siguiente';
+    err.textContent = '';
+  };
+  const validar = () => {
+    const campos = $$('[required]', pasos[paso]);
+    campos.forEach(c => c.removeAttribute('aria-invalid'));
+    const malo = campos.find(c => c.type === 'checkbox' ? !c.checked : !c.value.trim() || !c.checkValidity() || (c.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c.value.trim())));
+    if (!malo) return true;
+    malo.setAttribute('aria-invalid', 'true');
+    const nombre = malo.type === 'checkbox' ? 'Para enviarla, acepte la política de privacidad.' :
+      malo.type === 'email' && malo.value ? 'Revise el email, parece que le falta algo.' :
+      'Falta rellenar: ' + $('label[for="' + malo.id + '"]', form).childNodes[0].textContent.trim().toLowerCase() + '.';
+    err.textContent = nombre;
+    malo.focus();
+    return false;
+  };
+
+  const texto = () => {
+    const f = form, m = modo(), mes = f.fecha.value ? new Date(f.fecha.value + '-01').toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }) : 'sin fecha fija';
+    const l = [
+      'PETICIÓN DE COTIZACIÓN',
+      '',
+      'Transporte: ' + m,
+      'Origen: ' + f.origen.value.trim(),
+      'Destino: ' + f.destino.value.trim(),
+      'Carga prevista: ' + mes,
+      'Incoterm: ' + (f.incoterm.value || 'no indicado'),
+      '',
+      'Mercancía: ' + f.mercancia.value.trim(),
+      'Tipo de carga: ' + f.tipo.value + (m === 'Terrestre' ? ' · camión ' + f.camion.value.toLowerCase() : ''),
+      'Bultos/palets: ' + (f.bultos.value || '-'),
+      'Peso total: ' + f.peso.value + ' kg',
+      'Volumen: ' + (f.volumen.value ? f.volumen.value + ' m³' : '-'),
+      'Mercancía peligrosa: ' + (f.peligrosa.checked ? 'SÍ' : 'no'),
+      '',
+      'Empresa: ' + f.empresa.value.trim(),
+      'Contacto: ' + f.nombre.value.trim(),
+      'Email: ' + f.email.value.trim(),
+      'Teléfono: ' + f.tel.value.trim()
+    ];
+    if (f.notas.value.trim()) l.push('', 'Notas: ' + f.notas.value.trim());
+    return l.join('\n');
+  };
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validar()) return;
+    if (paso < pasos.length - 1) { mostrar(paso + 1); $('input,select', pasos[paso]).focus(); return; }
+    const m = modo(), cuerpo = texto();
+    const asunto = `Cotización ${m.toLowerCase()} · ${form.origen.value.trim()} → ${form.destino.value.trim()}`;
+    $('#resumen').textContent = cuerpo;
+    $('#dest').textContent = `La recibe el departamento de ${DEP[m]} (${DESTINO[m]}), con copia a comercial.`;
+    $('#enviar').href = `mailto:${DESTINO[m]}?cc=jon@nubimar.com&subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+    pasos.forEach(f => f.hidden = true);
+    navPasos.hidden = true; err.textContent = '';
+    marcas.forEach(x => { x.classList.add('hecho'); x.removeAttribute('aria-current'); });
+    hecho.hidden = false; hecho.focus();
+  });
+  atras.addEventListener('click', () => mostrar(paso - 1));
+  $('#editar').addEventListener('click', () => { hecho.hidden = true; navPasos.hidden = false; mostrar(0); });
+  $('#copiar').addEventListener('click', async e => {
+    try { await navigator.clipboard.writeText($('#resumen').textContent); e.target.textContent = 'Copiado'; }
+    catch (_) { e.target.textContent = 'No se pudo copiar'; }
+    setTimeout(() => e.target.textContent = 'Copiar texto', 2000);
+  });
+
+  // Atajos que rellenan el cotizador
+  const irCotizador = (m, origen, destino) => {
+    if (m) form.querySelector(`input[name=modo][value="${m}"]`).checked = true;
+    rellenarTipos();
+    if (origen != null) form.origen.value = origen;
+    if (destino != null) form.destino.value = destino;
+    hecho.hidden = true; navPasos.hidden = false; mostrar(0);
+    $('#cotizar').scrollIntoView();
+    (form.origen.value ? (form.destino.value ? form.fecha : form.destino) : form.origen).focus({ preventScroll: true });
+  };
+  $('#p-precio').addEventListener('submit', e => {
+    e.preventDefault();
+    irCotizador(e.target.hmodo.value, $('#h-origen').value.trim(), $('#h-destino').value.trim());
+  });
+  $$('a[data-modo]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); irCotizador(a.dataset.modo, null, a.dataset.destino ?? null); }));
+
+  // Consultar envío
+  $('#p-envio').addEventListener('submit', e => {
+    e.preventDefault();
+    const ref = $('#e-ref'), er = $('#e-err');
+    if (!ref.value.trim()) { ref.setAttribute('aria-invalid', 'true'); er.textContent = 'Escriba la referencia del envío.'; ref.focus(); return; }
+    ref.removeAttribute('aria-invalid'); er.textContent = '';
+    location.href = `mailto:${$('#e-dep').value}?subject=${encodeURIComponent('Consulta de envío · ' + ref.value.trim())}&body=${encodeURIComponent('Hola, ¿me podéis decir en qué situación está el envío con referencia ' + ref.value.trim() + '?\n\nGracias.')}`;
+  });
+})();
+</script>
+</body>
+</html>
