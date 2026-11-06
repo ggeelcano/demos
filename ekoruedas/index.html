@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ekoruedas · Taller de neumáticos en Derio y Sopela</title>
+<meta name="description" content="Taller de neumáticos en Derio y Sopela. Neumáticos nuevos y de ocasión de todas las marcas, alineación, frenos, cambio de aceite y pre-ITV.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ekoruedas · Taller de neumáticos en Derio y Sopela">
+<meta property="og:description" content="Neumáticos nuevos y de ocasión, alineación, frenos y pre-ITV. Pide precio por WhatsApp.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/ekoruedas/img/sopela-fachada.jpg">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/ekoruedas/">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#0f7470;--verde-osc:#0b5a57;--lima:#8cc63f;--texto:#222;--gris:#5a5a5a;--linea:#e2e2e2;--fondo-gris:#f5f5f3}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Source Sans 3",Arial,sans-serif;font-size:17px;line-height:1.6;color:var(--texto);background:#fff}
+img{max-width:100%;display:block}
+a{color:var(--verde)}
+h1,h2,h3{line-height:1.2;margin:0 0 12px}
+h1{font-size:34px}
+h2{font-size:27px}
+h3{font-size:21px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.salto{position:absolute;left:-999px;top:8px;background:#222;color:#fff;padding:8px 12px;z-index:10}
+.salto:focus{left:10px}
+:focus-visible{outline:3px solid #e8a33d;outline-offset:2px}
+
+header{border-top:4px solid var(--lima);border-bottom:1px solid var(--linea)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:10px;padding-bottom:10px}
+header .logo img{height:64px;width:auto}
+.tels{text-align:right;font-size:16px;line-height:1.4}
+.tels a{color:var(--texto);text-decoration:none;font-weight:700}
+.tels a:hover{color:var(--verde)}
+.tels span{color:var(--gris)}
+nav{background:var(--fondo-gris);border-bottom:1px solid var(--linea)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:26px}
+nav a{display:block;padding:10px 0;color:var(--texto);text-decoration:none;font-weight:600;font-size:16px}
+nav a:hover{color:var(--verde);text-decoration:underline}
+
+.portada-foto{height:360px;overflow:hidden;background:#ccc}
+.portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 34%}
+.intro{padding-top:34px;padding-bottom:10px}
+.intro p{max-width:720px;margin:0 0 20px;color:#333}
+.botones{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:11px 18px;border-radius:5px;font-weight:700;text-decoration:none;font-size:16px;border:2px solid var(--verde);font-family:inherit;cursor:pointer}
+.btn-lleno{background:var(--verde);color:#fff}
+.btn-lleno:hover{background:var(--verde-osc);border-color:var(--verde-osc)}
+.btn-vacio{background:#fff;color:var(--verde)}
+.btn-vacio:hover{background:#eef6f5}
+
+section{padding:36px 0}
+section[id]{scroll-margin-top:10px}
+.linea{border-top:1px solid var(--linea)}
+
+.sub-h2{max-width:720px;margin:0 0 20px;color:#333}
+.gama-tit{margin:22px 0 2px}
+.gama-txt{margin:0 0 12px;color:var(--gris);font-size:16px}
+.neus{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.neu{border:1px solid var(--linea);border-radius:4px;padding:12px 14px 14px;display:flex;flex-direction:column;background:#fff}
+.neu-foto{overflow:hidden;margin-bottom:8px}
+.neu img{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.neu img.zoom{transform:scale(1.45)}
+.neu .neu-marca{margin:0;font-size:14px;color:var(--gris);text-transform:uppercase;letter-spacing:.5px}
+.neu h4{margin:0 0 4px;font-size:18px;line-height:1.25}
+.neu .neu-tipo{margin:0 0 10px;font-size:15px;color:var(--gris)}
+.neu .pedir{margin-top:auto;font-weight:700}
+.neu-ocasion{background:#f8fbf3;border-color:#d5e8bd;justify-content:center}
+.servicios{columns:2;column-gap:40px;padding:0;margin:0;list-style:none}
+.servicios li{break-inside:avoid;padding:10px 0;border-bottom:1px solid #eee}
+.servicios b{display:block}
+.servicios span{color:var(--gris);font-size:16px}
+
+.precio{background:var(--fondo-gris)}
+.precio p{max-width:700px;margin:0 0 18px}
+form{display:grid;grid-template-columns:1.4fr .6fr .8fr 1fr auto;gap:12px;align-items:end;max-width:1000px}
+label{display:block;font-weight:600;font-size:15px;margin-bottom:4px}
+input,select{width:100%;padding:10px 11px;font-size:16px;font-family:inherit;border:1px solid #bbb;border-radius:5px;background:#fff;color:var(--texto)}
+input:focus,select:focus{border-color:var(--verde);outline:2px solid rgba(15,116,112,.25)}
+form .btn{white-space:nowrap;padding:10px 18px}
+.nota{font-size:14px;color:var(--gris);margin:10px 0 0}
+
+.talleres{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.taller img.foto{width:100%;height:230px;object-fit:cover;border-radius:4px;margin-bottom:14px}
+.taller p{margin:0 0 6px}
+.taller .aviso{margin:10px 0;padding:8px 12px;background:#f1f7ea;border-left:3px solid var(--lima);font-size:16px}
+.taller iframe{width:100%;height:200px;border:0;margin:8px 0 6px}
+
+footer{background:#2b2b2b;color:#ccc;font-size:15px;padding:24px 0;margin-top:20px}
+footer a{color:#fff}
+footer p{margin:0 0 4px}
+
+@media (max-width:860px){
+  .neus{grid-template-columns:repeat(3,1fr)}
+  form{grid-template-columns:1fr 1fr}
+  form .campo-medida{grid-column:1/-1}
+  form .btn{grid-column:1/-1;width:100%;padding:12px}
+}
+@media (max-width:700px){
+  h1{font-size:28px}
+  h2{font-size:24px}
+  header .logo img{height:50px}
+  .tels{font-size:15px}
+  nav ul{gap:18px;overflow-x:auto}
+  nav a{font-size:15px;white-space:nowrap}
+  .portada-foto{height:230px}
+  .servicios{columns:1}
+  .talleres{grid-template-columns:1fr}
+  .botones .btn{flex:1 1 100%;text-align:center}
+}
+@media (max-width:400px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .neus{grid-template-columns:1fr 1fr;gap:10px}
+  .neu{padding:10px}
+  .neu h4{font-size:16px}
+  nav ul{gap:14px}
+  form{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.png" alt="Ekoruedas, inicio" width="214" height="171"></a>
+    <div class="tels">
+      <div><span class="lugar">Sopela </span><a href="tel:+34697195109">697 19 51 09</a></div>
+      <div><span class="lugar">Derio </span><a href="tel:+34747430597">747 43 05 97</a></div>
+    </div>
+  </div>
+</header>
+<nav aria-label="Secciones">
+  <div class="wrap">
+    <ul>
+      <li><a href="#neumaticos">Neumáticos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#precio">Precio</a></li>
+      <li><a href="#talleres">Talleres</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="contenido">
+  <div class="portada-foto">
+    <img src="img/sopela-fachada.jpg" alt="Fachada del taller de Ekoruedas en Sopela, con el rótulo de neumáticos, frenos, alineación y vulcanizado" width="1500" height="2000">
+  </div>
+
+  <div class="wrap intro">
+    <h1>Taller de neumáticos en Derio y Sopela</h1>
+    <p>Montamos neumáticos de todas las marcas, nuevos y de ocasión. También hacemos alineación, frenos, cambio de aceite y pre-ITV. Tenemos dos talleres: uno en el polígono de Arteaga, en Derio, y otro en Sopela, al lado de la ITV.</p>
+    <div class="botones">
+      <a class="btn btn-lleno" href="tel:+34697195109">Llamar al 697 19 51 09</a>
+      <a class="btn btn-vacio" href="https://wa.me/34697195109" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+
+  <section id="neumaticos" class="linea">
+    <div class="wrap">
+      <h2>Neumáticos</h2>
+      <p class="sub-h2">Para turismo, SUV, 4x4 y furgoneta. Estos son algunos de los modelos que montamos, pero trabajamos con todas las marcas: si buscas otro, pregúntanos.</p>
+      <h3 class="gama-tit">Premium</h3>
+      <p class="gama-txt">Las marcas de primera línea.</p>
+      <div class="neus">
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/michelin-primacy-4-plus.webp" alt="Neumático Michelin Primacy 4+" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Michelin</p>
+            <h4>Primacy 4+</h4>
+            <p class="neu-tipo">Verano · turismo y SUV</p>
+            <a class="pedir" data-m="Michelin Primacy 4+" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/michelin-crossclimate-2.jpg" alt="Neumático Michelin CrossClimate 2" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Michelin</p>
+            <h4>CrossClimate 2</h4>
+            <p class="neu-tipo">Todo el año</p>
+            <a class="pedir" data-m="Michelin CrossClimate 2" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/pirelli-cinturato-p7-c2.jpg" alt="Neumático Pirelli Cinturato P7" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Pirelli</p>
+            <h4>Cinturato P7</h4>
+            <p class="neu-tipo">Verano · turismo</p>
+            <a class="pedir" data-m="Pirelli Cinturato P7" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/bridgestone-turanza-6.jpg" alt="Neumático Bridgestone Turanza 6" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Bridgestone</p>
+            <h4>Turanza 6</h4>
+            <p class="neu-tipo">Verano · turismo y SUV</p>
+            <a class="pedir" data-m="Bridgestone Turanza 6" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/goodyear-eagle-f1-asymmetric-6.jpg" alt="Neumático Goodyear Eagle F1 Asymmetric 6" loading="lazy" width="650" height="650" class="zoom"></div>
+            <p class="neu-marca">Goodyear</p>
+            <h4>Eagle F1 Asymmetric 6</h4>
+            <p class="neu-tipo">Verano · deportivo</p>
+            <a class="pedir" data-m="Goodyear Eagle F1 Asymmetric 6" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+      </div>
+      <h3 class="gama-tit">Calidad-precio</h3>
+      <p class="gama-txt">Buenas marcas a un precio más ajustado.</p>
+      <div class="neus">
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/firestone-roadhawk-2.jpg" alt="Neumático Firestone Roadhawk 2" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Firestone</p>
+            <h4>Roadhawk 2</h4>
+            <p class="neu-tipo">Verano · turismo y SUV</p>
+            <a class="pedir" data-m="Firestone Roadhawk 2" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/hankook-ventus-prime-4.jpg" alt="Neumático Hankook Ventus Prime 4" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Hankook</p>
+            <h4>Ventus Prime 4</h4>
+            <p class="neu-tipo">Verano · turismo</p>
+            <a class="pedir" data-m="Hankook Ventus Prime 4" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/falken-ziex-ze310-ecorun.jpg" alt="Neumático Falken Ziex ZE310 Ecorun" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Falken</p>
+            <h4>Ziex ZE310 Ecorun</h4>
+            <p class="neu-tipo">Verano · turismo</p>
+            <a class="pedir" data-m="Falken Ziex ZE310 Ecorun" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/kleber-dynaxer-hp4.jpg" alt="Neumático Kleber Dynaxer HP4" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Kleber</p>
+            <h4>Dynaxer HP4</h4>
+            <p class="neu-tipo">Verano · turismo</p>
+            <a class="pedir" data-m="Kleber Dynaxer HP4" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+      </div>
+      <h3 class="gama-tit">Económicos y de ocasión</h3>
+      <p class="gama-txt">Para quien hace pocos kilómetros y quiere gastar lo justo.</p>
+      <div class="neus">
+          <div class="neu">
+            <div class="neu-foto"><img src="img/neumaticos/lanvigator-catchgre-gp100.jpg" alt="Neumático Lanvigator Catchgre GP100" loading="lazy" width="650" height="650"></div>
+            <p class="neu-marca">Lanvigator</p>
+            <h4>Catchgre GP100</h4>
+            <p class="neu-tipo">Turismo</p>
+            <a class="pedir" data-m="Lanvigator Catchgre GP100" href="https://wa.me/34697195109" target="_blank" rel="noopener">Pedir precio</a>
+          </div>
+          <div class="neu neu-ocasion">
+            <p class="neu-marca">Todas las marcas</p>
+            <h4>Neumáticos de ocasión</h4>
+            <p class="neu-tipo">Revisados uno a uno, con al menos un 70&nbsp;% de vida. Según lo que entre.</p>
+            <a class="pedir" data-m="ocasion" href="https://wa.me/34697195109" target="_blank" rel="noopener">Preguntar si hay</a>
+          </div>
+      </div>
+      <p class="nota">Fotos de los fabricantes. El precio depende de la medida: pídelo y te lo damos montado.</p>
+    </div>
+  </section>
+
+  <section id="servicios" class="linea">
+    <div class="wrap">
+      <h2>Servicios</h2>
+      <ul class="servicios">
+        <li><b>Montaje y equilibrado</b><span>Revisamos la llanta y la válvula antes de montar.</span></li>
+        <li><b>Alineación</b><span>Para que el coche vaya recto y las ruedas se gasten igual.</span></li>
+        <li><b>Pinchazos y vulcanizado</b><span>Si se puede reparar, lo reparamos.</span></li>
+        <li><b>Frenos</b><span>Pastillas, discos y líquido de frenos.</span></li>
+        <li><b>Cambio de aceite y filtros</b><span>Con el aceite que pide el fabricante.</span></li>
+        <li><b>Suspensión</b><span>Amortiguadores, rótulas y silentblocks.</span></li>
+        <li><b>Pre-ITV</b><span>Revisamos frenos, luces, escape y ruedas antes de la inspección.</span></li>
+        <li><b>Baterías y escape</b><span>Comprobación y cambio.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="precio" id="precio">
+    <div class="wrap">
+      <h2>Pide precio de tus neumáticos</h2>
+      <p>Dinos la medida y te contestamos por WhatsApp con el precio montado. La medida viene en el lateral del neumático, por ejemplo <b>205/55 R16</b>. Si no la encuentras, pon el modelo del coche.</p>
+      <form id="formPrecio">
+        <div class="campo-medida">
+          <label for="medida">Medida o modelo del coche</label>
+          <input type="text" id="medida" name="medida" placeholder="205/55 R16" autocomplete="off">
+        </div>
+        <div>
+          <label for="cantidad">Cuántos</label>
+          <select id="cantidad" name="cantidad"><option>1</option><option selected>2</option><option>4</option></select>
+        </div>
+        <div>
+          <label for="taller">Taller</label>
+          <select id="taller" name="taller"><option>Sopela</option><option>Derio</option></select>
+        </div>
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="given-name">
+        </div>
+        <button class="btn btn-lleno" type="submit">Enviar por WhatsApp</button>
+      </form>
+      <p class="nota">Se abre WhatsApp con el mensaje ya escrito.</p>
+    </div>
+  </section>
+
+  <section id="talleres">
+    <div class="wrap">
+      <h2>Nuestros talleres</h2>
+      <div class="talleres">
+        <div class="taller">
+          <img class="foto" src="img/sopela-fachada.jpg" alt="Taller de Sopela, Ekoruedas y Automóviles Andoni" loading="lazy" style="object-position:50% 62%">
+          <h3>Sopela</h3>
+          <p>Olabide Kalea 11, 48600 Sopela<br>(Ekoruedas · Automóviles Andoni)</p>
+          <p>Tel. <a href="tel:+34697195109">697 19 51 09</a> · <a href="tel:+34944679224">94 467 92 24</a></p>
+          <p>Lunes a viernes: 8:00 a 13:00 y 15:00 a 20:00</p>
+          <p class="aviso">Estamos al lado de la ITV de Sopela. Si te toca pasarla, haz antes la pre-ITV con nosotros.</p>
+          <iframe title="Mapa del taller de Sopela" loading="lazy" src="https://maps.google.com/maps?q=43.378546,-2.9704824&z=16&output=embed"></iframe>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=43.378546,-2.9704824" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+        <div class="taller">
+          <img class="foto" src="img/derio-fachada.jpg" alt="Taller de Ekoruedas en Derio, en Idorsolo Kalea" loading="lazy" style="object-position:50% 8%">
+          <h3>Derio</h3>
+          <p>Idorsolo Kalea 5, pabellón 9<br>Polígono de Arteaga, 48160 Derio</p>
+          <p>Tel. <a href="tel:+34747430597">747 43 05 97</a></p>
+          <p>Lunes a viernes: 9:00 a 13:00 y 15:00 a 19:00</p>
+          <p class="aviso">Frente al polideportivo de Derio.</p>
+          <iframe title="Mapa del taller de Derio" loading="lazy" src="https://maps.google.com/maps?q=43.29532,-2.88802&z=16&output=embed"></iframe>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=43.29532,-2.88802" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Ekoruedas Km 0 S.L.</b> · NIF B95830949</p>
+    <p>Idorsolo Kalea 5, pabellón 9, 48160 Derio (Bizkaia) · <a href="mailto:gerencia@ekoruedas.com">gerencia@ekoruedas.com</a></p>
+    <p>© 2026 Ekoruedas</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a.pedir').forEach(function (a) {
+  var m = a.dataset.m;
+  var t = m === 'ocasion' ? 'Hola, quería saber si tenéis neumáticos de ocasión. Mi medida es: ' : 'Hola, quería precio del ' + m + '. Mi medida es: ';
+  a.href = 'https://wa.me/34697195109?text=' + encodeURIComponent(t);
+});
+document.getElementById('formPrecio').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var medida = f.medida.value.trim(), nombre = f.nombre.value.trim(), n = f.cantidad.value;
+  var t = 'Hola' + (nombre ? ', soy ' + nombre : '') + '. Quería precio de ' + n + ' neumático' + (n === '1' ? '' : 's');
+  if (medida) t += ' (' + medida + ')';
+  t += ' montado' + (n === '1' ? '' : 's') + ' en el taller de ' + f.taller.value + '.';
+  window.open('https://wa.me/34697195109?text=' + encodeURIComponent(t), '_blank', 'noopener');
+});
+</script>
+</body>
+</html>
