@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta para Tu Punto G · G&amp;G Elcano</title>
+<meta name="description" content="Tres arreglos que hoy cuestan ventas en tupuntog.es y un ejemplo de cómo podría verse la tienda con sus productos reales.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tu Punto G">
+<meta property="og:title" content="Propuesta para Tu Punto G">
+<meta property="og:description" content="Tres arreglos para vender más y un ejemplo de la tienda con vuestros productos.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/tupuntog/assets/og.jpg">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/tupuntog/propuesta/">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1428;--ink2:#4a3d5a;--mute:#756a82;--line:#ece4f3;--rosa:#6a1fb0;--rosa-s:#efe4fb;--verde:#13804f;--verde-s:#e6f6ee;--rojo:#c2261e;--rojo-s:#fdeceb;--crema:#f9f5fd;--plum:#2a1147;--ft:'Bricolage Grotesque',system-ui,sans-serif;--f:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f3eff7;color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--rosa)}
+.hoja{max-width:900px;margin:0 auto;background:#fff;min-height:100vh}
+.pad{padding:0 20px}
+@media(min-width:700px){.pad{padding:0 56px}}
+header.portada{background:radial-gradient(70% 100% at 90% 0%,rgba(224,64,154,.35),transparent 60%),linear-gradient(135deg,#2a1147,#4a1a78);color:#fff;padding:28px 0 36px}
+.marca-fila{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}
+.marca-fila .gg{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#e3d3f5}
+.marca-fila .lg{background:#fff;border-radius:14px;padding:6px 10px}
+.marca-fila .lg img{height:44px;width:auto}
+h1,h2,h3{font-family:var(--ft);line-height:1.1;margin:0;letter-spacing:-.01em}
+header h1{font-size:clamp(34px,7vw,52px);font-weight:800}
+header p.sub{font-size:18px;color:#eadcf7;margin:14px 0 18px;max-width:620px}
+header .meta{font-size:14px;color:#d6c3ea}
+.resumen{margin:-22px 0 0;position:relative}
+.resumen ol{list-style:none;margin:0;padding:18px;background:#fff;border-radius:20px;box-shadow:0 16px 40px -20px rgba(40,10,70,.35);display:grid;gap:10px;counter-reset:n}
+.resumen li{counter-increment:n;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-weight:600}
+.resumen li::before{content:counter(n);width:34px;height:34px;border-radius:11px;background:var(--rosa);color:#fff;font-family:var(--ft);font-weight:800;display:flex;align-items:center;justify-content:center}
+.resumen li.ej::before{content:"★";background:var(--ink)}
+.resumen li span{font-weight:400;color:var(--mute);display:block;font-size:14px}
+section{padding:40px 0 8px}
+.intro p{margin:0 0 14px;color:var(--ink2);font-size:17px}
+.num{font-family:var(--ft);font-weight:800;color:var(--rosa);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+section h2{font-size:clamp(27px,5vw,36px);margin:6px 0 16px}
+h3{font-size:19px;margin:22px 0 10px}
+.hoy h3{color:var(--rojo)}
+ul.lista{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+ul.lista li{position:relative;padding-left:26px;color:var(--ink2)}
+ul.lista li::before{content:"";position:absolute;left:4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--rojo)}
+ul.lista.ok li::before{background:var(--verde)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.88em;background:#f3eef8;border-radius:6px;padding:1px 6px;word-break:break-all}
+.solucion{background:var(--verde-s);border-radius:18px;padding:18px 20px;margin-top:20px}
+.solucion h3{color:var(--verde);margin-top:0}
+.solucion p{margin:0;color:#1d4a35}
+.pruebas{display:grid;gap:14px;margin:18px 0 4px}
+.prueba{margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.prueba img{width:100%}
+.prueba figcaption{font-size:13.5px;color:var(--mute);padding:10px 14px;border-top:1px solid var(--line);background:#fcfbfd}
+.prueba.movil{max-width:300px}
+.pruebas.dos{grid-template-columns:1fr}
+@media(min-width:700px){.pruebas.dos{grid-template-columns:260px 1fr;align-items:start}}
+.cita{background:var(--rojo-s);border-left:4px solid var(--rojo);border-radius:10px;padding:12px 16px;color:#7a1a14;font-weight:600;margin:0}
+.datos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 4px}
+.dato{background:#faf7fc;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.dato b{display:block;font-family:var(--ft);font-size:28px;line-height:1.1;color:var(--rojo)}
+.dato span{font-size:13.5px;color:var(--ink2)}
+@media(min-width:700px){.datos{grid-template-columns:repeat(4,1fr)}}
+hr.sep{border:0;border-top:1px solid var(--line);margin:34px 0 0}
+.ejemplo{background:var(--crema);margin-top:40px;padding:40px 0}
+.moviles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+@media(min-width:700px){.moviles{grid-template-columns:repeat(4,1fr);gap:14px}}
+.tel{margin:0}
+.tel img{border-radius:22px;border:6px solid #1d1428;box-shadow:0 14px 30px -16px rgba(0,0,0,.5)}
+.tel figcaption{font-size:13px;color:var(--mute);text-align:center;margin-top:8px}
+.escritorio{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 30px -18px rgba(0,0,0,.4);margin:8px 0 6px}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rosa);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;min-height:52px;padding:0 26px;margin:18px 0 6px;font-size:16px}
+.cta:hover{background:#551690}
+.nota{font-size:14px;color:var(--mute)}
+.paso{background:var(--plum);color:#eadcf7;margin-top:0;padding:40px 0 44px}
+.paso h2{color:#fff}
+.paso p{margin:0 0 12px;font-size:17px}
+.contacto{display:grid;gap:4px;margin-top:20px;font-size:15.5px}
+.contacto b{color:#fff;font-size:17px}
+.contacto a{color:#e7c6ff}
+footer{padding:18px 0 26px;font-size:13px;color:var(--mute)}
+.solo-print{display:none;font-weight:700;margin:6px 0 4px}
+@media print{
+  @page{size:A4;margin:12mm 11mm}
+  body{background:#fff;font-size:12px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hoja{max-width:none}
+  .pad{padding:0 4mm}
+  header.portada{padding:16px 0 28px}
+  header h1{font-size:36px}
+  header p.sub{font-size:15px}
+  .resumen ol{box-shadow:none;border:1px solid var(--line)}
+  section{padding:20px 0 4px}
+  section h2{font-size:24px;margin:4px 0 10px}
+  h3{margin:12px 0 8px;font-size:15px}
+  ul.lista{gap:7px}
+  .intro p{font-size:13px}
+  .solucion{padding:11px 14px;margin-top:12px}
+  .prueba,.solucion,.tel,.resumen,.datos,.cita{break-inside:avoid}
+  .pruebas{grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 2px}
+  .pruebas.dos{grid-template-columns:110px 1fr}
+  .pruebas.una{display:block;max-width:120mm}
+  .prueba,.tel{break-inside:auto}
+  .prueba.movil{max-width:none}
+  .prueba figcaption{font-size:11px;padding:6px 10px}
+  .ejemplo{margin-top:20px;padding:16px 0 6px}
+  .ej-bloque{break-inside:avoid}
+  .moviles{max-width:105mm;gap:10px;margin:14px 0;grid-template-columns:repeat(4,1fr)}
+  .tel img{border-width:4px;border-radius:14px}
+  .escritorio,.cta{display:none}
+  .solo-print{display:block!important}
+  .ejemplo ul.lista li{font-size:11.5px}
+  hr.sep{margin:18px 0 0}
+  .paso{padding:14px 0 16px;margin-top:6px;break-inside:avoid}
+  .paso h2{font-size:20px}
+  .paso p{font-size:12.5px;margin-bottom:6px}
+  .contacto{margin-top:8px;font-size:12px;display:flex;gap:6px 16px;flex-wrap:wrap;align-items:baseline}
+  .contacto b{font-size:13px}
+  footer{padding:8px 0 0;font-size:10.5px}
+}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header class="portada"><div class="pad">
+  <div class="marca-fila"><span class="gg">G&amp;G Elcano · Propuesta</span><span class="lg"><img src="../assets/logo.webp" alt="Tu Punto G" width="200" height="100"></span></div>
+  <h1>Propuesta para Tu Punto G</h1>
+  <p class="sub">Tres arreglos que hoy os cuestan ventas en tupuntog.es y un ejemplo de cómo podría verse la tienda con vuestros productos.</p>
+  <div class="meta">Preparada por Josu, de G&amp;G Elcano · 12 de noviembre de 2026</div>
+</div></header>
+
+<div class="pad resumen">
+  <ol>
+    <li><div>Que funcione lo que prometéis<span>Los tres cupones de descuento anunciados dan error y el WhatsApp no abre el chat.</span></div></li>
+    <li><div>Que la portada venda desde el primer vistazo<span>En el móvil no se ve ni un producto, ni el envío gratis ni la recogida en tienda.</span></div></li>
+    <li><div>Un catálogo ordenado que se pueda comparar<span>Nombres en mayúsculas, fichas repetidas, sin marcas ni descripciones.</span></div></li>
+    <li class="ej"><div>Ejemplo visual con 738 productos vuestros<span>Una demo que podéis abrir y probar en el móvil.</span></div></li>
+  </ol>
+</div>
+
+<div class="pad">
+<section class="intro">
+  <p>Hemos revisado la tienda a fondo el 12 de noviembre. Tenéis lo que muchas tiendas online no tienen: un local en Córdoba donde se puede recoger el pedido gratis, envío gratis desde 49 €, pago con Bizum y casi 1.700 productos. El problema es que casi nada de eso se ve, y alguna de las cosas que sí se anuncian no funciona.</p>
+  <p>Las tres mejoras se hacen sobre vuestro WooCommerce actual. El ejemplo visual es una propuesta de diseño; en la llamada os contamos cómo llevarlo a vuestra tienda.</p>
+</section>
+
+<section class="hoy">
+  <span class="num">Mejora 1</span>
+  <h2>Que funcione lo que prometéis</h2>
+  <h3>Qué pasa hoy</h3>
+  <ul class="lista">
+    <li>En la entrada «Descuentos y cupones» anunciáis un 5 % permanente con <code>REBAJA5</code>, 5 € con <code>DESCUENTO100</code> y 15 € con <code>DESCUENTO200</code>. Los hemos probado en vuestro carrito y los tres dan el mismo error: el cupón no existe. Es justo el momento en que el cliente ya iba a pagar.</li>
+    <li>El único botón de WhatsApp de la web está al final del pie y abre <code>api.whatsapp.com/send?phone=649908040</code>. Le falta el 34 delante, así que WhatsApp no reconoce el número.</li>
+    <li>La página «Pago seguro» dice Visa, Mastercard y PayPal. En la caja solo aparecen tarjeta y Bizum.</li>
+    <li>El enlace «vibradores» del texto de la portada lleva a una página que no existe (error 404), y en Contacto la dirección sale como «local S 4011 Córdoba» en lugar de «local 5, 14011».</li>
+  </ul>
+  <div class="pruebas una">
+    <figure class="prueba"><img src="img/ev-cupon.webp" alt="Error al aplicar el cupón REBAJA5 en el carrito de tupuntog.es" width="929" height="340" loading="lazy" id="imgCupon"><figcaption>Lo que ve el cliente al usar el código REBAJA5 en vuestro carrito.</figcaption></figure>
+  </div>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Crear los cupones que anunciáis (o quitar el anuncio, como prefiráis) y enseñarlos en la cesta, que es donde se usan. Un botón de WhatsApp siempre visible, con el número completo y el producto ya escrito en el mensaje. Medios de pago, enlace y dirección corregidos.</p></div>
+</section>
+<hr class="sep">
+
+<section class="hoy">
+  <span class="num">Mejora 2</span>
+  <h2>Que la portada venda desde el primer vistazo</h2>
+  <h3>Qué pasa hoy</h3>
+  <ul class="lista">
+    <li>En el móvil, la primera pantalla es una foto con «Juega, explora, disfruta» y el aviso de cookies. El primer producto aparece a 1.370 píxeles, casi dos pantallas más abajo.</li>
+    <li>Lo que os diferencia no sale en la portada: el envío gratis desde 49 € solo está en una entrada del blog de 2023, y que se puede recoger gratis en la tienda solo se descubre en la caja o en una pregunta frecuente al final de la página.</li>
+    <li>La franja de «Total discreción», «Productos de calidad» y «Pago seguro» tiene el texto morado sobre fondo rosa, con un contraste de 1,96. Para que se lea bien hace falta al menos 4,5.</li>
+    <li>«Nuevo en Tu Punto G» empieza con el mismo arnés repetido dos veces, con la errata «Arness», y sigue con dildos realistas. No es lo que más vendéis ni lo mejor para una primera impresión.</li>
+    <li>No hay página de condiciones de venta ni de devoluciones, y la de «Envío» está vacía. La ley obliga a informar del derecho de desistimiento de 14 días antes de la compra.</li>
+  </ul>
+  <div class="pruebas dos">
+    <figure class="prueba movil"><img src="img/ev-portada-movil.webp" alt="Primera pantalla de tupuntog.es en el móvil" width="780" height="1688" loading="lazy"><figcaption>Primera pantalla en el móvil (sin el aviso de cookies).</figcaption></figure>
+    <figure class="prueba"><img src="img/ev-garantias.webp" alt="Franja de garantías con texto morado sobre rosa" width="1280" height="145" loading="lazy"><figcaption>La franja de garantías: morado sobre rosa.</figcaption></figure>
+  </div>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Una primera pantalla que diga quiénes sois y qué ofrecéis (sex shop en Córdoba, envío gratis desde 49 €, recogida gratis en la tienda) con productos que se venden de verdad. Garantías legibles, la tienda física con mapa y botón de «Cómo llegar», y las páginas de envíos, devoluciones y condiciones redactadas.</p></div>
+</section>
+<hr class="sep">
+
+<section class="hoy">
+  <span class="num">Mejora 3</span>
+  <h2>Un catálogo ordenado que se pueda comparar</h2>
+  <h3>Qué pasa hoy</h3>
+  <div class="datos">
+    <div class="dato"><b>388</b><span>productos con el nombre en mayúsculas, mezclados con el resto</span></div>
+    <div class="dato"><b>291</b><span>productos casi sin descripción (menos de 40 letras)</span></div>
+    <div class="dato"><b>23</b><span>productos repetidos en 47 fichas distintas</span></div>
+    <div class="dato"><b>0</b><span>productos con la marca asignada, de 1.696</span></div>
+  </div>
+  <ul class="lista" style="margin-top:14px">
+    <li>Sin marcas no se puede filtrar por Satisfyer, Shunga o Durex, que es como busca mucha gente.</li>
+    <li>335 productos no tienen miniatura y el listado descarga la foto grande, lo que hace más lenta la tienda en el móvil.</li>
+    <li>La portada tiene 12 títulos marcados como principales (H1). Google necesita uno que diga de qué va la página.</li>
+    <li>Hay un lubricante a 0 € que no se puede comprar.</li>
+  </ul>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Nombres con el mismo formato en todo el catálogo, fichas repetidas unidas, marca asignada a cada producto con su filtro, descripciones para los que no tienen y miniaturas generadas. En la portada, un solo título principal pensado para «sex shop en Córdoba».</p></div>
+</section>
+</div>
+
+<section class="ejemplo"><div class="pad">
+  <div class="ej-bloque"><span class="num">Ejemplo visual</span>
+  <h2>Así podría verse Tu Punto G</h2>
+  <p class="nota" style="font-size:16px;color:var(--ink2)">Hemos montado una demo con 738 productos vuestros que hoy tienen stock: las mismas fotos, los mismos precios y las mismas descripciones de tupuntog.es, con los nombres ya ordenados. Es vuestra tienda con otra presentación, no una plantilla.</p>
+  <div class="moviles">
+    <figure class="tel"><img src="img/demo-movil-portada.webp" alt="Portada de la demo en el móvil" width="780" height="1688" loading="lazy"><figcaption>Quiénes sois y qué ofrecéis, a la primera</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-ficha.webp" alt="Ficha de producto con WhatsApp" width="780" height="1688" loading="lazy"><figcaption>Ficha con «Pregúntanos por WhatsApp»</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-tienda.webp" alt="Tienda física con mapa" width="780" height="1688" loading="lazy"><figcaption>La tienda de Córdoba con mapa</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-cesta.webp" alt="Cesta con envío gratis" width="780" height="1688" loading="lazy"><figcaption>Cesta que avisa del envío gratis</figcaption></figure>
+  </div></div>
+  <div class="escritorio"><img src="img/demo-escritorio.webp" alt="Portada de la demo en el ordenador" width="1440" height="900" loading="lazy"></div>
+  <a class="cta" href="https://ggeelcano.github.io/demos/tupuntog/" target="_blank" rel="noopener">Abrir la demo</a>
+  <p class="solo-print">Abrir la demo: <a href="https://ggeelcano.github.io/demos/tupuntog/">ggeelcano.github.io/demos/tupuntog</a></p>
+  <h3>Qué podéis probar</h3>
+  <ul class="lista ok">
+    <li>Al entrar pide confirmar que se tienen 18 años y lo recuerda en las siguientes visitas.</li>
+    <li>La primera pantalla del móvil dice que sois un sex shop en Córdoba, con envío gratis desde 49 € y recogida gratis en la tienda.</li>
+    <li>Compra por sección, con filtros por marca y por precio, y un buscador que sugiere productos mientras escribes.</li>
+    <li>En cada ficha, «Pregúntanos por WhatsApp» abre vuestro chat con el nombre del producto ya escrito.</li>
+    <li>La cesta dice cuánto falta para el envío gratis y recuerda que en la tienda la recogida no cuesta nada.</li>
+    <li>La tienda de Arroyo del Moro tiene su sitio, con mapa y botón de «Cómo llegar».</li>
+  </ul>
+  <p class="nota">La compra de la demo no cobra nada: al finalizar explica cómo sería el pago (tarjeta o Bizum, con envío o recogida en tienda).</p>
+</div></section>
+
+<section class="paso"><div class="pad">
+  <h2>Siguiente paso</h2>
+  <p>Si os encaja, lo vemos en una llamada de 15 minutos: os enseño la demo, resolvemos dudas y os paso un presupuesto cerrado. Lo de los cupones y el WhatsApp se puede dejar arreglado esta misma semana.</p>
+  <div class="contacto">
+    <b>Josu · G&amp;G Elcano</b>
+    <span>WhatsApp <a href="https://wa.me/34614752539">614 75 25 39</a></span>
+    <span><a href="mailto:josugarciandia@ggelcano.com">josugarciandia@ggelcano.com</a></span>
+  </div>
+</div></section>
+<footer><div class="pad">Datos revisados en tupuntog.es el 12 de noviembre de 2026. Los cupones se probaron en vuestro carrito sin hacer ningún pedido. Las capturas de vuestra web se han hecho ese día, quitando solo el aviso de cookies para que se vea el contenido.</div></footer>
+</div>
+</body>
+</html>

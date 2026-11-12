@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tu Punto G · Sex shop en Córdoba y tienda erótica online</title>
+<meta name="description" content="Juguetes, cosmética erótica, juegos y preservativos con envío discreto en 24/48 h, gratis desde 49 €, o recogida gratis en nuestra tienda de Córdoba.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tu Punto G">
+<meta property="og:title" content="Tu Punto G · Propuesta de tienda renovada">
+<meta property="og:description" content="Vuestra tienda con vuestros productos reales, pensada para vender desde el móvil.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/tupuntog/assets/og.jpg">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/tupuntog/">
+<meta name="theme-color" content="#2a1147">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://tupuntog.es">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1428;--ink2:#4a3d5a;--mute:#756a82;--line:#ece4f3;--bg:#fff;--crema:#f9f5fd;
+  --rosa:#6a1fb0;--rosa2:#e0409a;--rosa-s:#efe4fb;--azul:#1a9bd7;--azul-s:#e2f4fd;--lila-s:#fdeef6;
+  --amarillo:#ffe14f;--verde:#14845a;--plum:#2a1147;
+  --r:18px;--r-s:12px;--sombra:0 14px 34px -16px rgba(50,10,80,.3);
+  --ft:'Bricolage Grotesque',system-ui,sans-serif;--f:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --max:1240px;--gut:16px;
+}
+*{box-sizing:border-box}
+html{overflow-x:hidden;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--f);color:var(--ink);background:var(--bg);font-size:15px;line-height:1.5}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+h1,h2,h3{font-family:var(--ft);line-height:1.08;margin:0;letter-spacing:-.01em}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rosa)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-rosa{background:var(--rosa);color:#fff}.btn-rosa:hover{background:#551690}
+.btn-blanco{background:#fff;color:var(--ink)}
+.btn-borde{border:2px solid currentColor}
+.btn-wa{background:#1fa855;color:#fff}.btn-wa:hover{background:#178a45}
+
+/* Barra superior */
+.top{background:var(--plum);color:#fff;font-size:13px}
+.top .wrap{display:flex;justify-content:center;gap:28px;height:36px;align-items:center;overflow:hidden}
+.top span{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.top svg.i{width:16px;height:16px}
+.top .t2,.top .t3{display:none}
+@media(min-width:760px){.top .t2{display:flex}}
+@media(min-width:1050px){.top .t3{display:flex}}
+
+/* Cabecera */
+header.cab{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+.cab-fila{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;height:64px}
+.logo img{height:44px;width:auto}
+.cab-izq{display:flex;align-items:center;gap:4px}
+.ico{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px}
+.ico:hover{background:var(--crema)}
+.ico .n{position:absolute;top:4px;right:2px;min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--rosa);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ico .n[data-v="0"]{display:none}
+.cab-der{display:flex;align-items:center;gap:2px;justify-self:end}
+.cab-wa{display:none}
+.busca{position:relative}
+.busca input{width:100%;height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--crema);padding:0 16px 0 42px;font-size:15px}
+.busca input:focus{outline:none;border-color:var(--rosa2);background:#fff}
+.busca>svg{position:absolute;left:14px;top:11px;width:20px;height:20px;color:var(--mute)}
+.busca-m{padding:0 0 10px}
+.busca-d{display:none}
+.sug{position:absolute;left:0;right:0;top:50px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sombra);padding:6px;z-index:60;display:none;max-height:70vh;overflow:auto}
+.sug.on{display:block}
+.sug a{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:6px;border-radius:10px;font-size:14px}
+.sug a:hover,.sug a.sel{background:var(--crema)}
+.sug img{width:48px;height:48px;object-fit:contain;mix-blend-mode:multiply}
+.sug b{font-weight:700;white-space:nowrap}
+.sug .todo{display:block;text-align:center;font-weight:700;color:var(--rosa);padding:10px}
+nav.menu{display:none}
+.burger{display:inline-flex}
+@media(min-width:1000px){
+  .cab-fila{grid-template-columns:auto 1fr auto;height:76px;gap:28px}
+  .logo img{height:54px}
+  .burger,.busca-m{display:none}
+  .busca-d{display:block;max-width:560px;width:100%;justify-self:center}
+  .cab-wa{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:0 12px;height:44px;border-radius:12px;color:#178a45}
+  .cab-wa:hover{background:#ecfbf1}
+  #waMovil{display:none}
+  nav.menu{display:block;border-top:1px solid var(--line)}
+  nav.menu>ul{display:flex;justify-content:center;gap:4px;list-style:none;margin:0;padding:0}
+  nav.menu>ul>li{position:relative}
+  nav.menu>ul>li>a{display:block;padding:12px 14px;font-weight:600;font-size:14.5px;border-radius:10px}
+  nav.menu>ul>li>a:hover{color:var(--rosa)}
+  nav.menu>ul>li>a.of{color:var(--rosa)}
+  nav.menu .dd{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:230px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sombra);padding:10px;display:none;z-index:50}
+  nav.menu li:hover .dd,nav.menu li:focus-within .dd{display:block}
+  .dd a{display:flex;justify-content:space-between;gap:14px;padding:8px 12px;border-radius:10px;font-size:14px}
+  .dd a:hover{background:var(--crema);color:var(--rosa)}
+  .dd a small{color:var(--mute)}
+}
+
+/* Cajón lateral (menú móvil y cesta) */
+.velo{position:fixed;inset:0;background:rgba(31,19,38,.45);z-index:80;opacity:0;pointer-events:none;transition:opacity .2s}
+.velo.on{opacity:1;pointer-events:auto}
+.cajon{position:fixed;top:0;bottom:0;width:min(400px,92vw);background:#fff;z-index:90;display:flex;flex-direction:column;transition:transform .25s ease;box-shadow:var(--sombra)}
+.cajon.izq{left:0;transform:translateX(-102%)}
+.cajon.der{right:0;transform:translateX(102%)}
+.cajon.on{transform:none}
+.cajon-cab{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 12px 20px;border-bottom:1px solid var(--line)}
+.cajon-cab h2{font-size:21px}
+.cajon-cuerpo{flex:1;overflow:auto;padding:12px 20px}
+.mm details{border-bottom:1px solid var(--line)}
+.mm summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-weight:700;font-size:16px;cursor:pointer}
+.mm summary::-webkit-details-marker{display:none}
+.mm summary svg{transition:transform .2s}
+.mm details[open] summary svg{transform:rotate(180deg)}
+.mm .subs a{display:block;padding:9px 0 9px 12px;color:var(--ink2)}
+.mm .subs a.todo{font-weight:600;color:var(--rosa)}
+.mm .suelto{display:block;padding:14px 0;font-weight:700;border-bottom:1px solid var(--line)}
+.mm-pie{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+
+/* Héroe */
+.heroe{position:relative;background:#2a1147;color:#fff;overflow:hidden}
+.heroe-foto{height:210px;background:url(assets/heroe.webp) 50% 40%/cover no-repeat}
+.heroe .wrap{position:relative;display:grid;gap:26px;padding-top:26px;padding-bottom:32px;align-items:center}
+@media(min-width:900px){.heroe-foto{position:absolute;inset:0;height:auto;background-position:70% 40%}.heroe-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,17,71,.96) 0%,rgba(42,17,71,.88) 38%,rgba(42,17,71,.15) 70%,transparent 100%)}}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:var(--ink);font-weight:800;font-size:12.5px;letter-spacing:.08em;padding:7px 12px;border-radius:99px;text-transform:uppercase}
+.heroe h1{font-size:clamp(34px,8.6vw,62px);font-weight:800;margin:16px 0 14px}
+.heroe h1 em{font-style:normal;color:#ff8cc6}
+.heroe p.sub{font-size:16.5px;color:#eadcf7;max-width:520px;margin:0 0 22px}
+.heroe .btn-rosa{background:#e0409a}.heroe .btn-rosa:hover{background:#c22a80}
+.heroe .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.heroe .btn-borde{color:#fff}
+.vitrina{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end}
+.vit{background:#fff;border-radius:20px;padding:10px;color:var(--ink);box-shadow:0 18px 40px -18px rgba(0,0,0,.6);transition:transform .2s}
+.vit:hover{transform:translateY(-4px) rotate(0)!important}
+.vit:nth-child(1){transform:rotate(-3deg)}.vit:nth-child(2){transform:translateY(-14px)}.vit:nth-child(3){transform:rotate(3deg)}
+.vit img{aspect-ratio:1;object-fit:contain;width:100%}
+.vit span{display:block;font-size:12px;font-weight:600;line-height:1.25;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vit b{display:inline-block;margin-top:4px;font-size:14px;color:var(--rosa)}
+.vit s{display:block;font-size:11.5px;color:var(--mute)}
+@media(min-width:900px){
+  .heroe .wrap{grid-template-columns:1fr 1fr;padding-top:84px;padding-bottom:92px;gap:48px}
+  .heroe .wrap>div:first-child{max-width:560px}
+}
+.datos-tienda{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:14px;color:#eadcf7}
+.datos-tienda span{display:flex;align-items:center;gap:7px}
+.datos-tienda svg.i{width:18px;height:18px}
+
+/* Garantías */
+.garant{border-bottom:1px solid var(--line)}
+.garant .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 12px;padding-top:18px;padding-bottom:18px}
+.g{display:flex;gap:10px;align-items:center;font-size:13.5px;line-height:1.3}
+.g svg.i{width:34px;height:34px;padding:7px;border-radius:12px;background:var(--rosa-s);color:var(--rosa)}
+.g b{display:block;font-size:14px}
+@media(min-width:900px){.garant .wrap{grid-template-columns:repeat(4,1fr)}}
+
+/* Secciones */
+section.blq{padding:40px 0}
+.blq-cab{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}
+.blq-cab h2{font-size:clamp(26px,5.5vw,36px);margin-top:4px}
+.blq-cab a.mas{font-weight:700;color:var(--rosa);white-space:nowrap;font-size:14px}
+@media(min-width:900px){section.blq{padding:56px 0}}
+
+/* Teselas de secciones */
+.teselas{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tes{position:relative;border-radius:var(--r);padding:16px;min-height:170px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;background:var(--c);transition:transform .2s}
+.tes:hover{transform:translateY(-3px)}
+.tes h3{font-size:19px;position:relative;z-index:1;max-width:100%;overflow-wrap:anywhere}
+.tes small{position:relative;z-index:1;font-weight:600;font-size:12.5px;color:var(--ink2)}
+.tes img{position:absolute;right:-4px;bottom:-4px;width:58%;aspect-ratio:1;object-fit:contain;mix-blend-mode:multiply}
+.tes.osc{color:#fff}.tes.osc small{color:#e8d3e3}.tes.osc img{mix-blend-mode:normal;border-radius:14px;width:44%;right:12px;bottom:12px;background:#fff}
+@media(min-width:760px){.teselas{grid-template-columns:repeat(4,1fr);gap:16px}.tes{min-height:220px;padding:20px}.tes h3{font-size:23px}}
+
+/* Tarjetas de producto */
+.fila{display:grid;grid-auto-flow:column;grid-auto-columns:46%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:thin}
+.fila>*{scroll-snap-align:start}
+@media(min-width:700px){.fila{grid-auto-columns:31%}}
+@media(min-width:1000px){.fila{grid-auto-columns:calc((100% - 48px)/5);gap:12px}}
+.rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:700px){.rejilla{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1100px){.rejilla{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--sombra);transform:translateY(-2px)}
+.card-img{display:block;aspect-ratio:1;background:#fff;padding:8px}
+.card-img img{width:100%;height:100%;object-fit:contain}
+.badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:5px;align-items:flex-start;pointer-events:none}
+.bd{font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:99px;background:var(--amarillo);color:var(--ink)}
+.bd.u{background:var(--ink);color:#fff;font-weight:600}
+.card-body{padding:4px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.marca{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);min-height:15px}
+.card .nom{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:36px}
+.card .nom:hover{color:var(--rosa)}
+.precio{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;margin-top:auto;padding-right:44px}
+.precio b{font-size:17px;font-weight:800;color:var(--rosa)}
+.precio s{font-size:12.5px;color:var(--mute)}
+.add{position:absolute;right:10px;bottom:10px;width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.add:hover{background:var(--rosa)}
+.add svg.i{width:20px;height:20px}
+
+/* Bloque sexóloga */
+.sexo{background:var(--lila-s)}
+.sexo .wrap{display:grid;gap:22px;align-items:center}
+.sexo-foto{position:relative;max-width:340px}
+.sexo-foto img{border-radius:24px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.sexo-foto span{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:12px;padding:8px 12px;font-size:13px;font-weight:600;box-shadow:var(--sombra)}
+.sexo h2{font-size:clamp(28px,6vw,42px);margin:8px 0 12px}
+.sexo p{color:var(--ink2);font-size:16px;max-width:560px}
+.sexo .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.sexo .btn-borde{color:var(--ink)}
+@media(min-width:800px){.sexo .wrap{grid-template-columns:340px 1fr;gap:56px}}
+
+/* Tienda física */
+.tienda{display:grid;gap:18px;align-items:stretch}
+.tienda-mapa{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:260px;background:#eee}
+.tienda-mapa iframe{width:100%;height:100%;min-height:260px;border:0;display:block}
+.tienda-info{background:var(--crema);border-radius:var(--r);padding:22px}
+.tienda-info h2{font-size:clamp(26px,5.5vw,36px);margin:6px 0 12px}
+.tienda-info p{color:var(--ink2);margin:0 0 14px}
+.tienda-info ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
+.tienda-info li{display:flex;gap:10px;align-items:flex-start}
+.tienda-info li svg.i{color:var(--rosa);margin-top:1px}
+.tienda-info .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.tienda-info .btn-borde{color:var(--ink)}
+@media(min-width:900px){.tienda{grid-template-columns:1.2fr 1fr;gap:24px}}
+.asesor{position:relative;border-radius:24px;overflow:hidden;background:#f6e9ff url(assets/asesoramos.webp) 85% 50%/cover no-repeat;padding:30px 22px;min-height:240px;display:flex;align-items:center}
+.asesor::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.9) 55%,rgba(255,255,255,.2) 100%)}
+.asesor>div{position:relative;max-width:560px}
+.asesor h2{font-size:clamp(28px,6vw,42px);margin:8px 0 12px}
+.asesor p{color:var(--ink2);font-size:16px;margin:0 0 18px}
+.asesor .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.asesor .btn-borde{color:var(--ink)}
+@media(min-width:900px){.asesor{padding:44px 48px;min-height:300px}}
+
+/* Pasos del envío */
+.pasos{display:grid;gap:12px}
+.paso{background:var(--crema);border-radius:var(--r);padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.paso .num{width:42px;height:42px;border-radius:14px;background:var(--rosa);color:#fff;font-family:var(--ft);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+.paso h3{font-size:19px;margin:2px 0 6px}
+.paso p{margin:0;color:var(--ink2);font-size:14.5px}
+@media(min-width:800px){.pasos{grid-template-columns:repeat(3,1fr);gap:16px}}
+
+/* Opiniones */
+.nota{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nota .num{font-family:var(--ft);font-size:44px;font-weight:800;line-height:1}
+.estrellas{color:#f5a623;display:flex;gap:2px}
+.estrellas svg.i{width:18px;height:18px;fill:currentColor;stroke:none}
+.ops{display:grid;gap:12px;margin-top:20px}
+.op{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:#fff}
+.op p{margin:10px 0 12px;font-size:14.5px;color:var(--ink2)}
+.op b{font-size:14px}.op small{color:var(--mute);margin-left:6px}
+@media(min-width:800px){.ops{grid-template-columns:repeat(4,1fr);gap:16px}}
+
+/* Guías */
+.guias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.guia{border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+.guia img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.guia div{padding:12px 14px 16px}
+.guia small{color:var(--mute);font-size:12px;font-weight:600}
+.guia h3{font-family:var(--f);font-size:14.5px;font-weight:700;line-height:1.35;margin-top:4px}
+@media(min-width:900px){.guias{grid-template-columns:repeat(4,1fr);gap:16px}.guia h3{font-size:15.5px}}
+
+/* Marcas */
+.marcas{display:flex;flex-wrap:wrap;gap:10px}
+.marcas a{border:1.5px solid var(--line);border-radius:99px;padding:10px 18px;font-weight:700;font-size:14px;background:#fff}
+.marcas a:hover{border-color:var(--rosa);color:var(--rosa)}
+
+/* Listado */
+.miga{font-size:13px;color:var(--mute);padding:16px 0 4px;display:flex;flex-wrap:wrap;gap:6px}
+.miga a:hover{color:var(--rosa)}
+.lis-cab h1{font-size:clamp(30px,7vw,46px);margin:6px 0 8px}
+.lis-cab p{color:var(--ink2);margin:0 0 16px;max-width:680px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;font-size:14px;font-weight:600;background:#fff}
+.chip small{color:var(--mute);font-weight:500;margin-left:4px}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}.chip.on small{color:#d9cbe0}
+.barra{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 8px}
+.barra label{display:flex;flex-direction:column;font-size:11.5px;font-weight:700;color:var(--mute);gap:4px;text-transform:uppercase;letter-spacing:.06em;min-width:0}
+.barra select{height:42px;border:1.5px solid var(--line);border-radius:12px;padding:0 6px;background:#fff;font-size:13.5px;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:600;min-width:0;width:100%}
+.cuenta{font-size:14px;color:var(--mute);margin:8px 0 14px}
+.cuenta b{color:var(--ink)}
+@media(min-width:800px){.barra{grid-template-columns:repeat(3,220px)}}
+.vermas{display:flex;justify-content:center;margin:26px 0 10px}
+.vacio{padding:40px 0;text-align:center;color:var(--ink2)}
+
+/* Ficha */
+.ficha{display:grid;gap:22px;padding-bottom:30px}
+.gal{min-width:0}
+.gal-main{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--r);border:1px solid var(--line);scrollbar-width:none}
+.gal-main::-webkit-scrollbar{display:none}
+.gal-main img{scroll-snap-align:start;aspect-ratio:1;object-fit:contain;width:100%;background:#fff}
+.gal-th{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+.gal-th button{width:64px;height:64px;flex:none;border:1.5px solid var(--line);border-radius:12px;padding:3px;background:#fff}
+.gal-th button.on{border-color:var(--rosa)}
+.gal-th img{width:100%;height:100%;object-fit:contain}
+.f-info h1{font-size:clamp(25px,5.4vw,36px);margin:6px 0 12px}
+.f-precio{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px}
+.f-precio b{font-family:var(--ft);font-size:34px;font-weight:800;color:var(--rosa)}
+.f-precio s{color:var(--mute);font-size:16px}
+.ahorro{background:var(--amarillo);font-weight:800;font-size:13px;padding:4px 10px;border-radius:99px}
+.iva{font-size:13px;color:var(--mute);margin:4px 0 16px}
+.stock{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;color:var(--verde);background:#eaf8f1;border-radius:12px;padding:10px 14px;margin-bottom:16px}
+.stock i{width:9px;height:9px;border-radius:50%;background:currentColor;flex:none;box-shadow:0 0 0 4px rgba(20,132,90,.18)}
+.stock.u{color:#a35a00;background:#fff4e2}
+.compra{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.cant{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;height:52px}
+.cant button{width:44px;height:100%;font-size:20px;font-weight:700}
+.cant span{min-width:26px;text-align:center;font-weight:700}
+.compra .btn{min-height:52px;font-size:16px}
+.f-wa{margin-top:10px;width:100%}
+.f-ventajas{display:grid;gap:10px;margin:18px 0 0;padding:16px;border-radius:var(--r);background:var(--crema)}
+.f-ventajas div{display:flex;gap:10px;align-items:center;font-size:14px}
+.f-ventajas svg.i{color:var(--rosa)}
+.desc{margin-top:8px}
+.desc h2,.caracs h2{font-size:24px;margin:0 0 12px}
+.desc-txt{color:var(--ink2);font-size:15px;position:relative;max-height:260px;overflow:hidden}
+.desc-txt.abierta{max-height:none}
+.desc-txt:not(.abierta)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,#fff)}
+.desc-txt p{margin:0 0 12px}
+.desc-txt ul{padding-left:20px;margin:0 0 12px}
+.leer{margin-top:8px;font-weight:700;color:var(--rosa);padding:8px 0}
+.caracs table{width:100%;border-collapse:collapse;font-size:14px}
+.caracs td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.caracs td:first-child{color:var(--mute);width:42%;padding-right:12px}
+@media(min-width:900px){
+  .ficha{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:start}
+  .f-info{position:sticky;top:150px}
+  .desc-bloq{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px}
+}
+.pegajosa{position:fixed;left:0;right:0;bottom:0;z-index:35;background:#fff;border-top:1px solid var(--line);padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .2s}
+.pegajosa.on{transform:none}
+.pegajosa div{min-width:0;flex:1}
+.pegajosa small{display:block;font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pegajosa b{color:var(--rosa);font-size:18px;font-weight:800}
+.pegajosa .btn{min-height:46px;padding:0 18px}
+@media(min-width:900px){.pegajosa{display:none}}
+
+/* Cesta */
+.ces-item{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ces-item img{width:72px;height:72px;object-fit:contain;border:1px solid var(--line);border-radius:12px;background:#fff}
+.ces-item a{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ces-fila{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}
+.ces-fila .cant{height:38px}.ces-fila .cant button{width:34px;font-size:17px}
+.ces-fila b{color:var(--rosa)}
+.quitar{font-size:12.5px;color:var(--mute);text-decoration:underline;padding:4px 0}
+.progreso{background:var(--crema);border-radius:14px;padding:12px 14px;font-size:13.5px;margin-bottom:6px}
+.progreso .bar{height:8px;border-radius:99px;background:#f3dbe6;margin-top:8px;overflow:hidden}
+.progreso .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--rosa2),var(--rosa));border-radius:99px;transition:width .3s}
+.ces-pie{border-top:1px solid var(--line);padding:16px 20px calc(16px + env(safe-area-inset-bottom));display:grid;gap:8px}
+.ces-pie .lin{display:flex;justify-content:space-between;font-size:14.5px}
+.ces-pie .tot{font-size:18px;font-weight:800}
+.ces-pie small{color:var(--mute);font-size:12.5px}
+.ces-vacia{text-align:center;padding:40px 10px;color:var(--ink2)}
+
+/* Aviso, toast y diálogos */
+.toast{visibility:hidden;position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);background:var(--ink);color:#fff;border-radius:16px;padding:10px 10px 10px 16px;display:flex;align-items:center;gap:12px;z-index:95;transition:transform .25s;font-size:14px;width:max-content;max-width:calc(100vw - 32px)}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+.toast button{background:#fff;color:var(--ink);font-weight:700;border-radius:10px;padding:8px 12px;white-space:nowrap}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(31,19,38,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.modal.on{display:flex}
+.modal-caja{background:#fff;border-radius:24px;max-width:440px;width:100%;padding:28px 24px;text-align:center;box-shadow:var(--sombra);max-height:calc(100vh - 32px);overflow:auto}
+.modal-caja img.lg{height:74px;width:auto;margin:0 auto 14px}
+.modal-caja h2{font-size:25px;margin-bottom:10px}
+.modal-caja p{color:var(--ink2);margin:0 0 20px}
+.modal-caja .btns{display:grid;gap:10px}
+.modal-caja small{display:block;margin-top:16px;color:var(--mute);font-size:12px}
+.modal-caja ol{text-align:left;color:var(--ink2);padding-left:20px;margin:0 0 18px}
+.modal-caja ol li{margin-bottom:8px}
+.wa-flot{position:fixed;right:16px;bottom:16px;z-index:36;width:56px;height:56px;border-radius:50%;background:#1fa855;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);transition:bottom .2s}
+.wa-flot svg{width:30px;height:30px;fill:#fff}
+body.con-pegajosa .wa-flot{bottom:84px}
+@media(min-width:900px){body.con-pegajosa .wa-flot{bottom:16px}}
+
+/* Pie */
+footer.pie{background:var(--plum);color:#eedbe8;margin-top:30px;font-size:14px}
+.pie .wrap{display:grid;gap:28px;padding-top:44px;padding-bottom:28px}
+.pie h3{font-family:var(--f);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.pie a:hover{color:#fff;text-decoration:underline}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pie .lgp{background:#fff;border-radius:16px;padding:8px 12px;display:inline-block}
+.pie .lgp img{height:52px;width:auto}
+.pie p{margin:12px 0 0;max-width:320px}
+.redes{display:flex;gap:8px;margin-top:14px}
+.redes a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.redes svg{width:20px;height:20px;fill:#fff}
+.pagos{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.pagos span{background:rgba(255,255,255,.12);border-radius:8px;padding:5px 9px;font-size:12.5px;font-weight:600;color:#fff}
+.pie-baja{border-top:1px solid rgba(255,255,255,.12)}
+.pie-baja .wrap{padding-top:16px;padding-bottom:22px;display:block;font-size:12.5px;color:#cdb3c6}
+@media(min-width:800px){.pie .wrap{grid-template-columns:1.3fr 1fr 1.2fr 1.1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bolsa" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-caja" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></symbol>
+  <symbol id="i-camion" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-volver" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H8"/><path d="M8 5 4 9l4 4"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-tarjeta" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-estrella" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 32 32"><path d="M16 3a12.9 12.9 0 0 0-11.1 19.5L3 29l6.7-1.8A12.9 12.9 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-4 1 1.1-3.9-.3-.4A10.7 10.7 0 1 1 16 26.6zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.6-.3z"/></symbol>
+</svg>
+
+<div class="top"><div class="wrap">
+  <span><svg class="i"><use href="#i-camion"/></svg>Envío gratis desde 49 €</span>
+  <span class="t2"><svg class="i"><use href="#i-caja"/></svg>Paquete neutro, sin referencias en tu tarjeta</span>
+  <span class="t3"><svg class="i"><use href="#i-pin"/></svg>Recogida gratis en nuestra tienda de Córdoba</span>
+</div></div>
+
+<header class="cab">
+  <div class="wrap">
+    <div class="cab-fila">
+      <div class="cab-izq">
+        <button class="ico burger" id="abrirMenu" aria-label="Abrir menú"><svg class="i"><use href="#i-menu"/></svg></button>
+        <a class="logo" href="#/" aria-label="Tu Punto G, inicio"><img src="assets/logo.webp" alt="Tu Punto G" width="200" height="100"></a>
+      </div>
+      <div class="busca busca-d"><svg class="i"><use href="#i-lupa"/></svg><input type="search" placeholder="Busca succionador, lubricante, bolas chinas…" aria-label="Buscar en la tienda" data-busca><div class="sug" role="listbox"></div></div>
+      <div class="cab-der">
+        <a class="cab-wa" href="https://wa.me/34649908040" target="_blank" rel="noopener" data-wa><svg class="i" viewBox="0 0 32 32" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>649 90 80 40</a>
+        <a class="ico" href="https://wa.me/34649908040" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-wa style="color:#178a45" id="waMovil"><svg class="i" viewBox="0 0 32 32" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg></a>
+        <button class="ico" id="abrirCesta" aria-label="Ver la cesta"><svg class="i"><use href="#i-bolsa"/></svg><span class="n" data-v="0" id="nCesta">0</span></button>
+      </div>
+    </div>
+    <div class="busca busca-m"><svg class="i"><use href="#i-lupa"/></svg><input type="search" placeholder="¿Qué buscas hoy?" aria-label="Buscar en la tienda" data-busca><div class="sug" role="listbox"></div></div>
+  </div>
+  <nav class="menu" aria-label="Secciones"><ul id="menuD"></ul></nav>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div>
+      <span class="lgp"><img src="assets/logo.webp" alt="Tu Punto G" width="200" height="100" loading="lazy"></span>
+      <p>Sex shop en Córdoba y tienda erótica online. Avenida Arroyo del Moro 4, local 5, 14011 Córdoba.</p>
+      <div class="redes">
+        <a href="https://www.instagram.com/tupuntogcordoba/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1C3.7 15 3.6 14.7 3.6 12s0-3 .1-4.1C3.8 5.2 5.1 3.9 7.9 3.8 9 3.6 9.3 3.6 12 3.6zM12 2C9.3 2 8.9 2 7.8 2.1 4.2 2.2 2.2 4.2 2.1 7.8 2 8.9 2 9.3 2 12s0 3.1.1 4.2c.2 3.6 2.1 5.6 5.7 5.7 1.1.1 1.5.1 4.2.1s3.1 0 4.2-.1c3.6-.2 5.6-2.1 5.7-5.7.1-1.1.1-1.5.1-4.2s0-3.1-.1-4.2c-.2-3.6-2.1-5.6-5.7-5.7C15.1 2 14.7 2 12 2z"/></svg></a>
+        <a href="https://www.facebook.com/tupuntogcordoba/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7h3l.5-4h-3.5V8.8c0-.5.3-.8.5-.8z"/></svg></a>
+      </div>
+    </div>
+    <div><h3>Comprar</h3><ul id="pieSecs"></ul></div>
+    <div><h3>Envíos y pagos</h3><ul>
+      <li>Mensajería: 4,95 €, gratis desde 49 €</li>
+      <li>Recogida en la tienda: gratis</li>
+      <li>Sale el mismo día o al siguiente del pago</li>
+      <li>Entrega en 24/48 h</li>
+    </ul>
+    <div class="pagos" style="margin-top:12px"><span>Tarjeta</span><span>Bizum</span></div></div>
+    <div><h3>Contacto</h3><ul>
+      <li><a href="https://wa.me/34649908040" target="_blank" rel="noopener" data-wa>WhatsApp 649 90 80 40</a></li>
+      <li><a href="tel:+34649908040">Teléfono 649 90 80 40</a></li>
+      <li><a href="mailto:tupuntog.es@gmail.com">tupuntog.es@gmail.com</a></li>
+      <li><a href="https://tupuntog.es/blog/" target="_blank" rel="noopener">Blog-G</a></li>
+    </ul></div>
+  </div>
+  <div class="pie-baja"><div class="wrap">© 2026 Tu Punto G. Esta es una demo preparada por G&amp;G Elcano para enseñar la propuesta: los productos, fotos y precios son los de tupuntog.es a 12 de noviembre de 2026 y la cesta no cobra nada.</div></div>
+</footer>
+
+<a class="wa-flot" href="https://wa.me/34649908040?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20vuestros%20productos" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" id="waFlot"><svg viewBox="0 0 32 32"><use href="#i-wa"/></svg></a>
+
+<div class="velo" id="velo"></div>
+<aside class="cajon izq mm" id="menuM" aria-label="Menú" aria-hidden="true">
+  <div class="cajon-cab"><h2>Menú</h2><button class="ico" data-cerrar aria-label="Cerrar menú"><svg class="i"><use href="#i-x"/></svg></button></div>
+  <div class="cajon-cuerpo" id="menuMCuerpo"></div>
+  <div class="mm-pie"><a class="btn btn-wa" href="https://wa.me/34649908040" target="_blank" rel="noopener" data-wa><svg class="i" viewBox="0 0 32 32" style="fill:#fff;stroke:none"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a></div>
+</aside>
+<aside class="cajon der" id="cesta" aria-label="Cesta" aria-hidden="true">
+  <div class="cajon-cab"><h2>Tu cesta</h2><button class="ico" data-cerrar aria-label="Cerrar cesta"><svg class="i"><use href="#i-x"/></svg></button></div>
+  <div class="cajon-cuerpo" id="cestaCuerpo"></div>
+  <div class="ces-pie" id="cestaPie"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastTxt">Añadido a la cesta</span><button id="toastVer">Ver cesta</button></div>
+
+<div class="modal" id="edad" role="dialog" aria-modal="true" aria-labelledby="edadT">
+  <div class="modal-caja">
+    <img class="lg" src="assets/logo.webp" alt="Tu Punto G" width="200" height="100">
+    <h2 id="edadT">Esta tienda es para mayores de 18 años</h2>
+    <p>Vendemos juguetes eróticos, cosmética erótica y juegos para adultos. Confirma tu edad para entrar.</p>
+    <div class="btns"><button class="btn btn-rosa" id="edadSi">Tengo 18 años o más</button><a class="btn btn-borde" href="https://www.google.es" style="color:var(--ink)">Salir</a></div>
+    <small>Demo de G&amp;G Elcano con los productos reales de tupuntog.es</small>
+  </div>
+</div>
+
+<div class="modal" id="fin" role="dialog" aria-modal="true" aria-labelledby="finT">
+  <div class="modal-caja">
+    <h2 id="finT">Así terminaría la compra</h2>
+    <ol>
+      <li>Eliges envío a casa o recogida gratis en la tienda de Córdoba.</li>
+      <li>Pagas con tarjeta o con Bizum, en una sola pantalla y sin crear cuenta.</li>
+      <li>Te llega la confirmación por correo y por WhatsApp, con el seguimiento del paquete.</li>
+    </ol>
+    <div class="btns"><button class="btn btn-rosa" data-cerrarmodal>Entendido</button></div>
+    <small>Esto es una demo: no se cobra nada ni se guarda ningún dato.</small>
+  </div>
+</div>
+
+<script>
+(()=>{
+'use strict';
+const WA='34649908040';
+const ENVIO_GRATIS=49, ENVIO=4.95;
+const SECS={
+  ella:{t:'Para ella',c:'#ffe3f1',img:6862,intro:'Succionadores, vibradores rabbit y de punto G, huevos con mando y bolas chinas.'},
+  pareja:{t:'En pareja',c:'#efe4fb',img:6489,intro:'Estimuladores para parejas, juguetes con mando a distancia, anillos y kits.'},
+  el:{t:'Para él',c:'#e0f2fd',img:1965,intro:'Masturbadores y estimuladores prostáticos.'},
+  cosmetica:{t:'Lubricantes y masaje',c:'#fff0de',img:0,intro:'Lubricantes de base agua y silicona, sabores, aceites y velas de masaje.'},
+  explorar:{t:'BDSM y anal',c:'#2a1147',osc:1,img:13542,intro:'Esposas, antifaces, fustas, la línea 50 Sombras y juguetes anales.'},
+  afrodisiacos:{t:'Afrodisíacos',c:'#ffe9e3',img:0,intro:'Perfumes con feromonas, intensificadores, retardantes y potenciadores.'},
+  juegos:{t:'Juegos eróticos',c:'#fff3bf',img:0,intro:'Juegos de mesa, de cartas y dados para parejas y para fiestas.'},
+  preservativos:{t:'Preservativos',c:'#e2f6ec',img:0,intro:'Durex, Control, LELO HEX y más: finos, con sabores, sin látex y de tamaño grande.'},
+  lenceria:{t:'Lencería',c:'#ffe6ea',img:0,intro:'Babydolls, bodystocking y batas.',menu:1}
+};
+const GUIAS=[
+  ['lubricantes-la-clave-para-una-experiencia-sexual-inigualable','2024/04/diseno-sin-titulo-2024-04-16t111350.234-768x512.jpg','Lubricantes: la clave para una experiencia sexual inigualable'],
+  ['beneficios-de-las-bolas-chinas','2023/05/3-thumb.webp','Beneficios de las bolas chinas'],
+  ['explorando-el-placer-un-analisis-detallado-del-satisfyer','2024/03/diseno-sin-titulo-2024-03-01t063646.766-768x512.jpg','Explorando el placer: análisis del Satisfyer'],
+  ['verdades-y-mentiras-sobre-los-afrodisiacos','2024/06/a-3-768x512.jpg','Verdades y mentiras sobre los afrodisíacos']
+];
+const MARCAS_TOP=['Satisfyer','Shunga','Durex','Control','INTT','Pjur','Eros','Lelo','Pretty Love','Latetobed','Toko','Cobeco'];
+
+const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const eur=n=>n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const UP='https://tupuntog.es/wp-content/uploads/';
+const IMG=r=>UP+r;
+const waTxt=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+let P=[], POR={}, SUBS={}, FICHAS={};
+const app=$('#app');
+
+function aObj(a){return {id:a[0],n:a[1],sec:a[2],sub:a[3],pr:a[4],an:a[5],th:a[6],m:a[7],ult:a[8],nuevo:a[9]};}
+function dto(p){return p.an?Math.round((1-p.pr/p.an)*100):0;}
+
+function card(p){
+  const d=dto(p);
+  return `<article class="card">
+    <a class="card-img" href="#/p/${p.id}" tabindex="-1" aria-hidden="true"><img src="${IMG(p.th)}" alt="" loading="lazy" decoding="async" width="300" height="300"></a>
+    <div class="badges">${d?`<span class="bd">−${d} %</span>`:''}${p.ult?'<span class="bd u">Últimas unidades</span>':''}</div>
+    <div class="card-body"><span class="marca">${esc(p.m)}</span><a class="nom" href="#/p/${p.id}">${esc(p.n)}</a>
+    <div class="precio"><b>${eur(p.pr)}</b>${p.an?`<s>${eur(p.an)}</s>`:''}</div></div>
+    <button class="add" data-add="${p.id}" aria-label="Añadir ${esc(p.n)} a la cesta"><svg class="i"><use href="#i-mas"/></svg></button>
+  </article>`;
+}
+function fila(lista){return `<div class="fila">${lista.map(card).join('')}</div>`;}
+
+/* ---------- Menús ---------- */
+function pintarMenus(){
+  const subsDe=s=>Object.keys(SUBS).filter(k=>k.startsWith(s+'/')).map(k=>[k.split('/')[1],SUBS[k],(POR[k]||[]).length]).filter(x=>x[2]);
+  $('#menuD').innerHTML=Object.entries(SECS).filter(([k])=>POR[k]).map(([k,s])=>`<li><a href="#/c/${k}">${s.t}</a><div class="dd">${subsDe(k).map(([sk,t,n])=>`<a href="#/c/${k}/${sk}">${esc(t)} <small>${n}</small></a>`).join('')}<a href="#/c/${k}" style="font-weight:700;color:var(--rosa)">Ver todo <small>${POR[k].length}</small></a></div></li>`).join('');
+  $('#menuMCuerpo').innerHTML=`<a class="suelto" href="#/tienda" style="color:var(--rosa)">Nuestra tienda en Córdoba</a>`+Object.entries(SECS).filter(([k])=>POR[k]).map(([k,s])=>`<details><summary>${s.t}<svg class="i"><use href="#i-flecha"/></svg></summary><div class="subs"><a class="todo" href="#/c/${k}">Ver todo (${POR[k].length})</a>${subsDe(k).map(([sk,t,n])=>`<a href="#/c/${k}/${sk}">${esc(t)}</a>`).join('')}</div></details>`).join('');
+  $('#pieSecs').innerHTML=Object.entries(SECS).filter(([k])=>POR[k]).map(([k,s])=>`<li><a href="#/c/${k}">${s.t}</a></li>`).join('');
+}
+
+/* ---------- Portada ---------- */
+function portada(){
+  const top=[]; const vistos=new Set();
+  for(let r=0;r<3;r++) for(const k of Object.keys(SUBS)){const l=POR[k]||[]; if(l[r]&&!vistos.has(l[r].id)&&top.length<15){top.push(l[r]);vistos.add(l[r].id);}}
+  const tes=Object.entries(SECS).filter(([k,s])=>!s.menu&&POR[k]).map(([k,s])=>{const p=POR[k].find(x=>x.id===s.img)||POR[k][0];return `<a class="tes${s.osc?' osc':''}" href="#/c/${k}" style="--c:${s.c}"><h3>${s.t}</h3><small>${POR[k].length} productos</small><img src="${IMG(p.th)}" alt="" loading="lazy" width="300" height="300"></a>`}).join('');
+  const marcas=MARCAS_TOP.filter(m=>P.filter(p=>p.m===m).length>=3);
+  app.innerHTML=`
+  <section class="heroe"><div class="heroe-foto" role="img" aria-label="Juguetes de Tu Punto G sobre fondos de colores"></div><div class="wrap">
+    <div>
+      <span class="pill">Sex shop en Córdoba y online</span>
+      <h1>Juega, explora, <em>disfruta</em></h1>
+      <p class="sub">${P.length} productos para elegir sin prisas. Te lo enviamos en un paquete neutro en 24/48 h, gratis desde 49 €, o lo recoges sin coste en nuestra tienda de Arroyo del Moro.</p>
+      <div class="ctas"><a class="btn btn-rosa" href="#/c/ella">Ver lo más vendido</a><a class="btn btn-borde" href="#/tienda">Visítanos en Córdoba</a></div>
+      <div class="datos-tienda"><span><svg class="i"><use href="#i-pin"/></svg>Av. Arroyo del Moro 4, local 5</span><span><svg class="i"><use href="#i-tel"/></svg>649 90 80 40</span></div>
+    </div>
+  </div></section>
+  <div class="garant"><div class="wrap">
+    <div class="g"><svg class="i"><use href="#i-caja"/></svg><div><b>Paquete neutro</b>Sin logos ni pistas</div></div>
+    <div class="g"><svg class="i"><use href="#i-tarjeta"/></svg><div><b>Discreto en el banco</b>Sin referencias en tu tarjeta</div></div>
+    <div class="g"><svg class="i"><use href="#i-camion"/></svg><div><b>Gratis desde 49 €</b>4,95 € por debajo</div></div>
+    <div class="g"><svg class="i"><use href="#i-pin"/></svg><div><b>Recogida gratis</b>En la tienda de Córdoba</div></div>
+  </div></div>
+  <section class="blq"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Compra por sección</span><h2>¿Qué te apetece hoy?</h2></div></div>
+    <div class="teselas">${tes}</div>
+  </div></section>
+  <section class="blq" style="padding-top:0"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Lo que más se pide</span><h2>Los más vendidos</h2></div><a class="mas" href="#/c/ella">Ver todo</a></div>
+    ${fila(top)}
+  </div></section>
+  <section class="blq" style="padding-top:0"><div class="wrap">
+    <div class="asesor"><div>
+      <span class="eyebrow">Sin vergüenza y sin juicios</span>
+      <h2>¿No sabes qué elegir? Pregúntanos</h2>
+      <p>Te asesoramos en la tienda o por WhatsApp. Cuéntanos qué buscas y te recomendamos lo que mejor te va.</p>
+      <div class="ctas"><a class="btn btn-wa" href="${waTxt('Hola, quería que me asesorarais con un juguete')}" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 32 32" style="fill:#fff;stroke:none"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a><a class="btn btn-borde" href="tel:+34649908040">Llamar</a></div>
+    </div></div>
+  </div></section>
+  <section class="blq" style="padding-top:0"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Para compartir</span><h2>Para jugar en pareja</h2></div><a class="mas" href="#/c/pareja">Ver los ${POR.pareja.length}</a></div>
+    ${fila((POR['pareja/estimuladores-para-parejas']||POR.pareja).slice(0,10))}
+  </div></section>
+  <section class="blq" id="tienda" style="padding-top:0"><div class="wrap">${bloqueTienda()}</div></section>
+  <section class="blq" style="padding-top:0"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Discreción de verdad</span><h2>Así te llega el pedido</h2></div></div>
+    <div class="pasos">
+      <div class="paso"><span class="num">1</span><div><h3>Pagas con tarjeta o Bizum</h3><p>Y en el extracto del banco no aparece ninguna referencia a la tienda.</p></div></div>
+      <div class="paso"><span class="num">2</span><div><h3>Sale ese día o el siguiente</h3><p>En un paquete totalmente neutro, sin logos ni el nombre de Tu Punto G.</p></div></div>
+      <div class="paso"><span class="num">3</span><div><h3>Lo tienes en 24/48 h</h3><p>Envío gratis a partir de 49 €. Si lo prefieres, lo recoges en la tienda sin coste.</p></div></div>
+    </div>
+  </div></section>
+  <section class="blq" style="background:var(--crema)"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Blog-G</span><h2>Para saber más</h2></div><a class="mas" href="https://tupuntog.es/blog/" target="_blank" rel="noopener">Ver todos</a></div>
+    <div class="guias">${GUIAS.map(g=>`<a class="guia" href="https://tupuntog.es/${g[0]}/" target="_blank" rel="noopener"><img src="${UP+g[1]}" alt="" loading="lazy" width="400" height="300"><div><small>Blog-G</small><h3>${esc(g[2])}</h3></div></a>`).join('')}</div>
+  </div></section>
+  <section class="blq"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Lo básico que nunca falla</span><h2>Lubricantes y masaje</h2></div><a class="mas" href="#/c/cosmetica">Ver todo</a></div>
+    ${fila(POR.cosmetica.slice(0,10))}
+  </div></section>
+  ${marcas.length?`<section class="blq" style="padding-top:0"><div class="wrap">
+    <div class="blq-cab"><div><span class="eyebrow">Trabajamos con</span><h2>Compra por marca</h2></div></div>
+    <div class="marcas">${marcas.map(m=>`<a href="#/buscar/${encodeURIComponent(m)}">${esc(m)}</a>`).join('')}</div>
+  </div></section>`:''}`;
+}
+function bloqueTienda(){
+  return `<div class="tienda">
+    <div class="tienda-mapa"><iframe title="Mapa de la tienda Tu Punto G en Córdoba" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-4.8015%2C37.8845%2C-4.7905%2C37.8900&amp;layer=mapnik&amp;marker=37.8872048%2C-4.7959996"></iframe></div>
+    <div class="tienda-info">
+      <span class="eyebrow">Tienda física</span>
+      <h2>Ven a vernos en Córdoba</h2>
+      <p>Somos un sex shop con tienda en Córdoba capital. Puedes comprar en la web y recoger el pedido aquí sin pagar envío, o pasarte a ver los productos y que te aconsejemos.</p>
+      <ul>
+        <li><svg class="i"><use href="#i-pin"/></svg><span>Avenida Arroyo del Moro 4, local 5<br>14011 Córdoba</span></li>
+        <li><svg class="i"><use href="#i-tel"/></svg><span>649 90 80 40 (teléfono y WhatsApp)</span></li>
+      </ul>
+      <div class="ctas"><a class="btn btn-rosa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Tu+Punto+G,+Avenida+Arroyo+del+Moro+4,+14011+C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a><a class="btn btn-borde" href="tel:+34649908040">Llamar</a></div>
+    </div>
+  </div>`;
+}
+/* ---------- Listados ---------- */
+function parseQ(q){const o={};(q||'').split('&').filter(Boolean).forEach(kv=>{const [k,v]=kv.split('=');o[k]=decodeURIComponent(v||'')});return o;}
+function listado(base,titulo,intro,miga,lista,q,chips){
+  const marcasL=[...new Set(lista.map(p=>p.m).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
+  let l=lista.slice();
+  if(q.m) l=l.filter(p=>p.m===q.m);
+  if(q.pr){const [a,b]=q.pr.split('-').map(Number); l=l.filter(p=>p.pr>=a&&(!b||p.pr<b));}
+  if(q.o==='pa') l.sort((a,b)=>a.pr-b.pr); else if(q.o==='pd') l.sort((a,b)=>b.pr-a.pr); else if(q.o==='ah') l.sort((a,b)=>(b.an-b.pr)-(a.an-a.pr));
+  const n=Math.max(24,+(q.n||24));
+  const sel=(k,v)=>q[k]===v?' selected':'';
+  const url=o=>{const m={...q,...o};Object.keys(m).forEach(k=>{if(!m[k])delete m[k]});const s=Object.entries(m).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&');return base+(s?'?'+s:'');};
+  app.innerHTML=`<div class="wrap">
+    <div class="miga">${miga}</div>
+    <div class="lis-cab"><h1>${esc(titulo)}</h1>${intro?`<p>${intro}</p>`:''}</div>
+    ${chips||''}
+    <div class="barra">
+      <label>Marca<select data-f="m"><option value="">Todas</option>${marcasL.map(m=>`<option${sel('m',m)}>${esc(m)}</option>`).join('')}</select></label>
+      <label>Precio<select data-f="pr"><option value="">Cualquiera</option><option value="0-20"${sel('pr','0-20')}>Menos de 20 €</option><option value="20-40"${sel('pr','20-40')}>De 20 a 40 €</option><option value="40-80"${sel('pr','40-80')}>De 40 a 80 €</option><option value="80-0"${sel('pr','80-0')}>Más de 80 €</option></select></label>
+      <label>Ordenar<select data-f="o"><option value="">Más vendidos</option><option value="pa"${sel('o','pa')}>Precio: de menor a mayor</option><option value="pd"${sel('o','pd')}>Precio: de mayor a menor</option><option value="ah"${sel('o','ah')}>Mayor ahorro</option></select></label>
+    </div>
+    <p class="cuenta"><b>${l.length}</b> ${l.length===1?'producto':'productos'}${q.m||q.pr?` · <a href="${base}" style="color:var(--rosa);font-weight:600">Quitar filtros</a>`:''}</p>
+    ${l.length?`<div class="rejilla">${l.slice(0,n).map(card).join('')}</div>`:`<div class="vacio">No hay productos con estos filtros. <a href="${base}" style="color:var(--rosa);font-weight:700">Quitar filtros</a></div>`}
+    ${l.length>n?`<div class="vermas"><a class="btn btn-borde" href="${url({n:n+24})}" data-nosube>Ver más (${l.length-n} restantes)</a></div>`:''}
+  </div>`;
+  $$('[data-f]',app).forEach(s=>s.addEventListener('change',()=>{location.hash=url({[s.dataset.f]:s.value,n:''});}));
+}
+function verSeccion(sec,sub,q){
+  const s=SECS[sec]; if(!s) return noEncontrado();
+  const subs=Object.keys(SUBS).filter(k=>k.startsWith(sec+'/')&&(POR[k]||[]).length);
+  const lista=sub?(POR[sec+'/'+sub]||[]):POR[sec];
+  const chips=`<div class="chips"><a class="chip${sub?'':' on'}" href="#/c/${sec}">Todo<small>${POR[sec].length}</small></a>${subs.map(k=>`<a class="chip${k===sec+'/'+sub?' on':''}" href="#/c/${k}">${esc(SUBS[k])}<small>${POR[k].length}</small></a>`).join('')}</div>`;
+  const titulo=sub?SUBS[sec+'/'+sub]:s.t;
+  const miga=`<a href="#/">Inicio</a> › ${sub?`<a href="#/c/${sec}">${s.t}</a> › ${esc(titulo)}`:s.t}`;
+  listado(`#/c/${sec}${sub?'/'+sub:''}`,titulo,sub?'':s.intro,miga,lista,q,chips);
+  document.title=`${titulo} · Tu Punto G`;
+}
+function verTienda(){
+  app.innerHTML=`<div class="wrap"><div class="miga"><a href="#/">Inicio</a> › Nuestra tienda</div><section class="blq" style="padding-top:12px">${bloqueTienda()}</section></div>`;
+  document.title='Nuestra tienda en Córdoba · Tu Punto G';
+}
+function buscar(txt){
+  const ws=norm(txt).split(/\s+/).filter(Boolean); if(!ws.length) return [];
+  return P.map(p=>{const h=norm(p.n+' '+p.m+' '+(SUBS[p.sec+'/'+p.sub]||'')+' '+SECS[p.sec].t);let ok=ws.every(w=>h.includes(w));if(!ok)return null;let sc=0;ws.forEach(w=>{if(norm(p.n).startsWith(w))sc+=3;if(norm(p.m)===w)sc+=2;if(norm(p.n).includes(w))sc+=1});return [sc,p]}).filter(Boolean).sort((a,b)=>b[0]-a[0]).map(x=>x[1]);
+}
+function verBusqueda(txt,q){
+  const l=buscar(txt);
+  listado('#/buscar/'+encodeURIComponent(txt),`Resultados para «${txt}»`,'','<a href="#/">Inicio</a> › Búsqueda',l,q);
+  document.title=`${txt} · Tu Punto G`;
+  $$('[data-busca]').forEach(i=>i.value=txt);
+}
+
+/* ---------- Ficha ---------- */
+async function ficha(id){
+  const p=P.find(x=>x.id===id); if(!p) return noEncontrado();
+  const b=String(id%40).padStart(2,'0');
+  if(!FICHAS[b]){try{FICHAS[b]=await (await fetch('data/fichas/'+b+'.json')).json()}catch(e){FICHAS[b]={}}}
+  const f=FICHAS[b][id]||{d:'',im:[[p.th,p.th]]};
+  const ims=(f.im&&f.im.length?f.im:[[p.th,p.th]]);
+  const d=dto(p), s=SECS[p.sec], subT=SUBS[p.sec+'/'+p.sub];
+  const rel=(POR[p.sec+'/'+p.sub]||[]).filter(x=>x.id!==id).slice(0,10);
+  app.innerHTML=`<div class="wrap">
+    <div class="miga"><a href="#/">Inicio</a> › <a href="#/c/${p.sec}">${s.t}</a> › <a href="#/c/${p.sec}/${p.sub}">${esc(subT)}</a></div>
+    <div class="ficha">
+      <div class="gal">
+        <div class="gal-main" id="galMain">${ims.map((im,i)=>`<img src="${IMG(im[0])}" alt="${i?'':esc(p.n)}" width="800" height="800" ${i?'loading="lazy"':''}>`).join('')}</div>
+        ${ims.length>1?`<div class="gal-th">${ims.map((im,i)=>`<button data-th="${i}" class="${i?'':'on'}" aria-label="Ver foto ${i+1}"><img src="${IMG(im[1])}" alt="" loading="lazy" width="150" height="150"></button>`).join('')}</div>`:''}
+      </div>
+      <div class="f-info">
+        <span class="marca">${esc(p.m)}</span>
+        <h1>${esc(p.n)}</h1>
+        <div class="f-precio"><b>${eur(p.pr)}</b>${p.an?`<s>${eur(p.an)}</s><span class="ahorro">Ahorras ${eur(p.an-p.pr)}</span>`:''}</div>
+        <p class="iva">IVA incluido${p.pr>=ENVIO_GRATIS?' · envío gratis':' · envío 4,95 € (gratis desde 49 €) o recogida gratis en tienda'}</p>
+        <div class="stock${p.ult?' u':''}"><i></i>${p.ult?'Últimas unidades: sale hoy o mañana':'En stock: sale hoy o mañana y llega en 24/48 h'}</div>
+        <div class="compra"><div class="cant"><button data-c="-1" aria-label="Quitar uno">−</button><span id="cant">1</span><button data-c="1" aria-label="Añadir uno">+</button></div><button class="btn btn-rosa" id="addF"><svg class="i"><use href="#i-bolsa"/></svg>Añadir a la cesta</button></div>
+        <a class="btn btn-borde f-wa" style="color:#178a45" href="${waTxt('Hola, tengo una duda sobre «'+p.n+'»')}" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 32 32" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>¿Dudas? Pregúntanos por WhatsApp</a>
+        <div class="f-ventajas">
+          <div><svg class="i"><use href="#i-caja"/></svg>Paquete neutro y sin referencias en tu tarjeta</div>
+          <div><svg class="i"><use href="#i-pin"/></svg>Recógelo gratis en nuestra tienda de Córdoba</div>
+          <div><svg class="i"><use href="#i-candado"/></svg>Pago seguro con tarjeta o Bizum</div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-bloq">
+      ${f.d?`<div class="desc"><h2>Descripción</h2><div class="desc-txt" id="descTxt">${f.d}</div><button class="leer" id="leer">Leer la descripción completa</button></div>`:'<div></div>'}
+      <div class="caracs"><h2>Datos</h2><table>${p.m?`<tr><td>Marca</td><td>${esc(p.m)}</td></tr>`:''}<tr><td>Sección</td><td>${esc(subT)}</td></tr>${f.ref?`<tr><td>Referencia</td><td>${esc(f.ref)}</td></tr>`:''}<tr><td>Envío</td><td>24/48 h, gratis desde 49 €</td></tr><tr><td>Recogida</td><td>Gratis en la tienda de Córdoba</td></tr></table></div>
+    </div>
+    ${rel.length?`<section class="blq"><div class="blq-cab"><div><span class="eyebrow">De la misma sección</span><h2>También te puede gustar</h2></div><a class="mas" href="#/c/${p.sec}/${p.sub}">Ver todos</a></div>${fila(rel)}</section>`:''}
+  </div>
+  <div class="pegajosa" id="peg"><div><small>${esc(p.n)}</small><b>${eur(p.pr)}</b></div><button class="btn btn-rosa" data-add="${p.id}">Añadir a la cesta</button></div>`;
+  document.title=`${p.n} · Tu Punto G`;
+  let c=1;
+  $$('[data-c]',app).forEach(bt=>bt.addEventListener('click',()=>{c=Math.max(1,Math.min(20,c+ +bt.dataset.c));$('#cant').textContent=c;}));
+  $('#addF').addEventListener('click',()=>anadir(p.id,c));
+  const gm=$('#galMain');
+  $$('[data-th]',app).forEach(bt=>bt.addEventListener('click',()=>{gm.scrollTo({left:gm.clientWidth*+bt.dataset.th,behavior:'smooth'});}));
+  gm.addEventListener('scroll',()=>{const i=Math.round(gm.scrollLeft/gm.clientWidth);$$('[data-th]',app).forEach((b,j)=>b.classList.toggle('on',i===j));},{passive:true});
+  const dt=$('#descTxt'),le=$('#leer');
+  if(dt){ if(dt.scrollHeight<=280){dt.classList.add('abierta');le.remove();} else le.addEventListener('click',()=>{dt.classList.toggle('abierta');le.textContent=dt.classList.contains('abierta')?'Ver menos':'Leer la descripción completa';}); }
+  const peg=$('#peg'), addF=$('#addF');
+  document.body.classList.add('ficha-on');
+  const io=new IntersectionObserver(([e])=>{const on=!e.isIntersecting&&e.boundingClientRect.top<0;peg.classList.toggle('on',on);document.body.classList.toggle('con-pegajosa',on);});
+  io.observe(addF); app._io=io;
+}
+function noEncontrado(){app.innerHTML=`<div class="wrap vacio"><h1 style="font-size:30px;margin:30px 0 10px">No encontramos esta página</h1><p><a class="btn btn-rosa" href="#/">Volver a la tienda</a></p></div>`;}
+
+/* ---------- Cesta ---------- */
+let CESTA=ls.get('tpg-cesta',{});
+function guardar(){ls.set('tpg-cesta',CESTA);pintarCesta();}
+function anadir(id,c=1){CESTA[id]=(CESTA[id]||0)+c;guardar();const p=P.find(x=>x.id===id);toast(`Añadido: ${p?p.n:''}`);}
+function pintarCesta(){
+  const items=Object.entries(CESTA).map(([id,c])=>[P.find(p=>p.id===+id),c]).filter(x=>x[0]&&x[1]>0);
+  const n=items.reduce((a,[,c])=>a+c,0), sub=items.reduce((a,[p,c])=>a+p.pr*c,0);
+  const nc=$('#nCesta'); nc.textContent=n; nc.dataset.v=n;
+  if(!items.length){$('#cestaCuerpo').innerHTML=`<div class="ces-vacia"><p>Tu cesta está vacía.</p><a class="btn btn-rosa" href="#/c/ella" data-cerrar>Ver lo más vendido</a></div>`;$('#cestaPie').innerHTML='';return;}
+  const falta=ENVIO_GRATIS-sub, pct=Math.min(100,sub/ENVIO_GRATIS*100);
+  $('#cestaCuerpo').innerHTML=`<div class="progreso">${falta>0?`Te faltan <b>${eur(falta)}</b> para el envío gratis`:'<b>¡Tienes el envío gratis!</b>'}<div class="bar"><i style="width:${pct}%"></i></div></div>`+items.map(([p,c])=>`<div class="ces-item"><img src="${IMG(p.th)}" alt="" width="72" height="72"><div><a href="#/p/${p.id}" data-cerrar>${esc(p.n)}</a><div class="ces-fila"><div class="cant"><button data-cc="${p.id}" data-d="-1" aria-label="Quitar uno">−</button><span>${c}</span><button data-cc="${p.id}" data-d="1" aria-label="Añadir uno">+</button></div><b>${eur(p.pr*c)}</b></div><button class="quitar" data-q="${p.id}">Quitar</button></div></div>`).join('');
+  const env=falta>0?ENVIO:0;
+  $('#cestaPie').innerHTML=`<div class="lin"><span>Subtotal</span><span>${eur(sub)}</span></div><div class="lin"><span>Envío por mensajería</span><span>${env?eur(env):'Gratis'}</span></div><div class="lin tot"><span>Total</span><span>${eur(sub+env)}</span></div><small>IVA incluido. Si lo recoges en la tienda de Córdoba, el envío es gratis.</small><button class="btn btn-rosa" id="finalizar">Finalizar compra</button>`;
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]'); if(a){e.preventDefault();anadir(+a.dataset.add);return;}
+  const cc=e.target.closest('[data-cc]'); if(cc){const id=cc.dataset.cc;CESTA[id]=Math.max(0,(CESTA[id]||0)+ +cc.dataset.d);if(!CESTA[id])delete CESTA[id];guardar();return;}
+  const q=e.target.closest('[data-q]'); if(q){delete CESTA[q.dataset.q];guardar();return;}
+  if(e.target.closest('#finalizar')){cerrarTodo();$('#fin').classList.add('on');return;}
+  if(e.target.closest('[data-cerrarmodal]')){$('#fin').classList.remove('on');return;}
+  if(e.target.closest('[data-cerrar]')||e.target===$('#velo')){cerrarTodo();}
+});
+function abrir(el){cerrarTodo();$('#toast').classList.remove('on');el.classList.add('on');el.setAttribute('aria-hidden','false');$('#velo').classList.add('on');document.body.style.overflow='hidden';}
+function cerrarTodo(){$$('.cajon').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-hidden','true')});$('#velo').classList.remove('on');document.body.style.overflow='';}
+$('#abrirMenu').addEventListener('click',()=>abrir($('#menuM')));
+$('#abrirCesta').addEventListener('click',()=>abrir($('#cesta')));
+$('#toastVer').addEventListener('click',()=>{$('#toast').classList.remove('on');abrir($('#cesta'));});
+let tT; function toast(t){$('#toastTxt').textContent=t.length>48?t.slice(0,46)+'…':t;const el=$('#toast');el.classList.add('on');clearTimeout(tT);tT=setTimeout(()=>el.classList.remove('on'),2800);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){cerrarTodo();$('#fin').classList.remove('on');$$('.sug').forEach(s=>s.classList.remove('on'));}});
+
+/* ---------- Buscador con sugerencias ---------- */
+$$('[data-busca]').forEach(inp=>{
+  const sug=inp.parentElement.querySelector('.sug');
+  let sel=-1;
+  const pintar=()=>{const v=inp.value.trim(); if(v.length<2){sug.classList.remove('on');return;} const r=buscar(v); sel=-1;
+    sug.innerHTML=r.length?r.slice(0,6).map(p=>`<a href="#/p/${p.id}"><img src="${IMG(p.th)}" alt="" width="48" height="48"><span>${esc(p.n)}</span><b>${eur(p.pr)}</b></a>`).join('')+`<a class="todo" href="#/buscar/${encodeURIComponent(v)}">Ver los ${r.length} resultados</a>`:`<div style="padding:12px;color:var(--mute)">No hay resultados para «${esc(v)}»</div>`;
+    sug.classList.add('on');};
+  inp.addEventListener('input',pintar);
+  inp.addEventListener('focus',pintar);
+  inp.addEventListener('keydown',e=>{const as=$$('a',sug); if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();sel=(sel+(e.key==='ArrowDown'?1:-1)+as.length)%as.length;as.forEach((a,i)=>a.classList.toggle('sel',i===sel));}
+    if(e.key==='Enter'){e.preventDefault(); if(sel>=0&&as[sel]) location.hash=as[sel].getAttribute('href'); else if(inp.value.trim()) location.hash='#/buscar/'+encodeURIComponent(inp.value.trim()); sug.classList.remove('on'); inp.blur();}});
+  document.addEventListener('click',e=>{if(!inp.parentElement.contains(e.target))sug.classList.remove('on');});
+  sug.addEventListener('click',()=>{sug.classList.remove('on');});
+});
+
+/* ---------- Rutas ---------- */
+let ultimaRuta='';
+function ruta(){
+  const h=location.hash||'#/';
+  const [path,qs]=h.slice(1).split('?'); const q=parseQ(qs); const seg=path.split('/').filter(Boolean);
+  if(app._io){app._io.disconnect();app._io=null;}
+  document.body.classList.remove('con-pegajosa','ficha-on');
+  cerrarTodo();
+  const mismaBase=ultimaRuta.split('?')[0]===path && q.n;
+  ultimaRuta=h.slice(1);
+  if(!seg.length){portada();document.title='Tu Punto G · Sex shop en Córdoba y tienda erótica online';}
+  else if(seg[0]==='c') verSeccion(seg[1],seg[2],q);
+  else if(seg[0]==='p') ficha(+seg[1]);
+  else if(seg[0]==='tienda') verTienda();
+  else if(seg[0]==='buscar') verBusqueda(decodeURIComponent(seg.slice(1).join('/')),q);
+  else noEncontrado();
+  if(!mismaBase) window.scrollTo({top:0,behavior:'instant'});
+  if(seg[0]!=='buscar') $$('[data-busca]').forEach(i=>i.value='');
+}
+window.addEventListener('hashchange',ruta);
+
+/* ---------- +18 ---------- */
+if(!ls.get('tpg-18',false)) $('#edad').classList.add('on');
+$('#edadSi').addEventListener('click',()=>{ls.set('tpg-18',true);$('#edad').classList.remove('on');});
+
+/* ---------- Arranque ---------- */
+fetch('data/catalogo.json').then(r=>r.json()).then(c=>{
+  SUBS=c.subs; P=c.p.map(aObj);
+  P.forEach(p=>{(POR[p.sec]??=[]).push(p);(POR[p.sec+'/'+p.sub]??=[]).push(p);});
+  pintarMenus(); pintarCesta(); ruta();
+}).catch(()=>{app.innerHTML='<div class="wrap vacio">No se pudo cargar el catálogo. Recarga la página.</div>';});
+})();
+</script>
+</body>
+</html>
