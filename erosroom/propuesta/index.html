@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta para Eros Room · G&amp;G Elcano</title>
+<meta name="description" content="Tres arreglos que hoy cuestan ventas en erosroom.com y un ejemplo de cómo podría verse la tienda con sus productos reales.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eros Room">
+<meta property="og:title" content="Propuesta para Eros Room">
+<meta property="og:description" content="Tres arreglos para vender más y un ejemplo de la tienda con vuestros productos.">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/erosroom/assets/og.jpg">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/erosroom/propuesta/">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f1326;--ink2:#4b3d55;--mute:#776a7e;--line:#eee3eb;--rosa:#d0156a;--rosa-s:#ffe6f1;--verde:#13804f;--verde-s:#e6f6ee;--rojo:#c2261e;--rojo-s:#fdeceb;--crema:#fff8fa;--plum:#2a0f2a;--ft:'Bricolage Grotesque',system-ui,sans-serif;--f:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f1f4;color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--rosa)}
+.hoja{max-width:900px;margin:0 auto;background:#fff;min-height:100vh}
+.pad{padding:0 20px}
+@media(min-width:700px){.pad{padding:0 56px}}
+header.portada{background:radial-gradient(70% 100% at 90% 0%,rgba(255,94,164,.35),transparent 60%),linear-gradient(135deg,#2a0f2a,#4a1342);color:#fff;padding:28px 0 36px}
+.marca-fila{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}
+.marca-fila .gg{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#f3d6e6}
+.marca-fila .lg{background:#fff;border-radius:14px;padding:6px 10px}
+.marca-fila .lg img{height:44px;width:auto}
+h1,h2,h3{font-family:var(--ft);line-height:1.1;margin:0;letter-spacing:-.01em}
+header h1{font-size:clamp(34px,7vw,52px);font-weight:800}
+header p.sub{font-size:18px;color:#f6dcea;margin:14px 0 18px;max-width:620px}
+header .meta{font-size:14px;color:#e2c3d6}
+.resumen{margin:-22px 0 0;position:relative}
+.resumen ol{list-style:none;margin:0;padding:18px;background:#fff;border-radius:20px;box-shadow:0 16px 40px -20px rgba(60,10,40,.35);display:grid;gap:10px;counter-reset:n}
+.resumen li{counter-increment:n;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-weight:600}
+.resumen li::before{content:counter(n);width:34px;height:34px;border-radius:11px;background:var(--rosa);color:#fff;font-family:var(--ft);font-weight:800;display:flex;align-items:center;justify-content:center}
+.resumen li.ej::before{content:"★";background:var(--ink)}
+.resumen li span{font-weight:400;color:var(--mute);display:block;font-size:14px}
+section{padding:40px 0 8px}
+.intro p{margin:0 0 14px;color:var(--ink2);font-size:17px}
+.num{font-family:var(--ft);font-weight:800;color:var(--rosa);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+section h2{font-size:clamp(27px,5vw,36px);margin:6px 0 16px}
+h3{font-size:19px;margin:22px 0 10px}
+.hoy h3{color:var(--rojo)}
+ul.lista{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+ul.lista li{position:relative;padding-left:26px;color:var(--ink2)}
+ul.lista li::before{content:"";position:absolute;left:4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--rojo)}
+ul.lista.ok li::before{background:var(--verde)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.88em;background:#f5eef3;border-radius:6px;padding:1px 6px;word-break:break-all}
+.solucion{background:var(--verde-s);border-radius:18px;padding:18px 20px;margin-top:20px}
+.solucion h3{color:var(--verde);margin-top:0}
+.solucion p{margin:0;color:#1d4a35}
+.pruebas{display:grid;gap:14px;margin:18px 0 4px}
+.prueba{margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.prueba img{width:100%}
+.prueba figcaption{font-size:13.5px;color:var(--mute);padding:10px 14px;border-top:1px solid var(--line);background:#fcfafb}
+.prueba.movil{max-width:300px}
+.pruebas.dos{grid-template-columns:1fr}
+@media(min-width:700px){.pruebas.dos{grid-template-columns:260px 1fr;align-items:start}}
+.pre{background:#1f1326;color:#f6dcea;border-radius:14px;padding:14px 16px;font-family:ui-monospace,Consolas,monospace;font-size:13.5px;line-height:1.7;overflow-wrap:anywhere;margin:16px 0 4px}
+.pre b{color:#ff8fbf;font-weight:600}
+.pre .err{color:#ffb4ae}
+hr.sep{border:0;border-top:1px solid var(--line);margin:34px 0 0}
+.ejemplo{background:var(--crema);margin-top:40px;padding:40px 0}
+.moviles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+@media(min-width:700px){.moviles{grid-template-columns:repeat(4,1fr);gap:14px}}
+.tel{margin:0}
+.tel img{border-radius:22px;border:6px solid #1f1326;box-shadow:0 14px 30px -16px rgba(0,0,0,.5)}
+.tel figcaption{font-size:13px;color:var(--mute);text-align:center;margin-top:8px}
+.escritorio{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 30px -18px rgba(0,0,0,.4);margin:8px 0 6px}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rosa);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;min-height:52px;padding:0 26px;margin:18px 0 6px;font-size:16px}
+.cta:hover{background:#b30f5a}
+.nota{font-size:14px;color:var(--mute)}
+.paso{background:var(--plum);color:#f6dcea;margin-top:0;padding:40px 0 44px}
+.paso h2{color:#fff}
+.paso p{margin:0 0 12px;font-size:17px}
+.contacto{display:grid;gap:4px;margin-top:20px;font-size:15.5px}
+.contacto b{color:#fff;font-size:17px}
+.contacto a{color:#ffb3d4}
+footer{padding:18px 0 26px;font-size:13px;color:var(--mute)}
+.solo-print{display:none;font-weight:700;margin:6px 0 4px}
+@media print{
+  @page{size:A4;margin:12mm 11mm}
+  body{background:#fff;font-size:12.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hoja{max-width:none}
+  .pad{padding:0 4mm}
+  header.portada{padding:16px 0 28px}
+  .resumen ol{box-shadow:none;border:1px solid var(--line)}
+  section{padding:22px 0 4px}
+  .prueba,.solucion,.tel,.resumen,.pre{break-inside:avoid}
+  .ejemplo{margin-top:22px;padding:22px 0}
+  section h2{font-size:24px;margin:4px 0 10px}
+  header h1{font-size:36px}
+  header p.sub{font-size:15px}
+  h3{margin:12px 0 8px;font-size:15px}
+  ul.lista{gap:7px}
+  .solucion{padding:11px 14px;margin-top:12px}
+  .pruebas{grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 2px}
+  .prueba.movil{max-width:none}
+  .prueba figcaption{font-size:11px;padding:6px 10px}
+  .moviles{gap:10px;margin:14px 0;break-inside:avoid}
+  .tel img{border-width:4px;border-radius:14px}
+  .escritorio,.cta{display:none}
+  hr.sep{margin:18px 0 0}
+  .paso{padding:14px 0 16px;margin-top:6px}
+  .paso h2{font-size:20px}
+  .paso p{font-size:12.5px;margin-bottom:6px}
+  .contacto{margin-top:8px;font-size:12px;display:flex;gap:6px 16px;flex-wrap:wrap;align-items:baseline}
+  .contacto b{font-size:13px}
+  footer{padding:8px 0 0;font-size:10.5px}
+  .ejemplo{padding:16px 0 6px}
+  .moviles{max-width:105mm}
+  .intro p{font-size:13px}
+  .paso{break-inside:avoid}
+  .moviles{grid-template-columns:repeat(4,1fr)}
+  .pruebas.dos{grid-template-columns:150px 1fr}
+  .ej-bloque{break-inside:avoid}
+  .moviles{max-width:118mm}
+  .solo-print{display:block!important}
+  .ejemplo{padding:16px 0}
+  .ejemplo ul.lista li{font-size:11.5px}
+  .no-print{display:none}
+}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header class="portada"><div class="pad">
+  <div class="marca-fila"><span class="gg">G&amp;G Elcano · Propuesta</span><span class="lg"><img src="../assets/logo.webp" alt="Eros Room" width="300" height="178"></span></div>
+  <h1>Propuesta para Eros Room</h1>
+  <p class="sub">Tres arreglos que hoy os cuestan ventas en erosroom.com y un ejemplo de cómo podría verse la tienda con vuestros productos.</p>
+  <div class="meta">Preparada por Josu, de G&amp;G Elcano · 12 de noviembre de 2026</div>
+</div></header>
+
+<div class="pad resumen">
+  <ol>
+    <li><div>Que funcionen los botones de WhatsApp y los enlaces rotos<span>Hoy ninguno de los dos WhatsApp abre vuestro chat.</span></div></li>
+    <li><div>Que la portada prometa lo que la tienda da<span>El banner anuncia −70 % y los productos están al −15 %.</span></div></li>
+    <li><div>Que Google encuentre vuestros más de 9.000 productos<span>El mapa de la web que se le indica a Google da error 404.</span></div></li>
+    <li class="ej"><div>Ejemplo visual con 420 productos vuestros<span>Una demo que podéis abrir y probar en el móvil.</span></div></li>
+  </ol>
+</div>
+
+<div class="pad">
+<section class="intro">
+  <p>Hemos revisado la tienda a fondo el 12 de noviembre. Tiene mucho a favor: un catálogo enorme, una sexóloga que escribe guías, un 4,9 en Google con 35 opiniones y pedidos que salen el mismo día. Por eso merece la pena arreglar lo que hoy hace que parte de las visitas se vayan sin comprar.</p>
+  <p>Las tres primeras mejoras se hacen sobre la web que ya tenéis. El ejemplo visual es una propuesta de diseño; en la llamada os contamos cómo llevarlo a vuestra tienda.</p>
+</section>
+
+<section class="hoy">
+  <span class="num">Mejora 1</span>
+  <h2>Que el cliente que quiere escribiros pueda hacerlo</h2>
+  <h3>Qué pasa hoy</h3>
+  <ul class="lista">
+    <li>El botón verde de WhatsApp, el que flota en todas las páginas, abre <code>wa.me/624416691</code>. Le falta el 34 delante, así que WhatsApp no reconoce el número y el cliente se queda sin chat.</li>
+    <li>En el pie, el número «+34 624 41 66 91» enlaza a <code>erosroom.com/wa.me/34624416691</code>. Le falta el <code>https://</code> y acaba en una página de error de vuestra propia web.</li>
+    <li>Los iconos de «Entrega en 24/72h», «Envío gratis» y «Pagos seguros», y el enlace «Eros Room» del bloque de contacto del pie, llevan a direcciones antiguas que también dan error 404. Las páginas buenas existen; solo hay que cambiar el enlace.</li>
+    <li>En «Términos y condiciones», donde debería ir el teléfono de contacto aparece el NIF.</li>
+  </ul>
+  <div class="pruebas dos">
+    <figure class="prueba movil"><img src="img/ev-portada-movil.webp" alt="Portada de erosroom.com en el móvil con el botón de WhatsApp" width="780" height="1688" loading="lazy"><figcaption>El botón de abajo a la derecha abre un número sin el 34.</figcaption></figure>
+    <figure class="prueba"><img src="img/ev-wa-404.webp" alt="Página de error al pulsar el WhatsApp del pie" width="780" height="680" loading="lazy"><figcaption>Lo que ve quien pulsa el WhatsApp del pie.</figcaption></figure>
+  </div>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Todos los botones de WhatsApp con el número completo y, en cada ficha, el mensaje ya escrito con el nombre del producto, para que sepáis de qué os hablan sin preguntar. Enlaces legales corregidos y el teléfono en su sitio. Es menos de una hora de trabajo.</p></div>
+</section>
+<hr class="sep">
+
+<section class="hoy">
+  <span class="num">Mejora 2</span>
+  <h2>Que la portada prometa lo que la tienda da</h2>
+  <h3>Qué pasa hoy</h3>
+  <ul class="lista">
+    <li>El banner principal anuncia «Black friday −70 %» y el botón «Ahorrar» lleva a la página 2 de succionadores, donde todo está al −15 %. De los 689 productos que hemos revisado en todas las secciones, 683 están al 15 % y el que más baja llega al 32 %. Quien entra buscando el −70 % no lo encuentra.</li>
+    <li>En esa misma página, 96 de los 175 succionadores están «No disponible», mezclados con los que sí podéis vender.</li>
+    <li>El envío se explica de formas distintas: «Envío gratis en tu primer pedido» en la barra de arriba, «Envío gratis disponible» en los iconos y, en la política, «gratis a partir de 65 €» junto a «3,99 € para pedidos de menos de 45 €», sin decir qué pasa entre 45 y 65 €. La misma política habla de aduanas para pedidos internacionales, cuando solo enviáis a península y Baleares.</li>
+    <li>Hay lotes de mayorista entre los productos para el cliente final: «Megapack 20 Rosa Estimuladora con Succión» a 163,53 € sale entre los succionadores más vendidos, y en packs aparecen un «Pack 1000» de monodosis a 211,87 € y catálogos de proveedor a 1,03 €.</li>
+    <li>Erratas a la vista: «Esp?culos» en el menú, «Sáper Finos» en preservativos y «COMPRALO HOY Y RECIBELO MAÑANA», sin tildes, debajo de cada precio.</li>
+  </ul>
+  <div class="pruebas">
+    <figure class="prueba"><img src="img/ev-banner.webp" alt="Banner de Black Friday con −70 % en la portada" width="1280" height="720" loading="lazy"><figcaption>Lo primero que se ve al entrar en erosroom.com.</figcaption></figure>
+    <figure class="prueba"><img src="img/ev-destino.webp" alt="Página a la que lleva el banner, con productos al −15 % y 96 no disponibles" width="1200" height="470" loading="lazy"><figcaption>Adónde lleva el botón «Ahorrar»: −15 % y 96 productos no disponibles.</figcaption></figure>
+  </div>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Banner con el descuento real, que un 15 % en casi todo ya es un buen gancho. Una sola regla de envío (3,99 €, gratis desde 65 €) igual en la barra, en la ficha, en la cesta y en la política. Los agotados al final de los listados o fuera de ellos, los lotes de mayorista en una sección aparte y las erratas corregidas.</p></div>
+</section>
+<hr class="sep">
+
+<section class="hoy">
+  <span class="num">Mejora 3</span>
+  <h2>Que Google encuentre vuestros más de 9.000 productos</h2>
+  <h3>Qué pasa hoy</h3>
+  <ul class="lista">
+    <li>El archivo <code>robots.txt</code>, que es lo primero que lee Google al llegar, dice que el mapa de la web está en dos direcciones. Las dos dan error 404. Sin ese mapa, Google tiene que ir encontrando los productos enlace a enlace, que es más lento y deja productos sin ver.</li>
+    <li>Varias direcciones de categoría perdieron letras al crearse: <code>/pequeo-tamano/</code>, <code>/prostticos/</code>, <code>/espculos/</code>, <code>/bdsm-ltigos/</code>, <code>/manos-puos/</code> y <code>/clima-romintico/</code>. Son las que salen en Google y no coinciden con lo que la gente escribe al buscar.</li>
+  </ul>
+  <div class="pre">erosroom.com/robots.txt<br>Sitemap: https://erosroom.com/<b>1_es_0_sitemap.xml</b> <span class="err">→ error 404</span><br>Sitemap: https://erosroom.com/<b>1_es_1_sitemap.xml</b> <span class="err">→ error 404</span></div>
+  <div class="solucion"><h3>Cómo lo dejaríamos</h3><p>Generar de nuevo el mapa de la web, darlo de alta en Google Search Console y corregir esas direcciones con redirecciones 301, para no perder lo que ya esté posicionado.</p></div>
+</section>
+</div>
+
+<section class="ejemplo"><div class="pad">
+  <div class="ej-bloque"><span class="num">Ejemplo visual</span>
+  <h2>Así podría verse Eros Room</h2>
+  <p class="nota" style="font-size:16px;color:var(--ink2)">Hemos montado una demo con los 420 productos vuestros que hoy tienen stock en las secciones principales: las mismas fotos, los mismos precios y las mismas descripciones de erosroom.com. Es vuestra tienda con otra presentación, no una plantilla.</p>
+  <div class="moviles">
+    <figure class="tel"><img src="img/demo-movil-edad.webp" alt="Aviso de mayores de 18 años" width="780" height="1688" loading="lazy"><figcaption>Aviso de +18 al entrar</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-portada.webp" alt="Portada de la demo en el móvil" width="780" height="1688" loading="lazy"><figcaption>Descuento real y envío claros</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-ficha.webp" alt="Ficha de producto con WhatsApp" width="780" height="1688" loading="lazy"><figcaption>Ficha con «Pregúntanos por WhatsApp»</figcaption></figure>
+    <figure class="tel"><img src="img/demo-movil-cesta.webp" alt="Cesta con envío gratis" width="780" height="1688" loading="lazy"><figcaption>Cesta que avisa del envío gratis</figcaption></figure>
+  </div></div>
+  <div class="escritorio"><img src="img/demo-escritorio.webp" alt="Portada de la demo en el ordenador" width="1440" height="900" loading="lazy"></div>
+  <a class="cta" href="https://ggeelcano.github.io/demos/erosroom/" target="_blank" rel="noopener">Abrir la demo</a>
+  <p class="solo-print">Abrir la demo: <a href="https://ggeelcano.github.io/demos/erosroom/">ggeelcano.github.io/demos/erosroom</a></p>
+  <h3>Qué podéis probar</h3>
+  <ul class="lista ok">
+    <li>Al entrar pide confirmar que se tienen 18 años y lo recuerda en las siguientes visitas.</li>
+    <li>En la primera pantalla del móvil se ve el descuento real, el precio del envío y que el pedido sale el mismo día.</li>
+    <li>Compra por sección, con filtros por marca y por precio, y un buscador que sugiere productos mientras escribes.</li>
+    <li>En cada ficha, «Pregúntanos por WhatsApp» abre vuestro chat con el nombre del producto ya escrito.</li>
+    <li>La cesta dice cuánto falta para el envío gratis, y así anima a añadir algo más al pedido.</li>
+    <li>Anna Masqué, vuestras opiniones de Google y las guías del blog están en la portada, que es donde dan confianza.</li>
+  </ul>
+  <p class="nota">La compra de la demo no cobra nada: al finalizar explica cómo sería el pago (Bizum, tarjeta, PayPal en 3 plazos o contra reembolso).</p>
+</div></section>
+
+<section class="paso"><div class="pad">
+  <h2>Siguiente paso</h2>
+  <p>Si os encaja, lo vemos en una llamada de 15 minutos: os enseño la demo, resolvemos dudas y os paso un presupuesto cerrado. La mejora 1 se puede dejar hecha esta misma semana.</p>
+  <div class="contacto">
+    <b>Josu · G&amp;G Elcano</b>
+    <span>WhatsApp <a href="https://wa.me/34614752539">614 75 25 39</a></span>
+    <span><a href="mailto:josugarciandia@ggelcano.com">josugarciandia@ggelcano.com</a></span>
+  </div>
+</div></section>
+<footer><div class="pad">Datos revisados en erosroom.com el 12 de noviembre de 2026. Las capturas de vuestra web se han hecho ese día, quitando solo el aviso de cookies para que se vea el contenido.</div></footer>
+</div>
+</body>
+</html>
