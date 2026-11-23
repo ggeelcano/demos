@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anser Tienda · antes y después</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Propuesta de mejoras visuales para ansertienda.com: la ficha de producto, la portada en el móvil y las tarjetas, antes y después.">
+<meta name="theme-color" content="#182126">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="G&amp;G Elcano">
+<meta property="og:title" content="Anser Tienda · antes y después">
+<meta property="og:description" content="Vuestra ficha de producto y la portada en el móvil, con los cambios aplicados. Arrastrad la barra para comparar.">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/anser/">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/anser/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#2f8670;--menta:#6fbfac;--menta-claro:#e8f4f0;--oscuro:#182126;--texto:#33424a;--suave:#6b7b80;--fondo:#f5f7f6;--linea:#e1e8e5;--blanco:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.55}
+.envoltura{max-width:1180px;margin:0 auto;padding:0 16px}
+header.portada{background:var(--oscuro);color:#e9efed;padding:56px 0 48px}
+header .marca{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--menta);font-weight:700}
+header h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:10px 0 14px;color:#fff;font-weight:800}
+header p{max-width:720px;margin:0;color:#c9d4d1;font-size:17px}
+.cifras{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cifra{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 18px;min-width:220px;flex:1}
+.cifra b{display:block;font-size:26px;color:#fff;line-height:1.15}
+.cifra span{font-size:14px;color:#b8c5c1}
+nav.indice{position:sticky;top:0;z-index:5;background:var(--blanco);border-bottom:1px solid var(--linea)}
+nav.indice .envoltura{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.indice .envoltura::-webkit-scrollbar{display:none}
+nav.indice a{white-space:nowrap;text-decoration:none;color:var(--oscuro);font-weight:600;font-size:14px;padding:7px 12px;border-radius:999px;background:var(--fondo)}
+nav.indice a:hover{background:var(--menta-claro)}
+section{padding:44px 0 8px}
+section h2{font-size:clamp(22px,3vw,30px);color:var(--oscuro);margin:0 0 6px;line-height:1.2}
+section .entrada{margin:0 0 22px;color:var(--suave);max-width:760px}
+.bloque{background:var(--blanco);border:1px solid var(--linea);border-radius:18px;padding:20px;margin-bottom:22px}
+.bloque h3{margin:0 0 4px;font-size:19px;color:var(--oscuro)}
+.bloque ul{margin:8px 0 16px;padding-left:20px}
+.bloque li{margin:3px 0}
+.pista{font-size:13px;color:var(--suave);margin:0 0 10px}
+/* comparador deslizante */
+.comparador{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--linea);user-select:none;touch-action:pan-y;background:#ddd}
+.comparador img{display:block;width:100%;height:auto}
+.comparador .capa{position:absolute;inset:0;overflow:hidden;width:50%}
+.comparador .capa img{width:auto;height:100%;max-width:none}
+.comparador .barra{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);transform:translateX(-50%);pointer-events:none}
+.comparador .tirador{position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:var(--oscuro);color:#fff;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);font-weight:800;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.3);pointer-events:none}
+.comparador .et{position:absolute;top:12px;padding:4px 10px;border-radius:6px;font-size:13px;font-weight:700;pointer-events:none}
+.comparador .et.a{left:12px;background:rgba(24,33,38,.85);color:#fff}
+.comparador .et.d{right:12px;background:var(--verde);color:#fff}
+.comparador input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+/* móvil lado a lado */
+.pares{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.par figure{margin:0}
+.par img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--linea)}
+.par figcaption{font-size:13px;font-weight:700;margin:0 0 6px}
+.par figcaption.a{color:var(--suave)}
+.par figcaption.d{color:var(--verde)}
+.par-titulo{grid-column:1/-1;font-weight:600;color:var(--oscuro);font-size:15px;margin:0}
+footer{padding:40px 0 60px;color:var(--suave);font-size:14px}
+footer b{color:var(--oscuro)}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="envoltura">
+    <div class="marca">G&amp;G Elcano · propuesta para ansertienda.com</div>
+    <h1>Vuestra tienda, antes y después</h1>
+    <p>Hemos aplicado los cambios sobre vuestras propias páginas (la portada y una ficha de producto real) para que veáis cómo quedaría. No hemos tocado vuestra web: son capturas. Arrastrad la barra de cada imagen para comparar.</p>
+    <div class="cifras">
+      <div class="cifra"><b>6,3 → 1,8 pantallas</b><span>lo que hay que bajar en el móvil hasta ver el primer zapato con precio</span></div>
+      <div class="cifra"><b>Siempre a mano</b><span>el botón de compra en el móvil, con el precio, aunque bajes a leer la ficha</span></div>
+      <div class="cifra"><b>4,5 ★ en cada ficha</b><span>las opiniones de Google que ya tenéis en la portada, también donde se decide la compra</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="indice"><div class="envoltura">
+  <a href="#ficha">Ficha de producto</a>
+  <a href="#ficha-movil">Ficha en el móvil</a>
+  <a href="#portada-movil">Portada en el móvil</a>
+  <a href="#tarjetas">Tarjetas de producto</a>
+  <a href="#opiniones">Opiniones y detalles</a>
+</div></nav>
+
+<main class="envoltura">
+
+  <section id="ficha">
+    <h2>La ficha de producto</h2>
+    <p class="entrada">Es la página donde se decide la compra. Ahora mismo el botón que más llama la atención es el de WhatsApp, y el de «Añadir al carrito» queda en blanco con un borde fino.</p>
+    <div class="bloque">
+      <h3>Parte de arriba, en ordenador</h3>
+      <ul>
+        <li>«Añadir al carrito» en el verde de la marca, grande, y el corazón de favoritos en la misma fila.</li>
+        <li>WhatsApp sigue estando, pero como botón secundario dentro del recuadro de tallas.</li>
+        <li>Las tallas con borde normal y la elegida en oscuro. Con el borde discontinuo parecían agotadas.</li>
+        <li>Debajo del título, la nota de Google (4,5 con 97 opiniones). La referencia del producto sale aparte, en pequeño, y no pegada al nombre.</li>
+        <li>Aviso de cookies en una tarjeta pequeña con Aceptar y Rechazar. El actual dice «si continúas navegando consideramos que aceptas», y eso no vale con la normativa de protección de datos.</li>
+        <li>En la cabecera, el contador del corazón ya no se corta por la derecha.</li>
+      </ul>
+      <p class="pista">Arrastra para comparar</p>
+      <div class="comparador" data-a="img/ficha-esc-1-antes.jpg" data-d="img/ficha-esc-1-despues.jpg"></div>
+    </div>
+    <div class="bloque">
+      <h3>Detalles del producto</h3>
+      <ul>
+        <li>El logo de la marca a un tamaño normal (antes ocupaba un recuadro enorme).</li>
+        <li>Ficha técnica en una tabla compacta: «Para diario, para vestir» en una línea en vez de una fila gigante por dato.</li>
+        <li>Faltas corregidas: «Caracteristícas», «Ortpédica», y en la descripción «muilitar», «ortopedica» o «contactenos».</li>
+      </ul>
+      <div class="comparador" data-a="img/ficha-esc-2-antes.jpg" data-d="img/ficha-esc-2-despues.jpg"></div>
+    </div>
+  </section>
+
+  <section id="ficha-movil">
+    <h2>La ficha en el móvil</h2>
+    <p class="entrada">En el móvil el botón de compra aparecía en la segunda pantalla y luego desaparecía al bajar. Ahora hay una barra fija abajo con el precio y el botón, que se quita sola cuando el botón principal está a la vista.</p>
+    <div class="bloque">
+      <div class="pares">
+        <div class="par">
+          <p class="par-titulo">Al entrar</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/ficha-mov-1-antes.jpg" alt="Ficha en el móvil al entrar, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/ficha-mov-1-despues.jpg" alt="Ficha en el móvil al entrar, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Precio, tallas y compra</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/ficha-mov-2-antes.jpg" alt="Zona de compra en el móvil, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/ficha-mov-2-despues.jpg" alt="Zona de compra en el móvil, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Leyendo la ficha técnica</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/ficha-mov-3-antes.jpg" alt="Ficha técnica en el móvil, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/ficha-mov-3-despues.jpg" alt="Ficha técnica en el móvil, después" loading="lazy"></figure>
+        </div>
+      </div>
+      <ul>
+        <li>Las migas de pan («Inicio / Calzado pies delicados / …») en una sola línea. Antes ocupaban cuatro antes de llegar a la foto.</li>
+        <li>El corazón de favoritos ya no se queda solo en una línea aparte.</li>
+        <li>El botón de WhatsApp y el de volver arriba, uno encima del otro sin montarse.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="portada-movil">
+    <h2>La portada en el móvil</h2>
+    <p class="entrada">La portada mide más de 20.000 píxeles en el móvil y el primer zapato con precio salía después de bajar más de seis pantallas. Hemos subido la fila de botas y botines justo después del bloque principal, sin quitar nada.</p>
+    <div class="bloque">
+      <div class="pares">
+        <div class="par">
+          <p class="par-titulo">Primera pantalla</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-1-antes.jpg" alt="Portada en el móvil, primera pantalla, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-1-despues.jpg" alt="Portada en el móvil, primera pantalla, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Segunda pantalla</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-2-antes.jpg" alt="Portada en el móvil, segunda pantalla, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-2-despues.jpg" alt="Portada en el móvil, segunda pantalla, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Tercera pantalla</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-3-antes.jpg" alt="Portada en el móvil, tercera pantalla, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-3-despues.jpg" alt="Portada en el móvil, tercera pantalla, después" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tarjetas">
+    <h2>Las tarjetas de producto</h2>
+    <p class="entrada">Algunas tarjetas llevaban tres etiquetas a la vez («¡En oferta!», «Nuevo» y «-20,00 €») en un rojo que choca con el verde de la marca, y los nombres se cortaban en una línea.</p>
+    <div class="bloque">
+      <ul>
+        <li>Una sola etiqueta con el descuento en porcentaje («-14 %»). Si el zapato está rebajado, no lleva además «Nuevo».</li>
+        <li>Precio rebajado en un rojo más sobrio y el precio anterior tachado en gris.</li>
+        <li>Nombres en dos líneas, sin la referencia al final.</li>
+        <li>Las fotos de estudio sobre un gris muy suave, para que no queden como recortes blancos al lado de las fotos de ambiente.</li>
+        <li>«Ver todos los modelos» alineado con el borde de la fila.</li>
+      </ul>
+      <div class="comparador" data-a="img/portada-esc-3-antes.jpg" data-d="img/portada-esc-3-despues.jpg"></div>
+    </div>
+    <div class="bloque">
+      <h3>Botas y botines</h3>
+      <div class="comparador" data-a="img/portada-esc-2-antes.jpg" data-d="img/portada-esc-2-despues.jpg"></div>
+    </div>
+  </section>
+
+  <section id="opiniones">
+    <h2>Opiniones y detalles de toda la web</h2>
+    <p class="entrada">El carrusel de opiniones de Google usaba los colores de fábrica del widget (botón morado, enlaces azules). Ahora va con los de la marca.</p>
+    <div class="bloque">
+      <ul>
+        <li>«Valóranos en Google», «Leer más» y los puntos del carrusel en verde Anser.</li>
+        <li>Fuera las mayúsculas en cada palabra: «Añadir al carrito» en vez de «Añadir Al Carrito», «Botas y botines», «Tipo de calzado».</li>
+      </ul>
+      <div class="comparador" data-a="img/portada-esc-1-antes.jpg" data-d="img/portada-esc-1-despues.jpg"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="envoltura">
+  <b>G&amp;G Elcano</b> · GG Elcano 1519 Ventures S.L. · Bilbao · www.ggelcano.com<br>
+  Capturas tomadas el 23 de noviembre de 2026 sobre ansertienda.com. Los cambios se aplican en vuestra plantilla actual, sin rehacer la tienda.
+</div></footer>
+
+<script>
+// en las capturas de móvil, tocar la imagen la abre a tamaño completo
+document.querySelectorAll('.par img').forEach(i => { const a = document.createElement('a'); a.href = i.getAttribute('src'); a.target = '_blank'; i.replaceWith(a); a.appendChild(i); });
+document.querySelectorAll('.comparador').forEach(c => {
+  const a = c.dataset.a, d = c.dataset.d;
+  c.innerHTML = '<img src="' + d + '" alt="Después" loading="lazy">' +
+    '<div class="capa"><img src="' + a + '" alt="Antes" loading="lazy"></div>' +
+    '<div class="barra"></div><div class="tirador">⇆</div>' +
+    '<span class="et a">Antes</span><span class="et d">Después</span>' +
+    '<input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">';
+  const capa = c.querySelector('.capa'), barra = c.querySelector('.barra'), tir = c.querySelector('.tirador');
+  const imgA = capa.querySelector('img'), r = c.querySelector('input');
+  const ajustar = () => { imgA.style.width = c.clientWidth + 'px'; imgA.style.height = 'auto'; };
+  const mover = v => { capa.style.width = v + '%'; barra.style.left = v + '%'; tir.style.left = v + '%'; };
+  r.addEventListener('input', () => mover(r.value));
+  addEventListener('resize', ajustar); c.querySelector('img').addEventListener('load', ajustar); ajustar();
+});
+</script>
+</body>
+</html>
