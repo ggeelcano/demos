@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Gusta Vieja · el estilo nuevo</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Tu tienda con el estilo nuevo: la portada, la sección de vinos y las fichas de producto, antes y después.">
+<meta name="theme-color" content="#0e2a55">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="G&amp;G Elcano">
+<meta property="og:title" content="La Gusta Vieja · el estilo nuevo">
+<meta property="og:description" content="Tu portada, la sección de vinos y las fichas, con el estilo nuevo aplicado. Arrastra la barra para comparar.">
+<meta property="og:url" content="https://ggeelcano.github.io/demos/gustavieja/estilo/">
+<meta property="og:image" content="https://ggeelcano.github.io/demos/gustavieja/estilo/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e2a55;--navy-dark:#091c3a;--cream:#f6f2ea;--paper:#fffdf9;--ink:#1f2430;--muted:#6b6f78;--line:#e3ded4;--gold:#b8934a;--oro-claro:#e5cf9b;--wa:#25d366}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55}
+.envoltura{max-width:1180px;margin:0 auto;padding:0 16px}
+h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.08}
+header.portada{background:var(--navy);color:#e9eef8;padding:56px 0 48px}
+header .marca{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--oro-claro);font-weight:700}
+header h1{font-size:clamp(38px,6vw,60px);margin:10px 0 14px;color:#fff}
+header p{max-width:720px;margin:0;color:#d3dbe9;font-size:17px}
+.cifras{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cifra{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 18px;min-width:220px;flex:1}
+.cifra b{display:block;font-size:24px;color:#fff;line-height:1.2}
+.cifra span{font-size:14px;color:#c3cde0}
+nav.indice{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+nav.indice .envoltura{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.indice .envoltura::-webkit-scrollbar{display:none}
+nav.indice a{white-space:nowrap;text-decoration:none;color:var(--navy);font-weight:600;font-size:14px;padding:7px 12px;border-radius:999px;background:var(--cream)}
+nav.indice a:hover{background:#ece4d4}
+section{padding:44px 0 8px;scroll-margin-top:56px}
+section h2{font-size:clamp(30px,4vw,40px);color:var(--navy);margin:0 0 6px}
+section .entrada{margin:0 0 22px;color:var(--muted);max-width:760px}
+.bloque{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:22px}
+.bloque h3{margin:0 0 4px;font-size:19px;color:var(--navy)}
+.bloque ul{margin:8px 0 16px;padding-left:20px}
+.bloque li{margin:4px 0}
+.pista{font-size:13px;color:var(--muted);margin:0 0 10px}
+.comparador{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);user-select:none;touch-action:pan-y;background:#ddd}
+.comparador img{display:block;width:100%;height:auto}
+.comparador .capa{position:absolute;inset:0;overflow:hidden;width:50%}
+.comparador .capa img{width:auto;height:100%;max-width:none}
+.comparador .barra{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);transform:translateX(-50%);pointer-events:none}
+.comparador .tirador{position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);font-weight:800;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.3);pointer-events:none}
+.comparador .et{position:absolute;top:12px;padding:4px 10px;border-radius:6px;font-size:13px;font-weight:700;pointer-events:none}
+.comparador .et.a{left:12px;background:rgba(31,36,48,.85);color:#fff}
+.comparador .et.d{right:12px;background:var(--gold);color:#1f1a10}
+.comparador input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.pares{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+.par figure{margin:0}
+.par img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+.par figcaption{font-size:13px;font-weight:700;margin:0 0 6px}
+.par figcaption.a{color:var(--muted)}
+.par figcaption.d{color:var(--gold)}
+.par-titulo{grid-column:1/-1;font-weight:600;color:var(--navy);font-size:15px;margin:0}
+.cierre{background:var(--cream);border:0}
+.cierre h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:600}
+.cierre p{margin:8px 0 0;max-width:760px}
+.nota{font-size:14px;color:var(--muted)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+footer b{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="envoltura">
+    <div class="marca">G&amp;G Elcano · propuesta de estilo para lagustavieja.com</div>
+    <h1>Tu tienda, con el estilo nuevo</h1>
+    <p>Hemos aplicado el estilo nuevo sobre tus propias páginas: la portada, la sección de vinos y dos fichas de producto. Tu web no la hemos tocado. Compara el antes y el después y dinos si te gusta.</p>
+    <div class="cifras">
+      <div class="cifra"><b>De 9 a 1,6 pantallas</b><span>lo que hay que bajar en el móvil hasta ver el primer producto con su precio</span></div>
+      <div class="cifra"><b>Agotados al final</b><span>con una etiqueta pequeña y un botón «Avísame» que abre tu WhatsApp</span></div>
+      <div class="cifra"><b>Secciones y buscador arriba</b><span>siempre a mano en el móvil, sin abrir menús</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="indice"><div class="envoltura">
+  <a href="#portada">Portada</a>
+  <a href="#vinos">Sección de vinos</a>
+  <a href="#ficha">Ficha de producto</a>
+  <a href="#ordenador">En el ordenador</a>
+  <a href="#te-gusta">¿Te gusta?</a>
+</div></nav>
+
+<main class="envoltura">
+
+  <section id="portada">
+    <h2>La portada en el móvil</h2>
+    <p class="entrada">Hoy la portada mide casi 10.000 píxeles en el móvil. Entre los teléfonos, el carrusel, los textos de bienvenida y una foto grande por cada sección, el primer producto con precio aparece después de bajar nueve pantallas.</p>
+    <div class="bloque">
+      <div class="pares">
+        <div class="par">
+          <p class="par-titulo">Al entrar</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-1-antes.jpg" alt="Portada en el móvil al entrar, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-1-despues.jpg" alt="Portada en el móvil al entrar, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Bajando un poco</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-2-antes.jpg" alt="Portada en el móvil, segunda pantalla, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-2-despues.jpg" alt="Portada en el móvil, segunda pantalla, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Un poco más abajo</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/portada-mov-3-antes.jpg" alt="Portada en el móvil, tercera pantalla, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/portada-mov-3-despues.jpg" alt="Portada en el móvil, tercera pantalla, después" loading="lazy"></figure>
+        </div>
+      </div>
+      <ul>
+        <li>Arriba, una franja con el envío gratis desde 100 € y tu WhatsApp.</li>
+        <li>El logo, WhatsApp y la cesta en una sola fila, con el buscador siempre visible debajo.</li>
+        <li>Las secciones (vinos, jamón, quesos…) en botones justo debajo, y también en fotos que se deslizan con el dedo.</li>
+        <li>Letra nueva y los colores de tu logo: el azul, con crema y un toque dorado.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="vinos">
+    <h2>La sección de vinos</h2>
+    <p class="entrada">Hoy el aviso de agotado es una banda larga que se sale por la derecha de la pantalla, y la página entera se mueve de lado al tocarla. Además, los agotados salen mezclados con los que sí hay.</p>
+    <div class="bloque">
+      <div class="pares">
+        <div class="par">
+          <p class="par-titulo">Al entrar</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/categoria-mov-1-antes.jpg" alt="Sección de vinos en el móvil al entrar, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/categoria-mov-1-despues.jpg" alt="Sección de vinos en el móvil al entrar, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Los primeros vinos</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/categoria-mov-2-antes.jpg" alt="Primeros vinos de la lista, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/categoria-mov-2-despues.jpg" alt="Primeros vinos de la lista, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Los agotados</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/categoria-mov-3-antes.jpg" alt="Vinos agotados, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/categoria-mov-3-despues.jpg" alt="Vinos agotados, después" loading="lazy"></figure>
+        </div>
+      </div>
+      <ul>
+        <li>Tintos, blancos, cavas y el resto de subsecciones como botones, arriba del todo.</li>
+        <li>Un interruptor de «Solo disponibles» y el orden a la derecha.</li>
+        <li>Primero lo que hay, y los agotados al final con su etiqueta y el botón «Avísame», que abre tu WhatsApp con el nombre del vino ya escrito.</li>
+        <li>Cada vino con su foto sobre fondo crema, nombre, precio y el botón de añadir.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ficha">
+    <h2>La ficha de producto</h2>
+    <p class="entrada">El nombre del producto pasa de la letra a mano a la letra nueva, el precio se ve más y el botón de compra destaca. Debajo va un recuadro con el envío y la recogida en tienda, para que nadie tenga que buscarlo.</p>
+    <div class="bloque">
+      <div class="pares">
+        <div class="par">
+          <p class="par-titulo">Al entrar</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/ficha-mov-1-antes.jpg" alt="Ficha de Protos Crianza al entrar, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/ficha-mov-1-despues.jpg" alt="Ficha de Protos Crianza al entrar, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Precio y compra</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/ficha-mov-2-antes.jpg" alt="Precio y botón de compra, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/ficha-mov-2-despues.jpg" alt="Precio y botón de compra, después" loading="lazy"></figure>
+        </div>
+        <div class="par">
+          <p class="par-titulo">Un producto agotado</p>
+          <figure><figcaption class="a">Antes</figcaption><img src="img/agotada-mov-1-antes.jpg" alt="Ficha de un vino agotado, antes" loading="lazy"></figure>
+          <figure><figcaption class="d">Después</figcaption><img src="img/agotada-mov-1-despues.jpg" alt="Ficha de un vino agotado, después" loading="lazy"></figure>
+        </div>
+      </div>
+      <ul>
+        <li>Cantidad y «Añadir al carrito» en la misma fila.</li>
+        <li>Envío gratis a la península desde 100 €, entrega en 24-48 h laborables y recogida gratis en la tienda de Fuengirola.</li>
+        <li>Un enlace para preguntar por WhatsApp sobre ese producto.</li>
+        <li>Si está agotado, en lugar del botón gris que no se puede pulsar sale el aviso y «Avísame cuando vuelva».</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ordenador">
+    <h2>En el ordenador</h2>
+    <p class="entrada">El mismo estilo en pantalla grande: buscador en el centro de la cabecera y las secciones en una barra azul debajo.</p>
+    <div class="bloque">
+      <h3>Portada</h3>
+      <p class="pista">Arrastra la barra para comparar</p>
+      <div class="comparador" data-a="img/portada-esc-1-antes.jpg" data-d="img/portada-esc-1-despues.jpg"></div>
+    </div>
+    <div class="bloque">
+      <h3>Las secciones de la portada</h3>
+      <div class="comparador" data-a="img/portada-esc-2-antes.jpg" data-d="img/portada-esc-2-despues.jpg"></div>
+    </div>
+    <div class="bloque">
+      <h3>Sección de vinos</h3>
+      <div class="comparador" data-a="img/categoria-esc-1-antes.jpg" data-d="img/categoria-esc-1-despues.jpg"></div>
+    </div>
+    <div class="bloque">
+      <h3>Ficha de producto</h3>
+      <div class="comparador" data-a="img/ficha-esc-1-antes.jpg" data-d="img/ficha-esc-1-despues.jpg"></div>
+    </div>
+  </section>
+
+  <section id="te-gusta">
+    <div class="bloque cierre">
+      <h3>¿Te gusta este estilo?</h3>
+      <p>Si te gusta, lo montamos en tu tienda sobre la copia de pruebas y te la enseñamos antes de publicar nada. Si prefieres otro color, otra letra o cambiar algo de la portada, dínoslo ahora, antes de empezar.</p>
+      <p class="nota">Son capturas de prueba: el buscador, la cesta y los botones todavía no funcionan con este estilo. Las fotos, los productos y los precios son los de tu tienda hoy.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="envoltura">
+  <b>G&amp;G Elcano</b> · GG Elcano 1519 Ventures S.L. · Bilbao · www.ggelcano.com<br>
+  Capturas tomadas el 24 de noviembre de 2026 sobre lagustavieja.com.
+</div></footer>
+
+<script>
+document.querySelectorAll('.par img').forEach(i => { const a = document.createElement('a'); a.href = i.getAttribute('src'); a.target = '_blank'; i.replaceWith(a); a.appendChild(i); });
+document.querySelectorAll('.comparador').forEach(c => {
+  const a = c.dataset.a, d = c.dataset.d;
+  c.innerHTML = '<img src="' + d + '" alt="Después" loading="lazy">' +
+    '<div class="capa"><img src="' + a + '" alt="Antes" loading="lazy"></div>' +
+    '<div class="barra"></div><div class="tirador">⇆</div>' +
+    '<span class="et a">Antes</span><span class="et d">Después</span>' +
+    '<input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">';
+  const capa = c.querySelector('.capa'), barra = c.querySelector('.barra'), tir = c.querySelector('.tirador');
+  const imgA = capa.querySelector('img'), r = c.querySelector('input');
+  const ajustar = () => { imgA.style.width = c.clientWidth + 'px'; imgA.style.height = 'auto'; };
+  const mover = v => { capa.style.width = v + '%'; barra.style.left = v + '%'; tir.style.left = v + '%'; };
+  r.addEventListener('input', () => mover(r.value));
+  addEventListener('resize', ajustar); c.querySelector('img').addEventListener('load', ajustar); ajustar();
+});
+</script>
+</body>
+</html>
